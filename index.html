@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Publishing · Richard A. Daniel, M.Ed.</title>
+<meta name="description" content="Free English learner teaching resources: bilingual biography galleries, faculty bulletins, ELPA21 practice packets and classroom tools from Laurel High School.">
+<meta property="og:title" content="EL Publishing">
+<meta property="og:description" content="Free English learner teaching resources from Richard A. Daniel, M.Ed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2761; --navy-dk:#141A44; --gold:#C9A227; --gold-lt:#EBD9A0;
+    --paper:#FFFFFF; --mist:#F4F5FA; --ink:#1F2330; --muted:#5D6480; --rule:#DCDEE9;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--mist);color:var(--ink);
+    font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6;
+    -webkit-text-size-adjust:100%}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+  a{color:var(--navy)}
+  p{margin:0 0 14px}
+
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1060px;margin:0 auto;padding:46px 26px 38px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 18px}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.03em;
+    font-size:clamp(42px,9vw,72px);line-height:.92;margin:0}
+  h1 em{display:block;font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:18px 0 0;font-size:17.5px;color:#C9CEEA;max-width:52ch}
+  .who{margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(235,217,160,.28);
+    font-size:14px;color:#AEB5DA;max-width:60ch}
+  .who b{color:#fff}
+
+  section{padding:44px 0}
+  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;
+    letter-spacing:-.02em;color:var(--navy);margin:0 0 6px}
+  h2::before{content:"";display:block;width:38px;height:3px;background:var(--gold);margin-bottom:14px}
+  .deck{color:var(--muted);margin:0 0 26px;max-width:62ch}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+  .card{background:var(--paper);border:1px solid var(--rule);display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;transition:transform .12s ease,box-shadow .12s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,39,97,.14)}
+  .card-top{background:var(--navy);color:#fff;padding:16px 20px}
+  .kind{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--gold)}
+  .card h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;
+    margin:6px 0 0}
+  .card-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+  .card p{font-size:14.5px;color:var(--ink);margin:0 0 14px}
+  .meta{margin-top:auto;font-size:12.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+  .meta span{border:1px solid var(--rule);padding:2px 9px;border-radius:999px}
+  .go{font-weight:600;font-size:14px;color:var(--navy);margin-top:12px}
+
+  .about{background:var(--navy);color:#DDE1F2;position:relative;overflow:hidden}
+  .about::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
+  .about .wrap{position:relative}
+  .about h2{color:#fff}
+  .about h2::before{background:var(--gold)}
+  .about p{max-width:66ch}
+  .about b{color:var(--gold-lt)}
+
+  .use{background:var(--paper);border:1px solid var(--rule);padding:24px 26px;margin-top:8px}
+  .use h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;color:var(--navy);
+    margin:0 0 8px}
+  .use ul{margin:0;padding-left:20px}
+  .use li{margin-bottom:8px;font-size:15px}
+
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:30px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  .mail{display:inline-block;margin:12px 0 14px;background:var(--gold);color:var(--navy-dk);
+    padding:8px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-in">
+    <p class="brand">EL PUBLISHING</p>
+    <h1>Every teacher is a<em>language teacher.</em></h1>
+    <p class="tag">Free, classroom-ready resources for teaching English learners — built in a
+      Mississippi high school, used in any of them.</p>
+    <p class="who"><b>Richard A. Daniel, M.Ed.</b> · ENL/EL Specialist, Laurel High School ·
+      31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>Resources</h2>
+  <p class="deck">Everything here opens in a browser and prints. Nothing needs an account, a
+    license or a login.</p>
+
+  <div class="cards">
+
+    <a class="card" href="hispanic-heritage.html">
+      <div class="card-top">
+        <span class="kind">BILINGUAL GALLERY</span>
+        <h3>Hispanic Heritage: 30 People</h3>
+      </div>
+      <div class="card-body">
+        <p>Thirty biography profiles in English and Spanish, each with a discussion question, a
+          sentence-frame support and a source link. Filter by field, search by name, or switch the
+          whole gallery to Spanish. Four classroom projects follow the profiles.</p>
+        <div class="meta"><span>Grades 9–12</span><span>Bilingual</span><span>Interactive</span></div>
+        <p class="go">Open the gallery →</p>
+      </div>
+    </a>
+
+    <a class="card" href="language-bridge-2026-09.html">
+      <div class="card-top">
+        <span class="kind">FACULTY BULLETIN</span>
+        <h3>The Language Bridge · Sept 2026</h3>
+      </div>
+      <div class="card-body">
+        <p>A one-page bulletin for content teachers: five findings from acquisition research with
+          a classroom move attached to each, the eight SIOP components translated for a content
+          classroom, paired content and language objectives, and a compliance corner.</p>
+        <div class="meta"><span>For teachers</span><span>Printable</span><span>Issue 1</span></div>
+        <p class="go">Read the issue →</p>
+      </div>
+    </a>
+
+    <a class="card" href="elpa21-practice-student.pdf">
+      <div class="card-top">
+        <span class="kind">PRACTICE PACKET</span>
+        <h3>ELPA21 Task Practice · Student</h3>
+      </div>
+      <div class="card-body">
+        <p>Sixteen pages of practice across all four domains, written in the format of the
+          assessment: construct a claim, respond to a message, observe and report, state an
+          opinion, follow instructions, academic lecture, informational set, short paragraph.</p>
+        <div class="meta"><span>Grades 9–12</span><span>PDF</span><span>Print</span></div>
+        <p class="go">Download the packet →</p>
+      </div>
+    </a>
+
+    <a class="card" href="elpa21-practice-teacher.pdf">
+      <div class="card-top">
+        <span class="kind">PRACTICE PACKET</span>
+        <h3>ELPA21 Task Practice · Teacher</h3>
+      </div>
+      <div class="card-body">
+        <p>The teacher edition: read-aloud scripts, question sets, proficiency look-fors at
+          Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge,
+          answer keys and a two-axis scoring guide.</p>
+        <div class="meta"><span>Teacher edition</span><span>PDF</span><span>Print</span></div>
+        <p class="go">Download the packet →</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2>What this is</h2>
+    <p>EL Publishing is where I put the materials I build for my own classroom. Everything is
+      designed around one idea: <b>English learners do not need easier content, they need the
+      language that carries it.</b></p>
+    <p>The resources assume a real high school — mixed proficiency levels in one room, content
+      teachers with thirty students and one planning period, and a compliance file that has to
+      hold up. Every packet includes a differentiated version for newcomers through challenge
+      level, because that is what a single class period actually requires.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Using these in your building</h2>
+  <div class="use">
+    <h3>Yes, please</h3>
+    <ul>
+      <li>Print, copy and distribute anything here for your students and your faculty.</li>
+      <li>Adapt the wording for your own school, state or grade band.</li>
+      <li>Share the link with a colleague, a department, or a district PD session.</li>
+    </ul>
+    <h3 style="margin-top:18px">Two cautions</h3>
+    <ul>
+      <li>Compliance content is written to Mississippi requirements — MTAM, LSP, ELPA21. Check it
+        against your own state's before you republish it.</li>
+      <li>Illustrations in the Hispanic Heritage gallery are AI-generated interpretations, not
+        photographs. Say so when you display them, and send students to the linked source for
+        verified facts.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi
+    <br><a class="mail" href="mailto:rdaniel@laurelschools.org">rdaniel@laurelschools.org</a>
+    <p style="margin:0">Questions from teachers get answered in the next bulletin. Send one.</p>
+  </div>
+</footer>
+
+</body>
+</html>
