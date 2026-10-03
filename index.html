@@ -98,6 +98,15 @@
   .card-top h3{padding:0 20px 16px}
   .card:hover .card-top .shot{opacity:1;filter:saturate(1);transform:scale(1.06)}
   @media (prefers-reduced-motion:reduce){.card-top .shot{transition:none}}
+
+  .feature{display:block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;padding:22px 26px;border-left:6px solid var(--gold);position:relative;overflow:hidden;transition:transform .12s}
+  .feature::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
+  .feature:hover{transform:translateY(-2px)}
+  .feature>*{position:relative}
+  .feature-k{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--gold);text-transform:uppercase}
+  .feature-t{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;margin:6px 0 6px}
+  .feature-p{font-size:14.5px;color:#C9CEEA;max-width:70ch}
+  .feature-go{display:inline-block;margin-top:12px;background:var(--gold);color:var(--navy-dk);font-weight:700;padding:8px 16px;border-radius:999px;font-size:14px}
 </style>
 </head>
 <body>
@@ -117,8 +126,14 @@
   <h2>Resources</h2>
   <p class="deck">21 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
   <div class="hubstats"><div><b>21</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>EN·ES</b><span>bilingual throughout</span></div><div><b>$0</b><span>every resource is free</span></div></div>
+  <a class="feature" href="tech-radar.html">
+    <div class="feature-k">New · updated weekly</div>
+    <div class="feature-t">EL Tech Radar — five new tools for English learners, verified</div>
+    <div class="feature-p">Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost, Google Translate Practice — what's new, what it costs, a classroom use for each lane, and one more added every Tuesday.</div>
+    <span class="feature-go">Open the radar →</span>
+  </a>
 </section>
-<nav class="cats" aria-label="Sections"><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
+<nav class="cats" aria-label="Sections"><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
 <section class="wrap" id="curriculum"><h2>Curriculum &amp; scope</h2><p class="deck">Year-long maps, standards guides, libraries and reading programs.</p><div class="cards">
     <a class="card" href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">
       <div class="card-top has-shot"><img class="shot" src="thumbs/01-language-functions.jpg" alt="" loading="lazy" decoding="async"><b class="num">01</b><span class="aud">K–12</span>
