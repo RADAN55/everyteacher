@@ -37,6 +37,27 @@ main{padding:10px 0 48px}h3{font-family:Fraunces,Georgia,serif;font-weight:600;c
 footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}footer a{color:var(--gold)}
 @media (max-width:820px){.ls-head{grid-template-columns:1fr;padding:20px}.lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.lanes,.why{grid-template-columns:1fr}.arc li{grid-template-columns:1fr}}
+
+.arc-bar{display:flex;gap:4px;margin-top:.4rem;height:58px}
+.seg{position:relative;border-radius:8px;background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 10px;min-width:0;transition:transform .2s,box-shadow .2s;cursor:default}
+.seg:nth-child(odd){background:#2F3B8A}
+.seg b{font-family:Fraunces,Georgia,serif;font-size:1.15rem;line-height:1;color:var(--gold)}
+.seg span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.on{transform:translateY(-3px);box-shadow:0 8px 18px rgba(30,39,97,.25);outline:2px solid var(--gold)}
+.arc-ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.68rem;color:var(--muted);margin:6px 2px 18px}
+.stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stage{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);padding:16px 18px;display:flex;flex-direction:column;gap:.4rem;transition:transform .2s,box-shadow .2s}
+.stage:hover,.stage.on{transform:translateY(-3px);box-shadow:0 10px 24px rgba(30,39,97,.12);border-color:var(--gold)}
+.st-top{display:flex;align-items:center;gap:10px}
+.st-n{font-family:Fraunces,Georgia,serif;font-size:1.5rem;color:var(--gold);line-height:1;font-weight:600}
+.st-time{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.st-ico{margin-left:auto;font-size:1.3rem}
+.stage h4{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.15rem;color:var(--navy);margin:0;line-height:1.2}
+.stage p{margin:0;font-size:.92rem;color:var(--muted);flex:1}
+.st-dom{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:.3rem}
+.arc-note{margin:1.2rem 0 0;padding:12px 16px;background:var(--gold-soft);border-left:3px solid var(--gold);font-size:.95rem}
+@media (max-width:820px){.stages{grid-template-columns:repeat(2,minmax(0,1fr))}.seg span{display:none}}
+@media (max-width:520px){.stages{grid-template-columns:1fr}.arc-bar{height:44px}}
 </style></head>
 <body>
 <header><div class="head-in">
@@ -70,16 +91,11 @@ footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}foo
   </div>
 
   <div class="ls-panel" data-panel="arc">
-    <ol class="arc">
-      <li><span class="t">0–10</span><strong>Launch</strong><p>Photo of a tamal, one question: <em>Who makes these in your family?</em> Oral activation in any language, then three target words on the board: <em>masa, husk, steam</em>.</p></li>
-      <li><span class="t">10–30</span><strong>Read the feature</strong><p>Shared read with glossed vocabulary and step images. Newcomers track the images; Progressing readers annotate signal words.</p></li>
-      <li><span class="t">30–45</span><strong>Build a Tamal</strong><p>Sequencing: put the steps in order. The lesson checks the order instantly, so the teacher's time goes to the students who need it.</p></li>
-      <li><span class="t">45–60</span><strong>Evidence Detective &amp; Kitchen Rescue</strong><p>Find the sentence that proves it; then solve a problem (<em>the masa is too dry</em>) using the text. Reading becomes reasoning.</p></li>
-      <li><span class="t">60–80</span><strong>My Tamale Guide</strong><p>Students write and illustrate their own how-to. Frames for Lanes 1–2; open prompt with a transition-word bank for Lanes 3–4.</p></li>
-      <li><span class="t">80–90</span><strong>From Your Kitchen to Mine</strong><p>Record a 45-second oral explanation of a dish from home. Export the progress report. Done.</p></li>
-    </ol>
+    <div class="arc-bar" aria-hidden="true"><div class="seg" style="flex:10" data-i="0"><b>1</b><span>10 min</span></div><div class="seg" style="flex:20" data-i="1"><b>2</b><span>20 min</span></div><div class="seg" style="flex:15" data-i="2"><b>3</b><span>15 min</span></div><div class="seg" style="flex:15" data-i="3"><b>4</b><span>15 min</span></div><div class="seg" style="flex:20" data-i="4"><b>5</b><span>20 min</span></div><div class="seg" style="flex:10" data-i="5"><b>6</b><span>10 min</span></div></div>
+    <div class="arc-ticks" aria-hidden="true"><span>0</span><span>15</span><span>30</span><span>45</span><span>60</span><span>75</span><span>90</span></div>
+    <div class="stages"><article class="stage" data-i="0"><div class="st-top"><span class="st-n">1</span><span class="st-time">0–10 min</span><span class="st-ico">🗣️</span></div><h4>Launch</h4><p>Photo of a tamal, one question: <em>Who makes these in your family?</em> Oral activation in any language, then three target words on the board: <em>masa, husk, steam</em>.</p><span class="st-dom">Speaking · Listening</span></article><article class="stage" data-i="1"><div class="st-top"><span class="st-n">2</span><span class="st-time">10–30 min</span><span class="st-ico">📖</span></div><h4>Read the feature</h4><p>Shared read with glossed vocabulary and step images. Newcomers track the images; Progressing readers annotate signal words.</p><span class="st-dom">Reading</span></article><article class="stage" data-i="2"><div class="st-top"><span class="st-n">3</span><span class="st-time">30–45 min</span><span class="st-ico">🔢</span></div><h4>Build a Tamal</h4><p>Sequencing: put the steps in order. The lesson checks the order instantly, so the teacher's time goes to the students who need it.</p><span class="st-dom">Reading</span></article><article class="stage" data-i="3"><div class="st-top"><span class="st-n">4</span><span class="st-time">45–60 min</span><span class="st-ico">🔎</span></div><h4>Evidence Detective &amp; Kitchen Rescue</h4><p>Find the sentence that proves it; then solve a problem (<em>the masa is too dry</em>) using the text. Reading becomes reasoning.</p><span class="st-dom">Reading · Writing</span></article><article class="stage" data-i="4"><div class="st-top"><span class="st-n">5</span><span class="st-time">60–80 min</span><span class="st-ico">✍️</span></div><h4>My Tamale Guide</h4><p>Students write and illustrate their own how-to. Frames for Lanes 1–2; open prompt with a transition-word bank for Lanes 3–4.</p><span class="st-dom">Writing</span></article><article class="stage" data-i="5"><div class="st-top"><span class="st-n">6</span><span class="st-time">80–90 min</span><span class="st-ico">🎙️</span></div><h4>From Your Kitchen to Mine</h4><p>Record a 45-second oral explanation of a dish from home. Export the progress report. Done.</p><span class="st-dom">Speaking</span></article></div>
+    <p class="arc-note">Six stages, four domains, one text. Oral first, writing last — and every stage ends with something a student made.</p>
   </div>
-
   <div class="ls-panel" data-panel="lanes" hidden>
     <div class="lanes">
       <div class="lane"><small>LANE 1 · NEWCOMER</small><h3>Point, order, name</h3><p>Image-only sequencing, vocabulary matching with pictures, a guide built from sentence frames: <em>First, you ___. Then, you ___.</em> Oral task may be answered in L1 with two English words.</p></div>
@@ -103,5 +119,7 @@ footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}foo
 <script>
 var tabs=document.querySelectorAll('.ls-tabs [role=tab]'),panels=document.querySelectorAll('.ls-panel');
 tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.setAttribute('aria-selected',x===t)});panels.forEach(function(p){p.hidden=p.dataset.panel!==t.dataset.tab})})});
+
+document.querySelectorAll('.seg,.stage').forEach(function(el){el.addEventListener('mouseenter',function(){var i=el.dataset.i;document.querySelectorAll('[data-i="'+i+'"]').forEach(function(x){x.classList.add('on')})});el.addEventListener('mouseleave',function(){document.querySelectorAll('.on').forEach(function(x){x.classList.remove('on')})})});
 </script>
 </body></html>
