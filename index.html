@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EL Publishing · Richard A. Daniel, M.Ed.</title>
-<meta name="description" content="Free English learner teaching resources: bilingual biography galleries, faculty bulletins, ELPA21 practice packets and classroom tools from Laurel High School.">
+<meta name="description" content="Free English learner teaching resources from Laurel High School: curriculum maps, interactive practice tools, magazines, field guides, bulletins and ELPA21 practice packets.">
 <meta property="og:title" content="EL Publishing">
 <meta property="og:description" content="Free English learner teaching resources from Richard A. Daniel, M.Ed.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,27 @@
   footer a{color:var(--gold)}
   .mail{display:inline-block;margin:12px 0 14px;background:var(--gold);color:var(--navy-dk);
     padding:8px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14.5px}
+
+  .cats{display:flex;flex-wrap:wrap;gap:8px;max-width:1060px;margin:0 auto;padding:0 26px 10px}
+  .cats a{text-decoration:none;font-size:13.5px;font-weight:600;border:1px solid var(--navy);color:var(--navy);padding:6px 14px;border-radius:999px;background:var(--paper)}
+  .cats a:hover{background:var(--navy);color:#fff}
+  .hubstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px}
+  .hubstats div{background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
+  .hubstats b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:600;color:var(--navy);line-height:1}
+  .hubstats span{font-size:12.5px;color:var(--muted)}
+  section.wrap{padding:34px 26px}
+  .card-top{position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;border-bottom:3px solid var(--gold)}
+  .card-top .shot{display:block;width:100%;height:140px;object-fit:cover;object-position:top;opacity:.92;filter:saturate(.85);transform:scale(1.02);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .35s,opacity .35s}
+  .card-top::before{content:"";position:absolute;left:0;right:0;top:0;height:140px;background:linear-gradient(180deg,rgba(20,26,68,.35) 0%,rgba(20,26,68,0) 45%,rgba(20,26,68,.55) 100%);pointer-events:none}
+  .card-top:not(.has-shot)::before{height:0}
+  .card-top .num{position:absolute;left:12px;top:10px;font-family:Fraunces,Georgia,serif;font-size:24px;font-weight:500;color:var(--gold);line-height:1;background:rgba(20,26,68,.82);padding:5px 10px;border-radius:3px;z-index:1}
+  .card-top .aud{background:rgba(20,26,68,.82);padding:4px 8px;border-radius:3px}
+  .card-top:not(.has-shot) .num{position:static;padding:14px 20px 0;font-size:28px}
+  .card-top .aud{position:absolute;right:14px;top:14px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:1}
+  .card-top .kind{padding:14px 20px 0}
+  .card-top h3{padding:0 20px 16px}
+  .card:hover .card-top .shot{opacity:1;filter:saturate(1);transform:scale(1.06)}
+  @media (prefers-reduced-motion:reduce){.card-top .shot{transition:none}}
 </style>
 </head>
 <body>
@@ -92,71 +113,212 @@
   </div>
 </header>
 
-<section class="wrap">
+<section class="wrap" id="top">
   <h2>Resources</h2>
-  <p class="deck">Everything here opens in a browser and prints. Nothing needs an account, a
-    license or a login.</p>
-
-  <div class="cards">
-
-    <a class="card" href="hispanic-heritage.html">
-      <div class="card-top">
-        <span class="kind">BILINGUAL GALLERY</span>
+  <p class="deck">19 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
+  <div class="hubstats"><div><b>19</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>EN·ES</b><span>bilingual throughout</span></div><div><b>$0</b><span>every resource is free</span></div></div>
+</section>
+<nav class="cats" aria-label="Sections"><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
+<section class="wrap" id="curriculum"><h2>Curriculum &amp; scope</h2><p class="deck">Year-long maps, standards guides, libraries and reading programs.</p><div class="cards">
+    <a class="card" href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/01-language-functions.jpg" alt="" loading="lazy" decoding="async"><b class="num">01</b><span class="aud">K–12</span>
+        <span class="kind">Scope &amp; sequence · K–12 · ELPA21</span>
+        <h3>36-Week Language Functions</h3>
+      </div>
+      <div class="card-body">
+        <p>Twelve language functions across four grade bands and four proficiency tiers: calendar themes, daily plans, texts with quizzes, a standards crosswalk, a sentence-frame ladder and a bilingual student tracker.</p>
+        <p class="go">Open site →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/02-curriculum-36.jpg" alt="" loading="lazy" decoding="async"><b class="num">02</b><span class="aud">9–12</span>
+        <span class="kind">Curriculum map · 9–12 · ELPA21 Levels 1–4</span>
+        <h3>36-Week EL Curriculum: Emerging + Progressing</h3>
+      </div>
+      <div class="card-body">
+        <p>One theme calendar, two language lanes. Eight units mapped week by week with grammar ladders, ELP and MS CCRS codes, writing products, ELPA21 mirror tasks, a 90-minute block template and an assessment calendar built back from the ELPT window — every recommendation tagged by evidence strength.</p>
+        <p class="go">Open site →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/mselablueprintinfo01/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/03-blueprint.jpg" alt="" loading="lazy" decoding="async"><b class="num">03</b><span class="aud">K–12</span>
+        <span class="kind">Curriculum · K–12 · EN/ES</span>
+        <h3>The Blueprint / El Plano</h3>
+      </div>
+      <div class="card-body">
+        <p>Bilingual guide to the Mississippi ELA standard blueprints: grade-by-grade reviews, practice passages and test-style items, Grammar Beats songs, four-lane supports, family pages and a lesson builder.</p>
+        <p class="go">Open site →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/hispanicheritagemonth2026/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/11-30-people.jpg" alt="" loading="lazy" decoding="async"><b class="num">04</b><span class="aud">Heritage</span>
+        <span class="kind">Heritage · 9–12 · EN/ES</span>
         <h3>Hispanic Heritage: 30 People</h3>
       </div>
       <div class="card-body">
-        <p>Thirty biography profiles in English and Spanish, each with a discussion question, a
-          sentence-frame support and a source link. Filter by field, search by name, or switch the
-          whole gallery to Spanish. Four classroom projects follow the profiles.</p>
-        <div class="meta"><span>Grades 9–12</span><span>Bilingual</span><span>Interactive</span></div>
-        <p class="go">Open the gallery →</p>
+        <p>Bilingual biography profiles of thirty Hispanic figures with discussion prompts and classroom projects. Featured below.</p>
+        <p class="go">Open site →</p>
       </div>
     </a>
-
-    <a class="card" href="language-bridge-2026-09.html">
-      <div class="card-top">
-        <span class="kind">FACULTY BULLETIN</span>
-        <h3>The Language Bridge · Sept 2026</h3>
+    <a class="card" href="https://radan55.github.io/msellibrary/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/12-library.jpg" alt="" loading="lazy" decoding="async"><b class="num">05</b><span class="aud">5 volumes</span>
+        <span class="kind">Library · five volumes · K–12</span>
+        <h3>The Mississippi EL Library</h3>
       </div>
       <div class="card-body">
-        <p>A one-page bulletin for content teachers: five findings from acquisition research with
-          a classroom move attached to each, the eight SIOP components translated for a content
-          classroom, paired content and language objectives, and a compliance corner.</p>
-        <div class="meta"><span>For teachers</span><span>Printable</span><span>Issue 1</span></div>
+        <p>A free five-volume resource system for English-learner success in Mississippi schools: the shelf every EL teacher and coordinator in the state should have open.</p>
+        <p class="go">Open the library →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/elvocabularycurriculumengine/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/13-vocab-engine.jpg" alt="" loading="lazy" decoding="async"><b class="num">06</b><span class="aud">ELPA21</span>
+        <span class="kind">Curriculum · vocabulary · ELPA21</span>
+        <h3>The Vocabulary Engine</h3>
+      </div>
+      <div class="card-body">
+        <p>A five-day instructional cycle for academic vocabulary, with PD modules, ELPA21-aligned activities and reproducible student handouts as a free PDF.</p>
+        <p class="go">Open site →</p>
+      </div>
+    </a>
+</div></section>
+<section class="wrap" id="tool"><h2>Interactive tools</h2><p class="deck">Practice platforms, games and apps that run in any browser.</p><div class="cards">
+    <a class="card" href="https://radan55.github.io/elpa21speaking01/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/04-language-lab.jpg" alt="" loading="lazy" decoding="async"><b class="num">07</b><span class="aud">9–12</span>
+        <span class="kind">Practice · ELPA21 · 9–12</span>
+        <h3>School Life • Language Lab</h3>
+      </div>
+      <div class="card-body">
+        <p>Twenty-five four-skill ELPA21-style activities built around school-life scenarios: reading, listening, speaking and writing in the format students will see on the test.</p>
+        <p class="go">Open workbook →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/tamales02/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/05-tamales.jpg" alt="" loading="lazy" decoding="async"><b class="num">08</b><span class="aud">9–12</span>
+        <span class="kind">Lesson · Reading · 9–12</span>
+        <h3>How Tamales Are Made</h3>
+      </div>
+      <div class="card-body">
+        <p>Feature article plus five interactive activities, vocabulary matching and a student progress report. Featured below as the sample lesson.</p>
+        <p class="go">Open lesson →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/ms-el-command-center/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/09-command-center.jpg" alt="" loading="lazy" decoding="async"><b class="num">09</b><span class="aud">Compliance</span>
+        <span class="kind">Teacher app · compliance</span>
+        <h3>MS EL Command Center</h3>
+      </div>
+      <div class="card-body">
+        <p>The Mississippi EL teacher's reference hub: identification timelines, ELPA21 procedures, service plans, MTAM accommodations, §15 accountability and the documentation to prove it.</p>
+        <p class="go">Open the app →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/everyteacherisalanguageteacher/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/10-every-teacher.jpg" alt="" loading="lazy" decoding="async"><b class="num">10</b><span class="aud">PD</span>
+        <span class="kind">PD module · 45–60 min</span>
+        <h3>Every Teacher Is a Language Teacher</h3>
+      </div>
+      <div class="card-body">
+        <p>Self-paced professional development for general- and special-education teachers: six sections on supporting English learners in any classroom.</p>
+        <p class="go">Start the module →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/el-publishing-grammar-songs/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/14-grammar-beats.jpg" alt="" loading="lazy" decoding="async"><b class="num">11</b><span class="aud">Music</span>
+        <span class="kind">Music · Grammar · 9–12</span>
+        <h3>Grammar Beats</h3>
+      </div>
+      <div class="card-body">
+        <p>Radio-style grammar songs with full interactive lessons: nouns, adjectives and verbs, each with an audio track and a student lesson built to the beat.</p>
+        <p class="go">Press play →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/elpa21-reading-studio/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/16-reading-studio.jpg" alt="" loading="lazy" decoding="async"><b class="num">12</b><span class="aud">K–12</span>
+        <span class="kind">Practice platform · ELPT Reading · K–12</span>
+        <h3>ELPA21 Reading Studio</h3>
+      </div>
+      <div class="card-body">
+        <p>Mississippi ELPT-style reading practice for English learners: six grade bands, 122 original items, eight item types, mock-test conditions, accommodations, bilingual supports, levels, badges and a teacher dashboard.</p>
+        <p class="go">Open the studio →</p>
+      </div>
+    </a>
+</div></section>
+<section class="wrap" id="magazine"><h2>Magazines</h2><p class="deck">Issues for teachers and for students, in print and on the web.</p><div class="cards">
+    <a class="card" href="https://radan55.github.io/elpa21speaking01/october/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/06-field-atlas.jpg" alt="" loading="lazy" decoding="async"><b class="num">13</b><span class="aud">Teachers</span>
+        <span class="kind">Magazine · Teachers · Oct 2026</span>
+        <h3>The Field Atlas</h3>
+      </div>
+      <div class="card-body">
+        <p>"For the teacher who never planned to teach language." Sixteen plates on working with English learners in the general-education classroom.</p>
+        <p class="go">Read issue →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/elstudentmagazine01/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/07-many-voices.jpg" alt="" loading="lazy" decoding="async"><b class="num">14</b><span class="aud">Students</span>
+        <span class="kind">Magazine · Students · Issue 1</span>
+        <h3>Many Voices</h3>
+      </div>
+      <div class="card-body">
+        <p>A magazine for multilingual high-school students: articles, interactive features, vocabulary tools and a teacher resource page.</p>
+        <p class="go">Read issue →</p>
+      </div>
+    </a>
+</div></section>
+<section class="wrap" id="writing"><h2>Guides &amp; writing</h2><p class="deck">Field guides and the book behind the work.</p><div class="cards">
+    <a class="card" href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/08-field-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">15</b><span class="aud">All staff</span>
+        <span class="kind">Field guide · every educator</span>
+        <h3>The EL Field Guide</h3>
+      </div>
+      <div class="card-body">
+        <p>Plain-language guide for general-education, special-education and administrative staff: identification, instruction, assessment and the legal obligations, with strategies you can use tomorrow.</p>
+        <p class="go">Open the guide →</p>
+      </div>
+    </a>
+    <a class="card" href="https://radan55.github.io/elpublishing-magazineeditionone/#compliance" target="_blank" rel="noopener">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/15-making-them-count.jpg" alt="" loading="lazy" decoding="async"><b class="num">16</b><span class="aud">Book</span>
+        <span class="kind">Book · EL Publishing Issue One</span>
+        <h3>Making Them Count</h3>
+      </div>
+      <div class="card-body">
+        <p>Teaching English Learners in Mississippi's Overlooked Districts. A field manual for small districts with big obligations, published in the 2026 Educator Edition.</p>
+        <p class="go">Read it →</p>
+      </div>
+    </a>
+</div></section>
+<section class="wrap" id="packet"><h2>Bulletins &amp; packets</h2><p class="deck">Printable one-pagers and ELPA21 practice packets.</p><div class="cards">
+    <a class="card" href="language-bridge-2026-09.html">
+      <div class="card-top"><b class="num">17</b><span class="aud">Teachers</span>
+        <span class="kind">Faculty bulletin · Sept 2026 · Issue 1</span>
+        <h3>The Language Bridge</h3>
+      </div>
+      <div class="card-body">
+        <p>A one-page bulletin for content teachers: five findings from acquisition research with a classroom move attached to each, the eight SIOP components translated for a content classroom, paired content and language objectives, and a compliance corner.</p>
         <p class="go">Read the issue →</p>
       </div>
     </a>
-
     <a class="card" href="elpa21-practice-student.pdf">
-      <div class="card-top">
-        <span class="kind">PRACTICE PACKET</span>
+      <div class="card-top"><b class="num">18</b><span class="aud">Grades 9–12</span>
+        <span class="kind">Practice packet · student · PDF</span>
         <h3>ELPA21 Task Practice · Student</h3>
       </div>
       <div class="card-body">
-        <p>Sixteen pages of practice across all four domains, written in the format of the
-          assessment: construct a claim, respond to a message, observe and report, state an
-          opinion, follow instructions, academic lecture, informational set, short paragraph.</p>
-        <div class="meta"><span>Grades 9–12</span><span>PDF</span><span>Print</span></div>
+        <p>Sixteen pages of practice across all four domains, written in the format of the assessment: construct a claim, respond to a message, observe and report, state an opinion, follow instructions, academic lecture, informational set, short paragraph.</p>
         <p class="go">Download the packet →</p>
       </div>
     </a>
-
     <a class="card" href="elpa21-practice-teacher.pdf">
-      <div class="card-top">
-        <span class="kind">PRACTICE PACKET</span>
+      <div class="card-top"><b class="num">19</b><span class="aud">Teacher edition</span>
+        <span class="kind">Practice packet · teacher · PDF</span>
         <h3>ELPA21 Task Practice · Teacher</h3>
       </div>
       <div class="card-body">
-        <p>The teacher edition: read-aloud scripts, question sets, proficiency look-fors at
-          Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge,
-          answer keys and a two-axis scoring guide.</p>
-        <div class="meta"><span>Teacher edition</span><span>PDF</span><span>Print</span></div>
+        <p>The teacher edition: read-aloud scripts, question sets, proficiency look-fors at Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge, answer keys and a two-axis scoring guide.</p>
         <p class="go">Download the packet →</p>
       </div>
     </a>
-
-  </div>
-</section>
+</div></section>
 
 <section class="about">
   <div class="wrap">
@@ -187,6 +349,8 @@
       <li>Illustrations in the Hispanic Heritage gallery are AI-generated interpretations, not
         photographs. Say so when you display them, and send students to the linked source for
         verified facts.</li>
+      <li>Most resources open on their own site in a new tab; the bulletin and the practice
+        packets live here.</li>
     </ul>
   </div>
 </section>
