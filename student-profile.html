@@ -123,5 +123,14 @@ function render(){
 }
 render();
 </script>
+
+<script>
+(function(){if(new URLSearchParams(location.search).get('from')!=='intake')return;var o;try{o=JSON.parse(localStorage.getItem('intake')||'null')}catch(e){}if(!o)return;
+ var m={name:o.name,grade:o.grade,lang:o.lang,origin:[o.country,o.schooling].filter(Boolean).join(' · '),arrived:o.usdate,yrs:o.yrs,L:o.L,S:o.S,R:o.R,W:o.W,lit:o.lit,str:o.str,int:o.int,watch:o.watch,contact:o.contact,phone:o.phone,fam:o.fam,iep:o.iep,date:o.date};
+ Object.keys(m).forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el&&m[k]!==undefined&&m[k]!==''){el.value=m[k];el.dispatchEvent(new Event('input',{bubbles:true}))}});
+ (o.acc||[]).forEach(function(i){var c=document.querySelector('[data-a="'+i+'"]');if(c){c.checked=true;c.dispatchEvent(new Event('change',{bubbles:true}))}});
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

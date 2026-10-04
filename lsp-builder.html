@@ -144,7 +144,17 @@ document.getElementById('save').addEventListener('click',()=>{const o=snapshot()
 document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{restore(JSON.parse(r.result))}catch(x){alert('Not a saved LSP file.')}};r.readAsText(f)});
 document.getElementById('local').addEventListener('click',()=>{try{localStorage.setItem('lsp',JSON.stringify(snapshot()));alert('Kept on this device (one plan). Use “Save as file” for more.')}catch(e){}});
 document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4–5 in all four ELPT domains':'';delete i.dataset.auto});document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —'}});
-try{const s=localStorage.getItem('lsp');if(s&&confirm('Reopen the plan kept on this device?'))restore(JSON.parse(s))}catch(e){}
+try{if(new URLSearchParams(location.search).get('from')!=='intake'){const s=localStorage.getItem('lsp');if(s&&confirm('Reopen the plan kept on this device?'))restore(JSON.parse(s))}}catch(e){}
 </script>
+
+<script>
+(function(){if(new URLSearchParams(location.search).get('from')!=='intake')return;var o;try{o=JSON.parse(localStorage.getItem('intake')||'null')}catch(e){}if(!o)return;
+ var m={year:o.year,name:o.name,id:o.id,grade:o.grade,school:o.school,lang:o.lang,country:o.country,usdate:o.usdate,yrs:o.yrs,hls:o.hls,screener:o.test,notif:o.notif,iep:({'No':'None','Yes — see plan':'IEP — see plan','Referral in progress':'Referral in progress'})[o.iep]||'None',testdate:o.testdate,written:o.date,L:o.L,S:o.S,R:o.R,W:o.W};
+ Object.keys(m).forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el&&m[k]!==undefined&&m[k]!==''){el.value=m[k];}});
+ ['L','S','R','W'].forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el)el.dispatchEvent(new Event('input',{bubbles:true}))});
+ var y=document.querySelector('[data-k="yrs"]');if(y)y.dispatchEvent(new Event('input',{bubbles:true}));
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

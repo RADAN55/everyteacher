@@ -160,5 +160,6 @@ document.getElementById('reset').addEventListener('click',()=>{if(confirm('Clear
 document.getElementById('copy').addEventListener('click',()=>{const o=[];C.forEach(m=>{const items=[...document.querySelectorAll('#m'+C.indexOf(m)+' .it')].filter(x=>!x.querySelector('input').checked).map(x=>'  – '+x.querySelector('b').textContent);if(items.length)o.push(m[0]+':\n'+items.join('\n'))});const t='EL compliance — open items ('+new Date().toLocaleDateString()+')\n'+o.join('\n');navigator.clipboard?.writeText(t).then(()=>alert('Copied.'),()=>prompt('Copy:',t))});
 up();
 </script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

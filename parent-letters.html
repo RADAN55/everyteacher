@@ -203,5 +203,14 @@ function render(){const t=TPL[T];document.getElementById('out').innerHTML=`<arti
 if(!F.date){const d=new Date();document.querySelector('[data-f="date"]').value=F.date=d.toISOString().slice(0,10)}
 render();
 </script>
+
+<script>
+(function(){if(new URLSearchParams(location.search).get('from')!=='intake')return;var o;try{o=JSON.parse(localStorage.getItem('intake')||'null')}catch(e){}if(!o)return;
+ var ov=(function(){var l=[+o.L||0,+o.S||0,+o.R||0,+o.W||0];if(l.some(function(x){return !x}))return '';return l.every(function(x){return x>=4})?'Proficient':l.every(function(x){return x<=2})?'Emerging (Level 1–2)':'Progressing (Level 3–4)'})();
+ var m={district:o.district,school:o.school,date:o.date,year:o.year,parent:o.parent,student:o.name,grade:o.grade,lang:o.lang,test:o.test,L:o.L,S:o.S,R:o.R,W:o.W,overall:ov,program:o.program,contact:o.contact,phone:o.phone,signer:o.signer};
+ Object.keys(m).forEach(function(k){var el=document.querySelector('[data-f="'+k+'"]');if(el&&m[k]!==undefined&&m[k]!==''){el.value=m[k];el.dispatchEvent(new Event('input',{bubbles:true}))}});
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

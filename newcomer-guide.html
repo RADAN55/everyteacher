@@ -201,6 +201,14 @@
 [dir="rtl"].es{border-left:0;padding-left:0;border-right:2px solid #E3D08E;padding-right:14px;text-align:right}
 [dir="rtl"] ul{padding-left:0;padding-right:16px}
 .langsw button{font-size:13px}
+
+.listen{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:700;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:5px 12px;border-radius:999px;cursor:pointer;margin:8px 0 0}
+.listen[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.listen svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.speaking{outline:3px solid var(--gold-lt);outline-offset:2px;border-radius:4px}
+.ltoast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 14px;border-radius:999px;font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.ltoast.on{opacity:1}
+@media print{.listen{display:none}}
 </style>
 </head>
 <body>
@@ -798,5 +806,36 @@ function pick(l){
 bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.l)})});
 var q=new URLSearchParams(location.search).get('lang');var s=null;try{s=localStorage.getItem('ng-lang')}catch(e){}
 var l=q||s;if(l&&(L[l]||l==='en')&&l!=='es')pick(l);
-})();</script></body>
+})();</script>
+<script>
+(function(){
+  if(!('speechSynthesis' in window))return;
+  var VL={es:['es-MX','es-US','es-419','es-ES','es'],vi:['vi-VN','vi'],ar:['ar-SA','ar-EG','ar'],'zh-Hans':['zh-CN','zh-Hans','zh'],ht:['ht-HT','ht','fr-FR'],en:['en-US','en']};
+  var toast=document.createElement('div');toast.className='ltoast';document.body.appendChild(toast);
+  function say(m){toast.textContent=m;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2600)}
+  function voiceFor(code){var vs=speechSynthesis.getVoices();var list=VL[code]||[code];for(var i=0;i<list.length;i++){var v=vs.find(function(x){return x.lang.replace('_','-').toLowerCase().indexOf(list[i].toLowerCase())===0});if(v)return v}return null}
+  var cur=null,stopFlag=false;
+  function chunks(t){return t.replace(/\s+/g,' ').trim().match(/[^.!?。؟]+[.!?。؟]?/g)||[]}
+  function queueFor(sec){var q=[];var kids=[].slice.call(sec.children);
+    kids.forEach(function(el){
+      if(el.classList.contains('sec')){var cs=[].slice.call(el.children);if(cs[0])q.push({el:cs[0],code:'en'});if(cs[1]&&!document.body.classList.contains('only-en'))q.push({el:cs[1],code:cs[1].getAttribute('lang')||'es'});}
+      else if(el.dataset&&el.dataset.k==='pure'){if(!document.body.classList.contains('only-en'))q.push({el:el,code:el.getAttribute('lang')||'es'})}
+      else if(el.tagName!=='BUTTON')q.push({el:el,code:'en'});
+    });return q}
+  function speakQueue(q,btn){var i=0;function next(){if(stopFlag||i>=q.length){done(btn);return}var it=q[i++];var v=voiceFor(it.code);
+      if(!v&&it.code!=='en'){say('No '+it.code+' voice on this device — reading English only');next();return}
+      var text=chunks(it.el.innerText||it.el.textContent).join(' ');if(!text){next();return}
+      document.querySelectorAll('.speaking').forEach(function(x){x.classList.remove('speaking')});it.el.classList.add('speaking');it.el.scrollIntoView({block:'nearest',behavior:'smooth'});
+      var u=new SpeechSynthesisUtterance(text);if(v)u.voice=v;u.lang=v?v.lang:'en-US';u.rate=0.92;u.onend=next;u.onerror=next;speechSynthesis.speak(u);}
+    next();}
+  function done(btn){document.querySelectorAll('.speaking').forEach(function(x){x.classList.remove('speaking')});if(btn){btn.setAttribute('aria-pressed','false');btn.querySelector('span').textContent='Listen · Escuchar'}cur=null}
+  document.querySelectorAll('section.sec-page').forEach(function(sec){var h=sec.querySelector('h1');if(!h)return;var b=document.createElement('button');b.type='button';b.className='listen';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><span>Listen · Escuchar</span>';
+    var hd=h.parentNode;hd.parentNode.insertBefore(b,hd.nextSibling);
+    b.addEventListener('click',function(){if(cur===b){stopFlag=true;speechSynthesis.cancel();done(b);return}if(cur){stopFlag=true;speechSynthesis.cancel();done(cur)}stopFlag=false;cur=b;b.setAttribute('aria-pressed','true');b.querySelector('span').textContent='■ Stop';speakQueue(queueFor(sec),b)});
+  });
+  speechSynthesis.onvoiceschanged=function(){};
+})();
+</script><script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
 </html>

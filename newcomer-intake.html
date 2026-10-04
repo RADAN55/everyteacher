@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newcomer Intake · one form → Profile, LSP and parent letter · EL Publishing</title>
+<meta name="description" content="Enter a newcomer once; open the EL Student Profile, the Language Service Plan builder and the identification letter already filled in. Save everything as one file and reopen it at the semester review. Nothing leaves your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:64ch}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 40px;display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:start}
+  .form{background:var(--paper);border:1px solid var(--rule);padding:22px 26px}
+  .form h2{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:16px 0 8px;padding-top:12px;border-top:2px solid var(--rule)}
+  .form h2:first-child{margin-top:0;padding-top:0;border:0}
+  label.f{display:block;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin:8px 0 3px}
+  input,select,textarea{width:100%;font:inherit;font-size:14.5px;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  textarea{min-height:56px;resize:vertical}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 12px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:0 12px}
+  .chk{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:13.5px;margin-top:6px}
+  .chk label{display:flex;gap:7px;align-items:flex-start;line-height:1.3;cursor:pointer}
+  .chk input{width:auto;margin-top:3px}
+  .side{position:sticky;top:12px;display:flex;flex-direction:column;gap:12px}
+  .out{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .out h2{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:0 0 8px}
+  .out p{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+  .go{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;font-size:14.5px;font-weight:700;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:10px 12px;border-radius:8px;cursor:pointer;margin-bottom:8px;text-decoration:none}
+  .go:hover{border-color:var(--gold);background:#FBF6E6}
+  .go b{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--gold);line-height:1;width:26px}
+  .go small{display:block;font-weight:400;font-size:12.5px;color:var(--muted)}
+  .tools{display:flex;gap:6px;flex-wrap:wrap}
+  .tools button,.tools label{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .tools input{display:none}
+  .lane{font-size:13px;background:var(--navy);color:#fff;padding:8px 12px;border-radius:6px}
+  .lane b{color:var(--gold-lt)}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:820px){main{grid-template-columns:1fr}.side{position:static}.g3,.g4{grid-template-columns:1fr 1fr}.chk{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR THE EL TEACHER · INTAKE · ONE STUDENT, ONE FORM</p>
+    <h1>Newcomer <em>intake</em></h1>
+    <p class="tag">Type the student once. Then open the <b style="color:#fff">Profile</b> for the sub folder, the <b style="color:#fff">Language Service Plan</b> for signatures, and the <b style="color:#fff">identification letter</b> for the family — each already filled in. Save the whole student as one file; open it again at the semester review. Nothing leaves your browser.</p>
+  </div>
+</header>
+<main>
+<section class="form" id="form">
+  <h2>Student</h2>
+  <div class="g4"><div><label class="f">Name</label><input data-k="name"></div><div><label class="f">Student ID</label><input data-k="id"></div><div><label class="f">Grade</label><input data-k="grade"></div><div><label class="f">Date (today)</label><input data-k="date" type="date"></div></div>
+  <div class="g3"><div><label class="f">School</label><input data-k="school" value="Laurel High School"></div><div><label class="f">District</label><input data-k="district" value="Laurel School District"></div><div><label class="f">School year</label><input data-k="year" value="2026–27"></div></div>
+  <div class="g3"><div><label class="f">Home language</label><input data-k="lang" value="Spanish"></div><div><label class="f">Birth country</label><input data-k="country"></div><div><label class="f">Prior schooling (last grade, gaps)</label><input data-k="schooling" placeholder="8th grade, Honduras; 1 year gap"></div></div>
+  <div class="g3"><div><label class="f">Arrived in U.S. / first U.S. enrollment</label><input data-k="usdate" type="date"></div><div><label class="f">Years in EL program</label><input data-k="yrs" type="number" min="0" max="12" value="1"></div><div><label class="f">Literacy in home language</label><select data-k="lit"><option>Strong — reads and writes at grade level</option><option>Developing — basic reading and writing</option><option>Limited or interrupted schooling</option><option>Unknown yet</option></select></div></div>
+  <h2>Family</h2>
+  <div class="g2"><div><label class="f">Parent / guardian name</label><input data-k="parent"></div><div><label class="f">Family contact (phone · language · preference)</label><input data-k="fam" placeholder="Mother, María · Spanish · (601) 000-0000 · texts"></div></div>
+  <h2>Identification</h2>
+  <div class="g4"><div><label class="f">Home Language Survey date</label><input data-k="hls" type="date"></div><div><label class="f">Screener / test &amp; date</label><input data-k="test" placeholder="ELPT Screener · 8/12/2026"></div><div><label class="f">Test date</label><input data-k="testdate" type="date"></div><div><label class="f">Parent notification sent</label><input data-k="notif" type="date"></div></div>
+  <label class="f">Levels (1–5) · Listening · Speaking · Reading · Writing</label>
+  <div class="g4"><input data-k="L" type="number" min="1" max="5" placeholder="L"><input data-k="S" type="number" min="1" max="5" placeholder="S"><input data-k="R" type="number" min="1" max="5" placeholder="R"><input data-k="W" type="number" min="1" max="5" placeholder="W"></div>
+  <div class="g2"><div><label class="f">IEP / 504</label><select data-k="iep"><option>No</option><option>Yes — see plan</option><option>Referral in progress</option></select></div><div><label class="f">Program description (one line, for the letter)</label><input data-k="program" value="Daily ESL/ELD class with a certified EL teacher, plus language support and accommodations in all content classes."></div></div>
+  <h2>What teachers should know</h2>
+  <label class="f">Strengths</label><textarea data-k="str" placeholder="Math above grade level; draws well; helps younger siblings; soccer."></textarea>
+  <div class="g2"><div><label class="f">Interests / what motivates</label><input data-k="int"></div><div><label class="f">Watch for</label><input data-k="watch" placeholder="Goes quiet when confused; anxious reading aloud."></div></div>
+  <label class="f">Accommodations (pre-checked from level when you open the LSP; tick here for the Profile)</label>
+  <div class="chk" id="acc"></div>
+  <h2>Contacts &amp; signatures</h2>
+  <div class="g3"><div><label class="f">EL teacher / contact</label><input data-k="contact" value="Richard A. Daniel, M.Ed., EL Specialist · Rm 118"></div><div><label class="f">Phone / email</label><input data-k="phone" placeholder="(601) 000-0000 · rdaniel@laurelschools.org"></div><div><label class="f">Letter signer / title</label><input data-k="signer" placeholder="Principal name, Principal"></div></div>
+</section>
+<aside class="side">
+  <div class="lane" id="lane">Enter the four levels to see the lane and overall determination.</div>
+  <div class="out">
+    <h2>Open, already filled in</h2>
+    <p>Each opens in a new tab with this student's data. Edit there, print there.</p>
+    <a class="go" href="student-profile.html?from=intake" target="_blank" data-open><b>1</b><span>EL Student Profile<small>one page for the sub folder and every teacher of record</small></span></a>
+    <a class="go" href="lsp-builder.html?from=intake" target="_blank" data-open><b>2</b><span>Language Service Plan<small>services, accommodations and goals drafted from the levels</small></span></a>
+    <a class="go" href="parent-letters.html?from=intake" target="_blank" data-open><b>3</b><span>Parent letter 1 · identification<small>English + home-language page; ESSA-required elements</small></span></a>
+    <a class="go" href="newcomer-week1.html" target="_blank"><b>→</b><span>Week 1 kit<small>what to do with this student tomorrow</small></span></a>
+  </div>
+  <div class="out">
+    <h2>Keep this student</h2>
+    <div class="tools"><button type="button" id="save">💾 Save as file</button><label>📂 Open file<input type="file" id="open" accept=".json"></label><button type="button" id="clear">Clear</button></div>
+    <p style="margin-top:8px">The file holds everything on this form. Keep it with the student's other FERPA records; reopen it in January to update levels and re-print.</p>
+  </div>
+</aside>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const ACC=["Extended time (1.5×)","Word-to-word bilingual dictionary","Directions read aloud & clarified","Test items read aloud (non-reading tests)","Small-group setting","Breaks","Sentence frames & word banks","Visuals & graphic organizers","Home-language support (peer / app / notes)","Reduced length / alternate format","Oral or recorded response","Preferential seating","Leveled / modified text","Vocabulary preview before lessons"];
+document.getElementById('acc').innerHTML=ACC.map((a,i)=>`<label><input type="checkbox" data-a="${i}">${a}</label>`).join('');
+const F=()=>{const o={};document.querySelectorAll('[data-k]').forEach(i=>o[i.dataset.k]=i.value);o.acc=[...document.querySelectorAll('[data-a]')].filter(c=>c.checked).map(c=>+c.dataset.a);return o};
+function put(o){document.querySelectorAll('[data-k]').forEach(i=>{if(o[i.dataset.k]!==undefined)i.value=o[i.dataset.k]});document.querySelectorAll('[data-a]').forEach(c=>c.checked=(o.acc||[]).includes(+c.dataset.a));lane()}
+function stash(){try{localStorage.setItem('intake',JSON.stringify(F()))}catch(e){}}
+function lane(){const o=F();const l=[+o.L||0,+o.S||0,+o.R||0,+o.W||0];const v=l.filter(Boolean);const el=document.getElementById('lane');if(!v.length){el.textContent='Enter the four levels to see the lane and overall determination.';return}
+ const a=v.reduce((x,y)=>x+y)/v.length;const yrs=+o.yrs||99;const ln=a<1.5&&yrs<=1?'Newcomer':a<2.5?'Emerging':a<4?'Progressing':'Challenge';
+ const all=v.length===4;const ov=all?(l.every(x=>x>=4)?'Proficient — meets exit':l.every(x=>x<=2)?'Emerging':'Progressing'):'(enter all four)';
+ const names=['Listening','Speaking','Reading','Writing'];let low=null;l.forEach((x,i)=>{if(x&&(low===null||x<l[low]))low=i});
+ el.innerHTML=`<b>Lane:</b> ${ln} &nbsp; <b>Overall:</b> ${ov} &nbsp; <b>Focus:</b> ${low!==null?names[low]+' (L'+l[low]+')':'—'}`}
+document.querySelectorAll('[data-k],[data-a]').forEach(i=>i.addEventListener('input',()=>{stash();lane()}));
+document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',stash));
+document.getElementById('save').addEventListener('click',()=>{const o=F();const b=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Newcomer-'+((o.name||'student').replace(/\s+/g,'_'))+'-'+(o.year||'').replace('–','-')+'.json';a.click()});
+document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{put(JSON.parse(r.result));stash()}catch(x){alert('Not a saved intake file.')}};r.readAsText(f)});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the form?')){document.querySelectorAll('[data-k]').forEach(i=>{if(!['school','district','year','lang','contact','program'].includes(i.dataset.k))i.value=''});document.querySelectorAll('[data-a]').forEach(c=>c.checked=false);stash();lane()}});
+if(!document.querySelector('[data-k="date"]').value)document.querySelector('[data-k="date"]').value=new Date().toISOString().slice(0,10);
+try{const s=localStorage.getItem('intake');if(s)put(JSON.parse(s))}catch(e){}
+lane();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

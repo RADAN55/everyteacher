@@ -93,5 +93,6 @@ const F={y:"Allowed on state tests",p:"Conditional",n:"Classroom only"};
 document.getElementById('cards').innerHTML=A.map((a,i)=>`<article class="c" data-tags="${a.tags}"><div class="top"><h2>${a.n}<small>${a.s}</small></h2><span class="num">${i+1}</span></div><div class="body"><b>Who</b><p>${a.who}</p><b>In class</b><p>${a.how}</p><b>State tests</b><p><span class="st"><span class="${a.test}">${F[a.test]}</span></span> ${a.tnote}</p><b>In the LSP</b><p style="font-style:italic;color:#4a5068">${a.doc}</p></div></article>`).join('');
 document.querySelector('.bar-in').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('.bar button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));const f=b.dataset.f;document.querySelectorAll('.c').forEach(c=>c.classList.toggle('hide',f!=='all'&&!c.dataset.tags.split(' ').includes(f)))});
 </script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
