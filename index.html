@@ -107,6 +107,28 @@
   .feature-t{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;margin:6px 0 6px}
   .feature-p{font-size:14.5px;color:#C9CEEA;max-width:70ch}
   .feature-go{display:inline-block;margin-top:12px;background:var(--gold);color:var(--navy-dk);font-weight:700;padding:8px 16px;border-radius:999px;font-size:14px}
+
+  .finder{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:26px 0 0}
+  .srch{flex:1 1 320px;display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:8px 16px}
+  .srch svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex:0 0 18px}
+  .srch input{flex:1;border:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);outline:none;min-width:0}
+  .audf{display:flex;gap:6px;flex-wrap:wrap}
+  .audf button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:7px 13px;border-radius:999px;cursor:pointer}
+  .audf button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .fcount{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:18px}
+  .card.hide{display:none}
+  section.empty{display:none}
+  .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .path{background:var(--paper);border:1px solid var(--rule);padding:18px 20px 14px}
+  .ph{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .pn{font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1}
+  .ph b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.1}
+  .ph small{display:block;font-size:12.5px;color:var(--muted)}
+  .path ol{margin:0;padding-left:20px;font-size:14px;line-height:1.4}
+  .path li{margin-bottom:6px}
+  .path a{font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-lt)}
+  .path a:hover{border-bottom-color:var(--gold)}
+  #start{padding-top:34px;padding-bottom:10px}
 </style>
 </head>
 <body>
@@ -124,8 +146,8 @@
 
 <section class="wrap" id="top">
   <h2>Resources</h2>
-  <p class="deck">22 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
-  <div class="hubstats"><div><b>22</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>EN·ES</b><span>bilingual throughout</span></div><div><b>$0</b><span>every resource is free</span></div></div>
+  <p class="deck">30 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
+  <div class="hubstats"><div><b>30</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>6</b><span>languages in the Newcomer Guide</span></div><div><b>$0</b><span>every resource is free</span></div></div>
   <a class="feature" href="tech-radar.html">
     <div class="feature-k">New · updated weekly</div>
     <div class="feature-t">EL Tech Radar — five new tools for English learners, verified</div>
@@ -133,7 +155,35 @@
     <span class="feature-go">Open the radar →</span>
   </a>
 </section>
-<nav class="cats" aria-label="Sections"><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
+<nav class="cats" aria-label="Sections"><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="#admin">Admin &amp; compliance</a><a href="whats-new.html">What's new</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
+
+<div class="wrap" id="finder">
+  <div class="finder">
+    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 30 resources — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
+    <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
+  </div>
+  <p class="fcount" id="fcount"></p>
+</div>
+<section class="wrap" id="start"><h2>Start here</h2><p class="deck">Three short paths through the hub, depending on who you are.</p><div class="paths">
+  <div class="path"><div class="ph"><span class="pn">1</span><b>New EL teacher</b><small>Your first month, in order</small></div><ol>
+    <li><a href="https://radan55.github.io/RichardDaniel/language-functions/">Language functions &amp; the four lanes</a> — the model everything else uses</li>
+    <li><a href="https://radan55.github.io/RichardDaniel/curriculum-36/">36-week combined-block curriculum</a> — the year, week by week</li>
+    <li><a href="sample-lesson.html">Sample 90-minute lesson</a> — one block, start to finish</li>
+    <li><a href="elpt-family-guide.html">The ELPT, explained</a> — know the levels before you plan to them</li>
+    <li><a href="tech-radar.html">Tech Radar</a> — five tools, one added each week</li></ol></div>
+  <div class="path"><div class="ph"><span class="pn">2</span><b>Content teacher with ELs</b><small>You teach biology, not English — this is enough</small></div><ol>
+    <li><a href="https://radan55.github.io/el-field-guide/">Every Teacher Is a Language Teacher</a> — the field guide for gen-ed staff</li>
+    <li><a href="language-bridge-2026-09.html">The Language Bridge</a> — the monthly faculty bulletin</li>
+    <li><a href="can-do-checklist.html">Can-Do checklist</a> — what a Level 2 vs. Level 4 student can actually do</li>
+    <li><a href="first-100-words.html">First 100 Words</a> — hand it to the newcomer who arrived today</li>
+    <li><a href="field-notes.html">Field Notes</a> — what the research says this year</li></ol></div>
+  <div class="path"><div class="ph"><span class="pn">3</span><b>Family or student</b><small>Nuevo en la escuela — empieza aquí</small></div><ol>
+    <li><a href="newcomer-guide.html">Your Guide to School in the U.S.</a> — 5 languages, printable</li>
+    <li><a href="first-100-words.html">My First 100 Words at School</a> — tap to hear</li>
+    <li><a href="elpt-family-guide.html">The English test, explained for families</a></li>
+    <li><a href="graduation-roadmap.html">Graduation roadmap</a> — credits, tests, a four-year plan</li>
+    <li><a href="can-do-checklist.html">Can-Do checklist</a> — see your own growth</li></ol></div>
+</div></section>
 <section class="wrap" id="newcomer"><h2>Newcomer Series</h2><p class="deck">For students who just arrived and the families behind them — bilingual, printable, and built for the first year in a U.S. school.</p><div class="cards">
     <a class="card" href="newcomer-guide.html">
       <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students &amp; families</span>
@@ -183,6 +233,38 @@
       <div class="card-body">
         <p>Eighty “I can…” statements across listening, speaking, reading and writing at Levels 1–5. Students check what is true today, see an estimated level per skill, set a goal for each, and copy a summary for their teacher — a mirror of the ELPT they can use three times a year.</p>
         <p class="go">Open the checklist →</p>
+      </div>
+    </a>
+</div></section>
+<section class="wrap" id="admin"><h2>Administrators &amp; compliance</h2><p class="deck">For EL coordinators, Title III directors and principals — the calendar, the letters and the numbers.</p><div class="cards">
+    <a class="card" href="el-compliance-calendar.html">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/el-compliance-calendar.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
+        <span class="kind">Compliance · Mississippi 2026–27 · Checklist</span>
+        <h3>EL Program Compliance Calendar</h3>
+      </div>
+      <div class="card-body">
+        <p>Forty-five obligations placed in the month they come due — HLS and 30-day screening, parent notices, Language Service Plans, ELPT window, exit and four-year monitoring, Title III, MSIS coding, accommodations, the annual program evaluation — each tagged federal, Mississippi or best practice, with the standing Castañeda, Lau and Plyler duties up top. Check off, save, print.</p>
+        <p class="go">Open the calendar →</p>
+      </div>
+    </a>
+    <a class="card" href="parent-letters.html">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/parent-letters.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
+        <span class="kind">Compliance · Fillable templates · English / Español</span>
+        <h3>EL Parent Notification Letters</h3>
+      </div>
+      <div class="card-body">
+        <p>Six letters every program sends, written to ESSA §1112(e)(3): initial identification and placement with every required element, annual continuing notice, exit, monitoring notice, parent refusal form, and meeting invitation. Fill in the student once; print the English and Spanish pages together.</p>
+        <p class="go">Open the letters →</p>
+      </div>
+    </a>
+    <a class="card" href="el-data-dashboard.html">
+      <div class="card-top has-shot"><img class="shot" src="thumbs/el-data-dashboard.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
+        <span class="kind">Compliance · Excel template · ELPT</span>
+        <h3>EL Data Dashboard</h3>
+      </div>
+      <div class="card-body">
+        <p>Paste your ELPT roster; get overall determination, domain averages, level distribution, growth, years in program, lowest domain, by-grade proficiency and home-language counts — eight formula-driven tables and three charts for the board, Title III and Castañeda prong three.</p>
+        <p class="go">Download the template →</p>
       </div>
     </a>
 </div></section>
@@ -461,5 +543,25 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('section .cards .card'));
+  function aud(c){var t=(c.querySelector('.aud')||{}).textContent||'';t=t.toLowerCase();
+    if(/compliance|administrator|all staff|pd\b/.test(t))return 'admin';
+    if(/student|famil|heritage|9–12|9-12|6–12/.test(t))return 'students';return 'teachers';}
+  cards.forEach(function(c){c.dataset.aud=aud(c);c.dataset.txt=c.textContent.toLowerCase().replace(/\s+/g,' ')});
+  var q=document.getElementById('q'),bs=document.querySelectorAll('.audf button'),fc=document.getElementById('fcount');var A='all';
+  function run(){var s=(q.value||'').trim().toLowerCase();var n=0;
+    cards.forEach(function(c){var ok=(A==='all'||c.dataset.aud===A)&&(!s||c.dataset.txt.indexOf(s)>-1);c.classList.toggle('hide',!ok);if(ok)n++});
+    document.querySelectorAll('section').forEach(function(sec){var cs=sec.querySelectorAll('.cards .card');if(cs.length)sec.classList.toggle('empty',!sec.querySelector('.cards .card:not(.hide)'))});
+    var st=document.getElementById('start');if(st)st.classList.toggle('empty',!!s||A!=='all');
+    fc.textContent=(s||A!=='all')?(n+' resource'+(n===1?'':'s')+(s?' matching “'+q.value.trim()+'”':'')+(A!=='all'?' for '+({teachers:'teachers',students:'students & families',admin:'administrators'})[A]:'')):'';}
+  q.addEventListener('input',run);
+  bs.forEach(function(b){b.addEventListener('click',function(){A=b.dataset.a;bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});run()})});
+  var p=new URLSearchParams(location.search);if(p.get('q')){q.value=p.get('q')}if(p.get('aud')){A=p.get('aud');bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.a===A?'true':'false')})}
+  if(p.get('q')||p.get('aud'))run();
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Data Dashboard Template · ELPT to board-ready charts · EL Publishing</title>
+<meta name="description" content="A formula-driven Excel template that turns a Mississippi ELPT/ELPA21 roster export into the charts an EL coordinator needs for the board, Title III evaluation and Castañeda prong-three review: overall determination, domain averages, level distribution, growth, years in program, lowest domain, by-grade proficiency, home languages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:62ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  main{max-width:900px;margin:0 auto;padding:22px 22px 40px}
+  .pg{background:var(--paper);border:1px solid var(--rule);padding:24px 28px;margin:0 0 20px}
+  .pg h2{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 8px}
+  .pg p,.pg li{font-size:15px;line-height:1.45;margin:0 0 8px}.pg ul,.pg ol{margin:0;padding-left:20px}
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+  .grid div{border:1px solid var(--rule);padding:10px 12px;font-size:13.5px;line-height:1.35}
+  .grid b{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:16px}
+  .shot{border:1px solid var(--rule);width:100%;display:block;margin-top:12px}
+  .tip{background:#F7F1DC;border:1px solid #E3D08E;padding:12px 14px;font-size:14px;line-height:1.45;margin-top:12px}
+  .tip b{color:#5a4714}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:640px){.grid{grid-template-columns:1fr 1fr}.pg{padding:18px 16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL COORDINATORS · EXCEL TEMPLATE · MISSISSIPPI ELPT</p>
+    <h1>EL data <em>dashboard</em></h1>
+    <p class="tag">Paste your ELPT roster into one sheet; get the eight tables and three charts a coordinator needs for the board, the Title III evaluation and the Castañeda prong-three review. Every number is a formula — change a student, the dashboard changes. Works in Excel, Google Sheets and LibreOffice.</p>
+    <div class="cta"><a class="btn" href="admin/EL-Data-Dashboard-Template.xlsx" download>Download the template (.xlsx) →</a><a class="btn ghost" href="el-compliance-calendar.html">Compliance calendar →</a></div>
+  </div>
+</header>
+<main>
+<section class="pg">
+  <h2>What it computes</h2>
+  <div class="grid">
+    <div><b>1 · Overall determination</b>Emerging / Progressing / Proficient counts and % — with a pie chart.</div>
+    <div><b>2 · Domain averages</b>Mean level and % at 4–5 for Listening, Speaking, Reading, Writing.</div>
+    <div><b>3 · Level distribution</b>How many students sit at each level in each domain — stacked column chart.</div>
+    <div><b>4 · Growth</b>Average change from last year's overall; % who grew at least half a level.</div>
+    <div><b>5 · Years in program</b>1 through 5+ with how many reached proficiency this year — your long-term-EL flag.</div>
+    <div><b>6 · Lowest domain</b>Where each student is weakest, totaled — where the LSPs should focus.</div>
+    <div><b>7 · By grade</b>ELs, proficient, % proficient, average years, IEP count, K–12 — column chart.</div>
+    <div><b>8 · Home languages</b>Counts for the languages you name — your translation and interpreter plan in one table.</div>
+  </div>
+  <p style="margin-top:12px;font-size:14px;color:var(--muted)">Mississippi rules built in: proficient = Level 4 or 5 in all four domains; Emerging = all four at 1–2. Students whose parents declined services are counted as active ELs (they are); monitored students are counted separately.</p>
+</section>
+<section class="pg">
+  <h2>How to use it — ten minutes</h2>
+  <ol>
+    <li>Export your EL roster from MSIS or your SIS with ID, school, grade, home language, years in program, this year's four ELPT domain levels, last year's overall, status and IEP flag.</li>
+    <li>Open the template. Read <b>Start Here</b>. Delete the 40 fictional example rows on <b>Students</b>.</li>
+    <li>Paste your rows starting at row 2, keeping the column order (blue columns are yours; black columns are formulas and fill themselves).</li>
+    <li>On <b>Dashboard</b>, type your top home languages in the blue cells of table 8.</li>
+    <li>Charts update on their own. Copy a chart into your board slide or the Title III evaluation.</li>
+  </ol>
+  <div class="tip"><b>Privacy:</b> the file holds student-level records. Keep it where FERPA-protected files live; share charts, not the sheet. In Google Sheets, upload the .xlsx and open it — all formulas are Sheets-compatible (no XLOOKUP or dynamic arrays).</div>
+</section>
+<section class="pg">
+  <h2>Reading it in a board meeting — three sentences that work</h2>
+  <ul>
+    <li>"We serve <i>N</i> English learners in <i>K</i> languages; <i>X%</i> reached the exit standard this year, up from <i>Y%</i>."</li>
+    <li>"Our students' lowest domain is <i>Writing</i> — that is where next year's Language Service Plans and PD are aimed."</li>
+    <li>"<i>N</i> students have been in the program six or more years; each has a named plan and a monitored domain target."</li>
+  </ul>
+  <p style="font-size:14px;color:var(--muted)">That is Castañeda's third prong — evaluate and adjust — said out loud.</p>
+</section>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+</body>
+</html>
