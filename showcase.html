@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcase: Built by Teachers · EL Publishing</title>
+<meta name="description" content="Real lesson adaptations, leveled texts, and MAAP-style item sets Mississippi teachers built with EL Bridge and the EL Assistants, shared for the next teacher. Add yours.">
+<meta property="og:title" content="Showcase: Built by Teachers">
+<meta property="og:description" content="Real lesson adaptations, leveled texts, and MAAP-style item sets Mississippi teachers built with EL Bridge and the EL Assistants, shared for the next teacher. Add yours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · SHOWCASE · BUILT BY TEACHERS</p>
+    <h1>Share what you <em>built.</em></h1>
+    <p class="tag">Real adaptations, leveled texts, and item sets that Mississippi teachers made with hub tools and chose to share. Open one, copy what works, then add your own.</p>
+    <div class="chips"><span>Teacher-made</span><span>EL Bridge · Assistants</span><span>Four lanes</span><span>Reviewed before posting</span><span>No student names</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h2 class="sec">Built by teachers, for the next teacher</h2>
+  <p class="deck">Every post here is a real adaptation, text, or item set a Mississippi educator made with a hub tool and chose to share. Open one, copy what works, change what doesn't.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Build it</b><p>Use <a href="el-bridge.html">EL Bridge</a>, the <a href="el-assistants.html">Assistants</a>, or anything else on the hub.</p></div>
+    <div class="step"><div class="n">2</div><b>Share it</b><p>Fill in the short form at the bottom of this page. Paste the result or attach a file. No student names, ever.</p></div>
+    <div class="step"><div class="n">3</div><b>See it here</b><p>Richard reads every submission and posts it, usually within a week, with your name and school if you want them shown.</p></div>
+  </div>
+
+  <h2 class="sec" id="gallery">Gallery</h2>
+  <div class="filters" id="filters"></div>
+  <div id="entries"></div>
+
+  <h2 class="sec" id="share">Share what you built</h2>
+  <p class="deck">This form opens an email to Richard with your answers already filled in. Nothing is stored on this site.</p>
+  <div class="priv"><b>Privacy rule.</b> No student names, ID numbers, grades tied to a student, or anything from an LSP, IEP, or 504 plan. Describe students by lane, never by name.</div>
+  <form class="card" id="sform" style="margin-top:14px">
+    <div class="grid2">
+      <div><label class="f" for="s-name">Your name</label><input type="text" id="s-name" required></div>
+      <div><label class="f" for="s-school">School and district</label><input type="text" id="s-school" required></div>
+      <div><label class="f" for="s-role">Role</label><select id="s-role"><option>Content teacher</option><option>EL / ESL teacher</option><option>Administrator or coordinator</option><option>Paraprofessional or tutor</option><option>Other</option></select></div>
+      <div><label class="f" for="s-subj">Subject or course</label><select id="s-subj"><option>English Language Arts</option><option>Mathematics</option><option>Science</option><option>Social Studies</option><option>Algebra I</option><option>Biology I</option><option>English II</option><option>U.S. History</option><option>Other</option></select></div>
+      <div><label class="f" for="s-grade">Grade or band</label><input type="text" id="s-grade" placeholder="e.g., 7, 9–10, K–2"></div>
+      <div><label class="f" for="s-std">Mississippi standard code</label><input type="text" id="s-std" placeholder="e.g., RI.8.2, 7.RP.2, BIO.1D.1"></div>
+    </div>
+    <label class="f">Which hub tool did you use?</label>
+    <div class="chk" id="s-tools"><label><input type="checkbox" value="EL Bridge — Adapt a lesson"> EL Bridge — Adapt a lesson</label><label><input type="checkbox" value="EL Bridge — Leveled text"> EL Bridge — Leveled text</label><label><input type="checkbox" value="EL Bridge — Assessment items"> EL Bridge — Assessment items</label><label><input type="checkbox" value="EL Assistants"> EL Assistants</label><label><input type="checkbox" value="Sentence-Frame Bank"> Sentence-Frame Bank</label><label><input type="checkbox" value="Something else"> Something else</label></div>
+    <label class="f" for="s-title">Title for your post</label><input type="text" id="s-title" required placeholder="e.g., Photosynthesis CER in four lanes">
+    <label class="f" for="s-story">What you built and how it went</label><textarea id="s-story" required placeholder="2–5 sentences: the lesson, the lanes you used, what changed for students."></textarea>
+    <label class="f" for="s-paste">Paste the adaptation, text, or items (optional)</label><textarea id="s-paste" placeholder="“Copy as text” from EL Bridge works well here. Attach a file to the email instead if it's long."></textarea>
+    <label class="f" for="s-pub">May we publish your name and school?</label>
+    <select id="s-pub"><option>Yes, publish my name and school</option><option>Publish my first name and district only</option><option>Keep me anonymous</option></select>
+    <div class="chk" style="margin-top:12px"><label><input type="checkbox" id="s-ok" required> This contains no student names, IDs, grades, or confidential plan content.</label></div>
+    <div class="btns" style="margin-top:14px"><button type="submit" class="btn">Open the email to send</button><button type="button" class="btn ghost" id="s-copy">Copy submission text instead</button></div>
+    <p class="tip" style="margin-top:12px">If the email button does nothing on your device, use <em>Copy submission text</em> and paste it into a new message to <b>richard.spanishteacher@gmail.com</b> with the subject “Showcase submission.” Attach any file there.</p>
+  </form>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){
+var FORM_URL=""; // paste a Google Form link here later and the page will use it instead of email
+var ENTRIES=[
+ {t:"Carbon cycle: what happens when the forest is cleared?",by:"Richard A. Daniel · Laurel High School",role:"EL / ESL teacher",subj:"Science",grade:"7",std:"L.7.3.1",tool:"EL Bridge — Adapt a lesson",date:"Oct 2026",example:true,
+  story:"The anchor example in EL Bridge. Students examine a carbon-cycle diagram, read a one-page text, and write a CER on what happens if a forest is cleared. Newcomers label a four-box diagram and answer with “When ___, then ___ because ___”; the Challenge lane adds a CO₂ data table and a counterclaim sentence. The content objective never changes.",
+  body:"CONTENT OBJECTIVE: Use a carbon-cycle diagram as evidence to explain how removing a forest changes how carbon moves through an ecosystem.\nLANGUAGE OBJECTIVE: Explain cause and effect using “When ___, then ___ because ___” with a labeled diagram and word bank.\nVOCABULARY: carbon dioxide (dióxido de carbono), photosynthesis (fotosíntesis), respiration (respiración), decompose (descomponer), atmosphere (atmósfera), release / absorb (liberar / absorber)\n\nNEWCOMER: 4-box diagram, picture word bank, label + draw an X on the forest, 3-word frame. Check: labeled diagram.\nEMERGING: cloze CER with word bank, think-pair-share with a frame.\nPROGRESSING: full text with margin glosses, fading CER frame, discussion roles.\nCHALLENGE: grade-level text + CO₂ data table, counterclaim sentence, discussion leader."},
+ {t:"Why a wilted plant perks up: osmosis across the membrane",by:"Richard A. Daniel · Laurel High School",role:"EL / ESL teacher",subj:"Biology I",grade:"HS",std:"BIO.1D.1",tool:"EL Bridge — Leveled text",date:"Oct 2026",example:true,
+  story:"Five versions of one explanatory text, from a 78-word Newcomer version with picture cues to a grade-level anchor with a stretch paragraph on fertilizer burn. Same science in every version; same five glossary terms, all true Spanish cognates.",
+  body:"Open EL Bridge → Leveled text to see all five versions with text-dependent questions and the glossary."},
+ {t:"Interpreting key features: a water tank draining",by:"Richard A. Daniel · Laurel High School",role:"EL / ESL teacher",subj:"Algebra I",grade:"HS",std:"F-IF.4",tool:"EL Bridge — Assessment items",date:"Oct 2026",example:true,
+  story:"Four MAAP-style items (multiple choice, multi-select, technology-enhanced, constructed response) on g(t) = 500 − 20t, each with a linguistically accessible twin that keeps the same key. The accessible stems name the intercept value and split two-step directions into numbered sentences.",
+  body:"Open EL Bridge → Assessment items to see the items, keys, rationales, rubric, and the MTAM accommodation list."}
+];
+var subj=[].concat.apply([],[["All"],ENTRIES.map(function(e){return e.subj})]).filter(function(v,i,a){return a.indexOf(v)===i});
+var F="All";
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function render(){
+  document.getElementById("filters").innerHTML=subj.map(function(s){return '<button type="button" aria-pressed="'+(s===F)+'" data-s="'+esc(s)+'">'+esc(s)+'</button>'}).join("");
+  var rows=ENTRIES.filter(function(e){return F==="All"||e.subj===F});
+  document.getElementById("entries").innerHTML=rows.length?rows.map(function(e){return '<article class="entry"><h3>'+esc(e.t)+'</h3><div class="by">'+esc(e.by)+' · '+esc(e.role)+' · '+esc(e.date)+(e.example?' · <b>Example from EL Bridge</b>':'')+'</div><div><span class="pill">'+esc(e.subj)+'</span><span class="pill">Grade '+esc(e.grade)+'</span><span class="pill">'+esc(e.std)+'</span><span class="pill">'+esc(e.tool)+'</span></div><p style="margin-top:10px">'+esc(e.story)+'</p>'+(e.body?'<details><summary>Open the materials</summary><pre>'+esc(e.body)+'</pre></details>':'')+'</article>'}).join(""):'<p class="deck">No posts in this subject yet. Yours could be first.</p>';
+}
+document.getElementById("filters").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;F=b.dataset.s;render()});
+render();
+function text(){
+  var g=function(id){return document.getElementById(id).value.trim()};
+  var tools=[].slice.call(document.querySelectorAll("#s-tools input:checked")).map(function(x){return x.value}).join(", ");
+  return ["SHOWCASE SUBMISSION — EL Publishing Hub","","Name: "+g("s-name"),"School / district: "+g("s-school"),"Role: "+g("s-role"),"Subject: "+g("s-subj"),"Grade: "+g("s-grade"),"Standard: "+g("s-std"),"Tool(s): "+tools,"Publish as: "+g("s-pub"),"","TITLE: "+g("s-title"),"","WHAT I BUILT AND HOW IT WENT:",g("s-story"),"","MATERIALS:",g("s-paste")||"(attached or none)","","Confirmed: no student names, IDs, grades, or confidential plan content."].join("\n");
+}
+document.getElementById("sform").addEventListener("submit",function(e){
+  e.preventDefault();
+  if(FORM_URL){window.open(FORM_URL,"_blank");return;}
+  var t=text(); location.href="mailto:richard.spanishteacher@gmail.com?subject="+encodeURIComponent("Showcase submission: "+document.getElementById("s-title").value.trim())+"&body="+encodeURIComponent(t);
+});
+document.getElementById("s-copy").addEventListener("click",function(){
+  var t=text(), b=this; var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy submission text instead"},1800)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fb(t);done()})}else{fb(t);done()}
+  function fb(s){var ta=document.createElement("textarea");ta.value=s;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(x){}document.body.removeChild(ta)}
+});
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
