@@ -115,7 +115,20 @@
   .audf{display:flex;gap:6px;flex-wrap:wrap}
   .audf button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:7px 13px;border-radius:999px;cursor:pointer}
   .audf button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .week{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0}
+  .week a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 16px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .week a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .week .wk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .week b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy);line-height:1.15;margin:4px 0 4px}
+  .week small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .week .es{font-style:italic;color:var(--muted);font-size:13px}
+  @media (max-width:760px){.week{grid-template-columns:1fr}}
   .fcount{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:18px}
+  .deep{margin:10px 0 0;background:var(--paper);border:1px solid var(--rule);border-left:5px solid var(--gold);padding:12px 16px}
+  .deep h4{margin:0 0 6px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  .deep a{display:block;padding:7px 0;border-top:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+  .deep a:first-of-type{border-top:0}
+  .deep b{color:var(--navy)}.deep small{display:block;color:var(--muted);font-size:13px;margin-top:2px}.deep mark{background:#FFF1B8;color:inherit;padding:0 1px}
   .card.hide{display:none}
   section.empty{display:none}
   .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
@@ -154,15 +167,21 @@
     <div class="feature-p">Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost, Google Translate Practice — what's new, what it costs, a classroom use for each lane, and one more added every Tuesday.</div>
     <span class="feature-go">Open the radar →</span>
   </a>
+  <div class="week" id="week" aria-label="This week">
+    <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
+    <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
+    <a id="wk-res" href="index.html#tools"><span class="wk">Resource of the week</span><b id="wk-rt">EL Bridge Mississippi</b><small id="wk-rd">A different hub resource every week, so the back catalog gets its turn.</small></a>
+  </div>
 </section>
 <nav class="cats" aria-label="Sections"><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="el-assistants.html">🤖 EL Assistants</a><a href="el-bridge.html">🌉 EL Bridge</a><a href="#tools">Teacher tools</a><a href="#admin">Admin &amp; compliance</a><a href="whats-new.html">What's new</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
 
 <div class="wrap" id="finder">
   <div class="finder">
-    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 39 resources — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
+    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 43 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
     <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
   </div>
   <p class="fcount" id="fcount"></p>
+  <div class="deep" id="deep" hidden></div>
 </div>
 <section class="wrap" id="start"><h2>Start here</h2><p class="deck">Three short paths through the hub, depending on who you are.</p><div class="paths">
   <div class="path"><div class="ph"><span class="pn">1</span><b>New EL teacher</b><small>Your first month, in order</small></div><ol>
@@ -661,11 +680,41 @@
     document.querySelectorAll('section').forEach(function(sec){var cs=sec.querySelectorAll('.cards .card');if(cs.length)sec.classList.toggle('empty',!sec.querySelector('.cards .card:not(.hide)'))});
     var st=document.getElementById('start');if(st)st.classList.toggle('empty',!!s||A!=='all');
     fc.textContent=(s||A!=='all')?(n+' resource'+(n===1?'':'s')+(s?' matching “'+q.value.trim()+'”':'')+(A!=='all'?' for '+({teachers:'teachers',students:'students & families',admin:'administrators'})[A]:'')):'';}
-  q.addEventListener('input',run);
+  var IDX=null,loading=false,deep=document.getElementById('deep');
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function hl(t,words){var e=esc(t);words.forEach(function(w){if(w.length>2)e=e.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return e}
+  function deepRun(){var s=(q.value||'').trim().toLowerCase();if(s.length<3){deep.hidden=true;return}
+    if(!IDX){if(!loading){loading=true;fetch('search-index.json').then(function(r){return r.json()}).then(function(j){IDX=j;deepRun()}).catch(function(){})}return}
+    var words=s.split(/\s+/).filter(Boolean);
+    var hits=IDX.map(function(e){var hay=(e.p+' '+e.h+' '+e.t).toLowerCase();var sc=0;words.forEach(function(w){if(hay.indexOf(w)>-1)sc+=1;if((e.h+' '+e.p).toLowerCase().indexOf(w)>-1)sc+=2});return {e:e,sc:sc}}).filter(function(x){return x.sc>0}).sort(function(a,b){return b.sc-a.sc}).slice(0,8);
+    if(!hits.length){deep.hidden=true;return}
+    deep.innerHTML='<h4>Inside the pages</h4>'+hits.map(function(x){var e=x.e;var i=e.t.toLowerCase().indexOf(words[0]);var snip=e.t.slice(Math.max(0,i-80),i+160);return '<a href="'+esc(e.u)+'"><b>'+esc(e.p)+(e.h?' › '+esc(e.h):'')+'</b><small>…'+hl(snip,words)+'…</small></a>'}).join('');
+    deep.hidden=false;}
+  q.addEventListener('input',function(){run();deepRun()});
   bs.forEach(function(b){b.addEventListener('click',function(){A=b.dataset.a;bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});run()})});
   var p=new URLSearchParams(location.search);if(p.get('q')){q.value=p.get('q')}if(p.get('aud')){A=p.get('aud');bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.a===A?'true':'false')})}
-  if(p.get('q')||p.get('aud'))run();
+  if(p.get('q')||p.get('aud')){run();deepRun();}
 })();
+</script>
+<script>
+// This week strip: Monday Move (Week 1 = Aug 3, 2026; skips winter + spring break), Tech Radar tool, resource of the week
+(function(){try{
+  var MOVES=[{"n": 1, "en": "Post and Say the Language Goal", "es": "Publica y di el objetivo de lenguaje", "tag": "Students hit targets they can see."}, {"n": 2, "en": "Preview Three Words", "es": "Anticipa tres palabras", "tag": "Thirty seconds that save ten minutes."}, {"n": 3, "en": "Hand Over a Sentence Frame", "es": "Entrega un marco de oración", "tag": "A frame is a ramp, not a crutch."}, {"n": 4, "en": "Talk Before Writing", "es": "Hablar antes de escribir", "tag": "If they can say it, they can write it."}, {"n": 5, "en": "Check Without Asking “Do You Understand?”", "es": "Comprueba sin preguntar «¿Entienden?»", "tag": "Everyone says yes. Ask them to show you."}, {"n": 6, "en": "Make the Text Reachable", "es": "Haz alcanzable el texto", "tag": "Keep the text. Change the path to it."}, {"n": 7, "en": "Grade the Content, Grow the English", "es": "Califica el contenido, haz crecer el inglés", "tag": "Two different questions. Two different marks."}, {"n": 8, "en": "Test-Ready All Year", "es": "Listos para el examen todo el año", "tag": "A support met on test day is not a support."}, {"n": 9, "en": "Families and Wins", "es": "Familias y logros", "tag": "The first call home should be good news."}, {"n": 10, "en": "Go on a Cognate Hunt", "es": "Sal a cazar cognados", "tag": "Thousands of words your students already know."}, {"n": 11, "en": "Word Walls That Work", "es": "Muros de palabras que funcionan", "tag": "If nobody points at it, it is wallpaper."}, {"n": 12, "en": "Teach the Word Parts", "es": "Enseña las partes de las palabras", "tag": "One root unlocks twenty words."}, {"n": 13, "en": "Read the Question First", "es": "Lee primero la pregunta", "tag": "Reading with a purpose is a different activity."}, {"n": 14, "en": "Annotate with a Purpose", "es": "Anota con un propósito", "tag": "Three marks, not a rainbow."}, {"n": 15, "en": "Match the Organizer to the Thinking", "es": "Ajusta el organizador al pensamiento", "tag": "The shape of the chart is the shape of the idea."}, {"n": 16, "en": "Read Aloud, Think Aloud", "es": "Lee en voz alta, piensa en voz alta", "tag": "Let them hear what a reader’s mind does."}, {"n": 17, "en": "Build Background in Two Minutes", "es": "Construye contexto en dos minutos", "tag": "You cannot comprehend what you cannot picture."}, {"n": 18, "en": "Look at the Work Together", "es": "Miren juntos el trabajo", "tag": "Mid-year: who has moved, and who is stuck?"}, {"n": 19, "en": "Structure the Partner Talk", "es": "Estructura la conversación en parejas", "tag": "“Turn and talk” works when everyone knows their job."}, {"n": 20, "en": "Teach the Conversation Moves", "es": "Enseña los movimientos de la conversación", "tag": "Academic talk has a script. Hand it out."}, {"n": 21, "en": "Share the Air", "es": "Reparte la palabra", "tag": "Who talked today? Who never does?"}, {"n": 22, "en": "From Sentence to Paragraph", "es": "De la oración al párrafo", "tag": "Claim, evidence, explain. Every subject."}, {"n": 23, "en": "Grow the Sentence", "es": "Haz crecer la oración", "tag": "Short, correct sentences are a stage, not a goal."}, {"n": 24, "en": "Feedback That Sticks", "es": "Retroalimentación que se queda", "tag": "Mark less. Teach more."}, {"n": 25, "en": "ELPA21 Season: What It Measures", "es": "Temporada de ELPA21: qué mide", "tag": "Four domains, and every class teaches them."}, {"n": 26, "en": "The Language of Test Questions", "es": "El lenguaje de las preguntas de examen", "tag": "They often know the content. The question trips them."}, {"n": 27, "en": "Stamina and Calm", "es": "Resistencia y calma", "tag": "Long tests are a physical event."}, {"n": 28, "en": "Review with Games", "es": "Repasa con juegos", "tag": "Repetition without boredom."}, {"n": 29, "en": "Use the Home Language as a Tool", "es": "Usa el idioma del hogar como herramienta", "tag": "Two languages are an advantage. Treat them like one."}, {"n": 30, "en": "Technology That Helps", "es": "Tecnología que ayuda", "tag": "The Chromebook can be a scaffold or a shortcut."}, {"n": 31, "en": "When a Newcomer Arrives in Spring", "es": "Cuando llega un estudiante nuevo en primavera", "tag": "The first week decides how the year ends."}, {"n": 32, "en": "Culture as Content", "es": "La cultura como contenido", "tag": "Students learn from people who know who they are."}, {"n": 33, "en": "State Test Week", "es": "La semana del examen estatal", "tag": "Nothing new. Everything familiar."}, {"n": 34, "en": "Projects and Presentations", "es": "Proyectos y presentaciones", "tag": "Speaking in front of the class is the hardest task we assign."}, {"n": 35, "en": "Celebrate the Growth", "es": "Celebra el crecimiento", "tag": "Show them how far they have come."}, {"n": 36, "en": "Hand Off and Reflect", "es": "Entrega y reflexiona", "tag": "What next year’s teacher needs to know."}];
+  var TOOLS=[["Read Along in Google Classroom","tech-radar.html"],["SpeakingMonkey","tech-radar.html"],["MinuteMic","tech-radar.html"],["Brisk Boost","tech-radar.html"],["Google Translate · Practice mode","tech-radar.html"]];
+  function weekNow(){var now=new Date(),s=new Date(2026,7,3);var w=Math.floor((now-s)/6048e5)+1;
+    if(now>=new Date(2027,0,4))w-=2; if(now>=new Date(2027,3,5))w-=1;
+    if(now>=new Date(2027,7,2)){s=new Date(2027,7,2);w=Math.floor((now-s)/6048e5)+1;if(now>=new Date(2028,0,3))w-=2;if(now>=new Date(2028,3,3))w-=1}
+    return Math.max(1,Math.min(36,w))}
+  var w=weekNow(),m=MOVES[w-1];
+  function T(id,v){var e=document.getElementById(id);if(e)e.textContent=v}
+  T('wk-n','Week '+w);T('wk-mt',m.en);T('wk-mes',m.es);T('wk-mtag',m.tag);
+  document.getElementById('wk-move').href='https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mv-'+w;
+  var t=TOOLS[(w-1)%TOOLS.length];T('wk-tt',t[0]);document.getElementById('wk-tool').href=t[1];
+  var cards=[].slice.call(document.querySelectorAll('section .cards .card'));
+  if(cards.length){var abs=Math.floor((new Date()-new Date(2026,7,3))/6048e5);var c=cards[((abs%cards.length)+cards.length)%cards.length];
+    var h=c.querySelector('h3'),d=c.querySelector('.card-body p');var a=document.getElementById('wk-res');
+    if(h)T('wk-rt',h.textContent);if(d)T('wk-rd',d.textContent.slice(0,120).replace(/\s+\S*$/,'')+'…');a.href=c.getAttribute('href');if(/^https?:/.test(a.href)){a.target='_blank';a.rel='noopener'}}
+}catch(e){}})();
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
