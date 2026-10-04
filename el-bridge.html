@@ -591,7 +591,83 @@ function headChips(p){
 }
 function headBar(p,label,saveId,copyId){
   return `<div class="row" style="justify-content:space-between"><span class="eyebrow">${p.example?label+" · example — build your own above":label}</span>
-    <div class="row"><button class="btn ghost small" id="${copyId}">Copy as text</button>${!p.example?`<button class="btn small" id="${saveId}">Save to my library</button>`:""}</div></div>`;
+    <div class="row"><button class="btn ghost small" id="${copyId}">Copy as text</button><button class="btn ghost small" id="${copyId}-packet">Student packet</button>${!p.example?`<button class="btn small" id="${saveId}">Save to my library</button>`:""}</div></div>`;
+}
+/* ---------- Printable student packet ---------- */
+function packetOpen(p){
+  const w=window.open("","_blank"); if(!w){ toast("Allow pop-ups for this site to open the packet"); return; }
+  w.document.open(); w.document.write(packetHTML(p)); w.document.close();
+}
+function packetHTML(p){
+  const k=p.kind||"adaptation"; const letters="ABCDEFGH";
+  const li=(a)=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join("");
+  const header=(sub)=>`<header><div><span class="eb">EL Publishing · EL Bridge Mississippi</span><h1>${esc(p.title)}</h1><div class="meta">${esc(SUBJ[p.subject]||p.subject)} · Grade ${esc(p.grade)} · <span class="mono">${esc(p.code)}</span>${sub?" · "+esc(sub):""}</div></div><div class="nameline">Name ____________________________ &nbsp; Date ____________</div></header>`;
+  let pages=[], tabs=[];
+  if(k==="text"){
+    const gl=(p.glossary||[]).map(g=>`<tr><td><b>${esc(g.term)}</b>${g.cognate?` <i>(${esc(g.cognate)})</i>`:""}</td><td>${esc(g.def||"")}</td></tr>`).join("");
+    Object.keys(p.versions||{}).forEach(n=>{ const v=p.versions[n];
+      tabs.push([n,LANE[n][0]]);
+      pages.push(`<section class="pg" data-l="${n}">${header(LANE[n][0])}
+        <div class="passage ${n==="1"?"big":""}">${esc(v.text||"")}</div>
+        ${gl?`<h2>Glossary · Glosario</h2><table class="gl">${gl}</table>`:""}
+        ${v.questions&&v.questions.length?`<h2>Questions</h2><ol class="qs">${v.questions.map(q=>`<li>${esc(q)}<div class="lines">${n==="1"||n==="2"?"<span></span><span></span>":"<span></span><span></span><span></span><span></span>"}</div></li>`).join("")}</ol>`:""}
+      </section>`); });
+  } else if(k==="items"){
+    const acc=(p.items||[]).some(it=>it.accessible);
+    const render=(useAcc)=>`<section class="pg" data-l="${useAcc?"acc":"std"}">${header(useAcc?"Accessible form":"Standard form")}
+      ${(useAcc&&p.stimulusAccessible)||p.stimulus?`<div class="stim"><b>Read first.</b> ${esc(useAcc&&p.stimulusAccessible?p.stimulusAccessible:p.stimulus)}</div>`:""}
+      <ol class="items">${(p.items||[]).map(it=>{ const a=useAcc&&it.accessible?it.accessible:it; const opts=(a.options&&a.options.length?a.options:it.options)||[];
+        return `<li><div class="stem">${esc(a.stem)}</div>${opts.length?`<ol class="opts">${opts.map((o,j)=>`<li><span class="ltr">${letters[j]}</span>${esc(o)}</li>`).join("")}</ol>`:`<div class="lines"><span></span><span></span><span></span><span></span><span></span></div>`}</li>`; }).join("")}</ol></section>`;
+    tabs.push(["std","Standard form"]); pages.push(render(false));
+    if(acc){ tabs.push(["acc","Accessible form"]); pages.push(render(true)); }
+    tabs.push(["key","Answer key (teacher)"]);
+    pages.push(`<section class="pg" data-l="key">${header("Answer key · teacher copy")}<ol class="items">${(p.items||[]).map(it=>`<li><div class="stem">${esc(it.stem)}</div><p><b>Key:</b> ${esc((it.key||[]).join(", "))} · DOK ${esc(it.dok)}</p><p class="small">${esc(it.rationale||"")}</p>${it.rubric&&it.rubric.length?`<ul class="small">${li(it.rubric)}</ul>`:""}</li>`).join("")}</ol></section>`);
+  } else {
+    const vocab=(p.vocabulary||[]).map(v=>`<tr><td><b>${esc(v.term)}</b></td><td>${v.cognate?esc(v.cognate):""}</td><td></td></tr>`).join("");
+    Object.keys(p.lanes||{}).forEach(n=>{ const L=p.lanes[n]; tabs.push([n,LANE[n][0]]);
+      pages.push(`<section class="pg" data-l="${n}">${header(LANE[n][0])}
+        <div class="obj"><b>Today I will:</b> ${esc(p.contentObjective)}</div>
+        <div class="obj"><b>Language goal:</b> ${esc(p.languageObjective)}</div>
+        ${vocab?`<h2>Words to know · Palabras</h2><table class="gl three"><tr><th>Word</th><th>Cognate / home language</th><th>My picture or meaning</th></tr>${vocab}</table>`:""}
+        ${L.frames&&L.frames.length?`<h2>Sentence frames</h2><ul class="frames">${li(L.frames)}</ul>`:""}
+        <h2>My work</h2><div class="lines big">${"<span></span>".repeat(n==="1"?4:n==="2"?6:9)}</div>
+        <div class="check"><b>Check:</b> ${esc(L.assessment)}</div>
+      </section>`); });
+  }
+  const tabBtns=tabs.map((t,i)=>`<button data-t="${t[0]}" class="${i===0?"on":""}">${esc(t[1])}</button>`).join("");
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(p.title)} · Student packet</title>
+<style>
+body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#1F2330;background:#eef0f5}
+.bar{position:sticky;top:0;background:#1E2761;color:#fff;padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px}
+.bar b{margin-right:8px}.bar button{border:1px solid #C9A227;background:transparent;color:#EBD9A0;padding:6px 12px;border-radius:999px;cursor:pointer;font:600 13px Inter,sans-serif}
+.bar button.on{background:#C9A227;color:#141A44}.bar .print{margin-left:auto;background:#C9A227;color:#141A44}
+.pg{background:#fff;max-width:8.5in;margin:18px auto;padding:.7in .75in;box-shadow:0 2px 12px rgba(0,0,0,.08);font-size:14.5px;line-height:1.55;page-break-after:always}
+.pg[hidden]{display:none}
+header{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;border-bottom:3px solid #C9A227;padding-bottom:10px;margin-bottom:16px}
+.eb{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#C9A227;font-weight:700}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:22px;margin:4px 0 2px;color:#1E2761;line-height:1.15}
+.meta{font-size:12px;color:#5D6480}.mono{font-family:Menlo,Consolas,monospace}
+.nameline{font-size:12px;white-space:nowrap;color:#5D6480}
+h2{font-family:Georgia,serif;font-size:15px;color:#1E2761;margin:18px 0 6px;border-left:4px solid #C9A227;padding-left:8px}
+.passage{white-space:pre-wrap;font-size:15px;line-height:1.7;max-width:66ch}.passage.big{font-size:17.5px;line-height:1.9}
+.gl{border-collapse:collapse;width:100%;font-size:13.5px}.gl td,.gl th{border:1px solid #DCDEE9;padding:6px 8px;vertical-align:top;text-align:left}.gl th{background:#F4F5FA;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.gl.three td:last-child{width:38%;height:34px}
+.qs li,.items>li{margin:0 0 12px}.lines{display:grid;gap:0;margin-top:6px}.lines span{display:block;border-bottom:1px solid #9aa0b5;height:26px}.lines.big span{height:30px}
+.stim{background:#F4F5FA;border-left:4px solid #1E2761;padding:10px 12px;margin-bottom:14px;white-space:pre-wrap}
+.items{padding-left:22px}.items .stem{white-space:pre-wrap;font-weight:500}.opts{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:4px}.opts li{display:flex;gap:8px}.ltr{display:inline-grid;place-items:center;width:22px;height:22px;border:1.5px solid #1E2761;border-radius:50%;font-size:12px;font-weight:700;flex:none}
+.obj{background:#F4F5FA;border-left:4px solid #C9A227;padding:8px 12px;margin:0 0 8px}.frames li{font-family:Menlo,Consolas,monospace;font-size:13px;margin:3px 0}
+.check{margin-top:14px;font-size:13px;color:#5D6480;border-top:1px dashed #DCDEE9;padding-top:8px}.small{font-size:12.5px;color:#5D6480}
+.foot{text-align:center;font-size:11px;color:#5D6480;margin:0 0 20px}
+@media print{.bar,.foot{display:none}body{background:#fff}.pg{box-shadow:none;margin:0;max-width:none;padding:0}.pg[hidden]{display:none}}
+</style></head><body>
+<div class="bar"><b>Student packet</b>${tabBtns}<button class="all">Show all</button><button class="print">Print / Save as PDF</button></div>
+${pages.join("")}
+<p class="foot">Generated with EL Bridge Mississippi · radan55.github.io/everyteacher/el-bridge.html · Review before use.</p>
+<script>
+(function(){var pgs=[].slice.call(document.querySelectorAll('.pg')),btns=[].slice.call(document.querySelectorAll('.bar button[data-t]'));
+function show(t){pgs.forEach(function(p){p.hidden=t!=='all'&&p.dataset.l!==t});btns.forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});document.querySelector('.bar .all').classList.toggle('on',t==='all')}
+btns.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});document.querySelector('.bar .all').onclick=function(){show('all')};document.querySelector('.bar .print').onclick=function(){window.print()};
+show(btns.length?btns[0].dataset.t:'all');})();
+<\/script></body></html>`;
 }
 function lanesChecked(name){ return [...document.querySelectorAll(`.lanes[data-lanes="${name}"] input:checked`)].map(x=>+x.value); }
 function baseInput(){ const std=currentStandard(); return {subject:S.subject, grade:gradeLabel(), code:std.code, text:std.text}; }
@@ -656,7 +732,7 @@ function renderPlan(p){
   <div class="lanegrid">${Object.keys(p.lanes||{}).map(n=>laneCard(n,p.lanes[n])).join("")}</div>
   <div class="two"><div class="wide"><h3>Teacher moves</h3><ul>${(p.teacherMoves||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
   <div class="wide"><h3>Materials to prepare</h3><ul>${(p.materials||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
-  $("copy").onclick=()=>copyText(planText(p),$("copy")); const sv=$("save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+  $("copy").onclick=()=>copyText(planText(p),$("copy")); $("copy-packet").onclick=()=>packetOpen(p); const sv=$("save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
 }
 function planText(p){
   const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,"","CONTENT OBJECTIVE: "+p.contentObjective,"LANGUAGE OBJECTIVE: "+p.languageObjective,"","KEY VOCABULARY: "+(p.vocabulary||[]).map(v=>v.term+(v.cognate?` (${v.cognate})`:"")).join(", "),""];
@@ -722,7 +798,7 @@ function renderText(p){
     ${v.questions&&v.questions.length?`<div><h4>Text-dependent questions</h4><ul>${v.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div>`:""}
     ${v.supports?`<div><h4>How to use this version</h4><p>${esc(v.supports)}</p></div>`:""}</div></article>`;
   $("lanetabs").onclick=e=>{const b=e.target.closest("button"); if(!b) return; S.textLane=+b.dataset.k; renderText(p);};
-  $("t-copy").onclick=()=>copyText(textText(p),$("t-copy")); const sv=$("t-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+  $("t-copy").onclick=()=>copyText(textText(p),$("t-copy")); $("t-copy-packet").onclick=()=>packetOpen(p); const sv=$("t-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
 }
 function textText(p){
   const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,"","GLOSSARY: "+(p.glossary||[]).map(g=>g.term+(g.cognate?` (${g.cognate})`:"")+(g.def?`: ${g.def}`:"")).join("; "),""];
@@ -796,7 +872,7 @@ function renderItems(p){
   </article>`).join("")}
   <div class="two"><div class="wide"><h3>MTAM-allowable accommodations to list on the EL plan</h3><ul>${(p.accommodations||MTAM).map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="hint">Confirm against the current MTAM; translated test items are not allowable on MAAP.</p></div>
   <div class="wide"><h3>Teacher notes</h3><ul>${(p.teacherNotes||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
-  $("i-copy").onclick=()=>copyText(itemsText(p),$("i-copy")); const sv=$("i-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+  $("i-copy").onclick=()=>copyText(itemsText(p),$("i-copy")); $("i-copy-packet").onclick=()=>packetOpen(p); const sv=$("i-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
 }
 function itemsText(p){
   const letters="ABCDEFGH"; const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,""];
