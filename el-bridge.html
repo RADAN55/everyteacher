@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Bridge Mississippi · EL Publishing</title>
+<meta name="description" content="Pick a Mississippi standard (K–12 ELA, math, science, or the Algebra I, Biology I, English II end-of-course tests), then adapt a lesson, generate a leveled text, or build MAAP-style items for English learners across four proficiency lanes. Works with any AI assistant; nothing to sign up for.">
+<meta property="og:title" content="EL Bridge Mississippi">
+<meta property="og:description" content="Standard in, four-lane lesson adaptation, leveled text, or MAAP-style items out. Built for Mississippi general-education teachers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-bg:#E6F2EA;
+    --ela:#4a4fb3;--math:#b86b12;--sci:#2d7a3e;--lane1:#a23b2a;--lane2:#b8730f;--lane3:#2b7a8c;--lane4:#4b6b2b;--warn:#FFF8E6;--warn-b:#EBD9A0;
+    --serif:Fraunces,Georgia,serif;--sans:Inter,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  h1,h2,h3,h4{margin:0;line-height:1.15}
+  p{margin:0}
+  button,input,select,textarea{font:inherit;color:inherit}
+  textarea,input[type=text],input[type=number],select{width:100%;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:9px 11px}
+  textarea{resize:vertical;min-height:90px}
+  textarea:focus,input:focus,select:focus,button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .hint{font-size:12.5px;color:var(--muted)}
+  .mono{font-family:var(--mono);font-size:.92em}
+  .btn{border:1px solid var(--navy);background:var(--navy);color:#fff;border-radius:6px;padding:9px 14px;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block;font-size:14.5px}
+  .btn:hover{background:var(--navy-dk)}
+  .btn.ghost{background:var(--paper);color:var(--navy)}
+  .btn.ghost:hover{background:var(--mist)}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy-dk)}
+  .btn.small{padding:6px 10px;font-size:13px}
+  .btn.done{background:var(--ok);border-color:var(--ok);color:#fff}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1180px;margin:0 auto;padding:36px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,6vw,54px);line-height:1}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:64ch}
+  .chipsh{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chipsh span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+
+  nav.tabs{display:flex;gap:4px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--rule);padding:5px;margin:22px 0 18px;border-radius:8px}
+  nav.tabs button{border:0;background:transparent;border-radius:6px;padding:8px 14px;cursor:pointer;font-weight:600;font-size:14.5px;color:var(--navy)}
+  nav.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+
+  .how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px}
+  .how>div{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 16px}
+  .how .n{font-family:var(--serif);font-size:30px;color:var(--gold);font-weight:700;line-height:1}
+  .how b{display:block;color:var(--navy);margin:4px 0 2px}
+  .how p{font-size:14px;color:var(--muted)}
+  .priv{background:var(--warn);border:1px solid var(--warn-b);border-left:6px solid var(--gold);padding:12px 16px;margin:0 0 18px;font-size:14.5px}
+
+  .strip{background:var(--paper);border:1px solid var(--rule);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px 24px;margin-bottom:20px;align-items:start}
+  @media (max-width:860px){.strip{grid-template-columns:1fr}}
+  .segwrap{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+  .seglabel{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+  .seg button{border:0;background:var(--paper);padding:7px 12px;cursor:pointer;font-weight:600;border-right:1px solid var(--rule);font-size:14px;white-space:nowrap}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed=true]{color:#fff}
+  .seg button[data-c=ela][aria-pressed=true]{background:var(--ela)}
+  .seg button[data-c=math][aria-pressed=true]{background:var(--math)}
+  .seg button[data-c=sci][aria-pressed=true]{background:var(--sci)}
+  .grades{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px}
+  .grades button{border:1px solid var(--rule);background:var(--paper);border-radius:4px;padding:5px 0;width:34px;cursor:pointer;font-family:var(--mono);font-size:13px}
+  .grades button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .eoc-note{font-size:13px;color:var(--muted);padding:8px 0 0}
+  .std{border:1px solid var(--rule);border-left:4px solid var(--gold);padding:10px 12px;background:var(--mist);margin-top:8px}
+  .std .code{font-family:var(--mono);font-weight:500;font-size:13px}
+  .code.ela,.chip.ela{color:var(--ela)} .code.math,.chip.math{color:var(--math)} .code.sci,.chip.sci{color:var(--sci)}
+  .std p{font-size:13.5px;margin-top:3px}
+
+  .bench{display:grid;grid-template-columns:minmax(300px,370px) minmax(0,1fr);gap:22px;align-items:start}
+  @media (max-width:860px){.bench{grid-template-columns:1fr}}
+  .intake{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px;display:grid;gap:14px}
+  .intake h2{font-family:var(--serif);font-size:22px;color:var(--navy);font-weight:700}
+  .lanes{display:grid;gap:6px}
+  .lanes label{display:flex;gap:9px;align-items:flex-start;font-size:14px;cursor:pointer}
+  .lanes input{margin-top:4px;accent-color:var(--navy)}
+  .lanes b{font-weight:600}
+  .lanes small{display:block;color:var(--muted);font-size:12.5px}
+  .dot{width:10px;height:10px;border-radius:50%;flex:none;margin-top:6px}
+  .checks{display:grid;gap:5px;font-size:14px}
+  .checks label{display:flex;gap:8px;align-items:center;cursor:pointer}
+  .checks input{accent-color:var(--navy)}
+  .half{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+  .out{display:grid;gap:16px;min-width:0}
+  .panel{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;display:grid;gap:10px;min-width:0}
+  .eyebrow{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .panel h2{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);color:var(--navy);font-weight:700}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:12.5px;padding:3px 9px;border-radius:999px;border:1px solid var(--rule);background:var(--mist)}
+  .chip.ela{border-color:var(--ela)} .chip.math{border-color:var(--math)} .chip.sci{border-color:var(--sci)}
+  .objs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:600px){.objs{grid-template-columns:1fr}}
+  .obj{padding:12px 14px;background:var(--mist);border-left:3px solid var(--gold)}
+  .obj .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:4px}
+  .lanegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .lane{background:var(--paper);border:1px solid var(--rule);min-width:0;display:flex;flex-direction:column}
+  .lane .top{padding:12px 16px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .lane .top h3{font-family:var(--serif);font-size:19px;font-weight:700}
+  .lane .top .lvl{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .lane[data-l="0"] .top h3{color:var(--navy)}
+  .lane[data-l="1"] .top h3{color:var(--lane1)} .lane[data-l="2"] .top h3{color:var(--lane2)} .lane[data-l="3"] .top h3{color:var(--lane3)} .lane[data-l="4"] .top h3{color:var(--lane4)}
+  .lane .body{padding:12px 16px 16px;display:grid;gap:12px;font-size:14px}
+  .lane h4,.item h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+  .lane ul,.item ul,.wide ul{margin:0;padding-left:18px;display:grid;gap:3px}
+  .frames li{font-family:var(--mono);font-size:13px}
+  .vocab{display:flex;flex-wrap:wrap;gap:5px}
+  .vocab span{font-size:12.5px;padding:2px 8px;border-radius:4px;background:var(--mist);border:1px solid var(--rule)}
+  .vocab span i{color:var(--muted);font-style:normal}
+  .wide{background:var(--paper);border:1px solid var(--rule);padding:16px 20px;display:grid;gap:10px;min-width:0}
+  .wide h3{font-family:var(--serif);font-size:19px;color:var(--navy);font-weight:700}
+  .wide ul{font-size:14px;gap:4px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:700px){.two{grid-template-columns:1fr}}
+
+  .passage{font-size:15px;line-height:1.65;max-width:68ch;white-space:pre-wrap}
+  .lane[data-l="1"] .passage{font-size:16.5px;line-height:1.8}
+  .lanetabs{display:flex;gap:4px;flex-wrap:wrap}
+  .lanetabs button{border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13px;font-weight:600}
+  .lanetabs button[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  .item{background:var(--paper);border:1px solid var(--rule);padding:16px 18px;display:grid;gap:12px;min-width:0}
+  .item .ihead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+  .item .num{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--navy)}
+  .stem{font-size:15px;white-space:pre-wrap}
+  .opts{display:grid;gap:5px;margin:0;padding:0;list-style:none}
+  .opts li{display:flex;gap:9px;align-items:flex-start;padding:6px 10px;border:1px solid var(--rule);font-size:14px;background:var(--paper)}
+  .opts li b{font-family:var(--mono);font-weight:500;flex:none}
+  .opts li.key{border-color:var(--ok);background:var(--ok-bg)}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:760px){.pair{grid-template-columns:1fr}}
+  .pair>div{padding:12px 14px;background:var(--mist);border:1px solid var(--rule);min-width:0}
+  .pair>div.acc{border-left:4px solid var(--gold)}
+  details{border-top:1px solid var(--rule);padding-top:8px}
+  summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--navy)}
+  .rub{font-size:13.5px}
+
+  /* prompt + paste flow */
+  .flow{display:grid;gap:12px}
+  .pbox{border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .pbox pre{margin:0;padding:12px 14px;white-space:pre-wrap;font-family:var(--mono);font-size:12.5px;line-height:1.5;max-height:260px;overflow:auto;color:var(--ink)}
+  .paste{display:grid;gap:8px}
+  .paste textarea{min-height:120px;font-family:var(--mono);font-size:12.5px}
+  .err{background:#FDECEC;border:1px solid #F3B4B4;padding:9px 12px;font-size:13.5px;color:#7A1E1E}
+
+  .lib{display:grid;gap:14px}
+  .libtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .libtools select,.libtools input{width:auto;min-width:150px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--gold);padding:14px 16px;display:grid;gap:6px;cursor:pointer;text-align:left}
+  .card:hover{box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .card .t{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--navy)}
+  .card .m{font-size:12.5px;color:var(--muted)}
+  .kind{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+  .empty{border:1px dashed var(--rule);padding:28px;text-align:center;color:var(--muted);background:var(--paper)}
+
+  .ref{display:grid;gap:14px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  .tbl{overflow-x:auto;background:var(--paper);border:1px solid var(--rule)}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:9px 14px;border-radius:999px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center;z-index:9}
+  .toast.show{opacity:1}
+  footer{background:var(--navy-dk);color:#C9CEEA;margin-top:44px;padding:26px 0;font-size:14px}
+  footer b{color:#fff;display:block;margin-bottom:4px}
+  footer a{color:var(--gold-lt)}
+  @media (max-width:700px){.how{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="head-in">
+  <p class="brand"><a href="index.html">EL PUBLISHING</a> · MANY VOICES · ONE STORM</p>
+  <h1>EL Bridge <em>Mississippi</em></h1>
+  <p class="tag">Pick a Mississippi standard, then adapt a lesson, generate a leveled text, or build MAAP-style assessment items for English learners across four proficiency lanes. K–12 ELA, Math, Science, plus the Algebra I, Biology I, and English II end-of-course tests.</p>
+  <div class="chipsh"><span>Grades K–12</span><span>MS CCRS</span><span>MAAP EOC</span><span>Four lanes · ELPA21</span><span>Works with any AI</span><span>No sign-up on this site</span></div>
+</div></header>
+
+<main class="wrap">
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="adapt">Adapt a lesson</button>
+  <button role="tab" aria-selected="false" data-tab="text">Leveled text</button>
+  <button role="tab" aria-selected="false" data-tab="items">Assessment items</button>
+  <button role="tab" aria-selected="false" data-tab="library">My library</button>
+  <button role="tab" aria-selected="false" data-tab="ref">Lane guide</button>
+</nav>
+
+<div class="how" id="how">
+  <div><div class="n">1</div><b>Pick the standard and describe your lesson</b><p>Quick picks are verified against Mississippi's adopted wording. Any other code can be typed in.</p></div>
+  <div><div class="n">2</div><b>Build the prompt and run it in the AI you already use</b><p>Copy it, or open it straight in Claude or ChatGPT. Gemini and Copilot work too: paste the prompt.</p></div>
+  <div><div class="n">3</div><b>Paste the answer back here</b><p>The page turns it into lane cards, leveled passages, or items with keys, ready to copy into your plan or save to your library.</p></div>
+</div>
+<div class="priv"><b>Privacy rule.</b> Never put student names, IDs, grades, or LSP/IEP/504 content into an AI tool. The prompts here never ask for any of it.</div>
+<!-- ============ STANDARD STRIP (shared) ============ -->
+<section class="strip" id="strip">
+  <div class="left">
+    <div class="segwrap">
+      <div><div class="seglabel">K–12 subject</div>
+        <div class="seg" id="subj-k12">
+          <button type="button" data-s="ela" data-c="ela" aria-pressed="true">English</button>
+          <button type="button" data-s="math" data-c="math" aria-pressed="false">Math</button>
+          <button type="button" data-s="sci" data-c="sci" aria-pressed="false">Science</button>
+        </div></div>
+      <div><div class="seglabel">MAAP end-of-course</div>
+        <div class="seg" id="subj-eoc">
+          <button type="button" data-s="alg1" data-c="math" aria-pressed="false">Algebra I</button>
+          <button type="button" data-s="bio1" data-c="sci" aria-pressed="false">Biology I</button>
+          <button type="button" data-s="eng2" data-c="ela" aria-pressed="false">English II</button>
+        </div></div>
+    </div>
+    <div id="gradewrap"><div class="seglabel">Grade</div><div class="grades" id="grades"></div></div>
+    <div id="eocnote" class="eoc-note" hidden></div>
+  </div>
+  <div style="min-width:0">
+    <label class="f" for="stdsel">MS CCRS standard</label>
+    <select id="stdsel"></select>
+    <div class="std" id="stdbox" hidden><div class="code" id="stdcode"></div><p id="stdtext"></p></div>
+    <div id="customstd" hidden style="margin-top:8px">
+      <input type="text" id="stdcode-in" placeholder="Code (e.g., RI.8.2, 6.NS.5, L.7.3.1, BIO.3B.1)" aria-label="Standard code">
+      <textarea id="stdtext-in" placeholder="Paste the standard's wording from the MDE framework." aria-label="Standard text" style="margin-top:6px;min-height:64px"></textarea>
+    </div>
+    <p class="hint" style="margin-top:6px">Quick picks are a starter set verified against Mississippi's adopted wording. Choose “Other standard” for any code in the framework. Every tab uses this standard.</p>
+  </div>
+</section>
+
+<!-- ============ ADAPT ============ -->
+<section id="view-adapt" class="bench">
+  <form class="intake" id="intake">
+    <h2>Lesson intake</h2>
+    <div><label class="f" for="lesson">The lesson as you teach it</label>
+      <textarea id="lesson" placeholder="What students read, do, discuss, and produce. Include the text or task if you can. One paragraph is plenty."></textarea></div>
+    <div><label class="f" for="assess">How you'll check for understanding</label>
+      <input type="text" id="assess" placeholder="Exit ticket, CER paragraph, 5-problem quiz, lab write-up…"></div>
+    <div><label class="f">Lanes to generate</label>
+      <div class="lanes" data-lanes="adapt">
+        <label><input type="checkbox" value="1" checked><span class="dot" style="background:var(--lane1)"></span><span><b>Newcomer</b> · ELPA21 Level 1<small>First months in U.S. schools. Visuals, labels, home-language bridge, yes/no and pointing responses.</small></span></label>
+        <label><input type="checkbox" value="2" checked><span class="dot" style="background:var(--lane2)"></span><span><b>Emerging</b> · Levels 1–2<small>Words and short phrases. Word banks, sentence starters, matching, partner talk.</small></span></label>
+        <label><input type="checkbox" value="3" checked><span class="dot" style="background:var(--lane3)"></span><span><b>Progressing</b> · Levels 3–4<small>Sentences and short paragraphs. Frames fade to academic connectors, graphic organizers.</small></span></label>
+        <label><input type="checkbox" value="4" checked><span class="dot" style="background:var(--lane4)"></span><span><b>Challenge</b> · Level 4–5 / near-exit<small>Grade-level task with precision supports: register, nuance, extended discourse.</small></span></label>
+      </div></div>
+    <div><label class="f" for="langs">Students' home languages</label>
+      <input type="text" id="langs" value="Spanish" placeholder="Spanish, Vietnamese, Haitian Creole…">
+      <p class="hint">Used for cognates and a short home-language bridge where it helps.</p></div>
+    <div class="row"><button type="submit" class="btn gold" id="go">Build the prompt</button><button type="button" class="btn ghost" id="reset">Clear</button></div>
+  </form>
+  <div class="out" id="out"></div>
+</section>
+
+<!-- ============ LEVELED TEXT ============ -->
+<section id="view-text" class="bench" hidden>
+  <form class="intake" id="intake-text">
+    <h2>Leveled text generator</h2>
+    <div><label class="f" for="t-topic">Topic or text you need</label>
+      <textarea id="t-topic" placeholder="e.g., How enzymes speed up reactions (for BIO.1B.1) · A short story about a decision with consequences (for RL.9-10.3) · A real-world situation involving a linear function (for F-IF.4)"></textarea></div>
+    <div class="half">
+      <div><label class="f" for="t-type">Text type</label>
+        <select id="t-type"><option>Informational / explanatory</option><option>Literary (narrative)</option><option>Argument / opinion</option><option>Procedure or lab protocol</option><option>Math situation with data or graph described</option><option>Primary-source style excerpt (original writing)</option></select></div>
+      <div><label class="f" for="t-len">Grade-level length</label>
+        <select id="t-len"><option value="short">Short (150–250 words)</option><option value="medium" selected>Medium (300–450 words)</option><option value="long">Long (500–700 words)</option></select></div>
+    </div>
+    <div><label class="f">Versions to generate</label>
+      <div class="lanes" data-lanes="text">
+        <label><input type="checkbox" value="0" checked><span class="dot" style="background:var(--ink)"></span><span><b>Grade-level original</b><small>The anchor text every lane is built from.</small></span></label>
+        <label><input type="checkbox" value="1" checked><span class="dot" style="background:var(--lane1)"></span><span><b>Newcomer</b><small>Very short sentences, present tense, high-frequency words, visual cues in brackets.</small></span></label>
+        <label><input type="checkbox" value="2" checked><span class="dot" style="background:var(--lane2)"></span><span><b>Emerging</b><small>Simple and compound sentences, key terms kept and glossed.</small></span></label>
+        <label><input type="checkbox" value="3" checked><span class="dot" style="background:var(--lane3)"></span><span><b>Progressing</b><small>Near grade level, with margin glosses and clearer connectors.</small></span></label>
+        <label><input type="checkbox" value="4" checked><span class="dot" style="background:var(--lane4)"></span><span><b>Challenge</b><small>Grade-level text with a stretch paragraph or second perspective.</small></span></label>
+      </div></div>
+    <div class="checks">
+      <label><input type="checkbox" id="t-q" checked> Add 3 text-dependent questions per version</label>
+      <label><input type="checkbox" id="t-gloss" checked> Add a glossary with home-language cognates</label>
+    </div>
+    <div><label class="f" for="t-langs">Home languages</label><input type="text" id="t-langs" value="Spanish"></div>
+    <div class="row"><button type="submit" class="btn gold" id="t-go">Build the prompt</button></div>
+  </form>
+  <div class="out" id="t-out"></div>
+</section>
+
+<!-- ============ ASSESSMENT ITEMS ============ -->
+<section id="view-items" class="bench" hidden>
+  <form class="intake" id="intake-items">
+    <h2>Assessment item generator</h2>
+    <p class="hint">Builds MAAP-style items on the selected standard. Each item comes with a grade-level version and a linguistically accessible version that measures the same construct, plus the MTAM-allowable accommodations for the EL plan.</p>
+    <div class="half">
+      <div><label class="f" for="i-n">Number of items</label><input type="number" id="i-n" min="1" max="8" value="4"></div>
+      <div><label class="f" for="i-dok">DOK emphasis</label>
+        <select id="i-dok"><option value="mixed" selected>Mixed (DOK 1–3)</option><option value="1-2">Recall & skill (DOK 1–2)</option><option value="2-3">Strategic thinking (DOK 2–3)</option></select></div>
+    </div>
+    <div><label class="f">Item types</label>
+      <div class="checks" id="i-types">
+        <label><input type="checkbox" value="Multiple choice (4 options, one key)" checked> Multiple choice</label>
+        <label><input type="checkbox" value="Multi-select (choose all that apply, 5–6 options)" checked> Multi-select</label>
+        <label><input type="checkbox" value="Evidence-based selected response (Part A / Part B)"> Evidence-based selected response (ELA)</label>
+        <label><input type="checkbox" value="Technology-enhanced (drag-and-drop, hot text, graphing, or table completion — describe the interaction in words)" checked> Technology-enhanced (described)</label>
+        <label><input type="checkbox" value="Constructed response with scoring rubric"> Constructed response</label>
+      </div></div>
+    <div><label class="f" for="i-ctx">Context or stimulus to use (optional)</label>
+      <textarea id="i-ctx" placeholder="Paste a short passage, data set, scenario, or leave blank and the generator will write a brief stimulus."></textarea></div>
+    <div class="checks">
+      <label><input type="checkbox" id="i-acc" checked> Include a linguistically accessible version of every item</label>
+      <label><input type="checkbox" id="i-span"> Also give the accessible stem in Spanish (classroom use only; not for MAAP)</label>
+    </div>
+    <div class="row"><button type="submit" class="btn gold" id="i-go">Build the prompt</button></div>
+  </form>
+  <div class="out" id="i-out"></div>
+</section>
+
+<!-- ============ LIBRARY ============ -->
+<section id="view-library" class="lib" hidden>
+  <p class="hint">Saved on this device only (browser storage). Export a .json file to back it up or hand it to a colleague, who can Import it here.</p>
+  <div class="libtools">
+    <select id="lib-kind" aria-label="Filter by kind"><option value="">All kinds</option><option value="adaptation">Lesson adaptations</option><option value="text">Leveled texts</option><option value="items">Item sets</option></select>
+    <select id="lib-subject" aria-label="Filter by subject"><option value="">All subjects</option><option value="ela">English</option><option value="math">Math</option><option value="sci">Science</option><option value="alg1">Algebra I</option><option value="bio1">Biology I</option><option value="eng2">English II</option></select>
+    <select id="lib-grade" aria-label="Filter by grade"><option value="">All grades</option></select>
+    <input type="text" id="lib-q" placeholder="Search title, standard…" aria-label="Search library">
+    <span class="hint" id="lib-count"></span><span style="flex:1"></span><button type="button" class="btn ghost small" id="lib-export">Export library (.json)</button><label class="btn ghost small" style="cursor:pointer">Import <input type="file" id="lib-import" accept="application/json" hidden></label>
+  </div>
+  <div class="cards" id="lib-cards"></div>
+  <div class="empty" id="lib-empty" hidden>Nothing saved yet. Build a prompt, paste the answer back, then choose “Save to my library.” Your library lives in this browser; use Export to move it or share it with a colleague.</div>
+</section>
+
+<!-- ============ REFERENCE ============ -->
+<section id="view-ref" class="ref" hidden>
+  <div class="wide">
+    <h3>The four lanes, in one page</h3>
+    <p style="font-size:14px">Every lane keeps the <b>same grade-level content objective</b>. What changes is the language students use to get there. The lanes map to ELPA21 proficiency levels, which is how Mississippi reports EL progress.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Lane</th><th>ELPA21</th><th>What students can do with English</th><th>Hallmark supports</th><th>What a fair check looks like</th></tr></thead>
+      <tbody>
+        <tr><td><b style="color:var(--lane1)">Newcomer</b></td><td>Level 1</td><td>Understands with heavy visual and gestural support; produces single words, memorized phrases, drawings.</td><td>Picture-supported vocabulary, bilingual glossary, labeled diagrams, modeled examples, home-language text where available, a buddy.</td><td>Point, sort, match, label, draw, choose from two, answer yes/no, complete a 3-word frame.</td></tr>
+        <tr><td><b style="color:var(--lane2)">Emerging</b></td><td>Levels 1–2</td><td>Follows simple instructions; produces phrases and short simple sentences with errors that may block meaning.</td><td>Word banks, sentence starters, chunked text, cloze notes, think-pair-share with a frame, visuals paired with every key term.</td><td>Short constructed responses with frames, graphic organizer completion, oral explanation to a partner, fewer problems with the same skill.</td></tr>
+        <tr><td><b style="color:var(--lane3)">Progressing</b></td><td>Levels 3–4</td><td>Understands most grade-level talk with some support; writes paragraphs with increasing control of academic language.</td><td>Paragraph frames that fade, academic connectors (because, however, therefore), annotated models, structured discussion roles, glossary without pictures.</td><td>Full task with extended time and a frame or checklist; same rubric, language criteria weighted appropriately.</td></tr>
+        <tr><td><b style="color:var(--lane4)">Challenge</b></td><td>Level 4–5 / near-exit</td><td>Approaches grade-level peers; errors are mostly in register, nuance, and precision.</td><td>Precision supports: register coaching, nuance in word choice, extended discourse, peer-leader roles, self-monitoring checklists.</td><td>The grade-level task as written, with the accommodations listed in the student's EL plan.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="two">
+    <div class="wide">
+      <h3>Mississippi frameworks and tests this tool references</h3>
+      <ul>
+        <li><b>MS CCRS for English Language Arts</b> — RL / RI / W / SL / L / RST / WHST codes (e.g., RI.8.2). <b>English II</b> is assessed on the 9–10 band.</li>
+        <li><b>MS CCRS for Mathematics</b> — K–8 by grade and domain (e.g., 6.RP.3); high school by conceptual category. <b>Algebra I</b> draws on N-Q, A-SSE, A-CED, A-REI, F-IF, F-BF, F-LE, and S-ID.</li>
+        <li><b>MS CCRS for Science (2018)</b> — Domain.Grade.Standard.Objective (e.g., L.5.3B.1); <b>Biology I</b> is BIO.1A–BIO.6.</li>
+        <li><b>MAAP</b> — Mississippi Academic Assessment Program: grades 3–8 ELA and math, grades 5 and 8 science, and the Algebra I, Biology I, English II, and U.S. History end-of-course tests. Item types include multiple choice, multi-select, evidence-based selected response, technology-enhanced, and constructed response/writing.</li>
+        <li><b>MS English Language Proficiency Standards</b> and <b>ELPA21</b> — the proficiency levels the lanes are built on.</li>
+        <li><b>MS Testing Accommodations Manual (MTAM)</b> — the allowable EL accommodations for state tests (for example, extended time, small group, bilingual word-to-word dictionary, read-aloud of directions, and read-aloud of test items where the test permits). Classroom supports here are broader than MTAM; only MTAM-listed accommodations carry to MAAP, and translated items are not an allowable MAAP accommodation.</li>
+      </ul>
+      <p class="hint">Confirm standard wording and accommodation rules against the current MDE documents before placing them in a formal plan.</p>
+    </div>
+    <div class="wide">
+      <h3>What “linguistically accessible” means for an item</h3>
+      <ul>
+        <li>Same standard, same cognitive demand, same key. Only the language load changes.</li>
+        <li>Shorter sentences, active voice, familiar words outside the tested vocabulary, no idioms.</li>
+        <li>Tested academic terms stay; everything around them simplifies.</li>
+        <li>Visual support when the construct allows (a diagram, a table, bolded quantities).</li>
+        <li>Consistent wording across stem and options; one question per sentence.</li>
+      </ul>
+      <h3 style="margin-top:6px">Writing a language objective</h3>
+      <ul>
+        <li>Pattern: <span class="mono">Students will [function] [content] using [form] with [support].</span></li>
+        <li>Example: <i>Students will explain how a food web changes when a species is removed, using “if…then…because” sentences with a word bank.</i></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a><br>
+    <span style="font-size:13px">Classroom-support tool. Review every generated adaptation, text, and item before use and align supports with each student's EL plan and the district's Title III program. Items are practice material in the style of MAAP, not released or secure test content. Confirm standard wording against the current MDE framework documents.</span>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const BANK = {
+ela:{
+ K:[["RL.K.1","With prompting and support, ask and answer questions about key details in a text."],["RL.K.3","With prompting and support, identify characters, settings, and major events in a story."],["L.K.1","Demonstrate command of the conventions of standard English grammar and usage when writing or speaking."]],
+ 1:[["RL.1.2","Retell stories, including key details, and demonstrate understanding of their central message or lesson."],["RI.1.2","Identify the main topic and retell key details of a text."],["W.1.2","Write informative/explanatory texts in which they name a topic, supply some facts about the topic, and provide some sense of closure."]],
+ 2:[["RL.2.3","Describe how characters in a story respond to major events and challenges."],["RI.2.6","Identify the main purpose of a text, including what the author wants to answer, explain, or describe."],["W.2.1","Write opinion pieces in which they introduce the topic or book they are writing about, state an opinion, supply reasons that support the opinion, use linking words to connect opinion and reasons, and provide a concluding statement or section."]],
+ 3:[["RL.3.2","Recount stories, including fables, folktales, and myths from diverse cultures; determine the central message, lesson, or moral and explain how it is conveyed through key details in the text."],["RI.3.3","Describe the relationship between a series of historical events, scientific ideas or concepts, or steps in technical procedures in a text, using language that pertains to time, sequence, and cause/effect."],["W.3.2","Write informative/explanatory texts to examine a topic and convey ideas and information clearly."]],
+ 4:[["RL.4.3","Describe in depth a character, setting, or event in a story or drama, drawing on specific details in the text (e.g., a character's thoughts, words, or actions)."],["RI.4.2","Determine the main idea of a text and explain how it is supported by key details; summarize the text."],["W.4.1","Write opinion pieces on topics or texts, supporting a point of view with reasons and information."]],
+ 5:[["RL.5.2","Determine a theme of a story, drama, or poem from details in the text, including how characters in a story or drama respond to challenges or how the speaker in a poem reflects upon a topic; summarize the text."],["RI.5.2","Determine two or more main ideas of a text and explain how they are supported by key details; summarize the text."],["W.5.2","Write informative/explanatory texts to examine a topic and convey ideas and information clearly."]],
+ 6:[["RL.6.2","Determine a theme or central idea of a text and how it is conveyed through particular details; provide a summary of the text distinct from personal opinions or judgments."],["RI.6.8","Trace and evaluate the argument and specific claims in a text, distinguishing claims that are supported by reasons and evidence from claims that are not."],["W.6.1","Write arguments to support claims with clear reasons and relevant evidence."]],
+ 7:[["RL.7.3","Analyze how particular elements of a story or drama interact (e.g., how setting shapes the characters or plot)."],["RI.7.2","Determine two or more central ideas in a text and analyze their development over the course of the text; provide an objective summary of the text."],["W.7.1","Write arguments to support claims with clear reasons and relevant evidence."]],
+ 8:[["RL.8.2","Determine a theme or central idea of a text and analyze its development over the course of the text, including its relationship to the characters, setting, and plot; provide an objective summary of the text."],["RI.8.2","Determine a central idea of a text and analyze its development over the course of the text, including its relationship to supporting ideas; provide an objective summary of the text."],["W.8.2","Write informative/explanatory texts to examine a topic and convey ideas, concepts, and information through the selection, organization, and analysis of relevant content."]],
+ 9:[["RL.9-10.2","Determine a theme or central idea of a text and analyze in detail its development over the course of the text, including how it emerges and is shaped and refined by specific details; provide an objective summary of the text."],["RI.9-10.1","Cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text."],["W.9-10.1","Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence."],["RST.9-10.4","Determine the meaning of symbols, key terms, and other domain-specific words and phrases as they are used in a specific scientific or technical context relevant to Grades 9-10 texts and topics."]],
+ 10:[["RL.9-10.3","Analyze how complex characters (e.g., those with multiple or conflicting motivations) develop over the course of a text, interact with other characters, and advance the plot or develop the theme."],["RI.9-10.6","Determine an author's point of view or purpose in a text and analyze how an author uses rhetoric to advance that point of view or purpose."],["W.9-10.2","Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately through the effective selection, organization, and analysis of content."]],
+ 11:[["RL.11-12.2","Determine two or more themes or central ideas of a text and analyze their development over the course of the text, including how they interact and build on one another to produce a complex account; provide an objective summary of the text."],["RI.11-12.1","Cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text, including determining where the text leaves matters uncertain."],["W.11-12.1","Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence."]],
+ 12:[["RL.11-12.3","Analyze the impact of the author's choices regarding how to develop and relate elements of a story or drama (e.g., where a story is set, how the action is ordered, how the characters are introduced and developed)."],["RI.11-12.6","Determine an author's point of view or purpose in a text in which the rhetoric is particularly effective, analyzing how style and content contribute to the power, persuasiveness, or beauty of the text."],["SL.11-12.1","Initiate and participate effectively in a range of collaborative discussions with diverse partners on grades 11-12 topics, texts, and issues, building on others' ideas and expressing their own clearly and persuasively."]]
+},
+math:{
+ K:[["K.CC.4","Understand the relationship between numbers and quantities; connect counting to cardinality."],["K.OA.1","Represent addition and subtraction with objects, fingers, mental images, drawings, sounds, acting out situations, verbal explanations, expressions, or equations."]],
+ 1:[["1.OA.1","Use addition and subtraction within 20 to solve word problems involving situations of adding to, taking from, putting together, taking apart, and comparing, with unknowns in all positions."],["1.NBT.2","Understand that the two digits of a two-digit number represent amounts of tens and ones."]],
+ 2:[["2.NBT.5","Fluently add and subtract within 100 using strategies based on place value, properties of operations, and/or the relationship between addition and subtraction."],["2.MD.1","Measure the length of an object by selecting and using appropriate tools such as rulers, yardsticks, meter sticks, and measuring tapes."]],
+ 3:[["3.OA.3","Use multiplication and division within 100 to solve word problems in situations involving equal groups, arrays, and measurement quantities."],["3.NF.1","Understand a fraction 1/b as the quantity formed by 1 part when a whole is partitioned into b equal parts; understand a fraction a/b as the quantity formed by a parts of size 1/b."]],
+ 4:[["4.NF.2","Compare two fractions with different numerators and different denominators; recognize that comparisons are valid only when the two fractions refer to the same whole; record the results with >, =, or <, and justify the conclusions."],["4.MD.3","Apply the area and perimeter formulas for rectangles in real world and mathematical problems."]],
+ 5:[["5.NBT.7","Add, subtract, multiply, and divide decimals to hundredths, using concrete models or drawings and strategies based on place value, properties of operations, and/or the relationship between addition and subtraction; relate the strategy to a written method and explain the reasoning used."],["5.NF.4","Apply and extend previous understandings of multiplication to multiply a fraction or whole number by a fraction."]],
+ 6:[["6.RP.3","Use ratio and rate reasoning to solve real-world and mathematical problems, e.g., by reasoning about tables of equivalent ratios, tape diagrams, double number line diagrams, or equations."],["6.EE.7","Solve real-world and mathematical problems by writing and solving equations of the form x + p = q and px = q for cases in which p, q and x are all nonnegative rational numbers."]],
+ 7:[["7.RP.2","Recognize and represent proportional relationships between quantities."],["7.EE.4","Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities."]],
+ 8:[["8.EE.5","Graph proportional relationships, interpreting the unit rate as the slope of the graph. Compare two different proportional relationships represented in different ways."],["8.F.4","Construct a function to model a linear relationship between two quantities. Determine the rate of change and initial value of the function from a description of a relationship or from two (x, y) values."]],
+ 9:[["A-REI.3","Solve linear equations and inequalities in one variable, including equations with coefficients represented by letters."],["A-CED.1","Create equations and inequalities in one variable and use them to solve problems."],["F-IF.4","For a function that models a relationship between two quantities, interpret key features of graphs and tables in terms of the quantities, and sketch graphs showing key features given a verbal description of the relationship."]],
+ 10:[["G-CO.1","Know precise definitions of angle, circle, perpendicular line, parallel line, and line segment, based on the undefined notions of point, line, distance along a line, and distance around a circular arc."],["G-SRT.5","Use congruence and similarity criteria for triangles to solve problems and to prove relationships in geometric figures."]],
+ 11:[["A-SSE.3","Choose and produce an equivalent form of an expression to reveal and explain properties of the quantity represented by the expression."],["F-BF.1","Write a function that describes a relationship between two quantities."]],
+ 12:[["S-ID.1","Represent data with plots on the real number line (dot plots, histograms, and box plots)."],["S-IC.1","Understand statistics as a process for making inferences about population parameters based on a random sample from that population."]]
+},
+sci:{
+ K:[["E.K.10.1","Participate in a teacher-led activity to gather, organize and record recyclable materials data on a chart or table using technology. Communicate results."]],
+ 1:[["L.1.1.1","Construct explanations using first-hand observations or other media to describe the structures of different plants (i.e., root, stem, leaves, flowers, and fruit). Report findings using drawings, writing, or models."]],
+ 2:[["P.2.5.1","Conduct a structured investigation to collect, represent, and analyze categorical data to classify matter as solid, liquid, or gas. Report findings and describe a variety of materials according to observable physical properties (e.g., size, color, texture, opacity, solubility)."]],
+ 3:[["L.3.1.1","Examine evidence to communicate information that the internal and external structures of animals (e.g., heart, stomach, bone, lung, brain, skin, ears, appendages) function to support survival, growth, and behavior."]],
+ 4:[["E.4.9B.1","Analyze and interpret data (e.g., temperature, precipitation, wind speed/direction, relative humidity, or cloud types) to predict changes in weather over time."]],
+ 5:[["L.5.3B.1","Obtain and evaluate scientific information regarding the characteristics of different ecosystems and the organisms they support (e.g., salt and fresh water, deserts, grasslands, forests, rain forests, or polar tundra lands)."]],
+ 6:[["P.6.6.1","Use an engineering design process to create or improve safety devices (e.g., seat belts, car seats, helmets) by applying Newton's Laws of motion. Use an engineering design process to define the problem, design, construct, evaluate, and improve the safety device."]],
+ 7:[["L.7.3.1","Analyze diagrams to provide evidence of the importance of the cycling of water, oxygen, carbon, and nitrogen through ecosystems to organisms."]],
+ 8:[["P.8.6.1","Collect, organize, and interpret data about the characteristics of sound and light waves to construct explanations about the relationship between matter and energy."]],
+ 9:[["BIO.1A.1","Develop criteria to differentiate between living and non-living things."],["PHY.1.1","Investigate and analyze evidence gained through observation or experimental design regarding the one-dimensional (1-D) motion of objects. Design and conduct experiments to generate and interpret graphical evidence of distance, velocity, and acceleration through motion."]],
+ 10:[["BIO.1A.1","Develop criteria to differentiate between living and non-living things."],["CHE.1.1","Use dimensional analysis (factor/label) and significant figures to convert units and solve problems."]],
+ 11:[["CHE.1.1","Use dimensional analysis (factor/label) and significant figures to convert units and solve problems."],["ESS.1A.1","Describe the Big Bang theory and summarize observations (e.g., cosmic microwave background radiation, Hubble's law, and redshift caused by the Doppler effect) as evidence to support the formation and expansion of the universe."]],
+ 12:[["PHY.1.1","Investigate and analyze evidence gained through observation or experimental design regarding the one-dimensional (1-D) motion of objects. Design and conduct experiments to generate and interpret graphical evidence of distance, velocity, and acceleration through motion."],["ESS.1A.1","Describe the Big Bang theory and summarize observations (e.g., cosmic microwave background radiation, Hubble's law, and redshift caused by the Doppler effect) as evidence to support the formation and expansion of the universe."]]
+},
+// MAAP end-of-course courses (no grade key)
+alg1:[
+ ["N-Q.1","Use units as a way to understand problems and to guide the solution of multi-step problems; choose and interpret units consistently in formulas; choose and interpret the scale and the origin in graphs and data displays."],
+ ["A-SSE.1","Interpret expressions that represent a quantity in terms of its context."],
+ ["A-CED.1","Create equations and inequalities in one variable and use them to solve problems."],
+ ["A-REI.3","Solve linear equations and inequalities in one variable, including equations with coefficients represented by letters."],
+ ["A-REI.6","Solve systems of linear equations algebraically, exactly using algebraic processes and approximately (e.g., graphically) while focusing on pairs of linear equations in two variables."],
+ ["A-REI.10","Understand that the graph of an equation in two variables is the set of all its solutions plotted in the coordinate plane, often forming a curve (which could be a line)."],
+ ["F-IF.4","For a function that models a relationship between two quantities, interpret key features of graphs and tables in terms of the quantities, and sketch graphs showing key features given a verbal description of the relationship."],
+ ["F-IF.7","Graph functions expressed symbolically and show key features of the graph, by hand in simple cases and using technology for more complicated cases."],
+ ["F-BF.1","Write a function that describes a relationship between two quantities."],
+ ["F-LE.1","Distinguish between situations that can be modeled with linear functions and with exponential functions."],
+ ["S-ID.6","Represent data on two quantitative variables on a scatter plot, and describe how the variables are related."]
+],
+bio1:[
+ ["BIO.1A.1","Develop criteria to differentiate between living and non-living things."],
+ ["BIO.1B.1","Develop and use models to compare and contrast the structure and function of carbohydrates, lipids, proteins, and nucleic acids (DNA and RNA) in organisms."],
+ ["BIO.1C.1","Develop and use models to explore how specialized structures within cells (e.g., nucleus, cytoskeleton, endoplasmic reticulum, ribosomes, Golgi apparatus, lysosomes, mitochondria, chloroplast, centrosomes, and vacuoles) interact to carry out the functions necessary for organism survival."],
+ ["BIO.1D.1","Plan and conduct investigations to prove that the cell membrane is a semi-permeable, allowing it to maintain homeostasis with its environment through active and passive transport processes."],
+ ["BIO.2.1","Use models to demonstrate that ATP and ADP are cycled within a cell as a means to transfer energy."],
+ ["BIO.3A.1","Model sex cell formation (meiosis) and combination (fertilization) to demonstrate the maintenance of chromosome number through each generation in sexually reproducing populations. Explain why the DNA of the daughter cells is different from the DNA of the parent cell."],
+ ["BIO.3B.1","Demonstrate Mendel's law of dominance and segregation using mathematics to predict phenotypic and genotypic ratios by constructing Punnett squares with both homozygous and heterozygous allele pairs."],
+ ["BIO.4.1","Use models to differentiate between organic and chemical evolution, illustrating the steps leading to aerobic heterotrophs and photosynthetic autotrophs."],
+ ["BIO.5.1","Illustrate levels of ecological hierarchy, including organism, population, community, ecosystem, biome, and biosphere."]
+],
+eng2:[
+ ["RL.9-10.1","Cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text."],
+ ["RL.9-10.2","Determine a theme or central idea of a text and analyze in detail its development over the course of the text, including how it emerges and is shaped and refined by specific details; provide an objective summary of the text."],
+ ["RL.9-10.3","Analyze how complex characters (e.g., those with multiple or conflicting motivations) develop over the course of a text, interact with other characters, and advance the plot or develop the theme."],
+ ["RL.9-10.4","Determine the meaning of words and phrases as they are used in the text, including figurative and connotative meanings; analyze the cumulative impact of specific word choices on meaning and tone."],
+ ["RI.9-10.1","Cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text."],
+ ["RI.9-10.2","Determine a central idea of a text and analyze its development over the course of the text, including how it emerges and is shaped and refined by specific details; provide an objective summary of the text."],
+ ["RI.9-10.5","Analyze in detail how an author's ideas or claims are developed and refined by particular sentences, paragraphs, or larger portions of a text."],
+ ["RI.9-10.6","Determine an author's point of view or purpose in a text and analyze how an author uses rhetoric to advance that point of view or purpose."],
+ ["RI.9-10.8","Delineate and evaluate the argument and specific claims in a text, assessing whether the reasoning is valid and the evidence is relevant and sufficient; identify false statements and fallacious reasoning."],
+ ["W.9-10.1","Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence."],
+ ["W.9-10.2","Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately through the effective selection, organization, and analysis of content."],
+ ["L.9-10.4","Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grades 9-10 reading and content, choosing flexibly from a range of strategies."]
+]};
+const SUBJ = {ela:"English Language Arts", math:"Mathematics", sci:"Science", alg1:"Algebra I (MAAP EOC)", bio1:"Biology I (MAAP EOC)", eng2:"English II (MAAP EOC)"};
+const COLOR = {ela:"ela", math:"math", sci:"sci", alg1:"math", bio1:"sci", eng2:"ela"};
+const EOC = {alg1:"Algebra I end-of-course test · standards from the MS CCRS Mathematics Algebra I course · taken in grades 8–10",
+             bio1:"Biology I end-of-course test · MS CCRS Science 2018, BIO.1A–BIO.6 · typically grade 9 or 10",
+             eng2:"English II end-of-course test · MS CCRS ELA grades 9–10 band · typically grade 10"};
+const EOC_GRADE = {alg1:"9", bio1:"10", eng2:"10"};
+const LANE = {0:["Grade-level original","Anchor text"],1:["Newcomer","ELPA21 Level 1"],2:["Emerging","ELPA21 Levels 1–2"],3:["Progressing","ELPA21 Levels 3–4"],4:["Challenge","ELPA21 Level 4–5 / near-exit"]};
+const GRADES = ["K","1","2","3","4","5","6","7","8","9","10","11","12"];
+const MTAM = ["Extended time","Small-group or individual setting","Bilingual word-to-word dictionary (no definitions)","Directions read aloud and clarified in English","Test items read aloud in English where the test permits (not on reading passages)","Frequent breaks"];
+
+// ---------- Examples shown at rest ----------
+const EX_ADAPT = {
+ kind:"adaptation", example:true, subject:"sci", grade:"7", code:"L.7.3.1",
+ standard:"Analyze diagrams to provide evidence of the importance of the cycling of water, oxygen, carbon, and nitrogen through ecosystems to organisms.",
+ lesson:"Students examine a carbon-cycle diagram, read a one-page text on how carbon moves between air, plants, animals, and soil, then write a short explanation of what would happen to the cycle if a forest were cleared.",
+ assess:"CER paragraph: claim, two pieces of evidence from the diagram, reasoning.", langs:"Spanish",
+ title:"Carbon cycle: what happens when the forest is cleared?",
+ contentObjective:"Students will use a carbon-cycle diagram as evidence to explain how removing a forest changes how carbon moves through an ecosystem.",
+ languageObjective:"Students will explain cause and effect in the carbon cycle using “When ___, then ___ because ___” sentences with a labeled diagram and word bank.",
+ vocabulary:[{term:"carbon dioxide",cognate:"dióxido de carbono"},{term:"photosynthesis",cognate:"fotosíntesis"},{term:"respiration",cognate:"respiración"},{term:"decompose",cognate:"descomponer"},{term:"atmosphere",cognate:"atmósfera"},{term:"release / absorb",cognate:"liberar / absorber"}],
+ lanes:{
+  1:{input:["Hand students a simplified diagram with only four boxes (air, plants, animals, soil) and arrows labeled with one verb each.","Pre-teach the six terms with pictures and the Spanish cognates side by side.","Read the text aloud in 3-sentence chunks while pointing to the diagram; skip the paragraph on fossil fuels."],output:["Students label the diagram with a word bank, then draw an X over the forest and show with arrows what stops.","Oral check: teacher asks “More carbon in the air? Yes or no?” and students point."],frames:["The plants ___ (absorb / release) carbon.","No forest → ___ carbon in the air."],assessment:"Labeled diagram plus one 3-word sentence replaces the CER paragraph. Score content accuracy only.",homeLanguage:"Allow a Spanish-language explanation of the diagram to a bilingual partner before the English task."},
+  2:{input:["Same simplified diagram; text chunked into 4 parts with a picture beside each.","Word bank with the six terms, each paired with an icon.","Partner reading: one reads, one points to the diagram."],output:["Students complete a cloze version of the CER with the word bank.","Think-pair-share with a frame before writing."],frames:["My claim: When the forest is cleared, carbon in the air goes ___.","Evidence: The diagram shows plants ___ carbon.","Reasoning: Fewer plants means ___ carbon is absorbed."],assessment:"Cloze CER (3 sentences) with word bank. Same rubric; language errors that don't block meaning are not penalized.",homeLanguage:"Bilingual glossary on the desk; Spanish cognates highlighted in the word bank."},
+  3:{input:["Full grade-level diagram; text intact but with margin glosses for 4 harder phrases.","Annotation protocol: circle a process, underline its effect."],output:["CER paragraph using a frame that fades: claim sentence given, evidence sentence starters given, reasoning written independently.","Structured discussion roles (summarizer, questioner) in groups of three before writing."],frames:["Clearing the forest would ___ the amount of carbon in the atmosphere because ___.","According to the diagram, ___; therefore, ___."],assessment:"Full CER paragraph with extended time and the frame visible. Grade-level rubric.",homeLanguage:"Encourage note-taking in either language; final product in English."},
+  4:{input:["Grade-level text and diagram as written.","Add a second source (a short data table on CO₂ after deforestation) to raise the evidence demand."],output:["CER paragraph plus a counterclaim sentence (“Some might argue…”).","Student serves as discussion leader in a mixed group and models academic connectors."],frames:["Although ___, the diagram indicates ___.","This matters because ___, which in turn ___."],assessment:"Grade-level CER as written, with allowable accommodations from the student's EL plan (extended time, bilingual dictionary).",homeLanguage:"Invite a brief comparison of how the process is named in Spanish and English (respiración vs. respiration) to sharpen precision."}
+ },
+ teacherMoves:["Post both objectives and read them aloud; have students echo the language objective.","Keep the diagram visible the entire period; every explanation points to it.","Model one full “When ___, then ___ because ___” sentence aloud before any writing.","Collect the Newcomer and Emerging products first so you can give feedback while others finish."],
+ materials:["Simplified 4-box carbon-cycle diagram (Newcomer/Emerging)","Grade-level diagram and text with margin glosses","Six-term picture word bank with Spanish cognates","CER cloze sheet and fading CER frame","Optional CO₂ data table for the Challenge lane"]
+};
+const EX_TEXT = {
+ kind:"text", example:true, subject:"bio1", grade:"HS", code:"BIO.1D.1",
+ standard:"Plan and conduct investigations to prove that the cell membrane is a semi-permeable, allowing it to maintain homeostasis with its environment through active and passive transport processes.",
+ title:"Why a wilted plant perks up: osmosis across the membrane", textType:"Informational / explanatory", langs:"Spanish",
+ glossary:[{term:"semi-permeable",cognate:"semipermeable",def:"lets some things through but not others"},{term:"osmosis",cognate:"ósmosis",def:"water moving across a membrane toward more dissolved stuff"},{term:"concentration",cognate:"concentración",def:"how much is dissolved in a space"},{term:"passive transport",cognate:"transporte pasivo",def:"movement that needs no energy from the cell"},{term:"active transport",cognate:"transporte activo",def:"movement that uses ATP to push against the gradient"}],
+ versions:{
+  0:{words:210,text:"A plant left without water droops because its cells are losing water faster than they gain it. The cell membrane is semi-permeable: water passes through freely, but most dissolved particles cannot. When the soil dries, the fluid outside the root cells has a higher concentration of dissolved minerals than the cytoplasm inside. Water moves by osmosis toward the higher concentration, so it leaves the cells. Pressure inside each cell falls and the stem can no longer hold itself up.\n\nWater the plant and the process reverses. Now the fluid outside the cells is more dilute, so water flows in. Cells swell against their walls and the plant stands again within an hour. No energy from the cell was required in either direction; this is passive transport.\n\nSome movement across the membrane does cost energy. Root cells pull in potassium and nitrate even when those ions are scarcer in the soil than inside the cell. Moving a substance against its concentration gradient requires active transport, powered by ATP. Without it, roots could not gather the minerals the plant needs, and the balance the plant maintains with its environment, its homeostasis, would collapse.",questions:["Using the text, explain why water leaves root cells when the soil dries.","What evidence in the text shows that osmosis is passive transport?","Why does the plant need active transport even though osmosis works for free?"]},
+  1:{words:78,text:"A plant has no water. It droops. [picture: droopy plant]\n\nThe cell has a membrane. Water can go in. Water can go out.\n\nThe soil is dry. Water goes OUT of the cell. The cell gets small. The plant droops.\n\nNow we water the plant. Water goes IN the cell. The cell gets big. The plant stands up. [picture: plant standing]\n\nThis is osmosis. The cell uses no energy.",questions:["Point: Where does water go when the soil is dry? In or out?","Circle the word: After we water the plant, the cell gets (big / small).","Does osmosis use energy? Yes or no?"]},
+  2:{words:118,text:"A plant without water droops. This happens because its cells lose water.\n\nThe cell membrane is semi-permeable. This means water can pass through, but most dissolved particles cannot.\n\nWhen the soil is dry, there is more dissolved material outside the cell than inside. Water moves toward the side with more dissolved material. So water leaves the cell. The cell gets soft, and the plant droops.\n\nWhen you water the plant, the outside becomes more watery. Now water moves into the cell. The cell gets firm again, and the plant stands up. This movement is called osmosis. It is passive transport because the cell uses no energy.",questions:["Why does water leave the cell when the soil is dry? Use the frame: Water leaves because ___.","What happens to the cell after you water the plant?","Is osmosis passive or active transport? How do you know?"]},
+  3:{words:170,text:"A plant left without water droops because its cells lose water faster than they gain it. The cell membrane is semi-permeable (it lets water through but blocks most dissolved particles). When the soil dries, the fluid outside the root cells holds a higher concentration of dissolved minerals than the cytoplasm inside. Water moves by osmosis toward the higher concentration; therefore, it leaves the cells, pressure inside falls, and the stem cannot hold itself up.\n\nWater the plant and the process reverses. The outside fluid is now more dilute, so water flows in, the cells swell, and the plant stands within an hour. Neither direction cost the cell energy, so this is passive transport.\n\nHowever, some movement does cost energy. Root cells pull in potassium and nitrate even when those ions are scarcer in the soil than in the cell. Moving a substance against its gradient requires active transport, powered by ATP. Without it, the plant could not keep its internal balance, its homeostasis.",questions:["Explain, using the term concentration, why water leaves the root cells.","Contrast passive and active transport with one example of each from the text.","What would happen to homeostasis if a root cell ran out of ATP? Cite the text."]},
+  4:{words:245,text:"(Grade-level text as above, plus a stretch paragraph:)\n\nConsider a farmer who over-fertilizes a field. Fertilizer dissolves into the soil water and raises its concentration far above that of the root cytoplasm. Predict, using the principle of osmosis, what happens to the roots, and explain why gardeners call this effect “fertilizer burn” even though no heat is involved. Then propose a simple investigation with potato cores or celery stalks in salt solutions of different concentrations that would let you measure the effect rather than describe it.",questions:["Predict and justify what over-fertilizing does to root cells.","Design a controlled investigation: name the independent variable, dependent variable, and two controls.","Evaluate: is “fertilizer burn” a precise term? Argue for a better one using evidence from the text."]}
+ }
+};
+const EX_ITEMS = {
+ kind:"items", example:true, subject:"alg1", grade:"HS", code:"F-IF.4",
+ standard:"For a function that models a relationship between two quantities, interpret key features of graphs and tables in terms of the quantities, and sketch graphs showing key features given a verbal description of the relationship.",
+ title:"Interpreting key features: a water tank draining", dok:"mixed",
+ stimulus:"A 500-gallon water tank begins draining at noon. The function g(t) = 500 − 20t gives the gallons remaining t minutes after noon, until the tank is empty.",
+ items:[
+  {type:"Multiple choice",dok:2,stem:"Which statement best interprets the y-intercept of g(t) in the context of the situation?",options:["The tank drains at 20 gallons per minute.","The tank holds 500 gallons when it begins draining.","The tank is empty after 25 minutes.","The tank gains 500 gallons every minute."],key:["B"],rationale:"At t = 0, g(0) = 500, the starting amount. A describes the slope; C describes the zero; D misreads the sign and the units.",
+   accessible:{stem:"Look at g(t) = 500 − 20t. The y-intercept is 500. What does 500 mean in this situation?",options:["The tank loses 20 gallons each minute.","The tank starts with 500 gallons.","The tank is empty after 25 minutes.","The tank gains 500 gallons each minute."],notes:"Named the intercept value in the stem; removed “best interprets”; one idea per sentence; the key is unchanged."}},
+  {type:"Multi-select",dok:2,stem:"Select ALL statements that are true about the function g(t) = 500 − 20t over its domain.",options:["The function is decreasing.","The rate of change is −20 gallons per minute.","The domain is all real numbers.","g(t) = 0 when t = 25.","The function has a maximum at t = 25."],key:["A","B","D"],rationale:"Negative slope means decreasing (A) at −20 gal/min (B); solving 500 − 20t = 0 gives t = 25 (D). The domain is restricted to 0 ≤ t ≤ 25 (C false); the maximum is at t = 0 (E false).",
+   accessible:{stem:"g(t) = 500 − 20t. t is minutes. Choose ALL the true statements.",options:["The gallons go down over time.","The tank loses 20 gallons every minute.","t can be any number, including negative numbers.","At t = 25, the tank has 0 gallons.","The tank has the most water at t = 25."],notes:"Replaced “decreasing,” “rate of change,” and “domain” with plain equivalents; the tested idea (reading key features) is intact. Keep A, B, D."}},
+  {type:"Technology-enhanced (described)",dok:2,stem:"Drag the correct values into the table to show the gallons remaining at 0, 5, 10, and 25 minutes. Then select the point on the graph where the tank is empty.",options:["Table cells: t = 0 → ___; t = 5 → ___; t = 10 → ___; t = 25 → ___ (bank: 0, 300, 400, 500, 100)","Graph: select the x-intercept"],key:["500, 400, 300, 0; point (25, 0)"],rationale:"Substitute each t. The x-intercept is where g(t) = 0.",
+   accessible:{stem:"Fill in the table. Use the bank. Then click the point on the graph where the tank is empty (0 gallons).",options:["t = 0 → ___  ·  t = 5 → ___  ·  t = 10 → ___  ·  t = 25 → ___","Bank: 0, 300, 400, 500, 100"],notes:"Added “(0 gallons)” to define empty; split the two-step directions into two sentences; a bolded example row (t = 0 → 500) may be shown on the classroom version."}},
+  {type:"Constructed response",dok:3,stem:"A second tank starts with 300 gallons and drains at 10 gallons per minute. Sketch both functions on the same axes and explain, using key features, which tank is empty first and how you know.",options:[],key:["Tank 1 empties at t = 25; Tank 2 at t = 30. Tank 1 is empty first."],rationale:"Compare zeros: 500/20 = 25 and 300/10 = 30. Steeper negative slope of Tank 1 overcomes its larger intercept.",rubric:["2 points: both graphs correct (intercepts and zeros) AND correct conclusion with reasoning tied to zeros or slopes.","1 point: correct conclusion with partial or unclear reasoning, OR correct graphs without a conclusion.","0 points: no correct features or conclusion."],
+   accessible:{stem:"Tank 2 starts with 300 gallons. It loses 10 gallons each minute.\n1. Draw Tank 1 and Tank 2 on the same graph.\n2. Which tank is empty first? Write: Tank ___ is empty first because ___.",options:[],notes:"Numbered the two tasks; supplied a response frame; the mathematics and the rubric are unchanged."}}
+ ],
+ accommodations:MTAM,
+ teacherNotes:["Give the accessible version to Newcomer/Emerging students as the classroom form; it is not a MAAP accommodation but keeps the construct intact for instruction and progress monitoring.","On MAAP, the only language supports are the MTAM accommodations listed; practice with those exact supports before test day.","Keep the symbols identical across versions so students transfer from classroom items to test items."]
+};
+
+
+// ---------- State ----------
+const LIVE_URL = "https://claude.ai/artifact/HkSRQahsRqpUY3bNpHsM96";
+const S = { subject:"ela", grade:"9", stdIndex:0, lib:[], current:{adapt:null,text:null,items:null}, textLane:0, pending:{} };
+const $ = (id)=>document.getElementById(id);
+const esc = (s)=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("show"),2400)}
+const isEOC = ()=> Array.isArray(BANK[S.subject]);
+const gradeLabel = ()=> isEOC() ? "HS" : S.grade;
+const standardsFor = ()=> isEOC() ? BANK[S.subject] : ((BANK[S.subject]||{})[S.grade]||[]);
+
+// ---------- Standard strip ----------
+function renderGrades(){ $("grades").innerHTML = GRADES.map(g=>`<button type="button" data-g="${g}" aria-pressed="${g===S.grade}">${g}</button>`).join(""); }
+function renderStandards(){
+  const list=standardsFor(), sel=$("stdsel");
+  sel.innerHTML = list.map((s,i)=>`<option value="${i}">${esc(s[0])} — ${esc(s[1].slice(0,70))}${s[1].length>70?"…":""}</option>`).join("") + `<option value="custom">Other standard (enter code and text)</option>`;
+  if(!list.length) sel.value="custom"; else { S.stdIndex=Math.min(S.stdIndex,list.length-1); sel.value=String(S.stdIndex); }
+  $("gradewrap").hidden=isEOC(); $("eocnote").hidden=!isEOC(); if(isEOC()) $("eocnote").textContent=EOC[S.subject];
+  showStd();
+}
+function showStd(){
+  const v=$("stdsel").value, custom=v==="custom";
+  $("customstd").hidden=!custom; $("stdbox").hidden=custom;
+  if(!custom){const s=standardsFor()[+v]; $("stdcode").textContent=s[0]; $("stdcode").className="code "+COLOR[S.subject]; $("stdtext").textContent=s[1];}
+}
+function currentStandard(){
+  const v=$("stdsel").value;
+  if(v==="custom") return {code:$("stdcode-in").value.trim(), text:$("stdtext-in").value.trim()};
+  const s=standardsFor()[+v]; return {code:s[0], text:s[1]};
+}
+function pickSubject(s){
+  S.subject=s; S.stdIndex=0;
+  document.querySelectorAll("#subj-k12 button, #subj-eoc button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.s===s));
+  if(isEOC()) S.grade=EOC_GRADE[s]; renderGrades(); renderStandards();
+}
+$("subj-k12").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) pickSubject(b.dataset.s)});
+$("subj-eoc").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) pickSubject(b.dataset.s)});
+$("grades").addEventListener("click",e=>{const b=e.target.closest("button"); if(!b) return; S.grade=b.dataset.g; S.stdIndex=0; renderGrades(); renderStandards();});
+$("stdsel").addEventListener("change",()=>{ if($("stdsel").value!=="custom") S.stdIndex=+$("stdsel").value; showStd(); });
+$("reset").addEventListener("click",()=>{ $("lesson").value=""; $("assess").value=""; });
+
+// ---------- Tabs ----------
+document.querySelector("nav.tabs").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) switchTab(b.dataset.tab)});
+function switchTab(name){
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected", x.dataset.tab===name));
+  ["adapt","text","items","library","ref"].forEach(t=>$("view-"+t).hidden = t!==name);
+  const tool = !(name==="library"||name==="ref");
+  $("strip").hidden=!tool; $("how").hidden=!tool;
+  try{ localStorage.setItem("elb.tab", name) }catch(_){}
+}
+
+// ---------- Shared ----------
+function headChips(p){
+  return `<div class="chips"><span class="chip ${COLOR[p.subject]||""}">${SUBJ[p.subject]||esc(p.subject)}</span><span class="chip">Grade ${esc(p.grade)}</span><span class="chip mono">${esc(p.code)}</span></div>`;
+}
+function headBar(p,label,saveId,copyId){
+  return `<div class="row" style="justify-content:space-between"><span class="eyebrow">${p.example?label+" · example — build your own above":label}</span>
+    <div class="row"><button class="btn ghost small" id="${copyId}">Copy as text</button>${!p.example?`<button class="btn small" id="${saveId}">Save to my library</button>`:""}</div></div>`;
+}
+function lanesChecked(name){ return [...document.querySelectorAll(`.lanes[data-lanes="${name}"] input:checked`)].map(x=>+x.value); }
+function baseInput(){ const std=currentStandard(); return {subject:S.subject, grade:gradeLabel(), code:std.code, text:std.text}; }
+function testContext(subject){
+  return subject==="alg1" ? "This standard is assessed on the MAAP Algebra I end-of-course test." :
+         subject==="bio1" ? "This standard is assessed on the MAAP Biology I end-of-course test." :
+         subject==="eng2" ? "This standard is assessed on the MAAP English II end-of-course test." :
+         "This standard is part of the Mississippi College- and Career-Readiness Standards; grades 3–8 ELA and math and grades 5 and 8 science are assessed on MAAP.";
+}
+function copyText(t,btn){
+  const done=()=>{ if(btn){const o=btn.textContent;btn.textContent="Copied ✓";btn.classList.add("done");setTimeout(()=>{btn.textContent=o;btn.classList.remove("done")},1800);} else toast("Copied"); };
+  const fb=()=>{const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);};
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done,()=>{fb();done()}); else {fb();done();}
+}
+// Tolerant JSON extraction from a pasted chat answer
+function parseAnswer(raw){
+  let s=String(raw||"").trim();
+  const fence=s.match(/```(?:json)?\s*([\s\S]*?)```/i); if(fence) s=fence[1].trim();
+  try{ return JSON.parse(s); }catch(_){}
+  const a=s.indexOf("{"), b=s.lastIndexOf("}");
+  if(a>=0&&b>a){ try{ return JSON.parse(s.slice(a,b+1)); }catch(_){} }
+  return null;
+}
+// Render the prompt box + paste box into an output area
+function promptFlow(outEl, kind, prompt, label){
+  S.pending[kind]=prompt;
+  const ids={p:kind+"-prompt",c:kind+"-copyp",cl:kind+"-claude",gp:kind+"-gpt",ta:kind+"-paste",go:kind+"-render",err:kind+"-err",ex:kind+"-ex"};
+  outEl.innerHTML=`<div class="panel flow">
+    <span class="eyebrow">Step 2 · ${esc(label)} prompt is ready</span>
+    <p style="font-size:14.5px">Copy it into the AI assistant you use, or open it directly. The prompt asks for a strict JSON answer so this page can lay it out. Then paste the whole reply in Step 3.</p>
+    <div class="pbox"><div class="pbar"><span>Prompt</span><div class="row">
+      <button class="btn small" id="${ids.c}">Copy prompt</button>
+      <a class="btn ghost small" id="${ids.cl}" target="_blank" rel="noopener" href="https://claude.ai/new?q=${encodeURIComponent(prompt)}">Open in Claude</a>
+      <a class="btn ghost small" id="${ids.gp}" target="_blank" rel="noopener" href="https://chatgpt.com/?q=${encodeURIComponent(prompt)}">Open in ChatGPT</a>
+    </div></div><pre id="${ids.p}">${esc(prompt)}</pre></div>
+    <div class="paste"><span class="eyebrow">Step 3 · Paste the AI's answer</span>
+      <textarea id="${ids.ta}" placeholder="Paste the entire reply here (it should start with { and end with }). A code fence around it is fine."></textarea>
+      <div class="row"><button class="btn gold" id="${ids.go}">Lay it out</button><button class="btn ghost small" id="${ids.ex}">Show the example instead</button></div>
+      <div class="err" id="${ids.err}" hidden></div></div>
+    <p class="hint">If the assistant replies with prose instead of JSON, send it: “Reply again with only the JSON object, no commentary.” If a long answer is cut off, ask for fewer lanes or fewer items.</p>
+  </div>`;
+  $(ids.c).onclick=()=>copyText(prompt,$(ids.c));
+  return ids;
+}
+
+// ========== 1. LESSON ADAPTATION ==========
+function laneCard(n,L){
+  if(!L) return ""; const li=(a)=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join("");
+  return `<article class="lane" data-l="${n}"><div class="top"><h3>${LANE[n][0]}</h3><span class="lvl">${LANE[n][1]}</span></div>
+    <div class="body"><div><h4>Make the input comprehensible</h4><ul>${li(L.input)}</ul></div><div><h4>How students produce</h4><ul>${li(L.output)}</ul></div>
+    ${L.frames&&L.frames.length?`<div><h4>Sentence frames</h4><ul class="frames">${li(L.frames)}</ul></div>`:""}
+    <div><h4>Fair check for understanding</h4><p>${esc(L.assessment)}</p></div>
+    ${L.homeLanguage?`<div><h4>Home-language bridge</h4><p>${esc(L.homeLanguage)}</p></div>`:""}</div></article>`;
+}
+function renderPlan(p){
+  S.current.adapt=p;
+  const vocab=(p.vocabulary||[]).map(v=>`<span>${esc(v.term)}${v.cognate?` <i>· ${esc(v.cognate)}</i>`:""}</span>`).join("");
+  $("out").innerHTML=`<div class="panel">${headBar(p,"Adapted lesson","save","copy")}<h2>${esc(p.title)}</h2>${headChips(p)}
+    <p class="hint"><b>Standard.</b> ${esc(p.standard)}</p>
+    <div class="objs"><div class="obj"><div class="k">Content objective (all lanes)</div>${esc(p.contentObjective)}</div><div class="obj"><div class="k">Language objective</div>${esc(p.languageObjective)}</div></div>
+    ${vocab?`<div><div class="eyebrow" style="margin-bottom:6px">Key vocabulary · cognates where they exist</div><div class="vocab">${vocab}</div></div>`:""}</div>
+  <div class="lanegrid">${Object.keys(p.lanes||{}).map(n=>laneCard(n,p.lanes[n])).join("")}</div>
+  <div class="two"><div class="wide"><h3>Teacher moves</h3><ul>${(p.teacherMoves||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+  <div class="wide"><h3>Materials to prepare</h3><ul>${(p.materials||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
+  $("copy").onclick=()=>copyText(planText(p),$("copy")); const sv=$("save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+}
+function planText(p){
+  const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,"","CONTENT OBJECTIVE: "+p.contentObjective,"LANGUAGE OBJECTIVE: "+p.languageObjective,"","KEY VOCABULARY: "+(p.vocabulary||[]).map(v=>v.term+(v.cognate?` (${v.cognate})`:"")).join(", "),""];
+  for(const n of Object.keys(p.lanes||{})){const l=p.lanes[n]; L.push(`=== ${LANE[n][0].toUpperCase()} — ${LANE[n][1]} ===`,"Input:");(l.input||[]).forEach(x=>L.push("  - "+x));L.push("Output:");(l.output||[]).forEach(x=>L.push("  - "+x));if(l.frames&&l.frames.length){L.push("Frames:");l.frames.forEach(x=>L.push("  - "+x));}L.push("Check: "+l.assessment);if(l.homeLanguage)L.push("Home language: "+l.homeLanguage);L.push("");}
+  L.push("TEACHER MOVES:");(p.teacherMoves||[]).forEach(x=>L.push("  - "+x));L.push("MATERIALS:");(p.materials||[]).forEach(x=>L.push("  - "+x));return L.join("\n");
+}
+function adaptPrompt(i){
+  const laneSpec=i.lanes.map(n=>`${n}: ${LANE[n][0]} (${LANE[n][1]})`).join("; ");
+  return `You are an experienced ENL/ESL specialist in Mississippi helping a general-education teacher adapt one lesson for English learners. Keep the grade-level content objective identical for every lane; change only the language demands and supports. Follow the Mississippi College- and Career-Readiness Standards and ELPA21 proficiency levels. ${testContext(i.subject)} Be concrete and classroom-ready: name actual materials, frames, and checks. Use the teacher's own lesson details; do not invent texts the teacher did not mention.
+
+SUBJECT/COURSE: ${SUBJ[i.subject]}
+GRADE: ${i.grade}
+STANDARD ${i.code}: ${i.text}
+LESSON AS TAUGHT: ${i.lesson}
+CHECK FOR UNDERSTANDING: ${i.assess||"not specified; propose one"}
+HOME LANGUAGES: ${i.langs||"not specified"}
+LANES REQUESTED: ${laneSpec}
+
+Lane guidance:
+- Newcomer (Level 1): visuals, labels, realia, home-language bridge, pointing/sorting/matching/yes-no/drawing responses, 1-3 word frames, chunked read-alouds. Reduce language, never the concept.
+- Emerging (Levels 1-2): word banks with icons, sentence starters, cloze notes, chunked text, partner talk with frames, short constructed responses.
+- Progressing (Levels 3-4): grade-level text with margin glosses, paragraph frames that fade, academic connectors, annotation protocols, structured discussion roles, extended time.
+- Challenge (Level 4-5/near-exit): grade-level task as written plus precision supports (register, nuance, counterclaims, extended discourse, peer-leader roles) and the student's EL-plan accommodations.
+For math, frames should surface reasoning ("I know ___ because ___"); fewer problems, same skill. For science, keep the practice (analyze, model, investigate, construct an explanation) intact in every lane. For ELA, protect the standard's cognitive demand (determine, analyze, cite) while scaffolding text and written response. For an EOC course, name the MAAP-tested vocabulary that must stay in English in every lane.
+Cognates: include a Spanish cognate only when it is a true cognate; otherwise leave cognate empty. If home languages exclude Spanish, give cognates for the named language only when confident.
+
+Reply with ONLY a JSON object in exactly this shape, no markdown, no commentary before or after:
+{"title":"short lesson title (max 70 chars)","contentObjective":"one sentence","languageObjective":"one sentence: Students will [function] [content] using [form] with [support]","vocabulary":[{"term":"","cognate":""}] (5-7 items),"lanes":{"${i.lanes.join('":LANE,"')}":LANE},"teacherMoves":["3-5 short items"],"materials":["3-6 short items"]}
+where LANE = {"input":["2-3 items"],"output":["2 items"],"frames":["2-3 sentence frames with ___ blanks"],"assessment":"one or two sentences","homeLanguage":"one sentence"}`;
+}
+$("intake").addEventListener("submit", e=>{
+  e.preventDefault();
+  const b=baseInput(), lanes=lanesChecked("adapt"), lesson=$("lesson").value.trim();
+  if(!b.code||!b.text){toast("Choose a standard or enter its code and text");return;}
+  if(lesson.length<20){toast("Describe the lesson in a sentence or two first");$("lesson").focus();return;}
+  if(!lanes.length){toast("Pick at least one lane");return;}
+  const i=Object.assign(b,{lesson,assess:$("assess").value.trim(),langs:$("langs").value.trim(),lanes});
+  const ids=promptFlow($("out"),"adapt",adaptPrompt(i),"Lesson adaptation");
+  $(ids.ex).onclick=()=>renderPlan(EX_ADAPT);
+  $(ids.go).onclick=()=>{
+    const data=parseAnswer($(ids.ta).value); const err=$(ids.err);
+    if(!data||!data.lanes){ err.hidden=false; err.textContent="That doesn't look like the JSON the prompt asked for. Ask the assistant to reply again with only the JSON object, then paste the whole thing."; return; }
+    const plan=Object.assign({kind:"adaptation",subject:i.subject,grade:i.grade,code:i.code,standard:i.text,lesson:i.lesson,assess:i.assess,langs:i.langs},data);
+    const ln={}; lanes.forEach(n=>{if(plan.lanes[n]) ln[n]=plan.lanes[n];}); if(Object.keys(ln).length) plan.lanes=ln;
+    renderPlan(plan); $("out").scrollIntoView({behavior:"smooth",block:"start"});
+  };
+  $("out").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+// ========== 2. LEVELED TEXT ==========
+function renderText(p){
+  S.current.text=p;
+  const keys=Object.keys(p.versions||{}).map(Number).sort();
+  if(!keys.includes(S.textLane)) S.textLane=keys[0];
+  const v=p.versions[S.textLane]||{};
+  const gl=(p.glossary||[]).map(g=>`<span>${esc(g.term)}${g.cognate?` <i>· ${esc(g.cognate)}</i>`:""}${g.def?` <i>— ${esc(g.def)}</i>`:""}</span>`).join("");
+  $("t-out").innerHTML=`<div class="panel">${headBar(p,"Leveled text","t-save","t-copy")}<h2>${esc(p.title)}</h2>${headChips(p)}
+    <p class="hint"><b>Standard.</b> ${esc(p.standard)}</p>
+    ${gl?`<div><div class="eyebrow" style="margin-bottom:6px">Glossary · cognates where they exist</div><div class="vocab">${gl}</div></div>`:""}
+    <div class="lanetabs" id="lanetabs">${keys.map(k=>`<button type="button" data-k="${k}" aria-selected="${k===S.textLane}">${LANE[k][0]}</button>`).join("")}</div></div>
+  <article class="lane" data-l="${S.textLane}"><div class="top"><h3>${LANE[S.textLane][0]}</h3><span class="lvl">${LANE[S.textLane][1]}${v.words?` · ~${esc(v.words)} words`:""}</span></div>
+    <div class="body"><div class="passage">${esc(v.text||"")}</div>
+    ${v.questions&&v.questions.length?`<div><h4>Text-dependent questions</h4><ul>${v.questions.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div>`:""}
+    ${v.supports?`<div><h4>How to use this version</h4><p>${esc(v.supports)}</p></div>`:""}</div></article>`;
+  $("lanetabs").onclick=e=>{const b=e.target.closest("button"); if(!b) return; S.textLane=+b.dataset.k; renderText(p);};
+  $("t-copy").onclick=()=>copyText(textText(p),$("t-copy")); const sv=$("t-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+}
+function textText(p){
+  const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,"","GLOSSARY: "+(p.glossary||[]).map(g=>g.term+(g.cognate?` (${g.cognate})`:"")+(g.def?`: ${g.def}`:"")).join("; "),""];
+  for(const k of Object.keys(p.versions||{})){const v=p.versions[k];L.push(`=== ${LANE[k][0].toUpperCase()} — ${LANE[k][1]} ===`,v.text||"","");if(v.questions&&v.questions.length){L.push("Questions:");v.questions.forEach(q=>L.push("  - "+q));}if(v.supports)L.push("Use: "+v.supports);L.push("");}
+  return L.join("\n");
+}
+function textPrompt(i){
+  const lens={short:"150-250",medium:"300-450",long:"500-700"}[i.len];
+  const spec=i.lanes.map(n=>({0:`0: Grade-level original, ${lens} words, at the text complexity expected for grade ${i.grade} in Mississippi`,
+    1:"1: Newcomer (ELPA21 Level 1): 60-100 words; 3-7 word sentences; present tense; high-frequency words; the 3-4 essential content terms kept; a bracketed [picture: ...] cue every few lines; one idea per line",
+    2:"2: Emerging (Levels 1-2): 100-160 words; simple and compound sentences; key terms kept and defined in the sentence; no idioms; explicit connectors (first, then, because, so)",
+    3:"3: Progressing (Levels 3-4): about 75% of the original length; near grade-level vocabulary; parenthetical glosses for 3-5 hard phrases; clear academic connectors (however, therefore, in contrast)",
+    4:"4: Challenge (Level 4-5): the grade-level text PLUS one stretch paragraph adding a second perspective, a data point, or a transfer task; summarize the shared part in one line rather than repeating the full original"})[n]).join("\n- ");
+  return `You are an ENL specialist and content writer in Mississippi. Write ORIGINAL text (never reproduce a published work) that lets English learners work on the standard below at their English proficiency level while the content and the standard's cognitive demand stay constant. ${testContext(i.subject)}
+
+SUBJECT/COURSE: ${SUBJ[i.subject]}
+GRADE: ${i.grade}
+STANDARD ${i.code}: ${i.text}
+TOPIC / TEXT NEEDED: ${i.topic}
+TEXT TYPE: ${i.type}
+HOME LANGUAGES: ${i.langs||"not specified"}
+VERSIONS REQUESTED:
+- ${spec}
+
+Rules: every version covers the same core content and keeps the same essential academic terms (define, don't delete). Tested vocabulary for an EOC course stays in English in every version. For math situations, keep numbers and relationships identical across versions; for literary text, keep the same characters and events. ${i.q?"Give each version exactly 3 text-dependent questions pitched to that lane (Newcomer: point/circle/yes-no; Emerging: with a frame; Progressing: open with a connector; Challenge: analyze/evaluate).":"Do not include questions (use an empty array)."} ${i.gloss?"Give a glossary of 5-7 terms with a plain definition and a true cognate in the named home language when one exists (else empty string).":"Return an empty glossary array."} Add a one-sentence "supports" note per version telling the teacher how to use it.
+
+Reply with ONLY a JSON object, no markdown, no commentary before or after:
+{"title":"max 70 chars","glossary":[{"term":"","cognate":"","def":""}],"versions":{"${i.lanes.join('":V,"')}":V}}
+where V = {"words":number,"text":"the passage with \\n\\n between paragraphs","questions":["",""],"supports":"one sentence"}`;
+}
+$("intake-text").addEventListener("submit", e=>{
+  e.preventDefault();
+  const b=baseInput(), lanes=lanesChecked("text"), topic=$("t-topic").value.trim();
+  if(!b.code||!b.text){toast("Choose a standard first");return;}
+  if(topic.length<8){toast("Say what the text should be about");$("t-topic").focus();return;}
+  if(!lanes.length){toast("Pick at least one version");return;}
+  const i=Object.assign(b,{topic,type:$("t-type").value,len:$("t-len").value,lanes,q:$("t-q").checked,gloss:$("t-gloss").checked,langs:$("t-langs").value.trim()});
+  const ids=promptFlow($("t-out"),"text",textPrompt(i),"Leveled text");
+  $(ids.ex).onclick=()=>{S.textLane=0;renderText(EX_TEXT);};
+  $(ids.go).onclick=()=>{
+    const data=parseAnswer($(ids.ta).value); const err=$(ids.err);
+    if(!data||!data.versions){ err.hidden=false; err.textContent="That doesn't look like the JSON the prompt asked for. Ask the assistant to reply again with only the JSON object, then paste the whole thing."; return; }
+    const p=Object.assign({kind:"text",subject:i.subject,grade:i.grade,code:i.code,standard:i.text,textType:i.type,langs:i.langs},data);
+    const vs={}; lanes.forEach(n=>{if(p.versions[n]) vs[n]=p.versions[n];}); if(Object.keys(vs).length) p.versions=vs; S.textLane=+Object.keys(p.versions)[0];
+    renderText(p); $("t-out").scrollIntoView({behavior:"smooth",block:"start"});
+  };
+  $("t-out").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+// ========== 3. ASSESSMENT ITEMS ==========
+function optList(opts,keys){
+  if(!opts||!opts.length) return ""; const letters="ABCDEFGH";
+  return `<ul class="opts">${opts.map((o,i)=>{const L=letters[i]; const isKey=(keys||[]).some(k=>String(k).trim().toUpperCase()===L); return `<li class="${isKey?"key":""}"><b>${L}.</b><span>${esc(o)}</span></li>`;}).join("")}</ul>`;
+}
+function renderItems(p){
+  S.current.items=p;
+  $("i-out").innerHTML=`<div class="panel">${headBar(p,"Assessment items","i-save","i-copy")}<h2>${esc(p.title)}</h2>${headChips(p)}
+    <p class="hint"><b>Standard.</b> ${esc(p.standard)}</p>
+    ${p.stimulus?`<div class="obj"><div class="k">Stimulus</div><div class="stem">${esc(p.stimulus)}</div></div>`:""}
+    ${p.stimulusAccessible?`<div class="obj" style="border-left-color:var(--navy)"><div class="k">Stimulus · accessible version</div><div class="stem">${esc(p.stimulusAccessible)}</div></div>`:""}</div>
+  ${(p.items||[]).map((it,idx)=>`<article class="item">
+    <div class="ihead"><span class="num">Item ${idx+1}</span><div class="chips"><span class="chip">${esc(it.type)}</span><span class="chip mono">DOK ${esc(it.dok)}</span></div></div>
+    <div class="pair">
+      <div><h4>Grade-level item</h4><div class="stem">${esc(it.stem)}</div>${optList(it.options,it.key)}</div>
+      ${it.accessible?`<div class="acc"><h4>Linguistically accessible version · same key</h4><div class="stem">${esc(it.accessible.stem)}</div>${optList(it.accessible.options&&it.accessible.options.length?it.accessible.options:it.options,it.key)}
+        ${it.accessible.spanish?`<div class="hint" style="margin-top:8px"><b>Spanish stem (classroom only):</b> ${esc(it.accessible.spanish)}</div>`:""}
+        ${it.accessible.notes?`<div class="hint" style="margin-top:8px">${esc(it.accessible.notes)}</div>`:""}</div>`:""}
+    </div>
+    <details><summary>Key and rationale</summary><p style="margin-top:6px"><b>Key:</b> ${esc((it.key||[]).join(", "))}</p><p class="rub">${esc(it.rationale||"")}</p>
+      ${it.rubric&&it.rubric.length?`<h4 style="margin-top:8px">Scoring rubric</h4><ul class="rub">${it.rubric.map(r=>`<li>${esc(r)}</li>`).join("")}</ul>`:""}</details>
+  </article>`).join("")}
+  <div class="two"><div class="wide"><h3>MTAM-allowable accommodations to list on the EL plan</h3><ul>${(p.accommodations||MTAM).map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="hint">Confirm against the current MTAM; translated test items are not allowable on MAAP.</p></div>
+  <div class="wide"><h3>Teacher notes</h3><ul>${(p.teacherNotes||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
+  $("i-copy").onclick=()=>copyText(itemsText(p),$("i-copy")); const sv=$("i-save"); if(sv) sv.onclick=()=>saveDoc(p,sv);
+}
+function itemsText(p){
+  const letters="ABCDEFGH"; const L=[p.title,"",`${SUBJ[p.subject]||p.subject} · Grade ${p.grade} · ${p.code}`,p.standard,""];
+  if(p.stimulus) L.push("STIMULUS: "+p.stimulus,""); if(p.stimulusAccessible) L.push("STIMULUS (accessible): "+p.stimulusAccessible,"");
+  (p.items||[]).forEach((it,i)=>{L.push(`ITEM ${i+1} · ${it.type} · DOK ${it.dok}`,it.stem);(it.options||[]).forEach((o,j)=>L.push(`  ${letters[j]}. ${o}`));
+    if(it.accessible){L.push("  -- Accessible version --",`  ${it.accessible.stem}`);(it.accessible.options||[]).forEach((o,j)=>L.push(`  ${letters[j]}. ${o}`));if(it.accessible.spanish)L.push("  Spanish stem: "+it.accessible.spanish);}
+    L.push("  KEY: "+(it.key||[]).join(", "),"  RATIONALE: "+(it.rationale||""));if(it.rubric&&it.rubric.length){L.push("  RUBRIC:");it.rubric.forEach(r=>L.push("    - "+r));}L.push("");});
+  L.push("ACCOMMODATIONS (MTAM):");(p.accommodations||MTAM).forEach(x=>L.push("  - "+x));L.push("TEACHER NOTES:");(p.teacherNotes||[]).forEach(x=>L.push("  - "+x));return L.join("\n");
+}
+function itemsPrompt(i){
+  const test=i.subject==="alg1"?"MAAP Algebra I":i.subject==="bio1"?"MAAP Biology I":i.subject==="eng2"?"MAAP English II":"MAAP";
+  return `You are a Mississippi assessment writer and ENL specialist. Write ${i.n} original practice items in the style of ${test} for the standard below. ${testContext(i.subject)} Items must measure the standard, not general knowledge. Use only the item types listed. Distribute DOK as: ${i.dok==="1-2"?"DOK 1-2":i.dok==="2-3"?"DOK 2-3":"a mix of DOK 1, 2, and 3"}. Do not reproduce any released or secure test content.
+
+SUBJECT/COURSE: ${SUBJ[i.subject]}
+GRADE: ${i.grade}
+STANDARD ${i.code}: ${i.text}
+ITEM TYPES ALLOWED: ${i.types.join(" | ")}
+STIMULUS: ${i.ctx||"none supplied — write a brief original stimulus (passage, data table described in words, scenario, or diagram described in words) that the items share, appropriate to the subject"}
+
+Item rules: multiple choice has 4 options with exactly one key and distractors built from real misconceptions; multi-select has 5-6 options and 2-3 keys; evidence-based selected response has Part A (interpretation) and Part B (evidence) written as two stems inside one item (put Part B as the last option group, label clearly); technology-enhanced items describe the interaction in words (drag-and-drop, hot text, graphing, table completion) and give the expected response as the key; constructed response includes a 2- or 3-point rubric. Use key letters (A, B, C...) referring to option order; for TE and CR items put the expected response text in key.
+${i.acc?`For EVERY item also write a linguistically accessible version: same construct, same key, same tested vocabulary; shorter sentences, active voice, one question per sentence, familiar words outside the tested terms, no idioms, numbered steps for multi-part directions. Add a one-sentence note on what changed. ${i.span?"Also give the accessible stem in Spanish (classroom use only).":"Leave spanish as an empty string."} If the stimulus is a passage, also give an accessible version of the stimulus (same content, simpler language) in stimulusAccessible; otherwise set it to an empty string.`:"Set accessible to null for every item and stimulusAccessible to an empty string."}
+Finish with 3 teacher notes about using the items with English learners (progress monitoring, keeping symbols consistent, what carries to MAAP and what does not).
+
+Reply with ONLY a JSON object, no markdown, no commentary before or after:
+{"title":"max 70 chars","stimulus":"","stimulusAccessible":"","items":[{"type":"","dok":1,"stem":"","options":["",""],"key":["B"],"rationale":"","rubric":[],"accessible":{"stem":"","options":["",""],"spanish":"","notes":""}}],"teacherNotes":["","",""]}`;
+}
+$("intake-items").addEventListener("submit", e=>{
+  e.preventDefault();
+  const b=baseInput(); const types=[...document.querySelectorAll("#i-types input:checked")].map(x=>x.value);
+  if(!b.code||!b.text){toast("Choose a standard first");return;}
+  if(!types.length){toast("Pick at least one item type");return;}
+  const n=Math.max(1,Math.min(8,+$("i-n").value||4));
+  const i=Object.assign(b,{n,dok:$("i-dok").value,types,ctx:$("i-ctx").value.trim().slice(0,6000),acc:$("i-acc").checked,span:$("i-span").checked});
+  const ids=promptFlow($("i-out"),"items",itemsPrompt(i),"Assessment items");
+  $(ids.ex).onclick=()=>renderItems(EX_ITEMS);
+  $(ids.go).onclick=()=>{
+    const data=parseAnswer($(ids.ta).value); const err=$(ids.err);
+    if(!data||!Array.isArray(data.items)){ err.hidden=false; err.textContent="That doesn't look like the JSON the prompt asked for. Ask the assistant to reply again with only the JSON object, then paste the whole thing."; return; }
+    const p=Object.assign({kind:"items",subject:i.subject,grade:i.grade,code:i.code,standard:i.text,dok:i.dok,accommodations:MTAM},data);
+    renderItems(p); $("i-out").scrollIntoView({behavior:"smooth",block:"start"});
+  };
+  $("i-out").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+// ========== MY LIBRARY (browser storage) ==========
+const LIB_KEY="elbridge.library.v1";
+function loadLib(){ try{ S.lib=JSON.parse(localStorage.getItem(LIB_KEY)||"[]"); if(!Array.isArray(S.lib)) S.lib=[]; }catch(_){ S.lib=[]; } }
+function storeLib(){ try{ localStorage.setItem(LIB_KEY, JSON.stringify(S.lib)); return true; }catch(_){ return false; } }
+function saveDoc(p,btn){
+  const doc=JSON.parse(JSON.stringify(p)); delete doc.example; doc.kind=p.kind||"adaptation"; doc.grade=String(p.grade);
+  doc.id=doc.id||("d"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)); doc.savedAt=doc.savedAt||new Date().toISOString();
+  const ix=S.lib.findIndex(d=>d.id===doc.id); if(ix>=0) S.lib[ix]=doc; else S.lib.unshift(doc);
+  p.id=doc.id; p.savedAt=doc.savedAt;
+  if(storeLib()){ btn.textContent="Saved ✓"; btn.classList.add("done"); btn.disabled=true; toast("Saved to your library on this device"); renderLibrary(); }
+  else toast("This browser is blocking storage; use Copy as text instead.");
+}
+const KIND={adaptation:"Lesson adaptation",text:"Leveled text",items:"Item set"};
+function renderLibrary(){
+  const kind=$("lib-kind").value, sub=$("lib-subject").value, gr=$("lib-grade").value, q=$("lib-q").value.trim().toLowerCase();
+  const rows=S.lib.filter(d=>(!kind||(d.kind||"adaptation")===kind)&&(!sub||d.subject===sub)&&(!gr||String(d.grade)===gr)&&(!q||[d.title,d.code,d.standard].join(" ").toLowerCase().includes(q)));
+  $("lib-count").textContent=S.lib.length?`${rows.length} of ${S.lib.length}`:"";
+  $("lib-empty").hidden=S.lib.length>0;
+  $("lib-cards").innerHTML=rows.map(d=>{const k=d.kind||"adaptation"; const sub2=k==="adaptation"?Object.keys(d.lanes||{}).map(n=>LANE[n]?LANE[n][0]:n).join(" · "):k==="text"?Object.keys(d.versions||{}).map(n=>LANE[n]?LANE[n][0]:n).join(" · "):`${(d.items||[]).length} items`;
+    return `<div class="card" data-id="${esc(d.id)}" role="button" tabindex="0"><span class="kind">${KIND[k]||k}</span><span class="t">${esc(d.title)}</span>
+    <span class="chips"><span class="chip ${COLOR[d.subject]||""}">${SUBJ[d.subject]||esc(d.subject)}</span><span class="chip">Grade ${esc(d.grade)}</span><span class="chip mono">${esc(d.code)}</span></span>
+    <span class="m">${esc(sub2)}${d.savedAt?` · ${new Date(d.savedAt).toLocaleDateString()}`:""}</span>
+    <span class="row"><button type="button" class="btn ghost small" data-del="${esc(d.id)}">Remove</button></span></div>`;}).join("");
+}
+["lib-kind","lib-subject","lib-grade","lib-q"].forEach(id=>$(id).addEventListener("input",renderLibrary));
+$("lib-cards").addEventListener("click",e=>{
+  const del=e.target.closest("[data-del]");
+  if(del){ S.lib=S.lib.filter(d=>d.id!==del.dataset.del); storeLib(); renderLibrary(); toast("Removed"); return; }
+  const c=e.target.closest(".card"); if(!c) return; const d=S.lib.find(x=>x.id===c.dataset.id); if(!d) return;
+  const p=Object.assign({},d); const k=d.kind||"adaptation";
+  if(k==="text"){S.textLane=+Object.keys(d.versions||{})[0]||0; renderText(p); switchTab("text");} else if(k==="items"){renderItems(p); switchTab("items");} else {renderPlan(p); switchTab("adapt");}
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+$("lib-export").addEventListener("click",()=>{
+  if(!S.lib.length){toast("Nothing to export yet");return;}
+  const b=new Blob([JSON.stringify({app:"EL Bridge Mississippi",exported:new Date().toISOString(),items:S.lib},null,1)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="el-bridge-library.json"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+});
+$("lib-import").addEventListener("change",e=>{
+  const f=e.target.files&&e.target.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=()=>{
+    try{ const j=JSON.parse(r.result); const arr=Array.isArray(j)?j:(j.items||[]); let n=0;
+      arr.forEach(d=>{ if(d&&d.title&&d.kind){ if(!d.id) d.id="d"+Date.now().toString(36)+Math.random().toString(36).slice(2,6); if(!S.lib.some(x=>x.id===d.id)){S.lib.push(d);n++;} } });
+      S.lib.sort((a,b)=>String(b.savedAt||"").localeCompare(String(a.savedAt||""))); storeLib(); renderLibrary(); toast(n?`Imported ${n} item${n===1?"":"s"}`:"Nothing new in that file");
+    }catch(_){ toast("That file isn't an EL Bridge library export"); }
+    e.target.value="";
+  }; r.readAsText(f);
+});
+
+// ---------- Boot ----------
+(function boot(){
+  renderGrades(); renderStandards();
+  renderPlan(EX_ADAPT); S.textLane=0; renderText(EX_TEXT); renderItems(EX_ITEMS);
+  $("lib-grade").innerHTML += GRADES.map(g=>`<option value="${g}">${g}</option>`).join("")+`<option value="HS">HS (EOC)</option>`;
+  loadLib(); renderLibrary();
+  try{const t=localStorage.getItem("elb.tab"); if(t&&["adapt","text","items","library","ref"].includes(t)) switchTab(t);}catch(_){}
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
