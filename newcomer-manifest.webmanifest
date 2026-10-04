@@ -1,0 +1,22 @@
+{
+  "name": "Newcomer Series · EL Publishing",
+  "short_name": "Newcomer",
+  "description": "Your Guide to School in the U.S., First 100 Words, the English test explained, the graduation roadmap and the Can-Do checklist, in six languages, usable offline.",
+  "start_url": "./newcomer-guide.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F5FA",
+  "theme_color": "#1E2761",
+  "lang": "en",
+  "icons": [
+    {"src": "icons/el-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/el-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/el-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "First 100 Words", "url": "./first-100-words.html?source=pwa"},
+    {"name": "The English test, explained", "url": "./elpt-family-guide.html?source=pwa"},
+    {"name": "Graduation Roadmap", "url": "./graduation-roadmap.html?source=pwa"},
+    {"name": "Can-Do Checklist", "url": "./can-do-checklist.html?source=pwa"}
+  ]
+}
