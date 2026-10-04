@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graduation Roadmap for Newcomers · Mississippi · EL Publishing</title>
+<meta name="description" content="An interactive credit planner for newcomer English learners in Mississippi high schools: diploma options, the 24 required credits by subject, state tests, how home-country credits count, the Seal of Biliteracy, and a year-by-year plan students fill in with their counselor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#1b7a3c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:960px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .h1es{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--gold-lt);margin:8px 0 0}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:62ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  main{max-width:960px;margin:0 auto;padding:22px 22px 40px}
+  .pg{background:var(--paper);border:1px solid var(--rule);padding:24px 28px;margin:0 0 20px}
+  .pg h2{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:23px;color:var(--navy);margin:0 0 6px;line-height:1.2}
+  .pg h2 i{font-weight:600;color:#8a6e14;font-size:17px}
+  .pg p,.pg li{font-size:15px;line-height:1.45;margin:0}.pg ul{margin:0;padding-left:18px}.pg li{margin-bottom:4px}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
+  .opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+  .opt{border:2px solid var(--rule);padding:12px 14px;cursor:pointer;background:#fff;text-align:left;font:inherit;color:var(--ink);border-radius:8px}
+  .opt[aria-pressed="true"]{border-color:var(--gold);background:#FBF6E6}
+  .opt b{display:block;font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy)}
+  .opt small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;margin-top:4px}
+  .opt .cr{font-size:26px;font-family:Fraunces,Georgia,serif;color:var(--gold);font-weight:700;line-height:1;margin:4px 0}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin-top:12px}
+  th{text-align:left;background:var(--navy);color:#fff;padding:8px 10px;font-weight:600;font-size:13px}
+  td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:middle}
+  td.n{text-align:center;font-weight:700;color:var(--navy);white-space:nowrap}
+  td input{width:64px;font:inherit;font-size:15px;padding:5px 6px;border:1px solid var(--rule);border-radius:6px;text-align:center}
+  .meter{height:10px;background:#E3E5EF;border-radius:999px;overflow:hidden;min-width:120px}
+  .meter i{display:block;height:100%;background:var(--gold);width:0;transition:width .3s}
+  .meter i.ok{background:var(--ok)}
+  .tot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+  .tot div{border:1px solid var(--rule);padding:12px 14px;text-align:center}
+  .tot b{display:block;font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--navy);line-height:1}
+  .tot span{font-size:13px;color:var(--muted)}
+  .yrs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+  .yr{border-top:4px solid var(--navy);padding-top:8px}
+  .yr b{display:block;color:var(--navy);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  .yr textarea{width:100%;min-height:150px;font:inherit;font-size:14px;padding:8px;border:1px solid var(--rule);border-radius:6px;resize:vertical;margin-top:6px}
+  .yr small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;margin-top:4px}
+  .tip{background:#F7F1DC;border:1px solid #E3D08E;padding:12px 14px;font-size:14px;line-height:1.45;margin-top:12px}
+  .tip b{color:#5a4714}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px}
+  .tests{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+  .tests label{border:1px solid var(--rule);padding:10px 12px;font-size:14px;display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+  .tests input{margin-top:3px}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .tools button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:700px){.opts,.yrs,.tests{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.tot{grid-template-columns:1fr 1fr}.pg{padding:18px 16px}}
+  @media (max-width:420px){.opts,.yrs,.tests{grid-template-columns:1fr}}
+  @media print{header .cta,footer,.tools{display:none}body{background:#fff}.pg{border:0;padding:8px 0;break-inside:avoid}td input,.yr textarea{border:0;border-bottom:1px solid #999;border-radius:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · NEWCOMER SERIES · MISSISSIPPI · GRADES 9–12</p>
+    <h1>Graduation roadmap <em>for newcomers</em></h1>
+    <p class="h1es">Ruta a la graduación para recién llegados · Fill it in with your counselor · Llénalo con tu consejero</p>
+    <p class="tag">Which diploma, which credits, which state tests — and how the classes you already passed in your home country count. Type your credits below and the meters show how far you are. Saved on this device; print it for your folder.</p>
+    <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print my plan · Imprimir</button><a class="btn ghost" href="newcomer-guide.html#grades">How grades &amp; credits work →</a></div>
+  </div>
+</header>
+<main>
+
+<section class="pg" id="diploma">
+  <h2>1 · Pick a diploma <i>· Elige un diploma</i></h2>
+  <p class="sub">Mississippi offers one diploma with optional endorsements. Everyone starts on the Traditional path; endorsements add credits and goals. You can change your mind — pick what fits now.</p>
+  <div class="opts" id="opts">
+    <button class="opt" type="button" data-d="trad" aria-pressed="true"><b>Traditional</b><span class="cr">24</span><small>The standard diploma. Required for every path. <span lang="es">El diploma estándar.</span></small></button>
+    <button class="opt" type="button" data-d="cte" aria-pressed="false"><b>Career &amp; Technical endorsement</b><span class="cr">26</span><small>Traditional + 4 credits in one career pathway (welding, health science, culinary…) and an industry certification. <span lang="es">Para un oficio o certificación.</span></small></button>
+    <button class="opt" type="button" data-d="acad" aria-pressed="false"><b>Academic endorsement</b><span class="cr">26</span><small>Traditional + Algebra II, 4th science and social studies, and an ACT of 17 English / 19 math (or equivalent). <span lang="es">Para la universidad.</span></small></button>
+    <button class="opt" type="button" data-d="dist" aria-pressed="false"><b>Distinguished Academic</b><span class="cr">28</span><small>Academic + advanced courses (AP, IB, dual credit) and ACT 18 English / 22 math. <span lang="es">Para universidades selectivas y becas.</span></small></button>
+  </div>
+  <div class="tip"><b>Newcomer note:</b> a student can attend public high school until age 21 in Mississippi, so a 5-year plan is allowed and often wise for students who arrive at 16–17 with little English. Ask the counselor about it <i>in 9th or 10th grade</i>, not senior year. <span lang="es">Se puede asistir hasta los 21 años; un plan de 5 años es posible — pregunta temprano.</span></div>
+</section>
+
+<section class="pg" id="credits">
+  <h2>2 · Count your credits <i>· Cuenta tus créditos</i></h2>
+  <p class="sub">One year-long class = 1 credit; one semester = 0.5. Type what you have <b>earned</b> so far (from your transcript, including evaluated home-country classes). The meters compare you to the diploma you picked.</p>
+  <div style="overflow-x:auto"><table id="ct">
+    <tr><th>Subject · Materia</th><th>Need</th><th>Earned</th><th style="min-width:140px">Progress</th><th>Must include · Debe incluir</th></tr>
+  </table></div>
+  <div class="tot"><div><b id="tEarned">0</b><span>credits earned · ganados</span></div><div><b id="tNeed">24</b><span>credits needed · necesarios</span></div><div><b id="tLeft">24</b><span>still to earn · faltan</span></div></div>
+  <div class="tools"><button type="button" id="clear">Clear all</button><span style="font-size:13px;color:var(--muted);align-self:center">Saved automatically on this device · Se guarda en este aparato</span></div>
+</section>
+
+<section class="pg" id="tests">
+  <h2>3 · State tests <i>· Exámenes estatales</i></h2>
+  <p class="sub">Mississippi requires an end-of-course test in four classes. Check them off as you pass. If a test is failed, there are alternate routes (ACT scores, retakes, course-grade combinations) — the counselor will explain them; a failed test never means "no diploma" by itself. EL students may receive accommodations such as extra time or a word-to-word dictionary.</p>
+  <div class="tests">
+    <label><input type="checkbox" data-t="alg"> <span><b>Algebra I</b><br><small>usually 9th grade</small></span></label>
+    <label><input type="checkbox" data-t="bio"> <span><b>Biology I</b><br><small>usually 9th–10th</small></span></label>
+    <label><input type="checkbox" data-t="eng"> <span><b>English II</b><br><small>usually 10th</small></span></label>
+    <label><input type="checkbox" data-t="hist"> <span><b>U.S. History</b><br><small>usually 11th</small></span></label>
+  </div>
+</section>
+
+<section class="pg" id="transfer">
+  <h2>4 · Classes from your home country <i>· Clases de tu país</i></h2>
+  <div class="two">
+    <div>
+      <ul>
+        <li><b>Bring every document:</b> report cards, certificates, "boleta," "constancia," "libreta" — in any language, even photos on a phone.</li>
+        <li>The school evaluates them and can award credit for classes you passed: math, science, social studies, and <b>your first language counts as foreign-language credit</b>.</li>
+        <li>Grades 7–8 (secundaria in Mexico, básica in Central America) usually map to U.S. middle school; grade 9+ (preparatoria / bachillerato / diversificado) can map to high school credits.</li>
+        <li>No documents? You can still be placed by age and tested for credit in some subjects. Ask.</li>
+        <li>Ask for the evaluation <b>in writing</b> and keep a copy. If a credit seems missing, ask the counselor to review it with the EL teacher.</li>
+      </ul>
+    </div>
+    <div lang="es">
+      <ul>
+        <li><b>Trae todos los documentos:</b> boletas, certificados, constancias, libretas — en cualquier idioma, incluso fotos en el teléfono.</li>
+        <li>La escuela los evalúa y puede dar crédito por las clases aprobadas: matemáticas, ciencias, estudios sociales, y <b>tu primer idioma cuenta como crédito de lengua extranjera</b>.</li>
+        <li>Los grados 7–8 (secundaria en México, básica en Centroamérica) suelen corresponder a middle school; el grado 9 en adelante (preparatoria / bachillerato / diversificado) puede dar créditos de high school.</li>
+        <li>¿Sin documentos? Aun así te ubican por edad y en algunas materias puedes hacer un examen para obtener crédito. Pregunta.</li>
+        <li>Pide la evaluación <b>por escrito</b> y guarda una copia. Si falta un crédito, pide al consejero que lo revise con el maestro de EL.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip"><b>Seal of Biliteracy · Sello de Alfabetización Bilingüe:</b> Mississippi puts a seal on the diploma of students who show proficiency in English <i>and</i> another language. Your home language is an asset — ask the counselor in 11th grade how to qualify (usually a language test or AP exam plus English proficiency).</div>
+</section>
+
+<section class="pg" id="plan">
+  <h2>5 · My four-year plan <i>· Mi plan de cuatro años</i></h2>
+  <p class="sub">Write the classes for each year (your counselor can help). Keep ESL/ELD on the list every year you need it — it counts as credit. A typical year is 7–8 credits.</p>
+  <div class="yrs">
+    <div class="yr"><b>9th · Freshman</b><textarea data-y="9" placeholder="English I&#10;Algebra I&#10;Biology I&#10;Mississippi Studies / World Geography&#10;ESL / ELD&#10;PE or Health&#10;Elective"></textarea><small>Goal: pass Algebra I &amp; Biology I tests. Join one activity.</small></div>
+    <div class="yr"><b>10th · Sophomore</b><textarea data-y="10" placeholder="English II&#10;Geometry&#10;Physical Science or Chemistry&#10;World History&#10;ESL / ELD&#10;Technology / Computer&#10;Elective"></textarea><small>Goal: pass English II test. Talk about a 4- or 5-year plan.</small></div>
+    <div class="yr"><b>11th · Junior</b><textarea data-y="11" placeholder="English III&#10;Algebra II&#10;Chemistry or other science&#10;U.S. History&#10;Art / CTE pathway&#10;Elective"></textarea><small>Goal: pass U.S. History test. Take the ACT (free at school). Ask about the Seal of Biliteracy.</small></div>
+    <div class="yr"><b>12th · Senior</b><textarea data-y="12" placeholder="English IV&#10;Math (4th credit)&#10;U.S. Government / Economics&#10;CTE pathway or dual credit&#10;Electives"></textarea><small>Goal: FAFSA or state aid form, college / job applications, final credit check in September.</small></div>
+  </div>
+  <div class="two" style="margin-top:14px">
+    <div><b style="color:var(--navy)">Counselor · Consejero/a:</b> ______________________ &nbsp; <b style="color:var(--navy)">Room / email:</b> ______________________</div>
+    <div><b style="color:var(--navy)">Next credit check · Próxima revisión:</b> ______________________</div>
+  </div>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted)">Credit counts, endorsements and end-of-course tests reflect Mississippi Department of Education graduation requirements for students entering 9th grade in 2026–27 as understood by the author; districts may add local requirements, and rules change. The counselor's official credit check is the one that counts. Other states: the subjects are similar but the numbers differ — ask for your state's list.</p>
+</section>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const REQ={
+ trad:{total:24,rows:[["English · Inglés",4,"English I, II, III, IV"],["Math · Matemáticas",4,"Algebra I (plus 2 higher than Algebra I)"],["Science · Ciencias",3,"Biology I + 1 physical science"],["Social studies · Estudios sociales",3.5,"World History, U.S. History, Government ½, Economics ½, Mississippi Studies ½"],["Health · Salud",0.5,""],["Physical education · Educación física",0.5,""],["Technology / Computer · Tecnología",1,"Any approved technology or computer course"],["Arts · Artes",1,"Visual art, music, theatre, dance"],["Electives · Optativas",6.5,"ESL/ELD, world language, CTE, extra core classes all count"]]},
+ cte:{total:26,rows:[["English · Inglés",4,"English I, II, III, IV"],["Math · Matemáticas",4,"Algebra I + 2 higher"],["Science · Ciencias",3,"Biology I + 1 physical science"],["Social studies · Estudios sociales",3.5,"World, U.S., Gov ½, Econ ½, MS Studies ½"],["Health · Salud",0.5,""],["Physical education",0.5,""],["Technology / Computer",1,""],["Arts · Artes",1,""],["CTE pathway · Ruta técnica",4,"Four credits in ONE pathway + industry certification or work-based learning"],["Electives · Optativas",4.5,"ESL/ELD, world language, more CTE"]]},
+ acad:{total:26,rows:[["English · Inglés",4,"English I, II, III, IV"],["Math · Matemáticas",4,"Must include Algebra II"],["Science · Ciencias",4,"Biology I, Chemistry, + 2 more"],["Social studies · Estudios sociales",4,"World, U.S., Gov ½, Econ ½, MS Studies ½, + ½"],["Health · Salud",0.5,""],["Physical education",0.5,""],["Technology / Computer",1,""],["Arts · Artes",1,""],["Electives · Optativas",7,"2 credits of one world language recommended — your first language can be it"]]},
+ dist:{total:28,rows:[["English · Inglés",4,"English I, II, III, IV; AP/dual credit encouraged"],["Math · Matemáticas",4,"Must include Algebra II; 4th math above Algebra II"],["Science · Ciencias",4,"Biology I, Chemistry, Physics or AP"],["Social studies · Estudios sociales",4,"Includes an AP or dual-credit course"],["Health · Salud",0.5,""],["Physical education",0.5,""],["Technology / Computer",1,""],["Arts · Artes",1,""],["Advanced courses · Avanzados",2,"AP, IB, dual credit or dual enrollment (any subject)"],["Electives · Optativas",7,"World language 2 credits (first language counts)"]]}
+};
+let S={};try{S=JSON.parse(localStorage.getItem('gradmap')||'{}')}catch(e){}
+S.d=S.d||'trad';S.c=S.c||{};S.t=S.t||{};S.y=S.y||{};
+const save=()=>{try{localStorage.setItem('gradmap',JSON.stringify(S))}catch(e){}};
+function build(){
+  const r=REQ[S.d];const t=document.getElementById('ct');
+  t.querySelectorAll('tr:not(:first-child)').forEach(x=>x.remove());
+  r.rows.forEach(([name,need,inc],i)=>{
+    const key=name.split(' ·')[0];const v=S.c[key]||'';
+    const tr=document.createElement('tr');tr.innerHTML=`<td><b>${name}</b></td><td class="n">${need}</td><td><input type="number" min="0" max="12" step="0.5" value="${v}" data-k="${key}" aria-label="${key} credits earned"></td><td><div class="meter"><i></i></div></td><td style="font-size:13px;color:#4a5068">${inc}</td>`;
+    t.appendChild(tr);
+  });
+  t.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>{S.c[i.dataset.k]=i.value;save();meters()}));
+  document.querySelectorAll('.opt').forEach(o=>o.setAttribute('aria-pressed',o.dataset.d===S.d?'true':'false'));
+  meters();
+}
+function meters(){
+  const r=REQ[S.d];let earned=0;
+  document.querySelectorAll('#ct tr:not(:first-child)').forEach((tr,i)=>{
+    const need=r.rows[i][1];const v=Math.min(parseFloat(tr.querySelector('input').value)||0,need+4);earned+=v;
+    const bar=tr.querySelector('.meter i');const pct=Math.min(100,v/need*100);bar.style.width=pct+'%';bar.classList.toggle('ok',v>=need);
+  });
+  document.getElementById('tEarned').textContent=earned%1?earned.toFixed(1):earned;
+  document.getElementById('tNeed').textContent=r.total;
+  const left=Math.max(0,r.total-earned);document.getElementById('tLeft').textContent=left%1?left.toFixed(1):left;
+}
+document.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{S.d=o.dataset.d;save();build()}));
+document.querySelectorAll('.tests input').forEach(c=>{c.checked=!!S.t[c.dataset.t];c.addEventListener('change',()=>{S.t[c.dataset.t]=c.checked;save()})});
+document.querySelectorAll('.yr textarea').forEach(a=>{a.value=S.y[a.dataset.y]||'';a.addEventListener('input',()=>{S.y[a.dataset.y]=a.value;save()})});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear all credits, tests and plan on this device?')){S={d:'trad',c:{},t:{},y:{}};save();location.reload()}});
+build();
+</script>
+</body>
+</html>

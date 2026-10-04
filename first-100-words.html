@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My First 100 Words at School · Mis primeras 100 palabras · EL Publishing</title>
+<meta name="description" content="100 school words every newcomer needs in the first month — English with Spanish, grouped by where you hear them, with tap-to-hear pronunciation, a quiz mode and printable flashcards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:960px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(32px,6vw,52px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .h1es{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:clamp(19px,3vw,26px);color:var(--gold-lt);margin:8px 0 0}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:62ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:960px;margin:0 auto;padding:8px 22px;display:flex;gap:8px;align-items:center;overflow-x:auto}
+  .bar a,.bar button{white-space:nowrap;font:inherit;font-size:13px;font-weight:600;text-decoration:none;color:var(--navy);border:1px solid var(--rule);border-radius:999px;padding:5px 11px;background:#fff;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}
+  main{max-width:960px;margin:0 auto;padding:22px 22px 40px}
+  .how{background:var(--paper);border:1px solid var(--rule);padding:16px 20px;font-size:15px;display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  .how b{color:var(--navy)}
+  .cat{margin:0 0 26px;scroll-margin-top:60px}
+  .cat h2{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  .cat h2 i{font-weight:600;color:#8a6e14;font-size:18px}
+  .cat h2 svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cat .where{font-size:14px;color:var(--muted);margin:0 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+  .w{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px 12px 10px;text-align:left;cursor:pointer;font:inherit;color:var(--ink);display:flex;flex-direction:column;gap:2px;min-height:92px;position:relative;transition:transform .15s,border-color .15s}
+  .w:hover,.w:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+  .w .n{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em}
+  .w .en{font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:700;color:var(--navy);line-height:1.1}
+  .w .es{font-size:14.5px;color:#4a5068}
+  .w .ex{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .w .spk{position:absolute;right:10px;top:10px;width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .w.said{border-color:var(--navy);box-shadow:0 0 0 2px var(--gold-lt)}
+  .w.known .n::after{content:" ✓ known";color:#1b7a3c}
+  body.quiz .w .es,body.quiz .w .ex{visibility:hidden}
+  body.quiz .w.reveal .es,body.quiz .w.reveal .ex{visibility:visible}
+  body.hide-en .w .en{visibility:hidden} body.hide-en .w.reveal .en{visibility:visible}
+  .prog{font-size:14px;color:var(--muted)}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:10px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:640px){.how{grid-template-columns:1fr}}
+  @media print{
+    header,.bar,.how,.note,footer{display:none}
+    body{background:#fff}
+    main{max-width:none;padding:0}
+    .cat{break-inside:avoid-page;margin:0 0 10px}
+    .cat h2{font-size:16px;margin:0 0 2px}.cat .where{display:none}
+    .grid{grid-template-columns:repeat(4,1fr);gap:0}
+    .w{border:1px dashed #999;border-radius:0;min-height:1.6in;padding:10px;break-inside:avoid}
+    .w .spk{display:none}.w .en{font-size:20px}.w .es{font-size:13px}.w .ex{font-size:11px}
+    body.quiz .w .es,body.quiz .w .ex{visibility:visible}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · NEWCOMER SERIES · ENGLISH / ESPAÑOL</p>
+    <h1>My first <em>100 words</em> at school</h1>
+    <p class="h1es">Mis primeras 100 palabras en la escuela</p>
+    <p class="tag">The words you will hear in the first month, grouped by <b style="color:#fff">where</b> you hear them. Tap any card to hear it said aloud. Switch to Quiz to test yourself, or print for flashcards. · <span lang="es">Toca una tarjeta para escucharla. Usa el modo Quiz para practicar, o imprime las tarjetas.</span></p>
+    <div class="cta"><button class="btn" id="playAll" type="button">▶ Hear all 100 · Escuchar todas</button><a class="btn ghost" href="newcomer-guide.html">Full Newcomer Guide →</a></div>
+  </div>
+</header>
+<nav class="bar" aria-label="Categories"><div class="bar-in">
+  <button type="button" data-mode="learn" aria-pressed="true">Learn</button><button type="button" data-mode="quiz" aria-pressed="false">Quiz: hide Spanish</button><button type="button" data-mode="quiz2" aria-pressed="false">Quiz: hide English</button><button type="button" id="printBtn">🖨 Print flashcards</button>
+  <span class="sp"></span><span class="prog" id="prog">0 / 100 known</span>
+</div></nav>
+<main>
+<div class="how">
+  <div><b>How to use it.</b> Tap a card to hear the word. Tap the little ✓ on a card you already know — the counter at the top tracks your progress on this device. In <b>Quiz</b> mode the Spanish (or English) is hidden until you tap. Say the word out loud before you tap!</div>
+  <div lang="es"><b>Cómo usarlo.</b> Toca una tarjeta para escuchar la palabra. Toca la ✓ en una tarjeta que ya conoces — el contador de arriba guarda tu progreso en este aparato. En modo <b>Quiz</b> el español (o el inglés) se oculta hasta que tocas. ¡Di la palabra en voz alta antes de tocar!</div>
+</div>
+<div id="cats"></div>
+<div class="note"><h3>For teachers</h3><p style="margin:0">These 100 words were chosen from what newcomers actually need to get through a school day — people, places, the schedule, instructions, lunch and the words on a report card — not from a frequency list. Ten a day for two weeks, with the Quiz mode as the exit ticket, works well in the Newcomer lane. Print with the browser's print button for a 4-per-row flashcard sheet. Pronunciation uses the device's built-in voice (works on Chromebooks and phones; needs sound on).</p></div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const CATS=[
+ {id:"people",en:"People",es:"Personas",where:"Who you will meet · A quién conocerás",icon:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75",
+  w:[["teacher","maestro/a","Good morning, Ms. Lee."],["principal","director/a","The principal's office is here."],["counselor","consejero/a","Ask the counselor for your schedule."],["nurse","enfermera","I feel sick. Can I see the nurse?"],["student","estudiante","I am a new student."],["classmate","compañero/a de clase","This is my classmate, Ana."],["friend","amigo/a","Can we be friends?"],["substitute","maestro/a suplente","We have a substitute today."],["coach","entrenador/a","The coach runs practice after school."],["secretary","secretaria","The secretary gives late passes."]]},
+ {id:"places",en:"Places",es:"Lugares",where:"Where to go · Adónde ir",icon:"M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01",
+  w:[["office","oficina","Go to the office to sign in."],["classroom","salón de clases","My classroom is room 204."],["cafeteria","cafetería","We eat lunch in the cafeteria."],["gym","gimnasio","PE is in the gym."],["library","biblioteca","The library is quiet."],["restroom","baño","May I go to the restroom?"],["hallway","pasillo","Walk on the right in the hallway."],["locker","casillero","My locker number is 318."],["bus","autobús","The bus leaves at 2:50."],["playground / field","patio / campo","Recess is on the playground."]]},
+ {id:"backpack",en:"In your backpack",es:"En tu mochila",where:"Things you carry · Lo que llevas",icon:"M5 7h14l1 14H4L5 7zM9 7V5a3 3 0 0 1 6 0v2M9 12h6",
+  w:[["backpack","mochila","Hang your backpack on the hook."],["notebook","cuaderno","Write it in your notebook."],["pencil","lápiz","Can I borrow a pencil?"],["pen","bolígrafo / pluma","Use a pen for the test."],["paper","papel","I need a piece of paper."],["folder","carpeta","Put the paper in your folder."],["Chromebook / laptop","computadora","Charge your Chromebook tonight."],["charger","cargador","I forgot my charger."],["schedule","horario","My schedule says Math first."],["ID card","credencial / identificación","Show your ID to get lunch."]]},
+ {id:"classroom",en:"In the classroom",es:"En el salón",where:"Things around you · Lo que hay alrededor",icon:"M3 4h18v12H3zM8 20h8M12 16v4",
+  w:[["desk","escritorio / pupitre","Sit at your desk."],["chair","silla","Push in your chair."],["board","pizarrón","Copy the notes from the board."],["door","puerta","Close the door, please."],["window","ventana","Open the window."],["clock","reloj","Look at the clock."],["bell","campana / timbre","The bell rings at 2:45."],["page","página","Open to page 12."],["worksheet","hoja de trabajo","Finish the worksheet."],["screen / projector","pantalla / proyector","Look at the screen."]]},
+ {id:"time",en:"Schedule & time",es:"Horario y tiempo",where:"When things happen · Cuándo pasan las cosas",icon:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2",
+  w:[["period / block","período / bloque","Second period is Science."],["morning","mañana","School starts in the morning."],["afternoon","tarde","Band is in the afternoon."],["today","hoy","What day is today?"],["tomorrow","mañana (el día siguiente)","The test is tomorrow."],["week","semana","Next week is spring break."],["Monday–Friday","lunes a viernes","School is Monday to Friday."],["late / tardy","tarde / retardo","Don't be late."],["early","temprano","I came early."],["due","fecha de entrega","The essay is due Friday."]]},
+ {id:"instructions",en:"Teacher instructions",es:"Instrucciones del maestro",where:"What teachers say · Lo que dicen los maestros",icon:"M4 6h16M4 12h10M4 18h7M18 14l3 3-3 3",
+  w:[["listen","escuchar","Listen carefully."],["read","leer","Read the first paragraph."],["write","escribir","Write your name on top."],["repeat","repetir","Repeat after me."],["raise your hand","levanta la mano","Raise your hand to speak."],["open / close","abrir / cerrar","Open your book."],["sit down / stand up","siéntate / levántate","Please sit down."],["line up","hagan fila","Line up at the door."],["turn in","entregar","Turn in your homework."],["work with a partner","trabaja con un compañero","Work with a partner."]]},
+ {id:"lunch",en:"Lunch",es:"El almuerzo",where:"In the cafeteria · En la cafetería",icon:"M3 11h18M5 11a7 7 0 0 1 14 0M12 4v1M4 15h16l-1 4H5z",
+  w:[["lunch","almuerzo","Lunch is at 11:30."],["breakfast","desayuno","Breakfast is free before school."],["tray","bandeja / charola","Take a tray."],["milk / water","leche / agua","Milk or water?"],["fruit","fruta","Take one fruit."],["line","fila","Wait in line."],["lunch number / PIN","número de almuerzo","Enter your lunch number."],["free lunch","almuerzo gratis","Ask about free lunch."],["table","mesa","Sit at any table."],["trash","basura","Throw it in the trash."]]},
+ {id:"rules",en:"Rules & behavior",es:"Reglas y conducta",where:"How to stay out of trouble · Cómo evitar problemas",icon:"M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4zM9 12l2 2 4-4",
+  w:[["rules","reglas","Follow the rules."],["quiet","silencio","Quiet, please."],["respect","respeto","Show respect."],["pass","pase","Take a hall pass."],["phone away","guarda el teléfono","Phones away during class."],["dress code","código de vestimenta","No hats inside — dress code."],["detention","detención","Late three times = detention."],["bullying","acoso","Report bullying to an adult."],["drill","simulacro","It's only a fire drill."],["permission","permiso","Ask permission first."]]},
+ {id:"grades",en:"Grades & work",es:"Calificaciones y trabajo",where:"On your report card · En tu boleta",icon:"M4 4h12l4 4v12H4zM8 13l3 3 5-5",
+  w:[["homework","tarea","Is there homework tonight?"],["test","examen","The test is on Friday."],["quiz","prueba corta","A quiz has five questions."],["grade","calificación","I got a good grade."],["points","puntos","This is worth 10 points."],["missing","faltante / no entregado","Your homework is missing."],["assignment","trabajo / tarea asignada","Finish the assignment."],["project","proyecto","The project is due in two weeks."],["report card","boleta de calificaciones","Report cards come home Friday."],["pass / fail","aprobar / reprobar","You need 60 to pass."]]},
+ {id:"help",en:"Feelings & asking for help",es:"Sentimientos y pedir ayuda",where:"Words that get you help · Palabras que te consiguen ayuda",icon:"M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z",
+  w:[["help","ayuda","I need help."],["I don't understand","no entiendo","I don't understand yet."],["again, please","otra vez, por favor","Say it again, please."],["slowly","despacio","Slowly, please."],["How do you say…?","¿Cómo se dice…?","How do you say this in English?"],["sick","enfermo/a","I feel sick."],["tired","cansado/a","I am tired."],["happy","contento/a","I am happy today."],["nervous","nervioso/a","I am nervous about the test."],["thank you / you're welcome","gracias / de nada","Thank you! — You're welcome."]]}
+];
+const K=(()=>{try{return JSON.parse(localStorage.getItem('w100')||'{}')}catch(e){return {}}})();
+const save=()=>{try{localStorage.setItem('w100',JSON.stringify(K))}catch(e){}};
+const SPK='<svg class="spk" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>';
+let n=0;
+document.getElementById('cats').innerHTML=CATS.map(c=>`<section class="cat" id="${c.id}"><h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${c.icon}"/></svg>${c.en} <i>· ${c.es}</i></h2><p class="where">${c.where}</p><div class="grid">${c.w.map(w=>{n++;const id=c.id+'-'+n;return `<button type="button" class="w${K[id]?' known':''}" data-id="${id}" data-en="${w[0].replace(/"/g,'&quot;')}" data-ex="${w[2].replace(/"/g,'&quot;')}"><span class="n">${n}</span><span class="en">${w[0]}</span><span class="es" lang="es">${w[1]}</span><span class="ex">${w[2]}</span>${SPK}<span class="chk" style="position:absolute;right:10px;bottom:8px;font-size:12px;color:#5D6480;cursor:pointer" title="Mark as known">✓</span></button>`}).join('')}</div></section>`).join('');
+const nav=document.querySelector('.bar-in'),sp=nav.querySelector('.sp');
+CATS.forEach(c=>{const a=document.createElement('a');a.href='#'+c.id;a.textContent=c.en;nav.insertBefore(a,sp)});
+function speak(t,cb){if(!('speechSynthesis'in window))return cb&&cb();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;u.onend=cb||null;speechSynthesis.cancel();speechSynthesis.speak(u)}
+function prog(){const k=Object.values(K).filter(Boolean).length;document.getElementById('prog').textContent=k+' / 100 known'}
+prog();
+document.querySelectorAll('.w').forEach(b=>{
+  b.addEventListener('click',e=>{
+    if(e.target.classList.contains('chk')){const id=b.dataset.id;K[id]=!K[id];b.classList.toggle('known',K[id]);save();prog();return}
+    b.classList.add('reveal');document.querySelectorAll('.w.said').forEach(x=>x.classList.remove('said'));b.classList.add('said');
+    speak(b.dataset.en+'. '+b.dataset.ex);
+  });
+});
+document.querySelectorAll('[data-mode]').forEach(m=>m.addEventListener('click',()=>{
+  document.body.classList.remove('quiz','hide-en');document.querySelectorAll('.w.reveal').forEach(x=>x.classList.remove('reveal'));
+  if(m.dataset.mode==='quiz')document.body.classList.add('quiz');if(m.dataset.mode==='quiz2')document.body.classList.add('hide-en');
+  document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',x===m?'true':'false'));
+}));
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+let playing=false;
+document.getElementById('playAll').addEventListener('click',function(){
+  if(playing){playing=false;speechSynthesis.cancel();this.textContent='▶ Hear all 100 · Escuchar todas';return}
+  playing=true;this.textContent='■ Stop';const list=[...document.querySelectorAll('.w')];let i=0;
+  const next=()=>{if(!playing||i>=list.length){playing=false;document.getElementById('playAll').textContent='▶ Hear all 100 · Escuchar todas';return}
+    const b=list[i++];document.querySelectorAll('.w.said').forEach(x=>x.classList.remove('said'));b.classList.add('said');b.scrollIntoView({block:'center',behavior:'smooth'});speak(b.dataset.en,()=>setTimeout(next,500))};
+  next();
+});
+</script>
+</body>
+</html>
