@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Assistants for Content Teachers · EL Publishing</title>
+<meta name="description" content="Four copy-and-paste AI assistants for the general-education teacher with English learners in the room: scaffold a lesson by lane, level a text and prep vocabulary, make a test fair, and write to families in English and Spanish.">
+<meta property="og:title" content="EL Assistants for Content Teachers">
+<meta property="og:description" content="Paste the prompt, paste your lesson, get four-lane supports back. Built for Mississippi 9–12, usable anywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · EL ASSISTANTS · FOR CONTENT TEACHERS</p>
+    <h1>Four assistants for the teacher who <em>teaches biology, not English.</em></h1>
+    <p class="tag">Copy a prompt, paste your lesson, text, test or note — and get back what an EL specialist would hand you: four-lane supports, a leveled text, a fair assessment, a bilingual note home. Works in Claude, Gemini, ChatGPT or Copilot. No account with us, nothing to install.</p>
+    <div class="chips"><span>4 assistants</span><span>Copy &amp; paste</span><span>Four lanes</span><span>English · Español</span><span>No student names</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h2 class="sec">Pick the one you need today</h2>
+  <p class="deck">Each assistant does one job in under two minutes. They share the same model of the room — four lanes, one content standard — so what they produce fits together.</p>
+  <div class="pick">
+    <a href="#a1"><span class="k">Assistant 1</span><b>Lane Scaffold Builder</b><small>Paste tomorrow's lesson. Get a language objective, five words, a lane strip and three exit tickets.</small></a>
+    <a href="#a2"><span class="k">Assistant 2</span><b>Text Leveler &amp; Vocab Prep</b><small>Paste any text. Get three versions with the same facts, a vocabulary table and a read-aloud plan.</small></a>
+    <a href="#a3"><span class="k">Assistant 3</span><b>Fair Assessment Clinic</b><small>Paste your quiz. Get an item audit, rewrites, lane accommodations and a rubric that scores content, not English.</small></a>
+    <a href="#a4"><span class="k">Assistant 4</span><b>Family &amp; Student Messenger</b><small>Tell it the occasion. Get a bilingual note, conference points, student feedback or a positive-call script.</small></a>
+  </div>
+
+  <div class="lanes">
+    <div class="lane"><small>Lane 1 · ELPA21 Level 1</small><b>Newcomer</b>First year in a U.S. school. Understands with pictures, gestures and home language; produces words and short phrases.</div>
+    <div class="lane"><small>Lane 2 · Level 2</small><b>Emerging</b>Follows routine classroom English. Produces simple sentences with a frame; reads short, familiar text.</div>
+    <div class="lane"><small>Lane 3 · Levels 3–4</small><b>Progressing</b>Handles grade-level content with support — explicit vocabulary, models, time. Writes paragraphs; errors don't block meaning.</div>
+    <div class="lane"><small>Lane 4 · Level 4–5</small><b>Challenge</b>Near exit. Needs a push into academic register, precise vocabulary and complex sentences — not simplification.</div>
+  </div>
+
+  <h2 class="sec">How to use one — sixty seconds</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Copy the prompt</b><p>Press <em>Copy</em> on the assistant you want, or <em>Open in Claude</em> / <em>Open in ChatGPT</em> to start a chat with the prompt already in it.</p></div>
+    <div class="step"><div class="n">2</div><b>Paste your material</b><p>Your lesson notes, the text, the quiz, or the occasion for a note — where the prompt says <code>[paste here]</code>. Rough notes are fine; a slide's worth is enough.</p></div>
+    <div class="step"><div class="n">3</div><b>Check, then use</b><p>You know your content — read the output for accuracy, delete what doesn't fit, keep the rest. Two frames on a slide and a word bank is already a better lesson.</p></div>
+  </div>
+  <div class="priv"><b>Before you paste anything:</b> no student names, ID numbers, grades tied to a student, or anything from a Language Service Plan, IEP or 504. Describe the student by lane ("one Newcomer, two Progressing"), never by name. Use the AI tool your district has approved for staff; if in doubt, ask your technology office. The prompts say this too, so the assistant will remind you.</div>
+
+  <!-- ================= ASSISTANT 1 ================= -->
+  <section class="asst" id="a1">
+    <div class="top"><div class="n">1</div><div>
+      <h3>Lane Scaffold Builder</h3>
+      <div class="meta">One lesson · four lanes · same standard · about 2 minutes</div>
+      <p>You have a lesson that works for most of the room. This assistant keeps the content objective exactly where it is and builds the language side: an objective you can post, five words worth pre-teaching, a one-row-per-lane strip of input/output/support/check, sentence frames, one all-class move and an exit ticket in three versions of the same question.</p>
+      <div class="two">
+        <div class="box"><b>Paste</b><ul><li>Content objective or standard</li><li>The text, notes, slide or problem set</li><li>What students will do and how you'll check</li><li>Optional: which lanes are in the room</li></ul></div>
+        <div class="box"><b>You get back</b><ul><li>Language objective ("Students will … using …")</li><li>5 words: definition · Spanish · cue</li><li>Lane strip + 2 frames per lane</li><li>One all-class move under 5 minutes</li><li>Exit ticket × 3 versions</li></ul></div>
+      </div>
+    </div></div>
+    <div class="promptwrap">
+      <div class="pbar"><span>Prompt · Assistant 1</span><div class="btns"><button class="btn" data-copy="p1">Copy prompt</button><a class="btn ghost" data-open="claude" data-src="p1" href="#" target="_blank" rel="noopener">Open in Claude</a><a class="btn ghost" data-open="chatgpt" data-src="p1" href="#" target="_blank" rel="noopener">Open in ChatGPT</a></div></div>
+<pre class="prompt" id="p1">You are an EL (English learner) instructional coach helping a general-education high school teacher in Mississippi scaffold ONE lesson for English learners without lowering the content standard.
+
+Use this four-lane model and keep the SAME content objective for every lane; vary only the language demand and the support:
+- Newcomer = ELPA21 Level 1, first year in U.S. schools, understands with pictures, gestures and home language; produces words and short phrases.
+- Emerging = Level 2, follows routine classroom English, produces simple sentences with a frame.
+- Progressing = Levels 3–4, handles grade-level content with explicit vocabulary, models and time; errors do not block meaning.
+- Challenge = Level 4–5, near exit; needs a push into academic register, not simplification.
+If I don't tell you which lanes are present, assume one student in each.
+
+I will paste my lesson (objective, text or notes, task, how I check). Return, in this order, with headers and tables:
+1. CONTENT OBJECTIVE (unchanged, in my words) and ONE LANGUAGE OBJECTIVE written as "Students will [language function] using [language form]" (e.g., "explain cause and effect using because / so / as a result").
+2. FIVE KEY WORDS: 3 Tier 2 academic words + 2 Tier 3 content words. For each: student-friendly definition (12 words or fewer), Spanish translation and whether it is a cognate, and a picture or gesture cue I can use.
+3. LANE STRIP — one row per lane with four columns: Input (how they access the text/lecture), Output (what they produce), Support (frame, visual, partner, home language, tool), Check (how I know in 2 minutes).
+4. TWO SENTENCE FRAMES PER LANE for the main task, increasing in complexity.
+5. ONE ALL-CLASS MOVE that helps every student, costs under 5 minutes, and needs no new materials.
+6. EXIT TICKET — the SAME question in three versions: picture/one-word or sort (Newcomer), sentence frame (Emerging), short constructed response (Progressing/Challenge).
+
+Rules: Do not simplify the content; simplify the language and add support. Keep names, numbers and content terms identical across lanes so students can talk to each other. Total under 700 words. Never ask for or use student names; refer to students by lane only. If my lesson is missing something you need, make one reasonable assumption and label it.
+
+MY LESSON:
+[paste here]</pre>
+    </div>
+    <div class="tip"><b>Richard's tip:</b> post the language objective under the content objective and read both aloud. The lane strip is for you, not the students — nobody in the room should be able to tell who is in which lane.</div>
+    <details><summary>What the output looks like — a Biology example (photosynthesis), trimmed</summary><div class="in">
+      <p><b>Content objective:</b> Explain how light energy is converted to chemical energy in photosynthesis. <b>Language objective:</b> Students will <em>explain a process in sequence</em> using <em>first / then / as a result / which produces</em>.</p>
+      <table><tr><th>Word</th><th>Student definition</th><th>Spanish · cognate?</th><th>Cue</th></tr>
+      <tr><td>convert</td><td>change one thing into another</td><td>convertir · yes</td><td>two fists, one opens into the other</td></tr>
+      <tr><td>process</td><td>steps that happen in order</td><td>proceso · yes</td><td>count steps on fingers</td></tr>
+      <tr><td>chlorophyll</td><td>the green chemical in leaves that catches light</td><td>clorofila · yes</td><td>point to anything green</td></tr></table>
+      <table><tr><th>Lane</th><th>Input</th><th>Output</th><th>Support</th><th>Check</th></tr>
+      <tr><td>Newcomer</td><td>labeled diagram, Spanish gloss on 5 words</td><td>label the diagram; order 4 picture cards</td><td>word bank with pictures; partner</td><td>cards in correct order</td></tr>
+      <tr><td>Emerging</td><td>diagram + 6-sentence summary</td><td>3 sentences with frames</td><td>frames on desk strip</td><td>frames completed with the right words</td></tr>
+      <tr><td>Progressing</td><td>textbook paragraph, key terms bold</td><td>5-sentence sequence paragraph</td><td>sequence connectors list</td><td>uses 3 connectors correctly</td></tr>
+      <tr><td>Challenge</td><td>textbook + one data table</td><td>paragraph that cites the table</td><td>academic phrase bank ("the data indicate")</td><td>claim + evidence + term</td></tr></table>
+      <p><b>Exit ticket:</b> "What does the plant make?" → Newcomer circles two pictures; Emerging: "First the leaf takes in ___. As a result it makes ___ and ___."; Progressing/Challenge: explain in 3–4 sentences using two connectors.</p>
+    </div></details>
+  </section>
+
+  <!-- ================= ASSISTANT 2 ================= -->
+  <section class="asst" id="a2">
+    <div class="top"><div class="n">2</div><div>
+      <h3>Text Leveler &amp; Vocab Prep</h3>
+      <div class="meta">Any text · three versions · same facts · about 2 minutes</div>
+      <p>The article, the textbook section, the lab procedure, the word problem, the primary source. This assistant tells you what the text demands, then rewrites it at three levels that keep every name, number and content term identical — so a Newcomer and a Challenge student can sit at the same table and talk about the same thing. It adds the vocabulary table and a read-aloud plan.</p>
+      <div class="two">
+        <div class="box"><b>Paste</b><ul><li>The text itself (up to a page or two)</li><li>Optional: the question you'll ask about it</li><li>Optional: the course and grade</li></ul></div>
+        <div class="box"><b>You get back</b><ul><li>"What this text demands" — 3 bullets</li><li>Version A (Level 1–2), B (Level 3), C (Challenge)</li><li>Vocabulary table, up to 8 words, with Spanish</li><li>3 questions × 3 language levels</li><li>Read-aloud plan: stops, asks, gestures</li></ul></div>
+      </div>
+    </div></div>
+    <div class="promptwrap">
+      <div class="pbar"><span>Prompt · Assistant 2</span><div class="btns"><button class="btn" data-copy="p2">Copy prompt</button><a class="btn ghost" data-open="claude" data-src="p2" href="#" target="_blank" rel="noopener">Open in Claude</a><a class="btn ghost" data-open="chatgpt" data-src="p2" href="#" target="_blank" rel="noopener">Open in ChatGPT</a></div></div>
+<pre class="prompt" id="p2">You are an EL (English learner) specialist helping a general-education high school teacher prepare ONE text for a class that includes English learners at ELPA21 Levels 1–5. The goal is access to the same ideas, not an easier topic.
+
+I will paste the text (article, textbook section, lab procedure, word problem, primary source). Return:
+
+1. WHAT THIS TEXT DEMANDS — 3 bullets: the text type and structure; the two hardest sentence-level features (e.g., passive voice, nominalization, long noun phrases, embedded clauses, idioms); the background knowledge it assumes.
+
+2. THREE VERSIONS with the SAME key ideas and the SAME names, numbers, dates and content terms, so students at different levels can discuss together:
+   - VERSION A (Levels 1–2, Newcomer/Emerging): 6–8 short sentences, present tense where accurate, one idea per sentence, subject–verb–object order, key words in bold, no idioms.
+   - VERSION B (Level 3, Progressing): about 60% of the original length; compound sentences allowed; connecting words (because, however, as a result) made explicit; key words in bold.
+   - VERSION C (Challenge, Level 4–5): the original, or lightly edited for clarity, with two margin glosses for the hardest academic phrases.
+   Keep the meaning and the facts exact. Do not add information that is not in the source. After the versions, list any place where simplifying changed a nuance ("Nuance check").
+
+3. VOCABULARY TABLE — up to 8 words, mostly Tier 2 academic words plus the essential content terms: word · part of speech · student-friendly definition (12 words or fewer) · Spanish translation · cognate? (yes/no) · the sentence from the text where it appears.
+
+4. THREE TEXT-DEPENDENT QUESTIONS, each written at three language levels: (a) yes/no, pointing or one-word; (b) with a sentence frame; (c) open, requiring evidence from the text. Same question, three ways.
+
+5. READ-ALOUD PLAN — where to stop (3 places), what to ask at each stop, and one word to gesture or show.
+
+Format with clear headers. Under 900 words not counting the three versions. Never ask for or use student names.
+
+MY TEXT:
+[paste here]</pre>
+    </div>
+    <div class="tip"><b>Richard's tip:</b> hand out A, B and C on the same color paper. Put the vocabulary table on the board before anyone reads. The Newcomer reads Version A and still answers the same question as the student reading C.</div>
+  </section>
+
+  <!-- ================= ASSISTANT 3 ================= -->
+  <section class="asst" id="a3">
+    <div class="top"><div class="n">3</div><div>
+      <h3>Fair Assessment Clinic</h3>
+      <div class="meta">Quiz, test or task · item audit · lane accommodations · Mississippi-aware</div>
+      <p>A test should measure the biology, not the English. This assistant audits each item for language load that isn't the construct, rewrites it with the content unchanged, picks classroom accommodations by lane, and tells you which of those mirror what the student can receive on Mississippi state tests — so what they practice in your room is what they get in the testing room. It also adjusts your rubric so a Level 2 answer can earn full content credit.</p>
+      <div class="two">
+        <div class="box"><b>Paste</b><ul><li>The items, or the task and rubric</li><li>What each item is supposed to measure (if not obvious)</li><li>Optional: lanes in the room</li></ul></div>
+        <div class="box"><b>You get back</b><ul><li>Item audit: construct · language load · rewrite</li><li>Accommodations by lane; state-test match flagged</li><li>Rubric adjustment + example Level 2 answer</li><li>Alternate demonstration for a Newcomer</li><li>Plain-English + Spanish directions line</li></ul></div>
+      </div>
+    </div></div>
+    <div class="promptwrap">
+      <div class="pbar"><span>Prompt · Assistant 3</span><div class="btns"><button class="btn" data-copy="p3">Copy prompt</button><a class="btn ghost" data-open="claude" data-src="p3" href="#" target="_blank" rel="noopener">Open in Claude</a><a class="btn ghost" data-open="chatgpt" data-src="p3" href="#" target="_blank" rel="noopener">Open in ChatGPT</a></div></div>
+<pre class="prompt" id="p3">You are an EL (English learner) assessment specialist helping a general-education high school teacher in Mississippi make ONE classroom assessment fair for English learners: it should measure the content, not the student's English. Do not lower the standard.
+
+Context on state testing you may rely on (Mississippi Testing Accommodations Manual, revised Feb 2026, for ELs without an IEP; the District Test Coordinator's current manual is the authority):
+- Extended time (amount written in the Language Service Plan, within the school day), small-group (2–9) or individual setting, and scheduled breaks are allowed.
+- A word-to-word bilingual dictionary (paper, no pictures or definitions) is allowed on MAAP content tests when it is in the LSP; it is NOT allowed on the ELPT.
+- Test questions and answer choices may be read aloud (human reader or text-to-speech); ELA reading passages may NOT be read; read-aloud is not allowed on the ELPT Reading domain.
+- Home-language versions and translated directions are NOT state-test accommodations; they are classroom-only.
+- Any state-test accommodation must be in the student's LSP before the test window and used routinely in class.
+Do not invent rules beyond these. Where you are unsure, write "confirm with the EL specialist."
+
+Lanes: Newcomer (ELPA21 Level 1) · Emerging (Level 2) · Progressing (Levels 3–4) · Challenge (Level 4–5).
+
+I will paste my quiz/test items or a performance task with its rubric. Return:
+
+1. ITEM AUDIT TABLE — for each item: the construct it measures; the language load that is NOT the construct (vocabulary, sentence length, passive voice, negatives and double negatives, idioms, cultural references, distractors that differ only by a function word); a REWRITE that reduces the language load and keeps the content and the rigor; or the flag "do not simplify — the vocabulary is the construct."
+2. ACCOMMODATIONS BY LANE — for each lane, classroom accommodations (visuals, word bank, bilingual glossary, oral response, chunking, extended time, fewer items covering the same standards, home-language planning before English answer). Mark each one: "mirrors a state-test accommodation" or "classroom only."
+3. RUBRIC ADJUSTMENT — keep every content criterion identical; add a separate language criterion or the note "language errors that do not obscure meaning are not penalized"; give one example of a Level 2 (Emerging) answer that earns FULL content credit, and say why.
+4. ALTERNATE DEMONSTRATION — one way a Newcomer could show the same standard (label, sort, match, sequence, draw-and-explain in home language plus three English content words).
+5. DIRECTIONS LINE — three plain-English sentences the teacher can print at the top of the test, with a Spanish translation.
+
+Under 800 words plus the rewrites. Never ask for or use student names.
+
+MY ASSESSMENT:
+[paste here]</pre>
+    </div>
+    <div class="tip"><b>Richard's tip:</b> whatever accommodation a student will have on the state test, they must already use in your room — so start now, not in March. The <a href="accommodations-cards.html">Accommodations Quick Cards</a> have the manual's numbers if the testing office asks.</div>
+  </section>
+
+  <!-- ================= ASSISTANT 4 ================= -->
+  <section class="asst" id="a4">
+    <div class="top"><div class="n">4</div><div>
+      <h3>Family &amp; Student Messenger</h3>
+      <div class="meta">Note home · conference points · student feedback · positive call · English and Spanish</div>
+      <p>Writing to a family in a language you don't speak is the moment most teachers go quiet. This assistant writes the note home in plain English and neutral Spanish with the same paragraph order, drafts five conference talking points short enough for an interpreter, gives a student feedback at their level with a Spanish gloss, or hands you a 60-second positive-call script. It refuses deficit language on its own.</p>
+      <div class="two">
+        <div class="box"><b>Fill in</b><ul><li>Which pieces you need</li><li>The occasion or purpose</li><li>The student's lane</li><li>Family's language, if known</li><li>The details: dates, the assignment, the ask</li></ul></div>
+        <div class="box"><b>You get back</b><ul><li>Note home, 120–160 words, EN then ES</li><li>5 conference points, strengths first</li><li>Student feedback at the lane's level</li><li>Positive call script under 60 seconds</li><li>"Interpreter available, free" built in</li></ul></div>
+      </div>
+    </div></div>
+    <div class="promptwrap">
+      <div class="pbar"><span>Prompt · Assistant 4</span><div class="btns"><button class="btn" data-copy="p4">Copy prompt</button><a class="btn ghost" data-open="claude" data-src="p4" href="#" target="_blank" rel="noopener">Open in Claude</a><a class="btn ghost" data-open="chatgpt" data-src="p4" href="#" target="_blank" rel="noopener">Open in ChatGPT</a></div></div>
+<pre class="prompt" id="p4">You are helping a high school teacher communicate with a multilingual family and with an English-learner student. Write at about a 6th-grade reading level in English: warm, respectful, specific, no idioms, no jargon (say "the state English test," not "ELPT," unless you explain it). For Spanish: neutral Latin American Spanish, formal "usted" with families and "tú" with the student; translate the meaning, not word for word; keep every number, date, time and place name identical in both languages. If I don't tell you the family's language, give English and Spanish and mark where another language would go.
+
+Lanes: Newcomer (ELPA21 Level 1) · Emerging (Level 2) · Progressing (Levels 3–4) · Challenge (Level 4–5).
+
+Produce ONLY the pieces I ask for below:
+A. NOTE HOME — 120–160 words, English first then Spanish with the same paragraph order; a subject line; one clear request with a date; how to reply (phone, text or email) and that an interpreter is available at no cost; placeholders for the teacher's name and contact.
+B. CONFERENCE TALKING POINTS — five points, each in English with a Spanish version, in short sentences an interpreter can carry: (1) a specific strength, (2) progress in the content, (3) one concern framed as a next step, (4) one thing the family can do at home in their own language (talking about school in the home language, reading anything in any language, asking the student to teach them what they learned), (5) the question to ask the family.
+C. STUDENT FEEDBACK — 3–4 sentences on the work at the student's lane level: one specific strength, one content next step, one language next step with the corrected form shown, one encouragement. Add a Spanish gloss in brackets after each sentence.
+D. POSITIVE CALL SCRIPT — six lines, English and Spanish, under 60 seconds, that opens with the student's success.
+
+Rules: use [Student] instead of a name; include only the grades, events or details I give you; no deficit language ("low," "struggling," "behind," "limited English") — say "is learning English" and name what the student can do. Under 600 words total.
+
+WHAT I NEED (delete what you don't need): Note home / Conference points / Student feedback / Positive call
+Occasion or purpose:
+Student's lane (Newcomer / Emerging / Progressing / Challenge):
+Family's preferred language (if known):
+Details to include (dates, assignment, what happened, what I'm asking for):</pre>
+    </div>
+    <div class="tip"><b>Richard's tip:</b> the first message a family gets from you should be the positive call. After that, every note home lands differently. For the language on official notices (screening, placement, exit), use the <a href="parent-letters.html">parent-letter templates</a> instead — those carry the legal wording.</div>
+  </section>
+
+  <div class="note">
+    <h3>The fine print</h3>
+    <ul>
+      <li><b>You are the expert on your content.</b> These assistants are good at language and bad at knowing whether your biology is right. Read everything before students see it.</li>
+      <li><b>Privacy.</b> Never paste a student's name, ID, grade record, LSP, IEP or 504 into any AI tool. Lane descriptions are enough. Use the tool your district has approved for staff.</li>
+      <li><b>Mississippi specifics</b> in Assistant 3 follow the February 2026 Testing Accommodations Manual as checked in October 2026 (see the <a href="fact-check.html">fact-check</a>). Rules differ by test and change yearly; the District Test Coordinator's manual governs.</li>
+      <li><b>Translations</b> are machine-drafted. For anything official, or any language other than Spanish, have a bilingual colleague or the district interpreter read it first.</li>
+      <li><b>Print or save the prompts.</b> <button class="btn ghost" id="dl" type="button" style="padding:4px 12px;font-size:13px">Download all four as a text file</button> — keep it in your lesson-plan folder.</li>
+    </ul>
+    <p style="margin:12px 0 0">At Laurel High? Rather have it done for you? Email the lesson, text or test to <a href="mailto:rdaniel@laurelschools.org?subject=EL%20Assistant%20request">rdaniel@laurelschools.org</a> with the subject "EL Assistant request" and the lanes in your room; you'll get it back scaffolded. Other schools: <a href="mailto:richard.spanishteacher@gmail.com?subject=EL%20Assistants%20%E2%80%94%20resource%20request">richard.spanishteacher@gmail.com</a>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function txt(id){return document.getElementById(id).textContent.trim();}
+  function copy(s,btn){
+    var done=function(){var o=btn.textContent;btn.textContent='Copied ✓';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1800)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(done,function(){fallback(s);done()})}else{fallback(s);done()}
+  }
+  function fallback(s){var ta=document.createElement('textarea');ta.value=s;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta)}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(txt(b.dataset.copy),b)})});
+  document.querySelectorAll('[data-open]').forEach(function(a){
+    var p=txt(a.dataset.src);
+    var u=a.dataset.open==='claude'?'https://claude.ai/new?q=':'https://chatgpt.com/?q=';
+    a.href=u+encodeURIComponent(p);
+  });
+  var dl=document.getElementById('dl');if(dl)dl.addEventListener('click',function(){
+    var names=['1 · Lane Scaffold Builder','2 · Text Leveler & Vocab Prep','3 · Fair Assessment Clinic','4 · Family & Student Messenger'];
+    var out='EL ASSISTANTS FOR CONTENT TEACHERS — EL Publishing\nradan55.github.io/everyteacher/el-assistants.html\nRichard A. Daniel, M.Ed. · Laurel High School\n\nNever paste student names, IDs, grades, LSP/IEP/504 content into an AI tool.\n\n';
+    ['p1','p2','p3','p4'].forEach(function(id,i){out+='='.repeat(70)+'\nASSISTANT '+names[i]+'\n'+'='.repeat(70)+'\n\n'+txt(id)+'\n\n\n'});
+    var b=new Blob([out],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='EL-Assistants-prompts.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);
+  });
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
