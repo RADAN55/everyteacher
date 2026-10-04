@@ -1,0 +1,287 @@
+/* EL Publishing Hub Guide — a site-wide visitor guide that runs entirely in the browser.
+   No account, no API key, no data leaves the page. Include with <script src="guide.js" defer></script>. */
+(function(){
+"use strict";
+if(window.__elGuideLoaded) return; window.__elGuideLoaded=true;
+
+/* ---------- Catalog (kept in sync with index.html) ---------- */
+var CATALOG = [{"href": "newcomer-guide.html", "title": "Your Guide to School in the U.S.", "aud": "Students & families", "kind": "Newcomer Series · 5 languages · PDF", "desc": "For any K–12 student new to an American school: how schools work, enrolling, a school day, grades and graduation, legal rights and EL support, classroom culture, family tips and a 60-word glossary — English side by side with Spanish, Vietnamese, Arabic, Chinese or Haitian Creole. Free PDF in each language.", "section": "Newcomer Series"}, {"href": "first-100-words.html", "title": "My First 100 Words at School", "aud": "Students", "kind": "Newcomer Series · Interactive · 5 languages", "desc": "The words a newcomer hears in the first month — people, places, the schedule, teacher instructions, lunch, rules, grades and asking for help — ten groups of ten, with tap-to-hear pronunciation, two quiz modes, a progress counter and printable flashcards. Five languages.", "section": "Newcomer Series"}, {"href": "elpt-family-guide.html", "title": "The English Test, Explained for Families", "aud": "Families", "kind": "Newcomer Series · One-page explainer · 5 languages", "desc": "What the ELPT (ELPA21) is, the four domains, what Levels 1–5 actually mean, a sample score report decoded, the exit rule (Level 4 in all four), the EL year calendar, and what families can do at home — in five languages.", "section": "Newcomer Series"}, {"href": "graduation-roadmap.html", "title": "Graduation Roadmap for Newcomers", "aud": "Students 9–12", "kind": "Newcomer Series · Interactive planner · Mississippi", "desc": "Pick a diploma path (Traditional, CTE, Academic, Distinguished), type the credits you have and watch the meters, check off the four state tests, learn how home-country classes and your first language count, and fill in a four-year plan with your counselor. Five languages.", "section": "Newcomer Series"}, {"href": "can-do-checklist.html", "title": "My English Can-Do Checklist", "aud": "Students 6–12", "kind": "Newcomer Series · Self-assessment · 5 languages", "desc": "Eighty “I can…” statements across listening, speaking, reading and writing at Levels 1–5. Students check what is true today, see an estimated level per skill, set a goal for each, and copy a summary for their teacher — a mirror of the ELPT they can use three times a year. Five languages.", "section": "Newcomer Series"}, {"href": "newcomer-week1.html", "title": "Newcomer Week 1 Kit", "aud": "Teachers", "kind": "Newcomer Series · For the EL teacher · 5-day plan", "desc": "The week a student arrives, hour by hour where it matters: the before-day-one checklist, the walkthrough script, the buddy brief, the family call, which Newcomer Series resource to use each day, and a day-5 exit ticket that tells you the week worked.", "section": "Newcomer Series"}, {"href": "el-bridge.html", "title": "EL Bridge Mississippi", "aud": "Teachers", "kind": "Teacher tools · Standards K–12 · MAAP EOC · Works with any AI", "desc": "Pick a Mississippi standard (K–12 ELA, math, science, or Algebra I, Biology I, English II), describe the lesson you already teach, and get it back in four lanes: Newcomer, Emerging, Progressing, Challenge. Also writes leveled texts with text-dependent questions and MAAP-style items with a linguistically accessible twin for every item. Builds the prompt, you run it in Claude, ChatGPT, Gemini or Copilot, paste the answer back, and it lays out the plan. No sign-up on this site.", "section": "Teacher tools"}, {"href": "el-assistants.html", "title": "EL Assistants for Content Teachers", "aud": "Teachers", "kind": "Teacher tools · AI prompts · Copy & paste · English / Español", "desc": "Four copy-and-paste assistants for the teacher who teaches biology, not English: scaffold a lesson by lane, level a text and prep the vocabulary, make a quiz measure content instead of English (Mississippi accommodations built in), and write to families in English and Spanish. Works in Claude, Gemini, ChatGPT or Copilot; no student names ever.", "section": "Teacher tools"}, {"href": "newcomer-intake.html", "title": "Newcomer Intake", "aud": "Teachers", "kind": "Teacher tools · Intake · One form, three documents", "desc": "Type the student once; open the EL Student Profile, the Language Service Plan and the identification letter already filled in. Lane and overall determination compute as you type. Save the student as one file; reopen it at the semester review.", "section": "Teacher tools"}, {"href": "sentence-frames.html", "title": "Sentence-Frame Bank", "aud": "Teachers", "kind": "Teacher tools · Bank · English / Español", "desc": "150 frames by language function — narrate, inform, explain, argue, classroom talk — and by level 1–5, each with a Spanish gloss. Filter to today's function and your students' levels, tick the ones you want, copy them into your slide.", "section": "Teacher tools"}, {"href": "accommodations-cards.html", "title": "EL Accommodations Quick Cards", "aud": "Teachers", "kind": "Teacher tools · Quick cards · Mississippi", "desc": "Eighteen cards: what the accommodation is, who it fits, how to do it in class tomorrow, whether it is allowed on MAAP and ELPT, and the exact wording for the LSP. Filter by state-test-allowed, classroom-only, newcomer, reading, writing. Prints two-up.", "section": "Teacher tools"}, {"href": "coteaching-plan.html", "title": "Co-Teaching Lesson Plan", "aud": "Teachers", "kind": "Teacher tools · One-page planner", "desc": "Content objective + language objective on one page, with a language-objective bank by subject and function, six co-teaching models, who-does-what, supports by lane, and separate assessments for content and language. Fills in the browser, prints on one page.", "section": "Teacher tools"}, {"href": "student-profile.html", "title": "EL Student Profile", "aud": "Teachers", "kind": "Teacher tools · Generator · Confidential", "desc": "Type the ELPT levels and a few facts; get the one page a sub or a new content teacher needs — what the student can do in each domain, the lane, what helps every day, strengths, watch-fors, LSP accommodations, and who to call. For the sub folder.", "section": "Teacher tools"}, {"href": "lsp-builder.html", "title": "LSP Builder", "aud": "Teachers", "kind": "Teacher tools · Mississippi · Language Service Plan", "desc": "Enter the ELPT levels and the Language Service Plan drafts itself: lane, services, instructional and assessment accommodations, a goal for each domain, focus domain, monitoring status and signatures. Edit anything, print for signatures, save as a file to reopen at the semester review.", "section": "Teacher tools"}, {"href": "el-compliance-calendar.html", "title": "EL Program Compliance Calendar", "aud": "Administrators", "kind": "Compliance · Mississippi 2026–27 · Checklist", "desc": "Forty-five obligations placed in the month they come due — HLS and 30-day screening, parent notices, Language Service Plans, ELPT window, exit and four-year monitoring, Title III, MSIS coding, accommodations, the annual program evaluation — each tagged federal, Mississippi or best practice, with the standing Castañeda, Lau and Plyler duties up top. Check off, save, print.", "section": "Administrators & compliance"}, {"href": "parent-letters.html", "title": "EL Parent Notification Letters", "aud": "Administrators", "kind": "Compliance · Fillable templates · English / Español", "desc": "Six letters every program sends, written to ESSA §1112(e)(3): initial identification and placement with every required element, annual continuing notice, exit, monitoring notice, parent refusal form, and meeting invitation. Fill in the student once; print the English and Spanish pages together.", "section": "Administrators & compliance"}, {"href": "el-data-dashboard.html", "title": "EL Data Dashboard", "aud": "Administrators", "kind": "Compliance · Excel template · ELPT", "desc": "Paste your ELPT roster; get overall determination, domain averages, level distribution, growth, years in program, lowest domain, by-grade proficiency and home-language counts — eight formula-driven tables and three charts for the board, Title III and Castañeda prong three.", "section": "Administrators & compliance"}, {"href": "fact-check.html", "title": "Mississippi Fact-Check", "aud": "Administrators", "kind": "Compliance · Review record · Oct 2026", "desc": "Every Mississippi-specific claim on the hub — credits, endorsements, ELPT window, exit rule, monitoring, screening deadlines, test accommodations, Seal of Biliteracy — in one table with its status (14 verified, 5 corrected, 5 for the district to confirm), the source, and a sign-off line for the Title III director.", "section": "Administrators & compliance"}, {"href": "https://radan55.github.io/RichardDaniel/language-functions/", "title": "36-Week Language Functions", "aud": "K–12", "kind": "Scope & sequence · K–12 · ELPA21", "desc": "Twelve language functions across four grade bands and four proficiency tiers: calendar themes, daily plans, texts with quizzes, a standards crosswalk, a sentence-frame ladder and a bilingual student tracker.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/RichardDaniel/curriculum-36/", "title": "36-Week EL Curriculum: Emerging + Progressing", "aud": "9–12", "kind": "Curriculum map · 9–12 · ELPA21 Levels 1–4", "desc": "One theme calendar, two language lanes. Eight units mapped week by week with grammar ladders, ELP and MS CCRS codes, writing products, ELPA21 mirror tasks, a 90-minute block template and an assessment calendar built back from the ELPT window — every recommendation tagged by evidence strength.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/mselablueprintinfo01/", "title": "The Blueprint / El Plano", "aud": "K–12", "kind": "Curriculum · K–12 · EN/ES", "desc": "Bilingual guide to the Mississippi ELA standard blueprints: grade-by-grade reviews, practice passages and test-style items, Grammar Beats songs, four-lane supports, family pages and a lesson builder.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/hispanicheritagemonth2026/", "title": "Hispanic Heritage: 30 People", "aud": "Heritage", "kind": "Heritage · 9–12 · EN/ES", "desc": "Bilingual biography profiles of thirty Hispanic figures with discussion prompts and classroom projects. Featured below.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/msellibrary/", "title": "The Mississippi EL Library", "aud": "5 volumes", "kind": "Library · five volumes · K–12", "desc": "A free five-volume resource system for English-learner success in Mississippi schools: the shelf every EL teacher and coordinator in the state should have open.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/elvocabularycurriculumengine/", "title": "The Vocabulary Engine", "aud": "ELPA21", "kind": "Curriculum · vocabulary · ELPA21", "desc": "A five-day instructional cycle for academic vocabulary, with PD modules, ELPA21-aligned activities and reproducible student handouts as a free PDF.", "section": "Curriculum & scope"}, {"href": "https://radan55.github.io/elpa21speaking01/", "title": "School Life • Language Lab", "aud": "9–12", "kind": "Practice · ELPA21 · 9–12", "desc": "Twenty-five four-skill ELPA21-style activities built around school-life scenarios: reading, listening, speaking and writing in the format students will see on the test.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/tamales02/", "title": "How Tamales Are Made", "aud": "9–12", "kind": "Lesson · Reading · 9–12", "desc": "Feature article plus five interactive activities, vocabulary matching and a student progress report. The text behind the sample-lesson breakdown.", "section": "Interactive tools"}, {"href": "sample-lesson.html", "title": "One Text. Four Lanes. Five Ways to Prove It.", "aud": "9–12", "kind": "Sample lesson · anatomy of a block", "desc": "The 90-minute arc, the lane-by-lane differentiation and the reasoning behind a Storm Studio block, built on the How Tamales Are Made lesson. Read it before you run your first block.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/ms-el-command-center/", "title": "MS EL Command Center", "aud": "Compliance", "kind": "Teacher app · compliance", "desc": "The Mississippi EL teacher's reference hub: identification timelines, ELPA21 procedures, service plans, MTAM accommodations, §15 accountability and the documentation to prove it.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/everyteacherisalanguageteacher/", "title": "Every Teacher Is a Language Teacher", "aud": "PD", "kind": "PD module · 45–60 min", "desc": "Self-paced professional development for general- and special-education teachers: six sections on supporting English learners in any classroom.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/el-publishing-grammar-songs/", "title": "Grammar Beats", "aud": "Music", "kind": "Music · Grammar · 9–12", "desc": "Radio-style grammar songs with full interactive lessons: nouns, adjectives and verbs, each with an audio track and a student lesson built to the beat.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/elpa21-reading-studio/", "title": "ELPA21 Reading Studio", "aud": "K–12", "kind": "Practice platform · ELPT Reading · K–12", "desc": "Mississippi ELPT-style reading practice for English learners: six grade bands, 122 original items, eight item types, mock-test conditions, accommodations, bilingual supports, levels, badges and a teacher dashboard.", "section": "Interactive tools"}, {"href": "https://radan55.github.io/elpa21speaking01/october/", "title": "The Field Atlas", "aud": "Teachers", "kind": "Magazine · Teachers · Oct 2026", "desc": "\"For the teacher who never planned to teach language.\" Sixteen plates on working with English learners in the general-education classroom.", "section": "Magazines"}, {"href": "https://radan55.github.io/elstudentmagazine01/", "title": "Many Voices", "aud": "Students", "kind": "Magazine · Students · Issue 1", "desc": "A magazine for multilingual high-school students: articles, interactive features, vocabulary tools and a teacher resource page.", "section": "Magazines"}, {"href": "https://radan55.github.io/el-field-guide/", "title": "The EL Field Guide", "aud": "All staff", "kind": "Field guide · every educator", "desc": "Plain-language guide for general-education, special-education and administrative staff: identification, instruction, assessment and the legal obligations, with strategies you can use tomorrow.", "section": "Guides & writing"}, {"href": "https://radan55.github.io/elpublishing-magazineeditionone/#compliance", "title": "Making Them Count", "aud": "Book", "kind": "Book · EL Publishing Issue One", "desc": "Teaching English Learners in Mississippi's Overlooked Districts. A field manual for small districts with big obligations, published in the 2026 Educator Edition.", "section": "Guides & writing"}, {"href": "field-notes.html", "title": "What's New in Teaching English Learners", "aud": "Research brief", "kind": "Field Notes · October 2026", "desc": "Eight ideas shaping 2026 — Science of Reading \"yes AND,\" cross-linguistic transfer, Key Language Uses, newcomer programs, co-teaching, AI, and Mississippi's four-domain exit — each tagged by evidence strength, with sources.", "section": "Bulletins & packets"}, {"href": "tech-radar.html", "title": "Five New Tech Tools for English Learners", "aud": "Teachers", "kind": "Tech Radar · October 2026", "desc": "Verified this month: Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a four-lane classroom use for each, and a watch list.", "section": "Bulletins & packets"}, {"href": "language-bridge-2026-09.html", "title": "The Language Bridge", "aud": "Teachers", "kind": "Faculty bulletin · Sept 2026 · Issue 1", "desc": "A one-page bulletin for content teachers: five findings from acquisition research with a classroom move attached to each, the eight SIOP components translated for a content classroom, paired content and language objectives, and a compliance corner.", "section": "Bulletins & packets"}, {"href": "elpa21-practice-student.pdf", "title": "ELPA21 Task Practice · Student", "aud": "Grades 9–12", "kind": "Practice packet · student · PDF", "desc": "Sixteen pages of practice across all four domains, written in the format of the assessment: construct a claim, respond to a message, observe and report, state an opinion, follow instructions, academic lecture, informational set, short paragraph.", "section": "Bulletins & packets"}, {"href": "elpa21-practice-teacher.pdf", "title": "ELPA21 Task Practice · Teacher", "aud": "Teacher edition", "kind": "Practice packet · teacher · PDF", "desc": "The teacher edition: read-aloud scripts, question sets, proficiency look-fors at Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge, answer keys and a two-axis scoring guide.", "section": "Bulletins & packets"}];
+
+/* Topic tags used for matching. Keys are hrefs; values are extra keywords. */
+var TAGS = {
+ "newcomer-guide.html":"newcomer new student arrived first year family families guide school works enroll bilingual spanish vietnamese arabic chinese haitian creole pdf listen",
+ "first-100-words.html":"newcomer vocabulary words first days survival phrases flashcards quiz tap hear student beginner level 1",
+ "elpt-family-guide.html":"elpt elpa21 test families parents explain english test exit score levels letter home",
+ "graduation-roadmap.html":"graduation credits diploma endorsement newcomer high school 9-12 counselor plan graduate",
+ "can-do-checklist.html":"can do checklist self assessment student levels 1-5 goals progress reflect",
+ "newcomer-week1.html":"newcomer first week week 1 plan el teacher day one arrival routine kit",
+ "el-bridge.html":"standards mississippi ccrs maap algebra biology english ii eoc lesson adapt differentiate lanes leveled text passage items assessment quiz test questions generator ai prompt k-12 math science ela",
+ "el-assistants.html":"ai prompts chatgpt claude gemini copilot scaffold level text vocabulary fair assessment family message copy paste assistant",
+ "newcomer-intake.html":"intake enroll new student form profile lsp identification letter paperwork registration",
+ "sentence-frames.html":"sentence frames starters speaking writing function level bank spanish bilingual discussion",
+ "accommodations-cards.html":"accommodations mtam testing classroom extended time dictionary read aloud quick cards 504 iep",
+ "coteaching-plan.html":"co-teaching lesson plan planner language objective content objective template",
+ "student-profile.html":"student profile generator confidential elpt levels one page snapshot",
+ "lsp-builder.html":"lsp language service plan mississippi draft elpt levels services compliance title iii",
+ "el-compliance-calendar.html":"compliance calendar deadlines dates administrator coordinator title iii obligations 2026-27",
+ "parent-letters.html":"parent notification letters essa 1112 templates spanish bilingual identification exit continuing",
+ "el-data-dashboard.html":"data dashboard excel elpt roster charts tables growth progress coordinator",
+ "fact-check.html":"fact check verified sources accuracy mississippi rules diploma elpt window review",
+ "https://radan55.github.io/RichardDaniel/language-functions/":"language functions scope sequence 36 week k-12 describe compare explain argue year plan",
+ "https://radan55.github.io/RichardDaniel/curriculum-36/":"curriculum 36 week 9-12 emerging progressing map units el class block",
+ "https://radan55.github.io/mselablueprintinfo01/":"blueprint el plano ela standards k-12 bilingual spanish grammar beats monday moves daily opener search projector games",
+ "https://radan55.github.io/hispanicheritagemonth2026/":"hispanic heritage month biographies 30 people bilingual reading",
+ "https://radan55.github.io/msellibrary/":"library leveled readables books volumes emerging progressing reading",
+ "https://radan55.github.io/elvocabularycurriculumengine/":"vocabulary engine words tier 2 academic elpa21 curriculum",
+ "https://radan55.github.io/elpa21speaking01/":"elpa21 speaking listening reading writing workbook school life language lab practice 9-12 four skills",
+ "https://radan55.github.io/tamales02/":"tamales reading check sample lesson sequencing quiz article interactive",
+ "sample-lesson.html":"sample lesson 90 minute block four lanes anatomy model lesson how a lesson looks",
+ "https://radan55.github.io/ms-el-command-center/":"command center compliance app pwa teacher dashboard title iii checklist",
+ "https://radan55.github.io/everyteacherisalanguageteacher/":"pd professional development module staff training every teacher language teacher faculty meeting 45 60 minutes",
+ "https://radan55.github.io/el-publishing-grammar-songs/":"grammar songs music beats radio lessons 9-12 fun",
+ "https://radan55.github.io/elpa21-reading-studio/":"reading studio elpt practice platform class codes teacher dashboard badges study center remediation k-12",
+ "https://radan55.github.io/elpa21speaking01/october/":"field atlas magazine teachers october 2026 articles advice",
+ "https://radan55.github.io/elstudentmagazine01/":"many voices student magazine high school issue 1 read",
+ "https://radan55.github.io/el-field-guide/":"field guide every educator quick reference all staff handbook",
+ "https://radan55.github.io/elpublishing-magazineeditionone/#compliance":"making them count book manuscript overlooked districts policy compliance leadership",
+ "field-notes.html":"research brief field notes what's new findings october 2026 ideas",
+ "tech-radar.html":"tech tools technology apps chromebook free new tools radar",
+ "language-bridge-2026-09.html":"faculty bulletin language bridge monthly newsletter september 2026",
+ "elpa21-practice-student.pdf":"elpa21 practice packet student pdf tasks print",
+ "elpa21-practice-teacher.pdf":"elpa21 practice packet teacher edition answer key pdf"
+};
+
+/* Synonyms: normalise visitor words to catalog words */
+var SYN = [
+ [/\b(parents?|families|family|home|guardians?)\b/g," family families parents "],
+ [/\b(kids?|children|students?|learners?|els?|ells?|mls?)\b/g," student students "],
+ [/\b(brand new|just (arrived|came|got here)|newcomers?|new (student|kid|arrival)s?)\b/g," newcomer "],
+ [/\b(test|tests|testing|exam|exams|assessment|assess|quiz|quizzes|benchmark)\b/g," test assessment elpt maap items quiz "],
+ [/\b(elpt|elpa|elpa21|wida|access)\b/g," elpt elpa21 "],
+ [/\b(state test|eoc|end of course|maap|algebra|biology|english ii)\b/g," maap eoc algebra biology english ii standards "],
+ [/\b(standards?|ccrs|objectives?)\b/g," standards ccrs "],
+ [/\b(lesson|lessons|plan|planning|unit|units|differentiat\w*|scaffold\w*|adapt\w*|modif\w*)\b/g," lesson plan adapt scaffold differentiate lanes "],
+ [/\b(read\w*|passage|passages|text|texts|article|articles|book|books|level\w* text)\b/g," reading text passage leveled library "],
+ [/\b(vocab\w*|words?|terms?)\b/g," vocabulary words "],
+ [/\b(write|writing|essay|paragraph|sentence|sentences|speak\w*|talk\w*|discussion)\b/g," writing speaking sentence frames "],
+ [/\b(grammar|verbs?|tense)\b/g," grammar "],
+ [/\b(accommodat\w*|modif\w*|extended time|dictionary|read aloud|504|iep)\b/g," accommodations mtam "],
+ [/\b(compliance|complian\w*|title iii|title 3|legal|law|audit|monitor\w*|coordinator|director|admin\w*|principal)\b/g," compliance administrator coordinator title iii "],
+ [/\b(lsp|service plan|language service)\b/g," lsp language service plan "],
+ [/\b(letter|letters|notif\w*|notice)\b/g," letters notification "],
+ [/\b(data|roster|spreadsheet|excel|growth|scores?)\b/g," data dashboard excel elpt "],
+ [/\b(spanish|español|espanol|bilingual|biling\w*|translat\w*|vietnamese|arabic|chinese|creole)\b/g," spanish bilingual languages "],
+ [/\b(ai|chatgpt|gpt|claude|gemini|copilot|prompt|prompts|bot)\b/g," ai prompts assistant "],
+ [/\b(pd|professional development|training|staff meeting|faculty|workshop|inservice|in-service)\b/g," pd professional development faculty staff training "],
+ [/\b(music|songs?|sing\w*|rap|beats?)\b/g," music songs grammar beats "],
+ [/\b(tech\w*|apps?|tools?|chromebook|digital|online)\b/g," tech tools apps "],
+ [/\b(graduat\w*|credits?|diploma|senior|counselor)\b/g," graduation credits diploma "],
+ [/\b(enroll\w*|register\w*|intake|paperwork|first day|first week)\b/g," intake newcomer week 1 enroll "],
+ [/\b(magazine|newsletter|bulletin|issue|read something|article)\b/g," magazine bulletin newsletter "],
+ [/\b(curriculum|scope|sequence|year|pacing|36)\b/g," curriculum scope sequence 36 week "],
+ [/\b(sample|example|model|what does .* look like)\b/g," sample lesson example "],
+ [/\b(math|algebra|science|biology|history|ela|english|content)\b/g," math science ela content standards el bridge "],
+ [/\b(co-?teach\w*|push-?in|collaborat\w*)\b/g," co-teaching plan "],
+ [/\b(profile|snapshot|one-?pager|who is this student)\b/g," student profile "],
+ [/\b(k-?12|elementary|middle|high school|grade \d+|grades?)\b/g," k-12 grades "]
+];
+
+var STOP=/\b(the|a|an|and|or|for|to|of|in|on|with|my|i|me|we|our|is|are|do|does|can|you|have|need|want|looking|help|something|about|how|what|where|which|some|any|please|get|find|show)\b/g;
+
+/* ---------- Scripted knowledge ---------- */
+var ROLES = {
+ content:{label:"I teach a content class (math, science, ELA, history…)",
+   needs:[["Adapt a lesson I already teach","el-bridge.html","lesson adapt lanes"],["Make a quiz measure content, not English","el-bridge.html#items","assessment items accessible"],["Level a text or get vocabulary ready","el-bridge.html","leveled text vocabulary"],["Sentence frames for discussion and writing","sentence-frames.html",""],["Which accommodations can I use?","accommodations-cards.html",""],["See what a four-lane lesson looks like","sample-lesson.html",""]]},
+ el:{label:"I'm the EL / ESL teacher",
+   needs:[["A newcomer just arrived","newcomer-week1.html","newcomer intake week 1"],["Draft an LSP from ELPT levels","lsp-builder.html",""],["Year-long curriculum and scope","https://radan55.github.io/RichardDaniel/curriculum-36/","curriculum 36 week"],["ELPT / ELPA21 practice for students","https://radan55.github.io/elpa21-reading-studio/","elpa21 practice reading speaking"],["Leveled books and readables","https://radan55.github.io/msellibrary/",""],["Train my colleagues in 45 minutes","https://radan55.github.io/everyteacherisalanguageteacher/","pd"]]},
+ admin:{label:"I'm an administrator or EL coordinator",
+   needs:[["Compliance deadlines for 2026–27","el-compliance-calendar.html",""],["Parent notification letters (ESSA)","parent-letters.html",""],["Turn an ELPT roster into charts","el-data-dashboard.html",""],["What's verified against Mississippi rules","fact-check.html",""],["A staff PD module","https://radan55.github.io/everyteacherisalanguageteacher/","pd"],["Compliance app for the EL program","https://radan55.github.io/ms-el-command-center/",""]]},
+ family:{label:"I'm a student or a family member",
+   needs:[["How U.S. schools work (5 languages)","newcomer-guide.html",""],["My first 100 school words","first-100-words.html",""],["What is the English test?","elpt-family-guide.html",""],["How do I graduate?","graduation-roadmap.html",""],["Check what I can do in English","can-do-checklist.html",""],["Something to read (student magazine)","https://radan55.github.io/elstudentmagazine01/",""]]},
+ browse:{label:"Just looking around",
+   needs:[["What's new this month","whats-new.html",""],["Five new tech tools","tech-radar.html",""],["The research brief","field-notes.html",""],["The teacher magazine","https://radan55.github.io/elpa21speaking01/october/",""],["Who made this and why","__about",""],["Show me everything","index.html#top",""]]}
+};
+
+var FAQ = [
+ {m:/\b(who (made|built|runs|is behind)|about (this|the) (site|hub)|richard|daniel|author|contact|email|reach)\b/i, a:"EL Publishing is built by Richard A. Daniel, M.Ed., ENL/EL Specialist at Laurel High School in Laurel, Mississippi, with 31 years in classrooms across Mississippi, Alabama and Georgia. Every resource here is free. To reach him: richard.spanishteacher@gmail.com.", links:[["About EL Publishing","https://radan55.github.io/RichardDaniel/"]]},
+ {m:/\b(free|cost|price|pay|subscription|license)\b/i, a:"Everything on the hub is free to use and share with your staff. No sign-up, no paywall. A credit line back to EL Publishing is appreciated when you reuse something.", links:[]},
+ {m:/\b(lanes?|newcomer lane|emerging|progressing|challenge|four.lane)\b/i, a:"The four lanes are the hub's differentiation model, mapped to ELPA21 levels: Newcomer (Level 1), Emerging (Levels 1–2), Progressing (Levels 3–4) and Challenge (Level 4–5, near exit). Every lane keeps the same grade-level content objective; only the language supports change.", links:[["Lane guide in EL Bridge","el-bridge.html#ref"],["See a four-lane lesson","sample-lesson.html"]]},
+ {m:/\b(what'?s new|new this (week|month)|recent|updates?|changelog)\b/i, a:"The What's New page lists every addition by date. Most recent: EL Bridge Mississippi, the EL Assistants, the five-language Newcomer Series and the Teacher tools section.", links:[["What's new","whats-new.html"]]},
+ {m:/\b(privacy|student names?|ferpa|safe|data|confidential)\b/i, a:"Nothing you type into the hub's tools leaves your browser. The one rule for the AI-prompt tools: never paste student names, IDs, grades or LSP/IEP/504 content into any AI service. The prompts are written so you never need to.", links:[["EL Assistants privacy note","el-assistants.html"]]},
+ {m:/\b(download|print|pdf|offline|paper|handout)\b/i, a:"Most pages print cleanly from the browser (File → Print). The Newcomer Guide and the ELPA21 practice packets also come as PDFs, and EL Bridge and the Assistants have Copy-as-text and download buttons.", links:[["Newcomer Guide (PDF inside)","newcomer-guide.html"],["ELPA21 practice packets","index.html#packet"]]},
+ {m:/\b(how (do|does|to) (i |you )?(use|work)|instructions|tutorial|get started|start)\b/i, a:"__howto", links:[]}
+];
+
+var PAGE_HELP = {
+ "el-bridge.html":{tip:"You're in EL Bridge. Three steps: pick the standard at the top, fill in the intake on the left, click Build the prompt. Run the prompt in Claude, ChatGPT, Gemini or Copilot, paste the whole reply into Step 3, and the page lays it out. Save to My library to keep it on this device.", chips:[["Which tab do I want?","__bridge-tabs"],["I pasted the answer and nothing happened","__bridge-paste"],["Can I use it without an AI account?","__bridge-noacct"]]},
+ "el-assistants.html":{tip:"You're on the EL Assistants page: four copy-and-paste prompts. Pick the assistant, click Copy prompt (or Open in Claude / ChatGPT), add your lesson or text where it says to, and send.", chips:[["Which assistant do I need?","__asst-which"]]},
+ "lsp-builder.html":{tip:"The LSP Builder drafts a Mississippi Language Service Plan from ELPT domain levels. Enter the levels, choose services, and copy or print the result. Keep student names out of anything you paste elsewhere.", chips:[]},
+ "newcomer-guide.html":{tip:"This guide has nine chapters in six languages. Use the language picker at the top, and the Listen button on each chapter reads it aloud in English, then the chosen language.", chips:[["Is there a PDF?","__nc-pdf"]]},
+ "index.html":{tip:"", chips:[]}
+};
+
+var CANNED = {
+ "__about":"EL Publishing is Richard A. Daniel's resource studio for Mississippi educators of English learners: curriculum, interactive tools, magazines, guides and compliance aids, all free. Richard is the ENL/EL Specialist at Laurel High School and writes everything here from a working classroom.",
+ "__howto":"Tell me who you are and what you're trying to do and I'll point you to the right page. Or type a few words, like “newcomer arrived”, “Algebra I items”, “parent letter in Spanish”, “PD for my staff”.",
+ "__bridge-tabs":"Adapt a lesson rewrites a lesson you already teach into four lanes. Leveled text writes an original passage at several English levels for a topic you name. Assessment items builds MAAP-style questions with a linguistically accessible twin for each. Lane guide explains the levels. My library holds what you save on this device.",
+ "__bridge-paste":"Two usual causes. The reply wasn't the JSON object the prompt asked for: send the assistant “Reply again with only the JSON object, no commentary” and paste that. Or the reply was cut off: ask for fewer lanes or fewer items. A code fence around the JSON is fine; stray sentences before or after are usually fine too.",
+ "__bridge-noacct":"Yes. ChatGPT can run the prompt without an account (chatgpt.com, no login). Claude and Gemini need a free login. The page itself never needs an account, and your library stays in your own browser.",
+ "__asst-which":"Lane Scaffold Builder: you have a lesson and want four-lane supports. Text Leveler & Vocab Prep: you have a text that's too hard. Fair Assessment Clinic: you have a quiz and want it to measure content rather than English. Family & Student Messenger: you need a note home in English and Spanish.",
+ "__nc-pdf":"Yes. Each language of the Newcomer Guide has its own PDF, linked from the page header, so families can keep a printed copy."
+};
+
+/* ---------- Styles ---------- */
+var css = "\
+#elg-btn{position:fixed;right:18px;bottom:18px;z-index:9998;display:flex;align-items:center;gap:9px;background:#1E2761;color:#fff;border:2px solid #C9A227;border-radius:999px;padding:10px 16px 10px 12px;font:600 14px/1 Inter,-apple-system,'Segoe UI',sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(30,39,97,.28)}\
+#elg-btn:hover{background:#141A44}#elg-btn .d{width:22px;height:22px;border-radius:50%;background:#C9A227;color:#141A44;display:grid;place-items:center;font:700 14px Fraunces,Georgia,serif}\
+#elg-btn:focus-visible{outline:3px solid #C9A227;outline-offset:2px}\
+#elg{position:fixed;right:18px;bottom:76px;z-index:9999;width:min(400px,calc(100vw - 24px));height:min(600px,calc(100vh - 110px));background:#fff;border:1px solid #DCDEE9;border-top:5px solid #C9A227;box-shadow:0 18px 48px rgba(30,39,97,.3);display:flex;flex-direction:column;font:15px/1.5 Inter,-apple-system,'Segoe UI',sans-serif;color:#1F2330}\
+#elg[hidden]{display:none}\
+#elg .h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #DCDEE9;background:#1E2761;color:#fff}\
+#elg .h b{font:700 17px Fraunces,Georgia,serif;display:block;line-height:1.1}#elg .h small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#EBD9A0;margin-top:2px}\
+#elg .h .x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer;line-height:1;padding:4px 6px}\
+#elg .h .lang{background:transparent;border:1px solid rgba(235,217,160,.6);color:#EBD9A0;font-size:11px;letter-spacing:.1em;padding:3px 8px;border-radius:999px;cursor:pointer}\
+#elg .m{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#F4F5FA}\
+#elg .b{max-width:92%;padding:10px 13px;border-radius:12px;font-size:14.5px}\
+#elg .b.g{background:#fff;border:1px solid #DCDEE9;border-bottom-left-radius:3px;align-self:flex-start}\
+#elg .b.u{background:#1E2761;color:#fff;border-bottom-right-radius:3px;align-self:flex-end}\
+#elg .chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:96%}\
+#elg .chips button{background:#fff;border:1px solid #1E2761;color:#1E2761;border-radius:999px;padding:6px 11px;font:600 13px Inter,sans-serif;cursor:pointer;text-align:left}\
+#elg .chips button:hover{background:#1E2761;color:#fff}\
+#elg .rec{background:#fff;border:1px solid #DCDEE9;border-left:4px solid #C9A227;padding:9px 12px;align-self:stretch;text-decoration:none;color:#1F2330;display:block}\
+#elg .rec:hover{box-shadow:0 6px 18px rgba(30,39,97,.14)}\
+#elg .rec b{font:700 15px Fraunces,Georgia,serif;color:#1E2761;display:block}#elg .rec small{display:block;color:#5D6480;font-size:12.5px;margin-top:2px}#elg .rec .k{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#C9A227;font-weight:700}\
+#elg form{display:flex;gap:8px;padding:10px;border-top:1px solid #DCDEE9;background:#fff}\
+#elg input{flex:1;border:1px solid #DCDEE9;border-radius:8px;padding:9px 11px;font:inherit;font-size:14.5px;min-width:0}\
+#elg input:focus{outline:2px solid #C9A227;outline-offset:1px}\
+#elg form button{background:#C9A227;border:0;color:#141A44;font-weight:700;border-radius:8px;padding:0 14px;cursor:pointer}\
+#elg .ft{font-size:11px;color:#5D6480;padding:0 12px 8px;background:#fff}\
+@media (max-width:480px){#elg{right:8px;left:8px;width:auto;bottom:70px;height:min(560px,calc(100vh - 90px))}#elg-btn{right:12px;bottom:12px}}\
+@media print{#elg,#elg-btn{display:none!important}}";
+
+/* ---------- UI ---------- */
+var state={role:null, lang:"en", history:[]};
+try{ state.role=sessionStorage.getItem("elg.role")||null; state.lang=sessionStorage.getItem("elg.lang")||"en"; }catch(_){}
+
+var T = {
+ en:{title:"Hub Guide", sub:"EL Publishing · every resource, one ask", hello:"Hi. I know all 40 resources on this hub. Who are you today?", need:"What do you need?", more:"Anything else? Type a few words, or pick another role.", none:"I don't have a page that matches that exactly. Here are the closest, or hand your question to a full AI assistant with the catalog attached.", ask:"Ask a full AI about this", other:"Something else", role:"Change role", placeholder:"Type what you need…", top:"Closest matches", open:"Open", here:"On this page", lang:"Español"},
+ es:{title:"Guía del sitio", sub:"EL Publishing · todos los recursos, una pregunta", hello:"Hola. Conozco los 40 recursos de este sitio. ¿Quién eres hoy?", need:"¿Qué necesitas?", more:"¿Algo más? Escribe unas palabras o elige otro rol.", none:"No tengo una página que coincida exactamente. Aquí están las más cercanas, o pásale tu pregunta a un asistente de IA con el catálogo adjunto.", ask:"Preguntar a una IA completa", other:"Otra cosa", role:"Cambiar rol", placeholder:"Escribe lo que necesitas…", top:"Resultados más cercanos", open:"Abrir", here:"En esta página", lang:"English"}
+};
+var ROLES_ES={content:"Doy clases de contenido (matemáticas, ciencias, inglés…)", el:"Soy el/la maestro(a) de EL / ESL", admin:"Soy administrador(a) o coordinador(a) de EL", family:"Soy estudiante o familiar", browse:"Solo estoy mirando"};
+var FAMILY_ES=[["Cómo funcionan las escuelas en EE. UU. (5 idiomas)","newcomer-guide.html"],["Mis primeras 100 palabras escolares","first-100-words.html"],["¿Qué es el examen de inglés?","elpt-family-guide.html"],["¿Cómo me gradúo?","graduation-roadmap.html"],["Lo que ya puedo hacer en inglés","can-do-checklist.html"],["Algo para leer (revista estudiantil)","https://radan55.github.io/elstudentmagazine01/"]];
+
+var root,msgs,input,btn;
+function el(tag,cls,html){var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e;}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function t(k){return T[state.lang][k]}
+function here(){var p=location.pathname.split("/").pop()||"index.html"; return p;}
+function base(){ // path prefix so links work from subfolders (newcomer/, admin/, download/)
+  var parts=location.pathname.replace(/\/[^\/]*$/,"").split("/"); var i=parts.indexOf("everyteacher");
+  if(i<0) return ""; var depth=parts.length-1-i; var up=""; for(var k=0;k<depth;k++) up+="../"; return up; }
+function href(h){ return /^https?:/.test(h)? h : base()+h; }
+function scroll(){ msgs.scrollTop=msgs.scrollHeight; }
+function say(html){ var b=el("div","b g",html); msgs.appendChild(b); scroll(); return b; }
+function you(text){ msgs.appendChild(el("div","b u",esc(text))); scroll(); }
+function chips(list){ // [[label, action]]
+  var c=el("div","chips"); list.forEach(function(it){ var b=el("button",null,esc(it[0])); b.type="button"; b.onclick=function(){ you(it[0]); c.remove(); act(it[1], it[2]||""); }; c.appendChild(b); });
+  msgs.appendChild(c); scroll(); }
+function rec(item){
+  var a=el("a","rec"); a.href=href(item.href); if(/^https?:/.test(item.href)){a.target="_blank";a.rel="noopener";}
+  a.innerHTML='<span class="k">'+esc(item.section||"")+'</span><b>'+esc(item.title)+'</b><small>'+esc(trim(item.desc,150))+'</small>';
+  msgs.appendChild(a); scroll(); }
+function trim(s,n){ s=String(s||""); return s.length>n? s.slice(0,n).replace(/\s+\S*$/,"")+"…" : s; }
+function find(h){ for(var i=0;i<CATALOG.length;i++) if(CATALOG[i].href===h) return CATALOG[i]; return null; }
+
+/* ---------- Matching ---------- */
+function norm(q){ q=" "+String(q).toLowerCase()+" "; SYN.forEach(function(p){ q=q.replace(p[0],p[1]); }); q=q.replace(STOP," ").replace(/[^a-z0-9ñáéíóúü\- ]+/g," "); return q.split(/\s+/).filter(function(w){return w.length>1}); }
+function score(q){
+  var words=norm(q); if(!words.length) return [];
+  var out=CATALOG.map(function(c){
+    var hay=(c.title+" "+c.kind+" "+c.aud+" "+c.desc+" "+(TAGS[c.href]||"")).toLowerCase();
+    var ttl=c.title.toLowerCase(); var s=0;
+    words.forEach(function(w){ if(ttl.indexOf(w)>=0) s+=3; else if((TAGS[c.href]||"").indexOf(w)>=0) s+=2; else if(hay.indexOf(w)>=0) s+=1; });
+    // role bias
+    if(state.role==="family" && /Students|Families/.test(c.aud)) s+=1.5;
+    if(state.role==="admin" && /Administrators|Compliance/.test(c.aud+c.kind)) s+=1.5;
+    if(state.role==="content" && /el-bridge|el-assistants|sentence-frames|accommodations|sample-lesson/.test(c.href)) s+=1;
+    return {c:c,s:s};
+  }).filter(function(x){return x.s>0}).sort(function(a,b){return b.s-a.s});
+  return out;
+}
+
+/* ---------- Actions ---------- */
+function act(action, extra){
+  if(action==="__role"){ roles(); return; }
+  if(action==="__ask"){ handoff(extra); return; }
+  if(action in CANNED){ say(esc(CANNED[action])); followup(); return; }
+  if(ROLES[action]){ setRole(action); return; }
+  if(/^__/.test(action)){ say(esc(CANNED.__howto)); followup(); return; }
+  // a link action: show the matching card (and siblings if query words given)
+  var h=action.replace(/#.*$/,""); var item=find(h);
+  if(item){ say(t("top")+":"); rec(Object.assign({},item,{href:action})); if(extra){ score(extra).slice(0,3).forEach(function(x){ if(x.c.href!==h) rec(x.c); }); } }
+  else { var a=el("a","rec"); a.href=href(action); a.innerHTML="<b>"+t("open")+"</b>"; msgs.appendChild(a); }
+  followup();
+}
+function followup(){ say(esc(t("more"))); chips([[t("role"),"__role"],[t("ask"),"__ask"]]); }
+function roles(){
+  say(esc(t("hello")));
+  chips(Object.keys(ROLES).map(function(k){ return [state.lang==="es"?ROLES_ES[k]:ROLES[k].label, k]; }));
+}
+function setRole(k){
+  state.role=k; try{sessionStorage.setItem("elg.role",k)}catch(_){}
+  say(esc(t("need")));
+  var needs = (k==="family"&&state.lang==="es") ? FAMILY_ES.map(function(n){return [n[0],n[1],""]}) : ROLES[k].needs;
+  chips(needs.concat([[t("other"),"__howto"]]));
+}
+function answer(q){
+  // FAQs first
+  for(var i=0;i<FAQ.length;i++){ if(FAQ[i].m.test(q)){
+    var a=FAQ[i].a; if(a in CANNED) a=CANNED[a];
+    say(esc(a)); FAQ[i].links.forEach(function(l){ var it=find(l[1].replace(/#.*$/,""))||{title:l[0],desc:"",section:""}; rec(Object.assign({},it,{title:l[0],href:l[1]})); });
+    followup(); return; } }
+  // section requests
+  var sec={newcomer:"#newcomer",tools:"#tools",admin:"#admin",curriculum:"#curriculum",magazine:"#magazine",packet:"#packet"};
+  var hits=score(q);
+  if(!hits.length){ say(esc(t("none"))); chips([[t("ask"),"__ask",q],[t("role"),"__role"]]); return; }
+  var top=hits.slice(0,4); var best=top[0].s;
+  say(esc(t("top"))+":");
+  top.forEach(function(x,i){ if(i===0 || x.s>=best*0.45) rec(x.c); });
+  chips([[t("ask"),"__ask",q],[t("role"),"__role"]]);
+}
+function handoff(q){
+  var cat=CATALOG.map(function(c){return "- "+c.title+" ("+c.aud+"; "+c.kind+"): "+c.desc+" → "+(/^https?:/.test(c.href)?c.href:"https://radan55.github.io/everyteacher/"+c.href);}).join("\n");
+  var p="You are a guide to the EL Publishing Hub, a free collection of resources for teachers of English learners in Mississippi (radan55.github.io/everyteacher). Using ONLY the catalog below, recommend the 2-4 best resources for the visitor's request, explain in one sentence each why, give the link, and say plainly if nothing fits. Do not invent resources.\n\nVISITOR REQUEST: "+(q||"(the visitor will type it next)")+"\n\nCATALOG:\n"+cat;
+  say(esc(state.lang==="es"?"Abre tu asistente de IA con el catálogo completo y tu pregunta ya incluidos:":"Open your AI assistant with the full catalog and your question already included:"));
+  var c=el("div","chips");
+  [["Open in ChatGPT (no account needed)","https://chatgpt.com/?q="],["Open in Claude","https://claude.ai/new?q="]].forEach(function(o){
+    var a=el("a","rec"); a.href=o[1]+encodeURIComponent(p); a.target="_blank"; a.rel="noopener"; a.innerHTML="<b>"+esc(o[0])+"</b>"; msgs.appendChild(a); });
+  var b=el("button",null,state.lang==="es"?"Copiar el prompt":"Copy the prompt"); b.type="button"; b.onclick=function(){ copy(p); b.textContent=state.lang==="es"?"Copiado ✓":"Copied ✓"; }; c.appendChild(b); msgs.appendChild(c); scroll();
+}
+function copy(s){ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).catch(function(){fb(s)})} else fb(s); function fb(x){var ta=document.createElement("textarea");ta.value=x;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);} }
+
+/* ---------- Boot ---------- */
+function open(){
+  root.hidden=false; btn.setAttribute("aria-expanded","true");
+  if(!msgs.children.length){
+    var ph=PAGE_HELP[here()];
+    if(ph && ph.tip){ say("<b>"+esc(t("here"))+".</b> "+esc(ph.tip)); if(ph.chips.length) chips(ph.chips); }
+    if(state.role && ROLES[state.role]){ say(esc(t("hello").replace(/Who are you today\?|¿Quién eres hoy\?/,""))); setRole(state.role); } else roles();
+  }
+  setTimeout(function(){ input.focus(); },50);
+}
+function close(){ root.hidden=true; btn.setAttribute("aria-expanded","false"); btn.focus(); }
+function build(){
+  var st=document.createElement("style"); st.textContent=css; document.head.appendChild(st);
+  btn=el("button",null,'<span class="d">?</span><span>'+esc(state.lang==="es"?"Guía":"Ask the guide")+'</span>'); btn.id="elg-btn"; btn.type="button"; btn.setAttribute("aria-haspopup","dialog"); btn.setAttribute("aria-expanded","false"); btn.setAttribute("aria-controls","elg");
+  root=el("section"); root.id="elg"; root.hidden=true; root.setAttribute("role","dialog"); root.setAttribute("aria-label","Hub guide");
+  root.innerHTML='<div class="h"><div><b>'+esc(t("title"))+'</b><small>'+esc(t("sub"))+'</small></div><button type="button" class="lang">'+esc(t("lang"))+'</button><button type="button" class="x" aria-label="Close">×</button></div><div class="m"></div><form><input type="text" autocomplete="off" placeholder="'+esc(t("placeholder"))+'" aria-label="'+esc(t("placeholder"))+'"><button type="submit">→</button></form><div class="ft">'+(state.lang==="es"?"Funciona en tu navegador. Nada de lo que escribes sale de esta página.":"Runs in your browser. Nothing you type leaves this page.")+'</div>';
+  document.body.appendChild(btn); document.body.appendChild(root);
+  msgs=root.querySelector(".m"); input=root.querySelector("input");
+  btn.onclick=function(){ root.hidden?open():close(); };
+  root.querySelector(".x").onclick=close;
+  root.querySelector(".lang").onclick=function(){ state.lang=state.lang==="en"?"es":"en"; try{sessionStorage.setItem("elg.lang",state.lang)}catch(_){} root.remove(); btn.remove(); st.remove(); msgs=null; build(); open(); };
+  root.querySelector("form").onsubmit=function(e){ e.preventDefault(); var q=input.value.trim(); if(!q) return; input.value=""; you(q); answer(q); };
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!root.hidden) close(); });
+}
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",build); else build();
+})();

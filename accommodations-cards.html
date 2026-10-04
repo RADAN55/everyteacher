@@ -94,5 +94,6 @@ document.getElementById('cards').innerHTML=A.map((a,i)=>`<article class="c" data
 document.querySelector('.bar-in').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('.bar button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));const f=b.dataset.f;document.querySelectorAll('.c').forEach(c=>c.classList.toggle('hide',f!=='all'&&!c.dataset.tags.split(' ').includes(f)))});
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
 </body>
 </html>
