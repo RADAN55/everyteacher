@@ -64,6 +64,21 @@
   footer a{color:var(--gold)}
   @media (max-width:700px){.bar-in{grid-template-columns:1fr 1fr}.how,.st{grid-template-columns:1fr}.sum .g{grid-template-columns:1fr 1fr}.dom{padding:16px}.fill{grid-template-columns:1fr}}
   @media print{header .cta,.bar,.how,.tools,footer{display:none}body{background:#fff}.dom,.sum{border:0;break-inside:avoid;padding:8px 0}.sum{background:#fff;color:#000;border-top:2px solid #000}.sum h2,.sum .g b{color:#000}.sum .g div,.sum .g span,.sum p{color:#000}.st label{border:1px solid #ccc}.st label:has(input:checked){background:#eee}}
+
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Regular.ttf) format("truetype");font-weight:400}
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Bold.ttf) format("truetype");font-weight:600 700}
+:lang(ar){font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;line-height:1.65}
+:lang(zh-Hans){font-family:"Noto Sans CJK SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Sans 3",sans-serif}
+.langsw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:1000px;margin:0 auto;padding:8px 22px;background:#fff;border-bottom:1px solid #DCDEE9}
+.langsw span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5D6480;font-weight:700;margin-right:4px}
+.langsw button{font:inherit;font-size:13px;font-weight:700;border:1px solid #DCDEE9;background:#fff;color:#1E2761;padding:5px 11px;border-radius:999px;cursor:pointer}
+.langsw button[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:#1E2761}
+[dir="rtl"].es,[dir="rtl"][data-k="pure"]{text-align:right}
+.es[dir="rtl"]{border-left:0;padding-left:0;border-right:2px solid #E3D08E;padding-right:14px}
+[dir="rtl"] ul{padding-left:0;padding-right:16px}
+body.only-en [data-k="pure"],body.only-en .es,body.only-en [lang]:not([lang="en"]):not(html){display:none}
+body.only-en .sec{grid-template-columns:1fr}
+@media print{.langsw{display:none}}
 </style>
 </head>
 <body>
@@ -78,6 +93,8 @@
 </header>
 <div class="bar"><div class="bar-in" id="meters"></div></div>
 <main>
+<div class="langsw" role="group" aria-label="Language"><span>Second language</span><button type="button" data-l="en" aria-pressed="false">English only</button><button type="button" data-l="es" aria-pressed="true">Español</button><button type="button" data-l="vi" aria-pressed="false">Tiếng Việt</button><button type="button" data-l="ar" aria-pressed="false">العربية</button><button type="button" data-l="zh" aria-pressed="false">中文</button><button type="button" data-l="ht" aria-pressed="false">Kreyòl</button></div>
+
 <div class="how">
   <div><b>How to do it honestly.</b> "I can" means you can do it most of the time without help, not once with a friend translating. Leave a box empty if you are not sure — you will check it next time. Do this in September, January and May; your checks are saved on this device. Write one goal per skill at the bottom of each section.</div>
   <div lang="es"><b>Cómo hacerlo con honestidad.</b> "Puedo" significa que lo haces casi siempre sin ayuda, no una vez con un amigo traduciendo. Deja la casilla vacía si no estás seguro — la marcarás la próxima vez. Hazlo en septiembre, enero y mayo; tus marcas se guardan en este aparato. Escribe una meta por habilidad al final de cada sección.</div>
@@ -148,6 +165,31 @@ document.getElementById('copy').addEventListener('click',()=>{
 });
 document.getElementById('reset').addEventListener('click',()=>{if(confirm('Clear all checks and goals on this device?')){S={c:{},g:{}};save();location.reload()}});
 update();
+</script>
+
+<script>
+(function(){
+var L={es:"Español",vi:"Tiếng Việt",ar:"العربية",zh:"中文",ht:"Kreyòl Ayisyen"};
+var orig={};document.querySelectorAll('[data-i]').forEach(function(e){orig[e.dataset.i]=e.innerHTML});
+var cache={};var bs=document.querySelectorAll('.langsw button');
+function applyBlocks(l,t){var base=(l==='en'||l==='es');
+  document.querySelectorAll('[data-i]').forEach(function(e){var id=e.dataset.i;e.innerHTML=base?orig[id]:(t[id]||orig[id]);
+    if(e.dataset.k==='pure'){e.setAttribute('lang',base?'es':(t._meta?t._meta.lang:l));e.setAttribute('dir',(!base&&t._meta&&t._meta.dir==='rtl')?'rtl':'ltr');}});}
+function apply(l,t){document.body.classList.toggle('only-en',l==='en');applyBlocks(l,t);
+  var base=(l==='en'||l==='es');var d=base?(cache.es||null):t; if(base&&!d){fetch('newcomer/i18n/cando-es.json').then(function(r){return r.json()}).then(function(x){cache.es=x;apply(l,x)});return}
+  var sm=document.querySelectorAll('.st label small');sm.forEach(function(e,i){if(d.statements[i]){e.textContent=d.statements[i][1];e.setAttribute('lang',d._meta.lang);e.setAttribute('dir',d._meta.dir)}});
+  document.querySelectorAll('.dom').forEach(function(c,i){var dm=d.domains[i];if(!dm)return;c.querySelector('h2 i').textContent='· '+dm.es;c.querySelector('.sub').textContent=dm.sub});
+  var h=document.querySelector('.h1es');if(h)h.textContent=d.ui.h1es+' · Student self-assessment';var tg=document.querySelector('.tag span[lang]');if(tg){tg.innerHTML=d.ui.tag_es;tg.setAttribute('lang',d._meta.lang)}
+  var hw=document.querySelector('.how div[lang]');if(hw){hw.innerHTML=d.ui.how_es;hw.setAttribute('lang',d._meta.lang);hw.setAttribute('dir',d._meta.dir)}
+  var sh=document.querySelector('.sum h2');if(sh)sh.textContent='My summary · '+d.ui.summary;
+  bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.l===l?'true':'false')});try{localStorage.setItem('ng-lang',l)}catch(e){}}
+function pick(l){if(l==='en'){apply('en',{});return}if(cache[l]){apply(l,cache[l]);return}
+  fetch('newcomer/i18n/cando-'+l+'.json').then(function(r){return r.json()}).then(function(t){cache[l]=t;apply(l,t)}).catch(function(){apply('es',{})});}
+bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.l)})});
+var q=new URLSearchParams(location.search).get('lang');var s=null;try{s=localStorage.getItem('ng-lang')}catch(e){}
+var l=q||s;if(l&&l!=='es'&&(L[l]||l==='en'))pick(l);
+window.__pick=pick;
+})();
 </script>
 </body>
 </html>

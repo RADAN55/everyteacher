@@ -69,6 +69,21 @@
     .w .spk{display:none}.w .en{font-size:20px}.w .es{font-size:13px}.w .ex{font-size:11px}
     body.quiz .w .es,body.quiz .w .ex{visibility:visible}
   }
+
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Regular.ttf) format("truetype");font-weight:400}
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Bold.ttf) format("truetype");font-weight:600 700}
+:lang(ar){font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;line-height:1.65}
+:lang(zh-Hans){font-family:"Noto Sans CJK SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Sans 3",sans-serif}
+.langsw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:1000px;margin:0 auto;padding:8px 22px;background:#fff;border-bottom:1px solid #DCDEE9}
+.langsw span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5D6480;font-weight:700;margin-right:4px}
+.langsw button{font:inherit;font-size:13px;font-weight:700;border:1px solid #DCDEE9;background:#fff;color:#1E2761;padding:5px 11px;border-radius:999px;cursor:pointer}
+.langsw button[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:#1E2761}
+[dir="rtl"].es,[dir="rtl"][data-k="pure"]{text-align:right}
+.es[dir="rtl"]{border-left:0;padding-left:0;border-right:2px solid #E3D08E;padding-right:14px}
+[dir="rtl"] ul{padding-left:0;padding-right:16px}
+body.only-en [data-k="pure"],body.only-en .es,body.only-en [lang]:not([lang="en"]):not(html){display:none}
+body.only-en .sec{grid-template-columns:1fr}
+@media print{.langsw{display:none}}
 </style>
 </head>
 <body>
@@ -81,6 +96,8 @@
     <div class="cta"><button class="btn" id="playAll" type="button">▶ Hear all 100 · Escuchar todas</button><a class="btn ghost" href="newcomer-guide.html">Full Newcomer Guide →</a></div>
   </div>
 </header>
+<div class="langsw" role="group" aria-label="Language"><span>Second language</span><button type="button" data-l="en" aria-pressed="false">English only</button><button type="button" data-l="es" aria-pressed="true">Español</button><button type="button" data-l="vi" aria-pressed="false">Tiếng Việt</button><button type="button" data-l="ar" aria-pressed="false">العربية</button><button type="button" data-l="zh" aria-pressed="false">中文</button><button type="button" data-l="ht" aria-pressed="false">Kreyòl</button></div>
+
 <nav class="bar" aria-label="Categories"><div class="bar-in">
   <button type="button" data-mode="learn" aria-pressed="true">Learn</button><button type="button" data-mode="quiz" aria-pressed="false">Quiz: hide Spanish</button><button type="button" data-mode="quiz2" aria-pressed="false">Quiz: hide English</button><button type="button" id="printBtn">🖨 Print flashcards</button>
   <span class="sp"></span><span class="prog" id="prog">0 / 100 known</span>
@@ -148,6 +165,31 @@ document.getElementById('playAll').addEventListener('click',function(){
     const b=list[i++];document.querySelectorAll('.w.said').forEach(x=>x.classList.remove('said'));b.classList.add('said');b.scrollIntoView({block:'center',behavior:'smooth'});speak(b.dataset.en,()=>setTimeout(next,500))};
   next();
 });
+</script>
+
+<script>
+(function(){
+var L={es:"Español",vi:"Tiếng Việt",ar:"العربية",zh:"中文",ht:"Kreyòl Ayisyen"};
+var orig={};document.querySelectorAll('[data-i]').forEach(function(e){orig[e.dataset.i]=e.innerHTML});
+var cache={};var bs=document.querySelectorAll('.langsw button');
+function applyBlocks(l,t){var base=(l==='en'||l==='es');
+  document.querySelectorAll('[data-i]').forEach(function(e){var id=e.dataset.i;e.innerHTML=base?orig[id]:(t[id]||orig[id]);
+    if(e.dataset.k==='pure'){e.setAttribute('lang',base?'es':(t._meta?t._meta.lang:l));e.setAttribute('dir',(!base&&t._meta&&t._meta.dir==='rtl')?'rtl':'ltr');}});}
+function apply(l,t){document.body.classList.toggle('only-en',l==='en');applyBlocks(l,t);
+  var base=(l==='en'||l==='es');var d=base?(cache.es||null):t; if(base&&!d){fetch('newcomer/i18n/words-es.json').then(function(r){return r.json()}).then(function(x){cache.es=x;apply(l,x)});return}
+  if(!base||d){ if(!d){return} var ws=document.querySelectorAll('.w');ws.forEach(function(w,i){var es=w.querySelector('.es');if(d.words[i]){es.textContent=d.words[i][1];es.setAttribute('lang',d._meta.lang);es.setAttribute('dir',d._meta.dir)}});
+    document.querySelectorAll('.cat').forEach(function(c,i){var cat=d.cats[i];if(!cat)return;c.querySelector('h2 i').textContent='· '+cat.es;c.querySelector('.where').textContent=cat.where});
+    var h=document.querySelector('.h1es');if(h)h.textContent=d.ui.h1es;var tg=document.querySelector('.tag span[lang]');if(tg){tg.innerHTML=d.ui.tag_es;tg.setAttribute('lang',d._meta.lang)}
+    var hw=document.querySelector('.how div[lang]');if(hw){hw.innerHTML=d.ui.how_es;hw.setAttribute('lang',d._meta.lang);hw.setAttribute('dir',d._meta.dir)}
+    var qb=document.querySelector('[data-mode="quiz"]');if(qb)qb.textContent=d.ui.quiz_hide;var pa=document.getElementById('playAll');if(pa&&!pa.textContent.startsWith('■'))pa.textContent=d.ui.playall; }
+  bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.l===l?'true':'false')});try{localStorage.setItem('ng-lang',l)}catch(e){}}
+function pick(l){if(l==='en'){apply('en',{});return}if(cache[l]){apply(l,cache[l]);return}
+  fetch('newcomer/i18n/words-'+l+'.json').then(function(r){return r.json()}).then(function(t){cache[l]=t;apply(l,t)}).catch(function(){apply('es',{})});}
+bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.l)})});
+var q=new URLSearchParams(location.search).get('lang');var s=null;try{s=localStorage.getItem('ng-lang')}catch(e){}
+var l=q||s;if(l&&l!=='es'&&(L[l]||l==='en'))pick(l);
+window.__pick=pick;
+})();
 </script>
 </body>
 </html>

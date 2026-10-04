@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Graduation Roadmap for Newcomers · Mississippi · EL Publishing</title>
-<meta name="description" content="An interactive credit planner for newcomer English learners in Mississippi high schools: diploma options, the 24 required credits by subject, state tests, how home-country credits count, the Seal of Biliteracy, and a year-by-year plan students fill in with their counselor.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<meta content="An interactive credit planner for newcomer English learners in Mississippi high schools: diploma options, the 24 required credits by subject, state tests, how home-country credits count, the Seal of Biliteracy, and a year-by-year plan students fill in with their counselor." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#1b7a3c}
   *{box-sizing:border-box}
@@ -68,92 +69,125 @@
   @media (max-width:700px){.opts,.yrs,.tests{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.tot{grid-template-columns:1fr 1fr}.pg{padding:18px 16px}}
   @media (max-width:420px){.opts,.yrs,.tests{grid-template-columns:1fr}}
   @media print{header .cta,footer,.tools{display:none}body{background:#fff}.pg{border:0;padding:8px 0;break-inside:avoid}td input,.yr textarea{border:0;border-bottom:1px solid #999;border-radius:0}}
+
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Regular.ttf) format("truetype");font-weight:400}
+@font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Bold.ttf) format("truetype");font-weight:600 700}
+:lang(ar){font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;line-height:1.65}
+:lang(zh-Hans){font-family:"Noto Sans CJK SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Sans 3",sans-serif}
+.langsw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:1000px;margin:0 auto;padding:8px 22px;background:#fff;border-bottom:1px solid #DCDEE9}
+.langsw span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5D6480;font-weight:700;margin-right:4px}
+.langsw button{font:inherit;font-size:13px;font-weight:700;border:1px solid #DCDEE9;background:#fff;color:#1E2761;padding:5px 11px;border-radius:999px;cursor:pointer}
+.langsw button[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:#1E2761}
+[dir="rtl"].es,[dir="rtl"][data-k="pure"]{text-align:right}
+.es[dir="rtl"]{border-left:0;padding-left:0;border-right:2px solid #E3D08E;padding-right:14px}
+[dir="rtl"] ul{padding-left:0;padding-right:16px}
+body.only-en [data-k="pure"],body.only-en .es,body.only-en [lang]:not([lang="en"]):not(html){display:none}
+body.only-en .sec{grid-template-columns:1fr}
+@media print{.langsw{display:none}}
 </style>
 </head>
 <body>
 <header>
-  <div class="head-in">
-    <p class="brand"><a href="index.html">EL PUBLISHING</a> · NEWCOMER SERIES · MISSISSIPPI · GRADES 9–12</p>
-    <h1>Graduation roadmap <em>for newcomers</em></h1>
-    <p class="h1es">Ruta a la graduación para recién llegados · Fill it in with your counselor · Llénalo con tu consejero</p>
-    <p class="tag">Which diploma, which credits, which state tests — and how the classes you already passed in your home country count. Type your credits below and the meters show how far you are. Saved on this device; print it for your folder.</p>
-    <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print my plan · Imprimir</button><a class="btn ghost" href="newcomer-guide.html#grades">How grades &amp; credits work →</a></div>
-  </div>
+<div class="head-in">
+<p class="brand"><a href="index.html">EL PUBLISHING</a> · NEWCOMER SERIES · MISSISSIPPI · GRADES 9–12</p>
+<h1>Graduation roadmap <em>for newcomers</em></h1>
+<p class="h1es" data-i="b001" data-k="mixed">Ruta a la graduación para recién llegados · Fill it in with your counselor · Llénalo con tu consejero</p>
+<p class="tag">Which diploma, which credits, which state tests — and how the classes you already passed in your home country count. Type your credits below and the meters show how far you are. Saved on this device; print it for your folder.</p>
+<div class="cta"><button class="btn" onclick="window.print()" type="button">🖨 Print my plan · Imprimir</button><a class="btn ghost" href="newcomer-guide.html#grades">How grades &amp; credits work →</a></div>
+</div>
 </header>
+<div class="langsw" role="group" aria-label="Language"><span>Second language</span><button type="button" data-l="en" aria-pressed="false">English only</button><button type="button" data-l="es" aria-pressed="true">Español</button><button type="button" data-l="vi" aria-pressed="false">Tiếng Việt</button><button type="button" data-l="ar" aria-pressed="false">العربية</button><button type="button" data-l="zh" aria-pressed="false">中文</button><button type="button" data-l="ht" aria-pressed="false">Kreyòl</button></div>
+
 <main>
-
 <section class="pg" id="diploma">
-  <h2>1 · Pick a diploma <i>· Elige un diploma</i></h2>
-  <p class="sub">Mississippi offers one diploma with optional endorsements. Everyone starts on the Traditional path (24 credits); endorsements add credits, a GPA floor and test benchmarks. The state asks students to pick an endorsement before 9th grade, but you can change it — pick what fits now.</p>
-  <div class="opts" id="opts">
-    <button class="opt" type="button" data-d="trad" aria-pressed="true"><b>Traditional</b><span class="cr">24</span><small>The standard diploma (students entering 9th grade 2018 and after). No GPA or ACT requirement. <span lang="es">El diploma estándar.</span></small></button>
-    <button class="opt" type="button" data-d="cte" aria-pressed="false"><b>Career &amp; Technical endorsement</b><span class="cr">26</span><small>Traditional + 4 credits in one CTE program, GPA 2.5, ACT WorkKeys Silver, and a dual-credit course, work-based learning or a national credential. <span lang="es">Para un oficio o certificación.</span></small></button>
-    <button class="opt" type="button" data-d="acad" aria-pressed="false"><b>Academic endorsement</b><span class="cr">26</span><small>Traditional + Algebra II, 4th science and social studies, GPA 2.5, ACT 17 English / 19 math, and one AP, IB or dual-credit course (C or better). <span lang="es">Para la universidad.</span></small></button>
-    <button class="opt" type="button" data-d="dist" aria-pressed="false"><b>Distinguished Academic</b><span class="cr">28</span><small>28 credits, GPA 3.0, ACT 18 English / 22 math, and AP, IB or dual-credit courses with a B or better. <span lang="es">Para universidades selectivas y becas.</span></small></button>
-  </div>
-  <div class="tip"><b>Newcomer note:</b> a student can attend public high school until age 21 in Mississippi, so a 5-year plan is allowed and often wise for students who arrive at 16–17 with little English. Ask the counselor about it <i>in 9th or 10th grade</i>, not senior year. <span lang="es">Se puede asistir hasta los 21 años; un plan de 5 años es posible — pregunta temprano.</span></div>
+<h2 data-i="b008" data-k="mixed">1 · Pick a diploma <i>· Elige un diploma</i></h2>
+<p class="sub">Mississippi offers one diploma with optional endorsements. Everyone starts on the Traditional path (24 credits); endorsements add credits, a GPA floor and test benchmarks. The state asks students to pick an endorsement before 9th grade, but you can change it — pick what fits now.</p>
+<div class="opts" id="opts">
+<button aria-pressed="true" class="opt" data-d="trad" type="button"><b>Traditional</b><span class="cr">24</span><small>The standard diploma (students entering 9th grade 2018 and after). No GPA or ACT requirement. <span data-i="b002" data-k="pure" lang="es">El diploma estándar.</span></small></button>
+<button aria-pressed="false" class="opt" data-d="cte" type="button"><b>Career &amp; Technical endorsement</b><span class="cr">26</span><small>Traditional + 4 credits in one CTE program, GPA 2.5, ACT WorkKeys Silver, and a dual-credit course, work-based learning or a national credential. <span data-i="b003" data-k="pure" lang="es">Para un oficio o certificación.</span></small></button>
+<button aria-pressed="false" class="opt" data-d="acad" type="button"><b>Academic endorsement</b><span class="cr">26</span><small>Traditional + Algebra II, 4th science and social studies, GPA 2.5, ACT 17 English / 19 math, and one AP, IB or dual-credit course (C or better). <span data-i="b004" data-k="pure" lang="es">Para la universidad.</span></small></button>
+<button aria-pressed="false" class="opt" data-d="dist" type="button"><b>Distinguished Academic</b><span class="cr">28</span><small>28 credits, GPA 3.0, ACT 18 English / 22 math, and AP, IB or dual-credit courses with a B or better. <span data-i="b005" data-k="pure" lang="es">Para universidades selectivas y becas.</span></small></button>
+</div>
+<div class="tip" data-i="b013" data-k="mixed"><b>Newcomer note:</b> a student can attend public high school until age 21 in Mississippi, so a 5-year plan is allowed and often wise for students who arrive at 16–17 with little English. Ask the counselor about it <i>in 9th or 10th grade</i>, not senior year. <span data-i="b006" data-k="pure" lang="es">Se puede asistir hasta los 21 años; un plan de 5 años es posible — pregunta temprano.</span></div>
 </section>
-
 <section class="pg" id="credits">
-  <h2>2 · Count your credits <i>· Cuenta tus créditos</i></h2>
-  <p class="sub">One year-long class = 1 credit; one semester = 0.5. Type what you have <b>earned</b> so far (from your transcript, including evaluated home-country classes). The meters compare you to the diploma you picked.</p>
-  <div style="overflow-x:auto"><table id="ct">
-    <tr><th>Subject · Materia</th><th>Need</th><th>Earned</th><th style="min-width:140px">Progress</th><th>Must include · Debe incluir</th></tr>
-  </table></div>
-  <div class="tot"><div><b id="tEarned">0</b><span>credits earned · ganados</span></div><div><b id="tNeed">24</b><span>credits needed · necesarios</span></div><div><b id="tLeft">24</b><span>still to earn · faltan</span></div></div>
-  <div class="tools"><button type="button" id="clear">Clear all</button><span style="font-size:13px;color:var(--muted);align-self:center">Saved automatically on this device · Se guarda en este aparato</span></div>
+<h2 data-i="b009" data-k="mixed">2 · Count your credits <i>· Cuenta tus créditos</i></h2>
+<p class="sub">One year-long class = 1 credit; one semester = 0.5. Type what you have <b>earned</b> so far (from your transcript, including evaluated home-country classes). The meters compare you to the diploma you picked.</p>
+<div style="overflow-x:auto"><table id="ct">
+<tr><th data-i="b019" data-k="mixed">Subject · Materia</th><th>Need</th><th>Earned</th><th style="min-width:140px">Progress</th><th data-i="b020" data-k="mixed">Must include · Debe incluir</th></tr>
+</table></div>
+<div class="tot"><div><b id="tEarned">0</b><span data-i="b015" data-k="mixed">credits earned · ganados</span></div><div><b id="tNeed">24</b><span data-i="b016" data-k="mixed">credits needed · necesarios</span></div><div><b id="tLeft">24</b><span data-i="b017" data-k="mixed">still to earn · faltan</span></div></div>
+<div class="tools"><button id="clear" type="button">Clear all</button><span data-i="b018" data-k="mixed" style="font-size:13px;color:var(--muted);align-self:center">Saved automatically on this device · Se guarda en este aparato</span></div>
 </section>
-
 <section class="pg" id="tests">
-  <h2>3 · State tests <i>· Exámenes estatales</i></h2>
-  <p class="sub">Mississippi requires an end-of-course test in four classes. Check them off as you pass. If a test is failed, there are alternate routes (ACT scores, retakes, course-grade combinations) — the counselor will explain them; a failed test never means "no diploma" by itself. EL students may receive accommodations such as extra time or a word-to-word dictionary.</p>
-  <div class="tests">
-    <label><input type="checkbox" data-t="alg"> <span><b>Algebra I</b><br><small>usually 9th grade</small></span></label>
-    <label><input type="checkbox" data-t="bio"> <span><b>Biology I</b><br><small>usually 9th–10th</small></span></label>
-    <label><input type="checkbox" data-t="eng"> <span><b>English II</b><br><small>usually 10th</small></span></label>
-    <label><input type="checkbox" data-t="hist"> <span><b>U.S. History</b><br><small>usually 11th</small></span></label>
-  </div>
+<h2 data-i="b010" data-k="mixed">3 · State tests <i>· Exámenes estatales</i></h2>
+<p class="sub">Mississippi requires an end-of-course test in four classes. Check them off as you pass. If a test is failed, there are alternate routes (ACT scores, retakes, course-grade combinations) — the counselor will explain them; a failed test never means "no diploma" by itself. EL students may receive accommodations such as extra time or a word-to-word dictionary.</p>
+<div class="tests">
+<label><input data-t="alg" type="checkbox"/> <span><b>Algebra I</b><br/><small>usually 9th grade</small></span></label>
+<label><input data-t="bio" type="checkbox"/> <span><b>Biology I</b><br/><small>usually 9th–10th</small></span></label>
+<label><input data-t="eng" type="checkbox"/> <span><b>English II</b><br/><small>usually 10th</small></span></label>
+<label><input data-t="hist" type="checkbox"/> <span><b>U.S. History</b><br/><small>usually 11th</small></span></label>
+</div>
 </section>
-
 <section class="pg" id="transfer">
-  <h2>4 · Classes from your home country <i>· Clases de tu país</i></h2>
-  <div class="two">
-    <div>
-      <ul>
-        <li><b>Bring every document:</b> report cards, certificates, "boleta," "constancia," "libreta" — in any language, even photos on a phone.</li>
-        <li>The school evaluates them and can award credit for classes you passed: math, science, social studies, and <b>your first language counts as foreign-language credit</b>.</li>
-        <li>Grades 7–8 (secundaria in Mexico, básica in Central America) usually map to U.S. middle school; grade 9+ (preparatoria / bachillerato / diversificado) can map to high school credits.</li>
-        <li>No documents? You can still be placed by age and tested for credit in some subjects. Ask.</li>
-        <li>Ask for the evaluation <b>in writing</b> and keep a copy. If a credit seems missing, ask the counselor to review it with the EL teacher.</li>
-      </ul>
-    </div>
-    <div lang="es">
-      <ul>
-        <li><b>Trae todos los documentos:</b> boletas, certificados, constancias, libretas — en cualquier idioma, incluso fotos en el teléfono.</li>
-        <li>La escuela los evalúa y puede dar crédito por las clases aprobadas: matemáticas, ciencias, estudios sociales, y <b>tu primer idioma cuenta como crédito de lengua extranjera</b>.</li>
-        <li>Los grados 7–8 (secundaria en México, básica en Centroamérica) suelen corresponder a middle school; el grado 9 en adelante (preparatoria / bachillerato / diversificado) puede dar créditos de high school.</li>
-        <li>¿Sin documentos? Aun así te ubican por edad y en algunas materias puedes hacer un examen para obtener crédito. Pregunta.</li>
-        <li>Pide la evaluación <b>por escrito</b> y guarda una copia. Si falta un crédito, pide al consejero que lo revise con el maestro de EL.</li>
-      </ul>
-    </div>
-  </div>
-  <div class="tip"><b>Seal of Biliteracy · Sello de Alfabetización Bilingüe:</b> Mississippi puts a seal on the diploma of students who show proficiency in English <i>and</i> another language. English counts with an ELPT score of 4 in all domains, English II test score of 4, ACT English 18, SAT 320 or AP English 3; the other language with AP (3), AAPPL or STAMP Intermediate-Mid (I4/L4) in all four skills, or a portfolio for languages without a test. Your home language is an asset — ask the counselor in 10th or 11th grade.</div>
+<h2 data-i="b011" data-k="mixed">4 · Classes from your home country <i>· Clases de tu país</i></h2>
+<div class="two">
+<div>
+<ul>
+<li><b>Bring every document:</b> report cards, certificates, "boleta," "constancia," "libreta" — in any language, even photos on a phone.</li>
+<li>The school evaluates them and can award credit for classes you passed: math, science, social studies, and <b>your first language counts as foreign-language credit</b>.</li>
+<li>Grades 7–8 (secundaria in Mexico, básica in Central America) usually map to U.S. middle school; grade 9+ (preparatoria / bachillerato / diversificado) can map to high school credits.</li>
+<li>No documents? You can still be placed by age and tested for credit in some subjects. Ask.</li>
+<li>Ask for the evaluation <b>in writing</b> and keep a copy. If a credit seems missing, ask the counselor to review it with the EL teacher.</li>
+</ul>
+</div>
+<div data-i="b007" data-k="pure" lang="es">
+<ul>
+<li><b>Trae todos los documentos:</b> boletas, certificados, constancias, libretas — en cualquier idioma, incluso fotos en el teléfono.</li>
+<li>La escuela los evalúa y puede dar crédito por las clases aprobadas: matemáticas, ciencias, estudios sociales, y <b>tu primer idioma cuenta como crédito de lengua extranjera</b>.</li>
+<li>Los grados 7–8 (secundaria en México, básica en Centroamérica) suelen corresponder a middle school; el grado 9 en adelante (preparatoria / bachillerato / diversificado) puede dar créditos de high school.</li>
+<li>¿Sin documentos? Aun así te ubican por edad y en algunas materias puedes hacer un examen para obtener crédito. Pregunta.</li>
+<li>Pide la evaluación <b>por escrito</b> y guarda una copia. Si falta un crédito, pide al consejero que lo revise con el maestro de EL.</li>
+</ul>
+</div>
+</div>
+<div class="tip" data-i="b014" data-k="mixed"><b>Seal of Biliteracy · Sello de Alfabetización Bilingüe:</b> Mississippi puts a seal on the diploma of students who show proficiency in English <i>and</i> another language. English counts with an ELPT score of 4 in all domains, English II test score of 4, ACT English 18, SAT 320 or AP English 3; the other language with AP (3), AAPPL or STAMP Intermediate-Mid (I4/L4) in all four skills, or a portfolio for languages without a test. Your home language is an asset — ask the counselor in 10th or 11th grade.</div>
 </section>
-
 <section class="pg" id="plan">
-  <h2>5 · My four-year plan <i>· Mi plan de cuatro años</i></h2>
-  <p class="sub">Write the classes for each year (your counselor can help). Keep ESL/ELD on the list every year you need it — it counts as credit. A typical year is 7–8 credits.</p>
-  <div class="yrs">
-    <div class="yr"><b>9th · Freshman</b><textarea data-y="9" placeholder="English I&#10;Algebra I&#10;Biology I&#10;Mississippi Studies / World Geography&#10;ESL / ELD&#10;PE or Health&#10;Elective"></textarea><small>Goal: pass Algebra I &amp; Biology I tests. Join one activity.</small></div>
-    <div class="yr"><b>10th · Sophomore</b><textarea data-y="10" placeholder="English II&#10;Geometry&#10;Physical Science or Chemistry&#10;World History&#10;ESL / ELD&#10;Technology / Computer&#10;Elective"></textarea><small>Goal: pass English II test. Talk about a 4- or 5-year plan.</small></div>
-    <div class="yr"><b>11th · Junior</b><textarea data-y="11" placeholder="English III&#10;Algebra II&#10;Chemistry or other science&#10;U.S. History&#10;Art / CTE pathway&#10;Elective"></textarea><small>Goal: pass U.S. History test. Take the ACT (free at school). Ask about the Seal of Biliteracy.</small></div>
-    <div class="yr"><b>12th · Senior</b><textarea data-y="12" placeholder="English IV&#10;Math (4th credit)&#10;U.S. Government / Economics&#10;CTE pathway or dual credit&#10;Electives"></textarea><small>Goal: FAFSA or state aid form, college / job applications, final credit check in September.</small></div>
-  </div>
-  <div class="two" style="margin-top:14px">
-    <div><b style="color:var(--navy)">Counselor · Consejero/a:</b> ______________________ &nbsp; <b style="color:var(--navy)">Room / email:</b> ______________________</div>
-    <div><b style="color:var(--navy)">Next credit check · Próxima revisión:</b> ______________________</div>
-  </div>
-  <p style="margin-top:14px;font-size:13px;color:var(--muted)">Credit counts and endorsements follow the Mississippi diploma options for students entering 9th grade in 2018 and after (verified Oct 2026 against MDE's Diploma with Endorsements page and SREB's summary); districts may add local requirements, and rules change. The counselor's official credit check is the one that counts. Other states: the subjects are similar but the numbers differ — ask for your state's list.</p>
+<h2 data-i="b012" data-k="mixed">5 · My four-year plan <i>· Mi plan de cuatro años</i></h2>
+<p class="sub">Write the classes for each year (your counselor can help). Keep ESL/ELD on the list every year you need it — it counts as credit. A typical year is 7–8 credits.</p>
+<div class="yrs">
+<div class="yr"><b>9th · Freshman</b><textarea data-y="9" placeholder="English I
+Algebra I
+Biology I
+Mississippi Studies / World Geography
+ESL / ELD
+PE or Health
+Elective"></textarea><small>Goal: pass Algebra I &amp; Biology I tests. Join one activity.</small></div>
+<div class="yr"><b>10th · Sophomore</b><textarea data-y="10" placeholder="English II
+Geometry
+Physical Science or Chemistry
+World History
+ESL / ELD
+Technology / Computer
+Elective"></textarea><small>Goal: pass English II test. Talk about a 4- or 5-year plan.</small></div>
+<div class="yr"><b>11th · Junior</b><textarea data-y="11" placeholder="English III
+Algebra II
+Chemistry or other science
+U.S. History
+Art / CTE pathway
+Elective"></textarea><small>Goal: pass U.S. History test. Take the ACT (free at school). Ask about the Seal of Biliteracy.</small></div>
+<div class="yr"><b>12th · Senior</b><textarea data-y="12" placeholder="English IV
+Math (4th credit)
+U.S. Government / Economics
+CTE pathway or dual credit
+Electives"></textarea><small>Goal: FAFSA or state aid form, college / job applications, final credit check in September.</small></div>
+</div>
+<div class="two" style="margin-top:14px">
+<div><b style="color:var(--navy)">Counselor · Consejero/a:</b> ______________________   <b style="color:var(--navy)">Room / email:</b> ______________________</div>
+<div><b style="color:var(--navy)">Next credit check · Próxima revisión:</b> ______________________</div>
+</div>
+<p style="margin-top:14px;font-size:13px;color:var(--muted)">Credit counts and endorsements follow the Mississippi diploma options for students entering 9th grade in 2018 and after (verified Oct 2026 against MDE's Diploma with Endorsements page and SREB's summary); districts may add local requirements, and rules change. The counselor's official credit check is the one that counts. Other states: the subjects are similar but the numbers differ — ask for your state's list.</p>
 </section>
 </main>
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
@@ -194,6 +228,25 @@ document.querySelectorAll('.tests input').forEach(c=>{c.checked=!!S.t[c.dataset.
 document.querySelectorAll('.yr textarea').forEach(a=>{a.value=S.y[a.dataset.y]||'';a.addEventListener('input',()=>{S.y[a.dataset.y]=a.value;save()})});
 document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear all credits, tests and plan on this device?')){S={d:'trad',c:{},t:{},y:{}};save();location.reload()}});
 build();
+</script>
+
+<script>
+(function(){
+var L={es:"Español",vi:"Tiếng Việt",ar:"العربية",zh:"中文",ht:"Kreyòl Ayisyen"};
+var orig={};document.querySelectorAll('[data-i]').forEach(function(e){orig[e.dataset.i]=e.innerHTML});
+var cache={};var bs=document.querySelectorAll('.langsw button');
+function applyBlocks(l,t){var base=(l==='en'||l==='es');
+  document.querySelectorAll('[data-i]').forEach(function(e){var id=e.dataset.i;e.innerHTML=base?orig[id]:(t[id]||orig[id]);
+    if(e.dataset.k==='pure'){e.setAttribute('lang',base?'es':(t._meta?t._meta.lang:l));e.setAttribute('dir',(!base&&t._meta&&t._meta.dir==='rtl')?'rtl':'ltr');}});}
+function apply(l,t){document.body.classList.toggle('only-en',l==='en');applyBlocks(l,t);
+  bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.l===l?'true':'false')});try{localStorage.setItem('ng-lang',l)}catch(e){}}
+function pick(l){if(l==='en'){apply('en',{});return}if(cache[l]){apply(l,cache[l]);return}
+  fetch('newcomer/i18n/roadmap-'+l+'.json').then(function(r){return r.json()}).then(function(t){cache[l]=t;apply(l,t)}).catch(function(){apply('es',{})});}
+bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.l)})});
+var q=new URLSearchParams(location.search).get('lang');var s=null;try{s=localStorage.getItem('ng-lang')}catch(e){}
+var l=q||s;if(l&&l!=='es'&&(L[l]||l==='en'))pick(l);
+window.__pick=pick;
+})();
 </script>
 </body>
 </html>
