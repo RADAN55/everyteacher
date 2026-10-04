@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Language Service Plan (LSP) Builder · Mississippi · EL Publishing</title>
+<meta name="description" content="Build a Mississippi Language Service Plan from a student's ELPT levels: program services, instructional and assessment accommodations, suggested goals by domain, monitoring status, parent notification and signatures. Suggestions fill from the levels; everything is editable; print or save as a file.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:64ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 40px}
+  .doc{background:var(--paper);border:1px solid var(--rule);padding:28px 34px}
+  .doc .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--gold);padding-bottom:10px;margin-bottom:12px}
+  .doc .hd h2{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);margin:0;line-height:1.1}
+  .doc .hd small{display:block;font-size:12.5px;color:var(--muted)}
+  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#a32020;font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
+  .sec{border-top:2px solid var(--rule);padding-top:8px;margin-top:12px}
+  .sec h3{font-family:Fraunces,Georgia,serif;font-size:16px;color:var(--navy);margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
+  .sec h3 small{font-family:"Source Sans 3",sans-serif;font-size:12px;color:var(--muted);font-weight:400}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  label.f{display:block;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+  input,select,textarea{width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  textarea{min-height:56px;resize:vertical}
+  .lvrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .lvrow div{border:1px solid var(--rule);padding:8px;text-align:center}
+  .lvrow b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .lvrow input{text-align:center;font-size:22px;font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--navy);padding:2px}
+  .badge{display:inline-block;background:var(--navy);color:#fff;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;margin-left:6px}
+  .chk{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:13.5px}
+  .chk label{display:flex;gap:7px;align-items:flex-start;line-height:1.3;cursor:pointer}
+  .chk input{width:auto;margin-top:3px}
+  .dom{border:1px solid var(--rule);padding:8px 10px;margin-bottom:8px}
+  .dom .t{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .dom .t b{color:var(--navy)}
+  .dom .t button{font:inherit;font-size:12px;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:3px 9px;border-radius:999px;cursor:pointer}
+  .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
+  .sig div{border-top:1px solid #333;padding-top:4px;font-size:12px;color:var(--muted)}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  .tools button,.tools label{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .tools input{display:none}
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:700px){.g2,.g3,.g4,.chk,.sig{grid-template-columns:1fr}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
+  @media print{header,footer,.tools,.dom .t button,.note{display:none}body{background:#fff;font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS &amp; COORDINATORS · MISSISSIPPI · LANGUAGE SERVICE PLAN</p>
+    <h1>Language Service Plan <em>builder</em></h1>
+    <p class="tag">Enter the ELPT levels and the plan writes its first draft: lane, services, accommodations for class and state tests, a goal for each domain and the focus domain. Edit anything. Print for signatures; save as a file to reopen next semester. Nothing leaves your browser.</p>
+    <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print LSP</button><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
+  </div>
+</header>
+<main>
+<article class="doc">
+  <div class="hd"><div><h2>Language Service Plan (LSP)</h2><small>English Learner · Laurel School District (edit) · School year <input data-k="year" value="2026–27" style="width:90px;display:inline-block;padding:1px 6px;font-size:13px"></small></div><span class="conf">Confidential · FERPA</span></div>
+
+  <div class="sec"><h3>1 · Student</h3>
+    <div class="g4"><div><label class="f">Name</label><input data-k="name"></div><div><label class="f">Student ID</label><input data-k="id"></div><div><label class="f">Grade</label><input data-k="grade"></div><div><label class="f">School</label><input data-k="school" value="Laurel High School"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Home language</label><input data-k="lang" value="Spanish"></div><div><label class="f">Birth country</label><input data-k="country"></div><div><label class="f">Date enrolled in U.S. schools</label><input data-k="usdate" type="date"></div><div><label class="f">Years in EL program</label><input data-k="yrs" type="number" min="0" max="12"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Home Language Survey date</label><input data-k="hls" type="date"></div><div><label class="f">Screener &amp; date</label><input data-k="screener" placeholder="ELPT Screener · 8/12/2026"></div><div><label class="f">Parent notification sent</label><input data-k="notif" type="date"></div><div><label class="f">IEP / 504</label><select data-k="iep"><option>None</option><option>IEP — see plan</option><option>504 — see plan</option><option>Referral in progress</option></select></div></div>
+  </div>
+
+  <div class="sec"><h3>2 · Current English proficiency <small>most recent ELPT / screener</small><span class="badge" id="lane">Lane: —</span></h3>
+    <div class="lvrow"><div><b>Listening</b><input data-k="L" type="number" min="1" max="5" placeholder="–"></div><div><b>Speaking</b><input data-k="S" type="number" min="1" max="5" placeholder="–"></div><div><b>Reading</b><input data-k="R" type="number" min="1" max="5" placeholder="–"></div><div><b>Writing</b><input data-k="W" type="number" min="1" max="5" placeholder="–"></div></div>
+    <div class="g3" style="margin-top:6px"><div><label class="f">Overall determination</label><input data-k="overall" placeholder="auto"></div><div><label class="f">Focus domain this year</label><input data-k="focus" placeholder="auto"></div><div><label class="f">Test date</label><input data-k="testdate" type="date"></div></div>
+  </div>
+
+  <div class="sec"><h3>3 · Program &amp; services</h3>
+    <div class="chk" id="svc"></div>
+    <div class="g2" style="margin-top:6px"><div><label class="f">EL instruction minutes per week</label><input data-k="min" placeholder="450 (one 90-min block daily)"></div><div><label class="f">Content classes with language support (list)</label><input data-k="content" placeholder="English I, Algebra I, Biology I, World Geography"></div></div>
+  </div>
+
+  <div class="sec"><h3>4 · Instructional accommodations <small>classroom — every teacher of record</small></h3><div class="chk" id="iacc"></div></div>
+  <div class="sec"><h3>5 · Assessment accommodations <small>classroom and state tests (MAAP, ELPT) — must match MTAM and be used routinely</small></h3><div class="chk" id="aacc"></div><div style="margin-top:6px"><label class="f">Notes for the test coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all."></div></div>
+
+  <div class="sec"><h3>6 · Goals by domain <small>suggested from the level — edit to the student</small></h3><div id="goals"></div></div>
+
+  <div class="sec"><h3>7 · Status, monitoring &amp; review</h3>
+    <div class="g4"><div><label class="f">Status</label><select data-k="status"><option>Active EL</option><option>Active EL — parent declined services</option><option>Monitored Year 1</option><option>Monitored Year 2</option><option>Monitored Year 3</option><option>Monitored Year 4</option></select></div><div><label class="f">Exit criteria</label><input data-k="exit" value="Level 4–5 in all four ELPT domains"></div><div><label class="f">Plan written</label><input data-k="written" type="date"></div><div><label class="f">Semester review</label><input data-k="review" type="date"></div></div>
+    <div style="margin-top:6px"><label class="f">Review notes / changes</label><textarea data-k="rnotes"></textarea></div>
+  </div>
+
+  <div class="sec"><h3>8 · Distribution &amp; signatures</h3>
+    <div class="g2"><div><label class="f">Teachers of record receiving this plan</label><input data-k="dist" placeholder="Lee (Eng I), Patel (Alg I), Ruiz (Bio I), Brown (Geog), Coach Hill (PE)"></div><div><label class="f">Interpreter used for family conference</label><input data-k="interp" placeholder="Yes — Spanish, 9/4/2026"></div></div>
+    <div class="sig"><div>EL teacher · date</div><div>Principal / designee · date</div><div>Parent / guardian · date</div></div>
+  </div>
+  <p class="note">Format follows the sections Mississippi districts commonly include in an LSP (student data, proficiency, services, accommodations, goals, monitoring, signatures). Your district's form, if it has one, governs; this builder produces the content to paste into it. Accommodation allowability on state tests follows the current Mississippi Testing Accommodations Manual — verify with the District Test Coordinator.</p>
+  <div class="tools"><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="clear">Clear</button></div>
+</article>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const SVC=["Daily ESL/ELD class with a certified EL teacher","Co-teaching / push-in support in content classes","Pull-out small-group language instruction","Sheltered content instruction (SIOP-style) in core classes","Newcomer program / bridge (time-limited)","Bilingual paraprofessional support","Tutoring / after-school language support","Monitoring only (former EL)"];
+const IACC=["Vocabulary preview before lessons","Sentence frames & word banks","Visuals, realia & graphic organizers","Home-language support (bilingual peer, app for comprehension, bilingual notes)","Leveled / modified texts with grade-level vocabulary","Reduced length or alternate response format","Oral or recorded responses accepted","Directions repeated & clarified; comprehension checks","Extended wait time","Preferential seating","Content scored for accuracy; language errors not penalized on non-ELA work","Bilingual dictionary in class"];
+const AACC=["Extended time (1.5×) — class & state","Word-to-word bilingual dictionary (print) — class & state","Directions read aloud, repeated, clarified in English — class & state","Test items read aloud / text-to-speech on non-reading tests — class & state (not ELA reading, not ELPT reading)","Small-group administration — class & state","Supervised breaks — class & state","Preferential seating — class & state","Translated directions where MDE provides them","Classroom only: sentence frames / word bank on classroom tests","Classroom only: oral response on classroom tests","Classroom only: reduced-length classroom tests"];
+const mk=(id,list,pre)=>document.getElementById(id).innerHTML=list.map((s,i)=>`<label><input type="checkbox" data-c="${pre}${i}">${s}</label>`).join('');
+mk('svc',SVC,'s');mk('iacc',IACC,'i');mk('aacc',AACC,'a');
+const G={L:["Follow two-step classroom directions and answer yes/no and simple wh- questions about a lesson with picture support (target: Level 2 by spring).","Understand the main idea of a short teacher explanation and a classmate's question on a familiar topic without visual support (target: Level 3).","Follow a full class lesson on grade-level content and take notes on key points with a partially completed guide (target: Level 4).","Follow fast-paced discussion, lectures and videos without subtitles; identify speaker's purpose and tone (target: Level 5).","Maintain Level 5 listening across all content classes; monitor comprehension of technical vocabulary."],
+S:["Ask for help and clarification using set phrases; answer with words and short phrases; name and describe pictures (target: Level 2).","Ask and answer simple questions in complete sentences; describe, retell and give an opinion with one reason using frames (target: Level 3).","Explain a process and argue a point in class discussion with academic vocabulary; present for 2–3 minutes with notes (target: Level 4).","Participate in fast class discussion, disagree politely, present without notes, and speak in interviews (target: Level 5).","Maintain Level 5 speaking; refine register and precision in academic presentations."],
+R:["Read environmental print, schedules and simple sentences with picture support; use a bilingual dictionary (target: Level 2).","Read short texts on familiar topics and identify main idea and details; use context to guess word meaning (target: Level 3).","Read grade-level text with vocabulary preview; locate evidence; distinguish fact from opinion (target: Level 4).","Read grade-level and primary-source texts independently; compare texts; read for information and for pleasure (target: Level 5).","Maintain Level 5 reading; build technical vocabulary in each content area."],
+W:["Write name, date, labels and copied sentences accurately; complete forms; write simple sentences about self with frames (target: Level 2).","Write a paragraph with a topic sentence and three details, in past and present tense, using a word bank (target: Level 3).","Write a five-paragraph essay with evidence, transitions and a conclusion; write lab reports and summaries (target: Level 4).","Write research with citations and in multiple genres with few errors that affect meaning (target: Level 5).","Maintain Level 5 writing; focus on revision for clarity and register."]};
+const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
+document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><button type="button" data-g="${k}">Suggest from level</button></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who</label><input data-k="s${k}" placeholder="e.g., daily partner retell (EL teacher); frames in Biology (co-teacher)"></div><div><label class="f">Evidence of progress</label><input data:k="e${k}" data-k="e${k}" placeholder="e.g., monthly 1-min speaking sample scored 1–5"></div></div></div>`).join('');
+const F={};const fields=()=>[...document.querySelectorAll('[data-k]')];
+fields().forEach(i=>i.addEventListener('input',()=>{F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k))derive()}));
+function lv(){return {L:+F.L||0,S:+F.S||0,R:+F.R||0,W:+F.W||0}}
+function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.length)return;const a=v.reduce((x,y)=>x+y)/v.length;const yrs=+F.yrs||99;
+ const lane=a<1.5&&yrs<=1?'Newcomer':a<2.5?'Emerging':a<4?'Progressing':'Challenge';document.getElementById('lane').textContent='Lane: '+lane;
+ const all=['L','S','R','W'].every(k=>l[k]);const ov=all?(Object.values(l).every(x=>x>=4)?'Proficient (meets exit)':Object.values(l).every(x=>x<=2)?'Emerging':'Progressing'):'';
+ const o=document.querySelector('[data-k="overall"]');if(!o.value||o.dataset.auto){o.value=ov;o.dataset.auto='1';F.overall=ov}
+ const low=Object.entries(l).filter(x=>x[1]).sort((p,q)=>p[1]-q[1])[0];const fo=document.querySelector('[data-k="focus"]');if(low&&(!fo.value||fo.dataset.auto)){fo.value=names[low[0]]+' (Level '+low[1]+')';fo.dataset.auto='1';F.focus=fo.value}
+ ['L','S','R','W'].forEach(k=>{document.getElementById('gl'+k).textContent=l[k]?'· Level '+l[k]:''});
+ // suggest services + accommodations once, if nothing checked
+ if(!document.querySelector('[data-c]:checked')){const pick=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c)c.checked=true});
+  if(a<2.5)pick(['s0','s1','s3','i0','i1','i2','i3','i5','i6','i7','i8','i9','i11','a0','a1','a2','a3','a4','a5','a6','a8','a9','a10']);
+  else if(a<4)pick(['s0','s1','s3','i0','i1','i2','i7','i10','i11','a0','a1','a2','a3','a8']);
+  else pick(['s1','i0','i7','a0','a1','a2']);}
+}
+document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value});
+function snapshot(){const o={f:{},c:{}};fields().forEach(i=>o.f[i.dataset.k]=i.value);document.querySelectorAll('[data-c]').forEach(c=>o.c[c.dataset.c]=c.checked);return o}
+function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i.value=o.f[i.dataset.k];F[i.dataset.k]=i.value}});document.querySelectorAll('[data-c]').forEach(c=>{if(o.c)c.checked=!!o.c[c.dataset.c]});derive()}
+document.getElementById('save').addEventListener('click',()=>{const o=snapshot();const b=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='LSP-'+((o.f.name||'student').replace(/\s+/g,'_'))+'-'+(o.f.year||'').replace('–','-')+'.json';a.click()});
+document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{restore(JSON.parse(r.result))}catch(x){alert('Not a saved LSP file.')}};r.readAsText(f)});
+document.getElementById('local').addEventListener('click',()=>{try{localStorage.setItem('lsp',JSON.stringify(snapshot()));alert('Kept on this device (one plan). Use “Save as file” for more.')}catch(e){}});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4–5 in all four ELPT domains':'';delete i.dataset.auto});document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —'}});
+try{const s=localStorage.getItem('lsp');if(s&&confirm('Reopen the plan kept on this device?'))restore(JSON.parse(s))}catch(e){}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Student Profile · one-page cover sheet for teachers and subs · EL Publishing</title>
+<meta name="description" content="Generate a confidential one-page profile for an English learner: level by domain, lane, home language, strengths, what helps, accommodations, and who to call — for the sub folder and every content teacher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1040px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:64ch}
+  main{max-width:1040px;margin:0 auto;padding:22px 22px 40px;display:grid;grid-template-columns:330px 1fr;gap:22px;align-items:start}
+  .panel{background:var(--paper);border:1px solid var(--rule);padding:16px 18px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+  .panel h2{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:0 0 8px}
+  .panel label{display:block;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin:9px 0 3px}
+  .panel input,.panel select,.panel textarea{width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px}
+  .panel textarea{min-height:52px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:6px}.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .chk{display:grid;grid-template-columns:1fr;gap:3px;font-size:13px}
+  .chk label{display:flex;gap:7px;align-items:flex-start;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink);margin:0;font-size:13px;line-height:1.3}
+  .chk input{width:auto;margin-top:3px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:9px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit;margin-top:12px}
+  .sheet{background:var(--paper);border:1px solid var(--rule);padding:30px 36px;font-size:14px;line-height:1.45}
+  .sheet .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--gold);padding-bottom:10px;margin-bottom:14px}
+  .sheet .hd h2{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--navy);margin:0;line-height:1.1}
+  .sheet .hd small{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#a32020;font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
+  .lv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 14px}
+  .lv div{border:1px solid var(--rule);padding:8px 10px;text-align:center}
+  .lv b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1}
+  .lv span{font-size:11.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .lv .lane{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .lv .lane b{color:var(--gold-lt);font-size:18px;padding-top:6px}
+  .lv .lane span{color:#C9CEEA}
+  .g{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+  .g h3{font-family:Fraunces,Georgia,serif;font-size:15px;color:var(--navy);margin:0 0 4px;padding-bottom:2px;border-bottom:1px solid var(--rule)}
+  .g ul{margin:0;padding-left:18px}.g li{margin-bottom:3px}
+  .g p{margin:0}
+  .foot{margin-top:14px;padding-top:8px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:860px){main{grid-template-columns:1fr}.panel{position:static;max-height:none}.sheet{padding:20px 16px}.g{grid-template-columns:1fr}}
+  @media print{header,.panel,footer{display:none}body{background:#fff}main{display:block;padding:0;max-width:none}.sheet{border:0;padding:0;font-size:12.5px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR TEACHERS · ONE-PAGE PROFILE · CONFIDENTIAL</p>
+    <h1>EL student <em>profile</em></h1>
+    <p class="tag">Type the student's levels and a few facts; get the one page a substitute, a new content teacher or a coach needs: what this student can do, what helps, which accommodations are in the plan, and whom to call. Stays in your browser — print it, file it in the sub folder, hand it to the co-teacher.</p>
+  </div>
+</header>
+<main>
+<aside class="panel">
+  <h2>Student</h2>
+  <div class="row"><div><label>Name</label><input data-k="name" placeholder="Ana G."></div><div><label>Grade</label><input data-k="grade" placeholder="9"></div></div>
+  <div class="row"><div><label>Home language</label><input data-k="lang" value="Spanish"></div><div><label>Country / schooling</label><input data-k="origin" placeholder="Honduras · 8 yrs, interrupted 1 yr"></div></div>
+  <div class="row"><div><label>Arrived in U.S.</label><input data-k="arrived" placeholder="July 2026"></div><div><label>Years in EL program</label><input data-k="yrs" placeholder="1"></div></div>
+  <label>ELPT levels (1–5)</label>
+  <div class="row4"><input data-k="L" type="number" min="1" max="5" placeholder="L"><input data-k="S" type="number" min="1" max="5" placeholder="S"><input data-k="R" type="number" min="1" max="5" placeholder="R"><input data-k="W" type="number" min="1" max="5" placeholder="W"></div>
+  <label>Literacy in home language</label><select data-k="lit"><option>Strong — reads and writes at grade level</option><option>Developing — basic reading and writing</option><option>Limited or interrupted schooling</option><option>Unknown yet</option></select>
+  <label>Strengths (what this student is good at)</label><textarea data-k="str" placeholder="Math — above grade level; draws well; helps younger siblings; soccer."></textarea>
+  <label>Interests / what motivates</label><input data-k="int" placeholder="Soccer, drawing, cars, music">
+  <label>Watch for</label><textarea data-k="watch" placeholder="Goes quiet when confused rather than asking; needs a bilingual peer nearby; anxious about reading aloud."></textarea>
+  <label>Accommodations in the LSP</label>
+  <div class="chk" id="acc"></div>
+  <div class="row"><div><label>EL teacher / contact</label><input data-k="contact" value="Richard A. Daniel · Rm 118"></div><div><label>Phone / email</label><input data-k="phone" placeholder="ext. 2118"></div></div>
+  <label>Family contact &amp; language</label><input data-k="fam" placeholder="Mother, María · Spanish · (601) 000-0000 · texts work best">
+  <div class="row"><div><label>IEP / 504?</label><select data-k="iep"><option>No</option><option>Yes — see plan</option><option>Referral in progress</option></select></div><div><label>Date</label><input data-k="date" type="date"></div></div>
+  <button class="btn" type="button" onclick="window.print()">🖨 Print profile</button>
+</aside>
+<article class="sheet" id="sheet"></article>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const ACC=["Extended time (1.5×)","Word-to-word bilingual dictionary","Directions read aloud & clarified","Test items read aloud (non-reading tests)","Small-group setting","Breaks","Sentence frames & word banks","Visuals & graphic organizers","Home-language support (peer / app / notes)","Reduced length / alternate format","Oral or recorded response","Preferential seating","Leveled / modified text","Vocabulary preview before lessons"];
+document.getElementById('acc').innerHTML=ACC.map((a,i)=>`<label><input type="checkbox" data-a="${i}">${a}</label>`).join('');
+const CAN={L:["understands a few words with gestures and pictures","follows two-step directions and simple questions","follows most of a lesson on a familiar topic; takes simple notes","follows a full lesson with few new words","understands fast, technical talk"],
+S:["gives one- or two-word answers; can ask for help with set phrases","asks simple questions; describes with short sentences","gives an opinion with a reason; retells in order","presents and argues a point with academic words","discusses, disagrees and presents fluently"],
+R:["reads signs, names, numbers and simple words with pictures","reads short simple sentences; needs help with directions","reads a page-long text and answers questions; guesses words from context","reads grade-level text with some support; finds evidence","reads technical and primary texts independently"],
+W:["writes name, date, copies from the board, labels pictures","writes simple sentences about self; short notes","writes a paragraph with a topic sentence; uses past tense","writes a multi-paragraph essay with evidence and transitions","writes research and varied genres with few errors"]};
+const HELP={1:["Pair with a bilingual peer; seat near you","Pictures, objects and labeled diagrams for every new idea","One-step directions, modeled, then checked by having the student show you","Accept one-word, drawn or home-language answers; never silence as 'doesn't care'","Translation app for comprehension is fine; keep it off during writing they will turn in"],
+2:["Word bank + two sentence frames on every task","Preview the 5 key words before the lesson","Short, frequent checks: 'tell your partner the first step'","Shorten the task, keep the standard: odd problems, one paragraph","Oral answers count"],
+3:["Frames optional, academic words required","Graphic organizer before any writing","Partner talk before whole-class answers","Score content and language separately","Push for complete sentences and 'because'"],
+4:["Grade-level text with vocabulary preview","Explicit teaching of academic register and transitions","Peer-teaching a Level 2 student locks in the language","Honors/AP is appropriate — advocate for it","Watch writing: it is usually the last domain to reach 4"],
+5:["Treat as a grade-level student who may still need writing feedback","Offer the Seal of Biliteracy pathway","Monitor grades quarterly (post-exit monitoring if exited)"]};
+function lane(l){const v=[l.L,l.S,l.R,l.W].filter(Boolean);if(!v.length)return ['—',''];const a=v.reduce((x,y)=>x+y,0)/v.length;const yrs=parseFloat(F.yrs)||99;if(a<1.5&&yrs<=1)return['Newcomer','new this year, Level 1'];if(a<2.5)return['Emerging','Levels 1–2'];if(a<4)return['Progressing','Levels 3–4'];return['Challenge','Level 4–5']}
+const F={};document.querySelectorAll('[data-k]').forEach(i=>{F[i.dataset.k]=i.value;i.addEventListener('input',()=>{F[i.dataset.k]=i.value;render()})});
+document.querySelectorAll('[data-a]').forEach(c=>c.addEventListener('change',render));
+const v=(k,d='—')=>(F[k]||'').trim()||d;
+function render(){
+  const l={L:+F.L||0,S:+F.S||0,R:+F.R||0,W:+F.W||0};const [ln,ld]=lane(l);
+  const lowest=Object.entries(l).filter(x=>x[1]).sort((a,b)=>a[1]-b[1])[0];const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
+  const avg=Math.round(Object.values(l).filter(Boolean).reduce((a,b)=>a+b,0)/(Object.values(l).filter(Boolean).length||1))||1;
+  const accs=[...document.querySelectorAll('[data-a]:checked')].map(c=>ACC[+c.dataset.a]);
+  const d=F.date?new Date(F.date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  document.getElementById('sheet').innerHTML=`
+  <div class="hd"><div><h2>${v('name','[Student]')} <span style="font-weight:400;color:var(--muted);font-size:18px">· Grade ${v('grade','_')}</span></h2><small>Home language: <b>${v('lang')}</b> · ${v('origin','[country / prior schooling]')} · Arrived ${v('arrived','—')} · Year ${v('yrs','—')} in EL program · IEP/504: ${v('iep')}</small></div><span class="conf">Confidential · FERPA</span></div>
+  <div class="lv"><div><b>${l.L||'–'}</b><span>Listening</span></div><div><b>${l.S||'–'}</b><span>Speaking</span></div><div><b>${l.R||'–'}</b><span>Reading</span></div><div><b>${l.W||'–'}</b><span>Writing</span></div><div class="lane"><b>${ln}</b><span>Lane · ${ld}</span></div></div>
+  <div class="g">
+    <div><h3>What ${v('name','this student').split(' ')[0]} can do in English right now</h3><ul>${['L','S','R','W'].map(k=>l[k]?`<li><b>${names[k]}:</b> ${CAN[k][l[k]-1]}.</li>`:'').join('')}${lowest?`<li style="color:#8a6e14"><b>Focus domain:</b> ${names[lowest[0]]} (Level ${lowest[1]}) — the one to grow this year.</li>`:''}</ul></div>
+    <div><h3>What helps — do these every day</h3><ul>${(HELP[avg]||[]).map(h=>`<li>${h}</li>`).join('')}</ul></div>
+    <div><h3>Strengths &amp; interests</h3><p>${v('str','[strengths]')}</p><p style="margin-top:4px;color:#4a5068"><b>Motivated by:</b> ${v('int','—')}</p><p style="margin-top:4px;color:#4a5068"><b>Home-language literacy:</b> ${v('lit')}</p></div>
+    <div><h3>Watch for</h3><p>${v('watch','[what to notice]')}</p></div>
+    <div><h3>Accommodations in the Language Service Plan</h3>${accs.length?`<ul>${accs.map(a=>`<li>${a}</li>`).join('')}</ul>`:'<p style="color:var(--muted)">None selected yet — see the LSP.</p>'}</div>
+    <div><h3>Who to call</h3><p><b>EL teacher:</b> ${v('contact')} · ${v('phone','')}</p><p style="margin-top:4px"><b>Family:</b> ${v('fam','[contact · language]')} — interpreter available through the office; never use the student to interpret for the family.</p></div>
+  </div>
+  <div class="foot"><span>Profile prepared ${d} · Levels from the most recent ELPT / screener · Share only with staff who teach or serve this student.</span><span>EL Publishing · radan55.github.io/everyteacher</span></div>`;
+}
+render();
+</script>
+</body>
+</html>

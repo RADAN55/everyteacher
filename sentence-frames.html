@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sentence-Frame Bank · by language function and level · EL Publishing</title>
+<meta name="description" content="150 sentence frames for English learners, organized by language function (narrate, inform, explain, argue, plus classroom talk) and proficiency level 1–5, with Spanish glosses. Filter, search, copy one or copy a set into your slides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:64ch}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:10px 22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .srch{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:999px;padding:6px 12px;flex:1 1 220px}
+  .srch input{border:0;font:inherit;font-size:14px;outline:none;flex:1;min-width:0}
+  .grp{display:flex;gap:4px;flex-wrap:wrap}
+  .grp button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:5px 11px;border-radius:999px;cursor:pointer}
+  .grp button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .grp .lv[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  .act{font:inherit;font-size:13px;font-weight:700;border:0;background:var(--gold);color:var(--navy-dk);padding:7px 13px;border-radius:999px;cursor:pointer}
+  main{max-width:1000px;margin:0 auto;padding:18px 22px 40px}
+  .cnt{font-size:13px;color:var(--muted);margin:0 0 12px}
+  .fn{margin:0 0 22px}
+  .fn h2{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 2px}
+  .fn h2 i{font-weight:600;color:#8a6e14;font-size:16px}
+  .fn .d{font-size:14px;color:var(--muted);margin:0 0 10px}
+  .lvb{margin:0 0 10px}
+  .lvb h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a6e14;margin:0 0 6px;display:flex;gap:8px;align-items:center}
+  .lvb h3 b{font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy);letter-spacing:0}
+  .fr{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+  .f{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  .f:hover{border-color:var(--gold)}
+  .f.sel{background:#F7F1DC;border-color:#E3D08E}
+  .f input{margin-top:4px;accent-color:var(--navy)}
+  .f .en{font-size:15.5px;font-weight:600;color:var(--navy);line-height:1.3}
+  .f .en u{text-decoration:none;border-bottom:2px solid var(--gold);color:#8a6e14}
+  .f .es{display:block;font-size:13px;color:#4a5068;margin-top:2px}
+  .f .cp{margin-left:auto;font-size:12px;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:2px 6px;background:#fff;cursor:pointer;flex:0 0 auto}
+  .hide{display:none!important}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:16px 20px;font-size:14.5px;margin-top:20px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:0 0 6px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.on{opacity:1}
+  @media print{header,.bar,.note,footer,.f .cp,.f input{display:none}body{background:#fff}.f{break-inside:avoid;border:1px solid #bbb}.fr{grid-template-columns:1fr 1fr}.f .es{color:#333}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR TEACHERS · SENTENCE FRAMES · ENGLISH / ESPAÑOL</p>
+    <h1>Sentence-frame <em>bank</em></h1>
+    <p class="tag">150 frames by <b style="color:#fff">language function</b> — narrate, inform, explain, argue, and classroom talk — and by <b style="color:#fff">level 1–5</b>, each with a Spanish gloss so students know what they are saying. Filter to today's function and your students' levels, tick the ones you want, copy them into your slide.</p>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in">
+  <label class="srch"><input type="search" id="q" placeholder="Search frames… (e.g., because, compare, first)"></label>
+  <div class="grp" id="fns"><button type="button" data-fn="all" aria-pressed="true">All functions</button></div>
+  <div class="grp" id="lvs"><button type="button" class="lv" data-lv="1" aria-pressed="true">L1</button><button type="button" class="lv" data-lv="2" aria-pressed="true">L2</button><button type="button" class="lv" data-lv="3" aria-pressed="true">L3</button><button type="button" class="lv" data-lv="4" aria-pressed="true">L4</button><button type="button" class="lv" data-lv="5" aria-pressed="true">L5</button></div>
+  <button type="button" class="act" id="copySel">Copy selected (<span id="nsel">0</span>)</button>
+  <button type="button" class="act" id="copyAll" style="background:#fff;border:1px solid var(--rule);color:var(--navy)">Copy all shown</button>
+  <button type="button" class="act" style="background:#fff;border:1px solid var(--rule);color:var(--navy)" onclick="window.print()">🖨 Print shown</button>
+</div></nav>
+<main>
+<p class="cnt" id="cnt"></p>
+<div id="bank"></div>
+<div class="note"><h3>How to use frames without getting stuck on them</h3><p style="margin:0 0 6px">Post two or three, not twelve. Say the frame aloud and have the class echo it before the first student uses it. Pair a Level 1–2 frame with a Level 3–4 frame on the same slide so students pick their own step up. Take frames down after three weeks of success in that function — the goal is the language, not the scaffold. The underlined words are the slots students fill; the Spanish gloss tells a newcomer what the English frame <i>means</i>, so they can use it on day one.</p><p style="margin:0;font-size:13px;color:var(--muted)">Functions follow the four WIDA Key Language Uses; levels follow ELPA21 proficiency levels (1 beginning – 5 advanced).</p></div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<div class="toast" id="toast">Copied</div>
+<script>
+// Each frame: [en, es]. Slots in _underscores_.
+const B=[
+{id:"narrate",en:"Narrate",es:"Narrar",d:"Telling what happened — stories, history, lab procedures, personal experience. · Contar qué pasó.",lv:[
+ [["First, _. Then, _.","Primero, _. Luego, _."],["I see _.","Veo _."],["Yesterday I _.","Ayer yo _."],["This is _. It is _.","Esto es _. Es _."],["_ happened.","Pasó _."],["At the end, _.","Al final, _."]],
+ [["First _, then _, and finally _.","Primero _, luego _, y finalmente _."],["One day, _.","Un día, _."],["_ went to _ because _.","_ fue a _ porque _."],["After that, _ felt _.","Después de eso, _ se sintió _."],["In the story, the main character _.","En la historia, el personaje principal _."],["When _, I _.","Cuando _, yo _."]],
+ [["At the beginning, _. In the middle, _. At the end, _.","Al principio, _. En medio, _. Al final, _."],["_ was _ until _.","_ era _ hasta que _."],["While _ was _, _.","Mientras _ estaba _, _."],["The problem started when _.","El problema empezó cuando _."],["As soon as _, _.","Tan pronto como _, _."],["Before _, _ had already _.","Antes de _, _ ya había _."]],
+ [["The turning point came when _, which led to _.","El punto de cambio llegó cuando _, lo que llevó a _."],["Although _ at first, eventually _.","Aunque _ al principio, con el tiempo _."],["_ had been _ for _ when suddenly _.","_ llevaba _ cuando de repente _."],["From _'s perspective, _.","Desde la perspectiva de _, _."],["Meanwhile, _.","Mientras tanto, _."],["This event matters because _.","Este suceso importa porque _."]],
+ [["What began as _ became _, revealing _.","Lo que empezó como _ se convirtió en _, revelando _."],["Had _ not _, _ would never have _.","Si _ no hubiera _, _ nunca habría _."],["The sequence of events — _, _, _ — suggests _.","La secuencia de eventos — _, _, _ — sugiere _."],["In retrospect, _.","En retrospectiva, _."],["The author structures the narrative so that _.","El autor estructura la narración de modo que _."],["Ultimately, _ was the consequence of _.","Al final, _ fue la consecuencia de _."]]]},
+{id:"inform",en:"Inform",es:"Informar",d:"Describing, defining, classifying, comparing — facts and features. · Describir, definir, comparar.",lv:[
+ [["_ is a _.","_ es un/una _."],["It has _.","Tiene _."],["_ is big / small / hot / cold.","_ es grande / pequeño / caliente / frío."],["There are _ _.","Hay _ _."],["_ and _ are the same.","_ y _ son iguales."],["_ is different.","_ es diferente."]],
+ [["_ is a kind of _ that _.","_ es un tipo de _ que _."],["_ has _, _, and _.","_ tiene _, _ y _."],["_ is _, but _ is _.","_ es _, pero _ es _."],["Both _ and _ are _.","Tanto _ como _ son _."],["_ is located in _.","_ está en _."],["_ is used for _.","_ se usa para _."]],
+ [["_ can be classified as _ because _.","_ se puede clasificar como _ porque _."],["Unlike _, _ is _.","A diferencia de _, _ es _."],["One important feature of _ is _.","Una característica importante de _ es _."],["_ and _ are similar in that _; however, _.","_ y _ se parecen en que _; sin embargo, _."],["For example, _.","Por ejemplo, _."],["According to the text, _.","Según el texto, _."]],
+ [["_ is characterized by _, _, and _.","_ se caracteriza por _, _ y _."],["While _ and _ share _, they differ in _.","Aunque _ y _ comparten _, se diferencian en _."],["The main function of _ is to _, which _.","La función principal de _ es _, lo cual _."],["_ consists of _ components: _.","_ consta de _ componentes: _."],["The data in _ indicate that _.","Los datos en _ indican que _."],["In contrast to _, _.","En contraste con _, _."]],
+ [["_ can be defined as _, distinguished from _ by _.","_ puede definirse como _, y se distingue de _ por _."],["A key distinction between _ and _ lies in _.","Una distinción clave entre _ y _ está en _."],["The evidence from _ and _ converges on _.","La evidencia de _ y _ coincide en _."],["_ is best understood as _ rather than _.","_ se entiende mejor como _ y no como _."],["Several factors — namely _ — account for _.","Varios factores — a saber, _ — explican _."],["The relationship between _ and _ is _.","La relación entre _ y _ es _."]]]},
+{id:"explain",en:"Explain",es:"Explicar",d:"How and why — causes, effects, processes, reasons in science, math, history. · Cómo y por qué.",lv:[
+ [["_ because _.","_ porque _."],["If _, then _.","Si _, entonces _."],["_ makes _.","_ hace _."],["This is how: _.","Así es: _."],["_ so _.","_ así que _."],["It works like this: _.","Funciona así: _."]],
+ [["_ happens because _.","_ pasa porque _."],["When _, _ happens.","Cuando _, pasa _."],["_ causes _.","_ causa _."],["The reason is _.","La razón es _."],["To _, you need to _.","Para _, hay que _."],["I solved it by _.","Lo resolví _ (haciendo _)."]],
+ [["_ occurs when _, which causes _.","_ ocurre cuando _, lo que causa _."],["One cause of _ is _. Another is _.","Una causa de _ es _. Otra es _."],["As a result of _, _.","Como resultado de _, _."],["The first step is to _. Next, _. This works because _.","El primer paso es _. Después, _. Funciona porque _."],["_ affects _ by _.","_ afecta a _ al _."],["This shows that _.","Esto muestra que _."]],
+ [["_ is a direct consequence of _, since _.","_ es consecuencia directa de _, ya que _."],["The process begins when _; this triggers _, which in turn _.","El proceso empieza cuando _; esto provoca _, que a su vez _."],["If _ were to increase, _ would _, because _.","Si _ aumentara, _ _, porque _."],["The relationship is _: as _ increases, _ decreases.","La relación es _: a medida que _ aumenta, _ disminuye."],["This explains why _.","Esto explica por qué _."],["One way to interpret _ is _.","Una forma de interpretar _ es _."]],
+ [["_ can be attributed primarily to _, although _ also plays a role.","_ puede atribuirse principalmente a _, aunque _ también influye."],["The mechanism by which _ leads to _ involves _.","El mecanismo por el cual _ lleva a _ implica _."],["Were it not for _, _ would not _.","De no ser por _, _ no _."],["This outcome is consistent with _ because _.","Este resultado concuerda con _ porque _."],["The underlying principle is _; it accounts for _ and _.","El principio subyacente es _; explica _ y _."],["A more precise explanation would note that _.","Una explicación más precisa señalaría que _."]]]},
+{id:"argue",en:"Argue",es:"Argumentar",d:"Claims, evidence, reasoning, counterclaims — opinions and persuasion. · Opinar y convencer.",lv:[
+ [["I think _.","Creo que _."],["I like _ because _.","Me gusta _ porque _."],["_ is good / bad.","_ es bueno / malo."],["Yes, because _.","Sí, porque _."],["No, because _.","No, porque _."],["I agree. / I disagree.","Estoy de acuerdo. / No estoy de acuerdo."]],
+ [["In my opinion, _ because _.","En mi opinión, _ porque _."],["I agree with _ because _.","Estoy de acuerdo con _ porque _."],["I disagree because _.","No estoy de acuerdo porque _."],["The best _ is _ because _.","El/La mejor _ es _ porque _."],["One reason is _.","Una razón es _."],["We should _ because _.","Deberíamos _ porque _."]],
+ [["I believe _. The evidence is _.","Creo que _. La evidencia es _."],["The text says _, which shows _.","El texto dice _, lo que demuestra _."],["Some people think _, but I think _ because _.","Algunos piensan _, pero yo creo _ porque _."],["Another reason is _.","Otra razón es _."],["This is important because _.","Esto es importante porque _."],["In conclusion, _.","En conclusión, _."]],
+ [["I claim that _. According to _, _. This supports my claim because _.","Afirmo que _. Según _, _. Esto apoya mi afirmación porque _."],["Although some argue _, the evidence suggests _.","Aunque algunos argumentan _, la evidencia sugiere _."],["The strongest evidence for _ is _.","La evidencia más fuerte a favor de _ es _."],["A counterargument is _; however, _.","Un contraargumento es _; sin embargo, _."],["Therefore, _.","Por lo tanto, _."],["_ outweighs _ because _.","_ pesa más que _ porque _."]],
+ [["While _ has merit, it fails to account for _.","Aunque _ tiene mérito, no toma en cuenta _."],["The evidence — _ and _ — compellingly demonstrates _.","La evidencia — _ y _ — demuestra de forma convincente _."],["Critics contend _; yet this overlooks _.","Los críticos sostienen _; pero esto pasa por alto _."],["Given _, it follows that _.","Dado _, se deduce que _."],["The most defensible position is _, because _.","La postura más defendible es _, porque _."],["Even granting _, _ remains true.","Incluso aceptando _, _ sigue siendo cierto."]]]},
+{id:"talk",en:"Classroom talk",es:"Hablar en clase",d:"Asking, clarifying, agreeing, building on ideas — the frames that keep a newcomer in the conversation. · Para participar.",lv:[
+ [["Can you repeat, please?","¿Puede repetir, por favor?"],["What is _?","¿Qué es _?"],["I don't understand.","No entiendo."],["Can you help me?","¿Me puede ayudar?"],["How do you say _?","¿Cómo se dice _?"],["Me too.","Yo también."]],
+ [["Can you say that more slowly?","¿Puede decirlo más despacio?"],["What does _ mean?","¿Qué significa _?"],["I have a question about _.","Tengo una pregunta sobre _."],["I agree with _.","Estoy de acuerdo con _."],["Can I add something?","¿Puedo agregar algo?"],["I think the answer is _.","Creo que la respuesta es _."]],
+ [["Could you explain _ again?","¿Podría explicar _ otra vez?"],["I agree with _, and I want to add _.","Estoy de acuerdo con _, y quiero agregar _."],["I see it differently: _.","Yo lo veo diferente: _."],["Can you give an example of _?","¿Puede dar un ejemplo de _?"],["I'm not sure, but maybe _.","No estoy seguro, pero quizás _."],["What do you mean by _?","¿Qué quiere decir con _?"]],
+ [["Building on what _ said, _.","Partiendo de lo que dijo _, _."],["I'd like to push back on _ because _.","Quisiera cuestionar _ porque _."],["Could you clarify the difference between _ and _?","¿Podría aclarar la diferencia entre _ y _?"],["That's a good point; however, _.","Es un buen punto; sin embargo, _."],["To summarize what we've said, _.","Para resumir lo que hemos dicho, _."],["How does _ connect to _?","¿Cómo se conecta _ con _?"]],
+ [["If I understand correctly, you're saying _. Is that right?","Si entiendo bien, usted dice _. ¿Es así?"],["I'd like to return to _'s point about _.","Quisiera volver al punto de _ sobre _."],["Let me offer a different interpretation: _.","Permítanme ofrecer otra interpretación: _."],["Can we examine the assumption that _?","¿Podemos examinar la suposición de que _?"],["Where do we still disagree?","¿En qué todavía no estamos de acuerdo?"],["What evidence would change your mind?","¿Qué evidencia le haría cambiar de opinión?"]]]}
+];
+const LN=["Beginning","Early intermediate","Intermediate","Early advanced","Advanced"];
+const slot=s=>s.replace(/_/g,'<u>____</u>');
+let html='';let n=0;
+B.forEach(f=>{html+=`<section class="fn" data-fn="${f.id}"><h2>${f.en} <i>· ${f.es}</i></h2><p class="d">${f.d}</p>`;
+ f.lv.forEach((frames,li)=>{html+=`<div class="lvb" data-lv="${li+1}"><h3><b>${li+1}</b> ${LN[li]}</h3><div class="fr">`;
+  frames.forEach(([en,es])=>{n++;html+=`<label class="f" data-fn="${f.id}" data-lv="${li+1}" data-t="${(en+' '+es).toLowerCase().replace(/"/g,'')}"><input type="checkbox"><span><span class="en">${slot(en)}</span><span class="es" lang="es">${es}</span></span><button type="button" class="cp" data-en="${en.replace(/"/g,'&quot;')}">copy</button></label>`});
+  html+='</div></div>'});
+ html+='</section>'});
+document.getElementById('bank').innerHTML=html;
+const fns=document.getElementById('fns');B.forEach(f=>{const b=document.createElement('button');b.type='button';b.dataset.fn=f.id;b.setAttribute('aria-pressed','false');b.textContent=f.en;fns.appendChild(b)});
+let FN='all';const LV=new Set(['1','2','3','4','5']);const q=document.getElementById('q');
+function run(){const s=q.value.trim().toLowerCase();let c=0;
+ document.querySelectorAll('.f').forEach(f=>{const ok=(FN==='all'||f.dataset.fn===FN)&&LV.has(f.dataset.lv)&&(!s||f.dataset.t.includes(s));f.classList.toggle('hide',!ok);if(ok)c++});
+ document.querySelectorAll('.lvb').forEach(l=>l.classList.toggle('hide',!l.querySelector('.f:not(.hide)')));
+ document.querySelectorAll('.fn').forEach(l=>l.classList.toggle('hide',!l.querySelector('.f:not(.hide)')));
+ document.getElementById('cnt').textContent=c+' of '+n+' frames shown';}
+fns.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;FN=b.dataset.fn;fns.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));run()});
+document.getElementById('lvs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on?'true':'false');on?LV.add(b.dataset.lv):LV.delete(b.dataset.lv);run()});
+q.addEventListener('input',run);
+const toast=(m)=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1200)};
+const copy=(t)=>navigator.clipboard?.writeText(t).then(()=>toast('Copied'),()=>prompt('Copy:',t));
+document.getElementById('bank').addEventListener('click',e=>{const cp=e.target.closest('.cp');if(cp){e.preventDefault();copy(cp.dataset.en.replace(/_/g,'______'));return}
+ const f=e.target.closest('.f');if(f&&e.target.tagName!=='INPUT')setTimeout(()=>{f.classList.toggle('sel',f.querySelector('input').checked);cnt()},0);else if(f)setTimeout(()=>{f.classList.toggle('sel',f.querySelector('input').checked);cnt()},0)});
+function cnt(){document.getElementById('nsel').textContent=document.querySelectorAll('.f input:checked').length}
+document.getElementById('copySel').addEventListener('click',()=>{const t=[...document.querySelectorAll('.f input:checked')].map(i=>i.closest('.f').querySelector('.cp').dataset.en.replace(/_/g,'______'));if(!t.length)return toast('Tick some frames first');copy(t.join('\n'))});
+document.getElementById('copyAll').addEventListener('click',()=>{const t=[...document.querySelectorAll('.f:not(.hide)')].map(f=>f.querySelector('.cp').dataset.en.replace(/_/g,'______'));copy(t.join('\n'))});
+run();
+</script>
+</body>
+</html>

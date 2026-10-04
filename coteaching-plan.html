@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Co-Teaching Lesson Plan · content + language objective · EL Publishing</title>
+<meta name="description" content="A one-page co-teaching planner for a content teacher and an EL teacher: content objective, language objective (with a bank by subject and function), co-teaching model, lane-by-lane supports, assessment, and roles. Fills in the browser, prints on one page, saves on the device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1040px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:64ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  main{max-width:1040px;margin:0 auto;padding:22px 22px 40px;display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+  .plan{background:var(--paper);border:1px solid var(--rule);padding:26px 30px}
+  .plan h2{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 4px}
+  .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 14px}
+  label.f{display:block;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+  input,textarea,select{width:100%;font:inherit;font-size:14.5px;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  textarea{min-height:64px;resize:vertical}
+  .blk{border-top:2px solid var(--gold);padding-top:10px;margin-top:14px}
+  .blk h3{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);margin:0 0 2px}
+  .blk .hint{font-size:12.5px;color:var(--muted);margin:0 0 8px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .lane{border:1px solid var(--rule);padding:8px}
+  .lane b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8a6e14;margin-bottom:4px}
+  .lane textarea{min-height:90px;font-size:13.5px}
+  .models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .models label{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--rule);padding:7px 9px;font-size:13px;line-height:1.3;cursor:pointer;border-radius:6px}
+  .models label:has(input:checked){background:#F7F1DC;border-color:#E3D08E}
+  .models input{width:auto;margin-top:2px}
+  .side{position:sticky;top:12px;display:flex;flex-direction:column;gap:14px}
+  .bank{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .bank h2{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:0 0 6px}
+  .bank p{font-size:13px;color:var(--muted);margin:0 0 8px}
+  .bank select{margin-bottom:8px}
+  .bank ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;max-height:360px;overflow:auto}
+  .bank li{border:1px solid var(--rule);border-radius:6px;padding:7px 9px;font-size:13.5px;line-height:1.3;cursor:pointer}
+  .bank li:hover{border-color:var(--gold);background:#FBF6E6}
+  .tools{display:flex;gap:6px;flex-wrap:wrap}
+  .tools button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:860px){main{grid-template-columns:1fr}.side{position:static}.meta,.lanes{grid-template-columns:1fr 1fr}.models{grid-template-columns:1fr}.plan{padding:18px 16px}}
+  @media print{header,.side,footer{display:none}body{background:#fff;font-size:12px}main{display:block;padding:0;max-width:none}.plan{border:0;padding:0}input,textarea,select{border:0;border-bottom:1px solid #999;border-radius:0;padding:2px 4px;font-size:11.5px}textarea{min-height:0;height:auto;overflow:visible}.lane textarea{min-height:70px}.blk{margin-top:8px;padding-top:6px}.models label{padding:3px 6px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR CONTENT + EL TEACHER PAIRS · ONE-PAGE PLANNER</p>
+    <h1>Co-teaching <em>lesson plan</em></h1>
+    <p class="tag">One page, two teachers, two objectives. The content teacher brings the standard; the EL teacher brings the language objective and the lane supports; you both sign the roles. The language-objective bank on the right drops a starter into the plan — pick the subject and the function.</p>
+    <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print one page</button><a class="btn ghost" href="sentence-frames.html">Sentence-frame bank →</a></div>
+  </div>
+</header>
+<main>
+<section class="plan" id="plan">
+  <h2>Lesson plan</h2>
+  <div class="meta">
+    <div><label class="f">Class / period</label><input data-k="cls" placeholder="Biology I · 3rd"></div>
+    <div><label class="f">Date</label><input data-k="date" type="date"></div>
+    <div><label class="f">Content teacher</label><input data-k="t1" placeholder="Ms. Lee"></div>
+    <div><label class="f">EL teacher</label><input data-k="t2" placeholder="Mr. Daniel"></div>
+  </div>
+  <div class="blk"><h3>Content objective</h3><p class="hint">Students will be able to… (the standard, in one sentence)</p><textarea data-k="co" placeholder="Students will be able to explain how the structure of a cell membrane controls what enters and leaves the cell."></textarea></div>
+  <div class="blk"><h3>Language objective</h3><p class="hint">Students will [function] [content] using [language form / vocabulary] — pick from the bank or write your own.</p><textarea data-k="lo" placeholder="Students will explain membrane transport orally and in writing using cause-and-effect sentences (because / so / which causes) and the words permeable, concentration, gradient."></textarea>
+    <div class="two" style="margin-top:8px"><div><label class="f">Key vocabulary (5–8)</label><input data-k="vocab" placeholder="membrane · permeable · concentration · gradient · diffusion · osmosis"></div><div><label class="f">Sentence frames posted</label><input data-k="frames" placeholder="___ moves across the membrane because ___. · If ___ increases, then ___."></div></div></div>
+  <div class="blk"><h3>Co-teaching model for this lesson</h3><p class="hint">Check the one you will use for the main activity; note who does what.</p>
+    <div class="models">
+      <label><input type="radio" name="m" data-k="m" value="One teach, one support"><span><b>One teach, one support</b><br>One leads; the other circulates, checks for understanding, feeds frames.</span></label>
+      <label><input type="radio" name="m" data-k="m" value="Station teaching"><span><b>Station teaching</b><br>Two or three stations; EL teacher runs the language-intensive one.</span></label>
+      <label><input type="radio" name="m" data-k="m" value="Parallel teaching"><span><b>Parallel teaching</b><br>Same content, two groups; smaller group for Levels 1–2.</span></label>
+      <label><input type="radio" name="m" data-k="m" value="Alternative teaching"><span><b>Alternative teaching</b><br>One pre-teaches or re-teaches a small group while the other teaches the class.</span></label>
+      <label><input type="radio" name="m" data-k="m" value="Team teaching"><span><b>Team teaching</b><br>Both lead together — one models the content, the other the language.</span></label>
+      <label><input type="radio" name="m" data-k="m" value="One teach, one observe"><span><b>One teach, one observe</b><br>Data collection on language use for the LSP.</span></label>
+    </div>
+    <div class="two" style="margin-top:8px"><div><label class="f">Content teacher does</label><textarea data-k="r1" placeholder="Opens with the diagram; direct instruction 12 min; runs station A."></textarea></div><div><label class="f">EL teacher does</label><textarea data-k="r2" placeholder="Previews vocabulary with Lane 1–2 group first 8 min; runs station C (frames + oral explanation); collects exit tickets from ELs."></textarea></div></div>
+  </div>
+  <div class="blk"><h3>Supports by lane</h3><p class="hint">Same objective, four ways in. Lanes follow ELPA21 levels: Newcomer (new 1), Emerging (1–2), Progressing (3–4), Challenge (4–5 / exited).</p>
+    <div class="lanes">
+      <div class="lane"><b>Newcomer</b><textarea data-k="l1" placeholder="Bilingual word list; labeled diagram to complete; oral answer with one frame; partner who speaks the home language."></textarea></div>
+      <div class="lane"><b>Emerging</b><textarea data-k="l2" placeholder="Word bank + two frames; sequence organizer; answer in 2–3 sentences."></textarea></div>
+      <div class="lane"><b>Progressing</b><textarea data-k="l3" placeholder="Frames optional; paragraph with because/which causes; peer explanation before writing."></textarea></div>
+      <div class="lane"><b>Challenge</b><textarea data-k="l4" placeholder="Explain to a Level 2 partner; extend to a new scenario; academic-register rewrite."></textarea></div>
+    </div></div>
+  <div class="blk"><div class="two"><div><h3>Assessment of the content objective</h3><textarea data-k="a1" placeholder="Exit ticket: diagram + 2 questions."></textarea></div><div><h3>Assessment of the language objective</h3><textarea data-k="a2" placeholder="Each student says or writes one cause-effect sentence using 2 key words; EL teacher scores on the 1–5 rubric."></textarea></div></div></div>
+  <div class="blk"><h3>Notes after the lesson</h3><p class="hint">What worked for which lane; what to change; who needs a follow-up.</p><textarea data-k="notes"></textarea></div>
+</section>
+<aside class="side">
+  <div class="bank">
+    <h2>Language-objective bank</h2>
+    <p>Pick subject and function; click a line to drop it into the plan (then edit the specifics).</p>
+    <select id="subj"><option value="sci">Science</option><option value="math">Math</option><option value="ss">Social studies</option><option value="ela">English / ELA</option><option value="cte">CTE / electives</option></select>
+    <select id="fn"><option value="explain">Explain</option><option value="inform">Inform / describe</option><option value="argue">Argue</option><option value="narrate">Narrate / sequence</option></select>
+    <ul id="bank"></ul>
+  </div>
+  <div class="tools"><button type="button" id="save">Save on this device</button><button type="button" id="load">Load saved</button><button type="button" id="clear">Clear</button></div>
+  <p style="font-size:12.5px;color:var(--muted);margin:0">Saved plans live only in this browser. Print or screenshot to keep them.</p>
+</aside>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+const BANK={
+sci:{explain:["Students will explain [a process] orally and in writing using cause-and-effect language (because, so, which causes, as a result) and the words [__].","Students will explain how [variable] affects [outcome] using if/then sentences and comparative forms (more, less, faster).","Students will describe the steps of [procedure] in order using sequence words (first, next, then, finally) and imperative verbs."],
+ inform:["Students will describe the structure and function of [__] using 'has / is made of / is used for' and the vocabulary [__].","Students will compare [A] and [B] using 'both… while…', 'unlike', and 'similar to'.","Students will classify [items] into [categories] and justify each with 'because it has/is'."],
+ argue:["Students will make a claim about [__] and support it with two pieces of data using 'The data show… therefore…'.","Students will evaluate [two explanations] and argue for one using 'The evidence suggests… because…'."],
+ narrate:["Students will retell the sequence of [a lab / a natural process] using past tense and transition words.","Students will describe what they observed during [lab] using 'I observed that…' and precise measurement language."]},
+math:{explain:["Students will explain how they solved [problem type] using 'First I… then I… because…' and the terms [__].","Students will explain why [a strategy] works using 'If… then…' and 'This means…'.","Students will justify a solution step using 'I know… because…'."],
+ inform:["Students will describe [a shape / graph / function] using the attributes [__] and 'It has… / It is…'.","Students will compare two representations using 'Both show… but…'."],
+ argue:["Students will critique a solution using 'I agree/disagree with… because…' and the terms [__].","Students will argue which [method] is more efficient using 'is better because… whereas…'."],
+ narrate:["Students will describe the steps of [algorithm] in order using sequence words.","Students will tell the story of a graph over time using 'At first… then… finally…' and 'increases / decreases'."]},
+ss:{explain:["Students will explain the causes of [event] using 'One cause was… which led to…' and the vocabulary [__].","Students will explain the effects of [policy / event] on [group] using 'As a result… / This caused…'."],
+ inform:["Students will describe [a place / a government / a culture] using 'is located… / has… / is known for…'.","Students will compare [two civilizations / two documents] using 'Both… / However… / In contrast…'."],
+ argue:["Students will take a position on [question] and support it with two sources using 'According to… / This shows that…'.","Students will evaluate [a historical decision] using 'It was justified / unjustified because…'."],
+ narrate:["Students will retell [event] from the perspective of [person] using past tense and 'At that time… / Later…'.","Students will sequence the events of [period] using a timeline and 'Before / after / during'."]},
+ela:{explain:["Students will explain how [a character] changes using 'At the beginning… but by the end… because…'.","Students will explain the author's purpose using 'The author uses… to show…'."],
+ inform:["Students will describe [a character / setting] using adjectives and 'is described as… / seems… because…'.","Students will summarize [text] in 3–5 sentences using 'The text is about… First… Then… In the end…'."],
+ argue:["Students will make a claim about [theme] and support it with textual evidence using 'The author writes… which suggests…'.","Students will argue whether [character] was right using 'I believe… One reason… The text says…'."],
+ narrate:["Students will write a narrative about [__] with a beginning, middle and end using past tense and dialogue.","Students will retell [story] orally using sequence words and the vocabulary [__]."]},
+cte:{explain:["Students will explain how to [perform a procedure] safely using imperative verbs, sequence words and the terms [__].","Students will explain why [a safety rule / technique] matters using 'If you don't… then…'."],
+ inform:["Students will identify and describe [tools / parts] using 'This is a… It is used to…'.","Students will compare [two materials / methods] using 'is stronger / cheaper / faster than'."],
+ argue:["Students will recommend [a product / plan] to a customer using 'I recommend… because…' and the terms [__].","Students will justify a design choice using 'We chose… because it…'."],
+ narrate:["Students will describe the steps they followed in [project] using 'First we… then we…'.","Students will report what went wrong in [task] and what they changed using past tense."]}};
+const subj=document.getElementById('subj'),fn=document.getElementById('fn'),bank=document.getElementById('bank');
+function fill(){bank.innerHTML=(BANK[subj.value][fn.value]||[]).map(s=>`<li>${s}</li>`).join('')}
+subj.addEventListener('change',fill);fn.addEventListener('change',fill);fill();
+bank.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;const ta=document.querySelector('[data-k="lo"]');ta.value=li.textContent;ta.focus()});
+const fields=()=>[...document.querySelectorAll('[data-k]')];
+document.getElementById('save').addEventListener('click',()=>{const o={};fields().forEach(f=>{if(f.type==='radio'){if(f.checked)o.m=f.value}else o[f.dataset.k]=f.value});try{localStorage.setItem('coplan',JSON.stringify(o));alert('Saved on this device.')}catch(e){alert('Could not save here.')}});
+document.getElementById('load').addEventListener('click',()=>{let o={};try{o=JSON.parse(localStorage.getItem('coplan')||'{}')}catch(e){}fields().forEach(f=>{if(f.type==='radio')f.checked=(o.m===f.value);else if(o[f.dataset.k]!==undefined)f.value=o[f.dataset.k]})});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?'))fields().forEach(f=>{if(f.type==='radio')f.checked=false;else f.value=''})});
+</script>
+</body>
+</html>
