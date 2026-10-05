@@ -186,7 +186,9 @@ function render(){
   var I=ISSUES.filter(function(i){return i.id===cur})[0];
   var h='<h2 class="sec">Mississippi EL Policy Brief · '+esc(I.label)+'</h2><p class="deck">'+esc(I.date)+'</p>';
   h+='<div class="card" style="border-top-color:var(--navy)"><span class="k">The month in one paragraph</span><p style="font-size:16px">'+esc(I.lead)+'</p></div>';
-  h+='<div class="priv" style="margin-top:14px"><b>For your superintendent (copy this).</b> '+esc(I.brief)+' <button type="button" class="btn ghost" style="padding:4px 10px;font-size:12.5px;margin-left:6px" id="copybrief">Copy</button></div>';
+  h+='<div class="priv" style="margin-top:14px"><b>For your superintendent (copy this).</b> '+esc(I.brief)+' <button type="button" class="btn ghost" style="padding:4px 10px;font-size:12.5px;margin-left:6px" id="copybrief">Copy paragraph</button>'
+    +'<div class="noprint" style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end"><div><label class="f" style="margin-top:0" for="nb-to">Addressed to</label><input type="text" id="nb-to" placeholder="Dr. Smith"></div><div><label class="f" style="margin-top:0" for="nb-from">From (name, title)</label><input type="text" id="nb-from" placeholder="Richard A. Daniel, EL Specialist"></div><button type="button" class="btn" id="copynote" style="white-space:nowrap">Copy as a note</button></div>'
+    +'<p style="font-size:12.5px;color:var(--muted);margin:6px 0 0">The note version opens with a greeting, closes with an offer to walk through it, and signs your name. Names stay in this browser only.</p></div>';
   I.items.forEach(function(it,n){
     h+='<section class="asst" style="margin-top:16px"><div class="top"><div class="n">'+(n+1)+'</div><div><h3>'+esc(it.h)+'</h3>'
       +'<div class="meta">What changed</div><p>'+esc(it.what)+'</p>'
@@ -197,7 +199,16 @@ function render(){
   h+='<div class="grid2" style="margin-top:16px"><div class="card"><span class="k">Dates ahead</span><table class="t">'+I.dates.map(function(d){return '<tr><td style="white-space:nowrap"><b>'+esc(d[0])+'</b></td><td>'+esc(d[1])+'</td></tr>'}).join("")+'</table></div>'
     +'<div class="card"><span class="k">Watch list</span><ul style="margin:0;padding-left:18px">'+I.watch.map(function(w){return "<li>"+esc(w)+"</li>"}).join("")+'</ul><p class="hint" style="font-size:12.5px;color:var(--muted);margin-top:10px">This brief is a practitioner’s reading of public documents, not legal advice. Confirm against the primary source before acting; corrections are welcome and logged.</p></div></div>';
   document.getElementById("issue").innerHTML=h;
-  document.getElementById("copybrief").onclick=function(){var b=this,t=I.brief;var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy"},1800)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}else done()};
+  function cp(t,b,label){var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent=label},1800)};var fb=function(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fb();done()})}else{fb();done()}}
+  document.getElementById("copybrief").onclick=function(){cp(I.brief,this,"Copy paragraph")};
+  var to=document.getElementById("nb-to"),fr=document.getElementById("nb-from");
+  try{to.value=localStorage.getItem("pb.to")||"";fr.value=localStorage.getItem("pb.from")||""}catch(e){}
+  [to,fr].forEach(function(el){el.addEventListener("input",function(){try{localStorage.setItem("pb.to",to.value);localStorage.setItem("pb.from",fr.value)}catch(e){}})});
+  document.getElementById("copynote").onclick=function(){
+    var who=to.value.trim(),me=fr.value.trim();
+    var t=(who?who+",":"Good morning,")+"\n\nHere is the English learner policy picture for "+I.label+" in one paragraph, from the Mississippi EL Policy Brief.\n\n"+I.brief+"\n\nI am glad to walk through any of this, or to bring the one-page version to the next leadership meeting. The full brief with sources is at radan55.github.io/everyteacher/policy-brief.html#"+I.id+".\n\n"+(me||"[your name, title]");
+    cp(t,this,"Copy as a note");
+  };
 }
 document.getElementById("issues").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;cur=b.dataset.id;render();});
 if(location.hash&&ISSUES.some(function(i){return "#"+i.id===location.hash}))cur=location.hash.slice(1);
