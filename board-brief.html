@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board Brief & Deck · EL Publishing</title>
+<meta name="description" content="A one-page executive brief and an eight-slide PowerPoint template, "The State of English Learners in [District]," written for a Mississippi school board: who the students are, whether they are growing, whether the district is compliant, what it costs, and three recommendations with a decision requested.">
+<meta property="og:title" content="Board Brief & Deck">
+<meta property="og:description" content="A one-page executive brief and an eight-slide PowerPoint template, "The State of English Learners in [District]," written for a Mississippi school board: who the students are, whether they are growing, whether the district is compliant, what it costs, and three recommendations with a decision requested.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS · BOARD BRIEF</p>
+    <h1>The EL report your board <em>has never gotten.</em></h1>
+    <p class="tag">Type in a dozen numbers and three recommendations; the one-page brief writes itself in board language. Download the matching eight-slide deck, with speaker notes, and present it in fifteen minutes. Numbers come from the Outcomes Dashboard, the Self-Audit, and the Title III Planner.</p>
+    <div class="chips"><span>One-page brief</span><span>8-slide deck (.pptx)</span><span>Speaker notes</span><span>Decision requested</span><span>Board language</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .ring{width:170px;height:170px;position:relative;flex:none}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.ring .v b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;color:var(--navy);line-height:1}.ring .v small{display:block;margin-top:4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .score{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px 22px;position:sticky;top:0;z-index:5}
+  @media (max-width:700px){.score{grid-template-columns:1fr;position:static}}
+  .band{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy)}.band.red{color:#9B2C2C}.band.amb{color:#8A5A00}.band.grn{color:#1F6F3A}
+  .bars{display:grid;gap:6px;margin-top:8px}.bars div{display:grid;grid-template-columns:190px 1fr 44px;gap:8px;align-items:center;font-size:13px}.bars i{display:block;height:9px;background:var(--mist);border-radius:4px;overflow:hidden}.bars i b{display:block;height:100%;background:var(--navy);width:0;transition:width .6s}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:10px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  @media (max-width:700px){.q{grid-template-columns:1fr}}
+  .q .t{font-weight:600;font-size:15.5px}.q .c{font-size:13px;color:var(--muted);margin-top:3px}.q .leg{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9B2C2C;border:1px solid #E3B4B4;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .seg3{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}.seg3 button{border:0;background:#fff;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;border-right:1px solid var(--rule);color:var(--navy)}.seg3 button:last-child{border-right:0}
+  .seg3 button[aria-pressed=true][data-v="2"]{background:#1F6F3A;color:#fff}.seg3 button[aria-pressed=true][data-v="1"]{background:#C9A227;color:#141A44}.seg3 button[aria-pressed=true][data-v="0"]{background:#9B2C2C;color:#fff}.seg3 button[aria-pressed=true][data-v="na"]{background:var(--muted);color:#fff}
+  .grp{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:22px;margin:26px 0 2px}.grp small{display:block;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .plan tr.red td:first-child{border-left:5px solid #9B2C2C}.plan tr.amb td:first-child{border-left:5px solid #C9A227}
+  .plan input{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:3px 4px;font-size:13.5px;background:transparent;width:100%}
+  .leaders-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.leaders-nav a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:#fff}.leaders-nav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style><nav class="leaders-nav noprint" aria-label="District leaders"><a href="leaders.html">For district leaders</a><a href="el-audit.html">Program self-audit</a><a href="title3-planner.html">Title III planner</a><a href="el-outcomes.html">Outcomes dashboard</a><a href="board-brief.html" class="on">Board brief &amp; deck</a><a href="case-studies.html">Case studies</a><a href="policy-brief.html">Policy brief</a><a href="district-kit.html">District kit</a></nav>
+  <div class="grid2">
+    <form class="card" id="f" onsubmit="return false">
+      <h3>Fill in the brief</h3>
+      <div class="grid2"><div><label class="f" for="d">District</label><input type="text" id="d" value="[District Name]"></div><div><label class="f" for="m">Month and year</label><input type="text" id="m" value="October 2026"></div>
+      <div><label class="f" for="who">Prepared by</label><input type="text" id="who" value="[Name, Title]"></div><div><label class="f" for="tot">Total enrollment</label><input type="number" id="tot" value="2000"></div>
+      <div><label class="f" for="els">Identified ELs</label><input type="number" id="els" value="110"></div><div><label class="f" for="langs">Home languages</label><input type="text" id="langs" value="Spanish, Vietnamese"></div>
+      <div><label class="f" for="grew">% gained an ELPT level</label><input type="number" id="grew" value="53"></div><div><label class="f" for="exit">Students exited last spring</label><input type="number" id="exit" value="12"></div>
+      <div><label class="f" for="part">ELPT participation %</label><input type="number" id="part" value="98"></div><div><label class="f" for="audit">Self-audit score %</label><input type="number" id="audit" value="78"></div>
+      <div><label class="f" for="gaps">Open legal gaps</label><input type="number" id="gaps" value="1"></div><div><label class="f" for="t3">Title III subgrant ($)</label><input type="number" id="t3" value="13750"></div>
+      <div><label class="f" for="spend">Total EL spending ($)</label><input type="number" id="spend" value="180000"></div><div><label class="f" for="pfel">Former-EL MAAP proficiency % (all students %)</label><input type="text" id="pfel" value="51 (46)"></div></div>
+      <label class="f" for="r1">Recommendation 1</label><input type="text" id="r1" value="Close the open legal gap (parent notification timeline) by December 15; owner: Federal Programs Director.">
+      <label class="f" for="r2">Recommendation 2</label><input type="text" id="r2" value="Provide 60 minutes a week of domain-specific instruction to the students one ELPT domain short of exit, now through April 16.">
+      <label class="f" for="r3">Recommendation 3</label><input type="text" id="r3" value="Move required EL services off Title III in the FY27 budget; retain Title III for supplemental tutoring, PD, and family engagement.">
+      <label class="f" for="ask">Decision requested</label><input type="text" id="ask" value="Receive as information; direct staff to return in February with the ELPT-window plan.">
+      <div class="btns" style="margin-top:14px"><button type="button" class="btn" onclick="window.print()">Print the one-page brief</button><button type="button" class="btn ghost" id="copy">Copy as text</button><a class="btn ghost" href="download/EL-Board-Presentation-Template.pptx" download>Download the deck (.pptx)</a></div>
+      <p class="hint" style="font-size:12.5px;color:var(--muted);margin-top:8px">The deck is an eight-slide PowerPoint with the same structure and bracketed placeholders, speaker notes on every slide. Fill it from the Outcomes Dashboard, the Self-Audit, and the Title III Planner.</p>
+    </form>
+    <div class="sheet" id="brief" style="margin-top:0">
+      <div style="border-bottom:3px solid var(--gold);padding-bottom:8px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700">Executive brief · for the board</div><h3>The State of English Learners in <span id="o-d"></span></h3><div style="font-size:13px;color:var(--muted)"><span id="o-m"></span> · Prepared by <span id="o-who"></span></div></div></div>
+      <h4>Who they are</h4><p style="font-size:14.5px" id="o-who2"></p>
+      <h4>Are they growing?</h4><p style="font-size:14.5px" id="o-grow"></p>
+      <h4>Are we compliant?</h4><p style="font-size:14.5px" id="o-comp"></p>
+      <h4>What it costs, and who pays</h4><p style="font-size:14.5px" id="o-cost"></p>
+      <h4>Recommendations</h4><ol style="font-size:14.5px;margin:4px 0;padding-left:20px"><li id="o-r1"></li><li id="o-r2"></li><li id="o-r3"></li></ol>
+      <h4>Decision requested</h4><p style="font-size:14.5px" id="o-ask"></p>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--rule);padding-top:6px">Definitions: exit = ELPT Level 4 in every domain on one administration (State Board of Education, June 19, 2025); monitoring = four years after exit. Legal basis: Title VI, EEOA, <i>Lau</i>, <i>Castañeda</i>, <i>Plyler</i>, ESSA Titles I and III. Template: EL Publishing · radan55.github.io/everyteacher/board-brief.html</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){var $=function(i){return document.getElementById(i)};var F=["d","m","who","tot","els","langs","grew","exit","part","audit","gaps","t3","spend","pfel","r1","r2","r3","ask"];
+try{var s=JSON.parse(localStorage.getItem("elbrief.v1")||"null");if(s)F.forEach(function(k){if(s[k]!==undefined)$(k).value=s[k]})}catch(e){}
+function n(k){return +$(k).value||0}function money(x){return "$"+Math.round(x).toLocaleString()}
+function render(){var els=n("els"),tot=n("tot"),share=tot?Math.round(100*els/tot):0,t3=n("t3"),sp=n("spend");
+ $("o-d").textContent=$("d").value;$("o-m").textContent=$("m").value;$("o-who").textContent=$("who").value;
+ $("o-who2").textContent=els+" students ("+share+"% of enrollment) are identified English learners; home languages are "+$("langs").value+". Each has a Language Service Plan and takes the ELPT every spring; exited students are monitored for four years.";
+ $("o-grow").textContent=n("grew")+"% of ELs gained at least one ELPT level last spring and "+n("exit")+" students met the state exit standard of Level 4 in every domain. ELPT participation was "+n("part")+"%"+(n("part")>=95?", meeting the 95% requirement.":", below the 95% requirement; a participation plan is in place.")+" Former ELs score "+$("pfel").value.split("(")[0].trim()+"% proficient on MAAP against a district rate of "+($("pfel").value.split("(")[1]||"").replace(")","").trim()+"%, which is the clearest evidence of whether the program works.";
+ $("o-comp").textContent="Our self-audit against Castañeda, Title VI, the EEOA, ESSA Title III, and the Mississippi Testing Accommodations Manual scores "+n("audit")+"%, with "+n("gaps")+" open legal gap"+(n("gaps")===1?"":"s")+". Each gap has an owner and a date. Our obligations under Title VI and the EEOA do not depend on federal funding and have not changed.";
+ $("o-cost").textContent="EL services cost about "+money(sp)+" a year from all sources. The Title III subgrant is "+money(t3)+" ("+(sp?Math.round(100*t3/sp):0)+"% of EL spending) and pays only for supplements. The House FY2027 bill eliminates Title III and a continuing resolution runs through December 11, 2026; required services are funded from state and local sources and are not at risk.";
+ $("o-r1").textContent=$("r1").value;$("o-r2").textContent=$("r2").value;$("o-r3").textContent=$("r3").value;$("o-ask").textContent=$("ask").value;
+ try{var o={};F.forEach(function(k){o[k]=$(k).value});localStorage.setItem("elbrief.v1",JSON.stringify(o))}catch(e){}}
+$("f").addEventListener("input",render);render();
+$("copy").onclick=function(){var b=this,t=["THE STATE OF ENGLISH LEARNERS IN "+$("d").value.toUpperCase(),$("m").value+" · Prepared by "+$("who").value,"","WHO THEY ARE: "+$("o-who2").textContent,"","ARE THEY GROWING? "+$("o-grow").textContent,"","ARE WE COMPLIANT? "+$("o-comp").textContent,"","WHAT IT COSTS: "+$("o-cost").textContent,"","RECOMMENDATIONS:","1. "+$("r1").value,"2. "+$("r2").value,"3. "+$("r3").value,"","DECISION REQUESTED: "+$("ask").value].join("\n");var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy as text"},1800)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}else done()};
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

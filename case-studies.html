@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Case Studies · EL Publishing</title>
+<meta name="description" content="Three composite case studies from Mississippi: a newcomer’s first ninety days, the long-term EL who finally exits, and a district with six weeks before a monitoring visit. Each step links to the hub tool a district would use.">
+<meta property="og:title" content="EL Case Studies">
+<meta property="og:description" content="Three composite case studies from Mississippi: a newcomer’s first ninety days, the long-term EL who finally exits, and a district with six weeks before a monitoring visit. Each step links to the hub tool a district would use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS · CASE STUDIES</p>
+    <h1>What good looks like, <em>step by step.</em></h1>
+    <p class="tag">Three composites built from real Mississippi patterns, with every identifying detail changed: a newcomer’s first ninety days, the eighth grader stuck one domain short of exit, and a district with six weeks before the monitor arrives. Each row names the tool that did the work and what it cost.</p>
+    <div class="chips"><span>Composite cases</span><span>Newcomer · Long-term EL · Monitoring</span><span>Tool at every step</span><span>What it cost</span><span>What leaders should notice</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .ring{width:170px;height:170px;position:relative;flex:none}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.ring .v b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;color:var(--navy);line-height:1}.ring .v small{display:block;margin-top:4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .score{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px 22px;position:sticky;top:0;z-index:5}
+  @media (max-width:700px){.score{grid-template-columns:1fr;position:static}}
+  .band{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy)}.band.red{color:#9B2C2C}.band.amb{color:#8A5A00}.band.grn{color:#1F6F3A}
+  .bars{display:grid;gap:6px;margin-top:8px}.bars div{display:grid;grid-template-columns:190px 1fr 44px;gap:8px;align-items:center;font-size:13px}.bars i{display:block;height:9px;background:var(--mist);border-radius:4px;overflow:hidden}.bars i b{display:block;height:100%;background:var(--navy);width:0;transition:width .6s}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:10px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  @media (max-width:700px){.q{grid-template-columns:1fr}}
+  .q .t{font-weight:600;font-size:15.5px}.q .c{font-size:13px;color:var(--muted);margin-top:3px}.q .leg{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9B2C2C;border:1px solid #E3B4B4;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .seg3{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}.seg3 button{border:0;background:#fff;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;border-right:1px solid var(--rule);color:var(--navy)}.seg3 button:last-child{border-right:0}
+  .seg3 button[aria-pressed=true][data-v="2"]{background:#1F6F3A;color:#fff}.seg3 button[aria-pressed=true][data-v="1"]{background:#C9A227;color:#141A44}.seg3 button[aria-pressed=true][data-v="0"]{background:#9B2C2C;color:#fff}.seg3 button[aria-pressed=true][data-v="na"]{background:var(--muted);color:#fff}
+  .grp{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:22px;margin:26px 0 2px}.grp small{display:block;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .plan tr.red td:first-child{border-left:5px solid #9B2C2C}.plan tr.amb td:first-child{border-left:5px solid #C9A227}
+  .plan input{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:3px 4px;font-size:13.5px;background:transparent;width:100%}
+  .leaders-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.leaders-nav a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:#fff}.leaders-nav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style><nav class="leaders-nav noprint" aria-label="District leaders"><a href="leaders.html">For district leaders</a><a href="el-audit.html">Program self-audit</a><a href="title3-planner.html">Title III planner</a><a href="el-outcomes.html">Outcomes dashboard</a><a href="board-brief.html">Board brief &amp; deck</a><a href="case-studies.html" class="on">Case studies</a><a href="policy-brief.html">Policy brief</a><a href="district-kit.html">District kit</a></nav>
+  <div class="priv"><b>About these cases.</b> Each is a composite: a real pattern from Mississippi classrooms, with details changed and combined so that no student, family, or school is identifiable. The documents linked are the actual hub tools a district would use at each step. They show the shape of good practice, not a specific district's record.</div>
+  <div class="tabs" role="tablist" style="margin-top:14px"><button role="tab" aria-selected="true" data-t="c1">1 · A newcomer arrives in October</button><button role="tab" aria-selected="false" data-t="c2">2 · The student who never exits</button><button role="tab" aria-selected="false" data-t="c3">3 · A district gets the monitoring letter</button></div>
+
+  <section id="t-c1">
+  <h2 class="sec">A newcomer arrives in October</h2>
+  <p class="deck">Tenth grade. Spanish-speaking. Four years of schooling in Honduras, then two years of none. Enrolled by an aunt on a Tuesday, in class on Wednesday. Ninety days, in order.</p>
+  <table class="t"><tr><th style="width:110px">When</th><th>What happened</th><th>What made it work</th><th>Hub tool</th></tr>
+   <tr><td><b>Day 1</b></td><td>Registrar completes the Home Language Survey with the aunt through a phone interpreter. No request for immigration documents. Counselor schedules the student into Biology I, Algebra I, English II, PE, and the EL block.</td><td>The registrar had been trained in August; the interpreter line was on a sticky note at the desk.</td><td><a href="newcomer-intake.html">Newcomer Intake</a>, <a href="newcomer-guide.html">Guide to School in the U.S.</a> (Spanish PDF sent home)</td></tr>
+   <tr><td><b>Day 3</b></td><td>ELPA21 screener: Level 1 overall. Parent notification letter sent in Spanish the same day. LSP drafted with classroom and testing accommodations listed separately.</td><td>The 10-school-day clock in the district plan was tracked on a shared sheet.</td><td><a href="parent-letters.html">Parent letters</a>, <a href="lsp-builder.html">LSP Builder</a>, <a href="accommodations-cards.html">Quick Cards</a></td></tr>
+   <tr><td><b>Week 1</b></td><td>Buddy assigned in every class. Survival phrases, a picture word bank, and a bilingual word-to-word dictionary issued. Content teachers get a one-page "English learners in this room" card and the Newcomer lane for each of their next three lessons.</td><td>Teachers did not have to invent anything; they received the lane already built.</td><td><a href="newcomer-week1.html">Week 1 Kit</a>, <a href="el-bridge.html">EL Bridge</a>, <a href="sub-para.html">Sub card</a></td></tr>
+   <tr><td><b>Weeks 2–6</b></td><td>Biology: labeled diagrams and "When ___, then ___ because ___" frames; grade on content, not English. Algebra: computation at grade level, word problems read aloud. English II: leveled text at the Newcomer level, same theme as the class. The student answers in single words, then phrases.</td><td>The content objective never changed; only the language did. The EL teacher met each content teacher once for 15 minutes.</td><td><a href="el-bridge.html">EL Bridge</a> leveled texts and items, <a href="sentence-frames.html">Sentence frames</a></td></tr>
+   <tr><td><b>Week 7</b></td><td>First call home is good news: a photo (with permission) and two sentences in Spanish about a lab the student explained to a partner. The aunt asks how to help; she gets the First 100 Words link and the ELPT family guide.</td><td>The call came before any problem did.</td><td><a href="first-100-words.html">First 100 Words</a>, <a href="elpt-family-guide.html">ELPT, explained</a></td></tr>
+   <tr><td><b>Day 90</b></td><td>Can-Do checklist self-rated with the EL teacher: can follow routine directions, label diagrams, write three-sentence frames. LSP reviewed. Graduation roadmap started: 24 credits, four EOCs, what counts from Honduras.</td><td>Credits from the Honduran transcript were evaluated in week 2, not in senior year.</td><td><a href="can-do-checklist.html">Can-Do Checklist</a>, <a href="graduation-roadmap.html">Graduation Roadmap</a></td></tr>
+  </table>
+  <div class="grid3" style="margin-top:14px"><div class="card"><span class="k">What a leader should notice</span><p>Every step above is a compliance item (HLS, screening, notification, LSP, accommodations, access to core content) done as a kindness instead of as paperwork. The audit and the welcome are the same checklist.</p></div><div class="card"><span class="k">What it cost</span><p>Interpreter line: about $40 for the month. A dictionary: $12. Teacher time: one 15-minute meeting per content teacher. Everything else was already built.</p></div><div class="card"><span class="k">Where districts usually fail</span><p>Day 1 (asking for papers), Day 3 (missing the notification clock), and Week 2 (handing a Level 1 student a grade-level worksheet in English and calling it inclusion).</p></div></div>
+  </section>
+
+  <section id="t-c2" hidden>
+  <h2 class="sec">The student who never exits</h2>
+  <p class="deck">Eighth grade, in U.S. schools since kindergarten, ELPT 4-4-4-3 three springs in a row. Fluent in the hallway, stuck on the writing domain. A long-term EL by every definition.</p>
+  <table class="t"><tr><th style="width:140px">What the data said</th><th>What the team did</th><th>Hub tool</th></tr>
+   <tr><td>Three years at Level 3 in writing; 4 or 5 everywhere else.</td><td>Stopped treating the student as a general EL and treated the writing domain as the problem: 20 minutes, three times a week, on academic paragraph structure with connectors, through the ELPT window.</td><td><a href="el-outcomes.html">Outcomes Dashboard</a> (the one-domain-short list), <a href="el-bridge.html">EL Bridge</a> Challenge lane</td></tr>
+   <tr><td>Reading MAAP at proficient; writing scores low across subjects.</td><td>Content teachers used the Challenge lane: grade-level task, precision supports (register, nuance, counterclaims). No more simplified work for a student who didn't need it.</td><td><a href="el-bridge.html">EL Bridge</a> Challenge lane, <a href="sentence-frames.html">Frames (academic connectors)</a></td></tr>
+   <tr><td>Family had not heard from the school about EL status since fifth grade.</td><td>Conference in Spanish: what the four domains are, which one is short, what exit means for high school scheduling. The family practiced writing prompts at home.</td><td><a href="elpt-family-guide.html">ELPT, explained for families</a></td></tr>
+   <tr><td>LSP unchanged in three years.</td><td>Rewrote the LSP with one goal (writing to Level 4), the accommodations that still applied, and a review date. The annual review stopped being a copy-forward.</td><td><a href="lsp-builder.html">LSP Builder</a></td></tr>
+   <tr><td>Spring result: 4-4-4-4. Exited.</td><td>Exit letter home in Spanish. Student entered the four-year monitoring roster; the ninth-grade counselor was told what to watch for and when.</td><td><a href="parent-letters.html">Exit letter</a>, <a href="el-compliance-calendar.html">Monitoring on the calendar</a></td></tr>
+  </table>
+  <div class="grid3" style="margin-top:14px"><div class="card"><span class="k">What a leader should notice</span><p>Long-term ELs are a program-design problem, not a student problem. The fix was diagnostic (which domain), specific (one goal), and time-bound (the window). It cost one hour of scheduling.</p></div><div class="card"><span class="k">Why it matters to the district</span><p>Every year a student like this stays identified, the district carries the cost and the accountability weight, and the student carries a label that limits scheduling. The exit standard is strict; the response has to be precise.</p></div><div class="card"><span class="k">The number to track</span><p>How many students are one domain short of exit. The Outcomes Dashboard produces that list in a minute; it should be on the fall data meeting agenda every year.</p></div></div>
+  </section>
+
+  <section id="t-c3" hidden>
+  <h2 class="sec">A district gets the monitoring letter</h2>
+  <p class="deck">Two thousand students, about a hundred ELs, one part-time EL teacher, no coordinator. A state monitoring visit is scheduled in six weeks. The superintendent asks: where are we?</p>
+  <table class="t"><tr><th style="width:110px">Week</th><th>What the district did</th><th>Result</th><th>Hub tool</th></tr>
+   <tr><td><b>1</b></td><td>Federal programs director runs the self-audit with the EL teacher and a principal. Score 61%, four legal gaps: parent notifications not in the home language, no four-year monitoring records, Title III paying the EL teacher's full salary, accommodations in LSPs copied from the old manual.</td><td>A corrective-action plan with owners and dates, printed, on the superintendent's desk by Friday.</td><td><a href="el-audit.html">Program Self-Audit</a></td></tr>
+   <tr><td><b>2</b></td><td>Notifications: all current-year letters re-issued in Spanish and Vietnamese using the templates; a language-access plan written on one page; interpreter line contracted.</td><td>Gap 1 closed; evidence folder started.</td><td><a href="parent-letters.html">Parent letters</a></td></tr>
+   <tr><td><b>3</b></td><td>Monitoring: SIS query of every student exited in the last four years; a monitored roster built; counselors assigned nine-week reviews; two students flagged for re-entry discussion.</td><td>Gap 2 closed; two students helped who had been invisible.</td><td><a href="el-compliance-calendar.html">Compliance Calendar</a></td></tr>
+   <tr><td><b>4</b></td><td>Fiscal: Title III planner showed the subgrant was 61% of EL spending and carrying a required position. Budget amendment moved the salary to state funds; Title III re-split across tutoring, PD, and family engagement; admin recalculated under 2%.</td><td>Gap 3 closed before the monitor asked.</td><td><a href="title3-planner.html">Title III Planner</a></td></tr>
+   <tr><td><b>5</b></td><td>Accommodations: every LSP rebuilt with MAAP and ELPT accommodations in separate columns per the February 2026 manual; proctors briefed on the three ELPT rules.</td><td>Gap 4 closed; spring testing protected.</td><td><a href="lsp-builder.html">LSP Builder</a>, <a href="accommodations-cards.html">Quick Cards</a></td></tr>
+   <tr><td><b>6</b></td><td>Board brief and dashboard presented the night before the visit: who the students are, growth, the audit score moving from 61% to 88%, the budget change, three recommendations including a 0.5 FTE coordinator.</td><td>The monitor saw a district that had found its own problems and fixed them, with a record. The board funded the coordinator.</td><td><a href="board-brief.html">Board brief &amp; deck</a>, <a href="el-outcomes.html">Outcomes Dashboard</a></td></tr>
+  </table>
+  <div class="grid3" style="margin-top:14px"><div class="card"><span class="k">What a leader should notice</span><p>Nothing here needed a consultant or a purchase. It needed someone who knew the checklist and had six weeks. The tools on this hub are that checklist.</p></div><div class="card"><span class="k">The hidden finding</span><p>The two re-entry students in week 3. Monitoring is a compliance item on paper; in practice it is how a district catches a former EL who is failing ninth grade quietly.</p></div><div class="card"><span class="k">Why a coordinator</span><p>Every gap above existed because the work belonged to no one. A half-time coordinator costs less than one finding and is the single structural fix that keeps the audit score where it landed.</p></div></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>(function(){var tabs=document.querySelectorAll(".tabs button");tabs.forEach(function(b){b.onclick=function(){tabs.forEach(function(x){x.setAttribute("aria-selected",x===b)});["c1","c2","c3"].forEach(function(t){document.getElementById("t-"+t).hidden=t!==b.dataset.t})}});if(/^#c[123]$/.test(location.hash)){var b=document.querySelector('.tabs button[data-t="'+location.hash.slice(1)+'"]');if(b)b.click()}})();</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
