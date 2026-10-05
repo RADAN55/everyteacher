@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title III Funding Planner · EL Publishing</title>
+<meta name="description" content="Plan a Mississippi district’s Title III subgrant: estimate the allocation, apply the 2 percent administrative cap, split funds across the three required activities, test for supplanting, and see what the district still owes if Title III disappears. ESSA §3115.">
+<meta property="og:title" content="Title III Funding Planner">
+<meta property="og:description" content="Plan a Mississippi district’s Title III subgrant: estimate the allocation, apply the 2 percent administrative cap, split funds across the three required activities, test for supplanting, and see what the district still owes if Title III disappears. ESSA §3115.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS · TITLE III</p>
+    <h1>What does our EL program <em>cost,</em> and what does Title III really carry?</h1>
+    <p class="tag">Enter your counts and allocation, split the subgrant across the activities ESSA requires, and the planner checks the 2 percent administrative cap, the required-activity rule, and the supplement-not-supplant pattern. The contingency view shows what the district owes anyway if the federal line disappears.</p>
+    <div class="chips"><span>ESSA §3115</span><span>2% admin cap</span><span>Required activities</span><span>Supplanting test</span><span>FY27 contingency</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .ring{width:170px;height:170px;position:relative;flex:none}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.ring .v b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;color:var(--navy);line-height:1}.ring .v small{display:block;margin-top:4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .score{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px 22px;position:sticky;top:0;z-index:5}
+  @media (max-width:700px){.score{grid-template-columns:1fr;position:static}}
+  .band{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy)}.band.red{color:#9B2C2C}.band.amb{color:#8A5A00}.band.grn{color:#1F6F3A}
+  .bars{display:grid;gap:6px;margin-top:8px}.bars div{display:grid;grid-template-columns:190px 1fr 44px;gap:8px;align-items:center;font-size:13px}.bars i{display:block;height:9px;background:var(--mist);border-radius:4px;overflow:hidden}.bars i b{display:block;height:100%;background:var(--navy);width:0;transition:width .6s}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:10px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  @media (max-width:700px){.q{grid-template-columns:1fr}}
+  .q .t{font-weight:600;font-size:15.5px}.q .c{font-size:13px;color:var(--muted);margin-top:3px}.q .leg{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9B2C2C;border:1px solid #E3B4B4;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .seg3{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}.seg3 button{border:0;background:#fff;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;border-right:1px solid var(--rule);color:var(--navy)}.seg3 button:last-child{border-right:0}
+  .seg3 button[aria-pressed=true][data-v="2"]{background:#1F6F3A;color:#fff}.seg3 button[aria-pressed=true][data-v="1"]{background:#C9A227;color:#141A44}.seg3 button[aria-pressed=true][data-v="0"]{background:#9B2C2C;color:#fff}.seg3 button[aria-pressed=true][data-v="na"]{background:var(--muted);color:#fff}
+  .grp{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:22px;margin:26px 0 2px}.grp small{display:block;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .plan tr.red td:first-child{border-left:5px solid #9B2C2C}.plan tr.amb td:first-child{border-left:5px solid #C9A227}
+  .plan input{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:3px 4px;font-size:13.5px;background:transparent;width:100%}
+  .leaders-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.leaders-nav a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:#fff}.leaders-nav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style><style>
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi div{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:12px 14px}.kpi b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1.05}.kpi small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+  @media (max-width:760px){.kpi{grid-template-columns:1fr 1fr}}
+  input[type=range]{width:100%;accent-color:var(--navy)}
+  .split{display:grid;gap:8px}.split .r{display:grid;grid-template-columns:1fr 90px 80px;gap:10px;align-items:center;font-size:14px}.split .r input[type=number]{padding:6px 8px}
+  .stack{display:flex;height:26px;border-radius:6px;overflow:hidden;border:1px solid var(--rule)}.stack span{display:block;height:100%;transition:width .4s}
+  .warn{background:#FDECEC;border:1px solid #F3B4B4;border-left:6px solid #9B2C2C;padding:10px 14px;font-size:14px;margin-top:10px}.ok{background:#E6F2EA;border:1px solid #B9DCC4;border-left:6px solid #1F6F3A;padding:10px 14px;font-size:14px;margin-top:10px}
+</style><nav class="leaders-nav noprint" aria-label="District leaders"><a href="leaders.html">For district leaders</a><a href="el-audit.html">Program self-audit</a><a href="title3-planner.html" class="on">Title III planner</a><a href="el-outcomes.html">Outcomes dashboard</a><a href="board-brief.html">Board brief &amp; deck</a><a href="case-studies.html">Case studies</a><a href="policy-brief.html">Policy brief</a><a href="district-kit.html">District kit</a></nav>
+  <div class="grid2">
+    <form class="card" id="f" onsubmit="return false">
+      <h3>Your numbers</h3>
+      <label class="f" for="els">Identified English learners (October count)</label><input type="number" id="els" value="110" min="0">
+      <label class="f" for="imm">Immigrant children and youth (3–21, not U.S.-born, &lt; 3 full years in U.S. schools)</label><input type="number" id="imm" value="35" min="0">
+      <label class="f" for="rate">Title III allocation per EL ($)</label><input type="number" id="rate" value="125" min="0" step="1">
+      <p class="hint" style="font-size:12.5px;color:var(--muted)">Use the figure on your MDE allocation notice. The federal formula distributes about $890 million nationally by EL and immigrant counts; the per-student amount varies by state and year, often in the $100–$150 range. This field is yours to set, not an estimate of your actual grant.</p>
+      <label class="f" for="immrate">Immigrant set-aside per immigrant student ($, if your district receives it)</label><input type="number" id="immrate" value="0" min="0">
+      <label class="f" for="carry">Carryover from last year ($)</label><input type="number" id="carry" value="0" min="0">
+      <label class="f" for="cons">Part of a consortium? (subgrants under $10,000 must be)</label><select id="cons"><option value="no">No</option><option value="yes">Yes</option></select>
+      <label class="f" for="tot">Total district budget for EL services from ALL sources ($)</label><input type="number" id="tot" value="180000" min="0">
+      <p class="hint" style="font-size:12.5px;color:var(--muted)">Salaries and benefits of EL teachers, interpreters, materials, PD, assessments. Used only to show what share Title III actually carries.</p>
+    </form>
+    <div>
+      <div class="kpi"><div><b id="k-alloc">$0</b><small>Title III subgrant (estimate)</small></div><div><b id="k-admin">$0</b><small>Max administrative cost (2%)</small></div><div><b id="k-per">$0</b><small>Per EL, after admin</small></div><div><b id="k-share">0%</b><small>Share of total EL spending</small></div></div>
+      <div id="flags"></div>
+      <div class="card" style="margin-top:12px"><span class="k">What Title III can and cannot carry</span>
+        <div class="grid2" style="margin-top:6px"><div><b style="color:var(--navy)">Required by law regardless of Title III</b><ul style="font-size:14px;margin:4px 0 0;padding-left:18px"><li>Identification and screening</li><li>A language instruction program with qualified teachers</li><li>Core EL staffing and materials</li><li>Interpretation and translation for essential communications</li><li>Accommodations, monitoring, program evaluation</li></ul><p style="font-size:12.5px;color:var(--muted);margin-top:4px">Title VI, EEOA, <i>Castañeda</i>. These come from state and local funds; Title III may not supplant them.</p></div>
+        <div><b style="color:var(--navy)">Title III pays for what's added on top</b><ul style="font-size:14px;margin:4px 0 0;padding-left:18px"><li><b>Required (c)(1):</b> making the LIEP more effective: supplemental tutoring, newcomer supports, software, curriculum</li><li><b>Required (c)(2):</b> PD for EL, content teachers, principals, paras</li><li><b>Required (c)(3):</b> parent, family, community engagement</li><li><b>Authorized (d):</b> extended day/summer, bilingual aides, dual language, family literacy, supplemental assessments</li></ul><p style="font-size:12.5px;color:var(--muted);margin-top:4px">ESSA §3115(c)–(d). Admin ≤ 2% (§3115(b)). Supplement not supplant (§3115(g)).</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">Build the split</h2>
+  <p class="deck">Move the sliders until the three required activities are covered and the admin line is under the cap. The bar recolors when a rule is broken.</p>
+  <div class="grid2">
+    <div class="card"><div class="split" id="split"></div><div class="stack" id="stack" style="margin-top:14px"></div><div id="splitmsg"></div></div>
+    <div class="card"><span class="k">Supplement-not-supplant test</span><h3>Three questions a monitor asks</h3>
+      <ol style="font-size:14.5px;padding-left:18px;margin:6px 0 0"><li><b>Would this exist without Title III?</b> If the district paid for it last year from state or local funds, Title III cannot pick it up now.</li><li><b>Is it required by another law?</b> If Title VI or the EEOA requires it (an interpreter at an IEP meeting, the core EL teacher), it is not supplemental.</li><li><b>Do all students get it?</b> If every student receives it, it is not an EL-specific supplement.</li></ol>
+      <span class="k" style="margin-top:14px">Time and effort</span><p style="font-size:14px">Anyone paid in part from Title III keeps monthly personnel activity reports; anyone paid 100% signs a semi-annual certification (2 CFR §200.430). Keep them with the budget.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">If Title III disappears</h2>
+  <p class="deck">The House FY2027 bill eliminates Title III; the Senate has not acted. This is the contingency view: what you would owe anyway, and where it would come from.</p>
+  <div class="grid3">
+    <div class="card"><span class="k">Still owed, no matter what</span><h3 id="c-owed">$0</h3><p style="font-size:14px">Your total EL spending minus the Title III share. This is the legally required floor you fund from state and local money already.</p></div>
+    <div class="card"><span class="k">At risk</span><h3 id="c-risk">$0</h3><p style="font-size:14px">The Title III line. Everything in it should be tagged supplemental; if a required service is hiding here, move it before the FY27 budget is adopted.</p></div>
+    <div class="card"><span class="k">Where to look</span><p style="font-size:14px;margin-top:6px">Title I, Part A (ELs are eligible; schoolwide plans may fund EL supports); Title II-A for PD if it survives; Title IV-A; state MAEP/general fund; ARP-era carryover if any remains. Document the switch in the plan.</p></div>
+  </div>
+  <div class="btns noprint" style="margin-top:14px"><button type="button" class="btn" onclick="window.print()">Print this plan</button><button type="button" class="btn ghost" id="copy">Copy summary</button></div>
+  <p class="hint" style="font-size:12.5px;color:var(--muted);margin-top:10px">A planning aid, not fiscal guidance. Allocation amounts come from MDE; allowable-cost determinations belong to your federal programs office. ESSA §§3114–3115; 2 CFR Part 200.</p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};var money=function(n){return "$"+Math.round(n).toLocaleString()};
+var CATS=[["c1","Required (c)(1): LIEP effectiveness (tutoring, newcomer supports, software, curriculum)",45,true],["c2","Required (c)(2): professional development",20,true],["c3","Required (c)(3): parent, family, community engagement",10,true],["d","Authorized (d): extended day, summer, dual language, bilingual aides",23,false],["adm","Administration and indirect (cap 2%)",2,false]];
+var pct={};CATS.forEach(function(c){pct[c[0]]=c[2]});
+function alloc(){var els=+$("els").value||0,imm=+$("imm").value||0,rate=+$("rate").value||0,ir=+$("immrate").value||0,carry=+$("carry").value||0;return els*rate+imm*ir+carry}
+function render(){
+  var a=alloc(),els=+$("els").value||0,tot=+$("tot").value||0,admin=a*0.02;
+  $("k-alloc").textContent=money(a);$("k-admin").textContent=money(admin);$("k-per").textContent=els?money((a-admin)/els):"—";$("k-share").textContent=tot?Math.round(100*a/tot)+"%":"—";
+  var f="";
+  if(a>0&&a<10000&&$("cons").value==="no")f+='<div class="warn"><b>Under $10,000.</b> ESSA §3114(b) requires LEAs below the minimum to form a consortium with other districts to receive Title III. Ask MDE about the regional consortium.</div>';
+  if(tot&&a/tot>0.5)f+='<div class="warn"><b>Title III is more than half of EL spending.</b> That pattern usually means required services are riding on supplemental money. Expect a supplanting finding; rebalance toward state and local funds.</div>';
+  if(tot&&a/tot<=0.5&&a>0)f+='<div class="ok"><b>Proportion looks defensible.</b> Title III carries '+Math.round(100*a/tot)+'% of EL spending; the required core is funded elsewhere.</div>';
+  $("flags").innerHTML=f;
+  var sum=0;CATS.forEach(function(c){sum+=pct[c[0]]});
+  $("split").innerHTML=CATS.map(function(c){return '<div class="r"><label for="s-'+c[0]+'" style="font-size:13.5px">'+c[1]+'</label><input type="range" id="s-'+c[0]+'" min="0" max="'+(c[0]==="adm"?10:100)+'" value="'+pct[c[0]]+'" step="1" data-k="'+c[0]+'"><span style="text-align:right;font-variant-numeric:tabular-nums"><b>'+pct[c[0]]+'%</b><br><small>'+money(a*pct[c[0]]/100)+'</small></span></div>'}).join("");
+  var cols={c1:"#1E2761",c2:"#2B4A9F",c3:"#4F6FD0",d:"#C9A227",adm:"#9B2C2C"};
+  $("stack").innerHTML=CATS.map(function(c){return '<span title="'+c[1]+'" style="width:'+(pct[c[0]]/Math.max(sum,100)*100)+'%;background:'+cols[c[0]]+'"></span>'}).join("");
+  var m=[];if(Math.round(sum)!==100)m.push('<div class="warn">The split adds to <b>'+sum+'%</b>. Adjust to 100%.</div>');
+  if(pct.adm>2)m.push('<div class="warn"><b>Administration is '+pct.adm+'%.</b> ESSA §3115(b) caps administrative costs, including indirect, at 2% of the subgrant.</div>');
+  CATS.filter(function(c){return c[3]&&pct[c[0]]===0}).forEach(function(c){m.push('<div class="warn"><b>Nothing budgeted for '+c[1].split(":")[0]+'.</b> All three required activities must appear.</div>')});
+  if(!m.length)m.push('<div class="ok"><b>Split is allowable on its face:</b> three required activities funded, admin within 2%, totals 100%.</div>');
+  $("splitmsg").innerHTML=m.join("");
+  $("c-owed").textContent=money(Math.max(0,tot-a));$("c-risk").textContent=money(a);
+}
+document.getElementById("f").addEventListener("input",render);
+document.getElementById("split").addEventListener("input",function(e){var r=e.target.closest("input[type=range]");if(!r)return;pct[r.dataset.k]=+r.value;render()});
+$("copy").onclick=function(){var b=this,a=alloc(),t="TITLE III PLANNING SUMMARY\nELs: "+$("els").value+" · Immigrant: "+$("imm").value+" · Rate: $"+$("rate").value+"\nEstimated subgrant: "+money(a)+" · Admin cap (2%): "+money(a*0.02)+"\nSplit: "+CATS.map(function(c){return c[1].split(":")[0]+" "+pct[c[0]]+"% ("+money(a*pct[c[0]]/100)+")"}).join("; ")+"\nTotal EL spending: $"+$("tot").value+" · Title III share: "+(+$("tot").value?Math.round(100*a/+$("tot").value)+"%":"—")+"\nContingency: still owed "+money(Math.max(0,+$("tot").value-a))+"; at risk "+money(a);var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy summary"},1800)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}else done()};
+render();
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
