@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Outcomes Dashboard · EL Publishing</title>
+<meta name="description" content="Enter a Mississippi district’s English learner counts and the dashboard draws the five charts a board should see: ELPT level distribution, growth and exit, participation, the achievement and graduation gap for current and former ELs, and a three-year trend, with a board paragraph written from the numbers. Nothing leaves the browser.">
+<meta property="og:title" content="EL Outcomes Dashboard">
+<meta property="og:description" content="Enter a Mississippi district’s English learner counts and the dashboard draws the five charts a board should see: ELPT level distribution, growth and exit, participation, the achievement and graduation gap for current and former ELs, and a three-year trend, with a board paragraph written from the numbers. Nothing leaves the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS · OUTCOMES</p>
+    <h1>Are our English learners <em>growing?</em> Five charts, one paragraph.</h1>
+    <p class="tag">Type in counts, not names, and get the annual program evaluation Castañeda asks for: where students are on the ELPT, who grew, who exited, who tested, how current and former ELs compare with everyone else, and the three-year trend. The board paragraph writes itself from your numbers.</p>
+    <div class="chips"><span>Castañeda prong 3</span><span>ESSA §3121</span><span>Five charts</span><span>Board paragraph</span><span>Private</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .ring{width:170px;height:170px;position:relative;flex:none}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.ring .v b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;color:var(--navy);line-height:1}.ring .v small{display:block;margin-top:4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .score{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px 22px;position:sticky;top:0;z-index:5}
+  @media (max-width:700px){.score{grid-template-columns:1fr;position:static}}
+  .band{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy)}.band.red{color:#9B2C2C}.band.amb{color:#8A5A00}.band.grn{color:#1F6F3A}
+  .bars{display:grid;gap:6px;margin-top:8px}.bars div{display:grid;grid-template-columns:190px 1fr 44px;gap:8px;align-items:center;font-size:13px}.bars i{display:block;height:9px;background:var(--mist);border-radius:4px;overflow:hidden}.bars i b{display:block;height:100%;background:var(--navy);width:0;transition:width .6s}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:10px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  @media (max-width:700px){.q{grid-template-columns:1fr}}
+  .q .t{font-weight:600;font-size:15.5px}.q .c{font-size:13px;color:var(--muted);margin-top:3px}.q .leg{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9B2C2C;border:1px solid #E3B4B4;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .seg3{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}.seg3 button{border:0;background:#fff;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;border-right:1px solid var(--rule);color:var(--navy)}.seg3 button:last-child{border-right:0}
+  .seg3 button[aria-pressed=true][data-v="2"]{background:#1F6F3A;color:#fff}.seg3 button[aria-pressed=true][data-v="1"]{background:#C9A227;color:#141A44}.seg3 button[aria-pressed=true][data-v="0"]{background:#9B2C2C;color:#fff}.seg3 button[aria-pressed=true][data-v="na"]{background:var(--muted);color:#fff}
+  .grp{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:22px;margin:26px 0 2px}.grp small{display:block;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .plan tr.red td:first-child{border-left:5px solid #9B2C2C}.plan tr.amb td:first-child{border-left:5px solid #C9A227}
+  .plan input{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:3px 4px;font-size:13.5px;background:transparent;width:100%}
+  .leaders-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.leaders-nav a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:#fff}.leaders-nav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style><style>
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px}.kpi>div{min-width:0}.kpi div{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:12px 14px}.kpi b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1.05}.kpi small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}.kpi .d{font-size:12px;font-weight:700}.kpi .up{color:#1F6F3A}.kpi .dn{color:#9B2C2C}
+  @media (max-width:900px){.kpi{grid-template-columns:repeat(2,1fr)}}
+  .chart{background:var(--paper);border:1px solid var(--rule);padding:14px 16px}.chart h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:18px;margin:0 0 2px}.chart p{font-size:13px;color:var(--muted);margin:0 0 8px}
+  .chart svg{width:100%;height:auto;display:block;font-family:Inter,sans-serif}
+  .ill{display:inline-block;background:#FFF1B8;color:#6B4A00;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:999px}
+  .grid-in{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.grid-in>div{min-width:0}.grid-in small{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}.grid-in input{min-width:0;width:100%;padding:7px 8px}.grid2>*{min-width:0}.card{min-width:0}@media (max-width:760px){.grid-in{grid-template-columns:1fr 1fr}}
+  table.mini{font-size:13px}table.mini input{padding:5px 7px;font-size:13px}
+</style><nav class="leaders-nav noprint" aria-label="District leaders"><a href="leaders.html">For district leaders</a><a href="el-audit.html">Program self-audit</a><a href="title3-planner.html">Title III planner</a><a href="el-outcomes.html" class="on">Outcomes dashboard</a><a href="board-brief.html">Board brief &amp; deck</a><a href="case-studies.html">Case studies</a><a href="policy-brief.html">Policy brief</a><a href="district-kit.html">District kit</a></nav>
+  <div class="priv"><b>Your data stays in your browser.</b> Enter counts, not names. The sample loaded below is <span class="ill">illustrative</span>, invented to show the shapes a board should see, and is replaced the moment you type. Export your numbers as a file to bring them back next year.</div>
+  <div class="grid2" style="margin-top:14px">
+    <form class="card" id="f" onsubmit="return false">
+      <h3>Enter your district's numbers</h3>
+      <label class="f" for="dn">District and year</label><input type="text" id="dn" value="Sample District · 2025–26 (illustrative)">
+      <label class="f">Enrollment</label>
+      <div class="grid-in"><div><small>Total students</small><input type="number" id="tot" value="2000"></div><div><small>Identified ELs</small><input type="number" id="els" value="110"></div><div><small>Former ELs (monitored)</small><input type="number" id="fel" value="38"></div><div><small>Newcomers (&lt; 1 yr)</small><input type="number" id="nc" value="14"></div></div>
+      <label class="f">ELPT overall level, last spring (count of students)</label>
+      <div class="grid-in" style="grid-template-columns:repeat(5,1fr)"><div><small>Level 1</small><input type="number" id="l1" value="22"></div><div><small>Level 2</small><input type="number" id="l2" value="31"></div><div><small>Level 3</small><input type="number" id="l3" value="29"></div><div><small>Level 4</small><input type="number" id="l4" value="18"></div><div><small>Level 5</small><input type="number" id="l5" value="6"></div></div>
+      <label class="f">Growth and exit</label>
+      <div class="grid-in" style="grid-template-columns:repeat(3,1fr)"><div><small>ELs who gained ≥1 level</small><input type="number" id="grew" value="58"></div><div><small>ELs who exited (Level 4 all domains)</small><input type="number" id="exit" value="12"></div><div><small>ELs tested on ELPT</small><input type="number" id="tested" value="108"></div></div>
+      <label class="f">MAAP proficiency rate (% proficient or advanced, ELA + math combined)</label>
+      <div class="grid-in" style="grid-template-columns:repeat(3,1fr)"><div><small>All students</small><input type="number" id="pAll" value="46"></div><div><small>Current ELs</small><input type="number" id="pEl" value="19"></div><div><small>Former ELs</small><input type="number" id="pFel" value="51"></div></div>
+      <label class="f">Four-year graduation rate (%)</label>
+      <div class="grid-in" style="grid-template-columns:repeat(3,1fr)"><div><small>All students</small><input type="number" id="gAll" value="88"></div><div><small>Current ELs</small><input type="number" id="gEl" value="71"></div><div><small>Former ELs</small><input type="number" id="gFel" value="90"></div></div>
+      <label class="f">Three-year trend: ELPT proficient-or-above rate (%)</label>
+      <div class="grid-in" style="grid-template-columns:repeat(3,1fr)"><div><small>Two years ago</small><input type="number" id="t1" value="14"></div><div><small>Last year</small><input type="number" id="t2" value="18"></div><div><small>This year</small><input type="number" id="t3" value="22"></div></div>
+      <div class="btns" style="margin-top:14px"><button type="button" class="btn ghost" id="exp">Export numbers (.json)</button><label class="btn ghost" style="cursor:pointer">Import <input type="file" id="imp" accept="application/json" hidden></label><button type="button" class="btn" onclick="window.print()">Print the dashboard</button></div>
+    </form>
+    <div>
+      <div class="kpi" id="kpi"></div>
+      <div class="chart" style="margin-top:12px"><h3>Where our English learners are</h3><p>ELPT overall level, last spring. The exit bar (Level 4 in every domain) is the goal line.</p><div id="c-levels"></div></div>
+      <div class="chart" style="margin-top:12px"><h3>Are they growing?</h3><p>Share of ELs who gained at least one ELPT level; share who exited; participation.</p><div id="c-growth"></div></div>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:12px">
+    <div class="chart"><h3>The gap, and what closes it</h3><p>MAAP proficiency and graduation: all students, current ELs, former ELs. Former ELs are the program's report card.</p><div id="c-gap"></div></div>
+    <div class="chart"><h3>Three-year trend</h3><p>ELPT proficient-or-above rate. One point a year is a program; three is a trend.</p><div id="c-trend"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px"><span class="k">The paragraph for the board</span><p id="para" style="font-size:15.5px"></p><div class="btns" style="margin-top:8px"><button type="button" class="btn ghost small" id="copyp">Copy paragraph</button></div></div>
+  <p class="hint" style="font-size:12.5px;color:var(--muted);margin-top:10px">Counts under 10 in any cell should not be published outside the district (small-n privacy). This dashboard shows the shape of an annual program evaluation under <i>Castañeda</i>'s third prong and ESSA §3121; it is not an MDE report.</p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};var F=["dn","tot","els","fel","nc","l1","l2","l3","l4","l5","grew","exit","tested","pAll","pEl","pFel","gAll","gEl","gFel","t1","t2","t3"];
+var KEY="elout.v1";try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s)F.forEach(function(k){if(s[k]!==undefined)$(k).value=s[k]})}catch(e){}
+function v(k){return +$(k).value||0}function pc(a,b){return b?Math.round(100*a/b):0}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function bars(items,max,opts){opts=opts||{};var W=600,rowH=34,pad=150,H=items.length*rowH+10;var h='<svg viewBox="0 0 '+W+' '+H+'" role="img">';
+  items.forEach(function(it,i){var y=i*rowH+6,w=Math.max(0,(it[1]/max)*(W-pad-70));h+='<text x="0" y="'+(y+17)+'" font-size="13" fill="#1F2330">'+esc(it[0])+'</text><rect x="'+pad+'" y="'+y+'" width="'+(W-pad-70)+'" height="22" rx="4" fill="#F4F5FA"/><rect x="'+pad+'" y="'+y+'" width="'+w+'" height="22" rx="4" fill="'+(it[2]||"#1E2761")+'"/><text x="'+(pad+w+8)+'" y="'+(y+16)+'" font-size="13" font-weight="700" fill="#1E2761">'+(opts.pct?it[1]+"%":it[1])+'</text>'});
+  if(opts.goalX!==undefined){var gx=pad+(opts.goalX/max)*(W-pad-70);h+='<line x1="'+gx+'" y1="0" x2="'+gx+'" y2="'+H+'" stroke="#C9A227" stroke-width="2" stroke-dasharray="4 3"/>'}
+  return h+'</svg>'}
+function render(){
+  var els=v("els"),lv=[v("l1"),v("l2"),v("l3"),v("l4"),v("l5")],ltot=lv.reduce(function(a,b){return a+b},0)||1;
+  var growth=pc(v("grew"),els),exitR=pc(v("exit"),els),part=pc(v("tested"),els),elShare=pc(els,v("tot"));
+  var trend=v("t3")-v("t1");
+  $("kpi").innerHTML=[[elShare+"%","of students are ELs","("+els+" of "+v("tot")+")"],[growth+"%","gained a level",""],[exitR+"%","exited last spring","("+v("exit")+" students)"],[part+"%","ELPT participation",part>=95?'<span class="d up">meets 95%</span>':'<span class="d dn">below 95%</span>'],[(trend>=0?"+":"")+trend+" pts","3-year ELPT trend",(trend>0?'<span class="d up">rising</span>':trend<0?'<span class="d dn">falling</span>':'flat')]].map(function(k){return '<div><b>'+k[0]+'</b><small>'+k[1]+'</small><small>'+k[2]+'</small></div>'}).join("");
+  var cols=["#9B2C2C","#C9A227","#4F6FD0","#2B4A9F","#1E2761"];
+  $("c-levels").innerHTML=bars([["Level 1 · Newcomer",lv[0],cols[0]],["Level 2 · Emerging",lv[1],cols[1]],["Level 3 · Progressing",lv[2],cols[2]],["Level 4 · Challenge",lv[3],cols[3]],["Level 5 · Exit range",lv[4],cols[4]]],Math.max.apply(null,lv.concat([1])));
+  $("c-growth").innerHTML=bars([["Gained ≥ 1 level",growth,"#1E2761"],["Exited (4 in all domains)",exitR,"#1F6F3A"],["Took the ELPT",part,part>=95?"#1F6F3A":"#9B2C2C"]],100,{pct:true,goalX:95});
+  $("c-gap").innerHTML='<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:4px 0">MAAP proficient or advanced</div>'+bars([["All students",v("pAll"),"#5D6480"],["Current ELs",v("pEl"),"#9B2C2C"],["Former ELs",v("pFel"),"#1F6F3A"]],100,{pct:true})+'<div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:10px 0 4px">Four-year graduation</div>'+bars([["All students",v("gAll"),"#5D6480"],["Current ELs",v("gEl"),"#9B2C2C"],["Former ELs",v("gFel"),"#1F6F3A"]],100,{pct:true});
+  var t=[v("t1"),v("t2"),v("t3")],W=600,H=200,mx=Math.max(30,Math.max.apply(null,t)+8),pts=t.map(function(y,i){return [60+i*((W-100)/2),H-30-(y/mx)*(H-60)]});
+  $("c-trend").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img">'+[0,.25,.5,.75,1].map(function(f){var y=H-30-f*(H-60);return '<line x1="50" y1="'+y+'" x2="'+(W-20)+'" y2="'+y+'" stroke="#E6E8F0"/><text x="44" y="'+(y+4)+'" font-size="11" text-anchor="end" fill="#5D6480">'+Math.round(mx*f)+'%</text>'}).join("")+'<polyline fill="none" stroke="#1E2761" stroke-width="3" points="'+pts.map(function(p){return p.join(",")}).join(" ")+'"/>'+pts.map(function(p,i){return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="6" fill="'+(i===2?"#C9A227":"#1E2761")+'"/><text x="'+p[0]+'" y="'+(p[1]-12)+'" font-size="13" font-weight="700" text-anchor="middle" fill="#1E2761">'+t[i]+'%</text><text x="'+p[0]+'" y="'+(H-8)+'" font-size="12" text-anchor="middle" fill="#5D6480">'+["Two years ago","Last year","This year"][i]+'</text>'}).join("")+'</svg>';
+  var gap=v("pAll")-v("pEl"),fgap=v("pFel")-v("pAll");
+  $("para").textContent=esc($("dn").value)+": English learners are "+elShare+"% of enrollment ("+els+" students, "+v("nc")+" in their first year). Last spring "+growth+"% gained at least one ELPT level and "+v("exit")+" students ("+exitR+"%) met the state exit standard of Level 4 in every domain; ELPT participation was "+part+"%"+(part>=95?"":", below the 95% requirement")+". Current ELs trail all students by "+gap+" points on MAAP proficiency, while former ELs "+(fgap>=0?"outperform all students by "+fgap+" points":"trail all students by "+(-fgap)+" points")+", which is the clearest measure of whether the program works. The ELPT proficient-or-above rate has moved "+(trend>=0?"up ":"down ")+Math.abs(trend)+" points over three years. We are monitoring "+v("fel")+" former ELs.";
+  try{var o={};F.forEach(function(k){o[k]=$(k).value});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}
+}
+$("f").addEventListener("input",render);
+$("exp").onclick=function(){var o={};F.forEach(function(k){o[k]=$(k).value});var b=new Blob([JSON.stringify(o,null,1)],{type:"application/json"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="el-outcomes-"+new Date().getFullYear()+".json";document.body.appendChild(a);a.click();document.body.removeChild(a)};
+$("imp").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);F.forEach(function(k){if(o[k]!==undefined)$(k).value=o[k]});render()}catch(x){}};r.readAsText(f)});
+$("copyp").onclick=function(){var b=this,t=$("para").textContent;var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy paragraph"},1800)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}else done()};
+render();
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
