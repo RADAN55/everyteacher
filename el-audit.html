@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EL Program Self-Audit · EL Publishing</title>
+<meta name="description" content="A 33-item self-audit of a Mississippi district’s English learner program against Castañeda, Title VI, the EEOA, ESSA Title III, and the state accommodations manual, with a live score, red flags, and a printable corrective-action plan with citations. Private: nothing leaves the browser.">
+<meta property="og:title" content="EL Program Self-Audit">
+<meta property="og:description" content="A 33-item self-audit of a Mississippi district’s English learner program against Castañeda, Title VI, the EEOA, ESSA Title III, and the state accommodations manual, with a live score, red flags, and a printable corrective-action plan with citations. Private: nothing leaves the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:#FBFBFE}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:#2A2F45;max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:#fff}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:#fff}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:#fff;border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:#fff;border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .entry{background:#fff;border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:#fff}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS · SELF-AUDIT</p>
+    <h1>Is our EL program <em>compliant?</em> Thirty-three questions, one honest hour.</h1>
+    <p class="tag">Answer 33 items drawn from Castañeda’s three prongs, Title VI, the EEOA, ESSA Title III, and Mississippi’s testing and exit rules. The score updates as you go, legal gaps turn red, and the corrective-action plan writes itself with the authority cited for each item. Nothing you enter leaves this browser.</p>
+    <div class="chips"><span>33 items</span><span>Scored live</span><span>Legal gaps flagged</span><span>Action plan with citations</span><span>Private</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .ring{width:170px;height:170px;position:relative;flex:none}.ring svg{transform:rotate(-90deg)}.ring .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.ring .v b{display:block;font-family:Fraunces,Georgia,serif;font-size:40px;color:var(--navy);line-height:1}.ring .v small{display:block;margin-top:4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .score{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:18px 22px;position:sticky;top:0;z-index:5}
+  @media (max-width:700px){.score{grid-template-columns:1fr;position:static}}
+  .band{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy)}.band.red{color:#9B2C2C}.band.amb{color:#8A5A00}.band.grn{color:#1F6F3A}
+  .bars{display:grid;gap:6px;margin-top:8px}.bars div{display:grid;grid-template-columns:190px 1fr 44px;gap:8px;align-items:center;font-size:13px}.bars i{display:block;height:9px;background:var(--mist);border-radius:4px;overflow:hidden}.bars i b{display:block;height:100%;background:var(--navy);width:0;transition:width .6s}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:10px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+  @media (max-width:700px){.q{grid-template-columns:1fr}}
+  .q .t{font-weight:600;font-size:15.5px}.q .c{font-size:13px;color:var(--muted);margin-top:3px}.q .leg{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#9B2C2C;border:1px solid #E3B4B4;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .seg3{display:flex;border:1px solid var(--rule);border-radius:999px;overflow:hidden}.seg3 button{border:0;background:#fff;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer;border-right:1px solid var(--rule);color:var(--navy)}.seg3 button:last-child{border-right:0}
+  .seg3 button[aria-pressed=true][data-v="2"]{background:#1F6F3A;color:#fff}.seg3 button[aria-pressed=true][data-v="1"]{background:#C9A227;color:#141A44}.seg3 button[aria-pressed=true][data-v="0"]{background:#9B2C2C;color:#fff}.seg3 button[aria-pressed=true][data-v="na"]{background:var(--muted);color:#fff}
+  .grp{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:22px;margin:26px 0 2px}.grp small{display:block;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .plan tr.red td:first-child{border-left:5px solid #9B2C2C}.plan tr.amb td:first-child{border-left:5px solid #C9A227}
+  .plan input{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:3px 4px;font-size:13.5px;background:transparent;width:100%}
+  .leaders-nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.leaders-nav a{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:#fff}.leaders-nav a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+</style><nav class="leaders-nav noprint" aria-label="District leaders"><a href="leaders.html">For district leaders</a><a href="el-audit.html" class="on">Program self-audit</a><a href="title3-planner.html">Title III planner</a><a href="el-outcomes.html">Outcomes dashboard</a><a href="board-brief.html">Board brief &amp; deck</a><a href="case-studies.html">Case studies</a><a href="policy-brief.html">Policy brief</a><a href="district-kit.html">District kit</a></nav>
+  <div class="score" id="score">
+    <div class="ring"><svg viewBox="0 0 120 120" width="170" height="170"><circle cx="60" cy="60" r="52" fill="none" stroke="#E6E8F0" stroke-width="12"/><circle id="arc" cx="60" cy="60" r="52" fill="none" stroke="#1E2761" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset .7s,stroke .4s"/></svg><div class="v"><div><b id="pct">0%</b><small id="done">0 of 33</small></div></div></div>
+    <div>
+      <div class="band" id="band">Start answering below.</div>
+      <p style="font-size:14px;color:var(--muted);margin:4px 0 0" id="bandnote">Yes = 2, Partial = 1, No = 0; items marked N/A are excluded. Items tagged <span class="leg" style="margin:0">Legal</span> are statutory or court-defined obligations; a No on any of them appears in red on the action plan.</p>
+      <div class="bars" id="bars"></div>
+      <div class="btns" style="margin-top:12px"><a class="btn" href="#plan">See the action plan ↓</a><button type="button" class="btn ghost" id="reset">Clear answers</button><button type="button" class="btn ghost" id="demo">Fill a sample district</button></div>
+    </div>
+  </div>
+  <div class="priv" style="margin-top:14px"><b>Private by design.</b> Answers stay in this browser (local storage) so you can return to them; nothing is sent anywhere. Print or save the action plan as a PDF when you're done. This is a self-assessment tool built by a practitioner, not legal advice or an MDE instrument.</div>
+  <div id="items"></div>
+
+  <h2 class="sec" id="plan">Corrective-action plan</h2>
+  <p class="deck">Every item that isn't a Yes, in order of urgency: legal gaps first, then partials. Add an owner and a date, then print. Red items are the ones a monitor or a complaint would reach first.</p>
+  <div class="btns noprint" style="margin:0 0 10px"><button type="button" class="btn" onclick="window.print()">Print / save as PDF</button><button type="button" class="btn ghost" id="copyplan">Copy as text</button></div>
+  <div class="sheet" id="plansheet">
+    <div style="border-bottom:3px solid var(--gold);padding-bottom:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700">EL program self-audit</div><h3>Corrective-action plan</h3></div><div style="text-align:right;font-size:13px"><input type="text" id="dname" placeholder="District name" style="text-align:right;border:0;border-bottom:1px solid var(--rule);border-radius:0;font-size:15px;font-weight:600;color:var(--navy)"><br><span id="pdate"></span> · Score <b id="pscore">—</b></div></div>
+    <div class="tbl" style="border:0"><table class="t plan" id="plantable"></table></div>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;border-top:1px solid var(--rule);padding-top:6px">Citations are to ESSA as amended (20 U.S.C. §6801 et seq.), Title VI of the Civil Rights Act of 1964, the Equal Educational Opportunities Act, <i>Lau v. Nichols</i> (1974), <i>Plyler v. Doe</i> (1982), <i>Castañeda v. Pickard</i> (5th Cir. 1981), the USED/DOJ Dear Colleague Letters of May 8, 2014 and January 7, 2015, 2 CFR Part 200, the Mississippi Testing Accommodations Manual (Feb. 19, 2026), and MDE guidance. Confirm against the primary source before relying on any item. EL Publishing · radan55.github.io/everyteacher/el-audit.html</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){
+var GROUPS=[{"g": "Identification and placement", "sub": "Castañeda prong 2 · ESSA §1112(e)(3) · MDE EL Guidelines", "items": [{"t": "A Home Language Survey is completed for every newly enrolled student, in a language the family understands, and kept in the cumulative folder.", "c": "ESSA §3113(b)(2); MDE EL Guidelines", "legal": 1, "act": "Adopt the MDE HLS; add it to the enrollment packet in every language present in the district; audit 20 random folders."}, {"t": "Students whose HLS indicates another language are screened with the ELPA21 Dynamic Screener within 30 calendar days of the first day of school, or within the district's stated window (2 weeks under ESSA; many Mississippi plans use 10 school days) for later enrollees.", "c": "ESSA §1112(e)(3)(A); MDE testing calendar", "legal": 1, "act": "Build a screener log with enrollment date, screen date, days elapsed; assign one owner per school; review weekly during August–September."}, {"t": "Parents are notified of identification and placement within the same timeline, in a language they understand, with all ESSA-required elements (reasons, level, program description, exit expectations, right to decline).", "c": "ESSA §1112(e)(3)(A)–(B); Title VI", "legal": 1, "act": "Use the hub's parent-letter templates; log the date sent and language; keep a signed copy."}, {"t": "When a parent declines services, the decline is documented, the student remains identified as EL, takes the ELPT annually, and receives accommodations and support in general education.", "c": "ESSA §1111(b)(2)(G); USED/DOJ Dear Colleague Letter (Jan. 7, 2015)", "legal": 1, "act": "Create a one-page 'declined services' protocol; train counselors and registrars; confirm declined students appear on the ELPT roster."}, {"t": "Students identified as both EL and a student with a disability have EL status considered in the evaluation, an interpreter at IEP meetings, and IEP and LSP goals that are aligned rather than contradictory.", "c": "IDEA; DCL 2015 §I.F", "legal": 1, "act": "Add the EL teacher to every IEP meeting for a dual-identified student; cross-reference LSP and IEP accommodations once a year."}]}, {"g": "Program design", "sub": "Castañeda prong 1 · ESSA §3116", "items": [{"t": "The district has a written EL plan that names the language instruction educational program model, its research base, entry and exit procedures, staffing, and evaluation.", "c": "Castañeda v. Pickard (5th Cir. 1981) prong 1; ESSA §3116", "legal": 1, "act": "Update the plan annually; post it; cross-walk it against this audit."}, {"t": "Every identified EL has a Language Service Plan with the required components (demographics, enrollment date, ELPT history, classroom and testing accommodations, goals, team signatures), reviewed at least annually and after each ELPT.", "c": "MDE EL Guidelines; district EL plan", "legal": 1, "act": "Run the LSP Builder for every student without one; set a review date in the SIS; audit 10% of LSPs each quarter."}, {"t": "ELs have access to grade-level core content and to electives, CTE, honors, AP, and dual credit; scheduling does not segregate or exclude them.", "c": "DCL 2015 §I.E; Castañeda prong 2", "legal": 1, "act": "Pull the master schedule by EL status; look for ELs clustered out of electives; fix placement for the next semester."}, {"t": "Newcomers (first year in U.S. schools) receive structured intake, a buddy, survival-language instruction, and a plan for the first ten days.", "c": "Best practice; Castañeda prong 1", "legal": 0, "act": "Adopt the hub's Newcomer Week 1 Kit and Elementary Newcomer Kit; name a newcomer contact per school."}, {"t": "The program provides for students with limited or interrupted formal education (SLIFE), including literacy in the home language where possible.", "c": "Castañeda prong 1; DCL 2015", "legal": 0, "act": "Add a SLIFE screen to intake (years of schooling, home-language literacy); plan a foundational-literacy strand."}]}, {"g": "Staffing and resources", "sub": "Castañeda prong 2", "items": [{"t": "EL instruction is delivered by teachers who hold the appropriate Mississippi endorsement, and the EL-teacher-to-student ratio allows the program as designed.", "c": "Castañeda prong 2; DCL 2015 §I.D; MDE licensure", "legal": 1, "act": "List every person delivering EL services with license and endorsement; plan add-on endorsements where needed."}, {"t": "Content teachers who serve ELs receive EL professional development every year that is specific enough to change practice (differentiation by proficiency level, accommodations, reading ELPT levels).", "c": "ESSA §3115(c)(2); Castañeda prong 2", "legal": 1, "act": "Schedule the 45-minute 'Every Teacher Is a Language Teacher' module at the first in-service; keep sign-in sheets and agendas."}, {"t": "Instructional materials and technology for ELs are adequate and comparable to what other students receive, including home-language resources where appropriate.", "c": "Castañeda prong 2; DCL 2015", "legal": 1, "act": "Inventory EL materials per school; request through Title III (supplemental) and the general fund (core)."}, {"t": "Interpreters and translators used for essential communications are competent in the language and in school vocabulary; students, siblings, and untrained staff are not used.", "c": "Title VI; DCL 2015 §II", "legal": 1, "act": "Contract a phone/video interpretation service; keep a roster of qualified bilingual staff; train on confidentiality."}, {"t": "Paraprofessionals and tutors who work with ELs have guidance and supervision from a certified teacher.", "c": "Castañeda prong 2; ESSA §1111(g)(2)(J)", "legal": 0, "act": "Hand every para the hub's Para & Tutor Guide; schedule a 20-minute monthly check-in with the EL teacher."}]}, {"g": "Assessment and accommodations", "sub": "ESSA §1111(b)(2)(G) · Mississippi Testing Accommodations Manual", "items": [{"t": "Every identified EL, including those whose parents declined services, takes the ELPT each year in the state window.", "c": "ESSA §1111(b)(2)(G); MDE testing calendar", "legal": 1, "act": "Reconcile the EL roster against the ELPT roster in February; chase every gap before March 1."}, {"t": "Accommodations on MAAP and on the ELPT follow the current Mississippi Testing Accommodations Manual and are recorded separately in the LSP (for example, the bilingual word-to-word dictionary is allowed on MAAP with an LSP, not on the ELPT).", "c": "MTAM (Feb. 19, 2026) #55, #81; MDE", "legal": 1, "act": "Rebuild the accommodations section of every LSP with two columns; brief proctors on the ELPT-specific rules."}, {"t": "Accommodation decisions are made by a team that includes the EL teacher, recorded before testing, and implemented in daily instruction, not only on test day.", "c": "MTAM; DCL 2015", "legal": 1, "act": "Add an accommodations review to each LSP meeting; spot-check classrooms in January."}, {"t": "ELs in their first 12 months in U.S. schools are handled correctly under the state's accountability provisions (ELA participation and scoring flexibility as MDE specifies), with arrival dates documented.", "c": "ESSA §1111(b)(3); MDE accountability guidance", "legal": 0, "act": "Verify first-enrollment dates for every newcomer in the SIS; confirm the district's accountability contact knows the rule."}]}, {"g": "Exit and monitoring", "sub": "ESSA §3121 · State Board of Education", "items": [{"t": "Exit from EL status uses the state criterion only: Level 4 or higher in each ELPT domain on the same administration. No local exit on grades, teacher judgment, or MAAP alone.", "c": "State Board of Education decision, June 19, 2025; ESSA §3113(b)(2)", "legal": 1, "act": "Audit last spring's exits against domain scores; reinstate any student exited below the standard."}, {"t": "Former ELs are monitored for four years with grades and assessments reviewed on a schedule (Mississippi districts commonly review every nine weeks), with a documented re-entry procedure.", "c": "ESSA §3121(a)(5); district EL plan", "legal": 1, "act": "Create a monitored-student roster with review dates; name the reviewer; keep the record in the cumulative folder."}, {"t": "Parents are notified of exit, and of monitoring, in a language they understand.", "c": "ESSA §1112(e)(3); Title VI", "legal": 1, "act": "Add the exit letter to the parent-letter set; log date and language."}]}, {"g": "Family engagement and language access", "sub": "Title VI of the Civil Rights Act · Plyler v. Doe", "items": [{"t": "Essential information (enrollment, discipline, special education, health, grades, meetings, the EL notices) is provided in a language parents understand, through written translation or competent oral interpretation, and the district has a written language-access plan.", "c": "Title VI; DCL 2015 §II; Lau v. Nichols (1974)", "legal": 1, "act": "Adopt a one-page language-access plan naming the interpretation service, the translated-document list, and the request procedure; post it in each office."}, {"t": "The district holds EL family engagement activities each year and uses Title III parent, family, and community engagement as a required activity.", "c": "ESSA §3115(c)(3); §1116", "legal": 1, "act": "Calendar two family events; give families the Newcomer Guide and ELPT family guide in their language; keep attendance."}, {"t": "Enrollment does not require a Social Security number, immigration documents, or a U.S. birth certificate, and front-office staff have been trained on this within the last year.", "c": "Plyler v. Doe (1982); USED/DOJ Dear Colleague Letter (May 8, 2014)", "legal": 1, "act": "Review the enrollment packet; remove any such requirement; 15-minute registrar training with sign-in."}]}, {"g": "Title III fiscal management", "sub": "ESSA §3115 · 2 CFR Part 200", "items": [{"t": "Title III funds supplement the core EL program the district is required to fund itself; no required service (identification, the LIEP, core EL teachers, interpreters for essential communications) depends on Title III alone.", "c": "ESSA §3115(g); Castañeda prong 2", "legal": 1, "act": "Tag every Title III expenditure 'required' or 'supplemental'; move required items to state or general funds in the next budget."}, {"t": "Administrative costs charged to the Title III subgrant, including indirect costs, do not exceed 2 percent.", "c": "ESSA §3115(b)", "legal": 1, "act": "Recalculate the admin line; adjust before the next drawdown."}, {"t": "Staff paid in whole or part from Title III keep time-and-effort documentation that matches their actual duties.", "c": "2 CFR §200.430(i)", "legal": 1, "act": "Semi-annual certifications for 100% staff; monthly personnel activity reports for split-funded staff."}, {"t": "The three required Title III activities are visible in the budget: increasing English proficiency and achievement through an effective LIEP, PD for teachers and leaders, and parent, family, and community engagement.", "c": "ESSA §3115(c)", "legal": 1, "act": "Add a column to the Title III budget mapping each line to (c)(1), (c)(2), or (c)(3)."}, {"t": "Immigrant children and youth (age 3–21, not born in a state, fewer than three full academic years in U.S. schools) are counted and reported, and any immigrant set-aside funds received are spent on allowable immigrant activities.", "c": "ESSA §3114(d); §3115(e)", "legal": 0, "act": "Add an 'immigrant status' field to intake; reconcile the count each October."}]}, {"g": "Evaluation and accountability", "sub": "Castañeda prong 3 · Mississippi accountability model", "items": [{"t": "The EL program is evaluated at least annually with ELPT growth, exit rate, content achievement, course completion, and graduation of ELs and former ELs, and the program is modified when the data say so.", "c": "Castañeda prong 3; ESSA §3121; DCL 2015 §I.I", "legal": 1, "act": "Run the hub's Outcomes Dashboard with last year's numbers; write a one-page evaluation with three changes; present it to the board."}, {"t": "Leaders understand how the EL subgroup and the English Learner Progress component count in the Mississippi accountability model and review the data before the state release.", "c": "Mississippi Public School Accountability Standards; ESSA §1111(c)", "legal": 0, "act": "Add EL progress to the fall data meeting; identify students one domain short of growth targets."}, {"t": "A named EL coordinator or contact exists, the civil-rights complaint procedure is posted, and EL records (HLS, screener, LSPs, notices, ELPT) are retained per the state schedule.", "c": "Title VI; 34 CFR §100; MDE records retention", "legal": 1, "act": "Name the coordinator in the EL plan and on the website; check the complaint-procedure posting; audit folder retention."}]}];
+var KEY="elaudit.v1", ans={}; try{ans=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+var items=document.getElementById("items"); var n=0;
+GROUPS.forEach(function(g,gi){
+  var h='<h3 class="grp"><small>'+esc(g.sub)+'</small>'+esc(g.g)+'</h3>';
+  g.items.forEach(function(it,ii){var id=gi+"-"+ii; n++;
+    h+='<div class="q" data-id="'+id+'"><div><div class="t">'+n+'. '+esc(it.t)+(it.legal?'<span class="leg">Legal</span>':'')+'</div><div class="c">'+esc(it.c)+'</div></div>'
+      +'<div class="seg3" role="group" aria-label="Answer">'+[["2","Yes"],["1","Partial"],["0","No"],["na","N/A"]].map(function(o){return '<button type="button" data-v="'+o[0]+'" aria-pressed="'+(ans[id]===o[0])+'">'+o[1]+'</button>'}).join("")+'</div></div>';
+  });
+  items.insertAdjacentHTML("beforeend",h);
+});
+items.addEventListener("click",function(e){var b=e.target.closest("button[data-v]");if(!b)return;var q=b.closest(".q"),id=q.dataset.id;
+  if(ans[id]===b.dataset.v){delete ans[id]}else{ans[id]=b.dataset.v}
+  q.querySelectorAll("button[data-v]").forEach(function(x){x.setAttribute("aria-pressed",ans[id]===x.dataset.v)}); save(); update();});
+function stats(){var got=0,max=0,done=0,byg=[];GROUPS.forEach(function(g,gi){var gg=0,gm=0;g.items.forEach(function(it,ii){var v=ans[gi+"-"+ii];if(v===undefined)return;done++;if(v==="na")return;gm+=2;gg+=+v});byg.push([g.g,gg,gm]);got+=gg;max+=gm});return {got:got,max:max,done:done,byg:byg}}
+function update(){
+  var s=stats(),pct=s.max?Math.round(100*s.got/s.max):0;
+  document.getElementById("pct").textContent=pct+"%";document.getElementById("done").textContent=s.done+" of "+n;
+  var arc=document.getElementById("arc");arc.style.strokeDashoffset=(326.7*(1-pct/100)).toFixed(1);
+  var band=document.getElementById("band"),note=document.getElementById("bandnote");
+  var legalNo=0;GROUPS.forEach(function(g,gi){g.items.forEach(function(it,ii){if(it.legal&&ans[gi+"-"+ii]==="0")legalNo++})});
+  if(!s.done){band.textContent="Start answering below.";band.className="band";arc.style.stroke="#1E2761"}
+  else if(s.done<n){band.textContent="In progress: "+pct+"% so far";band.className="band";arc.style.stroke="#1E2761"}
+  else if(pct>=90&&!legalNo){band.textContent="Strong program. Keep the evidence current.";band.className="band grn";arc.style.stroke="#1F6F3A"}
+  else if(pct>=75&&legalNo<=1){band.textContent="Developing: solid core, "+(legalNo?"one legal gap":"no legal gaps")+", several partials.";band.className="band amb";arc.style.stroke="#C9A227"}
+  else{band.textContent="At risk: "+legalNo+" legal gap"+(legalNo===1?"":"s")+" and a score under 75%.";band.className="band red";arc.style.stroke="#9B2C2C"}
+  document.getElementById("bars").innerHTML=s.byg.map(function(b){var p=b[2]?Math.round(100*b[1]/b[2]):0;return '<div><span>'+esc(b[0])+'</span><i><b style="width:'+p+'%"></b></i><span style="text-align:right;font-variant-numeric:tabular-nums">'+(b[2]?p+"%":"—")+'</span></div>'}).join("");
+  plan(pct);
+}
+function plan(pct){
+  var rows=[];GROUPS.forEach(function(g,gi){g.items.forEach(function(it,ii){var v=ans[gi+"-"+ii];if(v==="0"||v==="1")rows.push({g:g.g,it:it,v:v,id:gi+"-"+ii})})});
+  rows.sort(function(a,b){var ka=(a.v==="0"?0:2)+(a.it.legal?0:1),kb=(b.v==="0"?0:2)+(b.it.legal?0:1);return ka-kb});
+  var due=function(r){var d=new Date();d.setDate(d.getDate()+(r.v==="0"&&r.it.legal?30:r.v==="0"?60:90));return d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})};
+  document.getElementById("pscore").textContent=pct+"%";document.getElementById("pdate").textContent=new Date().toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"});
+  var t=document.getElementById("plantable");
+  if(!rows.length){t.innerHTML='<tr><td style="color:var(--muted)">'+(stats().done?"No gaps recorded. Every answered item is a Yes or N/A.":"Answer the items above and the plan fills in here.")+'</td></tr>';return}
+  t.innerHTML='<tr><th>Priority</th><th>Finding</th><th>Action</th><th>Authority</th><th>Owner</th><th>Due</th></tr>'+rows.map(function(r,i){var cls=r.v==="0"&&r.it.legal?"red":r.v==="0"||r.it.legal?"amb":"";return '<tr class="'+cls+'"><td><b>'+(i+1)+'</b><br><small>'+(r.v==="0"?"Not in place":"Partial")+(r.it.legal?" · legal":"")+'</small></td><td style="font-size:13.5px">'+esc(r.it.t)+'</td><td style="font-size:13.5px">'+esc(r.it.act)+'</td><td style="font-size:12.5px;color:var(--muted)">'+esc(r.it.c)+'</td><td><input type="text" data-own="'+r.id+'" value="'+esc(ans["own:"+r.id]||"")+'" placeholder="name"></td><td style="white-space:nowrap">'+due(r)+'</td></tr>'}).join("");
+}
+document.getElementById("plantable").addEventListener("input",function(e){var i=e.target.closest("input[data-own]");if(i){ans["own:"+i.dataset.own]=i.value;save()}});
+document.getElementById("dname").addEventListener("input",function(){ans["district"]=this.value;save()});document.getElementById("dname").value=ans["district"]||"";
+document.getElementById("reset").onclick=function(){ans={};save();document.querySelectorAll(".q button[data-v]").forEach(function(b){b.setAttribute("aria-pressed","false")});document.getElementById("dname").value="";update()};
+document.getElementById("demo").onclick=function(){ans={district:"Sample District (illustrative)"};var pat=["2","2","1","2","2","1","1","2","0","0","2","1","2","1","0","2","1","1","0","2","2","2","1","1","2","1","2","2","1","1","0","2"];var k=0;GROUPS.forEach(function(g,gi){g.items.forEach(function(it,ii){ans[gi+"-"+ii]=pat[k%pat.length];k++})});save();document.querySelectorAll(".q").forEach(function(q){var id=q.dataset.id;q.querySelectorAll("button[data-v]").forEach(function(x){x.setAttribute("aria-pressed",ans[id]===x.dataset.v)})});document.getElementById("dname").value=ans.district;update();document.getElementById("plan").scrollIntoView({behavior:"smooth"})};
+document.getElementById("copyplan").onclick=function(){var b=this;var rows=[].slice.call(document.querySelectorAll("#plantable tr")).slice(1).map(function(tr){var c=tr.children;return (c[0].textContent.trim().replace(/\s+/g," "))+" | "+c[1].textContent.trim()+" | ACTION: "+c[2].textContent.trim()+" | "+c[3].textContent.trim()+" | Owner: "+(c[4].querySelector("input")||{}).value+" | Due: "+c[5].textContent.trim()});var t="EL PROGRAM SELF-AUDIT — CORRECTIVE-ACTION PLAN\n"+(ans.district||"")+" · "+document.getElementById("pdate").textContent+" · Score "+document.getElementById("pscore").textContent+"\n\n"+rows.join("\n");var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy as text"},1800)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done)}else done()};
+update();
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
