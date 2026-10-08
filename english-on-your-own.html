@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English On Your Own · EL Publishing</title>
+<meta name="description" content="A free, self-paced English course for teenagers learning English. Placement check, sixteen units across four levels, speaking practice that listens to you, conversations, and a daily fifteen minutes. Support in Spanish, Vietnamese, Arabic, Chinese and Haitian Creole. No account, no teacher needed.">
+<meta property="og:title" content="English On Your Own">
+<meta property="og:description" content="Learn English by yourself. Sixteen units, speaking practice that listens to you, real conversations, and a daily fifteen minutes — in six languages, with no account and no teacher needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-lt:#E8F5ED;--bad:#B3261E;--bad-lt:#FDECEA;--teal:#0E7C86;--teal-lt:#E6F2F3;--purple:#7A3E9D}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;padding-bottom:84px}
+body[dir=rtl]{font-size:18px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;line-height:1.12;margin:0}
+.hide{display:none!important}
+
+/* top bar */
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
+.hb{max-width:720px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px;min-height:54px}
+.hb .ttl{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:18px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb button{background:transparent;border:1.5px solid rgba(235,217,160,.55);color:var(--gold-lt);border-radius:999px;padding:5px 13px;font-size:13.5px;font-weight:600}
+.hb button:hover{background:rgba(235,217,160,.14)}
+.xp{background:var(--gold);color:var(--navy-dk);border-radius:999px;padding:4px 12px;font-weight:800;font-size:13.5px;white-space:nowrap}
+
+/* bottom tabs */
+nav.tabs{position:fixed;bottom:0;left:0;right:0;background:var(--paper);border-top:1px solid var(--rule);z-index:25;padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs .in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs button{background:none;border:0;padding:9px 4px 11px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:11.5px;font-weight:600}
+nav.tabs button span.i{font-size:21px;line-height:1}
+nav.tabs button.on{color:var(--navy)}
+nav.tabs button.on span.i{transform:translateY(-1px)}
+
+main{padding:20px 0 30px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin:0 0 14px}
+.card.flat{border-radius:0;border-left:0;border-right:0;margin-left:-18px;margin-right:-18px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;border:0;border-radius:999px;padding:13px 26px;font-size:16.5px;text-decoration:none;text-align:center}
+.btn:disabled{opacity:.42;cursor:default}
+.btn.block{display:block;width:100%}
+.btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn.sm{padding:8px 16px;font-size:14.5px}
+.btn.go{background:var(--navy);color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sp{margin-top:14px}
+.muted{color:var(--muted)}
+.tiny{font-size:13.5px}
+.k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.k.t{color:var(--teal)}
+
+/* splash */
+#splash{position:fixed;inset:0;background:var(--navy);color:#fff;z-index:60;overflow:auto;display:flex;align-items:center}
+#splash::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
+#splash .in{position:relative;max-width:560px;margin:0 auto;padding:40px 22px}
+#splash h1{font-size:clamp(34px,8vw,52px);margin:0 0 6px}
+#splash h1 em{font-style:italic;color:var(--gold)}
+#splash p.sub{color:#C9CEEA;font-size:17px;margin:0 0 26px}
+.langs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.langs button{background:rgba(255,255,255,.07);border:1.5px solid rgba(235,217,160,.4);color:#fff;border-radius:12px;padding:15px 12px;font-size:17px;font-weight:600;display:flex;align-items:center;gap:10px;justify-content:flex-start}
+.langs button:hover{background:rgba(235,217,160,.18)}
+.langs button b{font-size:22px;font-weight:400}
+#splash .note{margin-top:22px;font-size:13.5px;color:#9AA3CC;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+
+/* path */
+.lvhead{display:flex;align-items:center;gap:10px;margin:26px 0 10px}
+.lvhead .dot{width:12px;height:12px;border-radius:50%;flex:none}
+.lvhead h2{font-size:21px}
+.lvhead small{color:var(--muted);font-size:13px;font-weight:600}
+.unit{display:flex;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:14px 16px;margin-bottom:9px;width:100%;text-align:left;border-left:5px solid var(--rule)}
+body[dir=rtl] .unit{text-align:right;border-left:1px solid var(--rule);border-right:5px solid var(--rule)}
+.unit .ic{font-size:27px;flex:none;width:40px;text-align:center}
+.unit .tx{flex:1;min-width:0}
+.unit .tx b{display:block;font-size:16.5px;color:var(--ink);font-weight:600;line-height:1.25}
+.unit .tx small{color:var(--muted);font-size:13px}
+.unit .st{flex:none;font-size:19px;width:26px;text-align:center}
+.unit.lock{opacity:.52}
+.unit.done{border-left-color:var(--ok)}
+body[dir=rtl] .unit.done{border-right-color:var(--ok)}
+.unit.now{border-left-color:var(--gold);box-shadow:0 3px 14px rgba(30,39,97,.09)}
+body[dir=rtl] .unit.now{border-right-color:var(--gold)}
+
+/* stage chrome */
+.steps{display:flex;gap:6px;margin:0 0 16px}
+.steps div{flex:1;height:6px;border-radius:999px;background:var(--rule)}
+.steps div.on{background:var(--gold)}
+.steps div.ok{background:var(--ok)}
+.stagehd{margin-bottom:14px}
+.stagehd h2{font-size:25px;color:var(--navy);margin-bottom:3px}
+.stagehd p{margin:0;color:var(--muted);font-size:15px}
+
+/* word cards */
+.wordlist{display:grid;gap:9px}
+.wd{display:flex;gap:13px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;width:100%;text-align:left}
+body[dir=rtl] .wd{text-align:right}
+.wd .em{font-size:26px;flex:none}
+.wd .tx{flex:1;min-width:0}
+.wd .tx b{display:block;font-size:18px;color:var(--navy);font-weight:700}
+.wd .tx .tr{display:block;color:var(--teal);font-size:15.5px;font-weight:600;line-height:1.3}
+.wd .tx .ex{color:var(--muted);font-size:14px;margin-top:2px}
+.wd .pl{flex:none;font-size:19px;opacity:.6}
+.wd.played{border-color:var(--ok);background:var(--ok-lt)}
+
+/* quiz options */
+.opts{display:grid;gap:9px;margin-top:12px}
+.opt{background:var(--paper);border:2px solid var(--rule);border-radius:12px;padding:13px 16px;text-align:left;font-size:16.5px;width:100%}
+body[dir=rtl] .opt{text-align:right}
+.opt:hover{border-color:var(--navy)}
+.opt.sel{border-color:var(--navy);background:#F2F4FF}
+.opt.good{border-color:var(--ok);background:var(--ok-lt)}
+.opt.bad{border-color:var(--bad);background:var(--bad-lt)}
+.fb{margin-top:12px;border-radius:12px;padding:12px 16px;font-size:15.5px;font-weight:600}
+.fb.good{background:var(--ok-lt);color:var(--ok);border:1px solid #BFE0CC}
+.fb.bad{background:var(--bad-lt);color:var(--bad);border:1px solid #F3C9C5}
+.fb .why{display:block;font-weight:400;color:var(--ink);margin-top:4px;font-size:14.5px}
+
+/* speak */
+.target{background:var(--teal-lt);border:1px solid #CBE2E4;border-left:6px solid var(--teal);border-radius:12px;padding:16px 18px;font-size:21px;font-weight:600;color:var(--navy);line-height:1.35}
+body[dir=rtl] .target{border-left:1px solid #CBE2E4;border-right:6px solid var(--teal)}
+.mic{width:96px;height:96px;border-radius:50%;background:var(--gold);border:0;font-size:40px;display:block;margin:20px auto 8px;box-shadow:0 6px 20px rgba(201,162,39,.4)}
+.mic.rec{background:var(--bad);animation:pulse 1.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(179,38,30,.5)}70%{box-shadow:0 0 0 20px rgba(179,38,30,0)}100%{box-shadow:0 0 0 0 rgba(179,38,30,0)}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;justify-content:center}
+.chips span{padding:5px 11px;border-radius:999px;font-size:15px;font-weight:600;background:#EDEFF6;color:var(--muted)}
+.chips span.hit{background:var(--ok-lt);color:var(--ok)}
+.score{text-align:center;font-family:Fraunces,Georgia,serif;font-size:44px;font-weight:700;color:var(--navy);margin-top:6px}
+.score small{display:block;font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* reading */
+.passage{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:18px 20px;font-size:17.5px;line-height:1.72}
+.passage h3{font-size:20px;color:var(--navy);margin-bottom:8px}
+.passage p{margin:0}
+
+/* write */
+textarea{width:100%;border:2px solid var(--rule);border-radius:12px;padding:13px 15px;font-family:inherit;font-size:17px;line-height:1.5;resize:vertical;min-height:84px;color:var(--ink)}
+textarea:focus{outline:0;border-color:var(--navy)}
+.frame{font-size:19px;font-weight:600;color:var(--navy);background:var(--mist);border-radius:10px;padding:12px 15px;margin-bottom:10px}
+
+/* conversation */
+.bub{max-width:84%;border-radius:16px;padding:12px 16px;margin-bottom:10px;font-size:16.5px;line-height:1.45}
+.bub.them{background:var(--paper);border:1px solid var(--rule);border-bottom-left-radius:4px}
+.bub.you{background:var(--navy);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+body[dir=rtl] .bub.you{margin-left:0;margin-right:auto}
+.who{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+
+/* me / stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:14px 10px;text-align:center}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1}
+.stat small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.25}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600;color:var(--muted)}
+.badge.got{background:var(--gold-lt);border-color:var(--gold);color:var(--navy-dk)}
+input[type=text]{width:100%;border:2px solid var(--rule);border-radius:12px;padding:12px 15px;font-family:inherit;font-size:17px}
+input[type=text]:focus{outline:0;border-color:var(--navy)}
+
+/* certificate */
+#certsheet{display:none}
+@media print{
+  body{background:#fff;padding:0}
+  header,nav.tabs,main{display:none!important}
+  #certsheet{display:block!important;padding:0}
+  .certbox{border:10px solid var(--navy);padding:60px 50px;text-align:center;font-family:Fraunces,Georgia,serif}
+  .certbox .cl{font-family:Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:13px;color:var(--gold);font-weight:700}
+  .certbox h1{font-size:44px;margin:14px 0 26px;color:var(--navy)}
+  .certbox .nm{font-size:40px;border-bottom:2px solid var(--navy);display:inline-block;padding:0 40px 6px;margin-bottom:22px}
+  .certbox p{font-family:Inter,sans-serif;font-size:16px;color:#333}
+}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:96px;background:var(--navy-dk);color:#fff;padding:11px 20px;border-radius:999px;font-size:15px;font-weight:600;z-index:50;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.en,body[dir=rtl] .opt,body[dir=rtl] .bub,body[dir=rtl] .target,body[dir=rtl] .passage,body[dir=rtl] .frame,body[dir=rtl] textarea,body[dir=rtl] .wd .tx b,body[dir=rtl] .wd .tx .ex,body[dir=rtl] .chips,body[dir=rtl] .who,body[dir=rtl] .unit .tx small{direction:ltr;unicode-bidi:isolate;text-align:left}
+#elg-btn{bottom:96px!important}
+@media print{#elg,#elg-btn{display:none!important}}
+@media (min-width:620px){.langs{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div id="splash"><div class="in">
+  <h1>English <em>On Your Own</em></h1>
+  <p class="sub" id="spSub">Learn English by yourself. No teacher needed.</p>
+  <p class="k" style="margin:0 0 10px">Choose your language · Elige tu idioma</p>
+  <div class="langs" id="langPick"></div>
+  <p class="note" id="spNote"></p>
+</div></div>
+
+<header><div class="hb">
+  <button id="btnBack" class="hide">←</button>
+  <div class="ttl" id="hTitle">English On Your Own</div>
+  <span class="xp" id="hXp">0 XP</span>
+  <button id="btnLang">🌐</button>
+</div></header>
+
+<main><div class="wrap" id="view"></div></main>
+
+<nav class="tabs"><div class="in">
+  <button data-t="path" class="on"><span class="i">🗺️</span><em id="tbPath" style="font-style:normal">My path</em></button>
+  <button data-t="daily"><span class="i">⚡</span><em id="tbDaily" style="font-style:normal">Daily 15</em></button>
+  <button data-t="talk"><span class="i">💬</span><em id="tbTalk" style="font-style:normal">Talk</em></button>
+  <button data-t="me"><span class="i">🧑</span><em id="tbMe" style="font-style:normal">Me</em></button>
+</div></nav>
+
+<div id="certsheet"><div class="certbox">
+  <div class="cl">EL Publishing · English On Your Own</div>
+  <h1>Certificate of Completion</h1>
+  <div class="nm" id="certName">&nbsp;</div>
+  <p id="certLine">has completed units of English On Your Own.</p>
+  <p style="margin-top:34px" id="certDate"></p>
+</div></div>
+
+<script>
+/* English On Your Own — course content
+   Languages: en (English), es (Español), vi (Tiếng Việt), ar (العربية), zh (中文), ht (Kreyòl ayisyen)
+   Word glosses: {es, vi, ar, zh, ht}. Passages stay in English by design; support text is translated.
+*/
+var LANGS = [
+  {c:'en', n:'English',        f:'🇺🇸', rtl:false, tts:'en-US'},
+  {c:'es', n:'Español',        f:'🇲🇽', rtl:false, tts:'es-MX'},
+  {c:'vi', n:'Tiếng Việt',     f:'🇻🇳', rtl:false, tts:'vi-VN'},
+  {c:'ar', n:'العربية',        f:'🌍', rtl:true,  tts:'ar-SA'},
+  {c:'zh', n:'中文',            f:'🇨🇳', rtl:false, tts:'zh-CN'},
+  {c:'ht', n:'Kreyòl ayisyen', f:'🇭🇹', rtl:false, tts:'fr-FR'}
+];
+
+/* ---------- Interface strings ---------- */
+var UI = {
+  appname:{en:"English On Your Own",es:"Inglés por tu cuenta",vi:"Tiếng Anh tự học",ar:"الإنجليزية بنفسك",zh:"自学英语",ht:"Anglè pou kont ou"},
+  tagline:{en:"Learn English by yourself. No teacher needed.",es:"Aprende inglés por tu cuenta. No necesitas maestro.",vi:"Tự học tiếng Anh. Không cần giáo viên.",ar:"تعلم الإنجليزية بنفسك. لا تحتاج إلى معلم.",zh:"自己学英语。不需要老师。",ht:"Aprann anglè pou kont ou. Ou pa bezwen yon pwofesè."},
+  pickLang:{en:"Choose your language",es:"Elige tu idioma",vi:"Chọn ngôn ngữ của bạn",ar:"اختر لغتك",zh:"选择你的语言",ht:"Chwazi lang ou"},
+  start:{en:"Start",es:"Empezar",vi:"Bắt đầu",ar:"ابدأ",zh:"开始",ht:"Kòmanse"},
+  cont:{en:"Continue",es:"Continuar",vi:"Tiếp tục",ar:"متابعة",zh:"继续",ht:"Kontinye"},
+  next:{en:"Next",es:"Siguiente",vi:"Tiếp theo",ar:"التالي",zh:"下一个",ht:"Pwochen"},
+  back:{en:"Back",es:"Atrás",vi:"Quay lại",ar:"رجوع",zh:"返回",ht:"Tounen"},
+  check:{en:"Check",es:"Revisar",vi:"Kiểm tra",ar:"تحقق",zh:"检查",ht:"Tcheke"},
+  again:{en:"Try again",es:"Inténtalo otra vez",vi:"Thử lại",ar:"حاول مرة أخرى",zh:"再试一次",ht:"Eseye ankò"},
+  correct:{en:"Correct!",es:"¡Correcto!",vi:"Đúng rồi!",ar:"صحيح!",zh:"正确！",ht:"Kòrèk!"},
+  notyet:{en:"Not yet.",es:"Todavía no.",vi:"Chưa đúng.",ar:"ليس بعد.",zh:"还不对。",ht:"Poko."},
+  listen:{en:"Listen",es:"Escuchar",vi:"Nghe",ar:"استمع",zh:"听",ht:"Koute"},
+  speak:{en:"Speak",es:"Hablar",vi:"Nói",ar:"تكلم",zh:"说",ht:"Pale"},
+  read:{en:"Read",es:"Leer",vi:"Đọc",ar:"اقرأ",zh:"读",ht:"Li"},
+  write:{en:"Write",es:"Escribir",vi:"Viết",ar:"اكتب",zh:"写",ht:"Ekri"},
+  words:{en:"Words",es:"Palabras",vi:"Từ vựng",ar:"كلمات",zh:"单词",ht:"Mo"},
+  tapHear:{en:"Tap a word to hear it.",es:"Toca una palabra para escucharla.",vi:"Chạm vào từ để nghe.",ar:"اضغط على كلمة لسماعها.",zh:"点击单词来听。",ht:"Peze yon mo pou tande l."},
+  tapRecord:{en:"Tap the microphone and say the sentence.",es:"Toca el micrófono y di la oración.",vi:"Chạm vào micrô và nói câu đó.",ar:"اضغط على الميكروفون وقل الجملة.",zh:"点击麦克风，说出这句话。",ht:"Peze mikwo a epi di fraz la."},
+  recording:{en:"Listening…",es:"Escuchando…",vi:"Đang nghe…",ar:"جارٍ الاستماع…",zh:"正在听…",ht:"Ap koute…"},
+  heard:{en:"I heard:",es:"Escuché:",vi:"Tôi nghe thấy:",ar:"سمعت:",zh:"我听到：",ht:"Mwen tande:"},
+  noMic:{en:"Your browser cannot listen. Use Chrome, or practice by reading aloud and tapping Done.",es:"Tu navegador no puede escuchar. Usa Chrome, o practica leyendo en voz alta y toca Listo.",vi:"Trình duyệt của bạn không nghe được. Hãy dùng Chrome, hoặc đọc to rồi chạm Xong.",ar:"متصفحك لا يستطيع الاستماع. استخدم Chrome، أو تدرب بالقراءة بصوت عالٍ ثم اضغط تم.",zh:"你的浏览器无法听。请使用 Chrome，或者朗读后点击完成。",ht:"Navigatè ou pa ka koute. Sèvi ak Chrome, oswa li awotvwa epi peze Fini."},
+  done:{en:"Done",es:"Listo",vi:"Xong",ar:"تم",zh:"完成",ht:"Fini"},
+  skip:{en:"Skip",es:"Saltar",vi:"Bỏ qua",ar:"تخطي",zh:"跳过",ht:"Sote"},
+  myPath:{en:"My path",es:"Mi camino",vi:"Lộ trình của tôi",ar:"مساري",zh:"我的学习路径",ht:"Chemen mwen"},
+  daily:{en:"Daily 15",es:"15 diarios",vi:"15 phút mỗi ngày",ar:"١٥ يوميًا",zh:"每日15分钟",ht:"15 chak jou"},
+  talk:{en:"Talk",es:"Conversar",vi:"Trò chuyện",ar:"محادثة",zh:"对话",ht:"Pale"},
+  me:{en:"Me",es:"Yo",vi:"Tôi",ar:"أنا",zh:"我",ht:"Mwen"},
+  placement:{en:"Where should I start?",es:"¿Dónde debo empezar?",vi:"Tôi nên bắt đầu từ đâu?",ar:"من أين أبدأ؟",zh:"我应该从哪里开始？",ht:"Ki kote pou m kòmanse?"},
+  placeIntro:{en:"Answer a few questions. No grade. This only chooses your starting unit, and you can change it any time.",es:"Responde unas preguntas. No es una calificación. Solo elige tu unidad inicial, y puedes cambiarla cuando quieras.",vi:"Trả lời vài câu hỏi. Không chấm điểm. Chỉ để chọn bài bắt đầu, bạn có thể đổi bất cứ lúc nào.",ar:"أجب عن بضعة أسئلة. لا توجد درجة. هذا يختار وحدة البداية فقط، ويمكنك تغييرها في أي وقت.",zh:"回答几个问题。不计分。这只是选择你的起始单元，随时可以更改。",ht:"Reponn kèk kesyon. Pa gen nòt. Sa a sèlman chwazi inite kote w kòmanse, epi ou ka chanje l nenpòt lè."},
+  placeDone:{en:"You will start here",es:"Vas a empezar aquí",vi:"Bạn sẽ bắt đầu ở đây",ar:"ستبدأ من هنا",zh:"你将从这里开始",ht:"W ap kòmanse isit la"},
+  locked:{en:"Finish the unit before this one.",es:"Termina la unidad anterior.",vi:"Hãy hoàn thành bài trước.",ar:"أكمل الوحدة السابقة.",zh:"请先完成上一个单元。",ht:"Fini inite anvan an."},
+  unlock:{en:"Open it anyway",es:"Abrir de todos modos",vi:"Vẫn mở",ar:"افتحها على أي حال",zh:"仍然打开",ht:"Louvri l kanmenm"},
+  unitsLabel:{en:"units done",es:"unidades hechas",vi:"bài đã xong",ar:"وحدات مكتملة",zh:"已完成单元",ht:"inite fini"},
+  unitDone:{en:"Unit complete",es:"Unidad completa",vi:"Hoàn thành bài",ar:"اكتملت الوحدة",zh:"单元完成",ht:"Inite fini"},
+  streak:{en:"day streak",es:"días seguidos",vi:"ngày liên tiếp",ar:"أيام متتالية",zh:"连续天数",ht:"jou youn dèyè lòt"},
+  newWords:{en:"words learned",es:"palabras aprendidas",vi:"từ đã học",ar:"كلمات تعلمتها",zh:"已学单词",ht:"mo ou aprann"},
+  minutes:{en:"minutes today",es:"minutos hoy",vi:"phút hôm nay",ar:"دقائق اليوم",zh:"今天的分钟数",ht:"minit jodi a"},
+  drillIntro:{en:"Fifteen minutes. Words you almost know come back until you know them.",es:"Quince minutos. Las palabras que casi sabes vuelven hasta que las sepas.",vi:"Mười lăm phút. Những từ bạn gần thuộc sẽ quay lại cho đến khi bạn thuộc.",ar:"خمس عشرة دقيقة. الكلمات التي تكاد تعرفها تعود حتى تتقنها.",zh:"十五分钟。你快记住的单词会重复出现，直到你真正记住。",ht:"Kenz minit. Mo ou prèske konnen yo ap tounen jiskaske ou konnen yo."},
+  startDrill:{en:"Start today's 15",es:"Empezar los 15 de hoy",vi:"Bắt đầu 15 phút hôm nay",ar:"ابدأ ١٥ اليوم",zh:"开始今天的15分钟",ht:"Kòmanse 15 jodi a"},
+  drillDone:{en:"Finished for today. Come back tomorrow.",es:"Terminaste por hoy. Vuelve mañana.",vi:"Xong hôm nay. Hãy quay lại ngày mai.",ar:"انتهيت لليوم. عد غدًا.",zh:"今天完成了。明天再来。",ht:"Ou fini pou jodi a. Tounen demen."},
+  talkIntro:{en:"Real conversations. The other person speaks, then it is your turn. Say your answer out loud.",es:"Conversaciones reales. La otra persona habla y luego te toca a ti. Di tu respuesta en voz alta.",vi:"Hội thoại thật. Người kia nói, rồi đến lượt bạn. Hãy nói câu trả lời thành tiếng.",ar:"محادثات حقيقية. يتكلم الشخص الآخر ثم يأتي دورك. قل إجابتك بصوت عالٍ.",zh:"真实对话。对方先说，然后轮到你。请大声说出你的回答。",ht:"Konvèsasyon reyèl. Lòt moun nan pale, apre se tou pa w. Di repons ou awotvwa."},
+  yourTurn:{en:"Your turn",es:"Tu turno",vi:"Đến lượt bạn",ar:"دورك",zh:"轮到你了",ht:"Se tou pa w"},
+  pickReply:{en:"Choose what you want to say, then say it out loud.",es:"Elige lo que quieres decir y dilo en voz alta.",vi:"Chọn điều bạn muốn nói, rồi nói to.",ar:"اختر ما تريد قوله، ثم قله بصوت عالٍ.",zh:"选择你想说的话，然后大声说出来。",ht:"Chwazi sa ou vle di, epi di l awotvwa."},
+  convDone:{en:"You finished the conversation.",es:"Terminaste la conversación.",vi:"Bạn đã hoàn thành cuộc hội thoại.",ar:"أنهيت المحادثة.",zh:"你完成了这段对话。",ht:"Ou fini konvèsasyon an."},
+  cert:{en:"Certificate",es:"Certificado",vi:"Chứng nhận",ar:"شهادة",zh:"证书",ht:"Sètifika"},
+  certGet:{en:"Print my certificate",es:"Imprimir mi certificado",vi:"In chứng nhận của tôi",ar:"اطبع شهادتي",zh:"打印我的证书",ht:"Enprime sètifika mwen"},
+  yourName:{en:"Your name",es:"Tu nombre",vi:"Tên của bạn",ar:"اسمك",zh:"你的名字",ht:"Non ou"},
+  reset:{en:"Erase my progress",es:"Borrar mi progreso",vi:"Xóa tiến trình của tôi",ar:"امسح تقدمي",zh:"清除我的进度",ht:"Efase pwogrè mwen"},
+  resetSure:{en:"Erase everything and start over?",es:"¿Borrar todo y empezar de nuevo?",vi:"Xóa tất cả và bắt đầu lại?",ar:"مسح كل شيء والبدء من جديد؟",zh:"清除全部并重新开始？",ht:"Efase tout bagay epi rekòmanse?"},
+  privacy:{en:"Everything you do stays on this device. Nothing is sent anywhere. No account, no password.",es:"Todo lo que haces se queda en este dispositivo. No se envía nada. Sin cuenta ni contraseña.",vi:"Mọi thứ bạn làm đều ở trên thiết bị này. Không gửi đi đâu cả. Không tài khoản, không mật khẩu.",ar:"كل ما تفعله يبقى على هذا الجهاز. لا يُرسل شيء إلى أي مكان. بدون حساب أو كلمة مرور.",zh:"你做的一切都保存在这台设备上。不会发送到任何地方。无需账号和密码。",ht:"Tout sa ou fè rete sou aparèy sa a. Anyen pa voye okenn kote. Pa gen kont, pa gen modpas."},
+  slower:{en:"Slower",es:"Más despacio",vi:"Chậm hơn",ar:"أبطأ",zh:"慢一点",ht:"Pi dousman"},
+  showTrans:{en:"Show my language",es:"Mostrar mi idioma",vi:"Hiện ngôn ngữ của tôi",ar:"أظهر لغتي",zh:"显示我的语言",ht:"Montre lang mwen"},
+  level0:{en:"Starting out",es:"Comenzando",vi:"Mới bắt đầu",ar:"البداية",zh:"入门",ht:"Kòmansman"},
+  level1:{en:"Building",es:"Construyendo",vi:"Đang xây dựng",ar:"البناء",zh:"打基础",ht:"Nap bati"},
+  level2:{en:"Growing",es:"Creciendo",vi:"Đang phát triển",ar:"النمو",zh:"进步中",ht:"Nap grandi"},
+  level3:{en:"Going further",es:"Avanzando",vi:"Tiến xa hơn",ar:"التقدم",zh:"更进一步",ht:"Nap avanse"},
+  whatIsThis:{en:"What is this?",es:"¿Qué es esto?",vi:"Đây là gì?",ar:"ما هذا؟",zh:"这是什么？",ht:"Kisa sa ye?"},
+  hint:{en:"Hint",es:"Pista",vi:"Gợi ý",ar:"تلميح",zh:"提示",ht:"Endis"},
+  typeHere:{en:"Write your sentence here",es:"Escribe tu oración aquí",vi:"Viết câu của bạn ở đây",ar:"اكتب جملتك هنا",zh:"在这里写你的句子",ht:"Ekri fraz ou isit la"},
+  goodSentence:{en:"Good sentence.",es:"Buena oración.",vi:"Câu tốt.",ar:"جملة جيدة.",zh:"句子很好。",ht:"Bon fraz."},
+  checkThese:{en:"Check these:",es:"Revisa esto:",vi:"Kiểm tra những điều này:",ar:"تحقق من هذه:",zh:"请检查这些：",ht:"Tcheke bagay sa yo:"}
+};
+
+/* ---------- Levels ---------- */
+var LEVELS = [
+  {k:'level0', lane:'Newcomer',    elp:'ELP 1',    color:'#0E7C86'},
+  {k:'level1', lane:'Emerging',    elp:'ELP 2',    color:'#1E7A4C'},
+  {k:'level2', lane:'Progressing', elp:'ELP 3–4',  color:'#1E2761'},
+  {k:'level3', lane:'Challenge',   elp:'ELP 4–5',  color:'#7A3E9D'}
+];
+
+/* ---------- Writing checker rules ----------
+   Each write task lists required tokens (lowercase) and optional "avoid" patterns. */
+
+/* ---------- Units ---------- */
+var UNITS = [
+/* ===== LEVEL 0 — Newcomer ===== */
+{id:'u01',lv:0,icon:'👋',
+ title:{en:"Hello and my name",es:"Hola y mi nombre",vi:"Xin chào và tên tôi",ar:"مرحبًا واسمي",zh:"你好和我的名字",ht:"Bonjou ak non mwen"},
+ words:[
+  {w:"hello",e:"👋",s:"Hello. My name is Ana.",t:{es:"hola",vi:"xin chào",ar:"مرحبًا",zh:"你好",ht:"bonjou"}},
+  {w:"my name is",e:"🪪",s:"My name is Tomás.",t:{es:"me llamo",vi:"tên tôi là",ar:"اسمي",zh:"我叫",ht:"non mwen se"}},
+  {w:"nice to meet you",e:"🤝",s:"Nice to meet you.",t:{es:"mucho gusto",vi:"rất vui được gặp bạn",ar:"تشرفت بلقائك",zh:"很高兴认识你",ht:"kontan rankontre w"}},
+  {w:"please",e:"🙏",s:"Please help me.",t:{es:"por favor",vi:"làm ơn",ar:"من فضلك",zh:"请",ht:"souple"}},
+  {w:"thank you",e:"💐",s:"Thank you, teacher.",t:{es:"gracias",vi:"cảm ơn",ar:"شكرًا",zh:"谢谢",ht:"mèsi"}},
+  {w:"yes",e:"✅",s:"Yes, I understand.",t:{es:"sí",vi:"vâng",ar:"نعم",zh:"是",ht:"wi"}},
+  {w:"no",e:"❌",s:"No, not yet.",t:{es:"no",vi:"không",ar:"لا",zh:"不",ht:"non"}},
+  {w:"goodbye",e:"👋",s:"Goodbye. See you tomorrow.",t:{es:"adiós",vi:"tạm biệt",ar:"مع السلامة",zh:"再见",ht:"orevwa"}}],
+ listen:{text:"Hello. My name is Mr. Lopez. Welcome to our school.",
+   q:{en:"What is his name?",es:"¿Cómo se llama?",vi:"Tên ông ấy là gì?",ar:"ما اسمه؟",zh:"他叫什么名字？",ht:"Ki jan li rele?"},
+   opts:["Mr. Lopez","Mr. School","Mr. Hello"],a:0},
+ speak:["Hello. My name is Ana.","Nice to meet you.","Thank you. Goodbye."],
+ read:{title:"A new student",
+   text:"Luis is a new student. He walks into the classroom. The teacher says, \"Hello. Welcome.\" Luis says, \"Hello. My name is Luis.\" The teacher smiles. \"Nice to meet you, Luis. Your seat is here.\" Luis sits down. He says, \"Thank you.\"",
+   qs:[{q:"Who is the new student?",opts:["Luis","The teacher","Ana"],a:0},
+       {q:"What does Luis say first?",opts:["Thank you","Hello. My name is Luis.","Goodbye"],a:1},
+       {q:"What does the teacher show Luis?",opts:["His seat","His book","His bus"],a:0}]},
+ write:[{frame:"Hello. My name is ___.",need:["my name is"],ex:"Hello. My name is Sofia."},
+        {frame:"___ to meet you.",need:["nice","meet"],ex:"Nice to meet you."}]},
+
+{id:'u02',lv:0,icon:'🏫',
+ title:{en:"My classroom",es:"Mi salón de clases",vi:"Lớp học của tôi",ar:"فصلي الدراسي",zh:"我的教室",ht:"Klas mwen"},
+ words:[
+  {w:"classroom",e:"🏫",s:"This is my classroom.",t:{es:"salón de clases",vi:"lớp học",ar:"فصل دراسي",zh:"教室",ht:"sal klas"}},
+  {w:"teacher",e:"👩‍🏫",s:"The teacher is at the door.",t:{es:"maestro / maestra",vi:"giáo viên",ar:"معلم",zh:"老师",ht:"pwofesè"}},
+  {w:"desk",e:"🪑",s:"My book is on the desk.",t:{es:"escritorio",vi:"bàn học",ar:"مكتب",zh:"课桌",ht:"biwo"}},
+  {w:"book",e:"📕",s:"Open your book.",t:{es:"libro",vi:"sách",ar:"كتاب",zh:"书",ht:"liv"}},
+  {w:"pencil",e:"✏️",s:"I need a pencil.",t:{es:"lápiz",vi:"bút chì",ar:"قلم رصاص",zh:"铅笔",ht:"kreyon"}},
+  {w:"paper",e:"📄",s:"Write your name on the paper.",t:{es:"papel",vi:"giấy",ar:"ورقة",zh:"纸",ht:"papye"}},
+  {w:"computer",e:"💻",s:"The computer is slow today.",t:{es:"computadora",vi:"máy tính",ar:"حاسوب",zh:"电脑",ht:"òdinatè"}},
+  {w:"door",e:"🚪",s:"The door is open.",t:{es:"puerta",vi:"cửa",ar:"باب",zh:"门",ht:"pòt"}}],
+ listen:{text:"Open your book. Take out a pencil. Write your name on the paper.",
+   q:{en:"What do you take out?",es:"¿Qué sacas?",vi:"Bạn lấy ra cái gì?",ar:"ماذا تُخرج؟",zh:"你拿出什么？",ht:"Kisa ou soti?"},
+   opts:["A pencil","A computer","A door"],a:0},
+ speak:["This is my classroom.","I need a pencil, please.","My book is on the desk."],
+ read:{title:"Where things are",
+   text:"My classroom has twenty desks. The teacher's desk is near the door. The computers are at the back. My desk is in the middle. I keep my book and two pencils inside my desk. When I need paper, I raise my hand and ask.",
+   qs:[{q:"Where is the teacher's desk?",opts:["Near the door","At the back","In the middle"],a:0},
+       {q:"What does the student keep in the desk?",opts:["A computer","A book and two pencils","Paper and a door"],a:1},
+       {q:"What does the student do to get paper?",opts:["Walks out","Raises a hand and asks","Takes the teacher's"],a:1}]},
+ write:[{frame:"My ___ is on the desk.",need:["desk"],ex:"My book is on the desk."},
+        {frame:"I need a ___, please.",need:["please"],ex:"I need a pencil, please."}]},
+
+{id:'u03',lv:0,icon:'🙋',
+ title:{en:"Asking for help",es:"Pedir ayuda",vi:"Nhờ giúp đỡ",ar:"طلب المساعدة",zh:"请求帮助",ht:"Mande èd"},
+ words:[
+  {w:"help",e:"🙋",s:"Help, please.",t:{es:"ayuda",vi:"giúp đỡ",ar:"مساعدة",zh:"帮助",ht:"èd"}},
+  {w:"I don't understand",e:"❓",s:"I don't understand this part.",t:{es:"no entiendo",vi:"tôi không hiểu",ar:"لا أفهم",zh:"我不明白",ht:"mwen pa konprann"}},
+  {w:"repeat",e:"🔁",s:"Please repeat.",t:{es:"repetir",vi:"nhắc lại",ar:"كرر",zh:"重复",ht:"repete"}},
+  {w:"slowly",e:"🐢",s:"Please speak slowly.",t:{es:"despacio",vi:"chậm rãi",ar:"ببطء",zh:"慢慢地",ht:"dousman"}},
+  {w:"bathroom",e:"🚻",s:"May I go to the bathroom?",t:{es:"baño",vi:"nhà vệ sinh",ar:"دورة المياه",zh:"洗手间",ht:"twalèt"}},
+  {w:"water",e:"💧",s:"May I get water?",t:{es:"agua",vi:"nước",ar:"ماء",zh:"水",ht:"dlo"}},
+  {w:"question",e:"🗣️",s:"I have a question.",t:{es:"pregunta",vi:"câu hỏi",ar:"سؤال",zh:"问题",ht:"kesyon"}},
+  {w:"what does it mean",e:"🧐",s:"What does this word mean?",t:{es:"qué significa",vi:"nghĩa là gì",ar:"ماذا يعني",zh:"是什么意思",ht:"kisa sa vle di"}}],
+ listen:{text:"If you do not understand, raise your hand and say: I don't understand this part.",
+   q:{en:"What should you say?",es:"¿Qué debes decir?",vi:"Bạn nên nói gì?",ar:"ماذا يجب أن تقول؟",zh:"你应该说什么？",ht:"Kisa ou dwe di?"},
+   opts:["Nothing","I don't understand this part.","Goodbye"],a:1},
+ speak:["I don't understand this part.","Please repeat more slowly.","May I go to the bathroom?"],
+ read:{title:"The best thing to say",
+   text:"Many new students say nothing when they do not understand. That is a problem, because the teacher thinks everything is fine. The best thing to say is short: \"I don't understand this part.\" Then point to the part. The teacher will explain it again. Asking a question is not a mistake. It is how you learn faster.",
+   qs:[{q:"What do many new students do?",opts:["Say nothing","Ask many questions","Leave the room"],a:0},
+       {q:"Why is saying nothing a problem?",opts:["The teacher thinks everything is fine","The class ends","The book closes"],a:0},
+       {q:"What should you do after you speak?",opts:["Point to the part","Close your book","Go home"],a:0}]},
+ write:[{frame:"I don't ___ this part.",need:["understand"],ex:"I don't understand this part."},
+        {frame:"Please ___ more slowly.",need:["repeat"],ex:"Please repeat more slowly."}]},
+
+{id:'u04',lv:0,icon:'🕗',
+ title:{en:"Numbers, time, and my schedule",es:"Números, hora y mi horario",vi:"Số, giờ và thời khóa biểu",ar:"الأرقام والوقت وجدولي",zh:"数字、时间和我的课表",ht:"Nimewo, lè, ak orè mwen"},
+ words:[
+  {w:"first",e:"1️⃣",s:"First block is math.",t:{es:"primero",vi:"thứ nhất",ar:"الأول",zh:"第一",ht:"premye"}},
+  {w:"second",e:"2️⃣",s:"Second block is English.",t:{es:"segundo",vi:"thứ hai",ar:"الثاني",zh:"第二",ht:"dezyèm"}},
+  {w:"o'clock",e:"🕗",s:"School starts at eight o'clock.",t:{es:"en punto",vi:"giờ đúng",ar:"تمامًا",zh:"点钟",ht:"lè egzak"}},
+  {w:"morning",e:"🌅",s:"I ride the bus in the morning.",t:{es:"mañana",vi:"buổi sáng",ar:"صباح",zh:"早上",ht:"maten"}},
+  {w:"afternoon",e:"🌇",s:"In the afternoon I have science.",t:{es:"tarde",vi:"buổi chiều",ar:"بعد الظهر",zh:"下午",ht:"apremidi"}},
+  {w:"schedule",e:"🗓️",s:"This is my schedule.",t:{es:"horario",vi:"thời khóa biểu",ar:"جدول",zh:"课表",ht:"orè"}},
+  {w:"late",e:"⏰",s:"I am late for class.",t:{es:"tarde (retrasado)",vi:"muộn",ar:"متأخر",zh:"迟到",ht:"an reta"}},
+  {w:"lunch",e:"🍽️",s:"Lunch is at noon.",t:{es:"almuerzo",vi:"bữa trưa",ar:"غداء",zh:"午餐",ht:"manje midi"}}],
+ listen:{text:"School starts at eight o'clock. Lunch is at twelve. The buses leave at three fifteen.",
+   q:{en:"When do the buses leave?",es:"¿Cuándo salen los autobuses?",vi:"Xe buýt rời lúc mấy giờ?",ar:"متى تغادر الحافلات؟",zh:"校车几点离开？",ht:"Ki lè bis yo pati?"},
+   opts:["At eight","At twelve","At three fifteen"],a:2},
+ speak:["School starts at eight o'clock.","My first block is math.","I am late for class."],
+ read:{title:"My school day",
+   text:"My day has four blocks. First block is math in room 110. Second block is English. Then we have lunch at noon. Third block is science, and fourth block is history. The buses leave at three fifteen. If I miss my bus, I go to the office and call home.",
+   qs:[{q:"How many blocks are in the day?",opts:["Two","Four","Six"],a:1},
+       {q:"What comes right before lunch?",opts:["Math","English","Science"],a:1},
+       {q:"What does the student do after missing the bus?",opts:["Walks home","Goes to the office and calls home","Waits in class"],a:1}]},
+ write:[{frame:"School starts at ___ o'clock.",need:["o'clock"],ex:"School starts at eight o'clock."},
+        {frame:"My first block is ___.",need:["first"],ex:"My first block is math."}]},
+
+/* ===== LEVEL 1 — Emerging ===== */
+{id:'u05',lv:1,icon:'🎒',
+ title:{en:"Talking about my day",es:"Hablar de mi día",vi:"Nói về ngày của tôi",ar:"الحديث عن يومي",zh:"谈谈我的一天",ht:"Pale sou jounen mwen"},
+ words:[
+  {w:"wake up",e:"⏰",s:"I wake up at six.",t:{es:"despertarse",vi:"thức dậy",ar:"يستيقظ",zh:"起床",ht:"leve"}},
+  {w:"ride the bus",e:"🚌",s:"I ride the bus to school.",t:{es:"tomar el autobús",vi:"đi xe buýt",ar:"يركب الحافلة",zh:"坐公交车",ht:"pran bis"}},
+  {w:"usually",e:"🔄",s:"I usually eat breakfast at home.",t:{es:"normalmente",vi:"thường",ar:"عادةً",zh:"通常",ht:"anjeneral"}},
+  {w:"after",e:"➡️",s:"After school I work.",t:{es:"después",vi:"sau khi",ar:"بعد",zh:"之后",ht:"apre"}},
+  {w:"before",e:"⬅️",s:"Before class I check my phone.",t:{es:"antes",vi:"trước khi",ar:"قبل",zh:"之前",ht:"anvan"}},
+  {w:"homework",e:"📝",s:"I do my homework at night.",t:{es:"tarea",vi:"bài tập về nhà",ar:"واجب منزلي",zh:"作业",ht:"devwa"}},
+  {w:"tired",e:"😴",s:"I am tired after practice.",t:{es:"cansado",vi:"mệt",ar:"متعب",zh:"累",ht:"fatige"}},
+  {w:"every day",e:"📆",s:"I walk my sister every day.",t:{es:"todos los días",vi:"mỗi ngày",ar:"كل يوم",zh:"每天",ht:"chak jou"}}],
+ listen:{text:"On weekdays I wake up at six, ride the bus at seven, and get to school before eight. After school I help at my uncle's store.",
+   q:{en:"What does the speaker do after school?",es:"¿Qué hace después de la escuela?",vi:"Người nói làm gì sau giờ học?",ar:"ماذا يفعل المتحدث بعد المدرسة؟",zh:"说话人放学后做什么？",ht:"Kisa moun nan fè apre lekòl?"},
+   opts:["Sleeps","Helps at the store","Rides the bus home"],a:1},
+ speak:["I usually wake up at six o'clock.","After school I help my family.","I am tired, but I finish my homework."],
+ read:{title:"Two jobs",
+   text:"Marisol is a tenth grader. She wakes up at five thirty because she makes breakfast for her brother. She rides the bus at six forty. After school she works at a restaurant until nine. She does her homework late at night, so she is often tired. Her counselor helped her move one class to the morning. Now she has one free block to study before work.",
+   qs:[{q:"Why does Marisol wake up so early?",opts:["To study","To make breakfast for her brother","To catch an early bus"],a:1},
+       {q:"When does she do her homework?",opts:["At lunch","Late at night","Before school"],a:1},
+       {q:"What did the counselor change?",opts:["Her job hours","One class to the morning","Her bus route"],a:1}]},
+ write:[{frame:"I usually ___ at ___ o'clock.",need:["usually","o'clock"],ex:"I usually wake up at six o'clock."},
+        {frame:"After school, I ___.",need:["after school"],ex:"After school, I work at a store."}]},
+
+{id:'u06',lv:1,icon:'🍎',
+ title:{en:"Food, the cafeteria, and money",es:"Comida, la cafetería y el dinero",vi:"Thức ăn, căng tin và tiền",ar:"الطعام والمقصف والمال",zh:"食物、餐厅和钱",ht:"Manje, kafeterya, ak lajan"},
+ words:[
+  {w:"cafeteria",e:"🍽️",s:"The cafeteria is loud.",t:{es:"cafetería",vi:"căng tin",ar:"مقصف",zh:"餐厅",ht:"kafeterya"}},
+  {w:"tray",e:"🥡",s:"Put your tray here.",t:{es:"bandeja",vi:"khay",ar:"صينية",zh:"餐盘",ht:"plato"}},
+  {w:"free lunch",e:"🎫",s:"I get free lunch.",t:{es:"almuerzo gratis",vi:"bữa trưa miễn phí",ar:"غداء مجاني",zh:"免费午餐",ht:"manje midi gratis"}},
+  {w:"hungry",e:"😋",s:"I am hungry at ten.",t:{es:"con hambre",vi:"đói",ar:"جائع",zh:"饿",ht:"grangou"}},
+  {w:"allergy",e:"⚠️",s:"I have a peanut allergy.",t:{es:"alergia",vi:"dị ứng",ar:"حساسية",zh:"过敏",ht:"alèji"}},
+  {w:"cost",e:"💵",s:"How much does it cost?",t:{es:"costar",vi:"giá",ar:"يكلف",zh:"花费",ht:"koute"}},
+  {w:"change",e:"🪙",s:"Here is your change.",t:{es:"cambio",vi:"tiền thối",ar:"باقي النقود",zh:"找零",ht:"monnen"}},
+  {w:"line",e:"🧍🧍",s:"Wait in the line.",t:{es:"fila",vi:"hàng",ar:"طابور",zh:"排队",ht:"liy"}}],
+ listen:{text:"Get a tray, choose a main dish and two sides, then tell the cashier your student number.",
+   q:{en:"What do you tell the cashier?",es:"¿Qué le dices al cajero?",vi:"Bạn nói gì với thu ngân?",ar:"ماذا تقول لأمين الصندوق؟",zh:"你要告诉收银员什么？",ht:"Kisa ou di kesye a?"},
+   opts:["Your student number","Your address","Your teacher's name"],a:0},
+ speak:["How much does the lunch cost?","I have a peanut allergy.","Excuse me, where is the line?"],
+ read:{title:"Telling someone about an allergy",
+   text:"Kofi has a peanut allergy. On his first day he did not know how to say it, so he ate only bread. That night he told his sister, and she wrote the sentence on a card: \"I have a peanut allergy. I cannot eat peanuts.\" The next day he showed the card to the cafeteria worker. She walked him through the line and showed him three safe choices. Now Kofi says the sentence himself.",
+   qs:[{q:"Why did Kofi eat only bread on the first day?",opts:["He was not hungry","He could not explain his allergy","Bread was free"],a:1},
+       {q:"Who wrote the sentence on a card?",opts:["His sister","The nurse","The cafeteria worker"],a:0},
+       {q:"What does Kofi do now?",opts:["Shows the card","Says the sentence himself","Brings lunch from home"],a:1}]},
+ write:[{frame:"How much does ___ cost?",need:["how much","cost"],ex:"How much does the lunch cost?"},
+        {frame:"I have a ___ allergy.",need:["allergy"],ex:"I have a peanut allergy."}]},
+
+{id:'u07',lv:1,icon:'🩺',
+ title:{en:"Feelings, health, and the nurse",es:"Sentimientos, salud y la enfermera",vi:"Cảm xúc, sức khỏe và y tá",ar:"المشاعر والصحة والممرضة",zh:"感受、健康和校医",ht:"Santiman, sante, ak enfimyè a"},
+ words:[
+  {w:"sick",e:"🤒",s:"I feel sick today.",t:{es:"enfermo",vi:"ốm",ar:"مريض",zh:"生病",ht:"malad"}},
+  {w:"headache",e:"🤕",s:"I have a headache.",t:{es:"dolor de cabeza",vi:"đau đầu",ar:"صداع",zh:"头痛",ht:"tèt fè mal"}},
+  {w:"nurse",e:"🩺",s:"May I see the nurse?",t:{es:"enfermera",vi:"y tá",ar:"ممرضة",zh:"校医",ht:"enfimyè"}},
+  {w:"hurt",e:"🤲",s:"My hand hurts.",t:{es:"doler",vi:"đau",ar:"يؤلم",zh:"疼",ht:"fè mal"}},
+  {w:"worried",e:"😟",s:"I am worried about the test.",t:{es:"preocupado",vi:"lo lắng",ar:"قلق",zh:"担心",ht:"enkyete"}},
+  {w:"nervous",e:"😬",s:"I get nervous when I speak.",t:{es:"nervioso",vi:"hồi hộp",ar:"متوتر",zh:"紧张",ht:"nève"}},
+  {w:"better",e:"📈",s:"I feel better now.",t:{es:"mejor",vi:"khá hơn",ar:"أفضل",zh:"好些了",ht:"pi byen"}},
+  {w:"rest",e:"🛏️",s:"I need to rest.",t:{es:"descansar",vi:"nghỉ ngơi",ar:"يرتاح",zh:"休息",ht:"repoze"}}],
+ listen:{text:"If you feel sick during class, tell your teacher. Say: I feel sick. May I see the nurse? Your teacher will give you a pass.",
+   q:{en:"What will the teacher give you?",es:"¿Qué te dará el maestro?",vi:"Giáo viên sẽ đưa bạn cái gì?",ar:"ماذا سيعطيك المعلم؟",zh:"老师会给你什么？",ht:"Kisa pwofesè a ap ba ou?"},
+   opts:["A pass","Medicine","A phone"],a:0},
+ speak:["I feel sick. May I see the nurse?","I have a headache.","I am nervous about speaking in class."],
+ read:{title:"Nervous is not the same as not ready",
+   text:"Many students feel nervous before they speak English in front of a class. Your heart beats fast and the words feel slow. That feeling is normal, and it is not proof that you are not ready. One thing helps more than anything else: practice the sentence quietly first, with a partner or alone, before you say it to the whole room. The second time you say a sentence, it is always easier than the first.",
+   qs:[{q:"What does the text say about feeling nervous?",opts:["It means you are not ready","It is normal","It never goes away"],a:1},
+       {q:"What helps the most?",opts:["Practicing the sentence first","Speaking louder","Waiting a week"],a:0},
+       {q:"What happens the second time you say a sentence?",opts:["It is harder","It is easier","It is the same"],a:1}]},
+ write:[{frame:"I feel ___ today.",need:["i feel"],ex:"I feel sick today."},
+        {frame:"May I ___ the nurse?",need:["see"],ex:"May I see the nurse?"}]},
+
+{id:'u08',lv:1,icon:'⏪',
+ title:{en:"Yesterday: talking about the past",es:"Ayer: hablar del pasado",vi:"Hôm qua: nói về quá khứ",ar:"أمس: الحديث عن الماضي",zh:"昨天：谈过去",ht:"Yè: pale sou tan pase"},
+ words:[
+  {w:"yesterday",e:"⏪",s:"Yesterday I studied.",t:{es:"ayer",vi:"hôm qua",ar:"أمس",zh:"昨天",ht:"yè"}},
+  {w:"went",e:"🚶",s:"I went to the lab.",t:{es:"fui / fue",vi:"đã đi",ar:"ذهب",zh:"去了",ht:"te ale"}},
+  {w:"finished",e:"✔️",s:"I finished my essay.",t:{es:"terminé",vi:"đã xong",ar:"أنهى",zh:"完成了",ht:"te fini"}},
+  {w:"forgot",e:"🤦",s:"I forgot my charger.",t:{es:"olvidé",vi:"đã quên",ar:"نسي",zh:"忘了",ht:"te bliye"}},
+  {w:"last night",e:"🌙",s:"Last night I worked late.",t:{es:"anoche",vi:"tối qua",ar:"الليلة الماضية",zh:"昨晚",ht:"yè swa"}},
+  {w:"absent",e:"🚫",s:"I was absent on Monday.",t:{es:"ausente",vi:"vắng mặt",ar:"غائب",zh:"缺席",ht:"absan"}},
+  {w:"make up work",e:"📋",s:"I need to make up the work.",t:{es:"reponer el trabajo",vi:"học bù",ar:"تعويض العمل",zh:"补做作业",ht:"ranplase travay la"}},
+  {w:"already",e:"⏱️",s:"I already turned it in.",t:{es:"ya",vi:"đã rồi",ar:"بالفعل",zh:"已经",ht:"deja"}}],
+ listen:{text:"I was absent on Monday, so I asked my teacher for the make-up work. I finished it last night and turned it in this morning.",
+   q:{en:"When did the speaker finish the work?",es:"¿Cuándo terminó el trabajo?",vi:"Người nói hoàn thành bài khi nào?",ar:"متى أنهى المتحدث العمل؟",zh:"说话人什么时候完成作业的？",ht:"Ki lè moun nan te fini travay la?"},
+   opts:["On Monday","Last night","This morning"],a:1},
+ speak:["Yesterday I finished my homework.","I was absent on Monday.","I already turned it in."],
+ read:{title:"Coming back after being absent",
+   text:"When you are absent, two things matter. First, bring a note or have your family call the office, so the absence is excused. Second, ask every teacher the same question: \"I was absent yesterday. What did I miss, and when is it due?\" Write the answer down. Most teachers give you the same number of days you were out. If you wait a week to ask, the work piles up and the grade drops.",
+   qs:[{q:"What makes an absence excused?",opts:["A note or a call from home","Finishing the work","Telling a friend"],a:0},
+       {q:"What should you ask every teacher?",opts:["For a new book","What you missed and when it is due","To change the grade"],a:1},
+       {q:"What happens if you wait a week?",opts:["The work piles up","The teacher forgets","Nothing changes"],a:0}]},
+ write:[{frame:"Yesterday I ___ my homework.",need:["yesterday","finished"],ex:"Yesterday I finished my homework."},
+        {frame:"I was ___ on Monday.",need:["absent"],ex:"I was absent on Monday."}]},
+
+/* ===== LEVEL 2 — Progressing ===== */
+{id:'u09',lv:2,icon:'🔗',
+ title:{en:"Explaining with because",es:"Explicar con porque",vi:"Giải thích bằng because",ar:"التفسير باستخدام because",zh:"用 because 解释",ht:"Esplike ak because"},
+ words:[
+  {w:"because",e:"🔗",s:"The puddle shrank because the water evaporated.",t:{es:"porque",vi:"bởi vì",ar:"لأن",zh:"因为",ht:"paske"}},
+  {w:"reason",e:"🧠",s:"Give one reason for your answer.",t:{es:"razón",vi:"lý do",ar:"سبب",zh:"原因",ht:"rezon"}},
+  {w:"evidence",e:"🔍",s:"The evidence is in paragraph two.",t:{es:"evidencia",vi:"bằng chứng",ar:"دليل",zh:"证据",ht:"prèv"}},
+  {w:"explain",e:"🗒️",s:"Explain how you solved it.",t:{es:"explicar",vi:"giải thích",ar:"يشرح",zh:"解释",ht:"eksplike"}},
+  {w:"therefore",e:"➡️",s:"The sides stay equal; therefore x is four.",t:{es:"por lo tanto",vi:"do đó",ar:"لذلك",zh:"因此",ht:"konsa"}},
+  {w:"result",e:"📊",s:"The result was the same both times.",t:{es:"resultado",vi:"kết quả",ar:"نتيجة",zh:"结果",ht:"rezilta"}},
+  {w:"shows",e:"👁️",s:"The graph shows a steady rise.",t:{es:"muestra",vi:"cho thấy",ar:"يُظهر",zh:"显示",ht:"montre"}},
+  {w:"support",e:"🧱",s:"Which line supports your claim?",t:{es:"apoyar",vi:"hỗ trợ",ar:"يدعم",zh:"支持",ht:"sipòte"}}],
+ listen:{text:"A strong answer has two parts: what you think, and why. Say what you think, then say because, then give the evidence.",
+   q:{en:"What comes after because?",es:"¿Qué viene después de because?",vi:"Sau because là gì?",ar:"ماذا يأتي بعد because؟",zh:"because 后面是什么？",ht:"Kisa ki vini apre because?"},
+   opts:["The evidence","A new topic","Your name"],a:0},
+ speak:["I think the water evaporated because the puddle got smaller.","The evidence is in the second paragraph.","Therefore, my answer is four."],
+ read:{title:"Why answers get marked down",
+   text:"Teachers often write \"explain more\" on a correct answer. The answer is right, but only the conclusion is on the page. A full answer names the claim, then the evidence, then the connection between them. Compare these two: \"The water disappeared.\" and \"The liquid water became water vapor, because the puddle got smaller while the air stayed warm.\" The second one says the same thing, but it shows the reasoning. Showing the reasoning is what earns the credit.",
+   qs:[{q:"What is missing from a short correct answer?",opts:["The evidence and connection","The conclusion","The question"],a:0},
+       {q:"What are the three parts of a full answer?",opts:["Claim, evidence, connection","Name, date, answer","Question, guess, check"],a:0},
+       {q:"What earns the credit?",opts:["Writing more words","Showing the reasoning","Answering fast"],a:1}]},
+ write:[{frame:"I think ___ because ___.",need:["because","i think"],ex:"I think the water evaporated because the puddle got smaller."},
+        {frame:"The evidence ___ that ___.",need:["shows"],ex:"The evidence shows that the sides stay equal."}]},
+
+{id:'u10',lv:2,icon:'⚖️',
+ title:{en:"Comparing two things",es:"Comparar dos cosas",vi:"So sánh hai thứ",ar:"مقارنة شيئين",zh:"比较两样东西",ht:"Konpare de bagay"},
+ words:[
+  {w:"both",e:"👬",s:"Both accounts describe the same day.",t:{es:"ambos",vi:"cả hai",ar:"كلاهما",zh:"两者都",ht:"tou de"}},
+  {w:"however",e:"↔️",s:"However, the second source disagrees.",t:{es:"sin embargo",vi:"tuy nhiên",ar:"لكن",zh:"然而",ht:"sepandan"}},
+  {w:"differ",e:"🔀",s:"They differ in one important way.",t:{es:"diferir",vi:"khác nhau",ar:"يختلف",zh:"不同",ht:"diferan"}},
+  {w:"similar",e:"🟰",s:"The two graphs are similar.",t:{es:"similar",vi:"tương tự",ar:"مشابه",zh:"相似",ht:"sanble"}},
+  {w:"on the other hand",e:"🤚",s:"On the other hand, the cost is higher.",t:{es:"por otro lado",vi:"mặt khác",ar:"من ناحية أخرى",zh:"另一方面",ht:"yon lòt bò"}},
+  {w:"although",e:"🪢",s:"Although both are fast, one is safer.",t:{es:"aunque",vi:"mặc dù",ar:"رغم أن",zh:"虽然",ht:"malgre"}},
+  {w:"more than",e:"➕",s:"This method takes more time than that one.",t:{es:"más que",vi:"hơn",ar:"أكثر من",zh:"比…多",ht:"plis pase"}},
+  {w:"instead",e:"🔁",s:"Use a graph instead of a table.",t:{es:"en vez de",vi:"thay vì",ar:"بدلاً من",zh:"而不是",ht:"olye"}}],
+ listen:{text:"A good comparison names what is the same first, then names one clear difference. Both, but only one.",
+   q:{en:"What do you name first?",es:"¿Qué nombras primero?",vi:"Bạn nêu điều gì trước?",ar:"ماذا تذكر أولاً؟",zh:"你先说什么？",ht:"Kisa ou nonmen an premye?"},
+   opts:["What is the same","The difference","Your opinion"],a:0},
+ speak:["Both accounts describe the same event.","However, only the first one names a date.","Although both are useful, I trust the second one more."],
+ read:{title:"Two accounts of one afternoon",
+   text:"Two students wrote about the same fire drill. Ana wrote that the alarm rang at 1:40 and the class was outside in three minutes. Daniel wrote that the alarm rang during fourth block and that it took a long time to line up. Both describe the same drill, and neither one is lying. However, Ana gives numbers and Daniel gives an impression. When a teacher asks for evidence, numbers are easier to check. Daniel's account is still useful, because it tells you how the drill felt to the people in it.",
+   qs:[{q:"What do both accounts describe?",opts:["The same fire drill","Two different days","A math test"],a:0},
+       {q:"How is Ana's account different?",opts:["She gives numbers","She was not there","She wrote more"],a:0},
+       {q:"Why is Daniel's account still useful?",opts:["It is shorter","It tells how the drill felt","It names the teacher"],a:1}]},
+ write:[{frame:"Both ___, but only ___.",need:["both","only"],ex:"Both accounts describe the drill, but only one gives a time."},
+        {frame:"Although ___, ___.",need:["although"],ex:"Although both are correct, the first is clearer."}]},
+
+{id:'u11',lv:2,icon:'⚙️',
+ title:{en:"Describing a process",es:"Describir un proceso",vi:"Mô tả một quá trình",ar:"وصف عملية",zh:"描述一个过程",ht:"Dekri yon pwosesis"},
+ words:[
+  {w:"first, next, then",e:"🔢",s:"First we measured, next we recorded, then we compared.",t:{es:"primero, después, luego",vi:"đầu tiên, tiếp theo, sau đó",ar:"أولاً، ثم، بعد ذلك",zh:"首先、接着、然后",ht:"premyèman, apre, answit"}},
+  {w:"finally",e:"🏁",s:"Finally, we wrote the conclusion.",t:{es:"finalmente",vi:"cuối cùng",ar:"أخيرًا",zh:"最后",ht:"finalman"}},
+  {w:"measure",e:"📏",s:"We measured the water every hour.",t:{es:"medir",vi:"đo",ar:"يقيس",zh:"测量",ht:"mezire"}},
+  {w:"record",e:"🗒️",s:"Record the number in the table.",t:{es:"registrar",vi:"ghi lại",ar:"يسجل",zh:"记录",ht:"anrejistre"}},
+  {w:"repeat",e:"🔁",s:"We repeated the test three times.",t:{es:"repetir",vi:"lặp lại",ar:"يكرر",zh:"重复",ht:"repete"}},
+  {w:"observe",e:"👀",s:"We observed no change on day two.",t:{es:"observar",vi:"quan sát",ar:"يلاحظ",zh:"观察",ht:"obsève"}},
+  {w:"increase",e:"📈",s:"The temperature increased slowly.",t:{es:"aumentar",vi:"tăng",ar:"يزداد",zh:"增加",ht:"ogmante"}},
+  {w:"decrease",e:"📉",s:"The amount decreased each day.",t:{es:"disminuir",vi:"giảm",ar:"ينقص",zh:"减少",ht:"diminye"}}],
+ listen:{text:"First we measured the water. Next we left the cup near the window. Then we measured again after two days. Finally we compared the two numbers.",
+   q:{en:"What happened last?",es:"¿Qué pasó al final?",vi:"Điều gì xảy ra cuối cùng?",ar:"ماذا حدث أخيرًا؟",zh:"最后发生了什么？",ht:"Kisa ki pase an dènye?"},
+   opts:["They measured the water","They compared the numbers","They moved the cup"],a:1},
+ speak:["First we measured the water, then we recorded the number.","We repeated the test three times.","The amount decreased each day."],
+ read:{title:"Writing up what you did",
+   text:"A lab write-up is not a story. It is a sequence someone else could follow. Use the past tense, because the work is finished, and use order words so each step has a place: first, next, then, finally. Write what you did, not what you hoped. If a step went wrong, write it anyway and say what you changed. A write-up that hides a mistake is less useful than one that explains it, because the explanation is where the science is.",
+   qs:[{q:"What tense should a lab write-up use?",opts:["Past tense","Future tense","Present tense"],a:0},
+       {q:"What do order words do?",opts:["Give each step a place","Make it longer","Replace the data"],a:0},
+       {q:"What should you do if a step went wrong?",opts:["Leave it out","Write it and say what you changed","Start over"],a:1}]},
+ write:[{frame:"First we ___, then we ___.",need:["first","then"],ex:"First we measured the water, then we recorded the number."},
+        {frame:"Finally, we ___.",need:["finally"],ex:"Finally, we compared the two numbers."}]},
+
+{id:'u12',lv:2,icon:'🙋‍♀️',
+ title:{en:"Agreeing and disagreeing",es:"Estar de acuerdo y en desacuerdo",vi:"Đồng ý và không đồng ý",ar:"الاتفاق والاختلاف",zh:"同意与不同意",ht:"Dakò ak pa dakò"},
+ words:[
+  {w:"I agree",e:"👍",s:"I agree with Maria's point.",t:{es:"estoy de acuerdo",vi:"tôi đồng ý",ar:"أوافق",zh:"我同意",ht:"mwen dakò"}},
+  {w:"I see it differently",e:"🔄",s:"I see it differently, because the data changed.",t:{es:"lo veo diferente",vi:"tôi thấy khác",ar:"أراه بشكل مختلف",zh:"我的看法不同",ht:"mwen wè l yon lòt jan"}},
+  {w:"add to",e:"➕",s:"I want to add to what he said.",t:{es:"agregar a",vi:"bổ sung",ar:"أضيف إلى",zh:"补充",ht:"ajoute"}},
+  {w:"point",e:"🎯",s:"That is a good point.",t:{es:"punto",vi:"luận điểm",ar:"نقطة",zh:"观点",ht:"pwen"}},
+  {w:"build on",e:"🏗️",s:"I would like to build on that idea.",t:{es:"ampliar",vi:"phát triển thêm",ar:"أبني على",zh:"在此基础上",ht:"devlope sou"}},
+  {w:"not sure",e:"🤔",s:"I am not sure about the last part.",t:{es:"no estoy seguro",vi:"tôi không chắc",ar:"لست متأكدًا",zh:"我不确定",ht:"mwen pa sèten"}},
+  {w:"for example",e:"💡",s:"For example, look at line six.",t:{es:"por ejemplo",vi:"ví dụ",ar:"على سبيل المثال",zh:"例如",ht:"pa egzanp"}},
+  {w:"in my opinion",e:"🗨️",s:"In my opinion, the second plan is safer.",t:{es:"en mi opinión",vi:"theo ý tôi",ar:"في رأيي",zh:"我认为",ht:"nan opinyon mwen"}}],
+ listen:{text:"You can disagree without being rude. Name what the other person said, then say what you see differently, then give your reason.",
+   q:{en:"What do you name first?",es:"¿Qué nombras primero?",vi:"Bạn nêu gì trước?",ar:"ماذا تذكر أولاً؟",zh:"你先说什么？",ht:"Kisa ou nonmen an premye?"},
+   opts:["What the other person said","Your reason","Your grade"],a:0},
+ speak:["I agree with that point, and I want to add one thing.","I see it differently, because the second source gives a date.","In my opinion, the first plan is safer."],
+ read:{title:"Disagreeing is part of the work",
+   text:"In a class discussion, disagreement is not conflict. It is how a group tests an idea. The move that keeps it safe is simple: repeat the other person's point in your own words before you answer it. \"You said the character is angry. I see it differently, because on page four he apologizes.\" The other student hears that you listened. Then the conversation is about the text, not about the two of you. If you cannot repeat their point, you are not ready to answer it yet.",
+   qs:[{q:"What is disagreement in a discussion?",opts:["Conflict","How a group tests an idea","A mistake"],a:1},
+       {q:"What should you do before you answer?",opts:["Repeat their point in your own words","Raise your voice","Write it down"],a:0},
+       {q:"What does the text say if you cannot repeat their point?",opts:["Answer anyway","You are not ready to answer","Ask the teacher"],a:1}]},
+ write:[{frame:"I agree with ___, and I want to add ___.",need:["i agree","add"],ex:"I agree with Ana, and I want to add one example."},
+        {frame:"I see it differently, because ___.",need:["differently","because"],ex:"I see it differently, because the data changed."}]},
+
+/* ===== LEVEL 3 — Challenge ===== */
+{id:'u13',lv:3,icon:'📌',
+ title:{en:"Claim and evidence",es:"Afirmación y evidencia",vi:"Luận điểm và bằng chứng",ar:"الادعاء والدليل",zh:"主张与证据",ht:"Deklarasyon ak prèv"},
+ words:[
+  {w:"claim",e:"📌",s:"State your claim in one sentence.",t:{es:"afirmación",vi:"luận điểm",ar:"ادعاء",zh:"主张",ht:"deklarasyon"}},
+  {w:"cite",e:"📖",s:"Cite the line that proves it.",t:{es:"citar",vi:"trích dẫn",ar:"يستشهد",zh:"引用",ht:"site"}},
+  {w:"infer",e:"🧩",s:"I infer that he is afraid.",t:{es:"inferir",vi:"suy ra",ar:"يستنتج",zh:"推断",ht:"dedwi"}},
+  {w:"according to",e:"📰",s:"According to the author, the law changed.",t:{es:"según",vi:"theo",ar:"وفقًا لـ",zh:"根据",ht:"dapre"}},
+  {w:"suggests",e:"💭",s:"The ending suggests he regrets it.",t:{es:"sugiere",vi:"gợi ý",ar:"يشير إلى",zh:"暗示",ht:"sijere"}},
+  {w:"counterclaim",e:"⚔️",s:"A counterclaim is the other side.",t:{es:"contraargumento",vi:"phản biện",ar:"ادعاء مضاد",zh:"反驳主张",ht:"kontrargiman"}},
+  {w:"relevant",e:"🎯",s:"Choose the most relevant detail.",t:{es:"relevante",vi:"liên quan",ar:"ذو صلة",zh:"相关的",ht:"ki enpòtan"}},
+  {w:"conclude",e:"🏁",s:"I conclude that the plan worked.",t:{es:"concluir",vi:"kết luận",ar:"يستنتج",zh:"得出结论",ht:"konkli"}}],
+ listen:{text:"A claim without evidence is an opinion. A claim with a cited line is an argument. The difference is the citation.",
+   q:{en:"What turns a claim into an argument?",es:"¿Qué convierte una afirmación en argumento?",vi:"Điều gì biến luận điểm thành lập luận?",ar:"ما الذي يحول الادعاء إلى حجة؟",zh:"什么让主张变成论证？",ht:"Kisa ki fè yon deklarasyon tounen yon agiman?"},
+   opts:["A cited line","A longer sentence","A strong feeling"],a:0},
+ speak:["I infer that the character is afraid, because he hides in paragraph four.","According to the author, the policy changed in 1965.","The evidence suggests the opposite conclusion."],
+ read:{title:"The sentence that does the work",
+   text:"In an argument, one sentence carries most of the weight: the one that connects the quotation to the claim. Students usually write the claim and then drop in a quotation, and stop. The reader is left to guess why that line matters. The connecting sentence answers the guess out loud: \"This line matters because it shows the narrator knew the truth before he spoke.\" It is the least natural sentence to write, because the connection feels obvious to the person who found it. It is never obvious to the reader.",
+   qs:[{q:"Which sentence carries the most weight?",opts:["The quotation","The one connecting quotation to claim","The first sentence"],a:1},
+       {q:"What do students usually leave out?",opts:["The claim","The quotation","The connection"],a:2},
+       {q:"Why is the connecting sentence hard to write?",opts:["It feels obvious to the writer","It is long","It needs a citation"],a:0}]},
+ write:[{frame:"I infer ___ because the text says ___.",need:["infer","because"],ex:"I infer that he is afraid because the text says he hid."},
+        {frame:"According to ___, ___.",need:["according to"],ex:"According to the author, the law changed in 1965."}]},
+
+{id:'u14',lv:3,icon:'🔬',
+ title:{en:"Cause and effect in science",es:"Causa y efecto en ciencias",vi:"Nguyên nhân và kết quả trong khoa học",ar:"السبب والنتيجة في العلوم",zh:"科学中的因果",ht:"Kòz ak efè nan syans"},
+ words:[
+  {w:"cause",e:"🎯",s:"Heat was the cause of the change.",t:{es:"causa",vi:"nguyên nhân",ar:"سبب",zh:"原因",ht:"kòz"}},
+  {w:"effect",e:"📉",s:"The effect appeared after two hours.",t:{es:"efecto",vi:"kết quả",ar:"أثر",zh:"影响",ht:"efè"}},
+  {w:"as a result",e:"➡️",s:"As a result, the mass decreased.",t:{es:"como resultado",vi:"kết quả là",ar:"نتيجة لذلك",zh:"因此",ht:"kòm rezilta"}},
+  {w:"due to",e:"🔗",s:"The error was due to a loose cap.",t:{es:"debido a",vi:"do",ar:"بسبب",zh:"由于",ht:"akoz"}},
+  {w:"variable",e:"🎚️",s:"We changed one variable at a time.",t:{es:"variable",vi:"biến số",ar:"متغير",zh:"变量",ht:"varyab"}},
+  {w:"affect",e:"🌡️",s:"Temperature affects the rate.",t:{es:"afectar",vi:"ảnh hưởng",ar:"يؤثر على",zh:"影响",ht:"afekte"}},
+  {w:"leads to",e:"🪜",s:"More sunlight leads to faster growth.",t:{es:"lleva a",vi:"dẫn đến",ar:"يؤدي إلى",zh:"导致",ht:"mennen nan"}},
+  {w:"evidence suggests",e:"🔍",s:"The evidence suggests a link, not proof.",t:{es:"la evidencia sugiere",vi:"bằng chứng cho thấy",ar:"الدليل يشير",zh:"证据表明",ht:"prèv la sijere"}}],
+ listen:{text:"Two things happening together is not the same as one causing the other. To claim a cause, you must change one variable and keep the others the same.",
+   q:{en:"What must you do to claim a cause?",es:"¿Qué debes hacer para afirmar una causa?",vi:"Bạn phải làm gì để khẳng định nguyên nhân?",ar:"ماذا يجب أن تفعل لتدعي وجود سبب؟",zh:"要主张因果，你必须做什么？",ht:"Kisa ou dwe fè pou w di gen yon kòz?"},
+   opts:["Change one variable","Repeat the words","Measure twice"],a:0},
+ speak:["The temperature increased; as a result, the liquid evaporated faster.","The difference was due to the amount of sunlight.","The evidence suggests a connection, but it does not prove one."],
+ read:{title:"Together is not because",
+   text:"Ice cream sales and drowning both rise in July. No one thinks ice cream causes drowning. A third thing, hot weather, raises both. In a lab report, the same trap appears in smaller form: two measurements move together and the writer calls one the cause. The careful sentence names the relationship without overclaiming. \"The two increased together\" is a finding. \"One caused the other\" is a claim, and a claim needs a controlled test behind it.",
+   qs:[{q:"Why do ice cream sales and drowning both rise?",opts:["Hot weather raises both","One causes the other","By accident"],a:0},
+       {q:"What is the trap in a lab report?",opts:["Measuring twice","Calling a pattern a cause","Writing too little"],a:1},
+       {q:"What does a cause claim need behind it?",opts:["A controlled test","A longer report","More words"],a:0}]},
+ write:[{frame:"___ increased; as a result, ___.",need:["as a result"],ex:"The temperature increased; as a result, the water evaporated faster."},
+        {frame:"The difference was due to ___.",need:["due to"],ex:"The difference was due to the amount of sunlight."}]},
+
+{id:'u15',lv:3,icon:'📚',
+ title:{en:"Analyzing a text",es:"Analizar un texto",vi:"Phân tích văn bản",ar:"تحليل نص",zh:"分析文本",ht:"Analize yon tèks"},
+ words:[
+  {w:"author's purpose",e:"🎯",s:"The author's purpose is to warn the reader.",t:{es:"propósito del autor",vi:"mục đích của tác giả",ar:"غرض الكاتب",zh:"作者的目的",ht:"objektif otè a"}},
+  {w:"tone",e:"🎵",s:"The tone shifts in the last paragraph.",t:{es:"tono",vi:"giọng điệu",ar:"نبرة",zh:"语气",ht:"ton"}},
+  {w:"theme",e:"🧵",s:"One theme is the cost of silence.",t:{es:"tema",vi:"chủ đề",ar:"موضوع",zh:"主题",ht:"tèm"}},
+  {w:"perspective",e:"👓",s:"The narrator's perspective is limited.",t:{es:"perspectiva",vi:"góc nhìn",ar:"منظور",zh:"视角",ht:"pèspektiv"}},
+  {w:"imply",e:"🫥",s:"The ending implies she never returned.",t:{es:"implicar",vi:"ngụ ý",ar:"يلمح",zh:"暗示",ht:"vle di"}},
+  {w:"significant",e:"⭐",s:"That detail is significant.",t:{es:"significativo",vi:"quan trọng",ar:"مهم",zh:"重要的",ht:"enpòtan"}},
+  {w:"shift",e:"↪️",s:"There is a shift after the storm.",t:{es:"cambio",vi:"sự chuyển đổi",ar:"تحول",zh:"转变",ht:"chanjman"}},
+  {w:"reveal",e:"🪞",s:"The dialogue reveals his fear.",t:{es:"revelar",vi:"tiết lộ",ar:"يكشف",zh:"揭示",ht:"revele"}}],
+ listen:{text:"When a tone shifts, look for the sentence where it turns. Usually one line marks the change, and that line is worth quoting.",
+   q:{en:"What should you look for?",es:"¿Qué debes buscar?",vi:"Bạn nên tìm gì?",ar:"عن ماذا تبحث؟",zh:"你应该找什么？",ht:"Kisa ou dwe chèche?"},
+   opts:["The sentence where the tone turns","The longest paragraph","The title"],a:0},
+ speak:["The author's purpose is to warn the reader about the cost of silence.","The tone shifts after the storm, and the narrator stops explaining himself.","That detail is significant because it reveals what he already knew."],
+ read:{title:"Reading the narrator, not just the story",
+   text:"A first-person narrator tells you what happened and, without meaning to, tells you who they are. When a narrator insists on something repeatedly, the insistence itself is evidence. A character who says \"I was not afraid\" three times in two pages has told you he was afraid. This is why strong analysis quotes the way something is said, not only what is said. The content gives you the plot. The pattern gives you the person.",
+   qs:[{q:"What does a narrator reveal without meaning to?",opts:["Who they are","The ending","The setting"],a:0},
+       {q:"What does repeated insistence become?",opts:["Evidence","A mistake","The theme"],a:0},
+       {q:"What should strong analysis quote?",opts:["Only what is said","The way something is said","The first line"],a:1}]},
+ write:[{frame:"The author's purpose is to ___.",need:["purpose"],ex:"The author's purpose is to warn the reader."},
+        {frame:"The tone shifts when ___, which reveals ___.",need:["tone","reveals"],ex:"The tone shifts when the storm ends, which reveals his guilt."}]},
+
+{id:'u16',lv:3,icon:'🎤',
+ title:{en:"Presenting an argument",es:"Presentar un argumento",vi:"Trình bày lập luận",ar:"تقديم حجة",zh:"陈述论点",ht:"Prezante yon agiman"},
+ words:[
+  {w:"propose",e:"📣",s:"I propose that we change the schedule.",t:{es:"proponer",vi:"đề xuất",ar:"أقترح",zh:"提议",ht:"pwopoze"}},
+  {w:"acknowledge",e:"🤝",s:"I acknowledge the cost is high.",t:{es:"reconocer",vi:"thừa nhận",ar:"أقر بـ",zh:"承认",ht:"rekonèt"}},
+  {w:"nevertheless",e:"🧱",s:"Nevertheless, the benefit is larger.",t:{es:"no obstante",vi:"tuy vậy",ar:"ومع ذلك",zh:"尽管如此",ht:"kanmenm"}},
+  {w:"significantly",e:"📊",s:"Scores rose significantly.",t:{es:"significativamente",vi:"đáng kể",ar:"بشكل ملحوظ",zh:"显著地",ht:"anpil"}},
+  {w:"recommend",e:"✅",s:"I recommend the second option.",t:{es:"recomendar",vi:"khuyến nghị",ar:"أوصي بـ",zh:"推荐",ht:"rekòmande"}},
+  {w:"in conclusion",e:"🏁",s:"In conclusion, the data supports the change.",t:{es:"en conclusión",vi:"tóm lại",ar:"في الختام",zh:"总之",ht:"an konklizyon"}},
+  {w:"address",e:"🎯",s:"Let me address the main objection.",t:{es:"abordar",vi:"giải quyết",ar:"أتناول",zh:"回应",ht:"abòde"}},
+  {w:"stakeholder",e:"👥",s:"Every stakeholder should be heard.",t:{es:"parte interesada",vi:"bên liên quan",ar:"صاحب مصلحة",zh:"相关方",ht:"moun ki konsène"}}],
+ listen:{text:"The strongest arguments name the other side first. Acknowledge the objection, then answer it. That order makes you sound confident, not defensive.",
+   q:{en:"What should you do first?",es:"¿Qué debes hacer primero?",vi:"Bạn nên làm gì trước?",ar:"ماذا تفعل أولاً؟",zh:"你应该先做什么？",ht:"Kisa ou dwe fè an premye?"},
+   opts:["Acknowledge the objection","State your opinion louder","Thank the audience"],a:0},
+ speak:["I propose that we change the bell schedule, and I have three reasons.","I acknowledge the cost; nevertheless, the benefit is larger.","In conclusion, I recommend the second option."],
+ read:{title:"Why the objection goes early",
+   text:"A speaker who hides the obvious objection makes the audience wait for it. While they wait, they stop listening to the argument and start preparing the question. A speaker who names it in the first minute takes that job away from them. \"The main worry about this plan is the cost. Let me address that now.\" The audience relaxes, because the hard part is already on the table, and the rest of the argument gets heard. Naming the weakness early is not weakness. It is control of the room.",
+   qs:[{q:"What does the audience do while waiting for the objection?",opts:["Stop listening and prepare the question","Take notes","Agree"],a:0},
+       {q:"When should a speaker name the objection?",opts:["In the first minute","At the end","Never"],a:0},
+       {q:"What does naming the weakness early show?",opts:["Weakness","Control of the room","Confusion"],a:1}]},
+ write:[{frame:"I propose that ___, because ___.",need:["propose","because"],ex:"I propose that we change the schedule, because students arrive late."},
+        {frame:"I acknowledge ___; nevertheless, ___.",need:["acknowledge","nevertheless"],ex:"I acknowledge the cost; nevertheless, the benefit is larger."}]}
+];
+
+/* ---------- Conversations (speak-your-turn) ---------- */
+var CONVS = [
+{id:'c1',lv:0,icon:'🚪',
+ title:{en:"Your first day",es:"Tu primer día",vi:"Ngày đầu tiên của bạn",ar:"يومك الأول",zh:"你的第一天",ht:"Premye jou w"},
+ who:"Ms. Carter, the front office",
+ turns:[
+  {say:"Good morning. Can I help you?",reply:["Hello. My name is ___. I am a new student.","Good morning. I am new here."]},
+  {say:"Welcome. What grade are you in?",reply:["I am in tenth grade.","I am in ninth grade."]},
+  {say:"Here is your schedule. Your first class is in room 110.",reply:["Thank you. Where is room 110?","Thank you very much."]},
+  {say:"Go down this hall and turn left. Mr. Diaz will be at the door.",reply:["Thank you. Have a good day.","Okay. Thank you for your help."]}]},
+{id:'c2',lv:0,icon:'🍽️',
+ title:{en:"Lunch line",es:"Fila del almuerzo",vi:"Hàng ăn trưa",ar:"طابور الغداء",zh:"午餐队伍",ht:"Liy manje midi"},
+ who:"The cafeteria worker",
+ turns:[
+  {say:"Hi there. Chicken or pasta today?",reply:["Chicken, please.","Pasta, please."]},
+  {say:"Alright. Do you want milk or juice?",reply:["Milk, please.","Juice, please. Thank you."]},
+  {say:"That's two fifty. Do you have your student number?",reply:["Yes. My number is 4-0-2-1.","I'm sorry, I don't know it. Can you help me?"]},
+  {say:"Got it. You're all set. Have a good lunch.",reply:["Thank you.","Thank you. Have a good day."]}]},
+{id:'c3',lv:1,icon:'🧑‍🏫',
+ title:{en:"Asking a teacher for help",es:"Pedir ayuda a un maestro",vi:"Nhờ giáo viên giúp",ar:"طلب المساعدة من المعلم",zh:"向老师求助",ht:"Mande yon pwofesè èd"},
+ who:"Mr. Diaz, your biology teacher",
+ turns:[
+  {say:"You wanted to see me?",reply:["Yes. I don't understand question four.","Yes. I need help with the homework."]},
+  {say:"Sure. Show me what you tried.",reply:["I wrote this part, but I got stuck here.","I did not understand the word 'evaporate'."]},
+  {say:"Okay, that makes sense. Evaporate means the liquid water becomes water vapor. Does that help?",reply:["Yes, thank you. Can I try it again?","I think so. Can you say it one more time?"]},
+  {say:"Of course. Take your time, and bring it back tomorrow.",reply:["Thank you. I will finish it tonight.","Thank you for your help."]}]},
+{id:'c4',lv:1,icon:'🩺',
+ title:{en:"Going to the nurse",es:"Ir con la enfermera",vi:"Đến phòng y tá",ar:"الذهاب إلى الممرضة",zh:"去校医室",ht:"Ale kay enfimyè a"},
+ who:"Mrs. Hall, the school nurse",
+ turns:[
+  {say:"Come in. What's going on?",reply:["I have a headache.","I feel sick. My stomach hurts."]},
+  {say:"I'm sorry to hear that. When did it start?",reply:["It started this morning.","It started about one hour ago."]},
+  {say:"Did you eat breakfast today?",reply:["No, I did not eat breakfast.","Yes, I ate at home."]},
+  {say:"Let's have you rest here for fifteen minutes and drink some water.",reply:["Okay. Thank you.","Thank you. May I call my mother?"]}]},
+{id:'c5',lv:2,icon:'👥',
+ title:{en:"Group work",es:"Trabajo en grupo",vi:"Làm việc nhóm",ar:"العمل الجماعي",zh:"小组合作",ht:"Travay an gwoup"},
+ who:"Jordan, your partner",
+ turns:[
+  {say:"So I think the answer is forty. Do you agree?",reply:["I agree, because both sides stayed equal.","I see it differently. Can I show you?"]},
+  {say:"Okay, show me how you got yours.",reply:["First I subtracted six, then I divided by two.","I used the graph instead of the equation."]},
+  {say:"Huh. I didn't do that step. Which one do we write down?",reply:["Let's check both and see which one works.","I think mine is right, but let's ask the teacher."]},
+  {say:"Good idea. You write it and I'll check the numbers.",reply:["Okay. I will write the explanation.","Sounds good. I will start now."]}]},
+{id:'c6',lv:2,icon:'📞',
+ title:{en:"Calling about a job",es:"Llamar por un trabajo",vi:"Gọi điện hỏi việc",ar:"الاتصال بشأن وظيفة",zh:"打电话应聘",ht:"Rele pou yon travay"},
+ who:"A manager at a grocery store",
+ turns:[
+  {say:"Thanks for calling. How can I help you?",reply:["Hello. I am calling about the job posting.","Good afternoon. I would like to apply for a job."]},
+  {say:"Great. Have you worked in a store before?",reply:["Yes, I worked at my uncle's store last summer.","No, but I learn quickly and I am reliable."]},
+  {say:"Good to know. What hours can you work?",reply:["I can work after four o'clock on weekdays.","I am available on weekends and after school."]},
+  {say:"Alright. Come by on Thursday at five and bring your ID.",reply:["Thank you. I will be there on Thursday.","Thank you very much. I appreciate your time."]}]},
+{id:'c7',lv:3,icon:'🎓',
+ title:{en:"Talking to your counselor about college",es:"Hablar con tu consejero sobre la universidad",vi:"Nói chuyện với cố vấn về đại học",ar:"التحدث مع المرشد عن الجامعة",zh:"与辅导员谈大学",ht:"Pale ak konseye w sou kolèj"},
+ who:"Ms. Price, your school counselor",
+ turns:[
+  {say:"Come on in. You said you had questions about next year?",reply:["Yes. I want to know if I am on track to graduate.","Yes. I would like to talk about applying to college."]},
+  {say:"Let's look. You have eighteen credits. You need four more.",reply:["Which classes do I still need?","Can I take one of them in summer school?"]},
+  {say:"You need one more English and one more math. Summer school is possible.",reply:["I would like to do that, because I work in the fall.","That would help me significantly. How do I sign up?"]},
+  {say:"I'll print the form. One more thing — have you thought about the ACT?",reply:["Not yet. Can you tell me when it is offered?","Yes, but I am worried about the reading section."]},
+  {say:"We have a free prep session on Tuesdays. I'll add you to the list.",reply:["Thank you. I will come on Tuesday.","Thank you. I appreciate your help with this."]}]},
+{id:'c8',lv:3,icon:'🗳️',
+ title:{en:"Making a case in class",es:"Defender una idea en clase",vi:"Bảo vệ ý kiến trong lớp",ar:"الدفاع عن رأي في الصف",zh:"在课堂上陈述观点",ht:"Defann yon lide nan klas"},
+ who:"Your class, during a discussion",
+ turns:[
+  {say:"The class is split. Who wants to make the case for the later start time?",reply:["I would like to. I propose a later start, and I have two reasons.","I will. I think a later start would help students significantly."]},
+  {say:"Go ahead. What's your first reason?",reply:["First, students who work late get more sleep.","First, attendance improves when school starts later."]},
+  {say:"Someone will say the buses can't be rescheduled. What do you say to that?",reply:["I acknowledge the bus problem; nevertheless, two districts nearby solved it.","That is a fair point. However, the schedule could shift by only thirty minutes."]},
+  {say:"Interesting. How would you close your argument?",reply:["In conclusion, I recommend a thirty-minute shift and a review in one year.","In conclusion, the evidence suggests the benefit is larger than the cost."]}]}
+];
+
+/* ---------- Grammar items for the daily drill ---------- */
+var GRAMMAR = [
+ {q:"I ___ sixteen years old.",opts:["am","have","is"],a:0,why:"English uses 'am' for age, not 'have'."},
+ {q:"She ___ the answer every day.",opts:["explain","explains","explaining"],a:1,why:"He/she/it adds -s in the present."},
+ {q:"___ he need help?",opts:["Do","Does","Is"],a:1,why:"Use 'does' with he/she/it, then the base verb."},
+ {q:"Did you ___ the test?",opts:["finished","finish","finishes"],a:1,why:"After 'did', use the base verb."},
+ {q:"I ___ understand this part.",opts:["no","don't","not"],a:1,why:"Use don't/doesn't before the verb."},
+ {q:"We ___ to the lab yesterday.",opts:["goed","went","go"],a:1,why:"'Go' is irregular: go → went."},
+ {q:"Yesterday we ___ the water.",opts:["measure","measured","measuring"],a:1,why:"Past time needs the past form."},
+ {q:"She has two ___.",opts:["book","books","bookes"],a:1,why:"Add -s for more than one."},
+ {q:"It is a ___ question.",opts:["difficult","difficults","difficulty"],a:0,why:"English adjectives do not add -s."},
+ {q:"___ you ready?",opts:["Do","Are","Does"],a:1,why:"Use 'are' with 'be', not 'do'."},
+ {q:"My partner ___ absent today.",opts:["is","are","be"],a:0,why:"Singular subject takes 'is'."},
+ {q:"I want ___ ask a question.",opts:["to","for","at"],a:0,why:"'want to' + base verb."},
+ {q:"The puddle got smaller ___ the water evaporated.",opts:["because","so","but"],a:0,why:"'Because' introduces the reason."},
+ {q:"Both graphs are similar; ___, one shows a drop.",opts:["however","because","and"],a:0,why:"'However' signals a contrast."},
+ {q:"The temperature rose; as a ___, the ice melted.",opts:["result","reason","cause"],a:0,why:"The fixed phrase is 'as a result'."},
+ {q:"___ to the author, the law changed.",opts:["According","Because","Instead"],a:0,why:"The fixed phrase is 'according to'."},
+ {q:"I have ___ turned it in.",opts:["yet","already","still"],a:1,why:"'Already' means it is done."},
+ {q:"There ___ twenty desks in the room.",opts:["is","are","be"],a:1,why:"Plural subject takes 'are'."},
+ {q:"I am interested ___ science.",opts:["in","on","to"],a:0,why:"'Interested in' is fixed."},
+ {q:"He said he ___ coming late.",opts:["was","is","be"],a:0,why:"Reported speech shifts to the past."}
+];
+
+</script>
+<script>
+/* English On Your Own — app */
+(function(){
+"use strict";
+var KEY='eoyo.v1';
+var S={lang:null,name:'',placed:false,start:0,done:{},srs:{},streak:{d:'',n:0},mins:{d:'',s:0},convs:{},xp:0,drill:{d:'',n:0}};
+function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);for(var k in o)S[k]=o[k]}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+load();
+
+var $=function(s){return document.querySelector(s)};
+var view=$('#view'), tab='path', stack=[];
+function today(){return new Date().toISOString().slice(0,10)}
+function dayNum(){return Math.floor(Date.now()/864e5)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function t(k){var o=UI[k];if(!o)return k;return o[S.lang]||o.en}
+function langObj(){for(var i=0;i<LANGS.length;i++)if(LANGS[i].c===S.lang)return LANGS[i];return LANGS[0]}
+function isRTL(){return langObj().rtl}
+
+/* ---------- speech ---------- */
+var synth=window.speechSynthesis, rate=1;
+function say(text,lang,r){
+  if(!synth)return;
+  try{synth.cancel();var u=new SpeechSynthesisUtterance(text);u.lang=lang||'en-US';u.rate=r||rate;synth.speak(u)}catch(e){}
+}
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function norm(s){return String(s).toLowerCase().replace(/[^a-z0-9'\s]/g,' ').replace(/\s+/g,' ').trim()}
+function scoreSaid(target,said){
+  var tt=norm(target).split(' ').filter(function(w){return w&&w!=='___'});
+  var ss=norm(said).split(' ');
+  var pool=ss.slice(), hits=[];
+  tt.forEach(function(w){
+    var i=pool.indexOf(w);
+    if(i>=0){pool.splice(i,1);hits.push(true)}
+    else{
+      var near=pool.findIndex(function(p){return p.length>3&&w.length>3&&(p.indexOf(w.slice(0,4))===0||w.indexOf(p.slice(0,4))===0)});
+      if(near>=0){pool.splice(near,1);hits.push(true)}else hits.push(false)
+    }
+  });
+  var n=hits.filter(Boolean).length;
+  return {pct:tt.length?Math.round(n/tt.length*100):0, words:tt, hits:hits};
+}
+
+/* ---------- progress ---------- */
+function unitDone(id){var d=S.done[id];return d&&d.length>=5}
+function stageDone(id,st){var d=S.done[id];return !!(d&&d.indexOf(st)>=0)}
+function markStage(id,st){if(!S.done[id])S.done[id]=[];if(S.done[id].indexOf(st)<0){S.done[id].push(st);addXp(12)}save()}
+function addXp(n){S.xp=(S.xp||0)+n;save();var e=$('#hXp');if(e)e.textContent=S.xp+' XP'}
+function touchStreak(){
+  var td=today();
+  if(S.streak.d===td)return;
+  var y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  S.streak.n=(S.streak.d===y)?(S.streak.n+1):1;
+  S.streak.d=td;save();
+}
+function wordsLearned(){var n=0;for(var k in S.srs){if(k.charAt(0)==='w'&&S.srs[k].b>=2)n++}return n}
+function unitsDone(){var n=0;UNITS.forEach(function(u){if(unitDone(u.id))n++});return n}
+function toast(msg){var d=document.createElement('div');d.className='toast';d.textContent=msg;document.body.appendChild(d);setTimeout(function(){d.remove()},2200)}
+
+/* ---------- srs ---------- */
+function srsAdd(k){if(!S.srs[k])S.srs[k]={b:0,due:dayNum()}}
+function srsHit(k,ok){
+  var it=S.srs[k]||{b:0,due:dayNum()};
+  it.b=ok?Math.min(4,it.b+1):0;
+  it.due=dayNum()+[0,1,2,4,8][it.b];
+  S.srs[k]=it;save();
+}
+function allWords(){var a=[];UNITS.forEach(function(u){u.words.forEach(function(w){a.push({u:u.id,w:w})})});return a}
+function dueItems(){
+  var d=dayNum(), out=[], seen={};
+  allWords().forEach(function(x){
+    var k='w:'+x.w.w, it=S.srs[k];
+    if(it&&it.due<=d){out.push({t:'w',k:k,d:x.w});seen[k]=1}
+  });
+  GRAMMAR.forEach(function(g,i){var k='g:'+i,it=S.srs[k];if(it&&it.due<=d)out.push({t:'g',k:k,d:g,i:i})});
+  // top up with new material from units at or before the student's position
+  if(out.length<14){
+    var pos=furthest();
+    allWords().forEach(function(x){
+      if(out.length>=14)return;
+      var k='w:'+x.w.w;if(S.srs[k])return;
+      var ui=UNITS.findIndex(function(u){return u.id===x.u});
+      if(ui<=pos){srsAdd(k);out.push({t:'w',k:k,d:x.w})}
+    });
+  }
+  if(out.length<18){
+    GRAMMAR.forEach(function(g,i){
+      if(out.length>=18)return;
+      var k='g:'+i;if(S.srs[k])return;srsAdd(k);out.push({t:'g',k:k,d:g,i:i});
+    });
+  }
+  return shuffle(out).slice(0,18);
+}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var x=a[i];a[i]=a[j];a[j]=x}return a}
+function furthest(){var last=S.start||0;UNITS.forEach(function(u,i){if(unitDone(u.id)&&i>last)last=i});return Math.min(UNITS.length-1,last+1)}
+
+/* ---------- chrome ---------- */
+function setTitle(s){$('#hTitle').textContent=s}
+function showBack(fn){var b=$('#btnBack');if(fn){b.classList.remove('hide');b.onclick=fn}else b.classList.add('hide')}
+function applyLang(){
+  var L=langObj();
+  document.body.dir=L.rtl?'rtl':'ltr';
+  document.documentElement.lang=L.c;
+  $('#tbPath').textContent=t('myPath');$('#tbDaily').textContent=t('daily');
+  $('#tbTalk').textContent=t('talk');$('#tbMe').textContent=t('me');
+  $('#hXp').textContent=(S.xp||0)+' XP';
+}
+document.querySelectorAll('nav.tabs button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');tab=b.dataset.t;stack=[];render();
+  };
+});
+$('#btnLang').onclick=function(){openSplash(true)};
+
+/* ---------- splash ---------- */
+function openSplash(switching){
+  var el=$('#splash');el.style.display='flex';
+  var g=$('#langPick');g.innerHTML='';
+  LANGS.forEach(function(L){
+    var b=document.createElement('button');
+    b.innerHTML='<b>'+L.f+'</b> '+esc(L.n);
+    b.onclick=function(){
+      S.lang=L.c;save();applyLang();el.style.display='none';
+      if(!S.placed&&!switching){tab='path';stack=[{v:'place'}]}
+      render();
+    };
+    g.appendChild(b);
+  });
+  $('#spNote').textContent=S.lang?t('privacy'):UI.privacy.en+' · '+UI.privacy.es;
+  if(S.lang)$('#spSub').textContent=t('tagline');
+}
+
+/* ---------- render router ---------- */
+function render(){
+  window.scrollTo(0,0);
+  var top=stack[stack.length-1];
+  if(top){
+    if(top.v==='place')return viewPlace();
+    if(top.v==='unit')return viewUnit(top.id,top.stage||0);
+    if(top.v==='conv')return viewConv(top.id);
+    if(top.v==='drill')return viewDrill();
+  }
+  showBack(null);
+  if(tab==='path')return viewPath();
+  if(tab==='daily')return viewDailyHome();
+  if(tab==='talk')return viewTalkHome();
+  return viewMe();
+}
+function push(o){stack.push(o);render()}
+function pop(){stack.pop();render()}
+
+/* ---------- placement ---------- */
+var PQ=[
+ {q:"Hello. My name ___ Ana.",opts:["is","are","be"],a:0},
+ {q:"I need a ___, please.",opts:["pencil","pencils are","to pencil"],a:0},
+ {q:"Yesterday I ___ my homework.",opts:["finish","finished","finishing"],a:1},
+ {q:"___ he need help with the lab?",opts:["Do","Does","Is"],a:1},
+ {q:"The puddle got smaller ___ the water evaporated.",opts:["but","because","or"],a:1},
+ {q:"Both graphs rise; ___, only one levels off.",opts:["however","because","so"],a:0},
+ {q:"I ___ that the narrator is afraid, based on line four.",opts:["infer","infers","inferring"],a:0},
+ {q:"I acknowledge the cost; ___, the benefit is larger.",opts:["nevertheless","because","instead"],a:0}
+];
+function viewPlace(){
+  showBack(S.placed?pop:null);setTitle(t('placement'));
+  var i=0,right=0;
+  function step(){
+    if(i>=PQ.length)return finish();
+    var q=PQ[i];
+    view.innerHTML='<div class="steps">'+PQ.map(function(_,j){return '<div class="'+(j<i?'ok':(j===i?'on':''))+'"></div>'}).join('')+'</div>'+
+      '<div class="stagehd"><h2>'+esc(t('placement'))+'</h2><p>'+esc(t('placeIntro'))+'</p></div>'+
+      '<div class="card"><div style="font-size:20px;font-weight:600;color:var(--navy)">'+esc(q.q)+'</div>'+
+      '<div class="opts" id="po"></div></div>';
+    var box=$('#po');
+    q.opts.forEach(function(o,oi){
+      var b=document.createElement('button');b.className='opt';b.textContent=o;
+      b.onclick=function(){
+        if(box.dataset.lock)return;box.dataset.lock='1';
+        b.classList.add(oi===q.a?'good':'bad');
+        if(oi===q.a)right++;else{var g=box.children[q.a];if(g)g.classList.add('good')}
+        setTimeout(function(){i++;step()},620);
+      };
+      box.appendChild(b);
+    });
+  }
+  function finish(){
+    var start=0;
+    if(right>=7)start=12;else if(right>=5)start=8;else if(right>=3)start=4;else start=0;
+    S.start=start;S.placed=true;save();
+    var u=UNITS[start],L=LEVELS[u.lv];
+    view.innerHTML='<div class="card" style="text-align:center;border-top:6px solid '+L.color+'">'+
+      '<p class="k">'+esc(t('placeDone'))+'</p>'+
+      '<div style="font-size:46px;margin:6px 0">'+u.icon+'</div>'+
+      '<h2 style="font-size:25px;color:var(--navy)">'+esc(u.title[S.lang]||u.title.en)+'</h2>'+
+      '<p class="muted">'+esc(L.lane)+' · '+esc(L.elp)+'</p>'+
+      '<button class="btn block sp" id="goPath">'+esc(t('start'))+'</button></div>';
+    $('#goPath').onclick=function(){stack=[];render()};
+  }
+  step();
+}
+
+/* ---------- path ---------- */
+function viewPath(){
+  setTitle(t('appname'));
+  if(!S.placed){
+    view.innerHTML='<div class="card"><p class="k">'+esc(t('whatIsThis'))+'</p><h2 style="font-size:24px;color:var(--navy);margin:4px 0 8px">'+esc(t('appname'))+'</h2>'+
+      '<p class="muted">'+esc(t('placeIntro'))+'</p><button class="btn block sp" id="gp">'+esc(t('placement'))+'</button></div>';
+    $('#gp').onclick=function(){push({v:'place'})};return;
+  }
+  var html='<div class="stats">'+
+    '<div class="stat"><b>'+(S.streak.n||0)+'</b><small>'+esc(t('streak'))+'</small></div>'+
+    '<div class="stat"><b>'+wordsLearned()+'</b><small>'+esc(t('newWords'))+'</small></div>'+
+    '<div class="stat"><b>'+unitsDone()+'/'+UNITS.length+'</b><small>'+esc(t('unitsLabel'))+'</small></div></div>';
+  var open=furthest();
+  LEVELS.forEach(function(L,li){
+    html+='<div class="lvhead"><span class="dot" style="background:'+L.color+'"></span><h2>'+esc(t(L.k))+'</h2><small>'+esc(L.lane)+' · '+esc(L.elp)+'</small></div>';
+    UNITS.forEach(function(u,ui){
+      if(u.lv!==li)return;
+      var done=unitDone(u.id), now=(ui===open&&!done), lock=(ui>open&&!done);
+      var n=(S.done[u.id]||[]).length;
+      html+='<button class="unit '+(done?'done':'')+' '+(now?'now':'')+' '+(lock?'lock':'')+'" data-u="'+u.id+'">'+
+        '<span class="ic">'+u.icon+'</span><span class="tx"><b>'+esc(u.title[S.lang]||u.title.en)+'</b>'+
+        '<small>'+(done?esc(t('unitDone')):n+'/5 · '+u.words.length+' '+esc(t('words')).toLowerCase())+'</small></span>'+
+        '<span class="st">'+(done?'✓':(lock?'🔒':'→'))+'</span></button>';
+    });
+  });
+  view.innerHTML=html;
+  view.querySelectorAll('.unit').forEach(function(b){
+    b.onclick=function(){
+      if(b.classList.contains('lock')){
+        if(!confirm(t('locked')+'\n\n'+t('unlock')+'?'))return;
+      }
+      push({v:'unit',id:b.dataset.u,stage:0});
+    };
+  });
+}
+
+/* ---------- unit stages ---------- */
+var STAGES=['words','listen','speak','read','write'];
+function viewUnit(id,stage){
+  var u=null;UNITS.forEach(function(x){if(x.id===id)u=x});
+  if(!u){stack=[];return render()}
+  showBack(function(){ if(stage>0){stack[stack.length-1].stage=stage-1;render()} else pop(); });
+  setTitle(u.title[S.lang]||u.title.en);
+  var bar='<div class="steps">'+STAGES.map(function(s,i){return '<div class="'+(i<stage?'ok':(i===stage?'on':''))+'"></div>'}).join('')+'</div>';
+  var go=function(){
+    markStage(u.id,STAGES[stage]);
+    if(stage<4){stack[stack.length-1].stage=stage+1;render()}
+    else{touchStreak();unitFinish(u)}
+  };
+  if(stage===0)return stWords(u,bar,go);
+  if(stage===1)return stListen(u,bar,go);
+  if(stage===2)return stSpeak(u,bar,go);
+  if(stage===3)return stRead(u,bar,go);
+  return stWrite(u,bar,go);
+}
+function hd(icon,title,sub){return '<div class="stagehd"><p class="k t">'+icon+' '+esc(title)+'</p><p>'+esc(sub)+'</p></div>'}
+
+function stWords(u,bar,go){
+  var html=bar+hd('🔤',t('words'),t('tapHear'))+'<div class="wordlist">';
+  u.words.forEach(function(w,i){
+    html+='<button class="wd" data-i="'+i+'"><span class="em">'+w.e+'</span><span class="tx">'+
+      '<b>'+esc(w.w)+'</b><span class="tr">'+esc(S.lang==='en'?w.s:(w.t[S.lang]||''))+'</span>'+
+      '<span class="ex">'+esc(w.s)+'</span></span><span class="pl">🔊</span></button>';
+  });
+  html+='</div><button class="btn block sp" id="nx" disabled>'+esc(t('next'))+'</button>';
+  view.innerHTML=html;
+  var played={},need=u.words.length;
+  view.querySelectorAll('.wd').forEach(function(b){
+    b.onclick=function(){
+      var w=u.words[+b.dataset.i];
+      say(w.w+'. '+w.s,'en-US');
+      b.classList.add('played');played[b.dataset.i]=1;
+      srsAdd('w:'+w.w);
+      if(Object.keys(played).length>=need)$('#nx').disabled=false;
+    };
+  });
+  $('#nx').onclick=go;
+}
+
+function stListen(u,bar,go){
+  var L=u.listen;
+  view.innerHTML=bar+hd('🎧',t('listen'),t('tapHear'))+
+    '<div class="card" style="text-align:center"><button class="btn go" id="pl">▶︎ '+esc(t('listen'))+'</button> '+
+    '<button class="btn ghost sm" id="sl">🐢 '+esc(t('slower'))+'</button></div>'+
+    '<div class="card"><div style="font-size:19px;font-weight:600;color:var(--navy)">'+esc(L.q[S.lang]||L.q.en)+'</div><div class="opts" id="lo"></div><div id="lf"></div></div>'+
+    '<button class="btn block" id="nx" disabled>'+esc(t('next'))+'</button>';
+  $('#pl').onclick=function(){say(L.text,'en-US',1)};
+  $('#sl').onclick=function(){say(L.text,'en-US',.7)};
+  setTimeout(function(){say(L.text,'en-US',1)},350);
+  var box=$('#lo');
+  L.opts.forEach(function(o,oi){
+    var b=document.createElement('button');b.className='opt';b.textContent=o;
+    b.onclick=function(){
+      if(box.dataset.lock)return;box.dataset.lock='1';
+      var ok=oi===L.a;b.classList.add(ok?'good':'bad');
+      if(!ok)box.children[L.a].classList.add('good');
+      $('#lf').innerHTML='<div class="fb '+(ok?'good':'bad')+'">'+esc(ok?t('correct'):t('notyet'))+'</div>';
+      if(ok)addXp(8);
+      $('#nx').disabled=false;
+    };
+    box.appendChild(b);
+  });
+  $('#nx').onclick=go;
+}
+
+function stSpeak(u,bar,go){
+  var i=0;
+  function one(){
+    if(i>=u.speak.length)return go();
+    var target=u.speak[i];
+    view.innerHTML=bar+hd('🎤',t('speak'),t('tapRecord'))+
+      '<div class="target">'+esc(target)+'</div>'+
+      '<div class="row sp" style="justify-content:center"><button class="btn ghost sm" id="hear">🔊 '+esc(t('listen'))+'</button>'+
+      '<button class="btn ghost sm" id="slow">🐢 '+esc(t('slower'))+'</button></div>'+
+      '<button class="mic" id="mic">🎤</button>'+
+      '<p class="tiny muted" style="text-align:center" id="stat">'+esc(SR?t('tapRecord'):t('noMic'))+'</p>'+
+      '<div id="res"></div>'+
+      '<div class="row sp" style="justify-content:center"><button class="btn sm" id="nx">'+esc(i<u.speak.length-1?t('next'):t('done'))+'</button></div>';
+    $('#hear').onclick=function(){say(target,'en-US',1)};
+    $('#slow').onclick=function(){say(target,'en-US',.7)};
+    $('#nx').onclick=function(){i++;one()};
+    var mic=$('#mic');
+    if(!SR){mic.style.opacity=.4;mic.onclick=function(){toast(t('noMic'))};return}
+    mic.onclick=function(){
+      var r=new SR();r.lang='en-US';r.interimResults=false;r.maxAlternatives=1;
+      mic.classList.add('rec');$('#stat').textContent=t('recording');
+      r.onresult=function(ev){
+        var said=ev.results[0][0].transcript;
+        var sc=scoreSaid(target,said);
+        $('#res').innerHTML='<div class="score">'+sc.pct+'%<small>'+esc(t('heard'))+' '+esc(said)+'</small></div>'+
+          '<div class="chips">'+sc.words.map(function(w,j){return '<span class="'+(sc.hits[j]?'hit':'')+'">'+esc(w)+'</span>'}).join('')+'</div>';
+        if(sc.pct>=70){addXp(10);$('#stat').textContent=t('correct')}
+        else $('#stat').textContent=t('again');
+      };
+      r.onerror=function(){mic.classList.remove('rec');$('#stat').textContent=t('noMic')};
+      r.onend=function(){mic.classList.remove('rec')};
+      try{r.start()}catch(e){mic.classList.remove('rec')}
+    };
+  }
+  one();
+}
+
+function stRead(u,bar,go){
+  var R=u.read, qi=0, right=0;
+  function draw(){
+    var html=bar+hd('📖',t('read'),'')+
+      '<div class="passage"><h3>'+esc(R.title)+'</h3><p>'+esc(R.text)+'</p></div>'+
+      '<div class="row sp"><button class="btn ghost sm" id="rd">🔊 '+esc(t('listen'))+'</button></div>';
+    if(qi<R.qs.length){
+      var q=R.qs[qi];
+      html+='<div class="card sp"><p class="k t">'+(qi+1)+' / '+R.qs.length+'</p><div class="en" style="font-size:18.5px;font-weight:600;color:var(--navy);margin-top:4px">'+esc(q.q)+'</div><div class="opts" id="ro"></div><div id="rf"></div></div>';
+    }else{
+      html+='<div class="card sp"><div class="fb good">'+esc(t('correct'))+' '+right+'/'+R.qs.length+'</div></div><button class="btn block" id="nx">'+esc(t('next'))+'</button>';
+    }
+    view.innerHTML=html;
+    $('#rd').onclick=function(){say(R.text,'en-US',.9)};
+    if(qi<R.qs.length){
+      var q=R.qs[qi],box=$('#ro');
+      q.opts.forEach(function(o,oi){
+        var b=document.createElement('button');b.className='opt';b.textContent=o;
+        b.onclick=function(){
+          if(box.dataset.lock)return;box.dataset.lock='1';
+          var ok=oi===q.a;b.classList.add(ok?'good':'bad');
+          if(!ok)box.children[q.a].classList.add('good');else{right++;addXp(8)}
+          $('#rf').innerHTML='<div class="fb '+(ok?'good':'bad')+'">'+esc(ok?t('correct'):t('notyet'))+'</div>';
+          setTimeout(function(){qi++;draw()},800);
+        };
+        box.appendChild(b);
+      });
+    }else $('#nx').onclick=go;
+  }
+  draw();
+}
+
+function stWrite(u,bar,go){
+  var i=0;
+  function one(){
+    if(i>=u.write.length)return go();
+    var W=u.write[i];
+    view.innerHTML=bar+hd('✍️',t('write'),'')+
+      '<div class="frame">'+esc(W.frame)+'</div>'+
+      '<textarea id="ta" placeholder="'+esc(t('typeHere'))+'"></textarea>'+
+      '<div class="row sp"><button class="btn" id="ck">'+esc(t('check'))+'</button>'+
+      '<button class="btn ghost sm" id="hi">💡 '+esc(t('hint'))+'</button></div>'+
+      '<div id="wf"></div>';
+    $('#hi').onclick=function(){$('#wf').innerHTML='<div class="fb good" style="font-weight:400">'+esc(W.ex)+'</div>'};
+    $('#ck').onclick=function(){
+      var v=norm($('#ta').value);
+      var miss=W.need.filter(function(n){return v.indexOf(norm(n))<0});
+      var words=v.split(' ').filter(Boolean).length;
+      if(miss.length===0&&words>=4){
+        addXp(10);
+        $('#wf').innerHTML='<div class="fb good">'+esc(t('goodSentence'))+'</div>';
+        setTimeout(function(){i++;one()},900);
+      }else{
+        var list=miss.length?miss:[t('typeHere')];
+        $('#wf').innerHTML='<div class="fb bad">'+esc(t('checkThese'))+'<span class="why">'+list.map(esc).join(' · ')+'</span></div>';
+      }
+    };
+  }
+  one();
+}
+
+function unitFinish(u){
+  var nxt=UNITS[UNITS.indexOf(u)+1];
+  stack=[];
+  view.innerHTML='<div class="card" style="text-align:center;border-top:6px solid var(--ok)">'+
+    '<div style="font-size:52px">🎉</div><h2 style="font-size:26px;color:var(--navy)">'+esc(t('unitDone'))+'</h2>'+
+    '<p class="muted">'+esc(u.title[S.lang]||u.title.en)+'</p>'+
+    '<p class="k" style="margin-top:12px">+60 XP</p>'+
+    (nxt?'<button class="btn block sp" id="go">'+esc(t('next'))+': '+esc(nxt.title[S.lang]||nxt.title.en)+'</button>':'')+
+    '<button class="btn ghost block sp" id="home">'+esc(t('myPath'))+'</button></div>';
+  if(nxt)$('#go').onclick=function(){push({v:'unit',id:nxt.id,stage:0})};
+  $('#home').onclick=function(){stack=[];render()};
+  showBack(null);
+}
+
+/* ---------- daily drill ---------- */
+function viewDailyHome(){
+  setTitle(t('daily'));
+  var doneToday=S.drill.d===today()&&S.drill.n>=18;
+  view.innerHTML='<div class="card" style="border-top:6px solid var(--gold)">'+
+    '<p class="k">⚡ '+esc(t('daily'))+'</p><h2 style="font-size:24px;color:var(--navy);margin:4px 0 8px">'+esc(t('daily'))+'</h2>'+
+    '<p class="muted">'+esc(t('drillIntro'))+'</p>'+
+    '<div class="stats sp"><div class="stat"><b>'+(S.streak.n||0)+'</b><small>'+esc(t('streak'))+'</small></div>'+
+    '<div class="stat"><b>'+wordsLearned()+'</b><small>'+esc(t('newWords'))+'</small></div>'+
+    '<div class="stat"><b>'+dueItems().length+'</b><small>'+esc(t('daily'))+'</small></div></div>'+
+    (doneToday?'<div class="fb good sp">'+esc(t('drillDone'))+'</div>':'')+
+    '<button class="btn block sp" id="sd">'+esc(t('startDrill'))+'</button></div>';
+  $('#sd').onclick=function(){push({v:'drill'})};
+}
+function viewDrill(){
+  showBack(pop);setTitle(t('daily'));
+  var items=dueItems(), i=0, right=0;
+  if(!items.length){view.innerHTML='<div class="card"><div class="fb good">'+esc(t('drillDone'))+'</div></div>';return}
+  function one(){
+    if(i>=items.length){
+      touchStreak();S.drill={d:today(),n:items.length};save();
+      view.innerHTML='<div class="card" style="text-align:center"><div style="font-size:48px">⚡</div>'+
+        '<h2 style="font-size:24px;color:var(--navy)">'+right+' / '+items.length+'</h2>'+
+        '<p class="muted">'+esc(t('drillDone'))+'</p>'+
+        '<button class="btn block sp" id="bk">'+esc(t('done'))+'</button></div>';
+      $('#bk').onclick=pop;return;
+    }
+    var it=items[i], q, opts, ans, why='';
+    if(it.t==='w'){
+      var w=it.d, pool=shuffle(allWords().filter(function(x){return x.w.w!==w.w})).slice(0,2);
+      if(S.lang==='en'||!w.t[S.lang]){
+        q=w.s.replace(new RegExp(w.w,'i'),'______');
+        opts=shuffle([w.w,pool[0].w.w,pool[1].w.w]);ans=opts.indexOf(w.w);
+      }else{
+        q=w.t[S.lang];
+        opts=shuffle([w.w,pool[0].w.w,pool[1].w.w]);ans=opts.indexOf(w.w);
+      }
+    }else{q=it.d.q;opts=it.d.opts;ans=it.d.a;why=it.d.why}
+    var qcls=(it.t==='g')?' class="en"':'';
+    view.innerHTML='<div class="steps">'+items.map(function(_,j){return '<div class="'+(j<i?'ok':(j===i?'on':''))+'"></div>'}).join('')+'</div>'+
+      '<div class="card"><p class="k t">'+(i+1)+' / '+items.length+' · '+(it.t==='w'?esc(t('words')):'Grammar')+'</p>'+
+      '<div'+qcls+' style="font-size:21px;font-weight:600;color:var(--navy);margin:6px 0 2px">'+esc(q)+'</div>'+
+      '<div class="opts" id="do"></div><div id="df"></div></div>';
+    var box=$('#do');
+    opts.forEach(function(o,oi){
+      var b=document.createElement('button');b.className='opt';b.textContent=o;
+      b.onclick=function(){
+        if(box.dataset.lock)return;box.dataset.lock='1';
+        var ok=oi===ans;b.classList.add(ok?'good':'bad');
+        if(!ok)box.children[ans].classList.add('good');else{right++;addXp(5)}
+        srsHit(it.k,ok);
+        if(it.t==='w')say(it.d.w,'en-US');
+        $('#df').innerHTML='<div class="fb '+(ok?'good':'bad')+'">'+esc(ok?t('correct'):t('notyet'))+(why?'<span class="why">'+esc(why)+'</span>':'')+'</div>';
+        setTimeout(function(){i++;one()},ok?750:1500);
+      };
+      box.appendChild(b);
+    });
+  }
+  one();
+}
+
+/* ---------- conversations ---------- */
+function viewTalkHome(){
+  setTitle(t('talk'));
+  var html='<div class="card"><p class="k">💬 '+esc(t('talk'))+'</p><p class="muted" style="margin:6px 0 0">'+esc(t('talkIntro'))+'</p></div>';
+  LEVELS.forEach(function(L,li){
+    var any=CONVS.filter(function(c){return c.lv===li});
+    if(!any.length)return;
+    html+='<div class="lvhead"><span class="dot" style="background:'+L.color+'"></span><h2>'+esc(t(L.k))+'</h2></div>';
+    any.forEach(function(c){
+      html+='<button class="unit '+(S.convs[c.id]?'done':'')+'" data-c="'+c.id+'"><span class="ic">'+c.icon+'</span>'+
+        '<span class="tx"><b>'+esc(c.title[S.lang]||c.title.en)+'</b><small>'+esc(c.who)+'</small></span>'+
+        '<span class="st">'+(S.convs[c.id]?'✓':'→')+'</span></button>';
+    });
+  });
+  view.innerHTML=html;
+  view.querySelectorAll('.unit').forEach(function(b){b.onclick=function(){push({v:'conv',id:b.dataset.c})}});
+}
+function viewConv(id){
+  var c=null;CONVS.forEach(function(x){if(x.id===id)c=x});
+  if(!c){pop();return}
+  showBack(pop);setTitle(c.title[S.lang]||c.title.en);
+  var turn=0, log=[];
+  function draw(){
+    var html='<div class="card" style="padding:16px"><p class="who">'+esc(c.who)+'</p><div id="thread">';
+    log.forEach(function(m){html+='<div class="bub '+(m.me?'you':'them')+'">'+esc(m.x)+'</div>'});
+    html+='</div></div><div id="ctl"></div>';
+    view.innerHTML=html;
+    var ctl=$('#ctl');
+    if(turn>=c.turns.length){
+      S.convs[c.id]=1;addXp(30);touchStreak();save();
+      ctl.innerHTML='<div class="card" style="text-align:center"><div style="font-size:42px">🎉</div><p style="font-weight:600;color:var(--navy)">'+esc(t('convDone'))+'</p><button class="btn block sp" id="bk">'+esc(t('done'))+'</button></div>';
+      $('#bk').onclick=pop;return;
+    }
+    var T=c.turns[turn];
+    if(!log.length||log[log.length-1].me||log[log.length-1].x!==T.say){
+      log.push({x:T.say,me:false});say(T.say,'en-US',1);return draw();
+    }
+    ctl.innerHTML='<p class="k t" style="margin-bottom:6px">'+esc(t('yourTurn'))+'</p><p class="tiny muted" style="margin:0 0 8px">'+esc(t('pickReply'))+'</p>'+
+      '<div class="opts" id="rp"></div>';
+    var box=$('#rp');
+    T.reply.forEach(function(r){
+      var b=document.createElement('button');b.className='opt';b.textContent=r;
+      b.onclick=function(){chooseReply(r)};
+      box.appendChild(b);
+    });
+  }
+  function chooseReply(r){
+    view.innerHTML='<div class="card"><p class="who">'+esc(t('yourTurn'))+'</p><div class="target">'+esc(r)+'</div>'+
+      '<div class="row sp" style="justify-content:center"><button class="btn ghost sm" id="hear">🔊 '+esc(t('listen'))+'</button></div>'+
+      '<button class="mic" id="mic">🎤</button><p class="tiny muted" style="text-align:center" id="stat">'+esc(SR?t('tapRecord'):t('noMic'))+'</p>'+
+      '<div id="res"></div><div class="row sp" style="justify-content:center"><button class="btn sm" id="ok">'+esc(t('done'))+'</button></div></div>';
+    $('#hear').onclick=function(){say(r,'en-US',1)};
+    $('#ok').onclick=function(){log.push({x:r,me:true});turn++;draw()};
+    var mic=$('#mic');
+    if(!SR){mic.style.opacity=.4;return}
+    mic.onclick=function(){
+      var rec=new SR();rec.lang='en-US';rec.interimResults=false;
+      mic.classList.add('rec');$('#stat').textContent=t('recording');
+      rec.onresult=function(ev){
+        var said=ev.results[0][0].transcript, sc=scoreSaid(r,said);
+        $('#res').innerHTML='<div class="score">'+sc.pct+'%<small>'+esc(t('heard'))+' '+esc(said)+'</small></div>'+
+          '<div class="chips">'+sc.words.map(function(w,j){return '<span class="'+(sc.hits[j]?'hit':'')+'">'+esc(w)+'</span>'}).join('')+'</div>';
+        $('#stat').textContent=sc.pct>=70?t('correct'):t('again');
+        if(sc.pct>=70)addXp(10);
+      };
+      rec.onerror=function(){mic.classList.remove('rec');$('#stat').textContent=t('noMic')};
+      rec.onend=function(){mic.classList.remove('rec')};
+      try{rec.start()}catch(e){mic.classList.remove('rec')}
+    };
+  }
+  draw();
+}
+
+/* ---------- me ---------- */
+var BADGES=[
+ {id:'b1',e:'🌱',n:{en:'First unit',es:'Primera unidad',vi:'Bài đầu tiên',ar:'أول وحدة',zh:'第一个单元',ht:'Premye inite'},f:function(){return unitsDone()>=1}},
+ {id:'b2',e:'🔥',n:{en:'5 days in a row',es:'5 días seguidos',vi:'5 ngày liên tiếp',ar:'٥ أيام متتالية',zh:'连续5天',ht:'5 jou youn dèyè lòt'},f:function(){return (S.streak.n||0)>=5}},
+ {id:'b3',e:'💬',n:{en:'First conversation',es:'Primera conversación',vi:'Cuộc trò chuyện đầu tiên',ar:'أول محادثة',zh:'第一次对话',ht:'Premye konvèsasyon'},f:function(){return Object.keys(S.convs).length>=1}},
+ {id:'b4',e:'📚',n:{en:'50 words',es:'50 palabras',vi:'50 từ',ar:'٥٠ كلمة',zh:'50个单词',ht:'50 mo'},f:function(){return wordsLearned()>=50}},
+ {id:'b5',e:'🏔️',n:{en:'Half the course',es:'Medio curso',vi:'Nửa khóa học',ar:'نصف الدورة',zh:'课程过半',ht:'Mwatye kou a'},f:function(){return unitsDone()>=8}},
+ {id:'b6',e:'🏆',n:{en:'All 16 units',es:'Las 16 unidades',vi:'Cả 16 bài',ar:'كل ١٦ وحدة',zh:'全部16个单元',ht:'Tout 16 inite yo'},f:function(){return unitsDone()>=16}}
+];
+function viewMe(){
+  setTitle(t('me'));
+  var html='<div class="stats">'+
+    '<div class="stat"><b>'+(S.xp||0)+'</b><small>XP</small></div>'+
+    '<div class="stat"><b>'+(S.streak.n||0)+'</b><small>'+esc(t('streak'))+'</small></div>'+
+    '<div class="stat"><b>'+unitsDone()+'/'+UNITS.length+'</b><small>'+esc(t('unitsLabel'))+'</small></div></div>';
+  html+='<div class="card"><p class="k">🏅</p><div class="badges sp">';
+  BADGES.forEach(function(b){html+='<span class="badge '+(b.f()?'got':'')+'">'+b.e+' '+esc(b.n[S.lang]||b.n.en)+'</span>'});
+  html+='</div></div>';
+  html+='<div class="card"><p class="k">'+esc(t('cert'))+'</p>'+
+    '<label class="tiny muted">'+esc(t('yourName'))+'</label>'+
+    '<input type="text" id="nm" value="'+esc(S.name||'')+'" placeholder="'+esc(t('yourName'))+'">'+
+    '<button class="btn block sp" id="pc" '+(unitsDone()<1?'disabled':'')+'>'+esc(t('certGet'))+'</button></div>';
+  html+='<div class="card"><p class="k">'+esc(t('placement'))+'</p><button class="btn ghost block sp" id="rp">'+esc(t('placement'))+'</button></div>';
+  html+='<div class="card"><p class="tiny muted">'+esc(t('privacy'))+'</p>'+
+    '<button class="btn ghost block sp" id="rs" style="border-color:var(--bad);color:var(--bad)">'+esc(t('reset'))+'</button></div>';
+  view.innerHTML=html;
+  $('#nm').oninput=function(){S.name=this.value;save()};
+  $('#pc').onclick=function(){
+    $('#certName').textContent=S.name||'—';
+    $('#certLine').textContent='has completed '+unitsDone()+' of '+UNITS.length+' units of English On Your Own.';
+    $('#certDate').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    window.print();
+  };
+  $('#rp').onclick=function(){push({v:'place'})};
+  $('#rs').onclick=function(){
+    if(confirm(t('resetSure'))){try{localStorage.removeItem(KEY)}catch(e){}
+      S={lang:S.lang,name:'',placed:false,start:0,done:{},srs:{},streak:{d:'',n:0},mins:{d:'',s:0},convs:{},xp:0,drill:{d:'',n:0}};
+      save();stack=[];render()}
+  };
+}
+
+/* ---------- boot ---------- */
+if(!S.lang){openSplash(false)}
+else{applyLang();$('#splash').style.display='none';if(!S.placed)stack=[{v:'place'}];render()}
+})();
+
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
