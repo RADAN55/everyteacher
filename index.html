@@ -670,7 +670,7 @@
     </a>
 </div></section>
 <section class="wrap" id="writing"><h2>Guides &amp; writing</h2><p class="deck">Field guides and the book behind the work.</p><div class="cards">
-    <a class="card" href="spoken-spanish-english.html">
+    <a class="card" href="spoken-spanish-english.html" data-pin-until="2026-10-22">
       <div class="card-top has-shot"><img class="shot" src="thumbs/spoken-spanish-english.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
         <span class="kind">Language Bridge · teacher guide · PDF</span>
         <h3>Spoken Spanish &amp; Spoken English</h3>
@@ -845,6 +845,8 @@
   var t=TOOLS[(w-1)%TOOLS.length];T('wk-tt',t[0]);document.getElementById('wk-tool').href=t[1];
   var cards=[].slice.call(document.querySelectorAll('section .cards .card'));
   if(cards.length){var abs=Math.floor((new Date()-new Date(2026,7,3))/6048e5);var c=cards[((abs%cards.length)+cards.length)%cards.length];
+    // A card with data-pin-until="YYYY-MM-DD" is the resource of the week until that date (new releases get two weeks).
+    var pin=cards.filter(function(x){var d=x.getAttribute('data-pin-until');return d&&new Date(d+'T23:59:59')>=new Date()})[0];if(pin)c=pin;
     var h=c.querySelector('h3'),d=c.querySelector('.card-body p');var a=document.getElementById('wk-res');
     if(h)T('wk-rt',h.textContent);if(d)T('wk-rd',d.textContent.slice(0,120).replace(/\s+\S*$/,'')+'…');a.href=c.getAttribute('href');if(/^https?:/.test(a.href)){a.target='_blank';a.rel='noopener'}}
 }catch(e){}})();
