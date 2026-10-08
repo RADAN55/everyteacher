@@ -70,4 +70,4 @@ project, and there are four variations on the Language Bridge name.
 Other educators are welcome to adapt these for their own buildings. Compliance content is written
 to Mississippi requirements and should be checked against your own state's before republishing.
 
-Contact: rdaniel@laurelschools.org
+Contact: richard.spanishteacher@gmail.com
