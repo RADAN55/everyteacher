@@ -132,6 +132,7 @@ main{max-width:1040px;margin:0 auto;padding:16px 16px 90px}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .say{margin-top:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
 .say .res{font-size:15px;margin-top:10px;min-height:22px}
+.meter{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin:10px auto 0;max-width:320px;overflow:hidden;--lvl:0}.meter i{display:block;height:100%;width:calc(var(--lvl)*100%);background:linear-gradient(90deg,var(--gold),var(--gold-2));box-shadow:0 0 10px var(--gold-glow);transition:width .08s}.meter.hot i{background:linear-gradient(90deg,var(--ok),var(--gold-2))}.recbox{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 .res .diff{font-size:17px;line-height:1.6}.res .diff .hit{color:var(--ok)}.res .diff .miss{color:var(--bad);text-decoration:underline wavy}.res small{color:var(--muted);font-weight:400}
 .res.ok{color:var(--ok);font-weight:700}.res.bad{color:var(--bad)}.res.warn{color:var(--warn)}
 .say.listening{border-color:var(--gold);box-shadow:inset 0 0 40px rgba(201,162,39,.12)}
@@ -456,7 +457,8 @@ textarea:focus{border-color:var(--gold)}
     </ol>
     <h3>Tips &amp; troubleshooting</h3>
     <ul>
-      <li>Works best in Chrome/Edge on Chromebooks, Android, and desktop. Speech recognition needs a Chromium browser; on iPhone Safari the camera and audio work but say-it-back is limited.</li>
+      <li>Works best in Chrome/Edge on Chromebooks, Android, and desktop. Speech recognition needs a Chromium browser <b>and</b> a path to Google's speech service; if the district filter blocks it, Storm Lens switches to <b>Record &amp; compare</b> automatically (the student records, hears the model and themselves, and self-checks). On iPhone Safari, Record &amp; compare is the normal mode.</li>
+      <li><b>Mic not working?</b> Run the Device check below: it asks for the microphone, shows a live level bar, and names the exact problem (blocked by the lock icon, in use by another tab, no mic, or speech service blocked).</li>
       <li>The first load downloads the recognition model (a few MB). After that it is cached.</li>
       <li>If the camera is blocked, the student can use <b>Upload photo</b> or <b>Type it</b> — the whole word card still works.</li>
       <li>Not every object is recognized (the model knows 80 common things). "Type it" covers 150+ more classroom words, and any typed word still gets audio and frames.</li>
@@ -895,7 +897,8 @@ const T = {
     foot:"Free · No account · Works offline after first load ·",
     loading:"Loading the lens…",fallback:"Nothing I know for sure. Did you see one of these?",ready:"Looking…",scanning:"Scanning photo…",nothing:"I don't see anything I know yet. Move closer, or type the word below.",
     hear:"Hear it",slow:"Slow",sayBack:"Say it back",listening:"Listening… say it now",heard:"I heard:",great:"Great! That's it ⭐",almost:"Almost! I heard “{h}”. Listen once more, then say “{w}” slowly.",close:"Close! Try again.",noSR:"Say-it-back needs Chrome or Edge.",
-    sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"Speech check needs internet right now. Try again in a moment.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.",error:"Speech check had a hiccup. Try again."},
+    sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"The speech checker couldn't reach Google's speech service (no internet, or the school filter blocks it). Record & compare is ready below.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.","mic-busy":"Another app or tab is using the microphone. Close it and try again.",error:"Speech check had a hiccup. Try again."},
+    recordMode:"Speech check is unavailable on this network, so you can record yourself and compare.",record:"Record",stopRec:"Stop",playMine:"Play mine",playModel:"Play model",iSaidIt:"✓ I said it",recHint:"Listen to the model, then yourself. Match it? Tap “I said it”.",micTest:"Mic test",micTestHint:"Speak — the bar should move.",
     save:"Save to wall",saved:"Saved ✓",onWall:"On your wall",cognate:"cognate",
     frames:"Say a sentence",lane:{n:"Newcomer",e:"Emerging",p:"Progressing",c:"Challenge"},yourLane:"your lane",
     noPerm:"Camera blocked. You can still upload a photo or type a word.",notFound:"I don't know that word yet — but I can still say it!",
@@ -922,7 +925,8 @@ const T = {
     foot:"Gratis · Sin cuenta · Funciona sin internet después de la primera carga ·",
     loading:"Cargando la lente…",fallback:"Nada seguro. ¿Viste alguna de estas cosas?",ready:"Buscando…",scanning:"Escaneando foto…",nothing:"Todavía no reconozco nada. Acércate o escribe la palabra abajo.",
     hear:"Escuchar",slow:"Lento",sayBack:"Repetir",listening:"Escuchando… dilo ahora",heard:"Escuché",great:"¡Muy bien! Así es ⭐",almost:"¡Casi! Escuché “{h}”. Escucha otra vez y di “{w}” despacio.",close:"¡Casi! Inténtalo otra vez.",noSR:"Para repetir necesitas Chrome o Edge.",
-    sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"La revisión de voz necesita internet ahora. Inténtalo en un momento.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.",error:"La revisión de voz falló. Inténtalo otra vez."},
+    sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"El revisor de voz no pudo conectarse al servicio de voz de Google (sin internet o bloqueado por el filtro escolar). Abajo puedes grabar y comparar.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.","mic-busy":"Otra app o pestaña está usando el micrófono. Ciérrala e inténtalo otra vez.",error:"La revisión de voz falló. Inténtalo otra vez."},
+    recordMode:"La revisión de voz no está disponible en esta red; puedes grabarte y comparar.",record:"Grabar",stopRec:"Detener",playMine:"Oír la mía",playModel:"Oír el modelo",iSaidIt:"✓ Lo dije",recHint:"Escucha el modelo y luego a ti. ¿Coincide? Toca “Lo dije”.",micTest:"Prueba de micrófono",micTestHint:"Habla — la barra debe moverse.",
     save:"Guardar en el muro",saved:"Guardado ✓",onWall:"En tu muro",cognate:"cognado",
     frames:"Di una oración",lane:{n:"Recién llegado",e:"Emergente",p:"En progreso",c:"Reto"},yourLane:"tu nivel",
     noPerm:"Cámara bloqueada. Aún puedes subir una foto o escribir una palabra.",notFound:"Todavía no conozco esa palabra, ¡pero sí la puedo decir!",
@@ -1034,14 +1038,34 @@ function pickVoice(){ const vs=speechSynthesis.getVoices(); VOICE = vs.find(v=>/
 if("speechSynthesis" in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
 function speak(text,slow){ if(!("speechSynthesis" in window)) return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text.replace(/___/g,"...")); u.lang="en-US"; if(VOICE) u.voice=VOICE; u.rate = slow?0.6:0.9; u.pitch=0.95; speechSynthesis.speak(u); }
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-function listen(target, onRes, onEnd){
+/* ---- microphone: explicit permission, live level meter, robust recognition ---- */
+let MIC=null, micAnalyser=null, micRAF=null, SR_BROKEN=null, activeRec=null;
+async function ensureMic(){
+  if(MIC&&MIC.active) return MIC;
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)) throw {name:"NoAPI"};
+  MIC = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true},video:false});
+  try{ audioOn(); if(AC&&AC.state==="suspended") await AC.resume(); const src=AC.createMediaStreamSource(MIC); micAnalyser=AC.createAnalyser(); micAnalyser.fftSize=512; src.connect(micAnalyser); }catch(e){}
+  return MIC;
+}
+function meterStart(el){ if(!micAnalyser||!el) return; const buf=new Uint8Array(micAnalyser.fftSize); const tick=()=>{ micAnalyser.getByteTimeDomainData(buf); let s=0; for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; s+=v*v; } const rms=Math.sqrt(s/buf.length); el.style.setProperty("--lvl", Math.min(1,rms*6)); el.classList.toggle("hot",rms>0.02); micRAF=requestAnimationFrame(tick); }; tick(); }
+function meterStop(){ cancelAnimationFrame(micRAF); document.querySelectorAll(".meter").forEach(m=>{ m.style.setProperty("--lvl",0); m.classList.remove("hot"); }); }
+function micErr(e){ const n=(e&&e.name)||""; if(n==="NotAllowedError"||n==="SecurityError") return "not-allowed"; if(n==="NotFoundError"||n==="OverconstrainedError") return "audio-capture"; if(n==="NotReadableError") return "mic-busy"; if(n==="NoAPI") return "error"; return "error"; }
+function quietForListening(){ if("speechSynthesis" in window) speechSynthesis.cancel(); padLevel(0.02,0.3); }
+function unquiet(){ padLevel(document.body.classList.contains("theater")?0.25:0.35,2); }
+async function listen(target, onRes, onEnd){
   if(!SR){ onRes(null); return; }
-  const r=new SR(); r.lang="en-US"; r.interimResults=false; r.maxAlternatives=5;
-  let got=false;
-  r.onresult=e=>{ got=true; const alts=[...e.results[0]].map(a=>a.transcript); onRes(alts); };
-  r.onerror=e=>{ got=true; onRes([],e.error||"error"); };
-  r.onend=()=>{ if(!got) onRes([],"no-speech"); onEnd&&onEnd(); };
-  try{ r.start(); }catch(err){ onRes([],"start"); }
+  if(SR_BROKEN){ onRes([],SR_BROKEN); return; }
+  try{ await ensureMic(); }catch(e){ onRes([],micErr(e)); return; }
+  quietForListening();
+  if(activeRec){ try{ activeRec.abort(); }catch(e){} }
+  const r=new SR(); activeRec=r; r.lang="en-US"; r.interimResults=false; r.maxAlternatives=5; r.continuous=false;
+  let got=false, done=false; const finish=(alts,err)=>{ if(done) return; done=true; activeRec=null; meterStop(); unquiet(); clearTimeout(tm); onRes(alts,err); };
+  r.onaudiostart=()=>{ meterStart(document.querySelector(".say.listening .meter, .meter.live")); };
+  r.onresult=e=>{ got=true; const alts=[...e.results[0]].map(a=>a.transcript); finish(alts); };
+  r.onerror=e=>{ got=true; const code=e.error||"error"; if(code==="network"||code==="service-not-allowed"||code==="language-not-supported") SR_BROKEN=code; finish([],code); };
+  r.onend=()=>{ if(!got) finish([],"no-speech"); onEnd&&onEnd(); };
+  const tm=setTimeout(()=>{ try{ r.stop(); }catch(e){} },9000);
+  try{ r.start(); }catch(err){ finish([],"start"); }
 }
 function srMsg(code){ const m=T[LANG].sr; return m[code]||m.error; }
 function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]); for(let j=1;j<=n;j++) d[0][j]=j; for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
@@ -1274,7 +1298,9 @@ function openCard(key, thumb, rawWord){
     </div>
     <div class="say">
       <button class="btn big" id="cSay">🎤 ${t("sayBack")}</button>
+      <div class="meter"><i></i></div>
       <div class="res" id="cRes"></div>
+      <div class="recbox hidden" id="cRec"></div>
     </div>
     <div class="deep">
       <div class="dsec"><div class="dlbl">🎬 ${t("inAction")}</div><div class="dbig" id="dAct">${verbPhrase(w)}</div><div class="dex">${exampleSentence(w)}</div><div class="mini"><button id="dActHear">🔊</button><button id="dActSay">🎤 ${t("sayBack")}</button></div><div class="res" id="dActRes"></div></div>
@@ -1303,11 +1329,11 @@ function openCard(key, thumb, rawWord){
   const res=document.getElementById("cRes");
   const sayBtn=document.getElementById("cSay");
   function doListen(target, isFrame, btn){
-    if(!SR){ res.className="res warn"; res.textContent=t("noSR"); return; }
+    if(!SR){ res.className="res warn"; res.textContent=t("noSR"); recordMode(key, isFrame?target:say); return; }
     res.className="res"; res.textContent=t("listening"); btn.disabled=true; res.closest(".say")&&res.closest(".say").classList.add("listening");
     listen(target, (alts,err)=>{
       btn.disabled=false; res.closest(".say")&&res.closest(".say").classList.remove("listening");
-      if(err){ res.className="res warn"; res.textContent=srMsg(err); return; }
+      if(err){ res.className="res warn"; res.textContent=srMsg(err); if(SR_BROKEN||err==="no-speech") recordMode(key, isFrame?target:say); return; }
       if(!alts||!alts.length){ res.className="res warn"; res.textContent=t("close"); return; }
       const ok = isFrame ? matchFrame(target,alts) : matchWord(target,alts);
       res.className="res "+(ok?"ok":"bad");
@@ -1345,18 +1371,36 @@ function openCard(key, thumb, rawWord){
   /* write it */
   document.getElementById("dWriteGo").onclick=()=>{ const txt=document.getElementById("dWrite").value; const r=checkWriting(txt,w); const ul=document.getElementById("dWriteRes"); ul.innerHTML=r.map(i=>`<li class="${i.ok?"hit":""}">${i.ok?"✔":"○"} ${i[LANG]||i.en}</li>`).join(""); const all=r.every(i=>i.ok); if(all){ chime("tada"); STATS.writ=(STATS.writ||0)+1; const e=WALL.find(x=>x.key===key); if(e){ e.writ=(e.writ||0)+1; e.stars=(e.stars||0)+1; } touchDay(); save(); toast("✍️ "+t("great")); } else if(txt.trim()) chime("miss"); };
 }
+/* ---- record & compare fallback (works with no speech service) ---- */
+let recorder=null, recChunks=[], recURL=null;
+async function recordMode(key, modelText){
+  const box=document.getElementById("cRec"); if(!box) return; box.classList.remove("hidden");
+  box.innerHTML=`<div class="dtip">${t("recordMode")} ${t("recHint")}</div><div class="row" style="justify-content:center"><button class="btn gold" id="rGo">⏺ ${t("record")}</button><button class="btn ghost" id="rModel">🔊 ${t("playModel")}</button><button class="btn ghost" id="rMine" disabled>▶ ${t("playMine")}</button><button class="btn" id="rOk" disabled>${t("iSaidIt")}</button></div><div class="meter live"><i></i></div>`;
+  document.getElementById("rModel").onclick=()=>speak(modelText,false);
+  const go=document.getElementById("rGo"), mine=document.getElementById("rMine"), ok=document.getElementById("rOk");
+  go.onclick=async()=>{
+    if(recorder&&recorder.state==="recording"){ recorder.stop(); return; }
+    try{ await ensureMic(); }catch(e){ box.insertAdjacentHTML("beforeend",`<div class="res warn">${srMsg(micErr(e))}</div>`); return; }
+    quietForListening(); recChunks=[]; try{ recorder=new MediaRecorder(MIC); }catch(e){ recorder=new MediaRecorder(MIC,{}); }
+    recorder.ondataavailable=e=>{ if(e.data.size) recChunks.push(e.data); };
+    recorder.onstop=()=>{ meterStop(); unquiet(); if(recURL) URL.revokeObjectURL(recURL); recURL=URL.createObjectURL(new Blob(recChunks,{type:recorder.mimeType||"audio/webm"})); mine.disabled=false; ok.disabled=false; go.innerHTML=`⏺ ${t("record")}`; go.classList.add("gold"); const a=new Audio(recURL); a.play().catch(()=>{}); };
+    recorder.start(); meterStart(box.querySelector(".meter")); go.innerHTML=`⏹ ${t("stopRec")}`; go.classList.remove("gold"); setTimeout(()=>{ if(recorder&&recorder.state==="recording") recorder.stop(); },8000);
+  };
+  mine.onclick=()=>{ if(recURL) new Audio(recURL).play().catch(()=>{}); };
+  ok.onclick=()=>{ ok.disabled=true; STATS.stars++; touchDay(); const e=WALL.find(x=>x.key===key); if(e) e.stars=(e.stars||0)+1; save(); chime("win"); confetti(); };
+}
 function exampleSentence(w){ const vp=verbPhrase(w); const subj=["I","We","Students","My friend and I","Every day, I"][Math.floor(Math.random()*5)]; const v=vp.split(" ")[0]; const rest=vp.slice(v.length);
   if(/\b(in|at|to|on) the\b/.test(vp)) return `${subj} ${v}${rest} every day.`;
   return `${subj} ${v}${rest} ${w.cat==="food"?"at lunch.":w.cat==="school"?"in class.":w.cat==="home"?"at home.":w.cat==="community"?"on Saturday.":w.cat==="clothes"?"when it is cold.":w.cat==="body"?"when the teacher says so.":"every day."}`; }
 function wordFamily(w){ const n=w.en.toLowerCase(); const fam={book:"books · bookshelf · notebook · textbook",pencil:"pencils · pencil case · pencil sharpener",paper:"papers · paperwork · paper clip",water:"watery · waterfall · water bottle",light:"lights · lighter · flashlight · lightning",class:"classroom · classmate · classwork",hand:"hands · handbag · handwriting · handle",work:"homework · worksheet · worker · workbook",school:"schools · schoolwork · high school",bus:"buses · bus stop · bus driver",home:"homework · homeroom · hometown",foot:"feet · football · footstep",eye:"eyes · eyesight · eyebrow",tooth:"teeth · toothbrush · toothpaste",fire:"fire station · firefighter · fire drill",sun:"sunny · sunglasses · sunrise",rain:"rainy · raincoat · rainbow",snow:"snowy · snowball · snowboard",play:"player · playground · playing"};
   for(const k in fam){ if(n.includes(k)) return fam[k]; } const p=pluralOf(w); return (w.art?`${w.en} · ${p}`:w.en)+(w.cog?` · <span class="badge cog">${t("cognate")}</span> ${w.es.split("/")[0].trim()}`:""); }
 /* long dictation listener for describe-the-picture */
-function listenLong(cb){ if(!SR){ cb("", "error"); return; } const r=new SR(); r.lang="en-US"; r.interimResults=true; r.continuous=true; r.maxAlternatives=1; let txt=""; let got=false; let timer=null;
+async function listenLong(cb){ if(!SR){ cb("", "error"); return; } if(SR_BROKEN){ cb("",SR_BROKEN); return; } try{ await ensureMic(); }catch(e){ cb("",micErr(e)); return; } quietForListening(); const r=new SR(); r.onaudiostart=()=>meterStart(document.querySelector(".meter.live")); r.lang="en-US"; r.interimResults=true; r.continuous=true; r.maxAlternatives=1; let txt=""; let got=false; let timer=null;
   const stop=()=>{ try{ r.stop(); }catch(e){} };
   r.onresult=e=>{ got=true; txt=[...e.results].map(x=>x[0].transcript).join(" "); clearTimeout(timer); timer=setTimeout(stop,1800); };
   r.onerror=e=>{ got=true; cb("",e.error||"error"); };
-  r.onend=()=>{ clearTimeout(timer); if(txt) cb(txt); else if(!got) cb("","no-speech"); };
-  try{ r.start(); timer=setTimeout(stop,12000); }catch(err){ cb("","start"); } }
+  r.onend=()=>{ clearTimeout(timer); meterStop(); unquiet(); if(txt) cb(txt); else if(!got) cb("","no-speech"); };
+  try{ r.start(); timer=setTimeout(stop,12000); }catch(err){ meterStop(); unquiet(); cb("","start"); } }
 
 /* ============ WALL ============ */
 function renderWall(){
@@ -1409,7 +1453,7 @@ function pracShow(){
   const head=`<div style="font-size:13px;color:var(--muted)">${PR.i+1} / ${PR.q.length} · ${t("m"+PR.mode[0].toUpperCase()+PR.mode.slice(1))}</div>`;
   const pic=w.img?`<img src="${w.img}" alt="">`:`<div style="font-size:110px">${em}</div>`;
   if(PR.mode==="say"){
-    pBox.innerHTML=`${head}${pic}<div class="q">${t("pracSay")}</div><div class="row" style="justify-content:center"><button class="btn big gold" id="pSay">🎤 ${t("sayBack")}</button><button class="btn ghost" id="pRev">👁️ ${t("pracReveal")}</button></div><div class="ans" id="pAns"></div><div class="res" id="pRes"></div>`;
+    pBox.innerHTML=`${head}${pic}<div class="q">${t("pracSay")}</div><div class="row" style="justify-content:center"><button class="btn big gold" id="pSay">🎤 ${t("sayBack")}</button><button class="btn ghost" id="pRev">👁️ ${t("pracReveal")}</button></div><div class="meter live"><i></i></div><div class="ans" id="pAns"></div><div class="res" id="pRes"></div>`;
     const ans=document.getElementById("pAns"), res=document.getElementById("pRes");
     document.getElementById("pRev").onclick=()=>{ ans.textContent=w.en; speak(w.en,false); pracMark(w,false); pracNext(1600); };
     document.getElementById("pSay").onclick=function(){ if(!SR){ res.className="res warn"; res.textContent=t("noSR"); return; } res.className="res"; res.textContent=t("listening"); this.disabled=true;
@@ -1506,7 +1550,7 @@ async function runCine(){
   for(const [id,ms] of scenes){ if(cineDone) return; show(id); if(id==="sc3") chime("tada"); if(id==="sc5") narrate("open"); await new Promise(r=>setTimeout(r,ms)); }
   endCine();
 }
-document.getElementById("cinePlay").onclick=runCine;
+document.getElementById("cinePlay").onclick=()=>{ runCine(); ensureMic().catch(()=>{}); };
 document.getElementById("cineSkip").onclick=()=>{ audioOn(); if(AC&&AC.state==="suspended") AC.resume(); endCine(); };
 /* chapter cards */
 const chapterEl=document.getElementById("chapter"); let chT=null, lastChapter=null;
@@ -1570,7 +1614,8 @@ document.getElementById("diagRun").onclick=async()=>{
   li(!!window.cocoSsd, "Object model script loaded (80 classes)");
   li(!!window.mobilenet, "Second-stage model script loaded (1,000 classes)", window.mobilenet?"":"freeze & scan will use the 80-class detector only");
   if(window.cocoSsd){ try{ await loadModel(); li(true,"Object model ready"); }catch(e){ li(false,"Object model failed to load",e.message); } }
-  li(!!SR, "Speech recognition (say-it-back)", SR?"supported":"not in this browser — use Chrome/Edge");
+  li(!!SR, "Speech recognition (say-it-back)", SR?(SR_BROKEN?"supported, but last attempt failed: "+SR_BROKEN+" (the school network may block Google's speech service — Record & compare takes over)":"supported"):"not in this browser — use Chrome/Edge");
+  try{ await ensureMic(); li(true,"Microphone permission granted — "+t("micTest"), t("micTestHint")); const m=document.createElement("div"); m.className="meter live"; m.innerHTML="<i></i>"; out.appendChild(m); meterStart(m); setTimeout(meterStop,15000); }catch(e){ li(false,"Microphone", srMsg(micErr(e))); }
   li("speechSynthesis" in window, "Text-to-speech", ("speechSynthesis" in window)?(speechSynthesis.getVoices().length+" voices, using "+(VOICE?VOICE.name:"default")):"missing");
   try{ localStorage.setItem("sl_t","1"); localStorage.removeItem("sl_t"); li(true,"Storage (word wall) works", WALL.length+" words saved"); }catch(e){ li(false,"Storage blocked — word wall will not save",e.message); }
   li(!window.__lastErr, "No script errors", window.__lastErr||"");
