@@ -132,7 +132,8 @@ main{max-width:1040px;margin:0 auto;padding:16px 16px 90px}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .say{margin-top:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
 .say .res{font-size:15px;margin-top:10px;min-height:22px}
-.meter{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin:10px auto 0;max-width:320px;overflow:hidden;--lvl:0}.meter i{display:block;height:100%;width:calc(var(--lvl)*100%);background:linear-gradient(90deg,var(--gold),var(--gold-2));box-shadow:0 0 10px var(--gold-glow);transition:width .08s}.meter.hot i{background:linear-gradient(90deg,var(--ok),var(--gold-2))}.recbox{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.meter{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin:10px auto 0;max-width:320px;overflow:hidden;--lvl:0}.meter i{display:block;height:100%;width:calc(var(--lvl)*100%);background:linear-gradient(90deg,var(--gold),var(--gold-2));box-shadow:0 0 10px var(--gold-glow);transition:width .08s}.meter.pulse i{width:100%;animation:mpulse 1s ease-in-out infinite;background:linear-gradient(90deg,var(--gold),var(--gold-2))}@keyframes mpulse{0%,100%{opacity:.25;transform:scaleX(.3)}50%{opacity:1;transform:scaleX(1)}}.meter i{transform-origin:left}
+.meter.hot i{background:linear-gradient(90deg,var(--ok),var(--gold-2))}.recbox{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
 .res .diff{font-size:17px;line-height:1.6}.res .diff .hit{color:var(--ok)}.res .diff .miss{color:var(--bad);text-decoration:underline wavy}.res small{color:var(--muted);font-weight:400}
 .res.ok{color:var(--ok);font-weight:700}.res.bad{color:var(--bad)}.res.warn{color:var(--warn)}
 .say.listening{border-color:var(--gold);box-shadow:inset 0 0 40px rgba(201,162,39,.12)}
@@ -458,6 +459,7 @@ textarea:focus{border-color:var(--gold)}
     <h3>Tips &amp; troubleshooting</h3>
     <ul>
       <li>Works best in Chrome/Edge on Chromebooks, Android, and desktop. Speech recognition needs a Chromium browser <b>and</b> a path to Google's speech service; if the district filter blocks it, Storm Lens switches to <b>Record &amp; compare</b> automatically (the student records, hears the model and themselves, and self-checks). On iPhone Safari, Record &amp; compare is the normal mode.</li>
+      <li><b>Phones:</b> on Android, speech check works in Chrome. On iPhone/iPad, Safari's speech check depends on Siri Dictation being enabled; if it is off or blocked, Storm Lens offers Record &amp; compare instead. Either way, allow the microphone when the browser asks, and make sure no other app (a call, a voice memo) is using it.</li>
       <li><b>Mic not working?</b> Run the Device check below: it asks for the microphone, shows a live level bar, and names the exact problem (blocked by the lock icon, in use by another tab, no mic, or speech service blocked).</li>
       <li>The first load downloads the recognition model (a few MB). After that it is cached.</li>
       <li>If the camera is blocked, the student can use <b>Upload photo</b> or <b>Type it</b> — the whole word card still works.</li>
@@ -897,7 +899,7 @@ const T = {
     foot:"Free · No account · Works offline after first load ·",
     loading:"Loading the lens…",fallback:"Nothing I know for sure. Did you see one of these?",ready:"Looking…",scanning:"Scanning photo…",nothing:"I don't see anything I know yet. Move closer, or type the word below.",
     hear:"Hear it",slow:"Slow",sayBack:"Say it back",listening:"Listening… say it now",heard:"I heard:",great:"Great! That's it ⭐",almost:"Almost! I heard “{h}”. Listen once more, then say “{w}” slowly.",close:"Close! Try again.",noSR:"Say-it-back needs Chrome or Edge.",
-    sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"The speech checker couldn't reach Google's speech service (no internet, or the school filter blocks it). Record & compare is ready below.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.","mic-busy":"Another app or tab is using the microphone. Close it and try again.",error:"Speech check had a hiccup. Try again."},
+    sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"The speech checker couldn't reach Google's speech service (no internet, or the school filter blocks it). Record & compare is ready below.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.","mic-busy":"Another app or tab is using the microphone. Close it and try again.","ios":"On iPhone/iPad, speech check needs Settings → Siri & Search → Dictation turned on. Record & compare always works.",error:"Speech check had a hiccup. Try again."},
     recordMode:"Speech check is unavailable on this network, so you can record yourself and compare.",record:"Record",stopRec:"Stop",playMine:"Play mine",playModel:"Play model",iSaidIt:"✓ I said it",recHint:"Listen to the model, then yourself. Match it? Tap “I said it”.",micTest:"Mic test",micTestHint:"Speak — the bar should move.",
     save:"Save to wall",saved:"Saved ✓",onWall:"On your wall",cognate:"cognate",
     frames:"Say a sentence",lane:{n:"Newcomer",e:"Emerging",p:"Progressing",c:"Challenge"},yourLane:"your lane",
@@ -925,7 +927,7 @@ const T = {
     foot:"Gratis · Sin cuenta · Funciona sin internet después de la primera carga ·",
     loading:"Cargando la lente…",fallback:"Nada seguro. ¿Viste alguna de estas cosas?",ready:"Buscando…",scanning:"Escaneando foto…",nothing:"Todavía no reconozco nada. Acércate o escribe la palabra abajo.",
     hear:"Escuchar",slow:"Lento",sayBack:"Repetir",listening:"Escuchando… dilo ahora",heard:"Escuché",great:"¡Muy bien! Así es ⭐",almost:"¡Casi! Escuché “{h}”. Escucha otra vez y di “{w}” despacio.",close:"¡Casi! Inténtalo otra vez.",noSR:"Para repetir necesitas Chrome o Edge.",
-    sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"El revisor de voz no pudo conectarse al servicio de voz de Google (sin internet o bloqueado por el filtro escolar). Abajo puedes grabar y comparar.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.","mic-busy":"Otra app o pestaña está usando el micrófono. Ciérrala e inténtalo otra vez.",error:"La revisión de voz falló. Inténtalo otra vez."},
+    sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"El revisor de voz no pudo conectarse al servicio de voz de Google (sin internet o bloqueado por el filtro escolar). Abajo puedes grabar y comparar.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.","mic-busy":"Otra app o pestaña está usando el micrófono. Ciérrala e inténtalo otra vez.","ios":"En iPhone/iPad, la revisión de voz necesita Ajustes → Siri y Buscar → Dictado activado. Grabar y comparar siempre funciona.",error:"La revisión de voz falló. Inténtalo otra vez."},
     recordMode:"La revisión de voz no está disponible en esta red; puedes grabarte y comparar.",record:"Grabar",stopRec:"Detener",playMine:"Oír la mía",playModel:"Oír el modelo",iSaidIt:"✓ Lo dije",recHint:"Escucha el modelo y luego a ti. ¿Coincide? Toca “Lo dije”.",micTest:"Prueba de micrófono",micTestHint:"Habla — la barra debe moverse.",
     save:"Guardar en el muro",saved:"Guardado ✓",onWall:"En tu muro",cognate:"cognado",
     frames:"Di una oración",lane:{n:"Recién llegado",e:"Emergente",p:"En progreso",c:"Reto"},yourLane:"tu nivel",
@@ -1047,26 +1049,32 @@ async function ensureMic(){
   try{ audioOn(); if(AC&&AC.state==="suspended") await AC.resume(); const src=AC.createMediaStreamSource(MIC); micAnalyser=AC.createAnalyser(); micAnalyser.fftSize=512; src.connect(micAnalyser); }catch(e){}
   return MIC;
 }
+function releaseMic(){ if(MIC){ try{ MIC.getTracks().forEach(t=>t.stop()); }catch(e){} } MIC=null; micAnalyser=null; meterStop(); }
+async function warmMicPermission(){ try{ const s=await navigator.mediaDevices.getUserMedia({audio:true}); s.getTracks().forEach(t=>t.stop()); }catch(e){} }
+const IS_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 function meterStart(el){ if(!micAnalyser||!el) return; const buf=new Uint8Array(micAnalyser.fftSize); const tick=()=>{ micAnalyser.getByteTimeDomainData(buf); let s=0; for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; s+=v*v; } const rms=Math.sqrt(s/buf.length); el.style.setProperty("--lvl", Math.min(1,rms*6)); el.classList.toggle("hot",rms>0.02); micRAF=requestAnimationFrame(tick); }; tick(); }
 function meterStop(){ cancelAnimationFrame(micRAF); document.querySelectorAll(".meter").forEach(m=>{ m.style.setProperty("--lvl",0); m.classList.remove("hot"); }); }
 function micErr(e){ const n=(e&&e.name)||""; if(n==="NotAllowedError"||n==="SecurityError") return "not-allowed"; if(n==="NotFoundError"||n==="OverconstrainedError") return "audio-capture"; if(n==="NotReadableError") return "mic-busy"; if(n==="NoAPI") return "error"; return "error"; }
 function quietForListening(){ if("speechSynthesis" in window) speechSynthesis.cancel(); padLevel(0.02,0.3); }
 function unquiet(){ padLevel(document.body.classList.contains("theater")?0.25:0.35,2); }
-async function listen(target, onRes, onEnd){
+function listen(target, onRes, onEnd){
+  /* Recognition must start synchronously inside the tap (iOS) and must NOT share the mic with an open getUserMedia stream (Android/iOS), so: release any held stream, then start at once. */
   if(!SR){ onRes(null); return; }
   if(SR_BROKEN){ onRes([],SR_BROKEN); return; }
-  try{ await ensureMic(); }catch(e){ onRes([],micErr(e)); return; }
+  releaseMic();
   quietForListening();
   if(activeRec){ try{ activeRec.abort(); }catch(e){} }
-  const r=new SR(); activeRec=r; r.lang="en-US"; r.interimResults=false; r.maxAlternatives=5; r.continuous=false;
-  let got=false, done=false; const finish=(alts,err)=>{ if(done) return; done=true; activeRec=null; meterStop(); unquiet(); clearTimeout(tm); onRes(alts,err); };
-  r.onaudiostart=()=>{ meterStart(document.querySelector(".say.listening .meter, .meter.live")); };
-  r.onresult=e=>{ got=true; const alts=[...e.results[0]].map(a=>a.transcript); finish(alts); };
+  const r=new SR(); activeRec=r; r.lang="en-US"; r.interimResults=IS_IOS; r.maxAlternatives=IS_IOS?1:5; r.continuous=false;
+  let got=false, done=false, lastInterim=""; const finish=(alts,err)=>{ if(done) return; done=true; activeRec=null; pulseStop(); unquiet(); clearTimeout(tm); onRes(alts,err); };
+  r.onaudiostart=()=>{ pulseStart(); };
+  r.onresult=e=>{ got=true; const res=e.results[e.results.length-1]; if(res.isFinal||!IS_IOS){ const alts=[...res].map(a=>a.transcript); finish(alts); } else { lastInterim=res[0].transcript; } };
   r.onerror=e=>{ got=true; const code=e.error||"error"; if(code==="network"||code==="service-not-allowed"||code==="language-not-supported") SR_BROKEN=code; finish([],code); };
-  r.onend=()=>{ if(!got) finish([],"no-speech"); onEnd&&onEnd(); };
+  r.onend=()=>{ if(!done&&lastInterim) finish([lastInterim]); else if(!got) finish([],"no-speech"); onEnd&&onEnd(); };
   const tm=setTimeout(()=>{ try{ r.stop(); }catch(e){} },9000);
   try{ r.start(); }catch(err){ finish([],"start"); }
 }
+function pulseStart(){ document.querySelectorAll(".say.listening .meter, .meter.live").forEach(m=>m.classList.add("pulse")); }
+function pulseStop(){ document.querySelectorAll(".meter").forEach(m=>m.classList.remove("pulse")); }
 function srMsg(code){ const m=T[LANG].sr; return m[code]||m.error; }
 function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]); for(let j=1;j<=n;j++) d[0][j]=j; for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
 function sim(a,b){ a=norm(a); b=norm(b); if(!a||!b) return 0; return 1-lev(a,b)/Math.max(a.length,b.length); }
@@ -1333,7 +1341,7 @@ function openCard(key, thumb, rawWord){
     res.className="res"; res.textContent=t("listening"); btn.disabled=true; res.closest(".say")&&res.closest(".say").classList.add("listening");
     listen(target, (alts,err)=>{
       btn.disabled=false; res.closest(".say")&&res.closest(".say").classList.remove("listening");
-      if(err){ res.className="res warn"; res.textContent=srMsg(err); if(SR_BROKEN||err==="no-speech") recordMode(key, isFrame?target:say); return; }
+      if(err){ res.className="res warn"; res.textContent=srMsg(err)+(IS_IOS&&(err==="service-not-allowed"||err==="not-allowed"||err==="no-speech")?" "+T[LANG].sr.ios:""); if(SR_BROKEN||err==="no-speech"||IS_IOS) recordMode(key, isFrame?target:say); return; }
       if(!alts||!alts.length){ res.className="res warn"; res.textContent=t("close"); return; }
       const ok = isFrame ? matchFrame(target,alts) : matchWord(target,alts);
       res.className="res "+(ok?"ok":"bad");
@@ -1383,7 +1391,7 @@ async function recordMode(key, modelText){
     try{ await ensureMic(); }catch(e){ box.insertAdjacentHTML("beforeend",`<div class="res warn">${srMsg(micErr(e))}</div>`); return; }
     quietForListening(); recChunks=[]; try{ recorder=new MediaRecorder(MIC); }catch(e){ recorder=new MediaRecorder(MIC,{}); }
     recorder.ondataavailable=e=>{ if(e.data.size) recChunks.push(e.data); };
-    recorder.onstop=()=>{ meterStop(); unquiet(); if(recURL) URL.revokeObjectURL(recURL); recURL=URL.createObjectURL(new Blob(recChunks,{type:recorder.mimeType||"audio/webm"})); mine.disabled=false; ok.disabled=false; go.innerHTML=`⏺ ${t("record")}`; go.classList.add("gold"); const a=new Audio(recURL); a.play().catch(()=>{}); };
+    recorder.onstop=()=>{ meterStop(); unquiet(); setTimeout(releaseMic,50); if(recURL) URL.revokeObjectURL(recURL); recURL=URL.createObjectURL(new Blob(recChunks,{type:recorder.mimeType||"audio/webm"})); mine.disabled=false; ok.disabled=false; go.innerHTML=`⏺ ${t("record")}`; go.classList.add("gold"); const a=new Audio(recURL); a.play().catch(()=>{}); };
     recorder.start(); meterStart(box.querySelector(".meter")); go.innerHTML=`⏹ ${t("stopRec")}`; go.classList.remove("gold"); setTimeout(()=>{ if(recorder&&recorder.state==="recording") recorder.stop(); },8000);
   };
   mine.onclick=()=>{ if(recURL) new Audio(recURL).play().catch(()=>{}); };
@@ -1395,12 +1403,12 @@ function exampleSentence(w){ const vp=verbPhrase(w); const subj=["I","We","Stude
 function wordFamily(w){ const n=w.en.toLowerCase(); const fam={book:"books · bookshelf · notebook · textbook",pencil:"pencils · pencil case · pencil sharpener",paper:"papers · paperwork · paper clip",water:"watery · waterfall · water bottle",light:"lights · lighter · flashlight · lightning",class:"classroom · classmate · classwork",hand:"hands · handbag · handwriting · handle",work:"homework · worksheet · worker · workbook",school:"schools · schoolwork · high school",bus:"buses · bus stop · bus driver",home:"homework · homeroom · hometown",foot:"feet · football · footstep",eye:"eyes · eyesight · eyebrow",tooth:"teeth · toothbrush · toothpaste",fire:"fire station · firefighter · fire drill",sun:"sunny · sunglasses · sunrise",rain:"rainy · raincoat · rainbow",snow:"snowy · snowball · snowboard",play:"player · playground · playing"};
   for(const k in fam){ if(n.includes(k)) return fam[k]; } const p=pluralOf(w); return (w.art?`${w.en} · ${p}`:w.en)+(w.cog?` · <span class="badge cog">${t("cognate")}</span> ${w.es.split("/")[0].trim()}`:""); }
 /* long dictation listener for describe-the-picture */
-async function listenLong(cb){ if(!SR){ cb("", "error"); return; } if(SR_BROKEN){ cb("",SR_BROKEN); return; } try{ await ensureMic(); }catch(e){ cb("",micErr(e)); return; } quietForListening(); const r=new SR(); r.onaudiostart=()=>meterStart(document.querySelector(".meter.live")); r.lang="en-US"; r.interimResults=true; r.continuous=true; r.maxAlternatives=1; let txt=""; let got=false; let timer=null;
+function listenLong(cb){ if(!SR){ cb("", "error"); return; } if(SR_BROKEN){ cb("",SR_BROKEN); return; } releaseMic(); quietForListening(); const r=new SR(); r.onaudiostart=()=>pulseStart(); r.lang="en-US"; r.interimResults=true; r.continuous=!IS_IOS; r.maxAlternatives=1; let txt=""; let got=false; let timer=null;
   const stop=()=>{ try{ r.stop(); }catch(e){} };
   r.onresult=e=>{ got=true; txt=[...e.results].map(x=>x[0].transcript).join(" "); clearTimeout(timer); timer=setTimeout(stop,1800); };
   r.onerror=e=>{ got=true; cb("",e.error||"error"); };
-  r.onend=()=>{ clearTimeout(timer); meterStop(); unquiet(); if(txt) cb(txt); else if(!got) cb("","no-speech"); };
-  try{ r.start(); timer=setTimeout(stop,12000); }catch(err){ meterStop(); unquiet(); cb("","start"); } }
+  r.onend=()=>{ clearTimeout(timer); pulseStop(); unquiet(); if(txt) cb(txt); else if(!got) cb("","no-speech"); };
+  try{ r.start(); timer=setTimeout(stop,12000); }catch(err){ pulseStop(); unquiet(); cb("","start"); } }
 
 /* ============ WALL ============ */
 function renderWall(){
@@ -1550,7 +1558,7 @@ async function runCine(){
   for(const [id,ms] of scenes){ if(cineDone) return; show(id); if(id==="sc3") chime("tada"); if(id==="sc5") narrate("open"); await new Promise(r=>setTimeout(r,ms)); }
   endCine();
 }
-document.getElementById("cinePlay").onclick=()=>{ runCine(); ensureMic().catch(()=>{}); };
+document.getElementById("cinePlay").onclick=()=>{ runCine(); warmMicPermission(); };
 document.getElementById("cineSkip").onclick=()=>{ audioOn(); if(AC&&AC.state==="suspended") AC.resume(); endCine(); };
 /* chapter cards */
 const chapterEl=document.getElementById("chapter"); let chT=null, lastChapter=null;
@@ -1615,7 +1623,7 @@ document.getElementById("diagRun").onclick=async()=>{
   li(!!window.mobilenet, "Second-stage model script loaded (1,000 classes)", window.mobilenet?"":"freeze & scan will use the 80-class detector only");
   if(window.cocoSsd){ try{ await loadModel(); li(true,"Object model ready"); }catch(e){ li(false,"Object model failed to load",e.message); } }
   li(!!SR, "Speech recognition (say-it-back)", SR?(SR_BROKEN?"supported, but last attempt failed: "+SR_BROKEN+" (the school network may block Google's speech service — Record & compare takes over)":"supported"):"not in this browser — use Chrome/Edge");
-  try{ await ensureMic(); li(true,"Microphone permission granted — "+t("micTest"), t("micTestHint")); const m=document.createElement("div"); m.className="meter live"; m.innerHTML="<i></i>"; out.appendChild(m); meterStart(m); setTimeout(meterStop,15000); }catch(e){ li(false,"Microphone", srMsg(micErr(e))); }
+  try{ await ensureMic(); li(true,"Microphone permission granted — "+t("micTest"), t("micTestHint")); const m=document.createElement("div"); m.className="meter live"; m.innerHTML="<i></i>"; out.appendChild(m); meterStart(m); setTimeout(releaseMic,10000); }catch(e){ li(false,"Microphone", srMsg(micErr(e))); }
   li("speechSynthesis" in window, "Text-to-speech", ("speechSynthesis" in window)?(speechSynthesis.getVoices().length+" voices, using "+(VOICE?VOICE.name:"default")):"missing");
   try{ localStorage.setItem("sl_t","1"); localStorage.removeItem("sl_t"); li(true,"Storage (word wall) works", WALL.length+" words saved"); }catch(e){ li(false,"Storage blocked — word wall will not save",e.message); }
   li(!window.__lastErr, "No script errors", window.__lastErr||"");
