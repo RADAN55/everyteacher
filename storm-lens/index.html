@@ -1,0 +1,1587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Storm Lens — Point. Name. Say.</title>
+<meta name="description" content="Point your camera at anything and learn the English word, hear it, say it back, and build your own word wall. A free EL Publishing tool for English learners.">
+<meta name="theme-color" content="#070914">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E2761'/%3E%3Ctext x='32' y='50' font-family='Georgia,serif' font-weight='700' font-size='46' fill='%23C9A227' text-anchor='middle'%3E%E2%80%9C%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href='data:application/manifest+json,{"name":"Storm Lens","short_name":"Storm Lens","start_url":".","display":"standalone","background_color":"%23070914","theme_color":"%23070914","icons":[{"src":"data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 512 512%27%3E%3Crect width=%27512%27 height=%27512%27 rx=%27110%27 fill=%27%231E2761%27/%3E%3Ctext x=%27256%27 y=%27400%27 font-family=%27Georgia,serif%27 font-weight=%27700%27 font-size=%27370%27 fill=%27%23C9A227%27 text-anchor=%27middle%27%3E%E2%80%9C%3C/text%3E%3C/svg%3E","sizes":"512x512","type":"image/svg+xml","purpose":"any"}]}'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2761; --gold:#C9A227; --gold-2:#E8C85A; --gold-glow:rgba(201,162,39,.45);
+  --bg:#070914; --bg-2:#0d1124; --panel:rgba(16,20,44,.72); --panel-solid:#121735; --line:rgba(255,255,255,.09);
+  --ink:#f3f4fa; --muted:#9aa0bd; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --radius:18px;
+  --lane-n:#a78bfa; --lane-e:#38bdf8; --lane-p:#4ade80; --lane-c:#fbbf24;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-text-size-adjust:100%;min-height:100%}
+body{background:
+  radial-gradient(1200px 600px at 50% -200px, rgba(30,39,97,.75), transparent 60%),
+  radial-gradient(800px 500px at 100% 100%, rgba(201,162,39,.10), transparent 60%),
+  var(--bg)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.045;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .6s steps(2) infinite}
+@keyframes grain{0%{transform:translate(0,0)}50%{transform:translate(-6px,4px)}100%{transform:translate(4px,-6px)}}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;margin:0}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px}
+button:disabled{opacity:.4;cursor:not-allowed}
+.hidden{display:none!important}
+a{color:var(--gold-2)}
+
+/* ===== SPLASH ===== */
+#splash{position:fixed;inset:0;z-index:2000;background:var(--bg);display:grid;place-items:center;text-align:center;transition:opacity .8s ease,visibility .8s}
+#splash.off{opacity:0;visibility:hidden}
+#splash .bars{position:absolute;left:0;right:0;height:11vh;background:#000}
+#splash .bars.top{top:0}#splash .bars.bot{bottom:0}
+#splash .mk{font-family:Fraunces,serif;font-size:clamp(64px,14vw,150px);color:var(--gold);line-height:1;text-shadow:0 0 60px var(--gold-glow);animation:spin 2.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes spin{from{transform:rotate(-180deg) scale(.4);opacity:0}to{transform:none;opacity:1}}
+#splash h1{font-size:clamp(40px,8vw,88px);font-weight:700;letter-spacing:.02em;animation:rise 1s .5s both}
+#splash p{letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:var(--muted);margin:10px 0 36px;animation:rise 1s .8s both}
+#splash .go{background:var(--gold);color:#121735;padding:16px 36px;font-weight:700;font-size:17px;border-radius:999px;box-shadow:0 0 0 0 var(--gold-glow);animation:rise 1s 1.1s both,halo 2s 1.6s infinite}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes halo{0%{box-shadow:0 0 0 0 var(--gold-glow)}100%{box-shadow:0 0 0 26px rgba(201,162,39,0)}}
+#splash .credit{position:absolute;bottom:13vh;left:0;right:0;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);animation:rise 1s 1.4s both}
+
+/* ===== HEADER ===== */
+header{background:linear-gradient(180deg,rgba(7,9,20,.95),rgba(7,9,20,.6));backdrop-filter:blur(14px);color:#fff;padding:12px 16px 0;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+.hd{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;flex:1;min-width:200px}
+.mark{width:40px;height:40px;border-radius:12px;background:var(--gold);display:grid;place-items:center;color:#121735;font-family:Fraunces,serif;font-weight:700;font-size:24px;box-shadow:0 0 24px var(--gold-glow)}
+.brand h1{font-size:22px;line-height:1.05}
+.brand small{display:block;font-family:Inter;font-size:10px;opacity:.7;letter-spacing:.3em;text-transform:uppercase;margin-top:2px}
+.hd-ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{background:transparent;color:#cdd1e6;padding:6px 11px;font-size:13px;font-weight:600;border-radius:9px}
+.seg button.on{background:var(--gold);color:#121735;box-shadow:0 0 14px var(--gold-glow)}
+nav.tabs{max-width:1040px;margin:10px auto 0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{background:transparent;color:var(--muted);padding:10px 14px 12px;font-weight:600;white-space:nowrap;display:flex;gap:7px;align-items:center;border-radius:0;border-bottom:2px solid transparent;transition:.2s}
+nav.tabs button.on{color:#fff;border-bottom-color:var(--gold);text-shadow:0 0 18px var(--gold-glow)}
+nav.tabs .cnt{background:var(--gold);color:#121735;border-radius:999px;padding:0 7px;font-size:11px}
+
+main{max-width:1040px;margin:0 auto;padding:16px 16px 90px}
+.card{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:rise .5s both}
+.card h2{font-size:26px;margin-bottom:4px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 12px}
+
+/* ===== VIEWFINDER ===== */
+.stage{position:relative;background:#000;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10;max-height:66vh;box-shadow:0 0 0 1px var(--line),0 30px 80px rgba(0,0,0,.6)}
+.stage video,.stage canvas,.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.stage canvas{pointer-events:none}
+.stage .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.65) 100%)}
+.stage .hud{position:absolute;inset:14px;pointer-events:none}
+.stage .hud i{position:absolute;width:34px;height:34px;border:2px solid var(--gold);opacity:.9;filter:drop-shadow(0 0 6px var(--gold-glow))}
+.stage .hud i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:6px 0 0 0}
+.stage .hud i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 6px 0 0}
+.stage .hud i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 6px}
+.stage .hud i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 6px 0}
+.stage .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-2),transparent);box-shadow:0 0 18px var(--gold);opacity:0;pointer-events:none}
+.stage.live .scan{opacity:.9;animation:sweep 2.6s ease-in-out infinite}
+@keyframes sweep{0%{top:4%}50%{top:95%}100%{top:4%}}
+.stage .rec{position:absolute;right:14px;top:14px;display:flex;gap:7px;align-items:center;font-size:11px;letter-spacing:.2em;color:#fff;opacity:0}
+.stage.live .rec{opacity:.9}
+.stage .rec b{width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 10px #ef4444;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.stage .empty{position:absolute;inset:0;display:grid;place-items:center;color:#cfd3e6;text-align:center;padding:24px;font-size:15px}
+.stage .empty .big{font-size:64px;margin-bottom:8px;filter:drop-shadow(0 0 20px var(--gold-glow))}
+.status{position:absolute;left:14px;top:14px;background:rgba(7,9,20,.8);border:1px solid var(--line);color:#fff;font-size:12px;letter-spacing:.08em;padding:6px 12px;border-radius:999px;display:flex;gap:7px;align-items:center}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.2s infinite}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.flash.go{animation:flash .45s ease-out}
+@keyframes flash{0%{opacity:.9}100%{opacity:0}}
+.ctl{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.btn{background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;padding:12px 18px;font-weight:600;display:inline-flex;gap:8px;align-items:center;border-radius:14px;transition:.2s}
+.btn:hover{background:rgba(255,255,255,.14)}
+.btn.gold{background:var(--gold);color:#121735;border-color:transparent;box-shadow:0 8px 30px var(--gold-glow)}
+.btn.gold:hover{background:var(--gold-2)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:8px 12px;font-size:13px}
+.btn.big{padding:16px 24px;font-size:18px;border-radius:999px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;min-height:10px}
+.chip{background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.5);color:#fff;padding:11px 16px;border-radius:999px;font-weight:700;font-size:17px;display:inline-flex;gap:10px;align-items:center;transition:.15s;animation:pop .35s cubic-bezier(.2,.9,.3,1.3) both;box-shadow:0 0 18px rgba(201,162,39,.15)}
+.chip:hover{background:rgba(201,162,39,.22);transform:translateY(-2px)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.chip .es{font-weight:500;color:var(--muted);font-size:13px}
+.chip.new::after{content:"NEW";background:var(--gold);color:#121735;font-size:10px;padding:2px 7px;border-radius:6px;letter-spacing:.1em}
+.tip{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);color:#e9d9a3;padding:10px 14px;border-radius:12px;font-size:13px;margin-top:12px}
+
+/* ===== TITLE-CARD WORD SHEET ===== */
+.overlay{position:fixed;inset:0;background:rgba(3,5,14,.82);backdrop-filter:blur(8px);z-index:50;display:flex;align-items:flex-end;justify-content:center;padding:0;animation:fade .25s both}
+@keyframes fade{from{opacity:0}}
+@media(min-width:720px){.overlay{align-items:center;padding:20px}}
+.sheet{background:linear-gradient(180deg,#171c40,#0d1124);color:#fff;width:100%;max-width:680px;border-radius:24px 24px 0 0;max-height:92vh;overflow:auto;padding:20px 20px 30px;animation:up .35s cubic-bezier(.2,.9,.3,1) both;border:1px solid var(--line);box-shadow:0 -20px 80px rgba(0,0,0,.6)}
+@media(min-width:720px){.sheet{border-radius:24px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet .close{position:sticky;top:0;float:right;background:rgba(255,255,255,.1);color:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;z-index:2}
+.wtop{display:flex;gap:16px;align-items:center}
+.wthumb{width:110px;height:110px;border-radius:16px;object-fit:cover;background:var(--bg-2);border:1px solid var(--line);flex:none;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.word{font-family:Fraunces,serif;font-size:clamp(40px,8vw,58px);font-weight:700;color:#fff;line-height:1;text-shadow:0 0 40px var(--gold-glow)}
+.word .art{font-size:24px;font-weight:500;color:var(--muted);margin-right:8px}
+.word .ch{display:inline-block;animation:letter .5s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes letter{from{opacity:0;transform:translateY(16px) rotate(6deg)}}
+.syl{color:var(--gold-2);font-size:15px;margin-top:6px;letter-spacing:.14em;text-transform:lowercase}
+.es-line{margin-top:8px;font-size:18px;color:#dfe2f2}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;margin-left:6px;vertical-align:middle;text-transform:uppercase;letter-spacing:.06em}
+.badge.cog{background:rgba(74,222,128,.15);color:var(--ok);border:1px solid rgba(74,222,128,.35)}
+.badge.cat{background:rgba(255,255,255,.08);color:#cdd1e6;border:1px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.say{margin-top:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.say .res{font-size:15px;margin-top:10px;min-height:22px}
+.res .diff{font-size:17px;line-height:1.6}.res .diff .hit{color:var(--ok)}.res .diff .miss{color:var(--bad);text-decoration:underline wavy}.res small{color:var(--muted);font-weight:400}
+.res.ok{color:var(--ok);font-weight:700}.res.bad{color:var(--bad)}.res.warn{color:var(--warn)}
+.say.listening{border-color:var(--gold);box-shadow:inset 0 0 40px rgba(201,162,39,.12)}
+.lanes{margin-top:18px}
+.lane{border-left:4px solid var(--lane-n);padding:12px 14px;margin-top:10px;background:rgba(255,255,255,.04);border-radius:0 14px 14px 0}
+.lane.e{border-color:var(--lane-e)}.lane.p{border-color:var(--lane-p)}.lane.c{border-color:var(--lane-c)}
+.lane .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.lane .frame{font-size:17px;margin:6px 0 8px;line-height:1.4;color:#eef0fa}
+.lane .frame b{color:var(--gold-2)}
+.lane .frame .blank{display:inline-block;min-width:64px;border-bottom:2px solid var(--gold);height:1em;vertical-align:bottom}
+.lane .mini{display:flex;gap:6px}
+.lane .mini button{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:7px 11px;font-size:13px;font-weight:600}
+
+/* ===== WALL ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.wcard{background:var(--panel-solid);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;position:relative;transition:.2s;animation:pop .4s both}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 0 1px rgba(201,162,39,.5)}
+.wcard img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--bg-2);display:block}
+.wcard .noimg{width:100%;aspect-ratio:1;display:grid;place-items:center;font-size:46px;background:var(--bg-2)}
+.wcard .t{padding:9px 11px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.3))}
+.wcard .t b{display:block;font-family:Fraunces,serif;font-size:18px;color:#fff}
+.wcard .t span{font-size:12px;color:var(--muted)}
+.wcard .stars{position:absolute;top:8px;right:8px;background:rgba(7,9,20,.8);border:1px solid var(--line);border-radius:8px;padding:2px 7px;font-size:12px}
+.wcard .del{position:absolute;top:8px;left:8px;background:rgba(7,9,20,.8);border:1px solid var(--line);border-radius:8px;width:26px;height:26px;font-size:13px;color:var(--bad)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.stat{background:linear-gradient(135deg,#1E2761,#121735);border:1px solid var(--line);color:#fff;border-radius:14px;padding:12px 18px;min-width:110px}
+.stat b{display:block;font-size:30px;font-family:Fraunces,serif;color:var(--gold-2);text-shadow:0 0 20px var(--gold-glow)}
+.stat span{font-size:10px;text-transform:uppercase;letter-spacing:.14em;opacity:.75}
+
+/* ===== PRACTICE ===== */
+.prac{text-align:center;padding:12px 0}
+.prac img{width:min(100%,340px);aspect-ratio:1;object-fit:cover;border-radius:20px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.prac .q{font-size:20px;margin:16px 0 8px;color:#dfe2f2}
+.prac .ans{font-family:Fraunces,serif;font-size:40px;color:var(--gold-2);min-height:48px;text-shadow:0 0 30px var(--gold-glow)}
+
+/* ===== MISSIONS ===== */
+.mission{display:flex;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:16px;margin-bottom:10px;background:rgba(255,255,255,.04);transition:.2s}
+.mission .ic{font-size:32px;width:46px;text-align:center}
+.mission .m{flex:1}
+.mission .m b{display:block;color:#fff}
+.mission .m span{font-size:13px;color:var(--muted)}
+.bar{height:8px;background:rgba(255,255,255,.08);border-radius:99px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-2));box-shadow:0 0 12px var(--gold-glow);transition:width .6s cubic-bezier(.2,.9,.3,1)}
+.mission.done{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.06)}
+.mission.done .ic::after{content:" ✅"}
+
+/* ===== TEACHER ===== */
+.teach h3{font-size:19px;margin:18px 0 6px;color:var(--gold-2)}
+.teach p,.teach li{font-size:15px;line-height:1.55;color:#dfe2f2}
+.teach table{width:100%;border-collapse:collapse;font-size:14px}
+.teach th,.teach td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}
+.teach th{background:rgba(255,255,255,.05)}
+.lanekey span{display:inline-block;padding:3px 9px;border-radius:7px;color:#121735;font-size:12px;font-weight:700;margin-right:4px}
+
+.foot{position:fixed;bottom:0;left:0;right:0;background:rgba(7,9,20,.85);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:9px 16px;font-size:12px;color:var(--muted);text-align:center;z-index:10;letter-spacing:.04em}
+.foot a{color:var(--gold-2);font-weight:600;text-decoration:none}
+.toast{position:fixed;bottom:64px;left:50%;transform:translateX(-50%);background:var(--gold);color:#121735;padding:11px 18px;border-radius:999px;font-size:14px;font-weight:700;z-index:60;box-shadow:0 10px 40px var(--gold-glow);animation:pop .3s both}
+.sr{position:absolute;left:-9999px}
+input[type=text]{font:inherit;padding:12px 14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:14px;width:100%;font-size:17px;outline:none}
+input[type=text]:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.2)}
+.inline{display:flex;gap:8px}
+.inline input{flex:1}
+.dl{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.dl button{background:rgba(255,255,255,.05);border:1px solid var(--line);color:#dfe2f2;padding:7px 11px;border-radius:9px;font-size:13px}
+.dl button:hover{border-color:var(--gold)}
+.confetti{position:fixed;top:-10px;width:8px;height:14px;z-index:1500;pointer-events:none;animation:drop 1.8s ease-in both}
+@keyframes drop{to{transform:translateY(105vh) rotate(720deg);opacity:0}}
+body.lowpower::after{animation:none;opacity:.03}body.lowpower header,body.lowpower .card,body.lowpower .overlay,body.lowpower .foot{backdrop-filter:none}body.lowpower .cine .bgfx,body.lowpower .cine .beam{animation:none}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}body::after{display:none}}
+@media print{body{background:#fff;color:#000}body::after,header,nav,.foot,.ctl,.stats,.row,.tip{display:none!important}.grid{grid-template-columns:repeat(4,1fr)}.wcard{background:#fff;color:#000}.wcard .t b{color:#000}}
+
+/* ===== MOVIE LAYER ===== */
+.cine{position:fixed;inset:0;z-index:2000;background:#000;color:#fff;display:grid;place-items:center;text-align:center;overflow:hidden}
+.cine .bars{position:absolute;left:0;right:0;height:12vh;background:#000;z-index:3}
+.cine .bars.top{top:0}.cine .bars.bot{bottom:0}
+.cine .bgfx{position:absolute;inset:0;background:radial-gradient(900px 600px at 30% 40%,rgba(30,39,97,.9),transparent 60%),radial-gradient(700px 500px at 75% 70%,rgba(201,162,39,.25),transparent 60%),#02030a;animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,1%)}}
+.cine .beam{position:absolute;left:50%;top:-20%;width:4px;height:140%;background:linear-gradient(180deg,transparent,rgba(201,162,39,.35),transparent);filter:blur(14px);transform:translateX(-50%) rotate(12deg);animation:beam 6s ease-in-out infinite alternate}
+@keyframes beam{to{transform:translateX(-50%) rotate(-12deg)}}
+.cine .scene{position:relative;z-index:2;max-width:900px;padding:0 24px;opacity:0;transition:opacity .9s ease,transform .9s ease;transform:translateY(10px)}
+.cine .scene.on{opacity:1;transform:none}
+.cine .k{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--muted)}
+.cine .big{font-family:Fraunces,serif;font-weight:700;font-size:clamp(44px,10vw,120px);line-height:1;letter-spacing:.01em;text-shadow:0 0 50px var(--gold-glow)}
+.cine .big.gold{color:var(--gold)}
+.cine .mid{font-family:Fraunces,serif;font-style:italic;font-weight:500;font-size:clamp(22px,4vw,40px);color:#e9e9f5}
+.cine .skip{position:absolute;right:18px;bottom:13vh;z-index:4;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.cine .play{background:var(--gold);color:#121735;padding:18px 44px;border-radius:999px;font-weight:700;font-size:18px;box-shadow:0 0 0 0 var(--gold-glow);animation:halo 2s 1s infinite}
+.cine .mk{font-family:Fraunces,serif;font-size:clamp(70px,14vw,160px);color:var(--gold);line-height:1;text-shadow:0 0 60px var(--gold-glow);animation:spin 2.2s cubic-bezier(.2,.8,.2,1) both}
+.cine.off{animation:irisOut .9s ease forwards}
+@keyframes irisOut{to{clip-path:circle(0% at 50% 50%);opacity:0}}
+/* chapter card */
+#chapter{position:fixed;inset:0;z-index:1900;background:#000;display:grid;place-items:center;text-align:center;pointer-events:none;opacity:0;transition:opacity .4s}
+#chapter.on{opacity:1}
+#chapter .k{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
+#chapter .big{font-family:Fraunces,serif;font-size:clamp(34px,7vw,80px);font-weight:700;margin-top:10px;animation:rise .8s both}
+/* word reveal shot */
+#reveal{position:fixed;inset:0;z-index:1950;background:#000;display:grid;place-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .35s}
+#reveal.on{opacity:1}
+#reveal img{width:min(42vw,300px);aspect-ratio:1;object-fit:cover;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.8),0 0 0 1px var(--line);animation:kbimg 2.4s ease-out both}
+@keyframes kbimg{from{transform:scale(1.15)}to{transform:scale(1)}}
+#reveal .big{font-family:Fraunces,serif;font-size:clamp(48px,12vw,140px);font-weight:700;line-height:1;text-shadow:0 0 60px var(--gold-glow);margin-top:18px}
+#reveal .big .ch{display:inline-block;animation:letter .5s cubic-bezier(.2,.9,.3,1.4) both}
+#reveal .k{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:14px}
+/* theater mode */
+body.theater header,body.theater nav.tabs,body.theater .foot,body.theater #tab-lens .card:nth-of-type(2),body.theater #tab-lens h2,body.theater #tab-lens .sub,body.theater .tip{display:none!important}
+body.theater main{max-width:none;padding:0}
+body.theater #tab-lens .card{background:#000;border:0;border-radius:0;margin:0;padding:0;box-shadow:none;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+body.theater .stage{border-radius:0;aspect-ratio:auto;height:76vh;max-height:none;box-shadow:none}
+body.theater .ctl,body.theater .chips{justify-content:center;padding:0 16px}
+body.theater::before,body.theater .lb{content:"";position:fixed;left:0;right:0;height:12vh;background:#000;z-index:30;pointer-events:none}
+body.theater::before{top:0}
+body.theater .lb{bottom:0}
+#exitTheater{position:fixed;top:14px;right:14px;z-index:40;display:none}
+body.theater #exitTheater{display:inline-flex}
+/* credits */
+#credits{position:fixed;inset:0;z-index:1980;background:#000;color:#fff;overflow:hidden;display:none}
+#credits.on{display:block}
+#credits .roll{position:absolute;left:0;right:0;top:100%;text-align:center;animation:roll var(--dur,28s) linear forwards}
+@keyframes roll{to{top:-100%}}
+#credits .k{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin:60px 0 10px}
+#credits .big{font-family:Fraunces,serif;font-size:clamp(40px,8vw,96px);font-weight:700}
+#credits .cast{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;max-width:900px;margin:10px auto}
+#credits .cast div{width:120px}
+#credits .cast img,#credits .cast .e{width:120px;height:120px;border-radius:14px;object-fit:cover;display:grid;place-items:center;font-size:56px;background:#121735}
+#credits .cast b{display:block;font-family:Fraunces,serif;font-size:18px;margin-top:6px}
+#credits .cast span{font-size:12px;color:var(--muted)}
+#credits .line{font-size:20px;margin:6px 0;color:#e9e9f5}
+#credits .close{position:fixed;right:18px;top:18px;background:rgba(255,255,255,.1);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.mini-toggle{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#cdd1e6;padding:6px 10px;border-radius:10px;font-size:13px}
+.mini-toggle.on{color:var(--gold-2);border-color:var(--gold)}
+@media(prefers-reduced-motion:reduce){.cine .bgfx,.cine .beam{animation:none}}
+
+/* ===== DEPTH ===== */
+.deep{margin-top:18px}
+.dsec{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px}
+.dsec.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.dsec.row2{grid-template-columns:1fr}}
+.dlbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-2);margin-bottom:6px}
+.dbig{font-size:19px;color:#fff;font-weight:600}
+.dbig b{color:var(--gold-2)}
+.dex{font-size:15px;color:#dfe2f2;margin:4px 0 8px;font-style:italic}
+.dtip{font-size:14px;color:#cdd1e6;line-height:1.5}
+.dsec .mini{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.dsec .mini button{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:7px 11px;font-size:13px;font-weight:600;border-radius:10px}
+.dqq{font-size:16px;color:#fff;margin-bottom:8px}
+.dqo{display:flex;flex-wrap:wrap;gap:8px}
+.dqo button{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:9px 13px;font-size:15px;border-radius:12px}
+.dqo button.ok{background:rgba(74,222,128,.2);border-color:var(--ok)}.dqo button.bad{background:rgba(248,113,113,.15);border-color:var(--bad);opacity:.6}
+.dchk{list-style:none;padding:0;margin:8px 0;font-size:15px;color:#cdd1e6}
+.dchk li{padding:3px 0}.dchk li.hit{color:var(--ok);font-weight:600}
+textarea{font:inherit;width:100%;padding:11px 13px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;font-size:16px;resize:vertical;outline:none;margin-top:6px}
+textarea:focus{border-color:var(--gold)}
+.bank{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px}
+.bw{background:rgba(255,255,255,.05);border:1px solid var(--line);color:#fff;border-radius:12px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px;align-items:center}
+.bw .e{font-size:26px}.bw b{font-family:Fraunces,serif;font-size:15px}.bw span:last-child{font-size:11px;color:var(--muted)}
+.bw.have{border-color:rgba(201,162,39,.6);box-shadow:0 0 12px rgba(201,162,39,.15)}
+.bw:hover{border-color:var(--gold)}
+#pracModes button.on{border-color:var(--gold);color:var(--gold-2)}
+.built{min-height:44px;font-size:22px;font-family:Fraunces,serif;color:#fff;padding:8px;border-bottom:2px solid var(--gold);max-width:560px;margin:8px auto}
+#pTiles button{font-size:17px;padding:9px 14px}
+</style>
+</head>
+<body>
+<div class="cine" id="cine">
+  <div class="bgfx"></div><div class="beam"></div>
+  <div class="bars top"></div><div class="bars bot"></div>
+  <div class="scene on" id="sc0"><div class="mk">“</div><div class="k" style="margin:18px 0 26px">A screening in English</div><button class="play" id="cinePlay">▶ &nbsp;<span data-i18n="play">Play</span></button><div class="k" style="margin-top:22px;font-size:10px;opacity:.7" data-i18n="headphones">Sound on · headphones recommended</div></div>
+  <div class="scene" id="sc1"><div class="k" data-i18n="presents">EL Publishing presents</div></div>
+  <div class="scene" id="sc2"><div class="k" data-i18n="production">A Storm Studio production</div></div>
+  <div class="scene" id="sc3"><div class="big gold">STORM LENS</div><div class="k" style="margin-top:14px" data-i18n="tag">Point · Name · Say</div></div>
+  <div class="scene" id="sc4"><div class="k" data-i18n="starring">Starring</div><div class="big" data-i18n="you">You</div></div>
+  <div class="scene" id="sc5"><div class="mid" data-i18n="logline">Every object in this room has a name.<br>Tonight, you learn to say them.</div></div>
+  <button class="skip" id="cineSkip" data-i18n="skip">Skip ▸</button>
+</div>
+<div id="chapter"><div><div class="k" id="chK"></div><div class="big" id="chT"></div></div></div>
+<div id="reveal"><div><img id="rvImg" alt="" class="hidden"><div class="big" id="rvWord"></div><div class="k" id="rvEs"></div></div></div>
+<div id="credits"><button class="close" id="creditsClose">✕ Close</button><div class="roll" id="creditsRoll"></div></div>
+<button class="btn sm" id="exitTheater">✕ <span data-i18n="exitTheater">Exit theater</span></button>
+<div class="lb"></div>
+<header>
+  <div class="hd">
+    <div class="brand">
+      <div class="mark">“</div>
+      <div><h1>Storm Lens</h1><small data-i18n="tag">Point · Name · Say</small></div>
+    </div>
+    <div class="hd-ctl">
+      <button class="mini-toggle on" id="tgNarr" title="Narrator">🎙️</button><button class="mini-toggle on" id="tgScore" title="Score">🎵</button><button class="mini-toggle" id="tgTheater" title="Theater mode">🎬</button>
+      <div class="seg" id="laneSeg" title="Lane">
+        <button data-lane="n">N</button><button data-lane="e" class="on">E</button><button data-lane="p">P</button><button data-lane="c">C</button>
+      </div>
+      <div class="seg" id="langSeg"><button data-lang="en" class="on">EN</button><button data-lang="es">ES</button></div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <button data-tab="lens" class="on">📷 <span data-i18n="tabLens">Lens</span></button>
+    <button data-tab="wall">🧱 <span data-i18n="tabWall">Word Wall</span> <span class="cnt" id="wallCnt">0</span></button>
+    <button data-tab="practice">🎯 <span data-i18n="tabPractice">Practice</span></button>
+    <button data-tab="missions">🏆 <span data-i18n="tabMissions">Missions</span></button>
+    <button data-tab="teacher">🍎 <span data-i18n="tabTeacher">Teacher</span></button>
+  </nav>
+</header>
+
+<main>
+<!-- LENS -->
+<section id="tab-lens">
+  <div class="card">
+    <h2 data-i18n="lensTitle">What do you see?</h2>
+    <p class="sub" data-i18n="lensSub">Start the camera, point it at anything in the room, then tap a word to hear it and say it back.</p>
+    <div class="stage" id="stage">
+      <video id="video" autoplay playsinline muted></video>
+      <img id="still" alt="" class="hidden">
+      <canvas id="overlay"></canvas>
+      <div class="vig"></div><div class="hud"><i></i><i></i><i></i><i></i></div><div class="scan"></div><div class="rec"><b></b>LIVE</div><div class="flash" id="flash"></div>
+      <div class="empty" id="empty"><div><div class="big">📷</div><span data-i18n="emptyMsg">Tap “Start camera” or upload a photo.</span></div></div>
+      <div class="status hidden" id="status"><span class="dot"></span><span id="statusTxt"></span></div>
+    </div>
+    <div class="ctl">
+      <button class="btn gold" id="btnStart">📷 <span data-i18n="start">Start camera</span></button>
+      <button class="btn" id="btnSnap" disabled>🔍 <span data-i18n="snap">Freeze & scan</span></button>
+      <button class="btn ghost" id="btnFlip" disabled>🔄 <span data-i18n="flip">Flip</span></button>
+      <label class="btn ghost" for="fileIn">🖼️ <span data-i18n="upload">Upload photo</span></label>
+      <input type="file" id="fileIn" accept="image/*" capture="environment" class="sr">
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="tip" id="lensTip" data-i18n="lensTip">Tip: hold the camera still for one second. Big, simple objects work best — a book, a chair, a bottle, a laptop, your backpack.</div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:18px;color:var(--navy)" data-i18n="typeTitle">Not in the picture? Type it.</h3>
+    <p class="sub" data-i18n="typeSub">Type an English or Spanish word for anything around you.</p>
+    <div class="inline"><input type="text" id="typeIn" placeholder="pencil / lápiz" autocomplete="off"><button class="btn" id="btnType">→</button></div>
+    <div class="dl" id="quickWords"></div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:18px;color:var(--gold-2)" data-i18n="bankTitle">Word Bank</h3>
+    <p class="sub" data-i18n="bankSub">Browse every word Storm Lens knows. Tap a category, then a word.</p>
+    <div class="dl" id="bankCats"></div>
+    <div class="bank" id="bankGrid"></div>
+  </div>
+</section>
+
+<!-- WALL -->
+<section id="tab-wall" class="hidden">
+  <div class="card">
+    <h2 data-i18n="wallTitle">My Word Wall</h2>
+    <p class="sub" data-i18n="wallSub">Every word you save lives here — with your own photo. Tap a card to practice it again.</p>
+    <div class="stats">
+      <div class="stat"><b id="stWords">0</b><span data-i18n="stWords">words</span></div>
+      <div class="stat"><b id="stSaid">0</b><span data-i18n="stSaid">said correctly</span></div>
+      <div class="stat"><b id="stStreak">0</b><span data-i18n="stStreak">day streak</span></div>
+    </div>
+    <div class="ctl" style="margin:0 0 12px">
+      <button class="btn gold sm" id="btnCredits">🎬 <span data-i18n="rollCredits">Roll credits</span></button>
+      <button class="btn ghost sm" id="btnExport">⬇️ <span data-i18n="export">Export CSV</span></button>
+      <button class="btn ghost sm" id="btnSend">📤 <span data-i18n="sendTeacher">Send to teacher</span></button>
+      <button class="btn ghost sm" id="btnPrint">🖨️ <span data-i18n="print">Print cards</span></button>
+      <button class="btn ghost sm" id="btnClear">🗑️ <span data-i18n="clear">Clear wall</span></button>
+    </div>
+    <div class="grid" id="wallGrid"></div>
+    <p class="sub" id="wallEmpty" data-i18n="wallEmpty">Nothing yet. Go to the Lens and save your first word!</p>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section id="tab-practice" class="hidden">
+  <div class="card">
+    <h2 data-i18n="pracTitle">Practice</h2>
+    <p class="sub" data-i18n="pracSub">Your photos come back. Can you say the word before you see it?</p>
+    <div class="dl" id="pracModes" style="margin:0 0 10px">
+      <button data-m="say" class="on">🎤 <span data-i18n="mSay">Say it</span></button>
+      <button data-m="listen">👂 <span data-i18n="mListen">Listen & find</span></button>
+      <button data-m="spell">⌨️ <span data-i18n="mSpell">Spell it</span></button>
+      <button data-m="build">🧩 <span data-i18n="mBuild">Build the sentence</span></button>
+    </div>
+    <div class="ctl" style="margin:0 0 10px">
+      <button class="btn gold" id="pracStart">▶️ <span data-i18n="pracStart">Start round (10)</span></button>
+      <button class="btn ghost" id="pracSkip" disabled><span data-i18n="pracSkip">Skip</span> ⏭️</button>
+    </div>
+    <p class="sub" data-i18n="pracWeak">Rounds start with the words you miss most, then the ones you have not seen in a while.</p>
+    <div class="prac" id="pracBox"><p class="sub" data-i18n="pracNeed">Save at least 3 words on your wall to practice.</p></div>
+  </div>
+</section>
+
+<!-- MISSIONS -->
+<section id="tab-missions" class="hidden">
+  <div class="card">
+    <h2 data-i18n="misTitle">Scavenger Missions</h2>
+    <p class="sub" data-i18n="misSub">Find real things with your camera. Missions complete automatically as your wall grows.</p>
+    <div id="missionList"></div>
+  </div>
+</section>
+
+<!-- TEACHER -->
+<section id="tab-teacher" class="hidden">
+  <div class="card teach">
+    <h2>Teacher Guide</h2>
+    <p class="sub">Storm Lens turns the real classroom into the vocabulary list. Nothing leaves the device — no account, no server, no photos uploaded anywhere.</p>
+    <h3>What it does</h3>
+    <ul>
+      <li><b>Lens:</b> the Chromebook/phone camera recognizes everyday objects (80 object classes run entirely in the browser). Tap a word → hear it, see syllables, Spanish, cognate flag, and four-lane sentence frames.</li>
+      <li><b>Say it back:</b> the student speaks; the browser's speech recognition checks the word and each frame. Correct attempts earn stars.</li>
+      <li><b>Word Wall:</b> saved words keep the student's own photo. Export CSV for Ellevation/portfolio evidence or print flashcards.</li>
+      <li><b>Practice:</b> photo flashcards from the student's own wall — production before recognition.</li>
+      <li><b>Missions:</b> scavenger hunts by category (things you can eat, things with a screen…).</li>
+    </ul>
+    <h3>Lanes</h3>
+    <p class="lanekey"><span style="background:var(--lane-n)">N · Newcomer</span><span style="background:var(--lane-e)">E · Emerging</span><span style="background:var(--lane-p)">P · Progressing</span><span style="background:var(--lane-c)">C · Challenge</span></p>
+    <p>Set the lane in the top bar. Every word card shows all four frames, but the selected lane is marked for the student. Newcomer frames are label-level ("This is a chair."), Emerging adds location and description, Progressing asks for purpose with <i>because</i>, Challenge asks for comparison and a complete two-sentence description.</p>
+    <h3>Standards</h3>
+    <table>
+      <tr><th>ELPA21 / MS ELP</th><th>How Storm Lens hits it</th></tr>
+      <tr><td>ELP 1 · Construct meaning from oral presentations</td><td>Hear the word and frames at normal and slow speed</td></tr>
+      <tr><td>ELP 3 · Speak about grade-appropriate topics</td><td>Say-it-back on word and sentence frames, star feedback</td></tr>
+      <tr><td>ELP 8 · Determine meaning of words and phrases</td><td>Photo-anchored meaning, cognate flagging, Spanish bridge</td></tr>
+      <tr><td>ELP 9 · Create clear, coherent speech</td><td>Challenge-lane two-sentence descriptions</td></tr>
+      <tr><td>ELP 10 · Standard English forms</td><td>Articles (a/an), prepositional phrases, <i>because</i>-clauses in frames</td></tr>
+    </table>
+    <h3>A 15-minute routine</h3>
+    <ol>
+      <li><b>Hunt (5 min):</b> pairs walk the room and save 5 new words. One holds the device, one says the word first.</li>
+      <li><b>Say (5 min):</b> each partner earns 3 stars on their lane frame for every word.</li>
+      <li><b>Share (5 min):</b> Practice round on the projector — class says the word before the photo reveals it.</li>
+    </ol>
+    <h3>Tips &amp; troubleshooting</h3>
+    <ul>
+      <li>Works best in Chrome/Edge on Chromebooks, Android, and desktop. Speech recognition needs a Chromium browser; on iPhone Safari the camera and audio work but say-it-back is limited.</li>
+      <li>The first load downloads the recognition model (a few MB). After that it is cached.</li>
+      <li>If the camera is blocked, the student can use <b>Upload photo</b> or <b>Type it</b> — the whole word card still works.</li>
+      <li>Not every object is recognized (the model knows 80 common things). "Type it" covers 150+ more classroom words, and any typed word still gets audio and frames.</li>
+      <li>Word Wall is saved in this browser only (localStorage). Export CSV before clearing a shared device.</li>
+    </ul>
+    <h3>Class view (import student files)</h3>
+    <p>Students tap <b>Send to teacher</b> on their Word Wall; it saves a small file they turn in (Drive, email, shared folder). Drop all of them here to see the class at once. Nothing is uploaded — this runs on your device.</p>
+    <label class="btn sm" for="classIn">📂 Import student files</label> <input type="file" id="classIn" accept=".json,application/json" multiple class="sr">
+    <button class="btn ghost sm hidden" id="classCsv">⬇️ Class CSV</button>
+    <div id="classOut" style="margin-top:10px;overflow:auto"></div>
+    <h3>Scavenger hunt link</h3>
+    <p>Pick the words you want found today. Students who open the link get a <b>Today's hunt</b> mission that checks itself off as they save each word.</p>
+    <input type="text" id="huntIn" placeholder="pencil, desk, locker, water bottle, clock" autocomplete="off">
+    <div class="ctl" style="margin-top:8px"><button class="btn sm" id="huntMake">🔗 Make link</button><button class="btn ghost sm" id="huntCopy" disabled>📋 Copy</button></div>
+    <div class="dtip" id="huntOut" style="word-break:break-all;margin-top:6px"></div>
+    <h3>Exit ticket</h3>
+    <p>Prints today's saved words (photo, English, Spanish) with three blanks: say it ✔, a sentence, and a self-rating — one page, ready to collect.</p>
+    <button class="btn sm" id="btnExit">🖨️ <span data-i18n="exitTicket">Print exit ticket</span></button>
+    <h3>"Describe the picture" rubric (ELPA21 speaking mirror)</h3>
+    <table><tr><th>Point</th><th>Student says…</th><th>ELP</th></tr>
+      <tr><td>Name it</td><td>the target word</td><td>8</td></tr>
+      <tr><td>Where</td><td>a preposition phrase: <i>on the desk, next to the door</i></td><td>10</td></tr>
+      <tr><td>Describe</td><td>a color / size / age adjective</td><td>9</td></tr>
+      <tr><td>Use / why</td><td><i>for, to, because, so</i></td><td>3 · 7</td></tr></table>
+    <p>3 of 4 = on track for Progressing; 4 of 4 with <i>because</i> = Challenge-lane evidence. The app auto-scores the four points from the transcript and awards 2 stars at 3+.</p>
+    <h3>What "depth" looks like on one word</h3>
+    <ul><li><b>Word in action</b> — a verb collocation (<i>raise your hand</i>, <i>zip up your coat</i>) and an example sentence, both speakable and speech-checked.</li>
+      <li><b>Say it right</b> — rule-based pronunciation coaching keyed to Spanish-to-English transfer (initial S+consonant, V/B, TH, SH/CH, H, short I, final consonants and -S, English R).</li>
+      <li><b>One or many</b> — regular and irregular plurals; non-count nouns flagged.</li>
+      <li><b>Word family</b> — compounds and related forms, cognate flag.</li>
+      <li><b>Quick check</b> — a meaning question with same-category distractors.</li>
+      <li><b>Write it</b> — sentence check: uses the word, capital, end mark, 5+ words, and <i>because/so/but</i> in Progressing/Challenge lanes.</li></ul>
+    <h3>Device check</h3>
+    <p>If something isn't working on a student device, open this tab and read the list below. Each line turns green or red.</p>
+    <button class="btn sm" id="diagRun">🩺 Run device check</button>
+    <ul id="diagOut" style="margin-top:10px;list-style:none;padding:0;font-family:ui-monospace,monospace;font-size:13px"></ul>
+    <h3>Privacy</h3>
+    <p>Camera frames are processed in the browser's memory and never transmitted. Saved thumbnails stay on the device. Speech recognition uses the browser's built-in engine.</p>
+    <p class="sub" style="margin-top:14px">Storm Lens is part of the EL Publishing hub · "Many Voices · One Storm" · © 2026 Richard A. Daniel, M.Ed.</p>
+  </div>
+</section>
+</main>
+
+<div class="foot"><span data-i18n="foot">Free · No account · Works offline after first load ·</span> <a href="https://radan55.github.io/everyteacher/" target="_blank" rel="noopener">EL Publishing Hub</a></div>
+
+<!-- WORD CARD -->
+<div class="overlay hidden" id="overlayCard">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js" defer></script>
+<script>
+/* ============ DICTIONARY ============
+   key = COCO label or typed word. Fields:
+   en, es, art (a/an/""), syl, cat, use (what it's for), cog (cognate), emoji
+*/
+const D = {
+  person:{en:"person",es:"persona",art:"a",syl:"per·son",cat:"people",use:"learns and works",cog:1,emoji:"🧑"},
+  bicycle:{en:"bicycle",es:"bicicleta",art:"a",syl:"bi·cy·cle",cat:"vehicle",use:"riding to school",cog:1,emoji:"🚲"},
+  car:{en:"car",es:"carro / coche",art:"a",syl:"car",cat:"vehicle",use:"driving places",cog:1,emoji:"🚗"},
+  motorcycle:{en:"motorcycle",es:"motocicleta",art:"a",syl:"mo·tor·cy·cle",cat:"vehicle",use:"riding fast on the road",cog:1,emoji:"🏍️"},
+  airplane:{en:"airplane",es:"avión",art:"an",syl:"air·plane",cat:"vehicle",use:"flying far away",cog:0,emoji:"✈️"},
+  bus:{en:"bus",es:"autobús",art:"a",syl:"bus",cat:"vehicle",use:"taking many students to school",cog:1,emoji:"🚌"},
+  train:{en:"train",es:"tren",art:"a",syl:"train",cat:"vehicle",use:"carrying people on rails",cog:1,emoji:"🚆"},
+  truck:{en:"truck",es:"camión / troca",art:"a",syl:"truck",cat:"vehicle",use:"carrying heavy things",cog:0,emoji:"🚚"},
+  boat:{en:"boat",es:"barco / lancha",art:"a",syl:"boat",cat:"vehicle",use:"traveling on water",cog:0,emoji:"🚤"},
+  "traffic light":{en:"traffic light",es:"semáforo",art:"a",syl:"traf·fic light",cat:"outside",use:"telling cars when to stop and go",cog:0,emoji:"🚦"},
+  "fire hydrant":{en:"fire hydrant",es:"hidrante",art:"a",syl:"fire hy·drant",cat:"outside",use:"giving water to firefighters",cog:1,emoji:"🧯"},
+  "stop sign":{en:"stop sign",es:"señal de alto",art:"a",syl:"stop sign",cat:"outside",use:"telling drivers to stop",cog:0,emoji:"🛑"},
+  "parking meter":{en:"parking meter",es:"parquímetro",art:"a",syl:"park·ing me·ter",cat:"outside",use:"paying for parking",cog:1,emoji:"🅿️"},
+  bench:{en:"bench",es:"banca / banco",art:"a",syl:"bench",cat:"outside",use:"sitting outside",cog:1,emoji:"🪑"},
+  bird:{en:"bird",es:"pájaro / ave",art:"a",syl:"bird",cat:"animal",use:"flying and singing",cog:0,emoji:"🐦"},
+  cat:{en:"cat",es:"gato",art:"a",syl:"cat",cat:"animal",use:"being a pet",cog:0,emoji:"🐱"},
+  dog:{en:"dog",es:"perro",art:"a",syl:"dog",cat:"animal",use:"being a loyal pet",cog:0,emoji:"🐶"},
+  horse:{en:"horse",es:"caballo",art:"a",syl:"horse",cat:"animal",use:"riding",cog:0,emoji:"🐴"},
+  sheep:{en:"sheep",es:"oveja",art:"a",syl:"sheep",cat:"animal",use:"giving wool",cog:0,emoji:"🐑"},
+  cow:{en:"cow",es:"vaca",art:"a",syl:"cow",cat:"animal",use:"giving milk",cog:0,emoji:"🐄"},
+  elephant:{en:"elephant",es:"elefante",art:"an",syl:"el·e·phant",cat:"animal",use:"living in Africa and Asia",cog:1,emoji:"🐘"},
+  bear:{en:"bear",es:"oso",art:"a",syl:"bear",cat:"animal",use:"living in the forest",cog:0,emoji:"🐻"},
+  zebra:{en:"zebra",es:"cebra",art:"a",syl:"ze·bra",cat:"animal",use:"running in the grasslands",cog:1,emoji:"🦓"},
+  giraffe:{en:"giraffe",es:"jirafa",art:"a",syl:"gi·raffe",cat:"animal",use:"eating leaves from tall trees",cog:1,emoji:"🦒"},
+  backpack:{en:"backpack",es:"mochila",art:"a",syl:"back·pack",cat:"school",use:"carrying books",cog:0,emoji:"🎒"},
+  umbrella:{en:"umbrella",es:"paraguas / sombrilla",art:"an",syl:"um·brel·la",cat:"clothes",use:"staying dry in the rain",cog:0,emoji:"☂️"},
+  handbag:{en:"handbag",es:"bolsa / bolso",art:"a",syl:"hand·bag",cat:"clothes",use:"carrying small things",cog:0,emoji:"👜"},
+  tie:{en:"tie",es:"corbata",art:"a",syl:"tie",cat:"clothes",use:"dressing up",cog:0,emoji:"👔"},
+  suitcase:{en:"suitcase",es:"maleta",art:"a",syl:"suit·case",cat:"clothes",use:"packing for a trip",cog:0,emoji:"🧳"},
+  frisbee:{en:"frisbee",es:"frisbee / disco",art:"a",syl:"fris·bee",cat:"sports",use:"throwing and catching",cog:1,emoji:"🥏"},
+  skis:{en:"skis",es:"esquís",art:"",syl:"skis",cat:"sports",use:"sliding on snow",cog:1,emoji:"🎿"},
+  snowboard:{en:"snowboard",es:"tabla de snowboard",art:"a",syl:"snow·board",cat:"sports",use:"riding down snowy hills",cog:1,emoji:"🏂"},
+  "sports ball":{en:"ball",es:"pelota / balón",art:"a",syl:"ball",cat:"sports",use:"playing games",cog:0,emoji:"⚽"},
+  kite:{en:"kite",es:"cometa / papalote",art:"a",syl:"kite",cat:"sports",use:"flying in the wind",cog:0,emoji:"🪁"},
+  "baseball bat":{en:"baseball bat",es:"bate de béisbol",art:"a",syl:"base·ball bat",cat:"sports",use:"hitting a baseball",cog:1,emoji:"⚾"},
+  "baseball glove":{en:"baseball glove",es:"guante de béisbol",art:"a",syl:"base·ball glove",cat:"sports",use:"catching a baseball",cog:0,emoji:"🧤"},
+  skateboard:{en:"skateboard",es:"patineta",art:"a",syl:"skate·board",cat:"sports",use:"rolling and doing tricks",cog:0,emoji:"🛹"},
+  surfboard:{en:"surfboard",es:"tabla de surf",art:"a",syl:"surf·board",cat:"sports",use:"riding ocean waves",cog:1,emoji:"🏄"},
+  "tennis racket":{en:"tennis racket",es:"raqueta de tenis",art:"a",syl:"ten·nis rack·et",cat:"sports",use:"hitting a tennis ball",cog:1,emoji:"🎾"},
+  bottle:{en:"bottle",es:"botella",art:"a",syl:"bot·tle",cat:"food",use:"holding water or juice",cog:1,emoji:"🍶"},
+  "wine glass":{en:"glass",es:"copa / vaso",art:"a",syl:"glass",cat:"food",use:"drinking",cog:0,emoji:"🥛"},
+  cup:{en:"cup",es:"taza / vaso",art:"a",syl:"cup",cat:"food",use:"drinking coffee or tea",cog:0,emoji:"☕"},
+  fork:{en:"fork",es:"tenedor",art:"a",syl:"fork",cat:"food",use:"eating",cog:0,emoji:"🍴"},
+  knife:{en:"knife",es:"cuchillo",art:"a",syl:"knife",cat:"food",use:"cutting food",cog:0,emoji:"🔪"},
+  spoon:{en:"spoon",es:"cuchara",art:"a",syl:"spoon",cat:"food",use:"eating soup",cog:0,emoji:"🥄"},
+  bowl:{en:"bowl",es:"tazón / plato hondo",art:"a",syl:"bowl",cat:"food",use:"holding soup or cereal",cog:0,emoji:"🥣"},
+  banana:{en:"banana",es:"plátano / banana",art:"a",syl:"ba·na·na",cat:"food",use:"eating a healthy snack",cog:1,emoji:"🍌"},
+  apple:{en:"apple",es:"manzana",art:"an",syl:"ap·ple",cat:"food",use:"eating a healthy snack",cog:0,emoji:"🍎"},
+  sandwich:{en:"sandwich",es:"sándwich / torta",art:"a",syl:"sand·wich",cat:"food",use:"eating lunch",cog:1,emoji:"🥪"},
+  orange:{en:"orange",es:"naranja",art:"an",syl:"or·ange",cat:"food",use:"getting vitamin C",cog:0,emoji:"🍊"},
+  broccoli:{en:"broccoli",es:"brócoli",art:"",syl:"broc·co·li",cat:"food",use:"eating vegetables",cog:1,emoji:"🥦"},
+  carrot:{en:"carrot",es:"zanahoria",art:"a",syl:"car·rot",cat:"food",use:"eating vegetables",cog:0,emoji:"🥕"},
+  "hot dog":{en:"hot dog",es:"hot dog / perro caliente",art:"a",syl:"hot dog",cat:"food",use:"eating at a game",cog:1,emoji:"🌭"},
+  pizza:{en:"pizza",es:"pizza",art:"a",syl:"piz·za",cat:"food",use:"sharing with friends",cog:1,emoji:"🍕"},
+  donut:{en:"donut",es:"dona",art:"a",syl:"do·nut",cat:"food",use:"eating something sweet",cog:1,emoji:"🍩"},
+  cake:{en:"cake",es:"pastel / torta",art:"a",syl:"cake",cat:"food",use:"celebrating a birthday",cog:0,emoji:"🎂"},
+  chair:{en:"chair",es:"silla",art:"a",syl:"chair",cat:"school",use:"sitting",cog:0,emoji:"🪑"},
+  couch:{en:"couch",es:"sofá",art:"a",syl:"couch",cat:"home",use:"relaxing at home",cog:0,emoji:"🛋️"},
+  "potted plant":{en:"plant",es:"planta",art:"a",syl:"plant",cat:"home",use:"making the room green",cog:1,emoji:"🪴"},
+  bed:{en:"bed",es:"cama",art:"a",syl:"bed",cat:"home",use:"sleeping",cog:0,emoji:"🛏️"},
+  "dining table":{en:"table",es:"mesa",art:"a",syl:"ta·ble",cat:"school",use:"working and eating",cog:0,emoji:"🪵"},
+  toilet:{en:"toilet",es:"inodoro / baño",art:"a",syl:"toi·let",cat:"home",use:"the bathroom",cog:0,emoji:"🚽"},
+  tv:{en:"TV",es:"televisión / tele",art:"a",syl:"T·V",cat:"tech",use:"watching shows",cog:1,emoji:"📺"},
+  laptop:{en:"laptop",es:"laptop / computadora portátil",art:"a",syl:"lap·top",cat:"tech",use:"doing schoolwork",cog:1,emoji:"💻"},
+  mouse:{en:"mouse",es:"ratón / mouse",art:"a",syl:"mouse",cat:"tech",use:"clicking on the screen",cog:1,emoji:"🖱️"},
+  remote:{en:"remote",es:"control remoto",art:"a",syl:"re·mote",cat:"tech",use:"changing the channel",cog:1,emoji:"📱"},
+  keyboard:{en:"keyboard",es:"teclado",art:"a",syl:"key·board",cat:"tech",use:"typing",cog:0,emoji:"⌨️"},
+  "cell phone":{en:"cell phone",es:"celular / teléfono",art:"a",syl:"cell phone",cat:"tech",use:"calling and texting",cog:1,emoji:"📱"},
+  microwave:{en:"microwave",es:"microondas",art:"a",syl:"mi·cro·wave",cat:"home",use:"heating food fast",cog:1,emoji:"📦"},
+  oven:{en:"oven",es:"horno",art:"an",syl:"ov·en",cat:"home",use:"baking",cog:0,emoji:"🔥"},
+  toaster:{en:"toaster",es:"tostadora",art:"a",syl:"toast·er",cat:"home",use:"making toast",cog:1,emoji:"🍞"},
+  sink:{en:"sink",es:"lavabo / fregadero",art:"a",syl:"sink",cat:"home",use:"washing hands and dishes",cog:0,emoji:"🚰"},
+  refrigerator:{en:"refrigerator",es:"refrigerador / nevera",art:"a",syl:"re·frig·er·a·tor",cat:"home",use:"keeping food cold",cog:1,emoji:"🧊"},
+  book:{en:"book",es:"libro",art:"a",syl:"book",cat:"school",use:"reading and learning",cog:0,emoji:"📕"},
+  clock:{en:"clock",es:"reloj",art:"a",syl:"clock",cat:"school",use:"telling time",cog:0,emoji:"🕐"},
+  vase:{en:"vase",es:"florero / jarrón",art:"a",syl:"vase",cat:"home",use:"holding flowers",cog:0,emoji:"🏺"},
+  scissors:{en:"scissors",es:"tijeras",art:"",syl:"scis·sors",cat:"school",use:"cutting paper",cog:0,emoji:"✂️"},
+  "teddy bear":{en:"teddy bear",es:"oso de peluche",art:"a",syl:"ted·dy bear",cat:"home",use:"hugging",cog:0,emoji:"🧸"},
+  "hair drier":{en:"hair dryer",es:"secadora de pelo",art:"a",syl:"hair dry·er",cat:"home",use:"drying hair",cog:0,emoji:"💨"},
+  toothbrush:{en:"toothbrush",es:"cepillo de dientes",art:"a",syl:"tooth·brush",cat:"home",use:"cleaning teeth",cog:0,emoji:"🪥"},
+  /* ---- extra classroom / school words (type-it mode) ---- */
+  pencil:{en:"pencil",es:"lápiz",art:"a",syl:"pen·cil",cat:"school",use:"writing and erasing",cog:0,emoji:"✏️"},
+  pen:{en:"pen",es:"bolígrafo / pluma",art:"a",syl:"pen",cat:"school",use:"writing in ink",cog:0,emoji:"🖊️"},
+  eraser:{en:"eraser",es:"borrador",art:"an",syl:"e·ras·er",cat:"school",use:"fixing mistakes",cog:0,emoji:"🧽"},
+  notebook:{en:"notebook",es:"cuaderno",art:"a",syl:"note·book",cat:"school",use:"taking notes",cog:0,emoji:"📓"},
+  paper:{en:"paper",es:"papel",art:"",syl:"pa·per",cat:"school",use:"writing and drawing",cog:1,emoji:"📄"},
+  folder:{en:"folder",es:"carpeta / fólder",art:"a",syl:"fold·er",cat:"school",use:"keeping papers organized",cog:1,emoji:"📁"},
+  binder:{en:"binder",es:"carpeta de argollas",art:"a",syl:"bind·er",cat:"school",use:"holding papers in rings",cog:0,emoji:"📒"},
+  marker:{en:"marker",es:"marcador",art:"a",syl:"mark·er",cat:"school",use:"writing on the board",cog:1,emoji:"🖍️"},
+  crayon:{en:"crayon",es:"crayón / crayola",art:"a",syl:"cray·on",cat:"school",use:"coloring",cog:1,emoji:"🖍️"},
+  highlighter:{en:"highlighter",es:"resaltador / marcatextos",art:"a",syl:"high·light·er",cat:"school",use:"marking important words",cog:0,emoji:"🖊️"},
+  ruler:{en:"ruler",es:"regla",art:"a",syl:"rul·er",cat:"school",use:"measuring and drawing lines",cog:0,emoji:"📏"},
+  glue:{en:"glue",es:"pegamento",art:"",syl:"glue",cat:"school",use:"sticking paper together",cog:0,emoji:"🧴"},
+  tape:{en:"tape",es:"cinta adhesiva",art:"",syl:"tape",cat:"school",use:"sticking things",cog:0,emoji:"🎞️"},
+  stapler:{en:"stapler",es:"engrapadora / grapadora",art:"a",syl:"sta·pler",cat:"school",use:"holding papers together",cog:0,emoji:"📎"},
+  calculator:{en:"calculator",es:"calculadora",art:"a",syl:"cal·cu·la·tor",cat:"school",use:"doing math",cog:1,emoji:"🧮"},
+  desk:{en:"desk",es:"escritorio / pupitre",art:"a",syl:"desk",cat:"school",use:"working in class",cog:0,emoji:"🪑"},
+  whiteboard:{en:"whiteboard",es:"pizarrón blanco",art:"a",syl:"white·board",cat:"school",use:"writing for the class",cog:0,emoji:"⬜"},
+  board:{en:"board",es:"pizarrón / pizarra",art:"a",syl:"board",cat:"school",use:"writing for the class",cog:0,emoji:"⬜"},
+  projector:{en:"projector",es:"proyector",art:"a",syl:"pro·jec·tor",cat:"tech",use:"showing the screen on the wall",cog:1,emoji:"📽️"},
+  screen:{en:"screen",es:"pantalla",art:"a",syl:"screen",cat:"tech",use:"showing pictures and words",cog:0,emoji:"🖥️"},
+  computer:{en:"computer",es:"computadora",art:"a",syl:"com·pu·ter",cat:"tech",use:"doing schoolwork",cog:1,emoji:"🖥️"},
+  chromebook:{en:"Chromebook",es:"Chromebook",art:"a",syl:"Chrome·book",cat:"tech",use:"doing schoolwork online",cog:1,emoji:"💻"},
+  tablet:{en:"tablet",es:"tableta",art:"a",syl:"tab·let",cat:"tech",use:"reading and apps",cog:1,emoji:"📱"},
+  headphones:{en:"headphones",es:"audífonos / auriculares",art:"",syl:"head·phones",cat:"tech",use:"listening without noise",cog:0,emoji:"🎧"},
+  charger:{en:"charger",es:"cargador",art:"a",syl:"charg·er",cat:"tech",use:"charging a device",cog:1,emoji:"🔌"},
+  printer:{en:"printer",es:"impresora",art:"a",syl:"print·er",cat:"tech",use:"printing papers",cog:0,emoji:"🖨️"},
+  door:{en:"door",es:"puerta",art:"a",syl:"door",cat:"school",use:"going in and out",cog:0,emoji:"🚪"},
+  window:{en:"window",es:"ventana",art:"a",syl:"win·dow",cat:"school",use:"letting in light",cog:0,emoji:"🪟"},
+  wall:{en:"wall",es:"pared",art:"a",syl:"wall",cat:"school",use:"holding up the room",cog:0,emoji:"🧱"},
+  floor:{en:"floor",es:"piso / suelo",art:"a",syl:"floor",cat:"school",use:"walking on",cog:0,emoji:"⬛"},
+  ceiling:{en:"ceiling",es:"techo",art:"a",syl:"ceil·ing",cat:"school",use:"covering the room",cog:0,emoji:"⬜"},
+  light:{en:"light",es:"luz",art:"a",syl:"light",cat:"school",use:"seeing in the dark",cog:0,emoji:"💡"},
+  lamp:{en:"lamp",es:"lámpara",art:"a",syl:"lamp",cat:"home",use:"reading at night",cog:1,emoji:"🛋️"},
+  flag:{en:"flag",es:"bandera",art:"a",syl:"flag",cat:"school",use:"showing a country or state",cog:0,emoji:"🏳️"},
+  map:{en:"map",es:"mapa",art:"a",syl:"map",cat:"school",use:"finding places",cog:1,emoji:"🗺️"},
+  globe:{en:"globe",es:"globo terráqueo",art:"a",syl:"globe",cat:"school",use:"seeing the whole Earth",cog:1,emoji:"🌍"},
+  poster:{en:"poster",es:"cartel / póster",art:"a",syl:"post·er",cat:"school",use:"showing information on the wall",cog:1,emoji:"🖼️"},
+  calendar:{en:"calendar",es:"calendario",art:"a",syl:"cal·en·dar",cat:"school",use:"knowing the date",cog:1,emoji:"📅"},
+  shelf:{en:"shelf",es:"estante / repisa",art:"a",syl:"shelf",cat:"school",use:"holding books",cog:0,emoji:"📚"},
+  cabinet:{en:"cabinet",es:"gabinete / armario",art:"a",syl:"cab·i·net",cat:"school",use:"storing supplies",cog:1,emoji:"🗄️"},
+  locker:{en:"locker",es:"casillero / lóquer",art:"a",syl:"lock·er",cat:"school",use:"keeping your things at school",cog:0,emoji:"🔒"},
+  "trash can":{en:"trash can",es:"bote de basura",art:"a",syl:"trash can",cat:"school",use:"throwing away trash",cog:0,emoji:"🗑️"},
+  "recycling bin":{en:"recycling bin",es:"bote de reciclaje",art:"a",syl:"re·cy·cling bin",cat:"school",use:"recycling paper and plastic",cog:1,emoji:"♻️"},
+  "water fountain":{en:"water fountain",es:"bebedero",art:"a",syl:"wa·ter foun·tain",cat:"school",use:"drinking water",cog:0,emoji:"⛲"},
+  "water bottle":{en:"water bottle",es:"botella de agua",art:"a",syl:"wa·ter bot·tle",cat:"food",use:"drinking water in class",cog:1,emoji:"🧴"},
+  lunchbox:{en:"lunchbox",es:"lonchera",art:"a",syl:"lunch·box",cat:"food",use:"carrying lunch",cog:1,emoji:"🍱"},
+  tray:{en:"tray",es:"bandeja / charola",art:"a",syl:"tray",cat:"food",use:"carrying food in the cafeteria",cog:0,emoji:"🍽️"},
+  plate:{en:"plate",es:"plato",art:"a",syl:"plate",cat:"food",use:"holding food",cog:1,emoji:"🍽️"},
+  napkin:{en:"napkin",es:"servilleta",art:"a",syl:"nap·kin",cat:"food",use:"cleaning your mouth",cog:0,emoji:"🧻"},
+  milk:{en:"milk",es:"leche",art:"",syl:"milk",cat:"food",use:"drinking at lunch",cog:0,emoji:"🥛"},
+  water:{en:"water",es:"agua",art:"",syl:"wa·ter",cat:"food",use:"drinking",cog:0,emoji:"💧"},
+  juice:{en:"juice",es:"jugo",art:"",syl:"juice",cat:"food",use:"drinking at breakfast",cog:1,emoji:"🧃"},
+  bread:{en:"bread",es:"pan",art:"",syl:"bread",cat:"food",use:"making a sandwich",cog:0,emoji:"🍞"},
+  rice:{en:"rice",es:"arroz",art:"",syl:"rice",cat:"food",use:"eating with many meals",cog:0,emoji:"🍚"},
+  chicken:{en:"chicken",es:"pollo",art:"",syl:"chick·en",cat:"food",use:"eating protein",cog:0,emoji:"🍗"},
+  taco:{en:"taco",es:"taco",art:"a",syl:"ta·co",cat:"food",use:"eating a favorite food",cog:1,emoji:"🌮"},
+  shirt:{en:"shirt",es:"camisa",art:"a",syl:"shirt",cat:"clothes",use:"wearing on top",cog:0,emoji:"👕"},
+  pants:{en:"pants",es:"pantalones",art:"",syl:"pants",cat:"clothes",use:"wearing on your legs",cog:1,emoji:"👖"},
+  jacket:{en:"jacket",es:"chaqueta / chamarra",art:"a",syl:"jack·et",cat:"clothes",use:"staying warm",cog:1,emoji:"🧥"},
+  hoodie:{en:"hoodie",es:"sudadera con capucha",art:"a",syl:"hood·ie",cat:"clothes",use:"staying warm and comfortable",cog:0,emoji:"🧥"},
+  shoes:{en:"shoes",es:"zapatos",art:"",syl:"shoes",cat:"clothes",use:"walking",cog:0,emoji:"👟"},
+  sneakers:{en:"sneakers",es:"tenis / zapatillas",art:"",syl:"sneak·ers",cat:"clothes",use:"running and playing",cog:0,emoji:"👟"},
+  hat:{en:"hat",es:"gorra / sombrero",art:"a",syl:"hat",cat:"clothes",use:"covering your head",cog:0,emoji:"🧢"},
+  glasses:{en:"glasses",es:"lentes / gafas",art:"",syl:"glass·es",cat:"clothes",use:"seeing clearly",cog:0,emoji:"👓"},
+  watch:{en:"watch",es:"reloj de pulsera",art:"a",syl:"watch",cat:"clothes",use:"telling time",cog:0,emoji:"⌚"},
+  wallet:{en:"wallet",es:"cartera / billetera",art:"a",syl:"wal·let",cat:"clothes",use:"holding money and cards",cog:0,emoji:"👛"},
+  keys:{en:"keys",es:"llaves",art:"",syl:"keys",cat:"home",use:"opening doors",cog:0,emoji:"🔑"},
+  teacher:{en:"teacher",es:"maestro / maestra",art:"a",syl:"teach·er",cat:"people",use:"helping students learn",cog:0,emoji:"🧑‍🏫"},
+  student:{en:"student",es:"estudiante",art:"a",syl:"stu·dent",cat:"people",use:"learning at school",cog:1,emoji:"🧑‍🎓"},
+  friend:{en:"friend",es:"amigo / amiga",art:"a",syl:"friend",cat:"people",use:"having fun together",cog:0,emoji:"🧑‍🤝‍🧑"},
+  nurse:{en:"nurse",es:"enfermera / enfermero",art:"a",syl:"nurse",cat:"people",use:"helping when you are sick",cog:0,emoji:"🧑‍⚕️"},
+  counselor:{en:"counselor",es:"consejero / consejera",art:"a",syl:"coun·se·lor",cat:"people",use:"helping with classes and problems",cog:1,emoji:"🧑‍💼"},
+  principal:{en:"principal",es:"director / directora",art:"a",syl:"prin·ci·pal",cat:"people",use:"leading the school",cog:1,emoji:"🧑‍💼"},
+  hallway:{en:"hallway",es:"pasillo",art:"a",syl:"hall·way",cat:"school",use:"walking between classes",cog:0,emoji:"🚶"},
+  cafeteria:{en:"cafeteria",es:"cafetería",art:"a",syl:"caf·e·te·ri·a",cat:"school",use:"eating lunch",cog:1,emoji:"🍽️"},
+  gym:{en:"gym",es:"gimnasio",art:"a",syl:"gym",cat:"school",use:"playing sports",cog:1,emoji:"🏀"},
+  library:{en:"library",es:"biblioteca",art:"a",syl:"li·brar·y",cat:"school",use:"borrowing books",cog:0,emoji:"📚"},
+  bathroom:{en:"bathroom",es:"baño",art:"a",syl:"bath·room",cat:"school",use:"washing hands",cog:0,emoji:"🚻"},
+  office:{en:"office",es:"oficina",art:"an",syl:"of·fice",cat:"school",use:"getting help and passes",cog:1,emoji:"🏢"},
+  tree:{en:"tree",es:"árbol",art:"a",syl:"tree",cat:"outside",use:"giving shade and oxygen",cog:0,emoji:"🌳"},
+  flower:{en:"flower",es:"flor",art:"a",syl:"flow·er",cat:"outside",use:"making the world beautiful",cog:1,emoji:"🌸"},
+  grass:{en:"grass",es:"pasto / césped",art:"",syl:"grass",cat:"outside",use:"covering the ground",cog:0,emoji:"🌱"},
+  sky:{en:"sky",es:"cielo",art:"",syl:"sky",cat:"outside",use:"seeing clouds and sun",cog:0,emoji:"☁️"},
+  sun:{en:"sun",es:"sol",art:"",syl:"sun",cat:"outside",use:"giving light and heat",cog:0,emoji:"☀️"},
+  rain:{en:"rain",es:"lluvia",art:"",syl:"rain",cat:"outside",use:"watering plants",cog:0,emoji:"🌧️"},
+  sidewalk:{en:"sidewalk",es:"banqueta / acera",art:"a",syl:"side·walk",cat:"outside",use:"walking safely",cog:0,emoji:"🛣️"},
+  street:{en:"street",es:"calle",art:"a",syl:"street",cat:"outside",use:"driving and walking",cog:0,emoji:"🛣️"},
+  building:{en:"building",es:"edificio",art:"a",syl:"build·ing",cat:"outside",use:"working and living inside",cog:0,emoji:"🏢"},
+  house:{en:"house",es:"casa",art:"a",syl:"house",cat:"home",use:"living with family",cog:0,emoji:"🏠"},
+  kitchen:{en:"kitchen",es:"cocina",art:"a",syl:"kitch·en",cat:"home",use:"cooking",cog:0,emoji:"🍳"},
+  stove:{en:"stove",es:"estufa",art:"a",syl:"stove",cat:"home",use:"cooking on top",cog:0,emoji:"🔥"},
+  mirror:{en:"mirror",es:"espejo",art:"a",syl:"mir·ror",cat:"home",use:"seeing yourself",cog:0,emoji:"🪞"},
+  towel:{en:"towel",es:"toalla",art:"a",syl:"tow·el",cat:"home",use:"drying off",cog:1,emoji:"🧻"},
+  soap:{en:"soap",es:"jabón",art:"",syl:"soap",cat:"home",use:"washing",cog:0,emoji:"🧼"},
+  pillow:{en:"pillow",es:"almohada",art:"a",syl:"pil·low",cat:"home",use:"resting your head",cog:0,emoji:"🛏️"},
+  blanket:{en:"blanket",es:"cobija / manta",art:"a",syl:"blan·ket",cat:"home",use:"staying warm in bed",cog:0,emoji:"🛏️"},
+  basketball:{en:"basketball",es:"baloncesto / básquetbol",art:"a",syl:"bas·ket·ball",cat:"sports",use:"shooting hoops",cog:1,emoji:"🏀"},
+  football:{en:"football",es:"fútbol americano",art:"a",syl:"foot·ball",cat:"sports",use:"playing on Friday nights",cog:1,emoji:"🏈"},
+  soccer:{en:"soccer ball",es:"balón de fútbol",art:"a",syl:"soc·cer ball",cat:"sports",use:"playing fútbol",cog:0,emoji:"⚽"},
+  money:{en:"money",es:"dinero",art:"",syl:"mon·ey",cat:"home",use:"buying things",cog:0,emoji:"💵"},
+  bag:{en:"bag",es:"bolsa",art:"a",syl:"bag",cat:"school",use:"carrying things",cog:0,emoji:"🛍️"},
+  box:{en:"box",es:"caja",art:"a",syl:"box",cat:"home",use:"storing things",cog:0,emoji:"📦"},
+  picture:{en:"picture",es:"foto / cuadro",art:"a",syl:"pic·ture",cat:"home",use:"remembering people and places",cog:0,emoji:"🖼️"},
+  sign:{en:"sign",es:"letrero / señal",art:"a",syl:"sign",cat:"school",use:"giving information",cog:0,emoji:"🪧"},
+  bell:{en:"bell",es:"campana / timbre",art:"a",syl:"bell",cat:"school",use:"telling us class is over",cog:0,emoji:"🔔"},
+  schedule:{en:"schedule",es:"horario",art:"a",syl:"sched·ule",cat:"school",use:"knowing your classes",cog:0,emoji:"🗓️"},
+  "id card":{en:"ID card",es:"credencial / identificación",art:"an",syl:"I·D card",cat:"school",use:"showing who you are",cog:1,emoji:"🪪"},
+  test:{en:"test",es:"examen / prueba",art:"a",syl:"test",cat:"school",use:"showing what you learned",cog:0,emoji:"📝"},
+  homework:{en:"homework",es:"tarea",art:"",syl:"home·work",cat:"school",use:"practicing at home",cog:0,emoji:"📚",v:"finish your"},
+  /* ---- body ---- */
+  head:{en:"head",es:"cabeza",art:"a",syl:"head",cat:"body",use:"thinking",cog:0,emoji:"🙂",v:"nod your"},
+  hand:{en:"hand",es:"mano",art:"a",syl:"hand",cat:"body",use:"holding and writing",cog:0,emoji:"✋",v:"raise your"},
+  arm:{en:"arm",es:"brazo",art:"an",syl:"arm",cat:"body",use:"lifting and carrying",cog:0,emoji:"💪",v:"stretch your"},
+  leg:{en:"leg",es:"pierna",art:"a",syl:"leg",cat:"body",use:"walking and running",cog:0,emoji:"🦵",v:"stretch your"},
+  foot:{en:"foot",es:"pie",art:"a",syl:"foot",cat:"body",use:"standing and walking",cog:0,emoji:"🦶",v:"tap your",pl:"feet"},
+  eye:{en:"eye",es:"ojo",art:"an",syl:"eye",cat:"body",use:"seeing",cog:0,emoji:"👁️",v:"close your"},
+  ear:{en:"ear",es:"oreja / oído",art:"an",syl:"ear",cat:"body",use:"hearing",cog:0,emoji:"👂",v:"cover your"},
+  nose:{en:"nose",es:"nariz",art:"a",syl:"nose",cat:"body",use:"smelling",cog:0,emoji:"👃",v:"touch your"},
+  mouth:{en:"mouth",es:"boca",art:"a",syl:"mouth",cat:"body",use:"speaking and eating",cog:0,emoji:"👄",v:"open your"},
+  tooth:{en:"tooth",es:"diente",art:"a",syl:"tooth",cat:"body",use:"chewing food",cog:0,emoji:"🦷",v:"brush your",pl:"teeth"},
+  hair:{en:"hair",es:"pelo / cabello",art:"",syl:"hair",cat:"body",use:"covering your head",cog:0,emoji:"💇",v:"comb your"},
+  finger:{en:"finger",es:"dedo",art:"a",syl:"fin·ger",cat:"body",use:"pointing and typing",cog:0,emoji:"☝️",v:"point with your"},
+  /* ---- community / places ---- */
+  school:{en:"school",es:"escuela",art:"a",syl:"school",cat:"community",use:"learning every day",cog:1,emoji:"🏫",v:"go to"},
+  hospital:{en:"hospital",es:"hospital",art:"a",syl:"hos·pi·tal",cat:"community",use:"getting medical help",cog:1,emoji:"🏥",v:"go to the"},
+  store:{en:"store",es:"tienda",art:"a",syl:"store",cat:"community",use:"buying food and things",cog:0,emoji:"🏪",v:"shop at the"},
+  supermarket:{en:"supermarket",es:"supermercado",art:"a",syl:"su·per·mar·ket",cat:"community",use:"buying groceries",cog:1,emoji:"🛒",v:"shop at the"},
+  restaurant:{en:"restaurant",es:"restaurante",art:"a",syl:"res·tau·rant",cat:"community",use:"eating out",cog:1,emoji:"🍽️",v:"eat at a"},
+  bank:{en:"bank",es:"banco",art:"a",syl:"bank",cat:"community",use:"keeping money safe",cog:1,emoji:"🏦",v:"go to the"},
+  "post office":{en:"post office",es:"oficina de correos",art:"a",syl:"post of·fice",cat:"community",use:"mailing letters",cog:1,emoji:"📮",v:"go to the"},
+  park:{en:"park",es:"parque",art:"a",syl:"park",cat:"community",use:"playing and relaxing outside",cog:1,emoji:"🏞️",v:"walk in the"},
+  church:{en:"church",es:"iglesia",art:"a",syl:"church",cat:"community",use:"gathering and praying",cog:0,emoji:"⛪",v:"go to"},
+  "gas station":{en:"gas station",es:"gasolinera",art:"a",syl:"gas sta·tion",cat:"community",use:"filling the car with gas",cog:1,emoji:"⛽",v:"stop at the"},
+  "bus stop":{en:"bus stop",es:"parada de autobús",art:"a",syl:"bus stop",cat:"community",use:"waiting for the bus",cog:0,emoji:"🚏",v:"wait at the"},
+  pharmacy:{en:"pharmacy",es:"farmacia",art:"a",syl:"phar·ma·cy",cat:"community",use:"getting medicine",cog:1,emoji:"💊",v:"go to the"},
+  "police station":{en:"police station",es:"estación de policía",art:"a",syl:"po·lice sta·tion",cat:"community",use:"getting help from police",cog:1,emoji:"🚓",v:"find the"},
+  "fire station":{en:"fire station",es:"estación de bomberos",art:"a",syl:"fire sta·tion",cat:"community",use:"firefighters and fire trucks",cog:1,emoji:"🚒",v:"visit the"},
+  /* ---- jobs ---- */
+  doctor:{en:"doctor",es:"doctor / médico",art:"a",syl:"doc·tor",cat:"people",use:"helping sick people",cog:1,emoji:"🧑‍⚕️",v:"see a"},
+  cook:{en:"cook",es:"cocinero / cocinera",art:"a",syl:"cook",cat:"people",use:"making food",cog:0,emoji:"🧑‍🍳",v:"thank the"},
+  "bus driver":{en:"bus driver",es:"chofer del autobús",art:"a",syl:"bus driv·er",cat:"people",use:"driving students to school",cog:0,emoji:"🧑‍✈️",v:"greet the"},
+  coach:{en:"coach",es:"entrenador / entrenadora",art:"a",syl:"coach",cat:"people",use:"training a team",cog:0,emoji:"🏋️",v:"listen to the"},
+  janitor:{en:"janitor",es:"conserje",art:"a",syl:"jan·i·tor",cat:"people",use:"keeping the school clean",cog:0,emoji:"🧹",v:"thank the"},
+  librarian:{en:"librarian",es:"bibliotecario / bibliotecaria",art:"a",syl:"li·brar·i·an",cat:"people",use:"helping you find books",cog:0,emoji:"🧑‍🏫",v:"ask the"},
+  secretary:{en:"secretary",es:"secretaria / secretario",art:"a",syl:"sec·re·tar·y",cat:"people",use:"helping in the office",cog:1,emoji:"🧑‍💼",v:"ask the"},
+  classmate:{en:"classmate",es:"compañero / compañera de clase",art:"a",syl:"class·mate",cat:"people",use:"learning together",cog:0,emoji:"🧑‍🎓",v:"work with a"},
+  family:{en:"family",es:"familia",art:"a",syl:"fam·i·ly",cat:"people",use:"loving and supporting each other",cog:1,emoji:"👨‍👩‍👧",v:"call your"},
+  /* ---- more school ---- */
+  textbook:{en:"textbook",es:"libro de texto",art:"a",syl:"text·book",cat:"school",use:"studying a subject",cog:0,emoji:"📘",v:"open your"},
+  dictionary:{en:"dictionary",es:"diccionario",art:"a",syl:"dic·tion·ar·y",cat:"school",use:"finding what words mean",cog:1,emoji:"📖",v:"look in the"},
+  worksheet:{en:"worksheet",es:"hoja de trabajo",art:"a",syl:"work·sheet",cat:"school",use:"practicing a skill",cog:0,emoji:"📝",v:"finish the"},
+  "sticky note":{en:"sticky note",es:"nota adhesiva",art:"a",syl:"stick·y note",cat:"school",use:"marking a page",cog:0,emoji:"🗒️",v:"write on a"},
+  "pencil sharpener":{en:"pencil sharpener",es:"sacapuntas",art:"a",syl:"pen·cil sharp·en·er",cat:"school",use:"making a pencil sharp",cog:0,emoji:"✏️",v:"use the"},
+  "paper clip":{en:"paper clip",es:"clip",art:"a",syl:"pa·per clip",cat:"school",use:"holding papers together",cog:1,emoji:"📎",v:"use a"},
+  chalk:{en:"chalk",es:"tiza / gis",art:"",syl:"chalk",cat:"school",use:"writing on a chalkboard",cog:0,emoji:"🖍️",v:"write with"},
+  "bulletin board":{en:"bulletin board",es:"tablero de anuncios",art:"a",syl:"bul·le·tin board",cat:"school",use:"posting news and work",cog:1,emoji:"📌",v:"look at the"},
+  stage:{en:"stage",es:"escenario",art:"a",syl:"stage",cat:"school",use:"performing",cog:0,emoji:"🎭",v:"stand on the"},
+  "science lab":{en:"science lab",es:"laboratorio de ciencias",art:"a",syl:"sci·ence lab",cat:"school",use:"doing experiments",cog:1,emoji:"🔬",v:"work in the"},
+  microscope:{en:"microscope",es:"microscopio",art:"a",syl:"mi·cro·scope",cat:"school",use:"seeing very small things",cog:1,emoji:"🔬",v:"look through the"},
+  "art room":{en:"art room",es:"salón de arte",art:"an",syl:"art room",cat:"school",use:"painting and drawing",cog:1,emoji:"🎨",v:"create in the"},
+  paintbrush:{en:"paintbrush",es:"pincel",art:"a",syl:"paint·brush",cat:"school",use:"painting",cog:0,emoji:"🖌️",v:"hold the"},
+  guitar:{en:"guitar",es:"guitarra",art:"a",syl:"gui·tar",cat:"school",use:"playing music",cog:1,emoji:"🎸",v:"play the"},
+  piano:{en:"piano",es:"piano",art:"a",syl:"pi·an·o",cat:"school",use:"playing music",cog:1,emoji:"🎹",v:"play the"},
+  drum:{en:"drum",es:"tambor",art:"a",syl:"drum",cat:"school",use:"keeping the beat",cog:0,emoji:"🥁",v:"hit the"},
+  trophy:{en:"trophy",es:"trofeo",art:"a",syl:"tro·phy",cat:"school",use:"celebrating a win",cog:1,emoji:"🏆",v:"win a"},
+  uniform:{en:"uniform",es:"uniforme",art:"a",syl:"u·ni·form",cat:"clothes",use:"dressing for school or a team",cog:1,emoji:"👔",v:"wear a"},
+  grade:{en:"grade",es:"calificación / nota",art:"a",syl:"grade",cat:"school",use:"showing how you did",cog:0,emoji:"🅰️",v:"get a good"},
+  "report card":{en:"report card",es:"boleta de calificaciones",art:"a",syl:"re·port card",cat:"school",use:"showing all your grades",cog:0,emoji:"📄",v:"take home your"},
+  permission:{en:"permission slip",es:"permiso / autorización",art:"a",syl:"per·mis·sion slip",cat:"school",use:"going on a field trip",cog:1,emoji:"✍️",v:"sign the"},
+  "hall pass":{en:"hall pass",es:"pase de pasillo",art:"a",syl:"hall pass",cat:"school",use:"leaving class with permission",cog:0,emoji:"🎫",v:"ask for a"},
+  /* ---- more food ---- */
+  egg:{en:"egg",es:"huevo",art:"an",syl:"egg",cat:"food",use:"breakfast",cog:0,emoji:"🥚",v:"cook an"},
+  cheese:{en:"cheese",es:"queso",art:"",syl:"cheese",cat:"food",use:"sandwiches and pizza",cog:0,emoji:"🧀",v:"slice the"},
+  beans:{en:"beans",es:"frijoles",art:"",syl:"beans",cat:"food",use:"protein in many meals",cog:0,emoji:"🫘",v:"cook the"},
+  tortilla:{en:"tortilla",es:"tortilla",art:"a",syl:"tor·til·la",cat:"food",use:"tacos and burritos",cog:1,emoji:"🫓",v:"warm a"},
+  salad:{en:"salad",es:"ensalada",art:"a",syl:"sal·ad",cat:"food",use:"eating vegetables",cog:1,emoji:"🥗",v:"make a"},
+  soup:{en:"soup",es:"sopa",art:"",syl:"soup",cat:"food",use:"warming up",cog:1,emoji:"🍲",v:"eat"},
+  fries:{en:"fries",es:"papas fritas",art:"",syl:"fries",cat:"food",use:"a side at lunch",cog:0,emoji:"🍟",v:"share the"},
+  hamburger:{en:"hamburger",es:"hamburguesa",art:"a",syl:"ham·bur·ger",cat:"food",use:"a quick lunch",cog:1,emoji:"🍔",v:"order a"},
+  cereal:{en:"cereal",es:"cereal",art:"",syl:"ce·re·al",cat:"food",use:"breakfast with milk",cog:1,emoji:"🥣",v:"pour the"},
+  strawberry:{en:"strawberry",es:"fresa",art:"a",syl:"straw·ber·ry",cat:"food",use:"a sweet fruit",cog:0,emoji:"🍓",v:"wash a",pl:"strawberries"},
+  grapes:{en:"grapes",es:"uvas",art:"",syl:"grapes",cat:"food",use:"a snack",cog:0,emoji:"🍇",v:"eat some"},
+  watermelon:{en:"watermelon",es:"sandía",art:"a",syl:"wa·ter·mel·on",cat:"food",use:"cooling off in summer",cog:0,emoji:"🍉",v:"cut the"},
+  corn:{en:"corn",es:"maíz / elote",art:"",syl:"corn",cat:"food",use:"tortillas and side dishes",cog:0,emoji:"🌽",v:"grill the"},
+  pepper:{en:"pepper",es:"chile / pimiento",art:"a",syl:"pep·per",cat:"food",use:"adding spice",cog:0,emoji:"🌶️",v:"chop a"},
+  onion:{en:"onion",es:"cebolla",art:"an",syl:"on·ion",cat:"food",use:"flavoring food",cog:0,emoji:"🧅",v:"cut an"},
+  tomato:{en:"tomato",es:"tomate / jitomate",art:"a",syl:"to·ma·to",cat:"food",use:"salsa and salads",cog:1,emoji:"🍅",v:"slice a",pl:"tomatoes"},
+  potato:{en:"potato",es:"papa",art:"a",syl:"po·ta·to",cat:"food",use:"fries and mashed potatoes",cog:0,emoji:"🥔",v:"peel a",pl:"potatoes"},
+  coffee:{en:"coffee",es:"café",art:"",syl:"cof·fee",cat:"food",use:"waking up",cog:1,emoji:"☕",v:"drink"},
+  tea:{en:"tea",es:"té",art:"",syl:"tea",cat:"food",use:"a warm drink",cog:1,emoji:"🍵",v:"drink"},
+  "ice cream":{en:"ice cream",es:"helado / nieve",art:"",syl:"ice cream",cat:"food",use:"a cold dessert",cog:0,emoji:"🍦",v:"eat"},
+  cookie:{en:"cookie",es:"galleta",art:"a",syl:"cook·ie",cat:"food",use:"a sweet snack",cog:0,emoji:"🍪",v:"bake a"},
+  candy:{en:"candy",es:"dulce",art:"",syl:"can·dy",cat:"food",use:"a sweet treat",cog:0,emoji:"🍬",v:"share the"},
+  /* ---- more home ---- */
+  "living room":{en:"living room",es:"sala",art:"a",syl:"liv·ing room",cat:"home",use:"relaxing with family",cog:0,emoji:"🛋️",v:"sit in the"},
+  bedroom:{en:"bedroom",es:"recámara / dormitorio",art:"a",syl:"bed·room",cat:"home",use:"sleeping",cog:0,emoji:"🛏️",v:"clean your"},
+  garage:{en:"garage",es:"garaje / cochera",art:"a",syl:"ga·rage",cat:"home",use:"parking the car",cog:1,emoji:"🚗",v:"open the"},
+  yard:{en:"yard",es:"patio / jardín",art:"a",syl:"yard",cat:"home",use:"playing outside at home",cog:0,emoji:"🌳",v:"play in the"},
+  stairs:{en:"stairs",es:"escaleras",art:"",syl:"stairs",cat:"home",use:"going up and down",cog:0,emoji:"🪜",v:"climb the"},
+  curtain:{en:"curtain",es:"cortina",art:"a",syl:"cur·tain",cat:"home",use:"covering a window",cog:1,emoji:"🪟",v:"open the"},
+  rug:{en:"rug",es:"tapete / alfombra",art:"a",syl:"rug",cat:"home",use:"covering the floor",cog:0,emoji:"🧶",v:"vacuum the"},
+  fan:{en:"fan",es:"ventilador / abanico",art:"a",syl:"fan",cat:"home",use:"staying cool",cog:0,emoji:"🌀",v:"turn on the"},
+  "washing machine":{en:"washing machine",es:"lavadora",art:"a",syl:"wash·ing ma·chine",cat:"home",use:"cleaning clothes",cog:0,emoji:"🧺",v:"load the"},
+  dryer:{en:"dryer",es:"secadora",art:"a",syl:"dry·er",cat:"home",use:"drying clothes",cog:0,emoji:"🧺",v:"empty the"},
+  broom:{en:"broom",es:"escoba",art:"a",syl:"broom",cat:"home",use:"sweeping the floor",cog:0,emoji:"🧹",v:"sweep with a"},
+  "trash bag":{en:"trash bag",es:"bolsa de basura",art:"a",syl:"trash bag",cat:"home",use:"taking out the trash",cog:0,emoji:"🗑️",v:"tie the"},
+  candle:{en:"candle",es:"vela",art:"a",syl:"can·dle",cat:"home",use:"light and celebrations",cog:0,emoji:"🕯️",v:"light a"},
+  pot:{en:"pot",es:"olla",art:"a",syl:"pot",cat:"home",use:"cooking soup or rice",cog:0,emoji:"🍲",v:"stir the"},
+  pan:{en:"pan",es:"sartén",art:"a",syl:"pan",cat:"home",use:"frying food",cog:0,emoji:"🍳",v:"heat the"},
+  /* ---- tech ---- */
+  camera:{en:"camera",es:"cámara",art:"a",syl:"cam·er·a",cat:"tech",use:"taking pictures",cog:1,emoji:"📷",v:"point the"},
+  speaker:{en:"speaker",es:"bocina / altavoz",art:"a",syl:"speak·er",cat:"tech",use:"playing sound",cog:0,emoji:"🔊",v:"turn down the"},
+  microphone:{en:"microphone",es:"micrófono",art:"a",syl:"mi·cro·phone",cat:"tech",use:"recording your voice",cog:1,emoji:"🎤",v:"speak into the"},
+  battery:{en:"battery",es:"batería / pila",art:"a",syl:"bat·ter·y",cat:"tech",use:"powering a device",cog:1,emoji:"🔋",v:"charge the",pl:"batteries"},
+  wifi:{en:"Wi-Fi",es:"wifi",art:"",syl:"Wi·Fi",cat:"tech",use:"connecting to the internet",cog:1,emoji:"📶",v:"connect to the"},
+  password:{en:"password",es:"contraseña",art:"a",syl:"pass·word",cat:"tech",use:"keeping your account safe",cog:0,emoji:"🔑",v:"type your"},
+  email:{en:"email",es:"correo electrónico",art:"an",syl:"e·mail",cat:"tech",use:"sending messages",cog:0,emoji:"📧",v:"send an"},
+  app:{en:"app",es:"aplicación / app",art:"an",syl:"app",cat:"tech",use:"doing things on a phone",cog:1,emoji:"📱",v:"open the"},
+  "smart board":{en:"smart board",es:"pizarra inteligente",art:"a",syl:"smart board",cat:"tech",use:"teaching with a touch screen",cog:0,emoji:"🖥️",v:"touch the"},
+  /* ---- clothes ---- */
+  socks:{en:"socks",es:"calcetines",art:"",syl:"socks",cat:"clothes",use:"keeping feet warm",cog:0,emoji:"🧦",v:"put on your"},
+  dress:{en:"dress",es:"vestido",art:"a",syl:"dress",cat:"clothes",use:"dressing up",cog:0,emoji:"👗",v:"wear a"},
+  skirt:{en:"skirt",es:"falda",art:"a",syl:"skirt",cat:"clothes",use:"wearing on your legs",cog:0,emoji:"👗",v:"wear a"},
+  shorts:{en:"shorts",es:"pantalones cortos / shorts",art:"",syl:"shorts",cat:"clothes",use:"hot days and P.E.",cog:1,emoji:"🩳",v:"wear"},
+  coat:{en:"coat",es:"abrigo",art:"a",syl:"coat",cat:"clothes",use:"very cold days",cog:0,emoji:"🧥",v:"zip up your"},
+  gloves:{en:"gloves",es:"guantes",art:"",syl:"gloves",cat:"clothes",use:"keeping hands warm",cog:1,emoji:"🧤",v:"put on your"},
+  scarf:{en:"scarf",es:"bufanda",art:"a",syl:"scarf",cat:"clothes",use:"keeping your neck warm",cog:0,emoji:"🧣",v:"wrap your",pl:"scarves"},
+  belt:{en:"belt",es:"cinturón",art:"a",syl:"belt",cat:"clothes",use:"holding up pants",cog:0,emoji:"👖",v:"buckle your"},
+  boots:{en:"boots",es:"botas",art:"",syl:"boots",cat:"clothes",use:"rain, mud, and work",cog:1,emoji:"🥾",v:"lace up your"},
+  sunglasses:{en:"sunglasses",es:"lentes de sol",art:"",syl:"sun·glass·es",cat:"clothes",use:"protecting eyes from the sun",cog:0,emoji:"🕶️",v:"put on your"},
+  earrings:{en:"earrings",es:"aretes",art:"",syl:"ear·rings",cat:"clothes",use:"decorating your ears",cog:0,emoji:"💎",v:"wear"},
+  necklace:{en:"necklace",es:"collar",art:"a",syl:"neck·lace",cat:"clothes",use:"wearing around your neck",cog:0,emoji:"📿",v:"wear a"},
+  /* ---- nature / outside ---- */
+  cloud:{en:"cloud",es:"nube",art:"a",syl:"cloud",cat:"outside",use:"bringing rain",cog:0,emoji:"☁️",v:"look at a"},
+  moon:{en:"moon",es:"luna",art:"",syl:"moon",cat:"outside",use:"lighting the night",cog:0,emoji:"🌙",v:"look at the"},
+  star:{en:"star",es:"estrella",art:"a",syl:"star",cat:"outside",use:"shining at night",cog:1,emoji:"⭐",v:"count a"},
+  river:{en:"river",es:"río",art:"a",syl:"riv·er",cat:"outside",use:"carrying water to the sea",cog:1,emoji:"🏞️",v:"cross the"},
+  lake:{en:"lake",es:"lago",art:"a",syl:"lake",cat:"outside",use:"fishing and swimming",cog:1,emoji:"🏞️",v:"swim in the"},
+  mountain:{en:"mountain",es:"montaña",art:"a",syl:"moun·tain",cat:"outside",use:"hiking and views",cog:1,emoji:"⛰️",v:"climb a"},
+  beach:{en:"beach",es:"playa",art:"a",syl:"beach",cat:"outside",use:"sand and waves",cog:0,emoji:"🏖️",v:"walk on the"},
+  forest:{en:"forest",es:"bosque",art:"a",syl:"for·est",cat:"outside",use:"trees and animals",cog:0,emoji:"🌲",v:"walk in the"},
+  rock:{en:"rock",es:"piedra / roca",art:"a",syl:"rock",cat:"outside",use:"part of the ground",cog:1,emoji:"🪨",v:"pick up a"},
+  leaf:{en:"leaf",es:"hoja",art:"a",syl:"leaf",cat:"outside",use:"making food for a tree",cog:0,emoji:"🍃",v:"find a",pl:"leaves"},
+  wind:{en:"wind",es:"viento",art:"",syl:"wind",cat:"outside",use:"moving the air",cog:0,emoji:"💨",v:"feel the"},
+  snow:{en:"snow",es:"nieve",art:"",syl:"snow",cat:"outside",use:"cold white weather",cog:0,emoji:"❄️",v:"play in the"},
+  storm:{en:"storm",es:"tormenta",art:"a",syl:"storm",cat:"outside",use:"strong wind and rain",cog:1,emoji:"⛈️",v:"wait out the"},
+  tornado:{en:"tornado",es:"tornado",art:"a",syl:"tor·na·do",cat:"outside",use:"a dangerous spinning wind",cog:1,emoji:"🌪️",v:"take shelter from a",pl:"tornadoes"},
+  bridge:{en:"bridge",es:"puente",art:"a",syl:"bridge",cat:"outside",use:"crossing a river or road",cog:0,emoji:"🌉",v:"cross the"},
+  fence:{en:"fence",es:"cerca",art:"a",syl:"fence",cat:"outside",use:"marking a yard",cog:0,emoji:"🪵",v:"paint the"},
+  mailbox:{en:"mailbox",es:"buzón",art:"a",syl:"mail·box",cat:"outside",use:"getting letters",cog:0,emoji:"📫",v:"check the",pl:"mailboxes"},
+  /* ---- more animals ---- */
+  fish:{en:"fish",es:"pez / pescado",art:"a",syl:"fish",cat:"animal",use:"swimming",cog:0,emoji:"🐟",v:"feed the",pl:"fish"},
+  chicken_animal:{en:"chicken",es:"gallina / pollo",art:"a",syl:"chick·en",cat:"animal",use:"laying eggs",cog:0,emoji:"🐔",v:"feed the"},
+  pig:{en:"pig",es:"cerdo / puerco",art:"a",syl:"pig",cat:"animal",use:"living on a farm",cog:0,emoji:"🐷",v:"feed the"},
+  rabbit:{en:"rabbit",es:"conejo",art:"a",syl:"rab·bit",cat:"animal",use:"hopping",cog:0,emoji:"🐰",v:"pet the"},
+  mouse_animal:{en:"mouse",es:"ratón",art:"a",syl:"mouse",cat:"animal",use:"a small animal",cog:0,emoji:"🐭",v:"see a",pl:"mice"},
+  snake:{en:"snake",es:"serpiente / víbora",art:"a",syl:"snake",cat:"animal",use:"sliding on the ground",cog:0,emoji:"🐍",v:"watch out for a"},
+  frog:{en:"frog",es:"rana",art:"a",syl:"frog",cat:"animal",use:"jumping near water",cog:0,emoji:"🐸",v:"hear a"},
+  butterfly:{en:"butterfly",es:"mariposa",art:"a",syl:"but·ter·fly",cat:"animal",use:"flying flower to flower",cog:0,emoji:"🦋",v:"watch a",pl:"butterflies"},
+  spider:{en:"spider",es:"araña",art:"a",syl:"spi·der",cat:"animal",use:"spinning webs",cog:0,emoji:"🕷️",v:"see a"},
+  bee:{en:"bee",es:"abeja",art:"a",syl:"bee",cat:"animal",use:"making honey",cog:0,emoji:"🐝",v:"stay away from a"},
+  turtle:{en:"turtle",es:"tortuga",art:"a",syl:"tur·tle",cat:"animal",use:"moving slowly",cog:1,emoji:"🐢",v:"watch the"},
+  deer:{en:"deer",es:"venado / ciervo",art:"a",syl:"deer",cat:"animal",use:"living in Mississippi woods",cog:0,emoji:"🦌",v:"spot a",pl:"deer"},
+  alligator:{en:"alligator",es:"caimán / lagarto",art:"an",syl:"al·li·ga·tor",cat:"animal",use:"living in southern swamps",cog:0,emoji:"🐊",v:"stay away from an"}
+
+};
+/* Spanish → key index for type-it */
+const ES_INDEX = {};
+for(const k in D){ D[k].es.split("/").forEach(s=>{ ES_INDEX[norm(s)] = k; }); ES_INDEX[norm(D[k].en)] = k; }
+function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g,"").trim(); }
+
+const CAT = {
+  school:{en:"School",es:"Escuela",em:"🏫"}, food:{en:"Food & drink",es:"Comida y bebida",em:"🍎"}, tech:{en:"Technology",es:"Tecnología",em:"💻"},
+  home:{en:"Home",es:"Casa",em:"🏠"}, clothes:{en:"Clothes & things we carry",es:"Ropa y cosas que llevamos",em:"👕"}, sports:{en:"Sports",es:"Deportes",em:"⚽"},
+  animal:{en:"Animals",es:"Animales",em:"🐾"}, vehicle:{en:"Vehicles",es:"Vehículos",em:"🚗"}, outside:{en:"Outside & nature",es:"Afuera y naturaleza",em:"🌳"}, people:{en:"People & jobs",es:"Personas y trabajos",em:"🧑"},
+  body:{en:"Body",es:"Cuerpo",em:"🙂"}, community:{en:"Community",es:"Comunidad",em:"🏙️"}
+};
+/* default verb collocation by category */
+const CATV={school:"use",food:"eat",tech:"use",home:"use",clothes:"wear",sports:"play with",animal:"see",vehicle:"ride in",outside:"see",people:"talk to",body:"move your",community:"go to the"};
+
+/* ============ i18n ============ */
+const T = {
+  en:{tag:"Point · Name · Say",tabLens:"Lens",tabWall:"Word Wall",tabPractice:"Practice",tabMissions:"Missions",tabTeacher:"Teacher",
+    lensTitle:"What do you see?",lensSub:"Start the camera, point it at anything in the room, then tap a word to hear it and say it back.",
+    emptyMsg:"Tap “Start camera” or upload a photo.",start:"Start camera",stop:"Stop",snap:"Freeze & scan",resume:"Live again",flip:"Flip",upload:"Upload photo",
+    lensTip:"Tip: hold the camera still for one second. Big, simple objects work best — a book, a chair, a bottle, a laptop, your backpack.",
+    typeTitle:"Not in the picture? Type it.",typeSub:"Type an English or Spanish word for anything around you.",
+    wallTitle:"My Word Wall",wallSub:"Every word you save lives here — with your own photo. Tap a card to practice it again.",stWords:"words",stSaid:"said correctly",stStreak:"day streak",
+    export:"Export CSV",print:"Print cards",clear:"Clear wall",wallEmpty:"Nothing yet. Go to the Lens and save your first word!",
+    pracTitle:"Practice",pracSub:"Your photos come back. Can you say the word before you see it?",pracStart:"Start round (10)",pracSkip:"Skip",pracNeed:"Save at least 3 words on your wall to practice.",
+    misTitle:"Scavenger Missions",misSub:"Find real things with your camera. Missions complete automatically as your wall grows.",
+    enter:"Enter",play:"Play",headphones:"Sound on · headphones recommended",presents:"EL Publishing presents",production:"A Storm Studio production",starring:"Starring",you:"You",logline:"Every object in this room has a name.<br>Tonight, you learn to say them.",skip:"Skip ▸",exitTheater:"Exit theater",rollCredits:"Roll credits",sendTeacher:"Send to teacher",namePrompt:"Your name (for the teacher):",sent:"File saved — turn it in to your teacher (Drive, email, or classroom share).",hunt:"Today's hunt",huntFound:"found",huntDone:"Hunt complete!",
+    chapter:{lens:["Chapter One","The Lens"],wall:["Chapter Two","The Word Wall"],practice:["Chapter Three","The Rehearsal"],missions:["Chapter Four","The Missions"],teacher:["Behind the Scenes","Director's Notes"]},
+    narr:{open:"Every object in this room has a name. Tonight, you learn to say them.",action:"Action! Point your lens at something in the room.",cut:"Cut! Let's see what we found.",found:"I see {w}. Tap it.",take:"Take one. Say it with me: {w}.",wrap:"That's a wrap on {w}!",again:"Take two. Try it again.",saved:"{w} joins the cast.",mission:"Mission complete. Roll the confetti!",credits:"And now, the cast.",wall:"Your word wall. Every word, your own photo.",practice:"Rehearsal. Say each word before the reveal."},
+    cr:{starring:"Starring",castOf:"The cast of today's lesson",said:"Lines delivered",days:"Days on set",directed:"Directed by",you:"You",produced:"Produced by",prod:"EL Publishing · Storm Studio",thanks:"Special thanks to every teacher who is a language teacher",end:"The End",next:"To be continued tomorrow…"},
+    foot:"Free · No account · Works offline after first load ·",
+    loading:"Loading the lens…",fallback:"Nothing I know for sure. Did you see one of these?",ready:"Looking…",scanning:"Scanning photo…",nothing:"I don't see anything I know yet. Move closer, or type the word below.",
+    hear:"Hear it",slow:"Slow",sayBack:"Say it back",listening:"Listening… say it now",heard:"I heard:",great:"Great! That's it ⭐",almost:"Almost! I heard “{h}”. Listen once more, then say “{w}” slowly.",close:"Close! Try again.",noSR:"Say-it-back needs Chrome or Edge.",
+    sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"Speech check needs internet right now. Try again in a moment.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.",error:"Speech check had a hiccup. Try again."},
+    save:"Save to wall",saved:"Saved ✓",onWall:"On your wall",cognate:"cognate",
+    frames:"Say a sentence",lane:{n:"Newcomer",e:"Emerging",p:"Progressing",c:"Challenge"},yourLane:"your lane",
+    noPerm:"Camera blocked. You can still upload a photo or type a word.",notFound:"I don't know that word yet — but I can still say it!",
+    pracSay:"Say the word for this picture.",pracReveal:"Reveal",pracDone:"Round complete!",pracScore:"You got {n} of {t} right.",confirmClear:"Delete all words from your wall?",
+    remove:"Remove",exported:"CSV downloaded",usedFor:"It is used for",
+    inAction:"Word in action",sayRight:"Say it right (tips for Spanish speakers)",plural:"One or many",one:"one",two:"two",noCount:"no plural — use \"some\"",family:"Word family",quick:"Quick check",describe:"Describe the picture (ELPA21 speaking)",describeHelp:"Talk for 10–15 seconds. Try to hit all four.",describeGo:"Describe it",describeTime:"up to 12 s",write:"Write it",writeHelp:"Write one complete sentence with this word.",check:"Check",
+    bankTitle:"Word Bank",bankSub:"Browse every word Storm Lens knows. Tap a category, then a word.",
+    mSay:"Say it",mListen:"Listen & find",mSpell:"Spell it",mBuild:"Build the sentence",pracWeak:"Rounds start with the words you miss most, then the ones you have not seen in a while.",listenQ:"Listen. Tap the picture.",spellQ:"Type the English word.",hint:"Hint",buildQ:"Tap the words in order.",exitTicket:"Print exit ticket",
+    mis:{body:"Find 4 parts of the body",community:"Find 3 places in the community",people:"Find 3 people or jobs",animal:"Find 3 animals",master:"Master 5 words (3+ stars each)",quiz:"Answer 10 quick checks",describe:"Describe 5 pictures (3 of 4 points)",write:"Write 5 complete sentences",streak3:"Practice 3 days in a row",fifty:"Save 50 words",eat:"Find 3 things you can eat or drink",school:"Find 5 school things",tech:"Find 2 things with a screen",wear:"Find 2 things you can wear or carry",home:"Find 3 things from a home",outside:"Find 3 things outside",ten:"Save 10 words",twenty:"Save 20 words",stars:"Earn 10 stars saying words",cog:"Find 5 cognates"}
+  },
+  es:{tag:"Apunta · Nombra · Di",tabLens:"La lente",tabWall:"Muro de palabras",tabPractice:"Práctica",tabMissions:"Misiones",tabTeacher:"Docente",
+    lensTitle:"¿Qué ves?",lensSub:"Enciende la cámara, apunta a cualquier cosa del salón y toca una palabra para escucharla y repetirla.",
+    emptyMsg:"Toca “Encender cámara” o sube una foto.",start:"Encender cámara",stop:"Apagar",snap:"Congelar y escanear",resume:"En vivo",flip:"Girar",upload:"Subir foto",
+    lensTip:"Consejo: mantén la cámara quieta un segundo. Los objetos grandes y simples funcionan mejor: un libro, una silla, una botella, una laptop, tu mochila.",
+    typeTitle:"¿No sale en la foto? Escríbelo.",typeSub:"Escribe una palabra en inglés o español de algo a tu alrededor.",
+    wallTitle:"Mi muro de palabras",wallSub:"Cada palabra que guardas vive aquí, con tu propia foto. Toca una tarjeta para practicarla otra vez.",stWords:"palabras",stSaid:"bien dichas",stStreak:"días seguidos",
+    export:"Exportar CSV",print:"Imprimir tarjetas",clear:"Borrar muro",wallEmpty:"Nada todavía. ¡Ve a la lente y guarda tu primera palabra!",
+    pracTitle:"Práctica",pracSub:"Tus fotos vuelven. ¿Puedes decir la palabra antes de verla?",pracStart:"Empezar ronda (10)",pracSkip:"Saltar",pracNeed:"Guarda al menos 3 palabras en tu muro para practicar.",
+    misTitle:"Misiones de búsqueda",misSub:"Encuentra cosas reales con tu cámara. Las misiones se completan solas cuando tu muro crece.",
+    enter:"Entrar",play:"Reproducir",headphones:"Sonido activado · se recomiendan audífonos",presents:"EL Publishing presenta",production:"Una producción de Storm Studio",starring:"Protagonista",you:"Tú",logline:"Cada objeto en este salón tiene un nombre.<br>Esta noche aprendes a decirlos.",skip:"Saltar ▸",exitTheater:"Salir del cine",rollCredits:"Créditos",sendTeacher:"Enviar al maestro",namePrompt:"Tu nombre (para el maestro):",sent:"Archivo guardado — entrégalo a tu maestro (Drive, correo o la carpeta de la clase).",hunt:"Búsqueda de hoy",huntFound:"encontradas",huntDone:"¡Búsqueda completa!",
+    chapter:{lens:["Capítulo uno","La lente"],wall:["Capítulo dos","El muro de palabras"],practice:["Capítulo tres","El ensayo"],missions:["Capítulo cuatro","Las misiones"],teacher:["Detrás de cámaras","Notas del director"]},
+    narr:{open:"Every object in this room has a name. Tonight, you learn to say them.",action:"Action! Point your lens at something in the room.",cut:"Cut! Let's see what we found.",found:"I see {w}. Tap it.",take:"Take one. Say it with me: {w}.",wrap:"That's a wrap on {w}!",again:"Take two. Try it again.",saved:"{w} joins the cast.",mission:"Mission complete. Roll the confetti!",credits:"And now, the cast.",wall:"Your word wall. Every word, your own photo.",practice:"Rehearsal. Say each word before the reveal."},
+    cr:{starring:"Protagonistas",castOf:"El elenco de la lección de hoy",said:"Líneas dichas",days:"Días en el set",directed:"Dirigida por",you:"Ti",produced:"Producida por",prod:"EL Publishing · Storm Studio",thanks:"Agradecimiento especial a cada maestro que es maestro de idioma",end:"Fin",next:"Continuará mañana…"},
+    foot:"Gratis · Sin cuenta · Funciona sin internet después de la primera carga ·",
+    loading:"Cargando la lente…",fallback:"Nada seguro. ¿Viste alguna de estas cosas?",ready:"Buscando…",scanning:"Escaneando foto…",nothing:"Todavía no reconozco nada. Acércate o escribe la palabra abajo.",
+    hear:"Escuchar",slow:"Lento",sayBack:"Repetir",listening:"Escuchando… dilo ahora",heard:"Escuché",great:"¡Muy bien! Así es ⭐",almost:"¡Casi! Escuché “{h}”. Escucha otra vez y di “{w}” despacio.",close:"¡Casi! Inténtalo otra vez.",noSR:"Para repetir necesitas Chrome o Edge.",
+    sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"La revisión de voz necesita internet ahora. Inténtalo en un momento.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.",error:"La revisión de voz falló. Inténtalo otra vez."},
+    save:"Guardar en el muro",saved:"Guardado ✓",onWall:"En tu muro",cognate:"cognado",
+    frames:"Di una oración",lane:{n:"Recién llegado",e:"Emergente",p:"En progreso",c:"Reto"},yourLane:"tu nivel",
+    noPerm:"Cámara bloqueada. Aún puedes subir una foto o escribir una palabra.",notFound:"Todavía no conozco esa palabra, ¡pero sí la puedo decir!",
+    pracSay:"Di la palabra de esta foto.",pracReveal:"Mostrar",pracDone:"¡Ronda completa!",pracScore:"Acertaste {n} de {t}.",confirmClear:"¿Borrar todas las palabras de tu muro?",
+    remove:"Quitar",exported:"CSV descargado",usedFor:"Sirve para",
+    inAction:"La palabra en acción",sayRight:"Dilo bien (consejos para hispanohablantes)",plural:"Uno o muchos",one:"one",two:"two",noCount:"sin plural — usa \"some\"",family:"Familia de palabras",quick:"Revisión rápida",describe:"Describe la foto (ELPA21 hablar)",describeHelp:"Habla 10–15 segundos. Intenta lograr los cuatro puntos.",describeGo:"Descríbelo",describeTime:"hasta 12 s",write:"Escríbelo",writeHelp:"Escribe una oración completa con esta palabra.",check:"Revisar",
+    bankTitle:"Banco de palabras",bankSub:"Explora todas las palabras que Storm Lens conoce. Toca una categoría y luego una palabra.",
+    mSay:"Dilo",mListen:"Escucha y encuentra",mSpell:"Deletréalo",mBuild:"Arma la oración",pracWeak:"Las rondas empiezan con las palabras que más fallas y luego las que no has visto en un tiempo.",listenQ:"Escucha. Toca la foto.",spellQ:"Escribe la palabra en inglés.",hint:"Pista",buildQ:"Toca las palabras en orden.",exitTicket:"Imprimir boleto de salida",
+    mis:{body:"Encuentra 4 partes del cuerpo",community:"Encuentra 3 lugares de la comunidad",people:"Encuentra 3 personas o trabajos",animal:"Encuentra 3 animales",master:"Domina 5 palabras (3+ estrellas)",quiz:"Contesta 10 revisiones rápidas",describe:"Describe 5 fotos (3 de 4 puntos)",write:"Escribe 5 oraciones completas",streak3:"Practica 3 días seguidos",fifty:"Guarda 50 palabras",eat:"Encuentra 3 cosas para comer o beber",school:"Encuentra 5 cosas de la escuela",tech:"Encuentra 2 cosas con pantalla",wear:"Encuentra 2 cosas para ponerte o llevar",home:"Encuentra 3 cosas de una casa",outside:"Encuentra 3 cosas de afuera",ten:"Guarda 10 palabras",twenty:"Guarda 20 palabras",stars:"Gana 10 estrellas diciendo palabras",cog:"Encuentra 5 cognados"}
+  }
+};
+let LANG = localStorage.getItem("sl_lang") || "en";
+let LANE = localStorage.getItem("sl_lane") || "e";
+const t = k => { const v = T[LANG][k]; return v===undefined ? (T.en[k]??k) : v; };
+function applyLang(){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const v=t(el.dataset.i18n); if(/<br>/.test(v)) el.innerHTML=v; else el.textContent=v; });
+  document.querySelectorAll("#langSeg button").forEach(b=>b.classList.toggle("on",b.dataset.lang===LANG));
+  document.documentElement.lang = LANG;
+  renderQuick(); renderWall(); renderMissions();
+}
+
+/* ============ FRAMES ============ */
+function frames(w){
+  const a = w.art ? w.art+" " : "";
+  const name = w.en;
+  const cap = s=>s.charAt(0).toUpperCase()+s.slice(1);
+  const plural = !w.art && /s$/.test(name);
+  const be = plural ? "are" : "is";
+  const these = plural ? "These" : "This";
+  return {
+    n:{ text:`${these} ${be} ${a}${name}.`, speak:`${these} ${be} ${a}${name}.` },
+    e:{ text:`I see ${a}<b>${name}</b> on the <span class="blank"></span>. It is <span class="blank"></span>.`, speak:`I see ${a}${name} on the ___. It is ___.`, hint:"(where?) (color/size)" },
+    p:{ text:`${cap(a)}<b>${name}</b> ${be} used for ${w.use} because <span class="blank"></span>.`, speak:`${cap(a)}${name} ${be} used for ${w.use} because ___.` },
+    c:{ text:`Compare the <b>${name}</b> to something similar. Describe it in two complete sentences using <i>although</i> or <i>however</i>.`, speak:`Although ___, the ${name} ___.` }
+  };
+}
+
+
+/* ============ DEPTH HELPERS ============ */
+function pluralOf(w){ if(w.pl) return w.pl; const n=w.en; if(!w.art) return n; const last=n.split(" ").pop(); let p;
+  if(/(s|x|z|ch|sh)$/i.test(last)) p=last+"es"; else if(/[^aeiou]y$/i.test(last)) p=last.slice(0,-1)+"ies"; else if(/fe?$/i.test(last)&&/(knife|leaf|shelf|scarf|wolf)$/i.test(last)) p=last.replace(/fe?$/,"ves"); else p=last+"s";
+  return n.replace(/\S+$/,p); }
+function verbPhrase(w){ const v=w.v||CATV[w.cat]||"use"; const needsObj=/ (the|your|a|an|some)$/.test(v)||/^(eat|drink|wear|play with|see|ride in|talk to|go to the|move your)$/.test(v); let obj=w.en;
+  if(/ (the|your|a|an|some)$/.test(v)||/ to$/.test(v)) return v+" "+obj; if(/^(eat|drink|wear)$/.test(v)) return v+(w.art?" "+w.art:"")+" "+obj; if(v==="move your") return v+" "+obj; if(v==="go to the") return v+" "+obj; return v+" the "+obj; }
+/* pronunciation coaching for Spanish speakers — rule based */
+function pronTips(w){ const n=w.en.toLowerCase(); const tips=[];
+  if(/^s[ptkcmnlw]/.test(n)) tips.push({en:"Starts with S + consonant: don't add an \"e\" sound in front. Say \"s-s-s\" first, then the word.",es:"Empieza con S + consonante: no agregues una \"e\" al inicio. Di \"s-s-s\" y luego la palabra."});
+  if(/v/.test(n)) tips.push({en:"The V: top teeth touch the bottom lip and buzz. It is different from B.",es:"La V: los dientes de arriba tocan el labio de abajo y vibran. Es diferente de la B."});
+  if(/th/.test(n)) tips.push({en:"TH: put the tip of your tongue between your teeth and blow.",es:"TH: pon la punta de la lengua entre los dientes y sopla."});
+  if(/sh/.test(n)) tips.push({en:"SH is soft, like asking for quiet: \"shhh\". CH is harder, like \"chico\".",es:"SH es suave, como pedir silencio: \"shhh\". CH es más fuerte, como \"chico\"."});
+  if(/^h/.test(n)) tips.push({en:"The H is pronounced — breathe out, like \"ja\" in Spanish but softer.",es:"La H sí se pronuncia — exhala, como la \"j\" pero más suave."});
+  if(/j|ge$|gi/.test(n)) tips.push({en:"J / soft G sounds like \"ch\" with voice: \"dzh\". Not the Spanish J.",es:"La J / G suave suena como \"ch\" con voz: \"dzh\". No es la J del español."});
+  if(/[^aeiou]i[^aeiou]/.test(n)&&!/ee|ea/.test(n)) tips.push({en:"Short I: relaxed mouth, quick — not \"ee\". (ship ≠ sheep)",es:"I corta: boca relajada y rápida — no \"i\" larga. (ship ≠ sheep)"});
+  if(/[^aeious]s$|[bdgv]s$|ts$|ks$|ps$/.test(n)) tips.push({en:"Say the final S clearly — in English it changes the meaning.",es:"Pronuncia la S final con claridad — en inglés cambia el significado."});
+  if(/(ck|k|t|p|d|g)$/.test(n)) tips.push({en:"Finish the last consonant — close it, don't let it fade.",es:"Termina la última consonante — ciérrala, no la dejes desaparecer."});
+  if(/[^aeiou]{3}/.test(n.replace(/ /g,""))) tips.push({en:"Three consonants in a row: say them slowly first, then speed up.",es:"Tres consonantes seguidas: dilas despacio primero y luego acelera."});
+  if(/z|se$/.test(n)) tips.push({en:"Z / final -se buzzes like a bee: \"zzz\".",es:"La Z / -se final vibra como una abeja: \"zzz\"."});
+  if(/r/.test(n)) tips.push({en:"English R: the tongue does not touch the roof of the mouth — no rolling.",es:"La R inglesa: la lengua no toca el paladar — no se vibra."});
+  if(!tips.length) tips.push({en:"Say it slowly in syllables, then fast as one word.",es:"Dila despacio por sílabas y luego rápido como una sola palabra."});
+  return tips.slice(0,3); }
+/* auto quick-check question */
+function quickCheck(w){ const same=Object.values(D).filter(x=>x.cat===w.cat&&x.en!==w.en); const pool=(same.length>=3?same:Object.values(D).filter(x=>x.en!==w.en)).sort(()=>Math.random()-.5).slice(0,3);
+  const opts=[w,...pool].sort(()=>Math.random()-.5); return {q:LANG==="es"?`¿Cuál se usa para "${w.use}"?`:`Which one is used for ${w.use}?`, opts, ans:w.en}; }
+/* describe-the-picture checklist (ELPA21 speaking: describe) */
+function describeChecklist(w){ return [
+  {k:"name",en:"Name it",es:"Nómbralo",words:[w.en]},
+  {k:"where",en:"Say where it is",es:"Di dónde está",words:["on","in","under","next","near","by","at","behind","table","desk","floor","wall","room","classroom"]},
+  {k:"look",en:"Describe it (color / size)",es:"Descríbelo (color / tamaño)",words:["red","blue","green","yellow","black","white","gray","grey","brown","orange","pink","purple","big","small","little","long","short","tall","round","square","new","old"]},
+  {k:"use",en:"Say what it is for",es:"Di para qué sirve",words:["for","use","used","because","so","can","to"]}
+]; }
+function scoreDescribe(transcript, list){ const n=norm(transcript); return list.map(i=>({...i,hit:i.words.some(x=>new RegExp("\\b"+norm(x)+"\\b").test(n))})); }
+/* write-it checker */
+function checkWriting(text,w){ const t=text.trim(); const res=[];
+  res.push({en:"Uses the word",es:"Usa la palabra",ok:new RegExp("\\b"+norm(w.en).split(" ")[0],"i").test(norm(t))});
+  res.push({en:"Starts with a capital letter",es:"Empieza con mayúscula",ok:/^[A-Z]/.test(t)});
+  res.push({en:"Ends with . ! or ?",es:"Termina con . ! o ?",ok:/[.!?]$/.test(t)});
+  res.push({en:"At least 5 words",es:"Al menos 5 palabras",ok:t.split(/\s+/).filter(Boolean).length>=5});
+  if(LANE==="p"||LANE==="c") res.push({en:"Uses because / so / but",es:"Usa because / so / but",ok:/\b(because|so|but|although|however)\b/i.test(t)});
+  return res; }
+/* per-word progress: stars (correct) and misses → mastery */
+function wordStats(key){ const e=WALL.find(x=>x.key===key)||{}; return {stars:e.stars||0,miss:e.miss||0,seen:e.seen||0,writ:e.writ||0}; }
+function mastery(e){ const s=(e.stars||0),m=(e.miss||0); if(s>=6&&s>m*2) return 3; if(s>=3) return 2; if(s>=1) return 1; return 0; }
+function bumpMiss(key){ const e=WALL.find(x=>x.key===key); if(e){ e.miss=(e.miss||0)+1; save(); } }
+
+/* ============ STATE ============ */
+let WALL = JSON.parse(localStorage.getItem("sl_wall")||"[]");
+let STATS = JSON.parse(localStorage.getItem("sl_stats")||'{"stars":0,"days":[]}');
+function save(){ localStorage.setItem("sl_wall",JSON.stringify(WALL)); localStorage.setItem("sl_stats",JSON.stringify(STATS)); updateCnt(); }
+function updateCnt(){ document.getElementById("wallCnt").textContent = WALL.length; }
+function touchDay(){ const d=new Date().toISOString().slice(0,10); if(!STATS.days.includes(d)){STATS.days.push(d);} }
+function streak(){ const s=new Set(STATS.days); let n=0; let d=new Date(); for(;;){ const k=d.toISOString().slice(0,10); if(s.has(k)){n++; d.setDate(d.getDate()-1);} else break; } return n; }
+function toast(m){ const el=document.createElement("div"); el.className="toast"; el.textContent=m; document.body.appendChild(el); setTimeout(()=>el.remove(),1800); }
+
+/* ============ TABS / SEGS ============ */
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll("main > section").forEach(s=>s.classList.toggle("hidden",s.id!=="tab-"+b.dataset.tab));
+  if(b.dataset.tab==="wall") renderWall(); if(b.dataset.tab==="missions") renderMissions();
+  chapter(b.dataset.tab);
+  window.scrollTo({top:0});
+});
+document.querySelectorAll("#langSeg button").forEach(b=>b.onclick=()=>{ LANG=b.dataset.lang; localStorage.setItem("sl_lang",LANG); applyLang(); });
+document.querySelectorAll("#laneSeg button").forEach(b=>b.onclick=()=>{ LANE=b.dataset.lane; localStorage.setItem("sl_lane",LANE); document.querySelectorAll("#laneSeg button").forEach(x=>x.classList.toggle("on",x===b)); });
+document.querySelectorAll("#laneSeg button").forEach(x=>x.classList.toggle("on",x.dataset.lane===LANE));
+
+/* ============ SPEECH ============ */
+let VOICE=null;
+function pickVoice(){ const vs=speechSynthesis.getVoices(); VOICE = vs.find(v=>/en[-_]US/i.test(v.lang)&&/Google|Samantha|Natural|Aria|Jenny/i.test(v.name)) || vs.find(v=>/en[-_]US/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }
+if("speechSynthesis" in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
+function speak(text,slow){ if(!("speechSynthesis" in window)) return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text.replace(/___/g,"...")); u.lang="en-US"; if(VOICE) u.voice=VOICE; u.rate = slow?0.6:0.9; u.pitch=0.95; speechSynthesis.speak(u); }
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function listen(target, onRes, onEnd){
+  if(!SR){ onRes(null); return; }
+  const r=new SR(); r.lang="en-US"; r.interimResults=false; r.maxAlternatives=5;
+  let got=false;
+  r.onresult=e=>{ got=true; const alts=[...e.results[0]].map(a=>a.transcript); onRes(alts); };
+  r.onerror=e=>{ got=true; onRes([],e.error||"error"); };
+  r.onend=()=>{ if(!got) onRes([],"no-speech"); onEnd&&onEnd(); };
+  try{ r.start(); }catch(err){ onRes([],"start"); }
+}
+function srMsg(code){ const m=T[LANG].sr; return m[code]||m.error; }
+function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]); for(let j=1;j<=n;j++) d[0][j]=j; for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
+function sim(a,b){ a=norm(a); b=norm(b); if(!a||!b) return 0; return 1-lev(a,b)/Math.max(a.length,b.length); }
+function nearMiss(target, alts){ const best=alts.map(a=>({a,s:sim(a,target)})).sort((x,y)=>y.s-x.s)[0]; return best&&best.s>=0.6?best:null; }
+function frameDiff(speakText, alts){ const words=speakText.replace(/___/g,"").split(/\s+/).filter(Boolean); const heard=norm(alts[0]||""); return words.map(w=>{ const nw=norm(w); if(!nw||nw.length<=2) return {w,hit:true,skip:true}; const hit=heard.includes(nw)||heard.split(" ").some(x=>sim(x,nw)>=0.75); return {w,hit}; }); }
+function matchWord(target, alts){
+  const tg = norm(target).split(" ");
+  return alts.some(a=>{ const n=norm(a); return tg.every(w=>n.includes(w)) || n.includes(norm(target)); });
+}
+function matchFrame(speakText, alts){
+  const words = norm(speakText.replace(/___/g,"")).split(" ").filter(w=>w.length>2);
+  if(!words.length) return true;
+  return alts.some(a=>{ const n=norm(a); const hit=words.filter(w=>n.includes(w)).length; return hit/words.length >= 0.6; });
+}
+
+/* ============ CAMERA + MODEL ============ */
+const video=document.getElementById("video"), still=document.getElementById("still"), overlay=document.getElementById("overlay"), ctx=overlay.getContext("2d");
+const statusEl=document.getElementById("status"), statusTxt=document.getElementById("statusTxt"), emptyEl=document.getElementById("empty");
+let model=null, stream=null, running=false, frozen=false, facing="environment", lastDet=[], loopTimer=null, lastThumbSrc=null;
+function setStatus(m){ if(!m){statusEl.classList.add("hidden");return;} statusEl.classList.remove("hidden"); statusTxt.textContent=m; }
+function addScript(src){ return new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=src; s.onload=res; s.onerror=()=>rej(new Error("load "+src)); document.head.appendChild(s); }); }
+async function loadModel(){
+  if(model) return model;
+  setStatus(t("loading"));
+  let tries=0;
+  while(!window.cocoSsd && tries<24){ await new Promise(r=>setTimeout(r,250)); tries++; }
+  if(!window.cocoSsd){
+    /* fallback CDN */
+    try{
+      if(!window.tf) await addScript("https://unpkg.com/@tensorflow/tfjs@4.22.0/dist/tf.min.js");
+      await addScript("https://unpkg.com/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js");
+    }catch(e){}
+  }
+  if(!window.cocoSsd){ setStatus(null); throw new Error("model-cdn"); }
+  model = await cocoSsd.load({base:"lite_mobilenet_v2"});
+  return model;
+}
+async function startCam(){
+  try{
+    await loadModel();
+    if(stream) stream.getTracks().forEach(tr=>tr.stop());
+    stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:960}},audio:false});
+    video.srcObject=stream; await video.play();
+    emptyEl.classList.add("hidden"); still.classList.add("hidden"); video.classList.remove("hidden");
+    running=true; frozen=false; document.getElementById("stage").classList.add("live");
+    document.getElementById("btnStart").innerHTML=`⏹️ <span>${t("stop")}</span>`;
+    document.getElementById("btnSnap").disabled=false; document.getElementById("btnFlip").disabled=false;
+    document.getElementById("btnSnap").innerHTML=`🔍 <span>${t("snap")}</span>`;
+    setStatus(t("ready")); loop(); narrate("action"); padLevel(.25,3);
+  }catch(e){
+    console.error(e);
+    setStatus(null);
+    toast(e.message==="model-cdn" ? "Could not load the lens model. Check internet, then reload." : t("noPerm"));
+  }
+}
+function stopCam(){
+  lastSig=""; running=false; clearTimeout(loopTimer); document.getElementById("stage").classList.remove("live");
+  if(stream) stream.getTracks().forEach(tr=>tr.stop()); stream=null;
+  video.srcObject=null; emptyEl.classList.remove("hidden"); setStatus(null); ctx.clearRect(0,0,overlay.width,overlay.height);
+  document.getElementById("btnStart").innerHTML=`📷 <span>${t("start")}</span>`;
+  document.getElementById("btnSnap").disabled=true; document.getElementById("btnFlip").disabled=true;
+}
+document.getElementById("btnStart").onclick=()=>{ running?stopCam():startCam(); };
+document.getElementById("btnFlip").onclick=()=>{ facing = facing==="environment"?"user":"environment"; startCam(); };
+document.getElementById("btnSnap").onclick=async()=>{
+  if(!running) return;
+  if(frozen){ frozen=false; video.play(); document.getElementById("stage").classList.add("live"); document.getElementById("btnSnap").innerHTML=`🔍 <span>${t("snap")}</span>`; setStatus(t("ready")); loop(); return; }
+  frozen=true; video.pause(); clearTimeout(loopTimer); shutterSound(); narrate("cut"); const fl=document.getElementById("flash"); fl.classList.remove("go"); void fl.offsetWidth; fl.classList.add("go"); document.getElementById("stage").classList.remove("live");
+  document.getElementById("btnSnap").innerHTML=`▶️ <span>${t("resume")}</span>`;
+  setStatus(t("scanning"));
+  lastSig="";
+  const det = await deepScan(video);
+  draw(det, video.videoWidth, video.videoHeight); showChips(det,true);
+  if(!det.length) showFallback();
+  setStatus(null);
+};
+async function loop(){
+  if(!running||frozen) return;
+  if(video.readyState>=2){
+    try{ const det = await model.detect(video, 10, 0.5); draw(det, video.videoWidth, video.videoHeight); showChips(det); }catch(e){}
+  }
+  loopTimer=setTimeout(loop, 350);
+}
+function fitCanvas(w,h){ overlay.width=w; overlay.height=h; }
+function draw(det,w,h){
+  fitCanvas(w,h); ctx.clearRect(0,0,w,h);
+  det.forEach(d=>{
+    if(!d.bbox) return; const [x,y,bw,bh]=d.bbox; const e=D[d.class]; const label=(e?e.en:d.class);
+    ctx.lineWidth=Math.max(3,w/300); ctx.strokeStyle="#C9A227"; ctx.strokeRect(x,y,bw,bh);
+    ctx.font=`bold ${Math.max(16,w/36)}px Inter, sans-serif`;
+    const tw=ctx.measureText(label).width+16, th=Math.max(26,w/26);
+    ctx.fillStyle="#1E2761"; ctx.fillRect(x,Math.max(0,y-th),tw,th);
+    ctx.fillStyle="#fff"; ctx.fillText(label, x+8, Math.max(0,y-th)+th*0.72);
+  });
+}
+let lastSig="";
+function showChips(det,deep){
+  const seen=new Set(); const list=[];
+  det.forEach(d=>{ if(!seen.has(d.class)){ seen.add(d.class); list.push(d); } });
+  lastDet=list;
+  const sig=list.map(d=>d.class).sort().join("|");
+  if(!deep&&sig===lastSig){ /* same objects: refresh bboxes only, keep buttons stable */
+    document.querySelectorAll("#chips .chip").forEach(c=>{ const d=list.find(x=>x.class===c.dataset.k); if(d) c._bbox=d.bbox; });
+    return;
+  }
+  lastSig=deep?"":sig;
+  const box=document.getElementById("chips"); box.innerHTML="";
+  list.forEach(d=>{
+    const e=D[d.class]; if(!e) return;
+    const b=document.createElement("button"); b.className="chip"+(WALL.some(w=>w.key===d.class)?"":" new"); b.dataset.k=d.class; b._bbox=d.bbox;
+    b.innerHTML=`<span>${e.emoji} ${e.en}</span><span class="es">${e.es.split("/")[0].trim()}</span>${d.how==="frame"||d.how==="quad"?`<span class="es">?</span>`:""}`;
+    b.onclick=async()=>{ lastThumbSrc = cropThumb(b._bbox); await revealShot(e,lastThumbSrc); openCard(d.class, lastThumbSrc); };
+    box.appendChild(b);
+  });
+  const tip=document.getElementById("lensTip");
+  tip.textContent = (list.length? t("lensTip") : t("nothing"));
+}
+function sourceEl(){ return still.classList.contains("hidden") ? video : still; }
+function cropThumb(bbox){
+  const src=sourceEl(); const sw = src===video?video.videoWidth:src.naturalWidth, sh= src===video?video.videoHeight:src.naturalHeight;
+  if(!sw) return null;
+  let [x,y,w,h]=bbox||[0,0,sw,sh];
+  const s=Math.max(w,h)*1.15; let cx=x+w/2, cy=y+h/2; let sx=Math.max(0,cx-s/2), sy=Math.max(0,cy-s/2); let size=Math.min(s, sw-sx, sh-sy);
+  const c=document.createElement("canvas"); c.width=c.height=180; c.getContext("2d").drawImage(src,sx,sy,size,size,0,0,180,180);
+  return c.toDataURL("image/jpeg",0.6);
+}
+/* upload photo */
+document.getElementById("fileIn").onchange=async e=>{
+  const f=e.target.files[0]; if(!f) return; lastSig="";
+  if(running) stopCam();
+  const url=URL.createObjectURL(f); still.src=url; still.classList.remove("hidden"); video.classList.add("hidden"); emptyEl.classList.add("hidden");
+  await new Promise(r=>still.onload=r);
+  try{ await loadModel(); setStatus(t("scanning")); const det=await deepScan(still); draw(det, still.naturalWidth, still.naturalHeight); showChips(det,true); if(!det.length) showFallback(); setStatus(null); }
+  catch(err){ setStatus(null); toast("Could not load the lens model. Check internet, then reload."); }
+  e.target.value="";
+};
+
+
+/* ============ IMAGENET → DICTIONARY MAP (second-stage recognition) ============ */
+const IMG_MAP=[
+  [/notebook computer|laptop/,"laptop"],[/\bnotebook\b/,"notebook"],[/ballpoint|fountain pen|quill/,"pen"],[/pencil sharpener/,"pencil sharpener"],[/pencil box|pencil case/,"pencil"],[/rubber eraser|eraser/,"eraser"],
+  [/binder|ring-binder/,"binder"],[/backpack|knapsack|rucksack/,"backpack"],[/water bottle/,"water bottle"],[/pop bottle|soda bottle|beer bottle|wine bottle|water jug|whiskey jug/,"bottle"],[/wall clock|analog clock|digital clock/,"clock"],
+  [/\bdesk\b/,"desk"],[/\bmonitor\b|screen, crt|television/,"screen"],[/computer mouse|\bmouse\b/,"mouse"],[/computer keyboard|typewriter keyboard|keypad/,"keyboard"],[/cellular telephone|cellphone|cell phone|hand-held computer|ipod/,"cell phone"],
+  [/sunglass/,"sunglasses"],[/running shoe|sneaker/,"sneakers"],[/loafer|sandal|clog/,"shoes"],[/cowboy boot/,"boots"],[/jersey|t-shirt|tee shirt/,"shirt"],[/sweatshirt|cardigan/,"hoodie"],[/jean, blue jean|denim/,"pants"],[/\bsock\b/,"socks"],[/trench coat|fur coat|lab coat/,"coat"],[/miniskirt|overskirt|hoopskirt/,"skirt"],[/\bgown\b/,"dress"],[/bow tie|windsor tie|\btie\b/,"tie"],[/cowboy hat|sombrero|bonnet/,"hat"],[/\bwallet\b|billfold/,"wallet"],[/\bpurse\b/,"handbag"],[/umbrella/,"umbrella"],[/mitten|glove/,"gloves"],[/stole|scarf/,"scarf"],[/\bbelt\b/,"belt"],
+  [/banana/,"banana"],[/granny smith|\bapple\b/,"apple"],[/\borange\b/,"orange"],[/strawberry/,"strawberry"],[/\bcorn\b|ear, spike/,"corn"],[/broccoli/,"broccoli"],[/bell pepper/,"pepper"],[/hot dog|hotdog/,"hot dog"],[/cheeseburger|hamburger/,"hamburger"],[/\bpizza\b/,"pizza"],[/burrito/,"tortilla"],[/ice cream|icecream|ice lolly/,"ice cream"],[/french loaf|bagel|pretzel|bread/,"bread"],[/espresso|coffee mug|cup/,"cup"],[/soup bowl|mixing bowl|consomme/,"bowl"],[/\bplate\b/,"plate"],[/\btray\b/,"tray"],[/frying pan|skillet|wok/,"pan"],[/dutch oven|caldron|cauldron|pot, /,"pot"],[/\bspatula\b|ladle|wooden spoon/,"spoon"],[/cleaver|letter opener/,"knife"],[/carrot/,"carrot"],[/\bcucumber\b|zucchini|cauliflower|mushroom|artichoke/,"salad"],[/lemon|fig|pineapple|pomegranate/,"grapes"],
+  [/microwave/,"microwave"],[/toaster/,"toaster"],[/refrigerator|icebox/,"refrigerator"],[/\bstove\b|dutch oven/,"stove"],[/washer, automatic/,"washing machine"],[/vacuum/,"broom"],[/\bbroom\b/,"broom"],[/bucket|pail/,"trash can"],[/candle|taper/,"candle"],[/pillow/,"pillow"],[/quilt|comforter|sleeping bag/,"blanket"],[/wardrobe|closet|chest|chiffonier|file, file cabinet|filing cabinet/,"cabinet"],[/bookcase|bookshop|library/,"shelf"],[/crib|cradle|four-poster|day bed/,"bed"],[/studio couch|sofa/,"couch"],[/folding chair|rocking chair|barber chair|throne/,"chair"],[/dining table|desk/,"table"],[/table lamp|lampshade|spotlight/,"lamp"],[/window shade|window screen|shower curtain|theater curtain/,"curtain"],[/doormat|prayer rug|rug/,"rug"],[/electric fan/,"fan"],[/\bmirror\b/,"mirror"],[/toilet tissue|paper towel/,"napkin"],[/toilet seat/,"toilet"],[/washbasin|bathtub|tub/,"sink"],[/soap dispenser/,"soap"],[/toothbrush/,"toothbrush"],[/hair spray|hand blower|dryer/,"hair dryer"],[/vase/,"vase"],[/pot, flowerpot|flowerpot|daisy|hip|sunflower/,"flower"],[/sliding door|screen door/,"door"],[/window/,"window"],
+  [/projector/,"projector"],[/printer|photocopier/,"printer"],[/microphone|mike/,"microphone"],[/loudspeaker|speaker/,"speaker"],[/remote control/,"remote"],[/digital watch|stopwatch/,"watch"],[/\bcamera\b|reflex camera|polaroid/,"camera"],[/mailbox|letter box/,"mailbox"],[/street sign/,"sign"],[/traffic light/,"traffic light"],[/school bus|minibus|trolleybus/,"bus"],[/sports car|convertible|cab, hack|limousine|minivan|racer|beach wagon|station wagon|jeep|model t/,"car"],[/pickup|trailer truck|moving van|garbage truck|tow truck|fire engine/,"truck"],[/mountain bike|bicycle-built/,"bicycle"],[/\bmoped\b|motor scooter/,"motorcycle"],[/airliner|warplane/,"airplane"],[/passenger car|electric locomotive|streetcar|bullet train/,"train"],[/speedboat|canoe|yawl|schooner|lifeboat|fireboat|container ship|catamaran|trimaran/,"boat"],[/ambulance/,"hospital"],[/police van/,"police station"],[/church|steeple|mosque/,"church"],[/gas pump|pump/,"gas station"],[/grocery store|supermarket/,"supermarket"],[/restaurant|dining/,"restaurant"],[/shopping cart/,"supermarket"],[/library/,"library"],[/\bbank\b|vault/,"bank"],
+  [/basketball/,"basketball"],[/soccer ball/,"soccer"],[/football helmet|rugby ball/,"football"],[/baseball|volleyball|tennis ball|golf ball|ping-pong ball/,"sports ball"],[/skateboard/,"skateboard"],[/racket|racquet/,"tennis racket"],[/frisbee/,"frisbee"],[/\bski\b/,"skis"],[/snowmobile|dogsled/,"snowboard"],[/guitar|banjo/,"guitar"],[/grand piano|upright/,"piano"],[/\bdrum\b|drumstick/,"drum"],[/trophy|cup, trophy/,"trophy"],[/microscope/,"microscope"],[/rule, ruler|ruler/,"ruler"],[/stapler|paper clip|paperclip/,"paper clip"],[/envelope|mail/,"email"],[/paintbrush|palette/,"paintbrush"],[/crayon/,"crayon"],[/chalk/,"chalk"],[/ballplayer|scuba diver|groom/,"person"],[/bath towel|towel/,"towel"],
+  [/retriever|terrier|spaniel|shepherd|husky|poodle|beagle|bulldog|chihuahua|collie|hound|setter|pointer|mastiff|dane|pug|boxer|corgi|malamute|dalmatian|newfoundland|schnauzer|pinscher|rottweiler|labrador|akita|samoyed|papillon|pekinese|shih-tzu|maltese|whippet|greyhound|dingo|dog/,"dog"],[/tabby|tiger cat|persian cat|siamese|egyptian cat/,"cat"],[/\bhen\b|\bcock\b/,"chicken_animal"],[/\bhog\b|\bpig\b|wild boar/,"pig"],[/\box\b|water buffalo|bison|cow/,"cow"],[/\bram\b|bighorn|sheep/,"sheep"],[/sorrel|horse cart|horse/,"horse"],[/zebra/,"zebra"],[/giraffe/,"giraffe"],[/elephant/,"elephant"],[/brown bear|black bear|ice bear|polar bear|sloth bear/,"bear"],[/goldfish|tench|barracouta|eel|coho|sturgeon|gar|puffer|anemone fish/,"fish"],[/rabbit|hare|angora/,"rabbit"],[/hamster|guinea pig|mouse/,"mouse_animal"],[/snake|boa|python|cobra|viper|adder|mamba|rattlesnake/,"snake"],[/frog|toad/,"frog"],[/butterfly|admiral|monarch|lycaenid|ringlet|sulphur/,"butterfly"],[/spider|tarantula/,"spider"],[/bee\b|honeycomb/,"bee"],[/turtle|terrapin|tortoise/,"turtle"],[/\bdeer\b|elk|hartebeest|impala|gazelle/,"deer"],[/alligator|crocodile/,"alligator"],[/robin|jay|magpie|chickadee|finch|junco|bunting|oriole|sparrow|bird|hummingbird|kite|vulture|eagle|owl|duck|goose|swan|flamingo|pelican|peacock|parrot|macaw|toucan/,"bird"],
+  [/\bflag\b/,"flag"],[/globe/,"globe"],[/\bmap\b|atlas/,"map"],[/calendar/,"calendar"],[/poster|comic book|jigsaw/,"poster"],[/\bbook\b|book jacket|comic/,"book"],[/binder/,"binder"],[/menu|web site/,"paper"],[/scoreboard|digital clock/,"clock"],[/park bench/,"bench"],[/fountain/,"water fountain"],[/bridge|viaduct|pier/,"bridge"],[/picket fence|chainlink fence|worm fence|stone wall/,"fence"],[/mountain|alp|volcano|cliff|valley/,"mountain"],[/lakeside|lakeshore/,"lake"],[/seashore|sandbar|coral reef/,"beach"],[/geyser|river/,"river"],[/\btree\b|oak|maple|pine|palm/,"tree"],[/cloud/,"cloud"],[/umbrella/,"umbrella"],[/sweatshirt/,"hoodie"],[/tornado|cyclone/,"tornado"],[/snowplow|ski/,"snow"],[/bannister|staircase/,"stairs"],[/garage|carport/,"garage"],[/boathouse|home|house|mobile home|palace|castle|monastery|barn/,"house"],[/plastic bag|shopping basket|mailbag/,"bag"],[/carton|crate|packet|chest/,"box"],[/piggy bank|coin|money/,"money"],[/padlock|combination lock|safe/,"locker"],[/\bkey\b|keychain/,"keys"],[/\bcandle\b/,"candle"],[/wig|hair slide/,"hair"],[/lipstick|band aid|face powder/,"mouth"],[/stethoscope|syringe|pill bottle|medicine chest/,"pharmacy"],[/trash can|ashcan|garbage|dustbin/,"trash can"],[/whistle|hoop/,"coach"],[/crash helmet|football helmet/,"football"],[/diaper|bib|baby/,"family"],[/wing|airship/,"airplane"],[/screen|crt/,"screen"]
+];
+function mapImagenet(label){ const l=label.toLowerCase(); for(const [re,key] of IMG_MAP){ if(re.test(l)&&D[key]) return key; } const toks=l.split(/[,\s]+/).filter(Boolean); for(const tk of toks){ if(D[tk]) return tk; } return null; }
+let mnet=null;
+async function loadMobilenet(){ if(mnet) return mnet; let tries=0; while(!window.mobilenet&&tries<20){ await new Promise(r=>setTimeout(r,250)); tries++; } if(!window.mobilenet){ try{ await addScript("https://unpkg.com/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js"); }catch(e){} } if(!window.mobilenet) return null; try{ mnet=await mobilenet.load({version:2,alpha:0.75}); }catch(e){ mnet=null; } return mnet; }
+function cropCanvas(src, bbox, pad=0.1){ const sw=src===video?video.videoWidth:src.naturalWidth, sh=src===video?video.videoHeight:src.naturalHeight; let [x,y,w,hh]=bbox||[0,0,sw,sh]; const px=w*pad, py=hh*pad; x=Math.max(0,x-px); y=Math.max(0,y-py); w=Math.min(sw-x,w+2*px); hh=Math.min(sh-y,hh+2*py); const c=document.createElement("canvas"); c.width=224; c.height=224; c.getContext("2d").drawImage(src,x,y,w,hh,0,0,224,224); return c; }
+/* deep scan: COCO boxes + MobileNet on each crop + whole frame + quadrants */
+async function deepScan(src){
+  const det = await model.detect(src, 10, 0.3);
+  const out=[]; const seen=new Set();
+  const push=(key,bbox,score,how)=>{ if(!key||seen.has(key)) return; seen.add(key); out.push({class:key,bbox,score,how}); };
+  det.forEach(d=>{ if(D[d.class]) push(d.class,d.bbox,d.score,"box"); });
+  const mn=await loadMobilenet(); if(!mn) return out;
+  const sw=src===video?video.videoWidth:src.naturalWidth, sh=src===video?video.videoHeight:src.naturalHeight;
+  const tryCrop=async(bbox,how,minP,coarse)=>{ try{ const preds=await mn.classify(cropCanvas(src,bbox),3); for(const p of preds){ if(p.probability<minP) continue; const k=mapImagenet(p.className); if(!k) continue;
+      if(coarse&&k!==coarse&&p.probability>=0.5){ /* confident refinement replaces the coarse label for this box */ const i=out.findIndex(o=>o.class===coarse&&o.bbox===bbox); if(i>-1){ out.splice(i,1); seen.delete(coarse); } }
+      push(k,bbox,p.probability,how); return; } }catch(e){} };
+  /* refine each COCO box (e.g. book → binder / notebook, bottle → water bottle) */
+  for(const d of det){ if(D[d.class]) await tryCrop(d.bbox,"refine",0.35,d.class); }
+  /* whole frame + 4 quadrants + center for objects COCO doesn't know */
+  await tryCrop(null,"frame",0.22,null);
+  const q=[[0,0,sw/2,sh/2],[sw/2,0,sw/2,sh/2],[0,sh/2,sw/2,sh/2],[sw/2,sh/2,sw/2,sh/2],[sw/4,sh/4,sw/2,sh/2]];
+  for(const b of q){ if(out.length>=8) break; await tryCrop(b,"quad",0.3,null); }
+  return out;
+}
+const LIKELY=["pencil","pen","notebook","paper","folder","binder","eraser","marker","ruler","desk","whiteboard","locker","headphones","charger","water bottle","lunchbox","hallway","door","window","clock"];
+function showFallback(){ const box=document.getElementById("chips"); box.innerHTML=`<div class="dtip" style="width:100%">${t("fallback")}</div>`; LIKELY.forEach(k=>{ const e=D[k]; const b=document.createElement("button"); b.className="chip"+(WALL.some(w=>w.key===k)?"":" new"); b.style.fontSize="15px"; b.innerHTML=`<span>${e.emoji} ${e.en}</span>`; b.onclick=async()=>{ lastThumbSrc=cropThumb(null); await revealShot(e,lastThumbSrc); openCard(k,lastThumbSrc); }; box.appendChild(b); }); }
+
+/* ============ TYPE-IT ============ */
+function lookup(q){
+  const n=norm(q); if(!n) return null;
+  if(D[n]) return n; if(ES_INDEX[n]) return ES_INDEX[n];
+  const sing = n.replace(/s$/,""); if(D[sing]) return sing; if(ES_INDEX[sing]) return ES_INDEX[sing];
+  return null;
+}
+document.getElementById("btnType").onclick=()=>{
+  const q=document.getElementById("typeIn").value; const k=lookup(q);
+  if(k){ openCard(k,null); } else if(norm(q)){ openCard(null,null,q.trim()); toast(t("notFound")); }
+};
+document.getElementById("typeIn").addEventListener("keydown",e=>{ if(e.key==="Enter") document.getElementById("btnType").click(); });
+let BANK_CAT=null;
+function renderBank(){ const cats=document.getElementById("bankCats"); cats.innerHTML=""; const all=Object.entries(D); 
+  const mk=(label,cat)=>{ const b=document.createElement("button"); b.textContent=label; if(cat===BANK_CAT) b.style.borderColor="var(--gold)"; b.onclick=()=>{ BANK_CAT=(BANK_CAT===cat?null:cat); renderBank(); }; cats.appendChild(b); };
+  Object.keys(CAT).forEach(c=>mk(`${CAT[c].em} ${CAT[c][LANG]} (${all.filter(([k,w])=>w.cat===c).length})`,c));
+  const g=document.getElementById("bankGrid"); g.innerHTML="";
+  if(!BANK_CAT){ g.innerHTML=`<p class="sub">${all.length} ${t("stWords")} · ${Object.values(D).filter(w=>w.cog).length} ${t("cognate")}s</p>`; return; }
+  all.filter(([k,w])=>w.cat===BANK_CAT).sort((a,b)=>a[1].en.localeCompare(b[1].en)).forEach(([k,w])=>{ const b=document.createElement("button"); b.className="bw"+(WALL.some(x=>x.key===k)?" have":""); b.innerHTML=`<span class="e">${w.emoji}</span><b>${w.en}</b><span>${w.es.split("/")[0].trim()}</span>`; b.onclick=()=>openCard(k,null); g.appendChild(b); }); }
+function renderQuick(){ renderBank();
+  const box=document.getElementById("quickWords"); box.innerHTML="";
+  ["pencil","desk","whiteboard","locker","cafeteria","hallway","headphones","notebook","water fountain","schedule","ID card","homework"].forEach(w=>{
+    const b=document.createElement("button"); const k=lookup(w); b.textContent=D[k].emoji+" "+D[k].en; b.onclick=()=>openCard(k,null); box.appendChild(b);
+  });
+}
+
+/* ============ WORD CARD ============ */
+const ovl=document.getElementById("overlayCard"), sheet=document.getElementById("sheet");
+ovl.addEventListener("click",e=>{ if(e.target===ovl) closeCard(); });
+function closeCard(){ ovl.classList.add("hidden"); if("speechSynthesis" in window) speechSynthesis.cancel(); }
+function openCard(key, thumb, rawWord){
+  const w = key ? D[key] : {en:rawWord, es:"—", art:"", syl:rawWord, cat:"school", use:"…", cog:0, emoji:"✨"};
+  key = key || ("custom:"+norm(rawWord));
+  const onWall = WALL.find(x=>x.key===key);
+  const img = thumb || (onWall&&onWall.img) || null;
+  const fr = frames(w);
+  const laneName=l=>T[LANG].lane[l];
+  sheet.innerHTML = `
+    <button class="close" aria-label="close">✕</button>
+    <div class="wtop">
+      ${img?`<img class="wthumb" src="${img}" alt="">`:`<div class="wthumb" style="display:grid;place-items:center;font-size:44px">${w.emoji}</div>`}
+      <div>
+        <div class="word">${w.art?`<span class="art">${w.art}</span>`:""}${[...w.en].map((c,i)=>`<span class="ch" style="animation-delay:${i*45}ms">${c===" "?"&nbsp;":c}</span>`).join("")}</div>
+        <div class="syl">${w.syl}</div>
+        <div class="es-line">🇲🇽 ${w.es} ${w.cog?`<span class="badge cog">${t("cognate")}</span>`:""} <span class="badge cat">${CAT[w.cat].em} ${CAT[w.cat][LANG]}</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn" id="cHear">🔊 ${t("hear")}</button>
+      <button class="btn ghost" id="cSlow">🐢 ${t("slow")}</button>
+      <button class="btn gold" id="cSave">${onWall?"✓ "+t("onWall"):"⭐ "+t("save")}</button>
+    </div>
+    <div class="say">
+      <button class="btn big" id="cSay">🎤 ${t("sayBack")}</button>
+      <div class="res" id="cRes"></div>
+    </div>
+    <div class="deep">
+      <div class="dsec"><div class="dlbl">🎬 ${t("inAction")}</div><div class="dbig" id="dAct">${verbPhrase(w)}</div><div class="dex">${exampleSentence(w)}</div><div class="mini"><button id="dActHear">🔊</button><button id="dActSay">🎤 ${t("sayBack")}</button></div><div class="res" id="dActRes"></div></div>
+      <div class="dsec"><div class="dlbl">🗣️ ${t("sayRight")}</div>${pronTips(w).map(p=>`<div class="dtip">• ${p[LANG]||p.en}</div>`).join("")}</div>
+      <div class="dsec row2"><div><div class="dlbl">${t("plural")}</div><div class="dbig">${w.art?`${t("one")} ${w.en} → ${t("two")} <b>${pluralOf(w)}</b>`:`<b>${w.en}</b> <span class="dtip">(${t("noCount")})</span>`}</div></div><div><div class="dlbl">${t("family")}</div><div class="dtip">${wordFamily(w)}</div></div></div>
+      <div class="dsec"><div class="dlbl">✅ ${t("quick")}</div><div class="dq" id="dQ"></div></div>
+      <div class="dsec"><div class="dlbl">🎥 ${t("describe")}</div><div class="dtip">${t("describeHelp")}</div><ul class="dchk" id="dChk">${describeChecklist(w).map(i=>`<li data-k="${i.k}">○ ${i[LANG]||i.en}</li>`).join("")}</ul><div class="mini"><button class="btn gold sm" id="dDesc">🎤 ${t("describeGo")}</button></div><div class="res" id="dDescRes"></div></div>
+      <div class="dsec"><div class="dlbl">✍️ ${t("write")}</div><div class="dtip">${t("writeHelp")}</div><textarea id="dWrite" rows="2" placeholder="${frames(w)[LANE].speak.replace(/___/g,"…")}"></textarea><div class="mini"><button class="btn sm" id="dWriteGo">${t("check")}</button></div><ul class="dchk" id="dWriteRes"></ul></div>
+    </div>
+    <div class="lanes">
+      <div class="lbl" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">${t("frames")}</div>
+      ${["n","e","p","c"].map(l=>`
+        <div class="lane ${l}">
+          <div class="lbl">${laneName(l)} ${l===LANE?`· <span style="color:var(--gold)">★ ${t("yourLane")}</span>`:""}</div>
+          <div class="frame">${fr[l].text} ${fr[l].hint?`<span style="color:var(--muted);font-size:13px">${fr[l].hint}</span>`:""}</div>
+          <div class="mini"><button data-s="${l}">🔊</button><button data-l="${l}">🎤 ${t("sayBack")}</button></div>
+        </div>`).join("")}
+    </div>`;
+  ovl.classList.remove("hidden");
+  sheet.scrollTop=0;
+  sheet.querySelector(".close").onclick=closeCard;
+  const say = w.art ? `${w.art} ${w.en}` : w.en;
+  document.getElementById("cHear").onclick=()=>speak(say,false);
+  document.getElementById("cSlow").onclick=()=>speak(w.en,true);
+  if(NARR) narrate("take", say); else speak(say,false);
+  const res=document.getElementById("cRes");
+  const sayBtn=document.getElementById("cSay");
+  function doListen(target, isFrame, btn){
+    if(!SR){ res.className="res warn"; res.textContent=t("noSR"); return; }
+    res.className="res"; res.textContent=t("listening"); btn.disabled=true; res.closest(".say")&&res.closest(".say").classList.add("listening");
+    listen(target, (alts,err)=>{
+      btn.disabled=false; res.closest(".say")&&res.closest(".say").classList.remove("listening");
+      if(err){ res.className="res warn"; res.textContent=srMsg(err); return; }
+      if(!alts||!alts.length){ res.className="res warn"; res.textContent=t("close"); return; }
+      const ok = isFrame ? matchFrame(target,alts) : matchWord(target,alts);
+      res.className="res "+(ok?"ok":"bad");
+      if(isFrame){ const d=frameDiff(target,alts); res.innerHTML=(ok?t("great"):t("close"))+"<br><span class='diff'>"+d.map(x=>x.skip?x.w:`<span class="${x.hit?"hit":"miss"}">${x.w}</span>`).join(" ")+"</span><br><small>"+t("heard")+" “"+alts[0]+"”</small>"; }
+      else if(!ok){ const nm=nearMiss(target,alts); res.innerHTML=(nm?t("almost").replace("{h}",nm.a).replace("{w}",target):t("close"))+"<br><small>"+t("heard")+" “"+alts[0]+"”</small>"; }
+      else res.textContent = t("great") + "  ·  " + t("heard") + " “" + alts[0] + "”";
+      if(ok){ STATS.stars++; touchDay(); const e=WALL.find(x=>x.key===key); if(e){ e.stars=(e.stars||0)+1; } save(); confetti(); chime("win"); setTimeout(()=>narrate("wrap",w.en),300); } else { chime("miss"); setTimeout(()=>narrate("again"),200); }
+    }, ()=>{ btn.disabled=false; });
+  }
+  sayBtn.onclick=()=>doListen(w.en,false,sayBtn);
+  sheet.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>speak(fr[b.dataset.s].speak,false));
+  sheet.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>doListen(fr[b.dataset.l].speak,true,b));
+  document.getElementById("cSave").onclick=()=>{
+    if(WALL.some(x=>x.key===key)){ toast(t("onWall")); return; }
+    if(WALL.length>=200){ WALL.shift(); }
+    WALL.push({key, en:w.en, es:w.es, cat:w.cat, cog:w.cog, img:img, ts:Date.now(), stars:0});
+    touchDay(); const before=missionList().filter(m=>m.test&&WALL.filter(m.test).length-1>=m.n).length; save(); const after=missionList().filter(m=>m.test&&WALL.filter(m.test).length>=m.n).length; renderHunt(); if(after>before){ confetti(); chime("tada"); setTimeout(()=>narrate("mission"),400); } else { chime("one"); narrate("saved", w.en); } document.getElementById("cSave").textContent="✓ "+t("saved"); toast("⭐ "+t("saved")); renderWall(); renderMissions();
+    document.querySelectorAll(".chip.new").forEach(c=>{ if(c.textContent.includes(w.en)) c.classList.remove("new"); });
+  };
+  /* ---- depth wiring ---- */
+  const vp=verbPhrase(w), ex=exampleSentence(w);
+  document.getElementById("dActHear").onclick=()=>speak(vp+". "+ex,false);
+  const actRes=document.getElementById("dActRes");
+  document.getElementById("dActSay").onclick=function(){ if(!SR){actRes.className="res warn";actRes.textContent=t("noSR");return;} actRes.className="res"; actRes.textContent=t("listening"); this.disabled=true;
+    listen(vp,(alts,err)=>{ this.disabled=false; if(err){actRes.className="res warn";actRes.textContent=srMsg(err);return;} const ok=matchFrame(vp,alts); actRes.className="res "+(ok?"ok":"bad"); actRes.textContent=(ok?t("great"):t("close"))+"  ·  "+t("heard")+" “"+(alts[0]||"")+"”"; if(ok){ STATS.stars++; const e=WALL.find(x=>x.key===key); if(e) e.stars=(e.stars||0)+1; touchDay(); save(); chime("win"); } else { chime("miss"); bumpMiss(key); } }); };
+  /* quick check */
+  const qc=quickCheck(w); const dq=document.getElementById("dQ");
+  dq.innerHTML=`<div class="dqq">${qc.q}</div><div class="dqo">${qc.opts.map(o=>`<button data-a="${o.en}">${o.emoji} ${o.en}</button>`).join("")}</div>`;
+  dq.querySelectorAll("button").forEach(b=>b.onclick=()=>{ const ok=b.dataset.a===qc.ans; b.classList.add(ok?"ok":"bad"); if(ok){ dq.querySelectorAll("button").forEach(x=>x.disabled=true); chime("win"); STATS.quiz=(STATS.quiz||0)+1; save(); } else { chime("miss"); } });
+  /* describe the picture */
+  const dRes=document.getElementById("dDescRes"), dChk=document.getElementById("dChk");
+  document.getElementById("dDesc").onclick=function(){ if(!SR){dRes.className="res warn";dRes.textContent=t("noSR");return;} dRes.className="res"; dRes.textContent=t("listening")+" ("+t("describeTime")+")"; this.disabled=true;
+    listenLong((transcript,err)=>{ this.disabled=false; if(err){dRes.className="res warn";dRes.textContent=srMsg(err);return;} const sc=scoreDescribe(transcript,describeChecklist(w)); let hits=0; sc.forEach(i=>{ const li=dChk.querySelector(`[data-k="${i.k}"]`); li.textContent=(i.hit?"✔ ":"○ ")+(i[LANG]||i.en); li.className=i.hit?"hit":""; if(i.hit) hits++; });
+      dRes.className="res "+(hits>=3?"ok":hits>=2?"warn":"bad"); dRes.textContent=`${hits}/4 · ${t("heard")} “${transcript}”`; if(hits>=3){ chime("tada"); confetti(); STATS.describe=(STATS.describe||0)+1; const e=WALL.find(x=>x.key===key); if(e) e.stars=(e.stars||0)+2; touchDay(); save(); } else if(hits>=2) chime("win"); else chime("miss"); }); };
+  /* write it */
+  document.getElementById("dWriteGo").onclick=()=>{ const txt=document.getElementById("dWrite").value; const r=checkWriting(txt,w); const ul=document.getElementById("dWriteRes"); ul.innerHTML=r.map(i=>`<li class="${i.ok?"hit":""}">${i.ok?"✔":"○"} ${i[LANG]||i.en}</li>`).join(""); const all=r.every(i=>i.ok); if(all){ chime("tada"); STATS.writ=(STATS.writ||0)+1; const e=WALL.find(x=>x.key===key); if(e){ e.writ=(e.writ||0)+1; e.stars=(e.stars||0)+1; } touchDay(); save(); toast("✍️ "+t("great")); } else if(txt.trim()) chime("miss"); };
+}
+function exampleSentence(w){ const vp=verbPhrase(w); const subj=["I","We","Students","My friend and I","Every day, I"][Math.floor(Math.random()*5)]; const v=vp.split(" ")[0]; const rest=vp.slice(v.length);
+  if(/\b(in|at|to|on) the\b/.test(vp)) return `${subj} ${v}${rest} every day.`;
+  return `${subj} ${v}${rest} ${w.cat==="food"?"at lunch.":w.cat==="school"?"in class.":w.cat==="home"?"at home.":w.cat==="community"?"on Saturday.":w.cat==="clothes"?"when it is cold.":w.cat==="body"?"when the teacher says so.":"every day."}`; }
+function wordFamily(w){ const n=w.en.toLowerCase(); const fam={book:"books · bookshelf · notebook · textbook",pencil:"pencils · pencil case · pencil sharpener",paper:"papers · paperwork · paper clip",water:"watery · waterfall · water bottle",light:"lights · lighter · flashlight · lightning",class:"classroom · classmate · classwork",hand:"hands · handbag · handwriting · handle",work:"homework · worksheet · worker · workbook",school:"schools · schoolwork · high school",bus:"buses · bus stop · bus driver",home:"homework · homeroom · hometown",foot:"feet · football · footstep",eye:"eyes · eyesight · eyebrow",tooth:"teeth · toothbrush · toothpaste",fire:"fire station · firefighter · fire drill",sun:"sunny · sunglasses · sunrise",rain:"rainy · raincoat · rainbow",snow:"snowy · snowball · snowboard",play:"player · playground · playing"};
+  for(const k in fam){ if(n.includes(k)) return fam[k]; } const p=pluralOf(w); return (w.art?`${w.en} · ${p}`:w.en)+(w.cog?` · <span class="badge cog">${t("cognate")}</span> ${w.es.split("/")[0].trim()}`:""); }
+/* long dictation listener for describe-the-picture */
+function listenLong(cb){ if(!SR){ cb("", "error"); return; } const r=new SR(); r.lang="en-US"; r.interimResults=true; r.continuous=true; r.maxAlternatives=1; let txt=""; let got=false; let timer=null;
+  const stop=()=>{ try{ r.stop(); }catch(e){} };
+  r.onresult=e=>{ got=true; txt=[...e.results].map(x=>x[0].transcript).join(" "); clearTimeout(timer); timer=setTimeout(stop,1800); };
+  r.onerror=e=>{ got=true; cb("",e.error||"error"); };
+  r.onend=()=>{ clearTimeout(timer); if(txt) cb(txt); else if(!got) cb("","no-speech"); };
+  try{ r.start(); timer=setTimeout(stop,12000); }catch(err){ cb("","start"); } }
+
+/* ============ WALL ============ */
+function renderWall(){
+  updateCnt();
+  const g=document.getElementById("wallGrid"); g.innerHTML="";
+  document.getElementById("wallEmpty").classList.toggle("hidden",WALL.length>0);
+  document.getElementById("stWords").textContent=WALL.length;
+  document.getElementById("stSaid").textContent=STATS.stars;
+  document.getElementById("stStreak").textContent=streak();
+  [...WALL].reverse().forEach(w=>{
+    const d=document.createElement("div"); d.className="wcard";
+    const em = D[w.key]?D[w.key].emoji:"✨";
+    d.innerHTML=`${w.img?`<img src="${w.img}" alt="">`:`<div class="noimg">${em}</div>`}<div class="t"><b>${w.en}</b><span>${w.es.split("/")[0]}</span></div>${w.stars?`<span class="stars">⭐ ${w.stars}</span>`:""}<button class="del" title="${t("remove")}">✕</button>`;
+    d.onclick=e=>{ if(e.target.classList.contains("del")){ WALL=WALL.filter(x=>x.key!==w.key); save(); renderWall(); renderMissions(); return; } openCard(D[w.key]?w.key:null, w.img, w.en); };
+    g.appendChild(d);
+  });
+}
+document.getElementById("btnClear").onclick=()=>{ if(confirm(t("confirmClear"))){ WALL=[]; save(); renderWall(); renderMissions(); } };
+document.getElementById("btnPrint").onclick=()=>window.print();
+document.getElementById("btnExit").onclick=()=>{ const today=new Date().toISOString().slice(0,10); let ws=WALL.filter(w=>new Date(w.ts).toISOString().slice(0,10)===today); if(!ws.length) ws=[...WALL].slice(-8); if(!ws.length){ toast(t("wallEmpty")); return; }
+  const win=window.open("","_blank"); win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Storm Lens — Exit Ticket</title><style>body{font-family:Inter,Arial,sans-serif;margin:24px;color:#111}h1{font-family:Georgia,serif;margin:0}small{color:#555}table{width:100%;border-collapse:collapse;margin-top:14px}td,th{border:1px solid #999;padding:8px;vertical-align:top;font-size:14px}img{width:64px;height:64px;object-fit:cover;border-radius:8px}.e{font-size:40px}.line{display:block;border-bottom:1px solid #777;height:22px}</style></head><body>
+  <h1>Storm Lens · Exit Ticket</h1><small>Name: ____________________ &nbsp; Date: ${today} &nbsp; Lane: ${T.en.lane[LANE]}</small>
+  <table><tr><th></th><th>English</th><th>Español</th><th>I can say it</th><th>My sentence</th><th>1–4</th></tr>
+  ${ws.map(w=>`<tr><td>${w.img?`<img src="${w.img}">`:`<div class="e">${D[w.key]?D[w.key].emoji:"✨"}</div>`}</td><td><b>${w.en}</b></td><td>${w.es.split("/")[0]}</td><td>☐ yes ☐ almost</td><td><span class="line"></span><span class="line"></span></td><td>☐1 ☐2 ☐3 ☐4</td></tr>`).join("")}</table>
+  <p><small>Today I learned ______ new words. The hardest to say was ________________ because ________________________________.</small></p>
+  <p><small>EL Publishing · Storm Lens · radan55.github.io</small></p><script>setTimeout(()=>print(),400)<\/script></body></html>`); win.document.close(); };
+document.getElementById("btnExport").onclick=()=>{
+  const rows=[["english","spanish","category","cognate","stars","saved_date"]].concat(WALL.map(w=>[w.en,w.es,w.cat,w.cog?"yes":"no",w.stars||0,new Date(w.ts).toISOString().slice(0,10)]));
+  const csv=rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download="storm-lens-word-wall.csv"; a.click(); toast(t("exported"));
+};
+
+/* ============ PRACTICE ============ */
+let PR={q:[],i:0,score:0,mode:"say"};
+const pBox=document.getElementById("pracBox");
+document.querySelectorAll("#pracModes button").forEach(b=>b.onclick=()=>{ PR.mode=b.dataset.m; document.querySelectorAll("#pracModes button").forEach(x=>x.classList.toggle("on",x===b)); });
+function pickPractice(n){ /* weakest first: high miss ratio, low stars, oldest seen */
+  const now=Date.now(); return [...WALL].map(w=>({w,score:(w.miss||0)*3-(w.stars||0)+(now-(w.seen||w.ts))/864e5*0.5+Math.random()})).sort((a,b)=>b.score-a.score).slice(0,n).map(x=>x.w); }
+document.getElementById("pracStart").onclick=()=>{
+  const need=PR.mode==="listen"?4:3;
+  if(WALL.length<need){ pBox.innerHTML=`<p class="sub">${t("pracNeed")}</p>`; return; }
+  PR.q=pickPractice(10); PR.i=0; PR.score=0; document.getElementById("pracSkip").disabled=false; pracShow();
+};
+document.getElementById("pracSkip").onclick=()=>{ PR.i++; pracShow(); };
+function pracNext(ms){ setTimeout(()=>{PR.i++;pracShow();},ms); }
+function pracMark(w,ok){ w.seen=Date.now(); if(ok){ PR.score++; STATS.stars++; w.stars=(w.stars||0)+1; touchDay(); chime("win"); } else { w.miss=(w.miss||0)+1; chime("miss"); } save(); }
+function pracShow(){
+  if(PR.i>=PR.q.length){ pBox.innerHTML=`<div class="q">🏆 ${t("pracDone")}</div><div class="ans">${t("pracScore").replace("{n}",PR.score).replace("{t}",PR.q.length)}</div><div class="row" style="justify-content:center"><button class="btn gold" id="pCred">🎬 ${t("rollCredits")}</button></div>`; document.getElementById("pracSkip").disabled=true; chime("tada"); confetti(); document.getElementById("pCred").onclick=rollCredits; return; }
+  const w=PR.q[PR.i]; const em=D[w.key]?D[w.key].emoji:"✨"; const dw=D[w.key]||{en:w.en,es:w.es,art:"",cat:"school",use:"…"};
+  const head=`<div style="font-size:13px;color:var(--muted)">${PR.i+1} / ${PR.q.length} · ${t("m"+PR.mode[0].toUpperCase()+PR.mode.slice(1))}</div>`;
+  const pic=w.img?`<img src="${w.img}" alt="">`:`<div style="font-size:110px">${em}</div>`;
+  if(PR.mode==="say"){
+    pBox.innerHTML=`${head}${pic}<div class="q">${t("pracSay")}</div><div class="row" style="justify-content:center"><button class="btn big gold" id="pSay">🎤 ${t("sayBack")}</button><button class="btn ghost" id="pRev">👁️ ${t("pracReveal")}</button></div><div class="ans" id="pAns"></div><div class="res" id="pRes"></div>`;
+    const ans=document.getElementById("pAns"), res=document.getElementById("pRes");
+    document.getElementById("pRev").onclick=()=>{ ans.textContent=w.en; speak(w.en,false); pracMark(w,false); pracNext(1600); };
+    document.getElementById("pSay").onclick=function(){ if(!SR){ res.className="res warn"; res.textContent=t("noSR"); return; } res.className="res"; res.textContent=t("listening"); this.disabled=true;
+      listen(w.en,(alts,err)=>{ if(err){ res.className="res warn"; res.textContent=srMsg(err); this.disabled=false; return; } const ok=alts&&alts.length&&matchWord(w.en,alts); ans.textContent=w.en; res.className="res "+(ok?"ok":"bad"); res.textContent=(ok?t("great"):t("close"))+(alts&&alts[0]?"  ·  "+t("heard")+" “"+alts[0]+"”":""); pracMark(w,ok); speak(w.en,false); pracNext(1800); }); };
+  } else if(PR.mode==="listen"){
+    const others=WALL.filter(x=>x.key!==w.key).sort(()=>Math.random()-.5).slice(0,3); const opts=[w,...others].sort(()=>Math.random()-.5);
+    pBox.innerHTML=`${head}<div class="q">${t("listenQ")}</div><div class="row" style="justify-content:center"><button class="btn" id="pHear">🔊 ${t("hear")}</button></div><div class="grid" style="margin-top:12px">${opts.map(o=>`<div class="wcard" data-k="${o.key}">${o.img?`<img src="${o.img}" alt="">`:`<div class="noimg">${D[o.key]?D[o.key].emoji:"✨"}</div>`}</div>`).join("")}</div><div class="res" id="pRes"></div>`;
+    const say=()=>speak((dw.art?dw.art+" ":"")+w.en,false); document.getElementById("pHear").onclick=say; setTimeout(say,300);
+    pBox.querySelectorAll(".wcard").forEach(c=>c.onclick=()=>{ const ok=c.dataset.k===w.key; c.style.outline=`3px solid ${ok?"var(--ok)":"var(--bad)"}`; const res=document.getElementById("pRes"); res.className="res "+(ok?"ok":"bad"); res.textContent=(ok?t("great"):t("close"))+" — "+w.en; pBox.querySelectorAll(".wcard").forEach(x=>x.onclick=null); pracMark(w,ok); pracNext(1400); });
+  } else if(PR.mode==="spell"){
+    pBox.innerHTML=`${head}${pic}<div class="q">${t("spellQ")} <span style="color:var(--muted)">(${w.es.split("/")[0].trim()})</span></div><div class="inline" style="max-width:360px;margin:0 auto"><input type="text" id="pSpell" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="btn" id="pGo">✓</button></div><div class="row" style="justify-content:center"><button class="btn ghost sm" id="pHint">💡 ${t("hint")}</button><button class="btn ghost sm" id="pHear2">🔊</button></div><div class="ans" id="pAns"></div><div class="res" id="pRes"></div>`;
+    const inp=document.getElementById("pSpell"); inp.focus(); document.getElementById("pHear2").onclick=()=>speak(w.en,false);
+    let hints=0; document.getElementById("pHint").onclick=()=>{ hints++; document.getElementById("pAns").textContent=w.en.slice(0,hints)+"•".repeat(Math.max(0,w.en.length-hints)); };
+    const go=()=>{ const v=norm(inp.value), tg=norm(w.en); const ok=v===tg; const res=document.getElementById("pRes"); res.className="res "+(ok?"ok":"bad"); document.getElementById("pAns").textContent=w.en; res.textContent=ok?t("great"):(t("close")+" "+diffHint(inp.value,w.en)); pracMark(w,ok&&hints<2); speak(w.en,false); pracNext(1800); };
+    document.getElementById("pGo").onclick=go; inp.onkeydown=e=>{ if(e.key==="Enter") go(); };
+  } else { /* build the sentence */
+    const fr=frames(dw)[LANE==="c"?"p":LANE].speak.replace(/___/g,"").replace(/\s+/g," ").trim(); const words=fr.replace(/[.]/g,"").split(" ").filter(Boolean); const shuffled=[...words].sort(()=>Math.random()-.5); let built=[];
+    pBox.innerHTML=`${head}${w.img?`<img src="${w.img}" alt="" style="width:160px">`:`<div style="font-size:70px">${em}</div>`}<div class="q">${t("buildQ")}</div><div class="built" id="pBuilt">&nbsp;</div><div class="dl" id="pTiles" style="justify-content:center">${shuffled.map((x,i)=>`<button data-i="${i}">${x}</button>`).join("")}</div><div class="row" style="justify-content:center"><button class="btn ghost sm" id="pUndo">↶</button><button class="btn gold sm" id="pCheck">✓ ${t("check")}</button></div><div class="res" id="pRes"></div>`;
+    const render=()=>{ document.getElementById("pBuilt").textContent=built.map(i=>shuffled[i]).join(" ")||" "; pBox.querySelectorAll("#pTiles button").forEach(b=>b.disabled=built.includes(+b.dataset.i)); };
+    pBox.querySelectorAll("#pTiles button").forEach(b=>b.onclick=()=>{ built.push(+b.dataset.i); render(); });
+    document.getElementById("pUndo").onclick=()=>{ built.pop(); render(); };
+    document.getElementById("pCheck").onclick=()=>{ const got=built.map(i=>shuffled[i]).join(" "); const ok=norm(got)===norm(words.join(" ")); const res=document.getElementById("pRes"); res.className="res "+(ok?"ok":"bad"); res.textContent=ok?t("great"):t("close")+" → "+words.join(" ")+"."; speak(words.join(" ")+".",false); pracMark(w,ok); pracNext(2200); };
+  }
+}
+function diffHint(a,b){ a=a.trim().toLowerCase(); b=b.toLowerCase(); let i=0; while(i<a.length&&i<b.length&&a[i]===b[i]) i++; return LANG==="es"?`(correcto hasta "${b.slice(0,i)}")`:`(correct up to "${b.slice(0,i)}")`; }
+
+/* ============ MISSIONS ============ */
+const MISSIONS=[
+  {id:"eat",ic:"🍎",n:3,test:w=>w.cat==="food"},
+  {id:"school",ic:"🏫",n:5,test:w=>w.cat==="school"},
+  {id:"tech",ic:"💻",n:2,test:w=>w.cat==="tech"},
+  {id:"wear",ic:"👕",n:2,test:w=>w.cat==="clothes"},
+  {id:"home",ic:"🏠",n:3,test:w=>w.cat==="home"},
+  {id:"outside",ic:"🌳",n:3,test:w=>w.cat==="outside"||w.cat==="vehicle"},
+  {id:"cog",ic:"🔗",n:5,test:w=>w.cog},
+  {id:"ten",ic:"🔟",n:10,test:()=>true},
+  {id:"twenty",ic:"🎉",n:20,test:()=>true},
+  {id:"stars",ic:"⭐",n:10,test:null},
+  {id:"body",ic:"🙂",n:4,test:w=>w.cat==="body"},
+  {id:"community",ic:"🏙️",n:3,test:w=>w.cat==="community"},
+  {id:"people",ic:"🧑",n:3,test:w=>w.cat==="people"},
+  {id:"animal",ic:"🐾",n:3,test:w=>w.cat==="animal"},
+  {id:"master",ic:"🎓",n:5,test:w=>mastery(w)>=2},
+  {id:"quiz",ic:"✅",n:10,test:null,stat:"quiz"},
+  {id:"describe",ic:"🎥",n:5,test:null,stat:"describe"},
+  {id:"write",ic:"✍️",n:5,test:null,stat:"writ"},
+  {id:"streak3",ic:"🔥",n:3,test:null,stat:"streak"},
+  {id:"fifty",ic:"🌟",n:50,test:()=>true}
+];
+function missionList(){ const p=huntProgress(); return p?[{id:"hunt",ic:"🎯",n:p.total,test:w=>HUNT.keys.includes(w.key),label:t("hunt")+": "+HUNT.keys.map(k=>D[k].en).join(", ")},...MISSIONS]:MISSIONS; }
+function renderMissions(){
+  const box=document.getElementById("missionList"); box.innerHTML="";
+  missionList().forEach(m=>{
+    const c = m.test ? WALL.filter(m.test).length : m.stat==="streak" ? streak() : m.stat ? (STATS[m.stat]||0) : STATS.stars;
+    const p=Math.min(c,m.n); const done=p>=m.n;
+    const d=document.createElement("div"); d.className="mission"+(done?" done":"");
+    d.innerHTML=`<div class="ic">${m.ic}</div><div class="m"><b>${m.label||T[LANG].mis[m.id]}</b><span>${p} / ${m.n}</span><div class="bar"><i style="width:${p/m.n*100}%"></i></div></div>`;
+    box.appendChild(d);
+  });
+}
+
+function confetti(){ const cols=["#C9A227","#E8C85A","#fff","#38bdf8","#4ade80"]; for(let i=0;i<28;i++){ const c=document.createElement("i"); c.className="confetti"; c.style.left=Math.random()*100+"vw"; c.style.background=cols[i%cols.length]; c.style.animationDelay=(Math.random()*.4)+"s"; document.body.appendChild(c); setTimeout(()=>c.remove(),2400);} }
+
+/* ============ MOVIE ENGINE ============ */
+let NARR = localStorage.getItem("sl_narr")!=="0", SCORE = localStorage.getItem("sl_score")!=="0";
+function narrate(key, w){ if(!NARR) return; let s=(T[LANG].narr[key]||""); if(w) s=s.replace("{w}", w); if(s) speak(s,false); }
+/* ambient score via WebAudio */
+let AC=null, padGain=null;
+function audioOn(){ if(AC) return; try{ AC=new (window.AudioContext||window.webkitAudioContext)(); padGain=AC.createGain(); padGain.gain.value=0; padGain.connect(AC.destination);
+  const lp=AC.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=420; lp.connect(padGain);
+  [[110,0],[164.81,3],[220,-4],[329.63,2]].forEach(([f,d])=>{ const o=AC.createOscillator(); o.type="sine"; o.frequency.value=f; o.detune.value=d; const g=AC.createGain(); g.gain.value=.22; o.connect(g); g.connect(lp); o.start();
+    const lfo=AC.createOscillator(); lfo.frequency.value=.05+Math.random()*.08; const lg=AC.createGain(); lg.gain.value=.12; lfo.connect(lg); lg.connect(g.gain); lfo.start(); });
+  }catch(e){} }
+function padLevel(v,secs=2){ if(!padGain) return; padGain.gain.cancelScheduledValues(AC.currentTime); padGain.gain.setTargetAtTime(SCORE?v:0, AC.currentTime, secs/3); }
+function chime(kind){ if(!AC||!SCORE) return; const now=AC.currentTime; const notes= kind==="win"?[523.25,659.25,783.99,1046.5]: kind==="tada"?[392,523.25,659.25,783.99,1046.5,1318.5]: kind==="miss"?[392,349.23]:[659.25];
+  notes.forEach((f,i)=>{ const o=AC.createOscillator(); o.type="triangle"; o.frequency.value=f; const g=AC.createGain(); g.gain.setValueAtTime(0,now+i*.09); g.gain.linearRampToValueAtTime(.18,now+i*.09+.02); g.gain.exponentialRampToValueAtTime(.0001,now+i*.09+.7); o.connect(g); g.connect(AC.destination); o.start(now+i*.09); o.stop(now+i*.09+.75); }); }
+function shutterSound(){ if(!AC||!SCORE) return; const b=AC.createBuffer(1,AC.sampleRate*.08,AC.sampleRate); const d=b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3); const s=AC.createBufferSource(); s.buffer=b; const g=AC.createGain(); g.gain.value=.25; s.connect(g); g.connect(AC.destination); s.start(); }
+/* toggles */
+const tgN=document.getElementById("tgNarr"), tgS=document.getElementById("tgScore"), tgT=document.getElementById("tgTheater");
+tgN.classList.toggle("on",NARR); tgS.classList.toggle("on",SCORE);
+tgN.onclick=()=>{ NARR=!NARR; localStorage.setItem("sl_narr",NARR?"1":"0"); tgN.classList.toggle("on",NARR); if(!NARR&&"speechSynthesis" in window) speechSynthesis.cancel(); };
+tgS.onclick=()=>{ SCORE=!SCORE; localStorage.setItem("sl_score",SCORE?"1":"0"); tgS.classList.toggle("on",SCORE); audioOn(); padLevel(.5); };
+function setTheater(on){ document.body.classList.toggle("theater",on); tgT.classList.toggle("on",on); if(on){ document.querySelector("nav.tabs button[data-tab=lens]").click(); if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{}); } else if(document.fullscreenElement&&document.exitFullscreen){ document.exitFullscreen().catch(()=>{}); } }
+tgT.onclick=()=>setTheater(!document.body.classList.contains("theater"));
+document.getElementById("exitTheater").onclick=()=>setTheater(false);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&document.body.classList.contains("theater")) setTheater(false); });
+/* opening sequence */
+const cine=document.getElementById("cine"); let cineDone=false;
+function endCine(){ if(cineDone) return; cineDone=true; cine.classList.add("off"); setTimeout(()=>cine.remove(),1000); padLevel(.35,4); }
+async function runCine(){
+  audioOn(); if(AC&&AC.state==="suspended") AC.resume(); padLevel(.9,3); pickVoice();
+  const scenes=[["sc1",2200],["sc2",2200],["sc3",3400],["sc4",2400],["sc5",4200]];
+  const show=id=>{ cine.querySelectorAll(".scene").forEach(s=>s.classList.toggle("on",s.id===id)); };
+  for(const [id,ms] of scenes){ if(cineDone) return; show(id); if(id==="sc3") chime("tada"); if(id==="sc5") narrate("open"); await new Promise(r=>setTimeout(r,ms)); }
+  endCine();
+}
+document.getElementById("cinePlay").onclick=runCine;
+document.getElementById("cineSkip").onclick=()=>{ audioOn(); if(AC&&AC.state==="suspended") AC.resume(); endCine(); };
+/* chapter cards */
+const chapterEl=document.getElementById("chapter"); let chT=null, lastChapter=null;
+function chapter(tab){ if(tab===lastChapter) return; lastChapter=tab; const c=T[LANG].chapter[tab]; if(!c) return; document.getElementById("chK").textContent=c[0]; document.getElementById("chT").textContent=c[1]; chapterEl.classList.add("on"); clearTimeout(chT); chT=setTimeout(()=>chapterEl.classList.remove("on"),1300); if(tab==="wall") narrate("wall"); if(tab==="practice") narrate("practice"); }
+/* reveal shot */
+const revealEl=document.getElementById("reveal");
+function revealShot(w,img){ return new Promise(res=>{ const ri=document.getElementById("rvImg"); if(img){ ri.src=img; ri.classList.remove("hidden"); } else ri.classList.add("hidden");
+  document.getElementById("rvWord").innerHTML=[...w.en].map((c,i)=>`<span class="ch" style="animation-delay:${i*60}ms">${c===" "?"&nbsp;":c}</span>`).join("");
+  document.getElementById("rvEs").textContent=w.es.split("/")[0].trim(); revealEl.classList.add("on"); chime("one");
+  setTimeout(()=>{ revealEl.classList.remove("on"); res(); }, 1500); }); }
+/* credits */
+function rollCredits(){
+  const c=T[LANG].cr; const roll=document.getElementById("creditsRoll"); const cast=[...WALL].reverse();
+  roll.style.setProperty("--dur", Math.max(22, 14+cast.length*1.6)+"s");
+  roll.innerHTML=`<div class="k">${c.castOf}</div><div class="big">${c.starring}</div>
+    <div class="cast">${cast.map(w=>`<div>${w.img?`<img src="${w.img}" alt="">`:`<div class="e">${D[w.key]?D[w.key].emoji:"✨"}</div>`}<b>${w.en}</b><span>${w.es.split("/")[0]}</span></div>`).join("")||`<div class="line">—</div>`}</div>
+    <div class="k">${c.said}</div><div class="line">⭐ ${STATS.stars}</div>
+    <div class="k">${c.days}</div><div class="line">${streak()}</div>
+    <div class="k">${c.directed}</div><div class="line">${c.you}</div>
+    <div class="k">${c.produced}</div><div class="line">${c.prod}</div>
+    <div class="k" style="color:var(--muted)">${c.thanks}</div>
+    <div class="big" style="margin-top:80px">${c.end}</div><div class="line" style="margin-bottom:40vh">${c.next}</div>`;
+  const cr=document.getElementById("credits"); cr.classList.add("on"); narrate("credits"); padLevel(.9,2);
+  roll.style.animation="none"; void roll.offsetWidth; roll.style.animation="";
+  roll.onanimationend=()=>{ cr.classList.remove("on"); padLevel(.35,3); };
+}
+document.getElementById("creditsClose").onclick=()=>{ document.getElementById("credits").classList.remove("on"); padLevel(.35,2); };
+document.getElementById("btnCredits").onclick=rollCredits;
+document.getElementById("btnSend").onclick=()=>{ const name=prompt(t("namePrompt"), localStorage.getItem("sl_name")||""); if(name===null) return; localStorage.setItem("sl_name",name);
+  const data={app:"storm-lens",v:3,name:name.trim()||"student",date:new Date().toISOString(),lane:LANE,lang:LANG,stats:STATS,hunt:HUNT,wall:WALL.map(w=>({...w,img:w.img&&w.img.length<40000?w.img:null}))};
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:"application/json"})); a.download=`storm-lens_${(name||"student").replace(/[^a-z0-9]+/gi,"-")}_${new Date().toISOString().slice(0,10)}.json`; a.click(); toast(t("sent")); };
+
+/* ============ CLASS VIEW ============ */
+let CLASS=[];
+document.getElementById("classIn").onchange=async e=>{ for(const f of e.target.files){ try{ const d=JSON.parse(await f.text()); if(d&&d.app==="storm-lens"){ CLASS=CLASS.filter(x=>x.name!==d.name); CLASS.push(d); } }catch(err){} } renderClass(); e.target.value=""; };
+function renderClass(){ const out=document.getElementById("classOut"); if(!CLASS.length){ out.innerHTML=""; return; } document.getElementById("classCsv").classList.remove("hidden");
+  const rows=CLASS.map(d=>{ const w=d.wall||[]; const m=w.filter(x=>mastery(x)>=2).length; const weak=[...w].sort((a,b)=>(b.miss||0)-(a.miss||0)).filter(x=>(x.miss||0)>0).slice(0,3).map(x=>x.en).join(", "); const cats=[...new Set(w.map(x=>x.cat))].length; const s=d.stats||{}; return {name:d.name,date:(d.date||"").slice(0,10),lane:(T.en.lane[d.lane]||d.lane),words:w.length,cats,stars:s.stars||0,mastered:m,quiz:s.quiz||0,describe:s.describe||0,writ:s.writ||0,days:(s.days||[]).length,weak}; });
+  const cols=[["name","Student"],["date","File date"],["lane","Lane"],["words","Words"],["cats","Categories"],["stars","Stars"],["mastered","Mastered"],["quiz","Quick checks"],["describe","Describes"],["writ","Sentences"],["days","Days active"],["weak","Needs work"]];
+  out.innerHTML=`<table><tr>${cols.map(c=>`<th>${c[1]}</th>`).join("")}</tr>${rows.map(r=>`<tr>${cols.map(c=>`<td>${r[c[0]]}</td>`).join("")}</tr>`).join("")}<tr style="font-weight:700"><td>Class (${rows.length})</td><td></td><td></td><td>${rows.reduce((a,r)=>a+r.words,0)}</td><td></td><td>${rows.reduce((a,r)=>a+r.stars,0)}</td><td>${rows.reduce((a,r)=>a+r.mastered,0)}</td><td>${rows.reduce((a,r)=>a+r.quiz,0)}</td><td>${rows.reduce((a,r)=>a+r.describe,0)}</td><td>${rows.reduce((a,r)=>a+r.writ,0)}</td><td></td><td></td></tr></table>
+  <p class="dtip" style="margin-top:8px">Most-saved words: ${Object.entries(CLASS.flatMap(d=>d.wall||[]).reduce((m,w)=>(m[w.en]=(m[w.en]||0)+1,m),{})).sort((a,b)=>b[1]-a[1]).slice(0,10).map(x=>`${x[0]} (${x[1]})`).join(", ")||"—"}</p>`;
+  document.getElementById("classCsv").onclick=()=>{ const csv=[cols.map(c=>c[1])].concat(rows.map(r=>cols.map(c=>r[c[0]]))).map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n"); const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"})); a.download="storm-lens-class.csv"; a.click(); }; }
+/* ============ HUNT LINKS ============ */
+let HUNT = JSON.parse(localStorage.getItem("sl_hunt")||"null");
+(function readHunt(){ const m=location.hash.match(/hunt=([^&]+)/); if(m){ const keys=decodeURIComponent(m[1]).split(",").map(s=>lookup(s)).filter(Boolean); if(keys.length){ HUNT={keys,date:new Date().toISOString().slice(0,10)}; localStorage.setItem("sl_hunt",JSON.stringify(HUNT)); } } })();
+function huntProgress(){ if(!HUNT) return null; const found=HUNT.keys.filter(k=>WALL.some(w=>w.key===k)); return {found,total:HUNT.keys.length}; }
+function renderHunt(){ let bar=document.getElementById("huntBar"); if(!HUNT){ if(bar) bar.remove(); return; } const p=huntProgress(); if(!bar){ bar=document.createElement("div"); bar.id="huntBar"; bar.className="tip"; document.querySelector("#tab-lens .card .stage").insertAdjacentElement("beforebegin",bar); }
+  bar.innerHTML=`🎯 <b>${t("hunt")}</b> · ${p.found.length}/${p.total} ${t("huntFound")} — ${HUNT.keys.map(k=>`<span style="${p.found.includes(k)?"color:var(--ok);text-decoration:line-through":""}">${D[k].emoji} ${D[k].en}</span>`).join(" · ")}${p.found.length===p.total?` · <b style="color:var(--ok)">${t("huntDone")}</b>`:""}`; }
+document.getElementById("huntMake").onclick=()=>{ const keys=document.getElementById("huntIn").value.split(/[,;\n]+/).map(s=>lookup(s)).filter(Boolean); const out=document.getElementById("huntOut"); if(!keys.length){ out.textContent="No known words found — check spelling (English or Spanish)."; return; } const url=location.href.split("#")[0]+"#hunt="+keys.map(encodeURIComponent).join(","); out.innerHTML=`<b>${keys.map(k=>D[k].en).join(", ")}</b><br>${url}`; const cp=document.getElementById("huntCopy"); cp.disabled=false; cp.onclick=()=>{ navigator.clipboard&&navigator.clipboard.writeText(url).then(()=>toast("Copied")); }; };
+/* ============ DIAGNOSTICS ============ */
+window.addEventListener("error",e=>{ window.__lastErr=(e.message||"")+" @"+(e.lineno||""); });
+window.addEventListener("unhandledrejection",e=>{ window.__lastErr=String(e.reason&&e.reason.message||e.reason); });
+document.getElementById("diagRun").onclick=async()=>{
+  const out=document.getElementById("diagOut"); out.innerHTML="";
+  const li=(ok,label,extra="")=>{ const l=document.createElement("li"); l.style.color=ok===null?"var(--muted)":ok?"var(--ok)":"var(--bad)"; l.textContent=(ok===null?"•":ok?"✔":"✘")+" "+label+(extra?" — "+extra:""); out.appendChild(l); };
+  li(location.protocol==="https:"||location.hostname==="localhost"||location.protocol==="file:", "Secure page (HTTPS)", location.protocol);
+  li(navigator.onLine, "Online", navigator.onLine?"yes":"no — camera words still work, speech check will not");
+  li(!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia), "Camera API available");
+  try{ const devs=await navigator.mediaDevices.enumerateDevices(); li(devs.some(d=>d.kind==="videoinput"),"Camera found", devs.filter(d=>d.kind==="videoinput").length+" camera(s)"); li(devs.some(d=>d.kind==="audioinput"),"Microphone found"); }catch(e){ li(false,"Could not list devices",e.message); }
+  try{ if(navigator.permissions){ for(const n of ["camera","microphone"]){ try{ const s=await navigator.permissions.query({name:n}); li(s.state!=="denied", n+" permission", s.state); }catch(e){ li(null,n+" permission","unknown"); } } } }catch(e){}
+  li(!!window.tf, "TensorFlow.js loaded", window.tf?("v"+(tf.version&&tf.version.tfjs||"?")):"blocked? check network filter for cdn.jsdelivr.net / unpkg.com");
+  li(!!window.cocoSsd, "Object model script loaded (80 classes)");
+  li(!!window.mobilenet, "Second-stage model script loaded (1,000 classes)", window.mobilenet?"":"freeze & scan will use the 80-class detector only");
+  if(window.cocoSsd){ try{ await loadModel(); li(true,"Object model ready"); }catch(e){ li(false,"Object model failed to load",e.message); } }
+  li(!!SR, "Speech recognition (say-it-back)", SR?"supported":"not in this browser — use Chrome/Edge");
+  li("speechSynthesis" in window, "Text-to-speech", ("speechSynthesis" in window)?(speechSynthesis.getVoices().length+" voices, using "+(VOICE?VOICE.name:"default")):"missing");
+  try{ localStorage.setItem("sl_t","1"); localStorage.removeItem("sl_t"); li(true,"Storage (word wall) works", WALL.length+" words saved"); }catch(e){ li(false,"Storage blocked — word wall will not save",e.message); }
+  li(!window.__lastErr, "No script errors", window.__lastErr||"");
+  li(null,"Browser", navigator.userAgent.replace(/\s*\(.*?\)\s*/g," ").slice(0,90));
+};
+/* ============ PWA + LOW POWER ============ */
+if("serviceWorker" in navigator && /^https?:/.test(location.protocol)){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+if((navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||(navigator.deviceMemory&&navigator.deviceMemory<=4)){ document.body.classList.add("lowpower"); }
+/* ============ INIT ============ */
+applyLang(); updateCnt(); renderHunt();
+/* service worker-ish offline: cache via browser HTTP cache is enough for single file + CDN model; keep simple */
+</script>
+</body>
+</html>
