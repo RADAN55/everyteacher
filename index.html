@@ -37,6 +37,52 @@
     font-size:14px;color:#AEB5DA;max-width:60ch}
   .who b{color:#fff}
 
+
+  /* ===== NOW SHOWING · premiere ===== */
+  .premiere{background:#070914;color:#fff;position:relative;overflow:hidden;border-top:1px solid rgba(201,162,39,.35);border-bottom:1px solid rgba(201,162,39,.35)}
+  .premiere::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 15% 30%,rgba(30,39,97,.9),transparent 60%),radial-gradient(700px 400px at 90% 80%,rgba(201,162,39,.16),transparent 60%);pointer-events:none}
+  .premiere .beam{position:absolute;left:62%;top:-30%;width:3px;height:160%;background:linear-gradient(180deg,transparent,rgba(201,162,39,.35),transparent);filter:blur(12px);transform:rotate(14deg);animation:pbeam 9s ease-in-out infinite alternate;pointer-events:none}
+  @keyframes pbeam{to{transform:rotate(-10deg) translateX(-120px)}}
+  .prem-in{position:relative;max-width:1060px;margin:0 auto;padding:34px 26px 30px}
+  .prem-k{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .prem-k i{width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 10px #ef4444;animation:pdot 1.1s infinite}
+  @keyframes pdot{50%{opacity:.25}}
+  .prem-k small{color:#9aa0bd;letter-spacing:.2em;font-weight:500}
+  .prem-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;margin-top:14px}
+  .prem-t{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,5.6vw,60px);line-height:.98;margin:0;color:#fff;text-shadow:0 0 50px rgba(201,162,39,.35)}
+  .prem-t .wd{white-space:nowrap;display:inline-block}.prem-t .ch{display:inline-block;animation:pletter .6s cubic-bezier(.2,.9,.3,1.3) both}
+  .prem-t::before,.prem-t::after{display:none!important;content:none!important}
+  @keyframes pletter{from{opacity:0;transform:translateY(18px) rotate(4deg)}}
+  .prem-t .gold{color:var(--gold)}
+  .prem-kind{margin:12px 0 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#cdd1e6}
+  .prem-p{margin:14px 0 0;font-size:17px;line-height:1.55;color:#dfe2f2;max-width:56ch}
+  .prem-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .prem-cta a{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:15px}
+  .prem-cta .go{background:var(--gold);color:#121735;box-shadow:0 10px 36px rgba(201,162,39,.35)}
+  .prem-cta .alt{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}
+  .prem-shot{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/10;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08)}
+  .prem-shot img{width:100%;height:100%;object-fit:cover;display:block;animation:pkb 16s ease-in-out infinite alternate}
+  @keyframes pkb{from{transform:scale(1)}to{transform:scale(1.08)}}
+  .prem-shot i{position:absolute;width:30px;height:30px;border:2px solid var(--gold);filter:drop-shadow(0 0 6px rgba(201,162,39,.6))}
+  .prem-shot i:nth-of-type(1){left:12px;top:12px;border-right:0;border-bottom:0}.prem-shot i:nth-of-type(2){right:12px;top:12px;border-left:0;border-bottom:0}
+  .prem-shot i:nth-of-type(3){left:12px;bottom:12px;border-right:0;border-top:0}.prem-shot i:nth-of-type(4){right:12px;bottom:12px;border-left:0;border-top:0}
+  .prem-shot .rec{position:absolute;right:14px;top:14px;font-size:10px;letter-spacing:.2em;color:#fff;display:flex;gap:6px;align-items:center}
+  .prem-shot .rec b{width:8px;height:8px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px #ef4444;animation:pdot 1s infinite}
+  .prem-shot .vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+  .prem-rail{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+  .prem-rail .rk{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9aa0bd;margin:0 0 12px;font-weight:600}
+  .prem-rail .rr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .prem-rail a{position:relative;display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:10px;color:#fff;text-decoration:none;transition:.2s}
+  .prem-rail a:hover{background:rgba(201,162,39,.12);border-color:rgba(201,162,39,.5);transform:translateY(-2px)}
+  .prem-rail img,.prem-rail .ph{width:84px;height:56px;object-fit:cover;border-radius:8px;background:#121735;flex:none;display:grid;place-items:center;font-size:24px}
+  .prem-rail b{display:block;font-family:Fraunces,Georgia,serif;font-size:16px;line-height:1.2;font-weight:600}
+  .prem-rail small{display:block;color:#9aa0bd;font-size:12px;margin-top:3px}
+  .prem-rail .nb{position:absolute;top:-8px;left:12px;background:var(--gold);color:#121735;font-size:10px;font-weight:800;letter-spacing:.14em;padding:2px 8px;border-radius:6px}
+  @media(max-width:760px){.prem-grid{grid-template-columns:1fr}.prem-shot{order:-1}}
+  @media(prefers-reduced-motion:reduce){.prem-shot img,.premiere .beam,.prem-t .ch{animation:none}}
+  /* NEW ribbon on fresh cards */
+  .card.is-new .card-top::after{content:"NEW";position:absolute;top:10px;left:-30px;transform:rotate(-35deg);background:var(--gold);color:var(--navy-dk);font-size:11px;font-weight:800;letter-spacing:.2em;padding:4px 36px;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:2}
+  .card.is-new .card-top{position:relative;overflow:hidden}
   section{padding:44px 0}
   h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;
     letter-spacing:-.02em;color:var(--navy);margin:0 0 6px}
@@ -157,6 +203,23 @@
   </div>
 </header>
 
+<section class="premiere" id="premiere" aria-label="Now showing">
+  <div class="beam"></div>
+  <div class="prem-in">
+    <p class="prem-k"><i></i>Now showing <small id="prem-date">· new this week</small></p>
+    <div class="prem-grid">
+      <div>
+        <h2 class="prem-t" id="prem-title">Storm Lens: Point. Name. Say.</h2>
+        <p class="prem-kind" id="prem-kind">Camera vocabulary · four lanes · ELPA21 speaking · English / Español</p>
+        <p class="prem-p" id="prem-p">Point the Chromebook camera at anything in the room and the room becomes the vocabulary list. Every word: Spanish, four-lane frames, pronunciation coaching, a describe-the-picture speaking task — all speech-checked. Narrated like a film.</p>
+        <div class="prem-cta"><a class="go" id="prem-go" href="storm-lens/">▶ &nbsp;Open Storm Lens</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
+      </div>
+      <a class="prem-shot" id="prem-shot" href="storm-lens/" aria-label="Open the featured resource"><img id="prem-img" src="thumbs/storm-lens.jpg" alt=""><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
+    </div>
+    <div class="prem-rail" id="prem-rail" hidden><p class="rk">New releases</p><div class="rr" id="prem-rr"></div></div>
+  </div>
+</section>
+
 <section class="wrap" id="top">
   <h2>Resources</h2>
   <p class="deck">52 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
@@ -177,7 +240,7 @@
 
 <div class="wrap" id="finder">
   <div class="finder">
-    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 51 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
+    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 52 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
     <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
   </div>
   <p class="fcount" id="fcount"></p>
@@ -580,7 +643,7 @@
     </a>
 </div></section>
 <section class="wrap" id="tool"><h2>Interactive tools</h2><p class="deck">Practice platforms, games and apps that run in any browser.</p><div class="cards">
-    <a class="card" href="storm-lens/" data-pin-until="2026-10-23">
+    <a class="card" href="storm-lens/" data-pin-until="2026-10-23" data-new="2026-10-09">
       <div class="card-top has-shot"><img class="shot" src="thumbs/storm-lens.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 9–12</span>
         <span class="kind">Camera vocabulary · four lanes · ELPA21 speaking · English / Español</span>
         <h3>Storm Lens: Point. Name. Say.</h3>
@@ -590,7 +653,7 @@
         <p class="go">Open Storm Lens →</p>
       </div>
     </a>
-    <a class="card" href="english-on-your-own.html" data-pin-until="2026-10-29">
+    <a class="card" href="english-on-your-own.html" data-pin-until="2026-10-29" data-new="2026-10-08">
       <div class="card-top has-shot"><img class="shot" src="thumbs/english-on-your-own.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students &amp; families</span>
         <span class="kind">ELPA21 practice · grades 9–12 · all four domains</span>
         <h3>English On Your Own</h3>
@@ -694,7 +757,7 @@
     </a>
 </div></section>
 <section class="wrap" id="writing"><h2>Guides &amp; writing</h2><p class="deck">Field guides and the book behind the work.</p><div class="cards">
-    <a class="card" href="spoken-spanish-english.html">
+    <a class="card" href="spoken-spanish-english.html" data-new="2026-10-08">
       <div class="card-top has-shot"><img class="shot" src="thumbs/spoken-spanish-english.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
         <span class="kind">Language Bridge · teacher guide · PDF</span>
         <h3>Spoken Spanish &amp; Spoken English</h3>
@@ -756,7 +819,7 @@
         <p class="go">Read the issue →</p>
       </div>
     </a>
-    <a class="card" href="sentence-lab.html" data-pin-until="2026-11-05">
+    <a class="card" href="sentence-lab.html" data-pin-until="2026-11-05" data-new="2026-10-09">
       <div class="card-top has-shot"><img class="shot" src="thumbs/sentence-lab.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 9–12</span>
         <span class="kind">Grammar packet · two lanes · English / Español · PDF</span>
         <h3>Sentence Lab: English Grammar in Real Life</h3>
@@ -862,6 +925,32 @@
   var p=new URLSearchParams(location.search);if(p.get('q')){q.value=p.get('q')}if(p.get('aud')){A=p.get('aud');bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.a===A?'true':'false')})}
   if(p.get('q')||p.get('aud')){run();deepRun();}
 })();
+</script>
+<script>
+// Now Showing: built from catalog cards tagged data-new="YYYY-MM-DD" (fresh for 21 days). Newest = hero, next three = rail, all get a NEW ribbon.
+(function(){try{
+  var DAYS=21,now=new Date();
+  var cards=[].slice.call(document.querySelectorAll('section .cards .card[data-new]')).map(function(c){return {el:c,d:new Date(c.getAttribute('data-new')+'T12:00:00')}})
+    .filter(function(x){return !isNaN(x.d)&&(now-x.d)/864e5<=DAYS&&x.d<=now}).sort(function(a,b){return b.d-a.d});
+  cards.forEach(function(x){x.el.classList.add('is-new')});
+  var sec=document.getElementById('premiere'); if(!cards.length){sec.hidden=true;return}
+  function txt(el){return el?el.textContent.replace(/\s+/g,' ').trim():''}
+  function clip(t,n){return t.length>n?t.slice(0,n).replace(/\s+\S*$/,'')+'…':t}
+  function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+  var h=cards[0].el, img=h.querySelector('img.shot');
+  var title=txt(h.querySelector('h3'));
+  var tEl=document.getElementById('prem-title');
+  var k=0; tEl.innerHTML=title.split(' ').map(function(w){return '<span class="wd">'+w.split('').map(function(c){return '<span class="ch" style="animation-delay:'+((k++)*28)+'ms">'+c.replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m]})+'</span>'}).join('')+'</span>'}).join(' ');
+  document.getElementById('prem-kind').textContent=txt(h.querySelector('.kind'));
+  document.getElementById('prem-p').textContent=clip(txt(h.querySelector('.card-body p')),260);
+  document.getElementById('prem-date').textContent='· released '+fmt(cards[0].d);
+  var go=document.getElementById('prem-go'); go.href=h.getAttribute('href'); go.innerHTML='▶ &nbsp;Open '+title.split(':')[0];
+  if(/^https?:/.test(go.href)&&h.target){go.target='_blank';go.rel='noopener'}
+  var shot=document.getElementById('prem-shot'); shot.href=h.getAttribute('href'); if(img)document.getElementById('prem-img').src=img.getAttribute('src'); else document.getElementById('prem-img').remove();
+  var rest=cards.slice(1,4); if(rest.length){var rr=document.getElementById('prem-rr');
+    rr.innerHTML=rest.map(function(x){var c=x.el,im=c.querySelector('img.shot');return '<a href="'+c.getAttribute('href')+'"'+(c.target?' target="_blank" rel="noopener"':'')+'><span class="nb">NEW · '+fmt(x.d)+'</span>'+(im?'<img src="'+im.getAttribute('src')+'" alt="">':'<span class="ph">✦</span>')+'<span><b>'+txt(c.querySelector('h3'))+'</b><small>'+clip(txt(c.querySelector('.kind')),60)+'</small></span></a>'}).join('');
+    document.getElementById('prem-rail').hidden=false}
+}catch(e){}})();
 </script>
 <script>
 // This week strip: Monday Move (Week 1 = Aug 3, 2026; skips winter + spring break), Tech Radar tool, resource of the week
