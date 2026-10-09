@@ -412,7 +412,7 @@ textarea:focus{border-color:var(--gold)}
       <button class="btn ghost" id="pracSkip" disabled><span data-i18n="pracSkip">Skip</span> ⏭️</button>
     </div>
     <p class="sub" data-i18n="pracWeak">Rounds start with the words you miss most, then the ones you have not seen in a while.</p>
-    <div class="prac" id="pracBox"><p class="sub" data-i18n="pracNeed">Save at least 3 words on your wall to practice.</p></div>
+    <div class="prac" id="pracBox"><p class="sub" data-i18n="pracHint">Pick a mode and tap Start. No words saved yet? You get starter words.</p></div>
   </div>
 </section>
 
@@ -890,7 +890,7 @@ const T = {
     typeTitle:"Not in the picture? Type it.",typeSub:"Type an English or Spanish word for anything around you.",
     wallTitle:"My Word Wall",wallSub:"Every word you save lives here — with your own photo. Tap a card to practice it again.",stWords:"words",stSaid:"said correctly",stStreak:"day streak",
     export:"Export CSV",print:"Print cards",clear:"Clear wall",wallEmpty:"Nothing yet. Go to the Lens and save your first word!",
-    pracTitle:"Practice",pracSub:"Your photos come back. Can you say the word before you see it?",pracStart:"Start round (10)",pracSkip:"Skip",pracNeed:"Save at least 3 words on your wall to practice.",
+    pracTitle:"Practice",pracSub:"Your photos come back. Can you say the word before you see it?",pracStart:"Start round (10)",pracSkip:"Skip",pracNeed:"Save at least 3 words on your wall to practice.",pracHint:"Pick a mode and tap Start. No words saved yet? You get starter words.",pracStarter:"Starting with starter words — they join your wall as you practice.",
     misTitle:"Scavenger Missions",misSub:"Find real things with your camera. Missions complete automatically as your wall grows.",
     enter:"Enter",play:"Play",headphones:"Sound on · headphones recommended",presents:"EL Publishing presents",production:"A Storm Studio production",starring:"Starring",you:"You",logline:"Every object in this room has a name.<br>Tonight, you learn to say them.",skip:"Skip ▸",exitTheater:"Exit theater",rollCredits:"Roll credits",sendTeacher:"Send to teacher",namePrompt:"Your name (for the teacher):",sent:"File saved — turn it in to your teacher (Drive, email, or classroom share).",hunt:"Today's hunt",huntFound:"found",huntDone:"Hunt complete!",
     chapter:{lens:["Chapter One","The Lens"],wall:["Chapter Two","The Word Wall"],practice:["Chapter Three","The Rehearsal"],missions:["Chapter Four","The Missions"],teacher:["Behind the Scenes","Director's Notes"]},
@@ -900,7 +900,7 @@ const T = {
     loading:"Loading the lens…",fallback:"Nothing I know for sure. Did you see one of these?",ready:"Looking…",scanning:"Scanning photo…",nothing:"I don't see anything I know yet. Move closer, or type the word below.",
     hear:"Hear it",slow:"Slow",sayBack:"Say it back",listening:"Listening… say it now",heard:"I heard:",great:"Great! That's it ⭐",almost:"Almost! I heard “{h}”. Listen once more, then say “{w}” slowly.",close:"Close! Try again.",noSR:"Say-it-back needs Chrome or Edge.",
     sr:{"not-allowed":"Microphone blocked. Click the 🔒 or 🎥 icon in the address bar and allow the microphone.","service-not-allowed":"Microphone blocked by your browser or school settings.","no-speech":"I didn't hear anything. Tap the mic, then speak right away.","audio-capture":"No microphone found on this device.","network":"The speech checker couldn't reach Google's speech service (no internet, or the school filter blocks it). Record & compare is ready below.","aborted":"Cancelled.","start":"The mic is already listening — wait a second and try again.","mic-busy":"Another app or tab is using the microphone. Close it and try again.","ios":"On iPhone/iPad, speech check needs Settings → Siri & Search → Dictation turned on. Record & compare always works.",error:"Speech check had a hiccup. Try again."},
-    recordMode:"Speech check is unavailable on this network, so you can record yourself and compare.",record:"Record",stopRec:"Stop",playMine:"Play mine",playModel:"Play model",iSaidIt:"✓ I said it",recHint:"Listen to the model, then yourself. Match it? Tap “I said it”.",micTest:"Mic test",micTestHint:"Speak — the bar should move.",
+    iosAudio:"No sound? Flip the ring/silent switch on the side of the phone and turn up the volume.",recordMode:"Speech check is unavailable on this network, so you can record yourself and compare.",record:"Record",stopRec:"Stop",playMine:"Play mine",playModel:"Play model",iSaidIt:"✓ I said it",recHint:"Listen to the model, then yourself. Match it? Tap “I said it”.",micTest:"Mic test",micTestHint:"Speak — the bar should move.",
     save:"Save to wall",saved:"Saved ✓",onWall:"On your wall",cognate:"cognate",
     frames:"Say a sentence",lane:{n:"Newcomer",e:"Emerging",p:"Progressing",c:"Challenge"},yourLane:"your lane",
     noPerm:"Camera blocked. You can still upload a photo or type a word.",notFound:"I don't know that word yet — but I can still say it!",
@@ -918,7 +918,7 @@ const T = {
     typeTitle:"¿No sale en la foto? Escríbelo.",typeSub:"Escribe una palabra en inglés o español de algo a tu alrededor.",
     wallTitle:"Mi muro de palabras",wallSub:"Cada palabra que guardas vive aquí, con tu propia foto. Toca una tarjeta para practicarla otra vez.",stWords:"palabras",stSaid:"bien dichas",stStreak:"días seguidos",
     export:"Exportar CSV",print:"Imprimir tarjetas",clear:"Borrar muro",wallEmpty:"Nada todavía. ¡Ve a la lente y guarda tu primera palabra!",
-    pracTitle:"Práctica",pracSub:"Tus fotos vuelven. ¿Puedes decir la palabra antes de verla?",pracStart:"Empezar ronda (10)",pracSkip:"Saltar",pracNeed:"Guarda al menos 3 palabras en tu muro para practicar.",
+    pracTitle:"Práctica",pracSub:"Tus fotos vuelven. ¿Puedes decir la palabra antes de verla?",pracStart:"Empezar ronda (10)",pracSkip:"Saltar",pracNeed:"Guarda al menos 3 palabras en tu muro para practicar.",pracHint:"Elige un modo y toca Empezar. ¿Sin palabras guardadas? Recibes palabras iniciales.",pracStarter:"Empezamos con palabras iniciales — se suman a tu muro mientras practicas.",
     misTitle:"Misiones de búsqueda",misSub:"Encuentra cosas reales con tu cámara. Las misiones se completan solas cuando tu muro crece.",
     enter:"Entrar",play:"Reproducir",headphones:"Sonido activado · se recomiendan audífonos",presents:"EL Publishing presenta",production:"Una producción de Storm Studio",starring:"Protagonista",you:"Tú",logline:"Cada objeto en este salón tiene un nombre.<br>Esta noche aprendes a decirlos.",skip:"Saltar ▸",exitTheater:"Salir del cine",rollCredits:"Créditos",sendTeacher:"Enviar al maestro",namePrompt:"Tu nombre (para el maestro):",sent:"Archivo guardado — entrégalo a tu maestro (Drive, correo o la carpeta de la clase).",hunt:"Búsqueda de hoy",huntFound:"encontradas",huntDone:"¡Búsqueda completa!",
     chapter:{lens:["Capítulo uno","La lente"],wall:["Capítulo dos","El muro de palabras"],practice:["Capítulo tres","El ensayo"],missions:["Capítulo cuatro","Las misiones"],teacher:["Detrás de cámaras","Notas del director"]},
@@ -928,7 +928,7 @@ const T = {
     loading:"Cargando la lente…",fallback:"Nada seguro. ¿Viste alguna de estas cosas?",ready:"Buscando…",scanning:"Escaneando foto…",nothing:"Todavía no reconozco nada. Acércate o escribe la palabra abajo.",
     hear:"Escuchar",slow:"Lento",sayBack:"Repetir",listening:"Escuchando… dilo ahora",heard:"Escuché",great:"¡Muy bien! Así es ⭐",almost:"¡Casi! Escuché “{h}”. Escucha otra vez y di “{w}” despacio.",close:"¡Casi! Inténtalo otra vez.",noSR:"Para repetir necesitas Chrome o Edge.",
     sr:{"not-allowed":"Micrófono bloqueado. Haz clic en el 🔒 o 🎥 de la barra de direcciones y permite el micrófono.","service-not-allowed":"El micrófono está bloqueado por el navegador o la escuela.","no-speech":"No escuché nada. Toca el micrófono y habla enseguida.","audio-capture":"No se encontró micrófono en este dispositivo.","network":"El revisor de voz no pudo conectarse al servicio de voz de Google (sin internet o bloqueado por el filtro escolar). Abajo puedes grabar y comparar.","aborted":"Cancelado.","start":"El micrófono ya está escuchando; espera un segundo e inténtalo otra vez.","mic-busy":"Otra app o pestaña está usando el micrófono. Ciérrala e inténtalo otra vez.","ios":"En iPhone/iPad, la revisión de voz necesita Ajustes → Siri y Buscar → Dictado activado. Grabar y comparar siempre funciona.",error:"La revisión de voz falló. Inténtalo otra vez."},
-    recordMode:"La revisión de voz no está disponible en esta red; puedes grabarte y comparar.",record:"Grabar",stopRec:"Detener",playMine:"Oír la mía",playModel:"Oír el modelo",iSaidIt:"✓ Lo dije",recHint:"Escucha el modelo y luego a ti. ¿Coincide? Toca “Lo dije”.",micTest:"Prueba de micrófono",micTestHint:"Habla — la barra debe moverse.",
+    iosAudio:"¿Sin sonido? Mueve el interruptor de silencio del lado del teléfono y sube el volumen.",recordMode:"La revisión de voz no está disponible en esta red; puedes grabarte y comparar.",record:"Grabar",stopRec:"Detener",playMine:"Oír la mía",playModel:"Oír el modelo",iSaidIt:"✓ Lo dije",recHint:"Escucha el modelo y luego a ti. ¿Coincide? Toca “Lo dije”.",micTest:"Prueba de micrófono",micTestHint:"Habla — la barra debe moverse.",
     save:"Guardar en el muro",saved:"Guardado ✓",onWall:"En tu muro",cognate:"cognado",
     frames:"Di una oración",lane:{n:"Recién llegado",e:"Emergente",p:"En progreso",c:"Reto"},yourLane:"tu nivel",
     noPerm:"Cámara bloqueada. Aún puedes subir una foto o escribir una palabra.",notFound:"Todavía no conozco esa palabra, ¡pero sí la puedo decir!",
@@ -1038,7 +1038,16 @@ document.querySelectorAll("#laneSeg button").forEach(x=>x.classList.toggle("on",
 let VOICE=null;
 function pickVoice(){ const vs=speechSynthesis.getVoices(); VOICE = vs.find(v=>/en[-_]US/i.test(v.lang)&&/Google|Samantha|Natural|Aria|Jenny/i.test(v.name)) || vs.find(v=>/en[-_]US/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || null; }
 if("speechSynthesis" in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
-function speak(text,slow){ if(!("speechSynthesis" in window)) return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text.replace(/___/g,"...")); u.lang="en-US"; if(VOICE) u.voice=VOICE; u.rate = slow?0.6:0.9; u.pitch=0.95; speechSynthesis.speak(u); }
+let TTS_UNLOCKED=false, __u=null, ttsSpoke=false;
+function unlockTTS(){ if(TTS_UNLOCKED||!("speechSynthesis" in window)) return; try{ const u=new SpeechSynthesisUtterance(" "); u.volume=0; speechSynthesis.speak(u); TTS_UNLOCKED=true; }catch(e){} }
+document.addEventListener("pointerdown", unlockTTS, {once:true, capture:true});
+function speak(text,slow){ if(!("speechSynthesis" in window)) return;
+  const u=new SpeechSynthesisUtterance(text.replace(/___/g,"...")); u.lang="en-US"; if(VOICE&&VOICE.lang) u.voice=VOICE; u.rate = slow?0.6:0.9; u.pitch=0.95; u.volume=1;
+  u.onstart=()=>{ ttsSpoke=true; }; u.onerror=e=>{ if(e.error!=="interrupted"&&e.error!=="canceled") console.warn("tts",e.error); };
+  __u=u; /* keep a reference: Chrome Android drops garbage-collected utterances */
+  const go=()=>{ try{ speechSynthesis.resume(); speechSynthesis.speak(u); }catch(e){} };
+  if(speechSynthesis.speaking||speechSynthesis.pending){ speechSynthesis.cancel(); setTimeout(go,80); } else go();
+}
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 /* ---- microphone: explicit permission, live level meter, robust recognition ---- */
 let MIC=null, micAnalyser=null, micRAF=null, SR_BROKEN=null, activeRec=null;
@@ -1331,7 +1340,7 @@ function openCard(key, thumb, rawWord){
   sheet.scrollTop=0;
   sheet.querySelector(".close").onclick=closeCard;
   const say = w.art ? `${w.art} ${w.en}` : w.en;
-  document.getElementById("cHear").onclick=()=>speak(say,false);
+  document.getElementById("cHear").onclick=()=>{ speak(say,false); if(IS_IOS&&!localStorage.getItem("sl_ioshint")){ localStorage.setItem("sl_ioshint","1"); setTimeout(()=>{ if(!ttsSpoke) toast(t("iosAudio")); },1500); } };
   document.getElementById("cSlow").onclick=()=>speak(w.en,true);
   if(NARR) narrate("take", say); else speak(say,false);
   const res=document.getElementById("cRes");
@@ -1447,14 +1456,16 @@ const pBox=document.getElementById("pracBox");
 document.querySelectorAll("#pracModes button").forEach(b=>b.onclick=()=>{ PR.mode=b.dataset.m; document.querySelectorAll("#pracModes button").forEach(x=>x.classList.toggle("on",x===b)); });
 function pickPractice(n){ /* weakest first: high miss ratio, low stars, oldest seen */
   const now=Date.now(); return [...WALL].map(w=>({w,score:(w.miss||0)*3-(w.stars||0)+(now-(w.seen||w.ts))/864e5*0.5+Math.random()})).sort((a,b)=>b.score-a.score).slice(0,n).map(x=>x.w); }
+const STARTERS=["pencil","desk","book","backpack","chair","notebook","water bottle","locker","clock","door","laptop","teacher","cafeteria","hallway","headphones","paper"];
+function starterItems(n){ return STARTERS.filter(k=>!WALL.some(w=>w.key===k)).slice(0,n).map(k=>({key:k,en:D[k].en,es:D[k].es,cat:D[k].cat,cog:D[k].cog,img:null,ts:Date.now(),stars:0,starter:true})); }
 document.getElementById("pracStart").onclick=()=>{
-  const need=PR.mode==="listen"?4:3;
-  if(WALL.length<need){ pBox.innerHTML=`<p class="sub">${t("pracNeed")}</p>`; return; }
-  PR.q=pickPractice(10); PR.i=0; PR.score=0; document.getElementById("pracSkip").disabled=false; pracShow();
+  let q=pickPractice(10);
+  if(q.length<10){ q=q.concat(starterItems(10-q.length)); if(WALL.length<3) toast(t("pracStarter")); }
+  PR.q=q; PR.i=0; PR.score=0; document.getElementById("pracSkip").disabled=false; pracShow();
 };
 document.getElementById("pracSkip").onclick=()=>{ PR.i++; pracShow(); };
 function pracNext(ms){ setTimeout(()=>{PR.i++;pracShow();},ms); }
-function pracMark(w,ok){ w.seen=Date.now(); if(ok){ PR.score++; STATS.stars++; w.stars=(w.stars||0)+1; touchDay(); chime("win"); } else { w.miss=(w.miss||0)+1; chime("miss"); } save(); }
+function pracMark(w,ok){ w.seen=Date.now(); if(ok){ PR.score++; STATS.stars++; w.stars=(w.stars||0)+1; touchDay(); chime("win"); } else { w.miss=(w.miss||0)+1; chime("miss"); } if(w.starter&&!WALL.some(x=>x.key===w.key)){ delete w.starter; WALL.push(w); updateCnt(); } save(); }
 function pracShow(){
   if(PR.i>=PR.q.length){ pBox.innerHTML=`<div class="q">🏆 ${t("pracDone")}</div><div class="ans">${t("pracScore").replace("{n}",PR.score).replace("{t}",PR.q.length)}</div><div class="row" style="justify-content:center"><button class="btn gold" id="pCred">🎬 ${t("rollCredits")}</button></div>`; document.getElementById("pracSkip").disabled=true; chime("tada"); confetti(); document.getElementById("pCred").onclick=rollCredits; return; }
   const w=PR.q[PR.i]; const em=D[w.key]?D[w.key].emoji:"✨"; const dw=D[w.key]||{en:w.en,es:w.es,art:"",cat:"school",use:"…"};
@@ -1467,7 +1478,7 @@ function pracShow(){
     document.getElementById("pSay").onclick=function(){ if(!SR){ res.className="res warn"; res.textContent=t("noSR"); return; } res.className="res"; res.textContent=t("listening"); this.disabled=true;
       listen(w.en,(alts,err)=>{ if(err){ res.className="res warn"; res.textContent=srMsg(err); this.disabled=false; return; } const ok=alts&&alts.length&&matchWord(w.en,alts); ans.textContent=w.en; res.className="res "+(ok?"ok":"bad"); res.textContent=(ok?t("great"):t("close"))+(alts&&alts[0]?"  ·  "+t("heard")+" “"+alts[0]+"”":""); pracMark(w,ok); speak(w.en,false); pracNext(1800); }); };
   } else if(PR.mode==="listen"){
-    const others=WALL.filter(x=>x.key!==w.key).sort(()=>Math.random()-.5).slice(0,3); const opts=[w,...others].sort(()=>Math.random()-.5);
+    let others=PR.q.filter(x=>x.key!==w.key); if(others.length<3) others=others.concat(starterItems(8).filter(s=>s.key!==w.key&&!others.some(o=>o.key===s.key))); others=others.sort(()=>Math.random()-.5).slice(0,3); const opts=[w,...others].sort(()=>Math.random()-.5);
     pBox.innerHTML=`${head}<div class="q">${t("listenQ")}</div><div class="row" style="justify-content:center"><button class="btn" id="pHear">🔊 ${t("hear")}</button></div><div class="grid" style="margin-top:12px">${opts.map(o=>`<div class="wcard" data-k="${o.key}">${o.img?`<img src="${o.img}" alt="">`:`<div class="noimg">${D[o.key]?D[o.key].emoji:"✨"}</div>`}</div>`).join("")}</div><div class="res" id="pRes"></div>`;
     const say=()=>speak((dw.art?dw.art+" ":"")+w.en,false); document.getElementById("pHear").onclick=say; setTimeout(say,300);
     pBox.querySelectorAll(".wcard").forEach(c=>c.onclick=()=>{ const ok=c.dataset.k===w.key; c.style.outline=`3px solid ${ok?"var(--ok)":"var(--bad)"}`; const res=document.getElementById("pRes"); res.className="res "+(ok?"ok":"bad"); res.textContent=(ok?t("great"):t("close"))+" — "+w.en; pBox.querySelectorAll(".wcard").forEach(x=>x.onclick=null); pracMark(w,ok); pracNext(1400); });
@@ -1558,8 +1569,8 @@ async function runCine(){
   for(const [id,ms] of scenes){ if(cineDone) return; show(id); if(id==="sc3") chime("tada"); if(id==="sc5") narrate("open"); await new Promise(r=>setTimeout(r,ms)); }
   endCine();
 }
-document.getElementById("cinePlay").onclick=()=>{ runCine(); warmMicPermission(); };
-document.getElementById("cineSkip").onclick=()=>{ audioOn(); if(AC&&AC.state==="suspended") AC.resume(); endCine(); };
+document.getElementById("cinePlay").onclick=()=>{ unlockTTS(); runCine(); warmMicPermission(); };
+document.getElementById("cineSkip").onclick=()=>{ unlockTTS(); audioOn(); if(AC&&AC.state==="suspended") AC.resume(); endCine(); };
 /* chapter cards */
 const chapterEl=document.getElementById("chapter"); let chT=null, lastChapter=null;
 function chapter(tab){ if(tab===lastChapter) return; lastChapter=tab; const c=T[LANG].chapter[tab]; if(!c) return; document.getElementById("chK").textContent=c[0]; document.getElementById("chT").textContent=c[1]; chapterEl.classList.add("on"); clearTimeout(chT); chT=setTimeout(()=>chapterEl.classList.remove("on"),1300); if(tab==="wall") narrate("wall"); if(tab==="practice") narrate("practice"); }
@@ -1624,6 +1635,7 @@ document.getElementById("diagRun").onclick=async()=>{
   if(window.cocoSsd){ try{ await loadModel(); li(true,"Object model ready"); }catch(e){ li(false,"Object model failed to load",e.message); } }
   li(!!SR, "Speech recognition (say-it-back)", SR?(SR_BROKEN?"supported, but last attempt failed: "+SR_BROKEN+" (the school network may block Google's speech service — Record & compare takes over)":"supported"):"not in this browser — use Chrome/Edge");
   try{ await ensureMic(); li(true,"Microphone permission granted — "+t("micTest"), t("micTestHint")); const m=document.createElement("div"); m.className="meter live"; m.innerHTML="<i></i>"; out.appendChild(m); meterStart(m); setTimeout(releaseMic,10000); }catch(e){ li(false,"Microphone", srMsg(micErr(e))); }
+  try{ audioOn(); if(AC&&AC.state==="suspended") await AC.resume(); chime("win"); speak("Storm Lens audio check. If you hear this, sound is working."); li(null,"Audio test — you should hear a chime and a voice","if not: volume up, ring/silent switch (iPhone), narrator toggle 🎙️ in the header"); }catch(e){}
   li("speechSynthesis" in window, "Text-to-speech", ("speechSynthesis" in window)?(speechSynthesis.getVoices().length+" voices, using "+(VOICE?VOICE.name:"default")):"missing");
   try{ localStorage.setItem("sl_t","1"); localStorage.removeItem("sl_t"); li(true,"Storage (word wall) works", WALL.length+" words saved"); }catch(e){ li(false,"Storage blocked — word wall will not save",e.message); }
   li(!window.__lastErr, "No script errors", window.__lastErr||"");
