@@ -25,6 +25,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import catalog  # noqa: E402
 import questions  # noqa: E402
 import voices  # noqa: E402
+import play  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -162,8 +163,8 @@ def index_panel():
     )
     return f'''<div class="wrap">
   <h2>The full index</h2>
-  <p>All {N} resources in one sortable table — by name, by who they are for, by format.
-    The twenty worth starting with are starred.</p>
+  <p>All {N} of them in one sortable table — by name, by who they are for, by format.
+    The twenty worth starting with are starred. Still free, still no login.</p>
   <div class="idx-g">{cards}</div>
   <a class="idx-all" href="all.html">Open the full index · {N} resources →</a>
   <div class="idx-s">
@@ -210,7 +211,7 @@ def qa():
         )
     return f'''<div class="wrap">
   <h2>Questions people actually ask</h2>
-  <p class="deck">Straight answers, each with the resource that goes deeper.</p>
+  <p class="deck">Real questions from real teachers, answered plainly — each with the resource that goes deeper.</p>
   <div class="qtabs" role="group" aria-label="Filter the questions">{tabs}</div>
   <div class="qgrid" id="qgrid">{"".join(cards)}</div>
   <p class="qmore"><button type="button" id="qmore">Show all {len(questions.Q)} questions ↓</button></p>
@@ -229,10 +230,58 @@ def voices_block():
     )
     return f'''<div class="wrap">
   <h2>In their own handwriting</h2>
-  <p class="deck">Notes, cards and observations I have kept — from students,
-    administrators and the school. Open any one to see the original.</p>
+  <p class="deck">The notes I kept. From students, from administrators, from a
+    school that once gave me a painted tire. Open any one to see the original.</p>
   <div class="vgrid">{items}</div>
 </div>'''
+
+
+def play_band():
+    cards = "".join(
+        f'<a class="pcard" href="{e(h)}"{ext_attr(h)}>'
+        f'<b>{e(name)}</b><i>{e(hook)}</i><span>{e(sub)}</span></a>'
+        for h, name, hook, sub in play.PLAY
+    )
+    return f'''<div class="wrap">
+  <p class="freeline">{e(play.FREE)}</p>
+  <p class="playk">Try one right now</p>
+  <div class="pgrid">{cards}</div>
+</div>'''
+
+
+def guess_game():
+    """A level-guessing round built from the real Can-Do checklist, so the
+    statements are the ones students actually score themselves against."""
+    src = (ROOT / "can-do-checklist.html").read_text(encoding="utf-8")
+    items = []
+    for dm in re.finditer(r'd:"([LRSW])",en:"([^"]+)"[^\[]*lv:\[', src):
+        dom, name = dm.group(1), dm.group(2)
+        i = dm.end() - 1
+        depth, j = 0, i
+        while j < len(src):
+            if src[j] == "[":
+                depth += 1
+            elif src[j] == "]":
+                depth -= 1
+                if depth == 0:
+                    break
+            j += 1
+        for lv, chunk in enumerate(re.findall(r"\[(.*?)\]", src[i:j + 1], re.S), 1):
+            for s in re.findall(r'"([^"]+)"', chunk):
+                en = s.split("|")[0].strip()
+                if en.lower().startswith("i can"):
+                    items.append({"t": en, "lv": lv, "d": name})
+    if len(items) < 30:
+        return "<!-- not enough can-do statements to build the round -->"
+    return ('<div class="wrap">\n'
+            '<h2>Guess the level</h2>\n'
+            '<p class="deck">Here is something a student says they can do. '
+            'Which ELPA21 level is that? Eight of them, about a minute. '
+            'Every statement is lifted straight from the Can-Do checklist your '
+            'students score themselves against.</p>\n'
+            '<div class="game" id="game"></div>\n'
+            '<script>window.HUB_CANDO=' + json.dumps(items, ensure_ascii=False) +
+            ';</script>\n</div>')
 
 
 def titles_script():
@@ -322,6 +371,8 @@ p = ROOT / "index.html"
 t = p.read_text(encoding="utf-8")
 t = region(t, "now", now_showing(), p)
 t = region(t, "doors", doors(), p)
+t = region(t, "play", play_band(), p)
+t = region(t, "game", guess_game(), p)
 t = region(t, "week", week(), p)
 t = region(t, "qa", qa(), p)
 t = region(t, "voices", voices_block(), p)
