@@ -230,7 +230,7 @@ def voices_block():
     return f'''<div class="wrap">
   <h2>In their own handwriting</h2>
   <p class="deck">Notes, cards and observations I have kept — from students,
-    colleagues and administrators. Open any one to see the original.</p>
+    administrators and the school. Open any one to see the original.</p>
   <div class="vgrid">{items}</div>
 </div>'''
 

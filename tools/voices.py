@@ -21,8 +21,8 @@ V = [
  ("card.jpg",
   "I appreciate everything you have taught me, but also for the generous way you "
   "share your time and talents with others.",
-  "A colleague", "Handwritten card",
-  "A handwritten thank-you card from a colleague"),
+  "A student", "Handwritten card",
+  "A handwritten thank-you card from a student"),
 
  ("letter.jpg",
   "Thank you for an excellent class. I learned a lot in your class.",
@@ -36,6 +36,6 @@ V = [
 
  ("tireless.jpg",
   "Tireless Teacher",
-  "School award", "Laurel High School",
+  "School award", "Starkville High School",
   "A gold-painted tire award reading “Tireless Teacher” with a yellow jacket mascot"),
 ]
