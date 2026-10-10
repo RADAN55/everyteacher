@@ -391,6 +391,53 @@ if old.exists():
     old.unlink()
     changed.append("featured.json (removed)")
 
+# ------------------------------------------------- the bar and the theme ----
+# Every page gets three things, in this order: a snippet that applies the saved
+# theme before the first paint, the stylesheet that defines it, and the script
+# that builds the bar. Inserted here rather than by hand so a new page cannot
+# be forgotten, and skipped where they are already present.
+HEAD_SNIPPET = (
+    '<script>/* set the theme before first paint, so nothing flashes white */'
+    'try{var _t=localStorage.getItem("elhub.theme");'
+    'document.documentElement.setAttribute("data-theme",'
+    '_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}'
+    'catch(e){}</script>'
+)
+THEME_LINK = '<link rel="stylesheet" href="theme.css">'
+CHROME_TAG = '<script src="hub-chrome.js" defer></script>'
+
+def insert_at(s, tag, payload, last):
+    """Put payload before the document's own closing tag.
+
+    Some pages build an HTML export inside a template literal, so </head> and
+    </body> appear more than once. A template lives inside the body, so the
+    document's own </head> is the FIRST and its own </body> is the LAST. Get
+    that backwards and the tag lands in the export instead of the page — and a
+    literal </script> inside an inline script ends it early, which is how this
+    went wrong the first time.
+    """
+    i = s.rfind(tag) if last else s.find(tag)
+    return s if i < 0 else s[:i] + payload + "\n" + s[i:]
+
+
+wired = 0
+for page in sorted(ROOT.glob("*.html")):
+    s = page.read_text(encoding="utf-8")
+    before = s
+    if "elhub.theme" not in s:
+        m = re.search(r"<head[^>]*>", s)
+        if m:
+            s = s[:m.end()] + "\n" + HEAD_SNIPPET + s[m.end():]
+    if 'href="theme.css"' not in s:
+        s = insert_at(s, "</head>", THEME_LINK, last=False)
+    if "hub-chrome.js" not in s:
+        s = insert_at(s, "</body>", CHROME_TAG, last=True)
+    if s != before:
+        page.write_text(s, encoding="utf-8")
+        wired += 1
+if wired:
+    changed.append(f"top bar + theme on {wired} pages")
+
 # A sitemap, because the home page is a front door now and no longer lists all
 # 57 titles for a crawler to follow. all.html is listed first after the root.
 SITE = "https://radan55.github.io/everyteacher/"

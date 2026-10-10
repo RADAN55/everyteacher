@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EL Parent Notification Letters · Bilingual templates · EL Publishing</title>
@@ -8,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red-6:#FFF7D6;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:1040px;margin:0 auto;padding:40px 22px 30px}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -28,8 +29,8 @@
   .panel textarea{min-height:58px;resize:vertical}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .types{display:flex;flex-direction:column;gap:6px;margin-top:6px}
-  .types button{font:inherit;font-size:14px;text-align:left;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:8px 10px;border-radius:6px;cursor:pointer}
-  .types button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .types button{font:inherit;font-size:14px;text-align:left;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:8px 10px;border-radius:6px;cursor:pointer}
+  .types button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
   .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:9px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit;margin-top:12px}
   .sheet{background:var(--paper);border:1px solid var(--rule);padding:48px 56px;font-size:14.5px;line-height:1.5;margin-bottom:22px}
   .sheet .lh{display:flex;justify-content:space-between;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:18px;font-size:13px;color:var(--muted)}
@@ -41,14 +42,15 @@
   .sheet .sig{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
   .sheet .sig div{border-top:1px solid #333;padding-top:4px;font-size:12.5px;color:var(--muted)}
   .sheet .foot{margin-top:20px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:8px}
-  .v{background:#FFF7D6}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  .v{background:var(--wash-red-6)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:860px){main{grid-template-columns:1fr}.panel{position:static}.sheet{padding:24px 20px}}
-  @media print{header,.panel,footer{display:none}body{background:#fff}main{display:block;padding:0;max-width:none}.sheet{border:0;padding:0.4in 0.3in;break-after:page;font-size:12.5pt}.sheet:last-child{break-after:auto}.v{background:none}}
+  @media print{header,.panel,footer{display:none}body{background:var(--paper)}main{display:block;padding:0;max-width:none}.sheet{border:0;padding:0.4in 0.3in;break-after:page;font-size:12.5pt}.sheet:last-child{break-after:auto}.v{background:none}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -213,5 +215,6 @@ render();
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

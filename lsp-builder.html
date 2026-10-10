@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Language Service Plan (LSP) Builder · Mississippi · EL Publishing</title>
@@ -8,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--ink-red-5:#A32020;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -28,39 +29,40 @@
   .doc .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--gold);padding-bottom:10px;margin-bottom:12px}
   .doc .hd h2{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);margin:0;line-height:1.1}
   .doc .hd small{display:block;font-size:12.5px;color:var(--muted)}
-  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#a32020;font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
+  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-red-5);font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
   .sec{border-top:2px solid var(--rule);padding-top:8px;margin-top:12px}
   .sec h3{font-family:Fraunces,Georgia,serif;font-size:16px;color:var(--navy);margin:0 0 6px;display:flex;align-items:baseline;gap:8px}
   .sec h3 small{font-family:"Source Sans 3",sans-serif;font-size:12px;color:var(--muted);font-weight:400}
   .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   label.f{display:block;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
-  input,select,textarea{width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  input,select,textarea{width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
   textarea{min-height:56px;resize:vertical}
   .lvrow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   .lvrow div{border:1px solid var(--rule);padding:8px;text-align:center}
   .lvrow b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   .lvrow input{text-align:center;font-size:22px;font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--navy);padding:2px}
-  .badge{display:inline-block;background:var(--navy);color:#fff;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;margin-left:6px}
+  .badge{display:inline-block;background:var(--navy-bg);color:#fff;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:700;margin-left:6px}
   .chk{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:13.5px}
   .chk label{display:flex;gap:7px;align-items:flex-start;line-height:1.3;cursor:pointer}
   .chk input{width:auto;margin-top:3px}
   .dom{border:1px solid var(--rule);padding:8px 10px;margin-bottom:8px}
   .dom .t{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
   .dom .t b{color:var(--navy)}
-  .dom .t button{font:inherit;font-size:12px;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:3px 9px;border-radius:999px;cursor:pointer}
+  .dom .t button{font:inherit;font-size:12px;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:3px 9px;border-radius:999px;cursor:pointer}
   .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
   .sig div{border-top:1px solid #333;padding-top:4px;font-size:12px;color:var(--muted)}
   .tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
-  .tools button,.tools label{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .tools button,.tools label{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
   .tools input{display:none}
   .note{font-size:12.5px;color:var(--muted);margin-top:12px}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:700px){.g2,.g3,.g4,.chk,.sig{grid-template-columns:1fr}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.note{display:none}body{background:#fff;font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media print{header,footer,.tools,.dom .t button,.note{display:none}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -157,5 +159,6 @@ try{if(new URLSearchParams(location.search).get('from')!=='intake'){const s=loca
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

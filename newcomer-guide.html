@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Newcomer Guide to US Schools · Guía para recién llegados · EL Publishing</title>
@@ -12,11 +13,11 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red:#F7F1DC;--wash-red-3:#FBF6E6;--ink-blue:#1E2761;--ink-red:#8A6E14;--ink-blue-2:#4A5068;--ink-red-2:#5A4714;--ink-blue-4:#5D6480;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",Inter,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 30px;display:grid;grid-template-columns:1fr 200px;gap:28px;align-items:center}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -32,10 +33,10 @@
   .jump{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
   .jump-in{max-width:900px;margin:0 auto;padding:8px 22px;display:flex;gap:8px;align-items:center;overflow-x:auto}
   .jump a{white-space:nowrap;font-size:13px;font-weight:600;text-decoration:none;color:var(--navy);border:1px solid var(--rule);border-radius:999px;padding:5px 11px}
-  .jump a:hover{border-color:var(--gold);background:#FBF6E6}
+  .jump a:hover{border-color:var(--gold);background:var(--wash-red-3)}
   .langsw{display:flex;gap:4px;flex:0 0 auto;padding-right:8px;border-right:1px solid var(--rule);margin-right:4px}
-  .langsw button{font:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:5px 10px;border-radius:999px;cursor:pointer}
-  .langsw button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .langsw button{font:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:5px 10px;border-radius:999px;cursor:pointer}
+  .langsw button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
   main{max-width:900px;margin:0 auto;padding:22px 22px 40px}
   .sec-page{background:var(--paper);border:1px solid var(--rule);padding:28px 30px;margin:0 0 22px;scroll-margin-top:60px}
   .pg h1{font-size:clamp(24px,4vw,30px)}
@@ -45,86 +46,86 @@
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6e14;margin-bottom:4px}
+.lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-red);margin-bottom:4px}
 .pg table{border-collapse:collapse;width:100%;font-size:12.5px}
 .pg th{text-align:left;background:#1E2761;color:#fff;padding:6px 8px;font-weight:600}
 .pg td{padding:5px 8px;border-bottom:1px solid #DCDEE9;vertical-align:top;line-height:1.35}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6e14;margin-bottom:4px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-red);margin-bottom:4px}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.38;margin-bottom:4px}
 .chk span{flex:0 0 14px;height:14px;border:2px solid #1E2761;margin-top:2px}
 .who{display:grid;grid-template-columns:118px 1fr;gap:0 10px;font-size:12.5px;line-height:1.35}
-.who b{color:#1E2761}
+.who b{color:var(--ink-blue)}
 .who div{padding:4px 0;border-bottom:1px solid #DCDEE9}
 .day{border-top:4px solid #1E2761;padding-top:6px;font-size:12.5px;line-height:1.38}
-.day b.d{display:block;color:#1E2761;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
-.day span{display:block;color:#4a5068;margin-top:3px}
+.day b.d{display:block;color:var(--ink-blue);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.day span{display:block;color:var(--ink-blue-2);margin-top:3px}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .tl{display:grid;grid-template-columns:80px 1fr;gap:0 10px;font-size:12.5px;line-height:1.35}
-.tl b{color:#1E2761}
+.tl b{color:var(--ink-blue)}
 .tl div{padding:4px 0;border-bottom:1px solid #DCDEE9}
-.tl .t{font-weight:700;color:#8a6e14;white-space:nowrap}
+.tl .t{font-weight:700;color:var(--ink-red);white-space:nowrap}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .pg table{border-collapse:collapse;width:100%;font-size:12.5px}
 .pg th{text-align:left;background:#1E2761;color:#fff;padding:6px 8px;font-weight:600}
 .pg td{padding:5px 8px;border-bottom:1px solid #DCDEE9;vertical-align:top;line-height:1.35}
 .gr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;text-align:center}
 .gr div{border:1px solid #DCDEE9;padding:8px 4px;font-size:12px;line-height:1.3}
-.gr b{display:block;font-family:Lora,Georgia,serif;font-size:26px;color:#1E2761;line-height:1}
+.gr b{display:block;font-family:Lora,Georgia,serif;font-size:26px;color:var(--ink-blue);line-height:1}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .rt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .rt div{background:#1E2761;color:#fff;padding:10px 12px;font-size:12.5px;line-height:1.38}
 .rt b{display:block;color:#EBD9A0;font-family:Lora,Georgia,serif;font-size:15px;margin-bottom:2px}
@@ -132,44 +133,44 @@
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .pg table{border-collapse:collapse;width:100%;font-size:12.5px}
 .pg th{text-align:left;background:#1E2761;color:#fff;padding:6px 8px;font-weight:600}
 .pg td{padding:5px 8px;border-bottom:1px solid #DCDEE9;vertical-align:top;line-height:1.35}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:#1E2761;margin:0 0 6px;line-height:1.2}
-.pg h2 i{font-weight:600;color:#8a6e14}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;color:var(--ink-blue);margin:0 0 6px;line-height:1.2}
+.pg h2 i{font-weight:600;color:var(--ink-red)}
 .pg p,.pg li{font-size:13.5px;line-height:1.42;margin:0}
 .pg ul{margin:0;padding-left:16px}
 .pg li{margin-bottom:3px}
 .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
 .es{border-left:2px solid #E3D08E;padding-left:14px}
-.tip{background:#F7F1DC;border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
-.tip b{color:#5a4714}
+.tip{background:var(--wash-red);border:1px solid #E3D08E;padding:10px 12px;font-size:13px;line-height:1.42}
+.tip b{color:var(--ink-red-2)}
 .ph{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ph div{border:1px solid #DCDEE9;padding:8px 10px;font-size:12.5px;line-height:1.35}
-.ph b{display:block;color:#1E2761}
-.ph i{display:block;color:#4a5068;font-style:normal}
+.ph b{display:block;color:var(--ink-blue)}
+.ph i{display:block;color:var(--ink-blue-2);font-style:normal}
 .fill{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:12.5px}
-.fill div{border-bottom:1.5px solid #1E2761;padding:10px 0 3px;color:#4a5068}
+.fill div{border-bottom:1.5px solid #1E2761;padding:10px 0 3px;color:var(--ink-blue-2)}
 
 
 
-.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:16px;color:#1E2761;margin:0 0 5px;line-height:1.2;padding-bottom:3px;border-bottom:2px solid #C9A227}
+.pg h2{font-family:Lora,Georgia,serif;font-weight:700;font-size:16px;color:var(--ink-blue);margin:0 0 5px;line-height:1.2;padding-bottom:3px;border-bottom:2px solid #C9A227}
 .g{display:grid;grid-template-columns:92px 1fr;gap:0 8px;font-size:11.8px;line-height:1.3}
 .g div{padding:2.5px 0;border-bottom:1px solid #ECEDF3}
-.g b{color:#1E2761}
-.g i{color:#8a6e14;font-style:normal}
+.g b{color:var(--ink-blue)}
+.g i{color:var(--ink-red);font-style:normal}
 .sec>div,.tip,.rt>div,.day,.ph>div,tr,.g>div{break-inside:avoid}.pg h2{break-after:avoid}.pg>div{break-inside:avoid}
   .pg p,.pg li{font-size:15px}
   .pg table{display:block;overflow-x:auto}
@@ -189,7 +190,7 @@
   
   .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px}
   .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:900px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
@@ -202,14 +203,15 @@
 [dir="rtl"] ul{padding-left:0;padding-right:16px}
 .langsw button{font-size:13px}
 
-.listen{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:700;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:5px 12px;border-radius:999px;cursor:pointer;margin:8px 0 0}
-.listen[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.listen{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:700;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:5px 12px;border-radius:999px;cursor:pointer;margin:8px 0 0}
+.listen[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
 .listen svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .speaking{outline:3px solid var(--gold-lt);outline-offset:2px;border-radius:4px}
-.ltoast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:8px 14px;border-radius:999px;font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+.ltoast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--navy-bg);color:#fff;padding:8px 14px;border-radius:999px;font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
 .ltoast.on{opacity:1}
 @media print{.listen{display:none}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -230,7 +232,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">2</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">How schools in the U.S. are organized</h1><div data-i="b028" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Cómo se organizan las escuelas en los Estados Unidos</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">How schools in the U.S. are organized</h1><div data-i="b028" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Cómo se organizan las escuelas en los Estados Unidos</div></div>
 </div>
 <div class="sec" style="margin-top: 14px">
 <div><div class="lang">English</div><p>School is <b>free and required</b> for every child, usually from age 5 or 6 to 16–18 (it depends on the state). You do not need to be a citizen, and the school cannot ask your immigration status to enroll you. Public schools are run by a local <b>school district</b>, and each state sets its own rules — so a few details will be different where you live.</p></div>
@@ -240,13 +242,13 @@
 <h2 data-i="b036" data-k="mixed">The grade levels <i>· Los niveles escolares</i></h2>
 <table data-i="b049" data-k="mixed">
 <tr><th style="width: 165px">School · Escuela</th><th style="width: 95px">Grades · Grados</th><th style="width: 80px">Ages · Edades</th><th>What it is like · Cómo es</th></tr>
-<tr><td><b>Elementary school</b><br/>Primaria</td><td>K (kindergarten) – 5</td><td>5–11</td><td>One main teacher, one classroom, recess (play time).<br/><span style="color: #4a5068">Un maestro principal, un salón, recreo.</span></td></tr>
-<tr><td><b>Middle school</b> (junior high)<br/>Secundaria</td><td>6 – 8</td><td>11–14</td><td>Students change rooms and teachers for each subject; lockers; more homework.<br/><span style="color: #4a5068">Se cambia de salón y maestro por materia; casilleros; más tarea.</span></td></tr>
-<tr><td><b>High school</b><br/>Preparatoria / bachillerato</td><td>9 – 12</td><td>14–18</td><td>Students earn <b>credits</b> toward a diploma. 9 = freshman, 10 = sophomore, 11 = junior, 12 = senior.<br/><span style="color: #4a5068">Se ganan <b>créditos</b> para el diploma.</span></td></tr>
+<tr><td><b>Elementary school</b><br/>Primaria</td><td>K (kindergarten) – 5</td><td>5–11</td><td>One main teacher, one classroom, recess (play time).<br/><span style="color: var(--ink-blue-2)">Un maestro principal, un salón, recreo.</span></td></tr>
+<tr><td><b>Middle school</b> (junior high)<br/>Secundaria</td><td>6 – 8</td><td>11–14</td><td>Students change rooms and teachers for each subject; lockers; more homework.<br/><span style="color: var(--ink-blue-2)">Se cambia de salón y maestro por materia; casilleros; más tarea.</span></td></tr>
+<tr><td><b>High school</b><br/>Preparatoria / bachillerato</td><td>9 – 12</td><td>14–18</td><td>Students earn <b>credits</b> toward a diploma. 9 = freshman, 10 = sophomore, 11 = junior, 12 = senior.<br/><span style="color: var(--ink-blue-2)">Se ganan <b>créditos</b> para el diploma.</span></td></tr>
 </table>
 <div class="sec" style="margin-top: 6px">
-<p style="font-size: 12.5px; color: #4a5068">Your grade is set by your age and past schooling, <b>not</b> by your English level. A 15-year-old newcomer goes to high school and gets English support <i>inside</i> that grade.</p>
-<p class="es" data-i="b006" data-k="pure" style="font-size: 12.5px; color: #4a5068">Tu grado se decide por tu edad y tus estudios anteriores, <b>no</b> por tu nivel de inglés. Un recién llegado de 15 años entra a la preparatoria y recibe apoyo en inglés <i>dentro</i> de ese grado.</p>
+<p style="font-size: 12.5px; color: var(--ink-blue-2)">Your grade is set by your age and past schooling, <b>not</b> by your English level. A 15-year-old newcomer goes to high school and gets English support <i>inside</i> that grade.</p>
+<p class="es" data-i="b006" data-k="pure" style="font-size: 12.5px; color: var(--ink-blue-2)">Tu grado se decide por tu edad y tus estudios anteriores, <b>no</b> por tu nivel de inglés. Un recién llegado de 15 años entra a la preparatoria y recibe apoyo en inglés <i>dentro</i> de ese grado.</p>
 </div>
 </div>
 <div class="sec" style="margin-top: 14px">
@@ -297,7 +299,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">3</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">Enrolling and your first week</h1><div data-i="b029" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">La inscripción y tu primera semana</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">Enrolling and your first week</h1><div data-i="b029" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">La inscripción y tu primera semana</div></div>
 </div>
 <div class="sec" style="margin-top: 14px">
 <div>
@@ -309,7 +311,7 @@
 <div class="chk"><span></span><div><b>Vaccine record</b> — the nurse can help you get missing shots, often free</div></div>
 <div class="chk"><span></span><div><b>Past school records</b> — in any language; they place you in the right grade and can give you credit</div></div>
 <div class="chk"><span></span><div><b>Parent/guardian photo ID</b> — a Social Security number is <b>not</b> required</div></div>
-<p style="margin-top: 6px; font-size: 12.5px; color: #4a5068">You will fill out a <b>Home Language Survey</b>. If another language is spoken at home, the school tests your English and may offer EL services. That is support, not punishment.</p>
+<p style="margin-top: 6px; font-size: 12.5px; color: var(--ink-blue-2)">You will fill out a <b>Home Language Survey</b>. If another language is spoken at home, the school tests your English and may offer EL services. That is support, not punishment.</p>
 </div>
 <div class="es" data-i="b010" data-k="pure">
 <div class="lang" data-i="b080" data-k="label">Español</div>
@@ -320,7 +322,7 @@
 <div class="chk"><span></span><div><b>Cartilla de vacunas</b> — la enfermera puede ayudarte a conseguir las que falten, muchas veces gratis</div></div>
 <div class="chk"><span></span><div><b>Boletas o certificados anteriores</b> — en cualquier idioma; sirven para ubicarte en el grado correcto y darte créditos</div></div>
 <div class="chk"><span></span><div><b>Identificación con foto del padre/tutor</b> — <b>no</b> se requiere número de Seguro Social</div></div>
-<p style="margin-top: 6px; font-size: 12.5px; color: #4a5068">Llenarás una <b>Encuesta del Idioma del Hogar</b>. Si en casa se habla otro idioma, la escuela evalúa tu inglés y puede ofrecer servicios EL. Es apoyo, no castigo.</p>
+<p style="margin-top: 6px; font-size: 12.5px; color: var(--ink-blue-2)">Llenarás una <b>Encuesta del Idioma del Hogar</b>. Si en casa se habla otro idioma, la escuela evalúa tu inglés y puede ofrecer servicios EL. Es apoyo, no castigo.</p>
 </div>
 </div>
 <div style="margin-top: 14px">
@@ -355,18 +357,18 @@
 </div>
 </div>
 <div class="sec" style="margin-top: 14px">
-<div class="tip"><b>Three sentences that open doors:</b> "Can you say that again, please?" · "Can you show me?" · "I need help. Who can I ask?" <span style="color: #5D6480">Teachers expect new students to ask. Nobody will be upset.</span></div>
-<div class="tip" data-i="b012" data-k="pure"><b>Tres frases que abren puertas:</b> "Can you say that again, please?" (¿Puede repetirlo?) · "Can you show me?" (¿Me enseña?) · "I need help. Who can I ask?" (Necesito ayuda. ¿A quién le pregunto?) <span style="color: #5D6480">Los maestros esperan que los nuevos pregunten. Nadie se molesta.</span></div>
+<div class="tip"><b>Three sentences that open doors:</b> "Can you say that again, please?" · "Can you show me?" · "I need help. Who can I ask?" <span style="color: var(--ink-blue-4)">Teachers expect new students to ask. Nobody will be upset.</span></div>
+<div class="tip" data-i="b012" data-k="pure"><b>Tres frases que abren puertas:</b> "Can you say that again, please?" (¿Puede repetirlo?) · "Can you show me?" (¿Me enseña?) · "I need help. Who can I ask?" (Necesito ayuda. ¿A quién le pregunto?) <span style="color: var(--ink-blue-4)">Los maestros esperan que los nuevos pregunten. Nadie se molesta.</span></div>
 </div>
 </div></section><section class="pg sec-page" id="school-day">
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">4</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">A typical school day</h1><div data-i="b030" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Un día típico de escuela</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">A typical school day</h1><div data-i="b030" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Un día típico de escuela</div></div>
 </div>
 <div style="margin-top: 14px">
 <h2 data-i="b039" data-k="mixed">A middle / high school day <i>· Un día en secundaria o preparatoria</i></h2>
-<p data-i="b081" data-k="mixed" style="font-size: 12.5px; color: #4a5068; margin-bottom: 6px">Times are examples. Elementary students stay with one teacher and have recess instead of changing rooms. · Las horas son ejemplos. En primaria se queda con un solo maestro y hay recreo en vez de cambiar de salón.</p>
+<p data-i="b081" data-k="mixed" style="font-size: 12.5px; color: var(--ink-blue-2); margin-bottom: 6px">Times are examples. Elementary students stay with one teacher and have recess instead of changing rooms. · Las horas son ejemplos. En primaria se queda con un solo maestro y hay recreo en vez de cambiar de salón.</p>
 <div class="sec">
 <div class="tl">
 <div class="t">7:15</div><div><b>Bus or drop-off.</b> Be at the stop 5 minutes early; the bus does not wait.</div>
@@ -440,7 +442,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">5</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">Classes, grades and graduation</h1><div data-i="b031" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Clases, calificaciones y graduación</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">Classes, grades and graduation</h1><div data-i="b031" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Clases, calificaciones y graduación</div></div>
 </div>
 <div style="margin-top: 14px">
 <h2 data-i="b040" data-k="mixed">Letter grades <i>· Calificaciones con letras</i></h2>
@@ -452,8 +454,8 @@
 <div data-i="b061" data-k="mixed"><b>F</b>below 60<br/>Failing · Reprobado</div>
 </div>
 <div class="sec" style="margin-top: 6px">
-<p style="font-size: 12.5px; color: #4a5068">Some districts use other cut-offs (A = 93+). Your grade in a class mixes homework, class work, quizzes, tests and projects — so <b>turning in every assignment</b> matters as much as test scores. A missing assignment is a 0.</p>
-<p class="es" data-i="b017" data-k="pure" style="font-size: 12.5px; color: #4a5068">Algunos distritos usan otros rangos (A = 93+). La calificación de una clase mezcla tarea, trabajo en clase, quizzes, exámenes y proyectos — así que <b>entregar todas las tareas</b> importa tanto como los exámenes. Una tarea no entregada es un 0.</p>
+<p style="font-size: 12.5px; color: var(--ink-blue-2)">Some districts use other cut-offs (A = 93+). Your grade in a class mixes homework, class work, quizzes, tests and projects — so <b>turning in every assignment</b> matters as much as test scores. A missing assignment is a 0.</p>
+<p class="es" data-i="b017" data-k="pure" style="font-size: 12.5px; color: var(--ink-blue-2)">Algunos distritos usan otros rangos (A = 93+). La calificación de una clase mezcla tarea, trabajo en clase, quizzes, exámenes y proyectos — así que <b>entregar todas las tareas</b> importa tanto como los exámenes. Una tarea no entregada es un 0.</p>
 </div>
 </div>
 <div class="sec" style="margin-top: 14px">
@@ -516,7 +518,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">6</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">Your rights and EL support</h1><div data-i="b032" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Tus derechos y el apoyo para aprendices de inglés</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">Your rights and EL support</h1><div data-i="b032" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Tus derechos y el apoyo para aprendices de inglés</div></div>
 </div>
 <div style="margin-top: 14px">
 <h2 data-i="b042" data-k="mixed">Six rights every student has, by U.S. law <i>· Seis derechos que la ley te garantiza</i></h2>
@@ -559,7 +561,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">7</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">Classroom culture and unwritten rules</h1><div data-i="b033" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">La cultura del salón y las reglas no escritas</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">Classroom culture and unwritten rules</h1><div data-i="b033" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">La cultura del salón y las reglas no escritas</div></div>
 </div>
 <div style="margin-top: 14px">
 <h2 data-i="b043" data-k="mixed">What may be different from your old school <i>· Lo que puede ser diferente</i></h2>
@@ -620,7 +622,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">8</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">For families</h1><div data-i="b034" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Para las familias</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">For families</h1><div data-i="b034" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Para las familias</div></div>
 </div>
 <div class="sec" style="margin-top: 14px">
 <div>
@@ -690,7 +692,7 @@
 <div class="pg" style="">
 <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 3px solid #C9A227; padding-bottom: 10px">
 <span style="font-family: Lora, Georgia, serif; font-size: 44px; font-weight: 700; color: #C9A227; line-height: 1">9</span>
-<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: #1E2761; margin: 0; line-height: 1.1">Words to know</h1><div data-i="b035" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: #8a6e14; margin-top: 2px">Palabras que debes conocer — English · <i style="font-style: normal">español</i> · meaning</div></div>
+<div><h1 style="font-family: Lora, Georgia, serif; font-weight: 700; font-size: 28px; color: var(--ink-blue); margin: 0; line-height: 1.1">Words to know</h1><div data-i="b035" data-k="pure" style="font-family: Lora, Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-red); margin-top: 2px">Palabras que debes conocer — English · <i style="font-style: normal">español</i> · meaning</div></div>
 </div>
 <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 18px">
 <div>
@@ -839,5 +841,6 @@ var l=q||s;if(l&&(L[l]||l==='en')&&l!=='es')pick(l);
 </script><script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
 <script src="newcomer-pwa.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

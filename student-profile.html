@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EL Student Profile · one-page cover sheet for teachers and subs · EL Publishing</title>
@@ -8,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--ink-red:#8A6E14;--ink-blue-2:#4A5068;--ink-red-5:#A32020;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:1040px;margin:0 auto;padding:40px 22px 30px}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -35,12 +36,12 @@
   .sheet .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--gold);padding-bottom:10px;margin-bottom:14px}
   .sheet .hd h2{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--navy);margin:0;line-height:1.1}
   .sheet .hd small{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
-  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#a32020;font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
+  .conf{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-red-5);font-weight:700;border:1px solid #a32020;padding:3px 8px;border-radius:4px;white-space:nowrap}
   .lv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 14px}
   .lv div{border:1px solid var(--rule);padding:8px 10px;text-align:center}
   .lv b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1}
   .lv span{font-size:11.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-  .lv .lane{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .lv .lane{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
   .lv .lane b{color:var(--gold-lt);font-size:18px;padding-top:6px}
   .lv .lane span{color:#C9CEEA}
   .g{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
@@ -48,13 +49,14 @@
   .g ul{margin:0;padding-left:18px}.g li{margin-bottom:3px}
   .g p{margin:0}
   .foot{margin-top:14px;padding-top:8px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:860px){main{grid-template-columns:1fr}.panel{position:static;max-height:none}.sheet{padding:20px 16px}.g{grid-template-columns:1fr}}
-  @media print{header,.panel,footer{display:none}body{background:#fff}main{display:block;padding:0;max-width:none}.sheet{border:0;padding:0;font-size:12.5px}}
+  @media print{header,.panel,footer{display:none}body{background:var(--paper)}main{display:block;padding:0;max-width:none}.sheet{border:0;padding:0;font-size:12.5px}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -112,9 +114,9 @@ function render(){
   <div class="hd"><div><h2>${v('name','[Student]')} <span style="font-weight:400;color:var(--muted);font-size:18px">· Grade ${v('grade','_')}</span></h2><small>Home language: <b>${v('lang')}</b> · ${v('origin','[country / prior schooling]')} · Arrived ${v('arrived','—')} · Year ${v('yrs','—')} in EL program · IEP/504: ${v('iep')}</small></div><span class="conf">Confidential · FERPA</span></div>
   <div class="lv"><div><b>${l.L||'–'}</b><span>Listening</span></div><div><b>${l.S||'–'}</b><span>Speaking</span></div><div><b>${l.R||'–'}</b><span>Reading</span></div><div><b>${l.W||'–'}</b><span>Writing</span></div><div class="lane"><b>${ln}</b><span>Lane · ${ld}</span></div></div>
   <div class="g">
-    <div><h3>What ${v('name','this student').split(' ')[0]} can do in English right now</h3><ul>${['L','S','R','W'].map(k=>l[k]?`<li><b>${names[k]}:</b> ${CAN[k][l[k]-1]}.</li>`:'').join('')}${lowest?`<li style="color:#8a6e14"><b>Focus domain:</b> ${names[lowest[0]]} (Level ${lowest[1]}) — the one to grow this year.</li>`:''}</ul></div>
+    <div><h3>What ${v('name','this student').split(' ')[0]} can do in English right now</h3><ul>${['L','S','R','W'].map(k=>l[k]?`<li><b>${names[k]}:</b> ${CAN[k][l[k]-1]}.</li>`:'').join('')}${lowest?`<li style="color:var(--ink-red)"><b>Focus domain:</b> ${names[lowest[0]]} (Level ${lowest[1]}) — the one to grow this year.</li>`:''}</ul></div>
     <div><h3>What helps — do these every day</h3><ul>${(HELP[avg]||[]).map(h=>`<li>${h}</li>`).join('')}</ul></div>
-    <div><h3>Strengths &amp; interests</h3><p>${v('str','[strengths]')}</p><p style="margin-top:4px;color:#4a5068"><b>Motivated by:</b> ${v('int','—')}</p><p style="margin-top:4px;color:#4a5068"><b>Home-language literacy:</b> ${v('lit')}</p></div>
+    <div><h3>Strengths &amp; interests</h3><p>${v('str','[strengths]')}</p><p style="margin-top:4px;color:var(--ink-blue-2)"><b>Motivated by:</b> ${v('int','—')}</p><p style="margin-top:4px;color:var(--ink-blue-2)"><b>Home-language literacy:</b> ${v('lit')}</p></div>
     <div><h3>Watch for</h3><p>${v('watch','[what to notice]')}</p></div>
     <div><h3>Accommodations in the Language Service Plan</h3>${accs.length?`<ul>${accs.map(a=>`<li>${a}</li>`).join('')}</ul>`:'<p style="color:var(--muted)">None selected yet — see the LSP.</p>'}</div>
     <div><h3>Who to call</h3><p><b>EL teacher:</b> ${v('contact')} · ${v('phone','')}</p><p style="margin-top:4px"><b>Family:</b> ${v('fam','[contact · language]')} — interpreter available through the office; never use the student to interpret for the family.</p></div>
@@ -133,5 +135,6 @@ render();
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

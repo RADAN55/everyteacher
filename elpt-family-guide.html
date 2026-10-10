@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>The English Test, Explained for Families · ELPT / ELPA21 · EL Publishing</title>
@@ -9,11 +10,11 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red:#F7F1DC;--wash-grey-2:#E3E5EF;--ink-blue:#1E2761;--ink-red:#8A6E14;--ink-blue-2:#4A5068;--ink-red-2:#5A4714;--ink-blue-4:#5D6480;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 30px}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -28,50 +29,50 @@
   main{max-width:900px;margin:0 auto;padding:22px 22px 40px}
   .pg{background:var(--paper);border:1px solid var(--rule);padding:26px 30px;margin:0 0 20px;scroll-margin-top:16px}
   .pg h2{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:23px;color:var(--navy);margin:0 0 4px;line-height:1.2}
-  .pg h2 i{font-weight:600;color:#8a6e14;font-size:18px}
+  .pg h2 i{font-weight:600;color:var(--ink-red);font-size:18px}
   .pg h3{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);margin:0 0 6px}
   .sec{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:12px}
   .es{border-left:2px solid #E3D08E;padding-left:14px}
-  .lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8a6e14;margin-bottom:4px}
+  .lang{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-red);margin-bottom:4px}
   .pg p,.pg li{font-size:15px;line-height:1.45;margin:0}
   .pg ul{margin:0;padding-left:18px}.pg li{margin-bottom:4px}
   .lv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
   .lv div{border:1px solid var(--rule);padding:10px 10px 8px;font-size:13px;line-height:1.35}
   .lv b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);line-height:1}
-  .lv .nm{display:block;font-weight:700;color:#8a6e14;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:2px 0 4px}
-  .lv .es2{display:block;color:#4a5068;margin-top:4px}
+  .lv .nm{display:block;font-weight:700;color:var(--ink-red);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:2px 0 4px}
+  .lv .es2{display:block;color:var(--ink-blue-2);margin-top:4px}
   .dom{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
-  .dom div{background:var(--navy);color:#fff;padding:10px 12px;font-size:13.5px;line-height:1.35}
+  .dom div{background:var(--navy-bg);color:#fff;padding:10px 12px;font-size:13.5px;line-height:1.35}
   .dom b{display:block;color:var(--gold-lt);font-family:Fraunces,Georgia,serif;font-size:17px}
   .dom span{display:block;color:#C9CEEA;margin-top:3px}
   .report{border:1px solid var(--rule);padding:14px 16px;margin-top:12px;font-size:14px;background:var(--mist)}
   .report .row{display:grid;grid-template-columns:130px 70px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--rule);align-items:center}
   .report .row b{color:var(--navy)}
-  .report .bar{height:10px;background:#E3E5EF;position:relative}
+  .report .bar{height:10px;background:var(--wash-grey-2);position:relative}
   .report .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold)}
-  .tip{background:#F7F1DC;border:1px solid #E3D08E;padding:12px 14px;font-size:14px;line-height:1.45}
-  .tip b{color:#5a4714}
+  .tip{background:var(--wash-red);border:1px solid #E3D08E;padding:12px 14px;font-size:14px;line-height:1.45}
+  .tip b{color:var(--ink-red-2)}
   .cal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
   .cal div{border-top:4px solid var(--navy);padding-top:6px;font-size:13.5px;line-height:1.35}
   .cal b{display:block;color:var(--navy);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-  .cal span{display:block;color:#4a5068;margin-top:3px}
+  .cal span{display:block;color:var(--ink-blue-2);margin-top:3px}
   .fill{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:13.5px;margin-top:10px}
-  .fill div{border-bottom:1.5px solid var(--navy);padding:12px 0 3px;color:#4a5068}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  .fill div{border-bottom:1.5px solid var(--navy);padding:12px 0 3px;color:var(--ink-blue-2)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:900px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:640px){.sec,.fill{grid-template-columns:1fr}.es{border-left:0;padding-left:0;margin-top:10px;padding-top:10px;border-top:2px solid #E3D08E}.lv,.dom,.cal{grid-template-columns:1fr 1fr}.pg{padding:20px 16px}.report .row{grid-template-columns:110px 50px 1fr}}
-  @media print{header .cta,footer{display:none}body{background:#fff}.pg{break-inside:avoid;border:0;padding:10px 0}}
+  @media print{header .cta,footer{display:none}body{background:var(--paper)}.pg{break-inside:avoid;border:0;padding:10px 0}}
 
 @font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Regular.ttf) format("truetype");font-weight:400}
 @font-face{font-family:"Noto Sans Arabic";src:url(newcomer/fonts/NotoSansArabic-Bold.ttf) format("truetype");font-weight:600 700}
 :lang(ar){font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;line-height:1.65}
 :lang(zh-Hans){font-family:"Noto Sans CJK SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Sans 3",sans-serif}
-.langsw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:1000px;margin:0 auto;padding:8px 22px;background:#fff;border-bottom:1px solid #DCDEE9}
-.langsw span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#5D6480;font-weight:700;margin-right:4px}
-.langsw button{font:inherit;font-size:13px;font-weight:700;border:1px solid #DCDEE9;background:#fff;color:#1E2761;padding:5px 11px;border-radius:999px;cursor:pointer}
-.langsw button[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:#1E2761}
+.langsw{display:flex;gap:6px;flex-wrap:wrap;align-items:center;max-width:1000px;margin:0 auto;padding:8px 22px;background:var(--paper);border-bottom:1px solid #DCDEE9}
+.langsw span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-blue-4);font-weight:700;margin-right:4px}
+.langsw button{font:inherit;font-size:13px;font-weight:700;border:1px solid #DCDEE9;background:var(--paper);color:var(--ink-blue);padding:5px 11px;border-radius:999px;cursor:pointer}
+.langsw button[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:var(--ink-blue)}
 [dir="rtl"].es,[dir="rtl"][data-k="pure"]{text-align:right}
 .es[dir="rtl"]{border-left:0;padding-left:0;border-right:2px solid #E3D08E;padding-right:14px}
 [dir="rtl"] ul{padding-left:0;padding-right:16px}
@@ -79,6 +80,7 @@ body.only-en [data-k="pure"],body.only-en .es,body.only-en [lang]:not([lang="en"
 body.only-en .sec{grid-template-columns:1fr}
 @media print{.langsw{display:none}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -135,7 +137,7 @@ body.only-en .sec{grid-template-columns:1fr}
 <div class="row" data-i="b017" data-k="mixed"><b>Speaking · Hablar</b><span>Level 4</span><div class="bar"><i style="width:80%"></i></div></div>
 <div class="row" data-i="b018" data-k="mixed"><b>Reading · Leer</b><span>Level 3</span><div class="bar"><i style="width:60%"></i></div></div>
 <div class="row" data-i="b019" data-k="mixed"><b>Writing · Escribir</b><span>Level 2</span><div class="bar"><i style="width:40%"></i></div></div>
-<div class="row" data-i="b020" data-k="mixed" style="border:0"><b>Overall · General</b><span style="font-weight:700;color:#8a6e14">Progressing</span><div style="font-size:13px;color:#4a5068">Still receiving EL services · Sigue recibiendo servicios EL</div></div>
+<div class="row" data-i="b020" data-k="mixed" style="border:0"><b>Overall · General</b><span style="font-weight:700;color:var(--ink-red)">Progressing</span><div style="font-size:13px;color:var(--ink-blue-2)">Still receiving EL services · Sigue recibiendo servicios EL</div></div>
 </div>
 <div class="sec" style="margin-top:12px">
 <div>
@@ -145,7 +147,7 @@ body.only-en .sec{grid-template-columns:1fr}
 <li><b>Progressing</b> — at least one domain is above Level 2, but not all are at 4–5. Services continue, aimed at the lowest domain.</li>
 <li><b>Proficient</b> — <b>every</b> domain is Level 4 or 5. This is the exit line.</li>
 </ul>
-<p style="margin-top:8px;font-size:14px;color:#4a5068">In the example above, Writing (Level 2) is the domain to work on. The school's plan for next year should say so.</p>
+<p style="margin-top:8px;font-size:14px;color:var(--ink-blue-2)">In the example above, Writing (Level 2) is the domain to work on. The school's plan for next year should say so.</p>
 </div>
 <div class="es" data-i="b007" data-k="pure">
 <h3>Las tres etiquetas generales</h3>
@@ -154,7 +156,7 @@ body.only-en .sec{grid-template-columns:1fr}
 <li><b>Progressing (en progreso)</b> — al menos un dominio está arriba del Nivel 2, pero no todos están en 4–5. Los servicios continúan, enfocados en el dominio más bajo.</li>
 <li><b>Proficient (competente)</b> — <b>todos</b> los dominios están en Nivel 4 o 5. Esta es la línea de salida.</li>
 </ul>
-<p style="margin-top:8px;font-size:14px;color:#4a5068">En el ejemplo de arriba, Escribir (Nivel 2) es el dominio que hay que trabajar. El plan de la escuela para el próximo año debe decirlo.</p>
+<p style="margin-top:8px;font-size:14px;color:var(--ink-blue-2)">En el ejemplo de arriba, Escribir (Nivel 2) es el dominio que hay que trabajar. El plan de la escuela para el próximo año debe decirlo.</p>
 </div>
 </div>
 </section>
@@ -240,5 +242,6 @@ window.__pick=pick;
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
 <script src="newcomer-pwa.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

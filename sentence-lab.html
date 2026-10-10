@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sentence Lab · English Grammar in Real Life · EL Publishing</title>
@@ -10,13 +11,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--teal:#0E7C86;--teal-lt:#E6F2F3;--cream:#FFF5D6;--red:#C8373E}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-grey-5:#FAFBFD;--ink-red-6:#8A6A0E;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--teal:#0E7C86;--teal-lt:#E6F2F3;--cream:#FFF5D6;--red:#C8373E}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
   .wrap{max-width:960px;margin:0 auto;padding:0 22px}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:960px;margin:0 auto;padding:40px 22px 34px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center}
   @media (max-width:720px){.head-in{grid-template-columns:1fr}.head-in .cover{display:none}}
@@ -38,7 +39,7 @@
   .toc .wrap::-webkit-scrollbar{display:none}
   .toc a{flex:0 0 auto;font-size:13px;font-weight:600;text-decoration:none;color:var(--navy);padding:6px 12px;border-radius:999px;white-space:nowrap}
   .toc a:hover{background:var(--mist)}
-  .toc a.on{background:var(--navy);color:#fff}
+  .toc a.on{background:var(--navy-bg);color:#fff}
 
   main{padding:28px 0 40px}
   .part{margin:40px 0 0;scroll-margin-top:60px}
@@ -51,7 +52,7 @@
   .callout b{display:block;color:var(--teal);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
   .callout p{margin:0}
   .callout.gold{background:var(--cream);border-color:#EBD9A0;border-left-color:var(--gold)}
-  .callout.gold b{color:#8A6A0E}
+  .callout.gold b{color:var(--ink-red-6)}
 
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0 0}
   .stats div{background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
@@ -68,14 +69,14 @@
   @media (max-width:640px){.lanes{grid-template-columns:1fr}}
   .lane{background:var(--paper);border:1px solid var(--rule)}
   .lane h4{margin:0;padding:10px 16px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal)}
-  .lane.pro h4{background:var(--navy)}
+  .lane.pro h4{background:var(--navy-bg)}
   .lane ul{margin:0;padding:12px 16px 14px 34px;font-size:15px}
   .lane li+li{margin-top:4px}
 
   table{width:100%;border-collapse:collapse;margin:14px 0 0;background:var(--paper);font-size:15px;border:1px solid var(--rule)}
   th{background:var(--teal);color:#fff;text-align:left;padding:10px 12px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
   td{padding:10px 12px;border-top:1px solid var(--rule);vertical-align:top}
-  tr:nth-child(even) td{background:#FAFBFD}
+  tr:nth-child(even) td{background:var(--wash-grey-5)}
   td.n{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--gold);font-size:19px;width:52px;white-space:nowrap}
   td b{color:var(--navy)}
   td i{color:var(--muted)}
@@ -114,17 +115,18 @@
   .related h4{margin:0 0 8px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .related a{display:inline-block;margin:4px 8px 4px 0;font-size:14.5px}
   .fine{font-size:13.5px;color:var(--muted);margin:14px 0 0}
-  footer{background:var(--navy-dk);color:#C9CEEA;font-size:14px;padding:26px 0}
+  footer{background:var(--navy-dk-bg);color:#C9CEEA;font-size:14px;padding:26px 0}
   footer a{color:var(--gold-lt)}
   footer b{color:#fff;display:block;font-size:15px}
   @media print{
-    body{background:#fff;font-size:12.5px}
-    header{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body{background:var(--paper);font-size:12.5px}
+    header{background:var(--navy-bg)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .toc,.hbtns,.pdfbox,.related,footer,#elp-guide-btn,.elp-guide{display:none!important}
     th{background:var(--teal)!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     table,.callout,.cardx,.lane{break-inside:avoid}
   }
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -309,5 +311,6 @@
 </script>
 <script src="guide.js" defer></script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

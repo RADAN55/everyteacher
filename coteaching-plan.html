@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Co-Teaching Lesson Plan · content + language objective · EL Publishing</title>
@@ -8,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red:#F7F1DC;--wash-red-3:#FBF6E6;--ink-red:#8A6E14;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
-  header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
   .head-in{position:relative;max-width:1040px;margin:0 auto;padding:40px 22px 30px}
   .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
@@ -28,7 +29,7 @@
   .plan h2{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 4px}
   .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 14px}
   label.f{display:block;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
-  input,textarea,select{width:100%;font:inherit;font-size:14.5px;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  input,textarea,select{width:100%;font:inherit;font-size:14.5px;padding:7px 9px;border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
   textarea{min-height:64px;resize:vertical}
   .blk{border-top:2px solid var(--gold);padding-top:10px;margin-top:14px}
   .blk h3{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);margin:0 0 2px}
@@ -36,11 +37,11 @@
   .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
   .lane{border:1px solid var(--rule);padding:8px}
-  .lane b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8a6e14;margin-bottom:4px}
+  .lane b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-red);margin-bottom:4px}
   .lane textarea{min-height:90px;font-size:13.5px}
   .models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
   .models label{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--rule);padding:7px 9px;font-size:13px;line-height:1.3;cursor:pointer;border-radius:6px}
-  .models label:has(input:checked){background:#F7F1DC;border-color:#E3D08E}
+  .models label:has(input:checked){background:var(--wash-red);border-color:#E3D08E}
   .models input{width:auto;margin-top:2px}
   .side{position:sticky;top:12px;display:flex;flex-direction:column;gap:14px}
   .bank{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
@@ -49,16 +50,17 @@
   .bank select{margin-bottom:8px}
   .bank ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;max-height:360px;overflow:auto}
   .bank li{border:1px solid var(--rule);border-radius:6px;padding:7px 9px;font-size:13.5px;line-height:1.3;cursor:pointer}
-  .bank li:hover{border-color:var(--gold);background:#FBF6E6}
+  .bank li:hover{border-color:var(--gold);background:var(--wash-red-3)}
   .tools{display:flex;gap:6px;flex-wrap:wrap}
-  .tools button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:#fff;color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
-  footer{background:var(--navy-dk);color:#AEB5DA;padding:26px 0;font-size:14px}
+  .tools button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:860px){main{grid-template-columns:1fr}.side{position:static}.meta,.lanes{grid-template-columns:1fr 1fr}.models{grid-template-columns:1fr}.plan{padding:18px 16px}}
-  @media print{header,.side,footer{display:none}body{background:#fff;font-size:12px}main{display:block;padding:0;max-width:none}.plan{border:0;padding:0}input,textarea,select{border:0;border-bottom:1px solid #999;border-radius:0;padding:2px 4px;font-size:11.5px}textarea{min-height:0;height:auto;overflow:visible}.lane textarea{min-height:70px}.blk{margin-top:8px;padding-top:6px}.models label{padding:3px 6px}}
+  @media print{header,.side,footer{display:none}body{background:var(--paper);font-size:12px}main{display:block;padding:0;max-width:none}.plan{border:0;padding:0}input,textarea,select{border:0;border-bottom:1px solid #999;border-radius:0;padding:2px 4px;font-size:11.5px}textarea{min-height:0;height:auto;overflow:visible}.lane textarea{min-height:70px}.blk{margin-top:8px;padding-top:6px}.models label{padding:3px 6px}}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <header>
@@ -148,5 +150,6 @@ document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
 </body>
 </html>

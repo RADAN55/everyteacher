@@ -1,0 +1,138 @@
+/* EL Publishing — the top bar and the dark theme.
+   Linked from every page's head so the colours exist before first paint.
+   The page's own <style> keeps its :root; [data-theme] outranks it. */
+
+:root{ --hubbar-h:50px }
+
+/* ---------------------------------------------------------------- dark ----
+   --navy does two jobs across this hub: it colours headings and it paints
+   panels. Those were split into --navy / --navy-bg so they can part company
+   here. Text navy becomes light; panel navy stays dark. --navy-dk is left
+   alone because it is the ink on gold buttons, which stay gold. */
+html[data-theme="dark"]{
+  --paper:#141A2C;
+  --mist:#0C1120;
+  --ink:#E8EBF5;
+  --muted:#9FA8C6;
+  --rule:#2A3252;
+  --navy:#AEB9EC;
+  --navy-bg:#161E3C;
+  --navy-dk-bg:#090E1E;
+  --gold:#D7B245;
+  --gold-lt:#F0DDA6;
+  --tint:#171F38;
+  --note:#2B2515;
+  color-scheme:dark;
+}
+/* Pages carry their own semantic tints for callouts — a teal note, a green
+   deliverable, a red flag, a gold warning. Each is a pale wash made for a
+   white page, so give each a dark wash of the same hue rather than chase the
+   class names that use them. */
+html[data-theme="dark"]{
+  --teal-lt:#0E2A2E; --ok-lt:#112A1C; --ok-bg:#112A1C; --bad-lt:#2E1512;
+  --warn:#2B2515; --warn-b:#4A3C18; --gold-soft:#2A2415;
+  --ok:#6FD598; --bad:#F08076; --teal:#4FC7D2;
+  /* ink and washes that callouts use: same meaning, lit for a dark page */
+  --ink-slate:#B6BDD6; --ink-gold:#E4C464; --ink-red:#F3948A;
+  --ink-green:#74D69C; --ink-blue:#8FB0F5;
+  --wash-green:#12301F; --wash-blue:#172142; --wash-red:#2F1714; --wash-gold:#332B12;
+  /* paper stocks a few pages print themselves on */
+  --cream:#2A2415; --chalk:#191D2C; --mint:#122A22; --line:#2A3252;
+  --ink-bg:#0A2621; --surface:#141A2C; --surface-2:#191F33; --bg:#0C1120; --fg:#E8EBF5;
+}
+html[data-theme="dark"] body{background:var(--mist);color:var(--ink)}
+
+/* A handful of callouts set their ink as a literal, which was written for the
+   pale wash above. Let it come from the theme instead. */
+html[data-theme="dark"] .ex,
+html[data-theme="dark"] .tip,
+html[data-theme="dark"] .tip b,
+html[data-theme="dark"] .es,
+html[data-theme="dark"] .consult,
+html[data-theme="dark"] .sp1,
+html[data-theme="dark"] .sp2,
+html[data-theme="dark"] .flags,
+html[data-theme="dark"] .deliver,
+html[data-theme="dark"] .priv{color:var(--ink)}
+html[data-theme="dark"] .es,
+html[data-theme="dark"] .day span{color:var(--muted)}
+html[data-theme="dark"] .chk span{border-color:var(--navy)}
+html[data-theme="dark"] .sp1{background:#1E1B33;border-color:#36305A}
+html[data-theme="dark"] .sp2,
+html[data-theme="dark"] .deliver{border-color:#2A5A3C}
+html[data-theme="dark"] .flags{border-color:#5A2B26}
+/* photographs and screenshots are lit for a white page */
+html[data-theme="dark"] img:not([src$=".svg"]){filter:brightness(.92) saturate(.95)}
+html[data-theme="dark"] .hubbar img{filter:none}
+
+/* Every pale wash and dark ink the pages had written as a literal now has a
+   token holding its exact light value, so these are the only place the two
+   themes differ. Same hue, inverted lightness. */
+html[data-theme="dark"]{
+  --wash-grey:#0F0F29; --wash-red:#29230F; --wash-red-2:#29220F; --wash-green:#102817;
+  --wash-red-3:#29230F; --wash-blue:#0F1729; --wash-grey-2:#141724; --wash-blue-2:#0F1329;
+  --wash-grey-3:#29220F; --wash-red-4:#290F0F; --wash-grey-4:#290F0F; --wash-red-5:#29240F;
+  --wash-grey-5:#101828; --wash-grey-6:#0F1629; --wash-grey-7:#151923; --wash-grey-8:#170F29;
+  --wash-grey-9:#161822; --wash-grey-10:#0F1429; --wash-red-6:#29240F; --wash-grey-11:#132519;
+  --ink-blue:#929CDD; --ink-red:#E2CE8D; --ink-blue-2:#A8AEC7; --ink-red-2:#E2CB8D;
+  --ink-red-3:#DF9090; --ink-blue-3:#A6ADC9; --ink-blue-4:#A8AEC7; --ink-blue-5:#919ADF;
+  --ink-green:#8FE0AB; --ink-green-2:#8DE2AB; --ink-red-4:#E2C58D; --ink-blue-6:#8DA8E2;
+  --ink-red-5:#E28D8D; --ink-blue-7:#A8AEC7; --ink-red-6:#E2CC8D; --ink-blue-8:#949EDB;
+  --ink-red-7:#E28D8D; --ink-blue-9:#A8AFC7; --ink-red-8:#E2C88D; --ink-blue-10:#A5ADCA;
+}
+
+/* Ink that sits on a gold or coloured button keeps its light-mode value —
+   the button stays gold in the dark, so its lettering must stay dark. */
+html[data-theme="dark"]{
+  --ink-blue-8:#121735; --ink-blue-10:#1B1F2E; --ink-blue-5:#141A44;
+  --teal:#17636E;
+}
+
+/* ------------------------------------------------------------ the bar ---- */
+.hubbar{
+  position:sticky;top:0;z-index:900;
+  background:var(--navy-dk-bg);border-bottom:1px solid rgba(201,162,39,.4);
+  font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  /* 42 pages were written before this bar existed; none of their rules apply */
+  margin:0;padding:0;overflow:visible;line-height:normal;color:#fff;
+}
+.hubbar::before,.hubbar::after{content:none!important;display:none!important}
+.hubbar *{box-sizing:border-box}
+.hubbar-in{
+  max-width:1060px;margin:0 auto;padding:0 20px;height:var(--hubbar-h);
+  display:flex;align-items:center;gap:18px;
+}
+.hubbar a{text-decoration:none}
+.hubbar .hb-home{display:flex;align-items:center;gap:9px;flex:none}
+.hubbar .hb-home svg{width:24px;height:24px;display:block}
+.hubbar .hb-home b{
+  font-family:Fraunces,Georgia,serif;font-size:15.5px;font-weight:600;color:#fff;
+  letter-spacing:.01em;white-space:nowrap;
+}
+.hubbar .hb-home:hover b{color:var(--gold-lt)}
+.hubbar nav{
+  display:flex;align-items:center;gap:3px;flex:1 1 auto;min-width:0;
+  overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.hubbar nav::-webkit-scrollbar{display:none}
+.hubbar nav a{
+  font-size:13.5px;font-weight:500;color:#C3C9E6;padding:7px 11px;border-radius:999px;
+  white-space:nowrap;
+}
+.hubbar nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.hubbar nav a[aria-current="page"]{color:var(--gold);font-weight:600}
+.hubbar .hb-theme{
+  flex:none;width:34px;height:34px;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
+  color:var(--gold-lt);display:grid;place-items:center;padding:0;
+}
+.hubbar .hb-theme:hover{background:rgba(201,162,39,.2);border-color:var(--gold)}
+.hubbar .hb-theme svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9}
+.hubbar .hb-theme .moon{display:none}
+html[data-theme="dark"] .hubbar .hb-theme .sun{display:none}
+html[data-theme="dark"] .hubbar .hb-theme .moon{display:block}
+@media (max-width:620px){
+  .hubbar-in{gap:12px;padding:0 14px}
+  .hubbar .hb-home b{display:none}
+}
+@media print{.hubbar{display:none}}
