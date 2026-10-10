@@ -113,7 +113,7 @@ R = [
  ("newcomer-week1.html", "Newcomer Week 1 Kit", "elteacher", "Kit", "5 days",
   "The week a student arrives, hour by hour, ending in an exit ticket.", True),
  ("lsp-builder.html", "LSP Builder", "elteacher", "Generator", "Mississippi LSP",
-  "Enter the ELPT levels and the Language Service Plan drafts itself.", True),
+  "Drafts itself from the levels; a checklist shows what a Mississippi LSP still needs.", True),
  ("newcomer-intake.html", "Newcomer Intake", "elteacher", "Generator", "3 documents",
   "Type the student once; the profile, the plan and the letter fill themselves.", False),
  ("student-profile.html", "EL Student Profile", "elteacher", "Generator", "1 page",

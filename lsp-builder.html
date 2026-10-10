@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Language Service Plan (LSP) Builder · Mississippi · EL Publishing</title>
-<meta name="description" content="Build a Mississippi Language Service Plan from a student's ELPT levels: program services, instructional and assessment accommodations, suggested goals by domain, monitoring status, parent notification and signatures. Suggestions fill from the levels; everything is editable; print or save as a file.">
+<meta name="description" content="Build a Mississippi Language Service Plan with every required component: identification trail (HLS, screener, parent notification on the clock), ELPT history by domain, services, classroom and MTAM-aligned testing accommodations, grading and retention safeguards, goals, nine-weeks reviews, four-year monitoring, Student Evaluation Team signatures — and a live checklist of what is still missing. Nothing leaves your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -51,6 +51,22 @@
   .dom .t button{font:inherit;font-size:12px;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:3px 9px;border-radius:999px;cursor:pointer}
   .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
   .sig div{border-top:1px solid #333;padding-top:4px;font-size:12px;color:var(--muted)}
+  .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
+  .badge[hidden]{display:none}
+  .hist{border-collapse:collapse;width:100%;font-size:13px;margin-top:2px}
+  .hist th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 6px 2px 0;font-weight:700}
+  .hist td{padding:2px 6px 2px 0}.hist td input{padding:4px 6px;font-size:13px}
+  .sig{grid-template-columns:repeat(4,1fr)}
+  .comp{margin-top:18px;border:1px solid var(--rule);border-left:6px solid var(--gold);background:var(--mist);padding:12px 16px}
+  .comp-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .comp h3{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin:0}
+  .comp #compn{font-family:Fraunces,Georgia,serif;font-size:20px;font-weight:700;color:var(--navy)}
+  .comp ul{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:3px 18px;font-size:13.5px}
+  .comp li{display:flex;gap:8px;align-items:flex-start;line-height:1.35;padding:3px 0;border-bottom:1px solid var(--rule)}
+  .comp li i{font-style:normal;flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:1px}
+  .comp li.ok i{background:#2E7D4F;color:#fff}.comp li.no i{background:var(--ink-red-5);color:#fff}.comp li.na i{background:var(--rule);color:var(--muted)}
+  .comp li small{display:block;color:var(--muted);font-size:12px}
+  .comp p{margin:8px 0 0;font-size:12px;color:var(--muted)}
   .tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
   .tools button,.tools label{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px;cursor:pointer}
   .tools input{display:none}
@@ -59,8 +75,8 @@
   footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
-  @media (max-width:700px){.g2,.g3,.g4,.chk,.sig{grid-template-columns:1fr}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.note{display:none}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media (max-width:700px){.g2,.g3,.g4,.chk,.sig,.comp ul{grid-template-columns:1fr}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
+  @media print{header,footer,.tools,.dom .t button,.note,.comp p{display:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -68,7 +84,7 @@
 <meta property="og:site_name" content="EL Publishing">
 <meta property="og:url" content="https://radan55.github.io/everyteacher/lsp-builder.html">
 <meta property="og:title" content="Language Service Plan (LSP) Builder · Mississippi · EL Publishing">
-<meta property="og:description" content="Build a Mississippi Language Service Plan from a student&#x27;s ELPT levels: program services, instructional and assessment accommodations, suggested goals by domain, monitoring status, parent notification and signatures. Suggestions fill from the levels; everything is editable; print or save as a file.">
+<meta property="og:description" content="Build a Mississippi Language Service Plan with every required component: identification trail (HLS, screener, parent notification on the clock), ELPT history by domain, services, classroom and MTAM-aligned testing accommodations, grading and retention safeguards, goals, nine-weeks reviews, four-year monitoring, Student Evaluation Team signatures — and a live checklist of what is still missing. Nothing leaves your browser.">
 <meta property="og:image" content="https://radan55.github.io/everyteacher/share/lsp-builder.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -80,45 +96,71 @@
   <div class="head-in">
     <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS &amp; COORDINATORS · MISSISSIPPI · LANGUAGE SERVICE PLAN</p>
     <h1>Language Service Plan <em>builder</em></h1>
-    <p class="tag">Enter the ELPT levels and the plan writes its first draft: lane, services, accommodations for class and state tests, a goal for each domain and the focus domain. Edit anything. Print for signatures; save as a file to reopen next semester. Nothing leaves your browser.</p>
+    <p class="tag">Enter the ELPT levels and the plan writes its first draft: lane, services, accommodations for class and state tests, a goal for each domain. Every component a Mississippi LSP is expected to carry is on the form — identification trail, ELPT history, grading and retention, nine-weeks reviews, the full signature block — and a checklist at the bottom tells you what is still missing before it goes for signatures. Nothing leaves your browser.</p>
     <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print LSP</button><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
   </div>
 </header>
 <main>
 <article class="doc">
-  <div class="hd"><div><h2>Language Service Plan (LSP)</h2><small>English Learner · Laurel School District (edit) · School year <input data-k="year" value="2026–27" style="width:90px;display:inline-block;padding:1px 6px;font-size:13px"></small></div><span class="conf">Confidential · FERPA</span></div>
+  <div class="hd"><div><h2>Language Service Plan (LSP)</h2><small>English Learner · <input data-k="district" placeholder="School district" style="width:200px;display:inline-block;padding:1px 6px;font-size:13px"> · School year <input data-k="year" value="2026–27" style="width:90px;display:inline-block;padding:1px 6px;font-size:13px"></small></div><span class="conf">Confidential · FERPA</span></div>
 
-  <div class="sec"><h3>1 · Student</h3>
-    <div class="g4"><div><label class="f">Name</label><input data-k="name"></div><div><label class="f">Student ID</label><input data-k="id"></div><div><label class="f">Grade</label><input data-k="grade"></div><div><label class="f">School</label><input data-k="school" value="Laurel High School"></div></div>
-    <div class="g4" style="margin-top:6px"><div><label class="f">Home language</label><input data-k="lang" value="Spanish"></div><div><label class="f">Birth country</label><input data-k="country"></div><div><label class="f">Date enrolled in U.S. schools</label><input data-k="usdate" type="date"></div><div><label class="f">Years in EL program</label><input data-k="yrs" type="number" min="0" max="12"></div></div>
-    <div class="g4" style="margin-top:6px"><div><label class="f">Home Language Survey date</label><input data-k="hls" type="date"></div><div><label class="f">Screener &amp; date</label><input data-k="screener" placeholder="ELPT Screener · 8/12/2026"></div><div><label class="f">Parent notification sent</label><input data-k="notif" type="date"></div><div><label class="f">IEP / 504</label><select data-k="iep"><option>None</option><option>IEP — see plan</option><option>504 — see plan</option><option>Referral in progress</option></select></div></div>
+  <div class="sec"><h3>1 · Student <span class="badge auto" id="imm" hidden>Immigrant (Title III)</span><span class="badge auto" id="ltel" hidden>Long-term EL</span></h3>
+    <div class="g4"><div><label class="f">Name</label><input data-k="name"></div><div><label class="f">Student ID (MSIS)</label><input data-k="id"></div><div><label class="f">Grade</label><input data-k="grade"></div><div><label class="f">School</label><input data-k="school" placeholder="School"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Home language</label><input data-k="lang" placeholder="Spanish"></div><div><label class="f">Birth country</label><input data-k="country"></div><div><label class="f">First enrolled in U.S. schools</label><input data-k="usdate" type="date"></div><div><label class="f">Enrolled in this district</label><input data-k="distdate" type="date"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Years in EL program</label><input data-k="yrs" type="number" min="0" max="12"></div><div><label class="f">Prior schooling</label><select data-k="schooling"><option value="">—</option><option>Continuous</option><option>Interrupted / limited (SLIFE)</option><option>Unknown — ask family</option></select></div><div><label class="f">IEP / 504</label><select data-k="iep"><option>None</option><option>IEP — see plan</option><option>504 — see plan</option><option>Referral in progress</option></select></div><div><label class="f">Student Evaluation Team (EL committee)</label><input data-k="set" placeholder="EL teacher, counselor, Eng I teacher, principal, parent"></div></div>
   </div>
 
-  <div class="sec"><h3>2 · Current English proficiency <small>most recent ELPT / screener</small><span class="badge" id="lane">Lane: —</span></h3>
+  <div class="sec"><h3>2 · Identification trail <small>Home Language Survey → screener → parent notification, each dated</small></h3>
+    <div class="g4"><div><label class="f">Home Language Survey date</label><input data-k="hls" type="date"></div><div><label class="f">Screener given</label><input data-k="screener" placeholder="ELPT Screener (ELPA21)"></div><div><label class="f">Screener date</label><input data-k="screendate" type="date"></div><div><label class="f">Parent notification sent</label><input data-k="notif" type="date"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Notification language</label><input data-k="notiflang" placeholder="Spanish (translated letter)"></div><div><label class="f">Interpreter for the conference</label><input data-k="interp" placeholder="Yes — Spanish, 9/4/2026"></div><div><label class="f">Annual notification (continuing ELs)</label><input data-k="annual" type="date"></div><div><label class="f">Parent response</label><select data-k="declined"><option value="">—</option><option>Accepted services</option><option>Declined services (school still obligated)</option><option>No response yet</option></select></div></div>
+  </div>
+
+  <div class="sec"><h3>3 · English proficiency <small>most recent ELPT or screener, by domain</small><span class="badge" id="lane">Lane: —</span></h3>
     <div class="lvrow"><div><b>Listening</b><input data-k="L" type="number" min="1" max="5" placeholder="–"></div><div><b>Speaking</b><input data-k="S" type="number" min="1" max="5" placeholder="–"></div><div><b>Reading</b><input data-k="R" type="number" min="1" max="5" placeholder="–"></div><div><b>Writing</b><input data-k="W" type="number" min="1" max="5" placeholder="–"></div></div>
-    <div class="g3" style="margin-top:6px"><div><label class="f">Overall determination</label><input data-k="overall" placeholder="auto"></div><div><label class="f">Focus domain this year</label><input data-k="focus" placeholder="auto"></div><div><label class="f">Test date</label><input data-k="testdate" type="date"></div></div>
+    <div class="g4" style="margin-top:6px"><div><label class="f">Overall determination</label><input data-k="overall" placeholder="auto"></div><div><label class="f">Focus domain this year</label><input data-k="focus" placeholder="auto"></div><div><label class="f">Test / date</label><input data-k="testdate" type="date"></div><div><label class="f">ELPT domain exemption <small style="text-transform:none;letter-spacing:0">(IEP team only)</small></label><select data-k="exempt"><option>None — all four domains</option><option>Listening (IEP)</option><option>Speaking (IEP)</option><option>Reading (IEP)</option><option>Writing (IEP)</option></select></div></div>
+    <label class="f" style="margin-top:8px">ELPT history <small style="text-transform:none;letter-spacing:0;font-weight:400">— every prior year the student has a score</small></label>
+    <table class="hist"><thead><tr><th>Year</th><th>L</th><th>S</th><th>R</th><th>W</th><th>Overall</th></tr></thead><tbody>
+      <tr><td><input data-k="h1y" placeholder="2025–26"></td><td><input data-k="h1L"></td><td><input data-k="h1S"></td><td><input data-k="h1R"></td><td><input data-k="h1W"></td><td><input data-k="h1o"></td></tr>
+      <tr><td><input data-k="h2y" placeholder="2024–25"></td><td><input data-k="h2L"></td><td><input data-k="h2S"></td><td><input data-k="h2R"></td><td><input data-k="h2W"></td><td><input data-k="h2o"></td></tr>
+      <tr><td><input data-k="h3y" placeholder="2023–24"></td><td><input data-k="h3L"></td><td><input data-k="h3S"></td><td><input data-k="h3R"></td><td><input data-k="h3W"></td><td><input data-k="h3o"></td></tr>
+    </tbody></table>
   </div>
 
-  <div class="sec"><h3>3 · Program &amp; services</h3>
+  <div class="sec"><h3>4 · Program &amp; services</h3>
     <div class="chk" id="svc"></div>
     <div class="g2" style="margin-top:6px"><div><label class="f">EL instruction minutes per week</label><input data-k="min" placeholder="450 (one 90-min block daily)"></div><div><label class="f">Content classes with language support (list)</label><input data-k="content" placeholder="English I, Algebra I, Biology I, World Geography"></div></div>
+    <div class="g2" style="margin-top:6px"><div><label class="f">If dual-identified (IEP/504): how language and disability goals are coordinated</label><input data-k="dual" placeholder="EL teacher sits on the IEP team; language goals cross-referenced; evaluation was bilingual/interpreted"></div><div><label class="f">If services declined: what continues anyway</label><input data-k="declnote" placeholder="EL status and MSIS coding; annual ELPT; accommodations in content classes; monitoring; annual notification"></div></div>
   </div>
 
-  <div class="sec"><h3>4 · Instructional accommodations <small>classroom — every teacher of record</small></h3><div class="chk" id="iacc"></div></div>
-  <div class="sec"><h3>5 · Assessment accommodations <small>classroom and state tests (MAAP, ELPT) — must match MTAM and be used routinely</small></h3><div class="chk" id="aacc"></div><div style="margin-top:6px"><label class="f">Notes for the test coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all."></div></div>
+  <div class="sec"><h3>5 · Instructional accommodations <small>classroom — every teacher of record</small></h3><div class="chk" id="iacc"></div></div>
+  <div class="sec"><h3>6 · Assessment accommodations <small>classroom and state tests (MAAP, ELPT) — must match the Mississippi Testing Accommodations Manual and be used routinely in class</small></h3><div class="chk" id="aacc"></div><div class="g2" style="margin-top:6px"><div><label class="f">Notes for the District Test Coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all MAAP; none on ELPT."></div><div><label class="f">First-year EL and the ELA state test</label><input data-k="firstyr" placeholder="Confirm the current MDE rule with the DTC and record it here"></div></div></div>
 
-  <div class="sec"><h3>6 · Goals by domain <small>suggested from the level — edit to the student</small></h3><div id="goals"></div></div>
-
-  <div class="sec"><h3>7 · Status, monitoring &amp; review</h3>
-    <div class="g4"><div><label class="f">Status</label><select data-k="status"><option>Active EL</option><option>Active EL — parent declined services</option><option>Monitored Year 1</option><option>Monitored Year 2</option><option>Monitored Year 3</option><option>Monitored Year 4</option></select></div><div><label class="f">Exit criteria</label><input data-k="exit" value="Level 4–5 in all four ELPT domains"></div><div><label class="f">Plan written</label><input data-k="written" type="date"></div><div><label class="f">Semester review</label><input data-k="review" type="date"></div></div>
-    <div style="margin-top:6px"><label class="f">Review notes / changes</label><textarea data-k="rnotes"></textarea></div>
+  <div class="sec"><h3>7 · Grading, promotion &amp; retention</h3>
+    <div class="chk" id="grd"></div>
+    <div style="margin-top:6px"><label class="f">If retention is under consideration: interventions documented showing English is not the barrier</label><input data-k="retain" placeholder="Leave blank unless it applies. Retention solely for English proficiency is not permitted."></div>
   </div>
 
-  <div class="sec"><h3>8 · Distribution &amp; signatures</h3>
-    <div class="g2"><div><label class="f">Teachers of record receiving this plan</label><input data-k="dist" placeholder="Lee (Eng I), Patel (Alg I), Ruiz (Bio I), Brown (Geog), Coach Hill (PE)"></div><div><label class="f">Interpreter used for family conference</label><input data-k="interp" placeholder="Yes — Spanish, 9/4/2026"></div></div>
-    <div class="sig"><div>EL teacher · date</div><div>Principal / designee · date</div><div>Parent / guardian · date</div></div>
+  <div class="sec"><h3>8 · Goals by domain <small>suggested from the level — edit to the student</small></h3><div id="goals"></div></div>
+
+  <div class="sec"><h3>9 · Status, monitoring &amp; review</h3>
+    <div class="g4"><div><label class="f">Status (MSIS)</label><select data-k="status"><option>Active EL</option><option>Active EL — parent declined services</option><option>Monitored Year 1</option><option>Monitored Year 2</option><option>Monitored Year 3</option><option>Monitored Year 4</option></select></div><div><label class="f">Exit criterion</label><input data-k="exit" value="Level 4 or higher in each ELPT domain, same administration"></div><div><label class="f">Plan written</label><input data-k="written" type="date"></div><div><label class="f">Reviewed after ELPT results</label><input data-k="postelpt" type="date"></div></div>
+    <label class="f" style="margin-top:8px">Nine-weeks reviews <small style="text-transform:none;letter-spacing:0;font-weight:400">— grades, attendance, ELPT progress; teachers initial changes</small></label>
+    <div class="g4"><div><label class="f">Q1 date · initials</label><input data-k="q1"></div><div><label class="f">Q2 date · initials</label><input data-k="q2"></div><div><label class="f">Q3 date · initials</label><input data-k="q3"></div><div><label class="f">Q4 / end-of-year · initials</label><input data-k="q4"></div></div>
+    <div style="margin-top:6px"><label class="f">Review notes / changes <small style="text-transform:none;letter-spacing:0;font-weight:400">(monitored students: four years after exit; re-entry requires documented reasons and parent consent)</small></label><textarea data-k="rnotes"></textarea></div>
   </div>
-  <p class="note">Format follows the sections Mississippi districts commonly include in an LSP (student data, proficiency, services, accommodations, goals, monitoring, signatures). Your district's form, if it has one, governs; this builder produces the content to paste into it. Accommodation allowability on state tests follows the current Mississippi Testing Accommodations Manual — verify with the District Test Coordinator.</p>
+
+  <div class="sec"><h3>10 · Distribution &amp; signatures</h3>
+    <div class="g4"><div><label class="f">Teachers of record receiving this plan</label><input data-k="dist" placeholder="Lee (Eng I), Patel (Alg I), Ruiz (Bio I), Brown (Geog), Coach Hill (PE)"></div><div><label class="f">Given to teachers on</label><input data-k="distdate2" type="date"></div><div><label class="f">Copy to cumulative folder on</label><input data-k="cumdate" type="date"></div><div><label class="f">Translated / interpreted for parent</label><input data-k="translated" placeholder="Spanish copy, 9/4/2026"></div></div>
+    <div class="sig"><div>Principal / designee · date</div><div>EL coordinator · date</div><div>EL teacher · date</div><div>Classroom teacher(s) · date</div><div>Parent / guardian · date</div><div>Student · date</div><div>Interpreter · date</div></div>
+  </div>
+
+  <aside class="comp" id="comp" aria-live="polite">
+    <div class="comp-h"><h3>Is this plan compliant?</h3><span id="compn">—</span></div>
+    <ul id="compl"></ul>
+    <p>Checks run on what is typed above and nothing leaves your browser. A green line means the plan documents it; it does not mean the district did it — the dates are yours to stand behind.</p>
+  </aside>
+
+  <p class="note">Components follow Mississippi district EL plans (demographics, first U.S. enrollment date, yearly ELPT scores, classroom accommodations, state-testing accommodations, Student Evaluation Team signatures) plus goals, nine-weeks review and the identification trail that an OCR or MDE review asks for first. Exit: Level 4 or higher in each ELPT domain on the same administration (State Board, June 2025). Monitoring: four years, reviewed every nine weeks. Accommodation allowability on MAAP and ELPT follows the current Mississippi Testing Accommodations Manual; no primary-language support or bilingual dictionary on the ELPT. Your district's form, if it has one, governs the layout; this builder produces the content.</p>
   <div class="tools"><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="clear">Clear</button></div>
 </article>
 </main>
@@ -128,7 +170,8 @@ const SVC=["Daily ESL/ELD class with a certified EL teacher","Co-teaching / push
 const IACC=["Vocabulary preview before lessons","Sentence frames & word banks","Visuals, realia & graphic organizers","Home-language support (bilingual peer, app for comprehension, bilingual notes)","Leveled / modified texts with grade-level vocabulary","Reduced length or alternate response format","Oral or recorded responses accepted","Directions repeated & clarified; comprehension checks","Extended wait time","Preferential seating","Content scored for accuracy; language errors not penalized on non-ELA work","Bilingual dictionary in class"];
 const AACC=["Extended time (amount specified) — class & state (MTAM #20)","Word-to-word bilingual glossary (print) — class & MAAP (MTAM #81; not allowed on ELPT)","Directions read aloud, repeated, clarified in English — class & state","Test questions & answer choices read aloud / text-to-speech — class & MAAP (MTAM #55; passages not read; not ELPT Reading)","Small-group administration — class & state","Supervised breaks — class & state","Preferential seating — class & state","Classroom only: translated directions / home-language glossary (primary language not permitted on ELPT)","Classroom only: sentence frames / word bank on classroom tests","Classroom only: oral response on classroom tests","Classroom only: reduced-length classroom tests"];
 const mk=(id,list,pre)=>document.getElementById(id).innerHTML=list.map((s,i)=>`<label><input type="checkbox" data-c="${pre}${i}">${s}</label>`).join('');
-mk('svc',SVC,'s');mk('iacc',IACC,'i');mk('aacc',AACC,'a');
+const GRD=["Content graded for accuracy; language errors not penalized on non-ELA work","Report card / progress report notes that the student receives EL supports and accommodations","Parents told, in a language they understand, what accommodations are used and how grades are earned","Progress reports and report cards sent home translated or orally interpreted","Student is not retained solely because of English proficiency","Promotion decisions consider ELPT growth and time in U.S. schools, not grade-level English alone"];
+mk('svc',SVC,'s');mk('iacc',IACC,'i');mk('aacc',AACC,'a');mk('grd',GRD,'g');
 const G={L:["Follow two-step classroom directions and answer yes/no and simple wh- questions about a lesson with picture support (target: Level 2 by spring).","Understand the main idea of a short teacher explanation and a classmate's question on a familiar topic without visual support (target: Level 3).","Follow a full class lesson on grade-level content and take notes on key points with a partially completed guide (target: Level 4).","Follow fast-paced discussion, lectures and videos without subtitles; identify speaker's purpose and tone (target: Level 5).","Maintain Level 5 listening across all content classes; monitor comprehension of technical vocabulary."],
 S:["Ask for help and clarification using set phrases; answer with words and short phrases; name and describe pictures (target: Level 2).","Ask and answer simple questions in complete sentences; describe, retell and give an opinion with one reason using frames (target: Level 3).","Explain a process and argue a point in class discussion with academic vocabulary; present for 2–3 minutes with notes (target: Level 4).","Participate in fast class discussion, disagree politely, present without notes, and speak in interviews (target: Level 5).","Maintain Level 5 speaking; refine register and precision in academic presentations."],
 R:["Read environmental print, schedules and simple sentences with picture support; use a bilingual dictionary (target: Level 2).","Read short texts on familiar topics and identify main idea and details; use context to guess word meaning (target: Level 3).","Read grade-level text with vocabulary preview; locate evidence; distinguish fact from opinion (target: Level 4).","Read grade-level and primary-source texts independently; compare texts; read for information and for pleasure (target: Level 5).","Maintain Level 5 reading; build technical vocabulary in each content area."],
@@ -136,8 +179,47 @@ W:["Write name, date, labels and copied sentences accurately; complete forms; wr
 const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
 document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><button type="button" data-g="${k}">Suggest from level</button></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who</label><input data-k="s${k}" placeholder="e.g., daily partner retell (EL teacher); frames in Biology (co-teacher)"></div><div><label class="f">Evidence of progress</label><input data:k="e${k}" data-k="e${k}" placeholder="e.g., monthly 1-min speaking sample scored 1–5"></div></div></div>`).join('');
 const F={};const fields=()=>[...document.querySelectorAll('[data-k]')];
-fields().forEach(i=>i.addEventListener('input',()=>{F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k))derive()}));
+fields().forEach(i=>i.addEventListener('input',()=>{F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k)||i.dataset.k==='yrs')derive();compliance()}));
+document.addEventListener('change',e=>{if(e.target.matches('[data-c],select'))compliance()});
 function lv(){return {L:+F.L||0,S:+F.S||0,R:+F.R||0,W:+F.W||0}}
+/* ---- the compliance checklist: computed from the dates and fields above ---- */
+const days=(a,b)=>{if(!a||!b)return null;const d=(new Date(b)-new Date(a))/864e5;return isFinite(d)?Math.round(d):null};
+const any=(pre)=>!!document.querySelector(`[data-c^="${pre}"]:checked`);
+const chk=(sel)=>!!document.querySelector(`[data-c="${sel}"]:checked`);
+function compliance(){
+ const v=k=>(F[k]||document.querySelector(`[data-k="${k}"]`)?.value||'').trim();
+ const l=lv();const all4=['L','S','R','W'].every(k=>l[k]);
+ const enroll=v('distdate')||v('usdate');
+ const dScreen=days(enroll,v('screendate')), dNotif=days(enroll,v('notif'));
+ const declined=/Declined/.test(v('declined'))||/declined/.test(v('status'));
+ const monitored=/Monitored/.test(v('status'));
+ const items=[
+  ['Home Language Survey dated and on file', v('hls')?'ok':'no', 'Any answer other than English on any question triggers screening.'],
+  ['Screened within the window', dScreen===null?'no':dScreen<=30?'ok':'no', dScreen===null?'Enter the enrollment date and the screener date.':`${dScreen} days after enrollment — 30 calendar days at the start of the year, 10 school days for later enrollees.`],
+  ['Parents notified within the window, in their language', dNotif===null?'no':(dNotif<=30&&v('notiflang'))?'ok':'no', dNotif===null?'Enter the notification date.':!v('notiflang')?'Record the language of the letter.':`${dNotif} days after enrollment.`],
+  ['Parent response recorded', v('declined')&&!/No response/.test(v('declined'))?'ok':'no', declined?'Declined: EL status, annual ELPT, content-class accommodations and monitoring all continue.':'Accept or decline — the right to decline is part of the notice.'],
+  ['All four ELPT domains entered', all4?'ok':'no', v('exempt')&&!/None/.test(v('exempt'))?'Exemption noted — IEP team documentation must be on file.':'Listening, speaking, reading, writing, with the test date.'],
+  ['ELPT history for prior years', v('yrs')===''?'no':(v('h1y')||+v('yrs')<=1)?'ok':'no', v('yrs')===''?'Enter years in the EL program.':+v('yrs')<=1?'First year — nothing prior to record.':'Yearly scores are a required component; fill the rows you have.'],
+  ['Services named, with minutes per week', (any('s')||declined)&&(v('min')||declined)?'ok':'no', declined?'Declined services — note in §4 what continues.':'Check at least one service and state the minutes.'],
+  ['Classroom accommodations for every teacher of record', any('i')?'ok':'no', ''],
+  ['State-test accommodations match what is used in class', any('a')?(any('i')?'ok':'no'):(all4?'no':'na'), any('a')&&!any('i')?'A test accommodation with no classroom use behind it will not hold up.':'Must match the Testing Accommodations Manual; nothing primary-language on the ELPT.'],
+  ['Grading and retention safeguards in place', chk('g0')&&chk('g4')?'ok':'no', 'At minimum: content graded for accuracy, and no retention for English proficiency alone.'],
+  ['A goal in each domain', ['L','S','R','W'].every(k=>v('g'+k))?'ok':'no', 'Use "Suggest from level", then make it this student\'s.'],
+  ['Dual-identified: coordination documented', /IEP|504/.test(v('iep'))?(v('dual')?'ok':'no'):'na', /IEP|504/.test(v('iep'))?'The EL teacher belongs on the IEP/504 team; evaluation must not have been English-only.':'No IEP or 504 on file.'],
+  ['Plan written, with the Student Evaluation Team named', v('written')&&v('set')?'ok':'no', 'Due before the first progress report.'],
+  ['Teachers of record listed and given the plan', v('dist')&&v('distdate2')?'ok':'no', 'Every teacher of record gets a copy; the cumulative folder gets one too.'],
+  ['Translated or interpreted for the parent', v('translated')?'ok':'no', 'The signed plan has to be understood, not just signed.'],
+  ['Nine-weeks review scheduled or done', v('q1')||v('postelpt')?'ok':'no', monitored?'Monitored students: four years after exit, every nine weeks.':'Q1 date and initials, or the post-ELPT review.'],
+ ];
+ const ul=document.getElementById('compl');if(!ul)return;
+ ul.innerHTML=items.map(([t,st,why])=>`<li class="${st}"><i>${st==='ok'?'✓':st==='no'?'!':'–'}</i><span>${t}${why?`<small>${why}</small>`:''}</span></li>`).join('');
+ const ok=items.filter(x=>x[1]==='ok').length, n=items.filter(x=>x[1]!=='na').length;
+ document.getElementById('compn').textContent=`${ok} of ${n} in place`;
+ /* auto badges */
+ const yrsUS=v('usdate')?(Date.now()-new Date(v('usdate')))/(365.25*864e5):null;
+ document.getElementById('imm').hidden=!(v('country')&&!/^(united states|usa|u\.s\.a?\.?|us)$/i.test(v('country'))&&yrsUS!==null&&yrsUS<3);
+ document.getElementById('ltel').hidden=!(+v('yrs')>=6);
+}
 function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.length)return;const a=v.reduce((x,y)=>x+y)/v.length;const yrs=+F.yrs||99;
  const lane=a<1.5&&yrs<=1?'Newcomer':a<2.5?'Emerging':a<4?'Progressing':'Challenge';document.getElementById('lane').textContent='Lane: '+lane;
  const all=['L','S','R','W'].every(k=>l[k]);const ov=all?(Object.values(l).every(x=>x>=4)?'Proficient (meets exit)':Object.values(l).every(x=>x<=2)?'Emerging':'Progressing'):'';
@@ -150,19 +232,20 @@ function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.le
   else if(a<4)pick(['s0','s1','s3','i0','i1','i2','i7','i10','i11','a0','a1','a2','a3','a8']);
   else pick(['s1','i0','i7','a0','a1','a2']);}
 }
-document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value});
+document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value;compliance()});
 function snapshot(){const o={f:{},c:{}};fields().forEach(i=>o.f[i.dataset.k]=i.value);document.querySelectorAll('[data-c]').forEach(c=>o.c[c.dataset.c]=c.checked);return o}
-function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i.value=o.f[i.dataset.k];F[i.dataset.k]=i.value}});document.querySelectorAll('[data-c]').forEach(c=>{if(o.c)c.checked=!!o.c[c.dataset.c]});derive()}
+function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i.value=o.f[i.dataset.k];F[i.dataset.k]=i.value}});document.querySelectorAll('[data-c]').forEach(c=>{if(o.c)c.checked=!!o.c[c.dataset.c]});derive();compliance()}
 document.getElementById('save').addEventListener('click',()=>{const o=snapshot();const b=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='LSP-'+((o.f.name||'student').replace(/\s+/g,'_'))+'-'+(o.f.year||'').replace('–','-')+'.json';a.click()});
 document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{restore(JSON.parse(r.result))}catch(x){alert('Not a saved LSP file.')}};r.readAsText(f)});
 document.getElementById('local').addEventListener('click',()=>{try{localStorage.setItem('lsp',JSON.stringify(snapshot()));alert('Kept on this device (one plan). Use “Save as file” for more.')}catch(e){}});
-document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4–5 in all four ELPT domains':'';delete i.dataset.auto});document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —'}});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4 or higher in each ELPT domain, same administration':'';delete i.dataset.auto});document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —';compliance()}});
+compliance();
 try{if(new URLSearchParams(location.search).get('from')!=='intake'){const s=localStorage.getItem('lsp');if(s&&confirm('Reopen the plan kept on this device?'))restore(JSON.parse(s))}}catch(e){}
 </script>
 
 <script>
 (function(){if(new URLSearchParams(location.search).get('from')!=='intake')return;var o;try{o=JSON.parse(localStorage.getItem('intake')||'null')}catch(e){}if(!o)return;
- var m={year:o.year,name:o.name,id:o.id,grade:o.grade,school:o.school,lang:o.lang,country:o.country,usdate:o.usdate,yrs:o.yrs,hls:o.hls,screener:o.test,notif:o.notif,iep:({'No':'None','Yes — see plan':'IEP — see plan','Referral in progress':'Referral in progress'})[o.iep]||'None',testdate:o.testdate,written:o.date,L:o.L,S:o.S,R:o.R,W:o.W};
+ var m={year:o.year,name:o.name,id:o.id,grade:o.grade,school:o.school,lang:o.lang,country:o.country,usdate:o.usdate,yrs:o.yrs,hls:o.hls,screener:o.test,screendate:o.testdate,notif:o.notif,iep:({'No':'None','Yes — see plan':'IEP — see plan','Referral in progress':'Referral in progress'})[o.iep]||'None',testdate:o.testdate,written:o.date,L:o.L,S:o.S,R:o.R,W:o.W};
  Object.keys(m).forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el&&m[k]!==undefined&&m[k]!==''){el.value=m[k];}});
  ['L','S','R','W'].forEach(function(k){var el=document.querySelector('[data-k="'+k+'"]');if(el)el.dispatchEvent(new Event('input',{bubbles:true}))});
  var y=document.querySelector('[data-k="yrs"]');if(y)y.dispatchEvent(new Event('input',{bubbles:true}));
