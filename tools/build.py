@@ -25,7 +25,6 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import catalog  # noqa: E402
 import questions  # noqa: E402
 import voices  # noqa: E402
-import districts  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -236,28 +235,6 @@ def voices_block():
 </div>'''
 
 
-def districts_block(compact=False):
-    cards = "".join(
-        f'<article class="dcard"><h3>{e(head)}</h3><p>{e(body)}</p>'
-        + '<div class="dl">'
-        + "".join(f'<a href="{e(h)}"{ext_attr(h)}>{e(lab)} →</a>' for lab, h in links)
-        + '</div></article>'
-        for head, body, links in districts.D
-    )
-    h2 = districts.HEADING
-    # leaders.html titles its sections with h2.sec; the home page styles a bare h2
-    cls = ' class="sec"' if not compact else ""
-    return f'''<div class="wrap">
-  <h2{cls}>{e(h2)}</h2>
-  <p class="deck">{e(districts.LEAD)}</p>
-  <div class="dcards">{cards}</div>
-  <p class="dnote">{districts.NOTE}</p>
-  <p class="dacts"><a class="dbtn" href="{e(districts.MAIL)}">Tell me what you need</a>
-    <a class="dalt" href="{"leaders.html" if compact else "index.html"}">{
-      "For district leaders →" if compact else "Back to the hub →"}</a></p>
-</div>'''
-
-
 def titles_script():
     small = small_catalog()
     return ("<script>\n/* The catalog the search box and the weekly picks read. "
@@ -348,7 +325,6 @@ t = region(t, "doors", doors(), p)
 t = region(t, "week", week(), p)
 t = region(t, "qa", qa(), p)
 t = region(t, "voices", voices_block(), p)
-t = region(t, "districts", districts_block(compact=True), p)
 t = region(t, "index", index_panel(), p)
 t = region(t, "titles", titles_script(), p)
 if write(p, t):
@@ -365,12 +341,6 @@ t = region(t, "gbtns", gbtns(), p)
 t = region(t, "rows", rows(), p)
 if write(p, t):
     changed.append("all.html")
-
-p = ROOT / "leaders.html"
-t = p.read_text(encoding="utf-8")
-t = region(t, "districts", districts_block(compact=False), p)
-if write(p, t):
-    changed.append("leaders.html")
 
 p = ROOT / "guide.js"
 t = p.read_text(encoding="utf-8")
