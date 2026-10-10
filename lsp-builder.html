@@ -75,6 +75,12 @@
   .tip.r::after{left:auto;right:0}
   h3 .tip{margin-left:0}
   label.f{position:relative;overflow:visible}
+  .start{background:var(--gold-lt);color:var(--navy-dk);border-left:6px solid var(--gold);padding:10px 14px;font-size:14px;margin:0 0 4px}
+  .start a{color:var(--navy);font-weight:700}
+  .drafted{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;background:var(--mist);border:1px dashed var(--gold);padding:7px 10px;margin:8px 0 6px;font-size:13px;color:var(--muted)}
+  .drafted b{color:var(--navy)}
+  .drafted button{margin-left:auto;font:inherit;font-size:12px;font-weight:600;border:1px solid var(--navy);background:var(--paper);color:var(--navy);padding:3px 10px;border-radius:999px;cursor:pointer}
+  [data-auto]{box-shadow:inset 3px 0 0 var(--gold)}
   .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
   .badge[hidden]{display:none}
   .hist{border-collapse:collapse;width:100%;font-size:13px;margin-top:2px}
@@ -100,7 +106,7 @@
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:700px){.g2,.g3,.g4,.chk,.sig,.comp ul{grid-template-columns:1fr}.bg{grid-template-columns:auto 1fr;grid-template-areas:"s p" "s w" "s e" "b b"}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p,.tip{display:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p,.tip,.start,.drafted{display:none}[data-auto]{box-shadow:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -128,6 +134,7 @@
 <article class="doc"><datalist id="dl-lang"><option value="Spanish"><option value="Vietnamese"><option value="Arabic"><option value="Chinese (Mandarin)"><option value="Chinese (Cantonese)"><option value="Haitian Creole"><option value="Portuguese"><option value="Tagalog"><option value="Hindi"><option value="Gujarati"><option value="Urdu"><option value="Korean"><option value="French"><option value="Swahili"><option value="Kinyarwanda"><option value="Marshallese"><option value="Burmese"><option value="Karen"><option value="Russian"><option value="Ukrainian"><option value="Pashto"><option value="Dari"><option value="Somali"><option value="Other"></datalist><datalist id="dl-country"><option value="Mexico"><option value="Guatemala"><option value="Honduras"><option value="El Salvador"><option value="Venezuela"><option value="Cuba"><option value="Colombia"><option value="Nicaragua"><option value="Dominican Republic"><option value="Puerto Rico (U.S.)"><option value="Vietnam"><option value="China"><option value="India"><option value="Philippines"><option value="Haiti"><option value="Brazil"><option value="Ukraine"><option value="Afghanistan"><option value="Democratic Republic of the Congo"><option value="Marshall Islands"><option value="Myanmar"><option value="United States"><option value="Other"></datalist>
   <div class="hd"><div><h2>Language Service Plan (LSP)</h2><small>English Learner · <input data-k="district" placeholder="School district" style="width:200px;display:inline-block;padding:1px 6px;font-size:13px"> · School year <input data-k="year" value="2026–27" style="width:90px;display:inline-block;padding:1px 6px;font-size:13px"></small></div><span class="conf">Confidential · FERPA</span></div>
 
+  <div class="start"><b>Start with the scores.</b> Enter the four ELPA21 levels in section 3 and the builder drafts the rest — lane, services, accommodations, a goal with strategies and evidence for every domain, the test-coordinator note and the review note. Everything it writes is marked and stays editable; what you type is never overwritten. <a href="#s3">Go to the levels ↓</a></div>
   <div class="sec"><h3>1 · Student <span class="badge auto" id="imm" hidden>Immigrant (Title III)</span><span class="badge auto" id="ltel" hidden>Long-term EL</span></h3>
     <div class="g4"><div><label class="f">Name</label><input data-k="name"></div><div><label class="f">Student ID (MSIS)</label><input data-k="id"></div><div><label class="f">Grade</label><select data-k="grade"><option value="">—</option><option>K</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div><div><label class="f">School</label><input data-k="school" placeholder="School"></div></div>
     <div class="g4" style="margin-top:6px"><div><label class="f">Home language <button type="button" class="tip" aria-label="What this means" data-tip="From the Home Language Survey. Any answer other than English on any HLS question is what triggered screening. Type or pick; the parent letter and the LSP both carry it.">i</button></label><input data-k="lang" list="dl-lang" placeholder="Spanish"></div><div><label class="f">Birth country <button type="button" class="tip" aria-label="What this means" data-tip="Used with the U.S. entry date to flag Title III immigrant status: born outside the U.S., ages 3–21, fewer than three full academic years in U.S. schools. Never ask about immigration status — birth country is enough.">i</button></label><input data-k="country" list="dl-country"></div><div><label class="f">First enrolled in U.S. schools</label><input data-k="usdate" type="date"></div><div><label class="f">Enrolled in this district</label><input data-k="distdate" type="date"></div></div>
@@ -139,10 +146,11 @@
     <div class="g4" style="margin-top:6px"><div><label class="f">Notification language <button type="button" class="tip" aria-label="What this means" data-tip="The language the letter was actually sent in. Translated letter, or oral interpretation logged with the date and interpreter.">i</button></label><input data-k="notiflang" list="dl-lang" placeholder="Spanish"></div><div><label class="f">Interpreter for the conference <button type="button" class="tip" aria-label="What this means" data-tip="Essential information must be understandable to the parent. A bilingual child or sibling is not an interpreter for a conference about the plan.">i</button></label><select data-k="interp"><option value="">—</option><option>Yes — in person</option><option>Yes — phone or video service</option><option>Bilingual staff member</option><option>Not needed — parent proficient in English</option><option>Offered and declined by parent</option><option>Not yet arranged</option></select></div><div><label class="f">Annual notification (continuing ELs) <button type="button" class="tip" aria-label="What this means" data-tip="Every continuing EL's family gets the notification again each year, within 30 days of the start of school. One letter per family, translated.">i</button></label><input data-k="annual" type="date"></div><div><label class="f">Parent response <button type="button" class="tip" aria-label="What this means" data-tip="Parents may decline the program, not EL status. A student whose parents declined is still an EL in MSIS, still takes the ELPT every year, still gets accommodations in content classes, and is still monitored.">i</button></label><select data-k="declined"><option value="">—</option><option>Accepted services</option><option>Declined services (school still obligated)</option><option>No response yet</option></select></div></div>
   </div>
 
-  <div class="sec"><h3>3 · English proficiency <small>most recent ELPT or screener, by domain</small><span class="badge" id="lane">Lane: —</span></h3>
+  <div class="sec" id="s3"><h3>3 · English proficiency <small>most recent ELPT or screener, by domain</small><span class="badge" id="lane">Lane: —</span></h3>
     <div class="lvrow"><div><b>Listening</b><input data-k="L" type="number" min="1" max="5" placeholder="–"></div><div><b>Speaking</b><input data-k="S" type="number" min="1" max="5" placeholder="–"></div><div><b>Reading</b><input data-k="R" type="number" min="1" max="5" placeholder="–"></div><div><b>Writing</b><input data-k="W" type="number" min="1" max="5" placeholder="–"></div></div>
     <div class="g4" style="margin-top:6px"><div><label class="f">Overall determination <button type="button" class="tip" aria-label="What this means" data-tip="ELPA21 reports one of three: Emerging (all domains 1–2), Progressing (mixed), Proficient (4 or 5 in every domain — the exit standard). Filled automatically from the four levels; override only if the score report says otherwise.">i</button></label><select data-k="overall"><option value="">auto</option><option>Emerging</option><option>Progressing</option><option>Proficient</option></select></div><div><label class="f">Focus domain this year <button type="button" class="tip" aria-label="What this means" data-tip="The lowest domain is the one most likely to keep the student from exiting — a student at 4-4-4-3 is one domain short. Filled automatically; change it if a tie or the student's situation says otherwise.">i</button></label><select data-k="focus"><option value="">auto</option><option>Listening</option><option>Speaking</option><option>Reading</option><option>Writing</option></select></div><div><label class="f">Test / date</label><input data-k="testdate" type="date"></div><div><label class="f">ELPT domain exemption <button type="button" class="tip" aria-label="What this means" data-tip="Every EL takes all four ELPT domains — including students whose parents declined services. The only exemption is a domain an IEP team has documented the student cannot access (for example, speaking for a nonverbal student). The LSP cannot grant one.">i</button></label><select data-k="exempt"><option>None — all four domains</option><option>Listening (IEP)</option><option>Speaking (IEP)</option><option>Reading (IEP)</option><option>Writing (IEP)</option></select></div></div>
     <label class="f" style="margin-top:8px">ELPT history <small style="text-transform:none;letter-spacing:0;font-weight:400">— every prior year the student has a score</small></label>
+    <div class="drafted" id="drafted" hidden><b>Drafted from these levels:</b> <span id="draftedwhat"></span> <button type="button" onclick="redraft()">Re-draft from levels</button></div>
     <table class="hist"><thead><tr><th>Year</th><th>L</th><th>S</th><th>R</th><th>W</th><th>Overall</th></tr></thead><tbody>
       <tr><td><input data-k="h1y" placeholder="2025–26"></td><td><input data-k="h1L"></td><td><input data-k="h1S"></td><td><input data-k="h1R"></td><td><input data-k="h1W"></td><td><input data-k="h1o"></td></tr>
       <tr><td><input data-k="h2y" placeholder="2024–25"></td><td><input data-k="h2L"></td><td><input data-k="h2S"></td><td><input data-k="h2R"></td><td><input data-k="h2W"></td><td><input data-k="h2o"></td></tr>
@@ -203,8 +211,8 @@ W:["Write name, date, labels and copied sentences accurately; complete forms; wr
 const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
 document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><span class="tb"><button type="button" data-g="${k}">Suggest from level</button><button type="button" data-bank="${k}" class="bk">Goal bank</button></span></div><div class="bank" id="bank${k}" hidden></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who <small style="text-transform:none;letter-spacing:0;font-weight:400">— what is done, and by whom</small></label><textarea data-k="s${k}" class="ev" placeholder="e.g., EL teacher: daily partner retell with frames; Biology co-teacher: frames posted; para: prompts before the student gives up"></textarea></div><div><label class="f">Evidence of progress <small style="text-transform:none;letter-spacing:0;font-weight:400">— instrument, how often, where kept, what counts</small></label><textarea data-k="e${k}" class="ev" placeholder="e.g., monthly 1-minute voice memo scored on the 3-point retell rubric, kept in the folder; progress is 1 → 2 → 3 across the semester"></textarea></div></div></div>`).join('');
 const F={};const fields=()=>[...document.querySelectorAll('[data-k]')];
-fields().forEach(i=>i.addEventListener('input',()=>{F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k)||i.dataset.k==='yrs')derive();compliance()}));
-document.addEventListener('change',e=>{if(e.target.matches('[data-c],select'))compliance()});
+fields().forEach(i=>i.addEventListener('input',e=>{if(e.isTrusted)delete i.dataset.auto;F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k)||i.dataset.k==='yrs')derive();compliance()}));
+document.addEventListener('change',e=>{if(e.target.matches('[data-c],select')){if(e.isTrusted)delete e.target.dataset.auto;compliance()}});
 function lv(){return {L:+F.L||0,S:+F.S||0,R:+F.R||0,W:+F.W||0}}
 /* ---- the compliance checklist: computed from the dates and fields above ---- */
 const days=(a,b)=>{if(!a||!b)return null;const d=(new Date(b)-new Date(a))/864e5;return isFinite(d)?Math.round(d):null};
@@ -251,10 +259,49 @@ function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.le
  const low=Object.entries(l).filter(x=>x[1]).sort((p,q)=>p[1]-q[1])[0];const fo=document.querySelector('[data-k="focus"]');if(low&&(!fo.value||fo.dataset.auto)){fo.value=names[low[0]];fo.dataset.auto='1';F.focus=fo.value}
  ['L','S','R','W'].forEach(k=>{document.getElementById('gl'+k).textContent=l[k]?'· Level '+l[k]:''});
  // suggest services + accommodations once, if nothing checked
- if(!document.querySelector('[data-c]:checked')){const pick=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c)c.checked=true});
+ if(!document.querySelector('[data-c]:checked')){const pick=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c){c.checked=true;c.dataset.auto='1'}});
   if(a<2.5)pick(['s0','s1','s3','i0','i1','i2','i3','i5','i6','i7','i8','i9','i11','a0','a1','a2','a3','a4','a5','a6','a8','a9','a10']);
   else if(a<4)pick(['s0','s1','s3','i0','i1','i2','i7','i10','i11','a0','a1','a2','a3','a8']);
   else pick(['s1','i0','i7','a0','a1','a2']);}
+ autofill(l,a,all);
+}
+
+/* ---- once the four levels are in, draft the rest of the plan ----
+   Only empty fields are written, and every one is marked data-auto so a
+   teacher's own words are never overwritten. "Re-draft from levels" clears
+   the auto-filled fields and writes them again. */
+const setIf=(k,val)=>{const el=document.querySelector(`[data-k="${k}"]`);if(!el||val===undefined||val==='')return false;if(el.value&&!el.dataset.auto)return false;el.value=val;el.dataset.auto='1';F[k]=val;return true};
+const check=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c&&!c.checked){c.checked=true;c.dataset.auto='1'}});
+function autofill(l,a,all){
+ const G=window.ELPA21_GOALS;const done=[];
+ /* goals, strategies and evidence: the first bank goal at each domain's level */
+ ['L','S','R','W'].forEach(k=>{if(!l[k]||!G||!G[k]||!G[k][l[k]])return;const g=G[k][l[k]][0];
+  const w=setIf('g'+k,g.g);setIf('s'+k,g.who);setIf('e'+k,g.ev);if(w)done.push(names[k]+' goal')});
+ /* program model from the band */
+ if(setIf('min',a<2.5?'450 — one 90-minute block daily':a<4?'250 — one 50-minute period daily':all&&Object.values(l).every(x=>x>=4)?'0 — monitoring only (former EL)':'250 — one 50-minute period daily'))done.push('minutes');
+ /* grading safeguards every plan carries */
+ check(['g0','g2','g4']);if(a<4)check(['g1','g3']);
+ /* notes for the test coordinator, from what is checked */
+ const acc=[...document.querySelectorAll('[data-c^="a"]:checked')].map(c=>AACC[+c.dataset.c.slice(1)]).filter(t=>!/^Classroom only/.test(t)).map(t=>t.split(' — ')[0]);
+ if(acc.length&&setIf('tnote',acc.join('; ')+'. Nothing in the primary language on the ELPT.'))done.push('DTC notes');
+ /* what continues if services are declined */
+ setIf('declnote','EL status and MSIS coding; annual ELPT in all four domains; classroom and testing accommodations in every content class; nine-weeks monitoring; annual parent notification.');
+ /* the review note that tells the next reader what this draft is */
+ const sc=['L','S','R','W'].map(k=>k+(l[k]||'–')).join(' ');
+ const lane=document.getElementById('lane').textContent.replace('Lane: ','');
+ const low=Object.entries(l).filter(x=>x[1]).sort((p,q)=>p[1]-q[1])[0];
+ let note=`ELPT ${sc} — ${F.overall||'—'} (${lane} lane). Focus domain: ${low?names[low[0]]:'—'}. Services, accommodations and one goal per domain drafted from the ELPA21 goal bank at these levels; edit to the student before signatures.`;
+ if(all&&Object.values(l).every(x=>x>=4))note+=' Meets the exit standard (4+ in every domain, same administration): prepare exit documentation, exit letter home, and move to Monitored Year 1 in MSIS after sign-off.';
+ else if(low&&Object.values(l).filter(x=>x>=4).length===3)note+=` One domain from exit — ${names[low[0]]} is next year's focus; consider summer or fall support in that domain.`;
+ if(setIf('rnotes',note))done.push('review note');
+ /* say what was drafted */
+ const bar=document.getElementById('drafted');if(bar){bar.hidden=false;document.getElementById('draftedwhat').textContent=done.length?done.join(', ')+' — plus services, accommodations and the grading safeguards.':'already drafted — your edits are kept.'}
+}
+function redraft(){
+ if(!confirm('Clear everything the builder drafted and draft it again from the levels? Fields you typed yourself are kept.'))return;
+ document.querySelectorAll('[data-k][data-auto]').forEach(el=>{if(!/^(overall|focus|exit|year)$/.test(el.dataset.k)){el.value='';delete el.dataset.auto;F[el.dataset.k]=''}});
+ document.querySelectorAll('[data-c][data-auto]').forEach(c=>{c.checked=false;delete c.dataset.auto});
+ derive();compliance();
 }
 /* ---- the ELPA21 goal bank ---- */
 function bank(k,level){
@@ -270,15 +317,15 @@ document.getElementById('goals').addEventListener('click',e=>{
  const tab=e.target.closest('.bank [data-lv]');if(tab){bank(tab.closest('.bank').id.slice(4),+tab.dataset.lv);return}
  const cl=e.target.closest('.bank [data-close]');if(cl){cl.closest('.bank').hidden=true;return}
  const use=e.target.closest('.bank [data-use]');if(use){const box=use.closest('.bank');const k=box.id.slice(4);const g=window.ELPA21_GOALS[k][+box.dataset.lv][+use.dataset.use];
-  const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=g.g;F['g'+k]=g.g;const ev=document.querySelector(`[data-k="e${k}"]`);if(ev&&!ev.value){ev.value=g.ev;F['e'+k]=g.ev}const st=document.querySelector(`[data-k="s${k}"]`);if(st&&!st.value){st.value=g.who;F['s'+k]=g.who}box.hidden=true;compliance();return}
+  const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=g.g;F['g'+k]=g.g;delete ta.dataset.auto;const ev=document.querySelector(`[data-k="e${k}"]`);if(ev&&(!ev.value||ev.dataset.auto)){ev.value=g.ev;F['e'+k]=g.ev;delete ev.dataset.auto}const st=document.querySelector(`[data-k="s${k}"]`);if(st&&(!st.value||st.dataset.auto)){st.value=g.who;F['s'+k]=g.who;delete st.dataset.auto}box.hidden=true;compliance();return}
 });
-document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value;compliance()});
+document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value;delete ta.dataset.auto;compliance()});
 function snapshot(){const o={f:{},c:{}};fields().forEach(i=>o.f[i.dataset.k]=i.value);document.querySelectorAll('[data-c]').forEach(c=>o.c[c.dataset.c]=c.checked);return o}
 function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i.value=o.f[i.dataset.k];F[i.dataset.k]=i.value}});document.querySelectorAll('[data-c]').forEach(c=>{if(o.c)c.checked=!!o.c[c.dataset.c]});derive();compliance()}
 document.getElementById('save').addEventListener('click',()=>{const o=snapshot();const b=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='LSP-'+((o.f.name||'student').replace(/\s+/g,'_'))+'-'+(o.f.year||'').replace('–','-')+'.json';a.click()});
 document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{restore(JSON.parse(r.result))}catch(x){alert('Not a saved LSP file.')}};r.readAsText(f)});
 document.getElementById('local').addEventListener('click',()=>{try{localStorage.setItem('lsp',JSON.stringify(snapshot()));alert('Kept on this device (one plan). Use “Save as file” for more.')}catch(e){}});
-document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4 or higher in each ELPT domain, same administration':'';delete i.dataset.auto});document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —';compliance()}});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4 or higher in each ELPT domain, same administration':'';delete i.dataset.auto;F[i.dataset.k]=i.value});document.querySelectorAll('[data-c]').forEach(c=>delete c.dataset.auto);const db=document.getElementById('drafted');if(db)db.hidden=true;document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —';compliance()}});
 /* a tip near the right edge opens leftward */
 document.addEventListener('mouseover',e=>{const t=e.target.closest('.tip');if(t)t.classList.toggle('r',t.getBoundingClientRect().left>window.innerWidth/2)});
 document.addEventListener('focusin',e=>{const t=e.target.closest('.tip');if(t)t.classList.toggle('r',t.getBoundingClientRect().left>window.innerWidth/2)});
