@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://radan55.github.io/everyteacher/sitemap.xml

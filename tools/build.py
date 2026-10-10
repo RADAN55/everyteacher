@@ -307,6 +307,28 @@ if old.exists():
     old.unlink()
     changed.append("featured.json (removed)")
 
+# A sitemap, because the home page is a front door now and no longer lists all
+# 57 titles for a crawler to follow. all.html is listed first after the root.
+SITE = "https://radan55.github.io/everyteacher/"
+pages = ["", "all.html"] + sorted(
+    f.name for f in ROOT.glob("*.html") if f.name not in {"index.html", "all.html"}
+)
+pages += sorted({r["href"] for r in C
+                 if not r["ext"] and r["href"].endswith("/")})
+prio = {"": "1.0", "all.html": "0.9"}
+sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+for u in pages:
+    sm.append(f"<url><loc>{SITE}{u}</loc>"
+              f"<lastmod>{TODAY.isoformat()}</lastmod>"
+              f"<priority>{prio.get(u, '0.7')}</priority></url>")
+sm.append("</urlset>")
+if write(ROOT / "sitemap.xml", "\n".join(sm) + "\n"):
+    changed.append(f"sitemap.xml ({len(pages)} urls)")
+if write(ROOT / "robots.txt",
+         f"User-agent: *\nAllow: /\nSitemap: {SITE}sitemap.xml\n"):
+    changed.append("robots.txt")
+
 # the deep "inside the pages" index, rebuilt last so it sees today's HTML
 import subprocess  # noqa: E402
 
