@@ -27,6 +27,7 @@ import questions  # noqa: E402
 import voices  # noqa: E402
 import play  # noqa: E402
 import bysubject  # noqa: E402
+import featured  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -249,6 +250,31 @@ def play_band():
   <p class="playk">Try one right now</p>
   <div class="pgrid">{cards}</div>
 </div>'''
+
+
+def featured_block():
+    by = {r["href"]: r for r in C}
+    for h in [featured.LEAD[0]] + [m[0] for m in featured.MORE]:
+        if h not in by:
+            sys.exit(f"featured: {h} is not in the catalog.")
+    if len(featured.MORE) != 3:
+        sys.exit("featured: MORE must hold exactly three.")
+    L = by[featured.LEAD[0]]
+    lead = (f'<a class="f-lead" href="{e(L["href"])}"{ext_attr(L["href"])}>'
+            + (f'<img src="{e(L["thumb"])}" alt="" loading="lazy">' if L["thumb"] else "")
+            + f'<div class="f-body"><span class="f-tag">{e(featured.LEAD[2])}</span>'
+            f'<b>{e(L["title"])}</b><p>{e(featured.LEAD[1])}</p>'
+            f'<small>{e(L["fmt"])} · {e(L["size"])} · free</small></div></a>')
+    more = "".join(
+        f'<a class="f-card" href="{e(by[h]["href"])}"{ext_attr(h)}>'
+        + (f'<img src="{e(by[h]["thumb"])}" alt="" loading="lazy">' if by[h]["thumb"] else "")
+        + f'<span><b>{e(by[h]["title"])}</b><p>{e(why)}</p>'
+          f'<small>{e(by[h]["fmt"])} · {e(by[h]["size"])}</small></span></a>'
+        for h, why in featured.MORE
+    )
+    return ('<div class="wrap">\n<h2>Featured</h2>\n'
+            '<p class="deck">Four worth opening first — picked by hand, not by date.</p>\n'
+            f'<div class="feat">{lead}<div class="f-more">{more}</div></div>\n</div>')
 
 
 def guess_game():
@@ -497,6 +523,7 @@ t = p.read_text(encoding="utf-8")
 t = region(t, "now", now_showing(), p)
 t = region(t, "doors", doors(), p)
 t = region(t, "play", play_band(), p)
+t = region(t, "featured", featured_block(), p)
 t = region(t, "game", guess_game(), p)
 t = region(t, "week", week(), p)
 t = region(t, "qa", qa(), p)
