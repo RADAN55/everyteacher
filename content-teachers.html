@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Content Teachers · EL Publishing</title>
+<meta name="description" content="You teach biology, not English. Three questions every content teacher asks about English learners, each answered with a free tool you can finish in a planning period.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-grey:#FBFBFE;--wash-red-2:#FFF8E6;--wash-grey-3:#FFFBF0;--ink-red-3:#9B2C2C;--ink-blue-3:#2A2F45;--ink-blue-5:#141A44;--ink-green:#1F6F3A;--ink-red-4:#8A5A00;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:900px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,56px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:58ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  main{padding:28px 0 40px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:28px;color:var(--navy);margin:34px 0 6px;letter-spacing:-.01em}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 6px}
+  .pick a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 14px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+  .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
+  .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14.5px;color:var(--muted)}
+  .priv{background:var(--wash-red-2);border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
+  .priv b{color:var(--navy)}
+
+  .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
+  .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
+  .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .asst p{margin:0 0 10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+  .box{background:var(--mist);border-left:3px solid var(--gold);padding:10px 14px;font-size:15px}
+  .box b{color:var(--navy);display:block;margin-bottom:4px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+  .box ul{margin:0;padding-left:18px}
+  .box li{margin:2px 0}
+  .promptwrap{margin:14px 0 6px;border:1px solid var(--rule);background:var(--wash-grey)}
+  .pbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--rule);background:var(--paper)}
+  .pbar span{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
+  .btn.done{background:var(--ok);color:#fff}
+  pre.prompt{margin:0;padding:16px 18px;white-space:pre-wrap;word-wrap:break-word;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.6px;line-height:1.55;color:var(--ink-blue-3);max-height:380px;overflow:auto}
+  .tip{background:var(--mist);border-left:3px solid var(--navy);padding:10px 14px;font-size:15px;margin:12px 0 0}
+  .tip b{color:var(--navy)}
+  details{margin:12px 0 0;border:1px solid var(--rule);background:var(--paper)}
+  summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);font-size:15px}
+  details .in{padding:4px 18px 16px;font-size:15px}
+  details table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  details th,details td{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+  details th{background:var(--mist);color:var(--navy)}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
+  .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
+  .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
+  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
+  .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .note ul{margin:0;padding-left:20px}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.steps,.lanes{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+  @media (max-width:520px){.pick,.steps,.lanes{grid-template-columns:1fr}.asst .top{grid-template-columns:1fr}.asst .n{font-size:34px}.asst{padding:18px 16px}}
+  @media print{header::before{display:none}.btns,.pick{display:none}pre.prompt{max-height:none}.asst{break-inside:avoid}}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:var(--paper)}
+  textarea{min-height:90px;resize:vertical}
+  .chk{display:grid;gap:5px;font-size:14.5px}.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}.chk input{margin-top:4px;accent-color:var(--navy)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}.tabs button{border:1.5px solid var(--navy);background:var(--paper);color:var(--navy);border-radius:999px;padding:8px 16px;font:600 14px Inter,sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:var(--navy-bg);color:#fff}
+  table.t{border-collapse:collapse;width:100%;font-size:14px;background:var(--paper)}table.t th,table.t td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}table.t th{background:var(--mist);color:var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .sheet{background:var(--paper);border:1px solid var(--rule);padding:22px 26px;margin-top:14px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
+  .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .entry{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
+  .entry h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0}.entry .by{font-size:13px;color:var(--muted);margin:4px 0 8px}.entry p{font-size:15px;margin:0 0 8px}
+  .entry details{margin:6px 0 0}.entry pre{white-space:pre-wrap;font:13px/1.5 Menlo,Consolas,monospace;background:var(--mist);padding:12px;margin:0;max-height:360px;overflow:auto}
+  @media print{header,footer,.noprint,#elg,#elg-btn{display:none!important}body{background:var(--paper)}.sheet{border:0;padding:0}main{padding:0}}
+</style>
+<link rel="stylesheet" href="theme.css">
+
+<!--B:og-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/content-teachers.html">
+<meta property="og:title" content="For Content Teachers · EL Publishing">
+<meta property="og:description" content="You teach biology, not English. Three questions every content teacher asks about English learners, each answered with a free tool you can finish in a planning period.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/content-teachers.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR CONTENT TEACHERS</p>
+    <h1>You teach biology, not English. <em>This is enough.</em></h1>
+    <p class="tag">Three questions every content teacher asks about the English learners in their room — what do I do Monday, how do I grade them, am I allowed to change the test — each one answered with something free you can finish in a planning period.</p>
+    <div class="chips"><span>Science</span><span>Math</span><span>History</span><span>ELA</span><span>CTE</span><span>Electives</span><span>Special education</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+<style>
+  .first{background:var(--navy-bg);color:#fff;padding:26px 28px;margin-top:22px;position:relative;overflow:hidden}
+  .first::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .first>*{position:relative}
+  .first .k{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .first h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;margin:8px 0 10px;color:#fff}
+  .first p{color:#C9CEEA;max-width:62ch;margin:0;font-size:16px;line-height:1.55}
+  .first a.go{display:inline-block;margin-top:16px;background:var(--gold);color:var(--navy-dk);font-weight:700;padding:11px 22px;border-radius:999px;text-decoration:none}
+  .qq .num{font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--gold);line-height:1;font-weight:700}
+  .qq h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;color:var(--navy);line-height:1.2;margin:8px 0 8px}
+  .qq p{font-size:14.6px;color:var(--muted);line-height:1.55;margin:0}
+  .qq .lk{margin-top:auto;padding-top:13px;display:flex;flex-direction:column;gap:7px}
+  .qq .lk a{font-size:13.8px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold-lt);align-self:flex-start}
+  .subj{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+  .subj div{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--gold);padding:14px 17px}
+  .subj b{display:block;font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy);margin-bottom:4px}
+  .subj span{font-size:14.3px;color:var(--muted);line-height:1.5}
+  .ssheet{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:20px 22px;margin-top:8px}
+  .ssheet .ic{width:58px;height:58px;flex:none;display:grid;place-items:center;background:var(--mist);border:1px solid var(--rule);font-size:27px}
+  .ssheet b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy)}
+  .ssheet p{margin:5px 0 0;font-size:14.5px;color:var(--muted);line-height:1.5}
+  .ssheet a{display:inline-block;margin-top:11px;font-weight:700;font-size:14px;color:var(--navy-dk);background:var(--gold);padding:9px 18px;border-radius:999px;text-decoration:none}
+  @media (max-width:860px){.qs{grid-template-columns:1fr}.subj{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}}
+  @media (max-width:620px){.tools{grid-template-columns:1fr}.ssheet{grid-template-columns:1fr}}
+</style>
+
+<div class="first">
+  <p class="k">Do this one first</p>
+  <h2>Twelve minutes as an English learner</h2>
+  <p>Take a real Biology, Algebra or U.S. History lesson in a language you do not speak. Then
+     take it again with the supports in place — same lesson, same clock. Nothing else on this
+     page will mean as much until you have done it, and it is the fastest way to get a whole
+     department to stop arguing about whether any of this is necessary.</p>
+  <a class="go" href="sheltered.html">▶ &nbsp;Start the simulation</a>
+</div>
+
+<h2 class="sec">The three questions</h2>
+<p class="deck">Every content teacher asks these, usually in this order.</p>
+<div class="qs">
+  <div class="qq">
+    <span class="num">1</span>
+    <h3>There's an EL in my third block on Monday. What do I actually do?</h3>
+    <p>Three moves, about two minutes a lesson: post a language goal beside your content
+       objective, hand over one sentence frame, and let them talk before they write. That is
+       most of the gap, and none of it costs you content time.</p>
+    <div class="lk">
+      <a href="sentence-frames.html">150 sentence frames, by level →</a>
+      <a href="el-assistants.html">Paste your lesson, get four lanes back →</a>
+      <a href="first-100-words.html">A newcomer arrived today →</a>
+    </div>
+  </div>
+  <div class="qq">
+    <span class="num">2</span>
+    <h3>How do I grade them without either lying or failing them?</h3>
+    <p>Grade the content. Did the student show the concept — in words, a diagram, a label, or
+       out loud? Give language feedback separately, on one pattern at a time. A correct science
+       answer that loses points for grammar stops telling the truth about science.</p>
+    <div class="lk">
+      <a href="can-do-checklist.html">What a Level 2 can actually do →</a>
+      <a href="coteaching-plan.html">Content and language objectives on one page →</a>
+    </div>
+  </div>
+  <div class="qq">
+    <span class="num">3</span>
+    <h3>Am I allowed to change the test?</h3>
+    <p>You are required to provide what is written in the student's Language Service Plan —
+       read-aloud, extra time, a word-to-word glossary. Those are not favours. What you may do
+       on a state test is narrower than what you may do in your own classroom, and the cards
+       below say which is which.</p>
+    <div class="lk">
+      <a href="accommodations-cards.html">Eighteen accommodations, MAAP-checked →</a>
+      <a href="student-profile.html">One page about the student for your folder →</a>
+    </div>
+  </div>
+</div>
+
+<h2 class="sec">A spreadsheet you can keep open</h2>
+<div class="ssheet">
+  <span class="ic" aria-hidden="true">▦</span>
+  <div>
+    <b>EL Resources for Content-Area Teachers</b>
+    <p>Twenty-one resources sorted by when you need them — planning a lesson, in the room,
+       assessing fairly — with what each one does for you, how long it takes and a link
+       straight to it. Filter it, sort it, make your own copy, hand it to your department.</p>
+    <a href="https://docs.google.com/spreadsheets/d/1XjPaU5somQVyoQiJpzFeCGk9icNSxYEGPZVvPhMOQ98/edit" target="_blank" rel="noopener">Open the spreadsheet →</a>
+  </div>
+</div>
+
+<h2 class="sec">By subject</h2>
+<p class="deck">The same moves land differently depending on what you teach.</p>
+<div class="subj">
+  <div><b>Science</b><span>Labs are the gift here — the procedure carries the meaning when the
+    words do not. Pre-teach three words, not thirty, and let the diagram be an acceptable
+    answer. EL Bridge will build a four-lane version from the Mississippi standard.</span></div>
+  <div><b>Math</b><span>The arithmetic is rarely the problem; the word problem is. Teach the
+    language of the question — <i>best</i>, <i>most likely</i>, <i>except</i> — and let students
+    show the work before they explain it in a sentence.</span></div>
+  <div><b>History</b><span>The highest background-knowledge load in the building. Two minutes
+    with one image before the reading fixes more than a vocabulary list does, and your students
+    have their own countries' migrations and elections to connect it to.</span></div>
+  <div><b>ELA</b><span>You are already teaching language, so the move is naming it: separate
+    what is a reading problem from what is an English problem, and keep the grade-level text
+    while changing the path to it.</span></div>
+</div>
+
+<h2 class="sec">Everything for the content classroom</h2>
+<p class="deck">Fifteen resources built for a teacher who did not train for this.</p>
+<div class="tools">
+  <a href="el-bridge.html"><span class="k">Builder</span><b>EL Bridge Mississippi</b><small>A standard in; a four-lane lesson, leveled text or MAAP items out.</small></a>
+  <a href="el-assistants.html"><span class="k">AI prompts</span><b>EL Assistants</b><small>Four prompts to paste: scaffold, level a text, fix a quiz, write home.</small></a>
+  <a href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener"><span class="k">Field guide</span><b>The EL Field Guide</b><small>The whole obligation in plain language, once.</small></a>
+  <a href="spoken-spanish-english.html"><span class="k">PDF guide</span><b>Spoken Spanish &amp; Spoken English</b><small>What you will hear, and a useful reply for each.</small></a>
+  <a href="sub-para.html"><span class="k">Printable</span><b>Substitute Card &amp; Para Guide</b><small>One page for the sub, one for the para. No names.</small></a>
+  <a href="newcomer-k5.html"><span class="k">Kit</span><b>Elementary Newcomer Kit</b><small>K–5: the first ten days, with printables.</small></a>
+  <a href="sentence-lab.html"><span class="k">PDF packet</span><b>Sentence Lab</b><small>Sixteen grammar features in real school scenes.</small></a>
+  <a href="https://radan55.github.io/everyteacherisalanguageteacher/" target="_blank" rel="noopener"><span class="k">PD module</span><b>Every Teacher Is a Language Teacher</b><small>45–60 minutes, no facilitator, fits a department meeting.</small></a>
+  <a href="tech-radar.html"><span class="k">Radar</span><b>EL Tech Radar</b><small>What is new and free this month, by lane.</small></a>
+  <a href="language-bridge-2026-09.html"><span class="k">Bulletin</span><b>The Language Bridge</b><small>One page a month: five findings, five moves.</small></a>
+  <a href="sample-lesson.html"><span class="k">Sample lesson</span><b>One Text. Four Lanes.</b><small>A 90-minute block taken apart, decision by decision.</small></a>
+  <a href="showcase.html"><span class="k">Gallery</span><b>Showcase</b><small>What other Mississippi teachers built and shared.</small></a>
+</div>
+
+<div class="grid2" style="margin-top:22px">
+  <div class="card"><span class="k">Why this page exists</span><h3>Most ELs spend most of the day with you, not with me</h3><p style="font-size:15px">An English learner at this school gets one period with an EL specialist and six with content teachers. Whatever happens to their English happens mostly in your room, which is unfair to you and true anyway. None of this asks you to become a language teacher — it asks for about two minutes a lesson.</p></div>
+  <div class="card"><span class="k">What it costs</span><h3>Nothing, and there is nothing to sign up for</h3><p style="font-size:15px">Every link on this page opens in a browser and prints. No account, no login, no trial. Copy it, adapt the wording for your school, put it on your own letterhead — you do not need permission and you do not owe attribution. <a href="all.html">All 57 resources →</a></p></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

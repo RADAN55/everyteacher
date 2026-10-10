@@ -283,5 +283,10 @@
   "long": "The teacher edition: read-aloud scripts, question sets, proficiency look-fors at Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge, answer keys and a two-axis scoring guide.",
   "thumb": "",
   "who": "Teacher edition"
+ },
+ "content-teachers.html": {
+  "long": "The front door for a teacher who teaches biology, math or history and has English learners in the room. Three questions — what do I do Monday, how do I grade them, am I allowed to change the test — each answered with a free tool, plus what the moves look like by subject, a spreadsheet of the resources sorted by when you need them, and the twelve things built for a content classroom.",
+  "thumb": "",
+  "who": "Content teachers"
  }
 }

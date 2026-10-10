@@ -67,6 +67,8 @@ R = [
  ("https://radan55.github.io/elstudentmagazine01/", "Many Voices", "students", "Magazine", "Issue 1",
   "A magazine written for multilingual high-school students.", False),
 
+ ("content-teachers.html", "For Content Teachers", "classroom", "Start here", "3 questions",
+  "Three questions every content teacher asks, each answered with a free tool.", True),
  ("sheltered.html", "Sheltered: 12 Minutes as an English Learner", "classroom", "Simulation", "12 minutes",
   "Sit a real lesson in a language you don't speak. Then sit it again with supports.", True),
  ("el-assistants.html", "EL Assistants for Content Teachers", "classroom", "AI prompts", "4 assistants",
@@ -76,7 +78,7 @@ R = [
  ("https://radan55.github.io/el-field-guide/", "The EL Field Guide", "classroom", "Field guide", "Web guide",
   "The whole obligation in plain language, for staff who never trained for it.", True),
  ("sentence-frames.html", "Sentence-Frame Bank", "classroom", "Bank", "150 frames",
-  "150 frames by function and level, each with a Spanish gloss. Copy into a slide.", True),
+  "150 frames by function and level, each with a Spanish gloss. Copy into a slide.", False),
  ("spoken-spanish-english.html", "Spoken Spanish & Spoken English", "classroom", "PDF guide", "23 pages",
   "What you will hear from a Spanish speaker, and a useful reply for each.", False),
  ("accommodations-cards.html", "EL Accommodations Quick Cards", "classroom", "Quick cards", "18 cards",
