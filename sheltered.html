@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sheltered · 12 Minutes as an English Learner · EL Publishing</title>
+<meta name="description" content="A twelve-minute simulation for general education teachers and administrators. Take a real content lesson in a language you do not speak — once with nothing, once with four-lane scaffolds — and watch your own two scores sit side by side. Free, no account, built for faculty PD.">
+<meta property="og:title" content="Sheltered · 12 Minutes as an English Learner">
+<meta property="og:description" content="Take a real Biology, Algebra or U.S. History lesson in a language you do not speak. Twice. The only thing that changes the second time is the scaffolding — and your score.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2761;--navy-dk:#0E1333;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-lt:#E8F5ED;--bad:#B3261E;--bad-lt:#FDECEA;--teal:#0E7C86;--teal-lt:#E6F2F3}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.015em;line-height:1.1;margin:0}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px}
+.hide{display:none!important}
+mark{background:rgba(201,162,39,.32);color:inherit;padding:1px 2px;border-radius:3px}
+
+/* cinematic stage */
+.stage{position:fixed;inset:0;background:var(--navy-dk);color:#fff;z-index:80;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .45s}
+.stage.on{opacity:1;pointer-events:auto}
+.stage::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.07) 0 2px,transparent 2px 26px)}
+.stage .in{position:relative;padding:30px;max-width:600px}
+.stage .k{font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:14px}
+.stage h2{font-size:clamp(34px,9vw,62px);color:#fff;margin-bottom:12px}
+.stage h2 em{font-style:italic;color:var(--gold)}
+.stage p{color:#AEB6E0;font-size:17px;margin:0}
+
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
+.hb{max-width:780px;margin:0 auto;padding:11px 20px;display:flex;align-items:center;gap:14px;min-height:58px}
+.hb .t{flex:1;min-width:0}
+.hb .t b{display:block;font-family:Fraunces,Georgia,serif;font-size:17px}
+.hb .t small{display:block;font-size:12px;color:#A9B2DC}
+.ring{position:relative;width:46px;height:46px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-style:normal;font-variant-numeric:tabular-nums}
+.ring.warn i{color:#FFB4AE}
+
+main{padding:26px 0 60px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:20px 22px;margin:0 0 14px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:800;border:0;border-radius:999px;padding:15px 30px;font-size:17px;text-align:center;text-decoration:none}
+.btn:disabled{opacity:.4}
+.btn.block{display:block;width:100%}
+.btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn.dark{background:var(--navy);color:#fff}
+.btn.sm{padding:9px 18px;font-size:14.5px}
+.k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--gold);margin:0}
+.k.t{color:var(--teal)}
+.muted{color:var(--muted)}
+.tiny{font-size:13.5px}
+.sp{margin-top:14px}
+.lead{font-size:19px;line-height:1.55}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;margin-bottom:20px}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 26px)}
+.hero .in{position:relative;max-width:780px;margin:0 auto;padding:46px 20px 40px}
+.hero .badge{display:inline-block;border:1px solid rgba(235,217,160,.55);color:var(--gold-lt);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;padding:5px 13px;border-radius:999px;font-weight:800;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,9vw,66px);font-weight:900;margin-bottom:10px}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:600}
+.hero p{color:#C2CAEE;font-size:18.5px;max-width:52ch;margin:0}
+
+/* lesson choice */
+.pick{display:grid;gap:12px}
+.lcard{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);border-radius:14px;padding:17px 19px;width:100%;text-align:left;display:flex;gap:15px;align-items:flex-start}
+.lcard .ic{font-size:34px;flex:none}
+.lcard b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;color:var(--navy)}
+.lcard .sub{color:var(--muted);font-size:14px;margin:1px 0 7px}
+.lcard .lg{display:inline-block;background:var(--navy);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 12px}
+.lcard p{margin:8px 0 0;font-size:14.5px;color:var(--muted);line-height:1.5}
+
+/* lesson text */
+.lesson{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:20px 22px;font-size:19px;line-height:1.85;margin-bottom:14px}
+.lesson[dir=rtl]{text-align:right;font-size:21px}
+.lesson p{margin:0 0 12px}
+.lesson p:last-child{margin:0}
+.sent{display:flex;gap:10px;align-items:flex-start;margin-bottom:11px}
+.lesson[dir=rtl] .sent{flex-direction:row-reverse}
+.sent .pl{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid var(--teal);background:var(--teal-lt);color:var(--teal);font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+.sent .pl.on{background:var(--teal);color:#fff}
+.sent .tx{flex:1}
+
+.panel{background:var(--teal-lt);border:1px solid #CBE2E4;border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.panel .k{color:var(--teal)}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.gl div{background:#fff;border-radius:10px;padding:9px 12px;font-size:14.5px;line-height:1.4}
+.gl b{display:block;font-size:16px;color:var(--navy)}
+.gl span{color:var(--muted)}
+@media (max-width:560px){.gl{grid-template-columns:1fr}}
+.vis{margin-top:10px;background:#fff;border-radius:10px;padding:12px 14px}
+.vrow{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.vrow:last-child{border-bottom:0}
+.vrow .vg{font-size:20px;white-space:nowrap}
+.vrow .vn{color:var(--muted);font-size:13.5px}
+@media (max-width:560px){.vrow{grid-template-columns:1fr;gap:3px;text-align:left}}
+
+/* quiz */
+.q{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+.q .n{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.q .stem{font-size:19px;font-weight:600;color:var(--navy);margin:5px 0 4px;line-height:1.45}
+.q[dir=rtl] .stem,.q[dir=rtl] .opts{text-align:right}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.bank span{background:var(--gold-lt);color:var(--navy-dk);border-radius:999px;padding:4px 12px;font-size:13.5px;font-weight:600}
+.opts{display:grid;gap:7px;margin-top:10px}
+.opt{background:#fff;border:2px solid var(--rule);border-radius:11px;padding:11px 15px;text-align:left;font-size:17px;width:100%;line-height:1.4}
+.opt.sel{border-color:var(--navy);background:#F2F4FF}
+.opt.good{border-color:var(--ok);background:var(--ok-lt)}
+.opt.bad{border-color:var(--bad);background:var(--bad-lt)}
+
+/* score */
+.scorebig{text-align:center;padding:10px 0}
+.scorebig .num{font-family:Fraunces,Georgia,serif;font-size:76px;font-weight:900;color:var(--navy);line-height:1}
+.scorebig .den{font-size:19px;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin:4px 0 0}
+.vcol{background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--rule);border-radius:14px;padding:16px 10px;text-align:center}
+.vcol.r1{border-top-color:#9AA0B8}
+.vcol.r2{border-top-color:var(--ok)}
+.vcol .lab{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.vcol .num{font-family:Fraunces,Georgia,serif;font-size:50px;font-weight:900;color:var(--navy);line-height:1.05}
+.vcol .pct{font-size:13.5px;color:var(--muted)}
+.vs .arr{font-size:26px;color:var(--gold)}
+.delta{text-align:center;font-size:19px;font-weight:700;color:var(--ok);margin-top:12px}
+.delta.flat{color:var(--muted)}
+
+.sup{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--rule)}
+.sup:last-child{border-bottom:0}
+.sup .dot{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ok-lt);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;margin-top:2px}
+.sup b{display:block;font-size:16.5px;color:var(--navy)}
+.sup .lane{display:inline-block;background:var(--mist);color:var(--muted);font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;margin:3px 0 5px}
+.sup p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
+
+.reveal{background:var(--paper);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.rv{padding:13px 17px;border-bottom:1px solid var(--rule)}
+.rv:last-child{border-bottom:0}
+.rv .orig{font-size:16.5px;color:var(--muted);margin-bottom:4px}
+.rv .orig[dir=rtl]{text-align:right}
+.rv .trn{font-size:17px;color:var(--ink);font-weight:600}
+
+.pd{background:var(--navy);color:#fff;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.pd .k{color:var(--gold)}
+.pd h3{color:#fff;font-size:21px;margin:5px 0 8px}
+.pd p,.pd li{color:#C2CAEE;font-size:15px}
+.pd ol{margin:8px 0 0;padding-left:20px}
+.pd li{margin-bottom:6px}
+.pd b{color:#fff}
+
+.warnbox{background:#FFF8E6;border:1px solid #EBD9A0;border-left:6px solid var(--gold);border-radius:12px;padding:14px 18px;font-size:15px;margin-bottom:14px}
+.warnbox b{color:var(--navy)}
+footer{background:var(--navy-dk);color:#9AA3CC;font-size:13.5px;padding:26px 0;margin-top:30px}
+footer a{color:var(--gold-lt)}
+footer b{color:#fff;display:block;font-size:15px}
+#certsheet{display:none}
+@media print{
+  body{background:#fff}
+  header,main,footer,#elg,#elg-btn,.stage{display:none!important}
+  #certsheet{display:block!important}
+  .cbox{border:9px solid #1E2761;padding:52px 46px;text-align:center;font-family:Fraunces,Georgia,serif}
+  .cbox .cl{font-family:Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:#C9A227;font-weight:800}
+  .cbox h1{font-size:36px;margin:12px 0 20px;color:#1E2761}
+  .cbox .nm{font-size:32px;border-bottom:2px solid #1E2761;display:inline-block;padding:0 36px 6px;margin-bottom:18px}
+  .cbox p{font-family:Inter,sans-serif;font-size:15px;color:#333;line-height:1.75}
+  .cbox .note{font-size:11.5px;color:#666;margin-top:24px}
+}
+#elg-btn{bottom:22px!important}
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage"><div class="in">
+  <p class="k" id="stK"></p><h2 id="stH"></h2><p id="stP"></p>
+</div></div>
+
+<header><div class="hb">
+  <button class="btn ghost sm hide" id="back" style="border-color:rgba(235,217,160,.55);color:var(--gold-lt)">←</button>
+  <div class="t"><b id="hT">Sheltered</b><small id="hS">12 minutes as an English learner</small></div>
+  <div class="ring hide" id="ring">
+    <svg width="46" height="46"><circle cx="23" cy="23" r="19" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="4"></circle>
+    <circle id="rc" cx="23" cy="23" r="19" fill="none" stroke="#C9A227" stroke-width="4" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="0"></circle></svg>
+    <i id="rt">—</i>
+  </div>
+</div></header>
+
+<main><div class="wrap" id="view"></div></main>
+
+<footer><div class="wrap">
+  <b>Richard A. Daniel, M.Ed.</b>
+  ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+</div></footer>
+
+<div id="certsheet"><div class="cbox">
+  <div class="cl">EL Publishing · Sheltered</div>
+  <h1>12 Minutes as an English Learner</h1>
+  <div class="nm" id="cNm">&nbsp;</div>
+  <p id="cBody"></p>
+  <p class="note" id="cNote"></p>
+</div></div>
+
+<script>
+/* Sheltered — 12 Minutes as an English Learner
+   Three real content lessons, each delivered in one language, twice:
+   once with nothing, once with the four-lane supports. Interface is English
+   throughout — the user is a teacher. Only the lesson is in another language.
+
+   TRANSLATION NOTE: Spanish verified. Vietnamese and Arabic are best-effort
+   and should be checked by a native speaker before wide release.
+*/
+
+var LESSONS = [
+
+/* ========== 1. BIOLOGY · SPANISH ========== */
+{
+ id:'bio', subject:"Biology I", topic:"Osmosis", grade:"Grade 9–10",
+ lang:{code:'es', name:"Spanish", native:"Español", tts:'es-MX', rtl:false, flag:'🇲🇽'},
+ why:"You almost certainly know what osmosis is. That is the point — when you miss these questions, it will not be because you don't know the science.",
+ icon:'🧫',
+ lecture:[
+  {x:"La ósmosis es el movimiento neto de moléculas de agua a través de una membrana semipermeable.",
+   en:"Osmosis is the net movement of water molecules through a semipermeable membrane."},
+  {x:"El agua se desplaza desde una región de menor concentración de soluto hacia una región de mayor concentración de soluto.",
+   en:"Water moves from a region of lower solute concentration toward a region of higher solute concentration."},
+  {x:"Cuando una célula se coloca en una solución hipotónica, el agua entra en la célula y la célula se hincha.",
+   en:"When a cell is placed in a hypotonic solution, water enters the cell and the cell swells."},
+  {x:"En una solución hipertónica, el agua sale de la célula y la célula se encoge.",
+   en:"In a hypertonic solution, water leaves the cell and the cell shrinks."},
+  {x:"En una solución isotónica, no hay movimiento neto y la célula mantiene su tamaño.",
+   en:"In an isotonic solution, there is no net movement and the cell keeps its size."}
+ ],
+ glossary:[
+  {t:"la ósmosis", e:"osmosis", i:'💧'},
+  {t:"la membrana", e:"membrane — the barrier water crosses", i:'🧱'},
+  {t:"el soluto", e:"solute — what is dissolved in the water", i:'🧂'},
+  {t:"hipotónica", e:"hypotonic — less solute outside the cell", i:'🎈'},
+  {t:"hipertónica", e:"hypertonic — more solute outside the cell", i:'🫗'},
+  {t:"se hincha / se encoge", e:"swells / shrinks", i:'↔️'}
+ ],
+ signalLabel:"Cognates — words that look like English",
+ signals:["ósmosis","membrana","semipermeable","concentración","solución","célula","hipotónica","hipertónica","isotónica","movimiento","región","moléculas"],
+ visual:{
+  caption:"Water crosses the membrane toward the side with more solute.",
+  rows:[
+   {l:"Hypotonic  ·  less solute outside", g:'💧💧💧 ➡️ 🔵', n:"water in — cell swells 🎈"},
+   {l:"Hypertonic  ·  more solute outside", g:'🔵 ➡️ 💧💧💧', n:"water out — cell shrinks 🫗"},
+   {l:"Isotonic  ·  equal", g:'💧 ↔️ 🔵', n:"no net movement — size holds"}
+  ]},
+ formA:[
+  {q:"¿Qué se mueve durante la ósmosis?", o:["El soluto","El agua","La membrana","La célula entera"], a:1},
+  {q:"El agua se desplaza hacia una región de…", o:["mayor concentración de soluto","menor concentración de soluto","mayor temperatura","menor presión"], a:0},
+  {q:"En una solución hipotónica, la célula…", o:["se encoge","se divide","se hincha","no cambia"], a:2},
+  {q:"En una solución hipertónica, el agua…", o:["entra en la célula","sale de la célula","se congela","forma soluto"], a:1},
+  {q:"En una solución isotónica, la célula…", o:["se hincha","se rompe","se encoge","mantiene su tamaño"], a:3}
+ ],
+ formB:[
+  {q:"¿A través de qué pasa el agua?", o:["El soluto","La membrana semipermeable","El núcleo","La pared"], a:1,
+   bank:["membrana","soluto","agua"]},
+  {q:"¿Qué tipo de solución hace que la célula se hinche?", o:["hipertónica","isotónica","hipotónica","saturada"], a:2,
+   bank:["hipotónica = menos soluto afuera","hipertónica = más soluto afuera"]},
+  {q:"¿Qué tipo de solución hace que la célula se encoja?", o:["hipotónica","hipertónica","isotónica","neutra"], a:1,
+   bank:["se encoge = shrinks","se hincha = swells"]},
+  {q:"Si no hay movimiento neto de agua, la solución es…", o:["hipotónica","hipertónica","isotónica","diluida"], a:2,
+   bank:["iso- = igual"]},
+  {q:"La ósmosis mueve el agua de menor a mayor concentración de…", o:["soluto","oxígeno","calor","luz"], a:0,
+   bank:["soluto = solute"]}
+ ],
+ frame:"El agua se mueve ______ de la célula porque la solución es ______."
+},
+
+/* ========== 2. ALGEBRA I · VIETNAMESE ========== */
+{
+ id:'alg', subject:"Algebra I", topic:"Solving two-step equations", grade:"Grade 8–9",
+ lang:{code:'vi', name:"Vietnamese", native:"Tiếng Việt", tts:'vi-VN', rtl:false, flag:'🇻🇳'},
+ why:"The math here is below grade level for you. Watch what the numbers and symbols do for you in round two — that is a scaffold doing its job.",
+ icon:'🔢',
+ lecture:[
+  {x:"Để giải phương trình hai bước, em làm ngược lại thứ tự phép tính.",
+   en:"To solve a two-step equation, you undo the order of operations."},
+  {x:"Trước tiên, em cộng hoặc trừ để loại bỏ số hạng tự do ở cùng một vế với biến.",
+   en:"First, you add or subtract to remove the constant term on the same side as the variable."},
+  {x:"Sau đó, em nhân hoặc chia để loại bỏ hệ số của biến.",
+   en:"Then you multiply or divide to remove the coefficient of the variable."},
+  {x:"Em phải làm cùng một phép tính ở cả hai vế để giữ cho phương trình cân bằng.",
+   en:"You must do the same operation on both sides to keep the equation balanced."},
+  {x:"Cuối cùng, em thay giá trị tìm được vào phương trình ban đầu để kiểm tra.",
+   en:"Finally, substitute the value you found back into the original equation to check."}
+ ],
+ glossary:[
+  {t:"phương trình", e:"equation", i:'⚖️'},
+  {t:"hai vế", e:"both sides", i:'↔️'},
+  {t:"trừ", e:"subtract", i:'➖'},
+  {t:"chia", e:"divide", i:'➗'},
+  {t:"hệ số", e:"coefficient — the number multiplying the variable", i:'✖️'},
+  {t:"kiểm tra", e:"check your answer", i:'✅'}
+ ],
+ signalLabel:"Signal words — the operation words that carry the steps",
+ signals:["cộng","trừ","nhân","chia","hai vế","phương trình","hệ số","kiểm tra","Trước tiên","Sau đó","Cuối cùng"],
+ visual:{
+  caption:"The same two steps, every time.",
+  rows:[
+   {l:"2x + 6 = 14", g:'➖ 6', n:"subtract 6 from both sides"},
+   {l:"2x = 8", g:'➗ 2', n:"divide both sides by 2"},
+   {l:"x = 4", g:'✅', n:"check: 2(4) + 6 = 14 ✓"}
+  ]},
+ formA:[
+  {q:"Bước đầu tiên khi giải phương trình hai bước là gì?", o:["Nhân hai vế","Cộng hoặc trừ số hạng tự do","Chia cho biến","Thay giá trị vào"], a:1},
+  {q:"Giải: 3x + 5 = 20. x bằng bao nhiêu?", o:["3","5","15","25"], a:1},
+  {q:"Tại sao phải làm cùng phép tính ở cả hai vế?", o:["Để phương trình cân bằng","Để số nhỏ hơn","Để nhanh hơn","Để đổi dấu"], a:0},
+  {q:"Giải: 4x − 7 = 13. x bằng bao nhiêu?", o:["3","5","6","20"], a:1},
+  {q:"Bước cuối cùng là gì?", o:["Cộng hệ số","Vẽ đồ thị","Thay giá trị vào để kiểm tra","Chia cho 0"], a:2}
+ ],
+ formB:[
+  {q:"Giải: 2x + 6 = 14", o:["x = 2","x = 4","x = 8","x = 10"], a:1,
+   bank:["➖ 6 ở hai vế","➗ 2 ở hai vế"]},
+  {q:"Giải: 5x − 3 = 22", o:["x = 4","x = 5","x = 19","x = 25"], a:1,
+   bank:["➕ 3 ở hai vế","➗ 5 ở hai vế"]},
+  {q:"Trong 7x = 21, số 7 gọi là gì?", o:["biến","hệ số","số hạng tự do","kết quả"], a:1,
+   bank:["hệ số = coefficient"]},
+  {q:"Để loại bỏ hệ số, em dùng phép tính nào?", o:["cộng","trừ","chia","vẽ"], a:2,
+   bank:["chia = divide"]},
+  {q:"2(4) + 6 = 14. Câu này cho thấy điều gì?", o:["Phương trình sai","x = 4 đúng","Cần chia lại","Thiếu một bước"], a:1,
+   bank:["kiểm tra = check"]}
+ ],
+ frame:"Trước tiên em ______, sau đó em ______, vậy x = ______."
+},
+
+/* ========== 3. US HISTORY · ARABIC ========== */
+{
+ id:'hist', subject:"U.S. History", topic:"The Dust Bowl", grade:"Grade 10–11",
+ lang:{code:'ar', name:"Arabic", native:"العربية", tts:'ar-SA', rtl:true, flag:'🌍'},
+ why:"This one is the honest case. Scaffolds help here, but less than in math — history carries its load in language itself. Notice how far you get, and where you stall.",
+ icon:'🌾',
+ lecture:[
+  {x:"في الثلاثينيات، ضربت عواصف ترابية هائلة سهول الولايات المتحدة الوسطى.",
+   en:"In the 1930s, enormous dust storms struck the plains of the central United States."},
+  {x:"كان المزارعون قد حرثوا الأراضي العشبية لزراعة القمح، فأزالوا الجذور التي كانت تثبّت التربة.",
+   en:"Farmers had plowed the grasslands to plant wheat, removing the roots that had held the soil in place."},
+  {x:"ثم جاء جفاف طويل، فتحوّلت التربة إلى غبار حملته الرياح.",
+   en:"Then a long drought came, and the soil turned to dust that the wind carried away."},
+  {x:"غادر أكثر من مليونين ونصف مليون شخص المنطقة، وتوجّه كثيرون إلى كاليفورنيا بحثًا عن عمل.",
+   en:"More than two and a half million people left the region, and many headed to California looking for work."},
+  {x:"أنشأت الحكومة الفيدرالية برامج لتعليم المزارعين طرقًا جديدة لحماية التربة.",
+   en:"The federal government created programs to teach farmers new ways to protect the soil."}
+ ],
+ glossary:[
+  {t:"عاصفة ترابية", e:"dust storm", i:'🌪️'},
+  {t:"الجفاف", e:"drought", i:'☀️'},
+  {t:"التربة", e:"soil", i:'🟤'},
+  {t:"الجذور", e:"roots — they held the soil down", i:'🌱'},
+  {t:"القمح", e:"wheat", i:'🌾'},
+  {t:"غادر", e:"left / departed", i:'🚶'}
+ ],
+ signalLabel:"Signal words — dates, numbers and place names you can anchor to",
+ signals:["الثلاثينيات","كاليفورنيا","الولايات المتحدة","مليونين","الحكومة الفيدرالية"],
+ visual:{
+  caption:"One chain of causes, in order.",
+  rows:[
+   {l:"1  Plowed the grass", g:'🌾', n:"roots removed — nothing holds the soil"},
+   {l:"2  Long drought", g:'☀️', n:"soil dries and loosens"},
+   {l:"3  Wind", g:'🌪️', n:"soil becomes dust storms"},
+   {l:"4  People leave", g:'🚗', n:"2.5 million out; many to California"},
+   {l:"5  Government acts", g:'🏛️', n:"programs teach soil protection"}
+  ]},
+ formA:[
+  {q:"متى حدثت العواصف الترابية؟", o:["في العشرينيات","في الثلاثينيات","في الأربعينيات","في الخمسينيات"], a:1},
+  {q:"لماذا لم تعد التربة ثابتة؟", o:["بسبب الأمطار الغزيرة","لأن المزارعين أزالوا الجذور","بسبب البرد","بسبب المصانع"], a:1},
+  {q:"ما الذي جاء بعد حرث الأراضي؟", o:["جفاف طويل","فيضان","زلزال","حرب"], a:0},
+  {q:"كم عدد الذين غادروا المنطقة؟", o:["أكثر من مئة ألف","أكثر من مليون","أكثر من مليونين ونصف","أكثر من عشرة ملايين"], a:2},
+  {q:"ماذا فعلت الحكومة الفيدرالية؟", o:["أغلقت المزارع","أنشأت برامج لحماية التربة","منعت الزراعة","بنت مصانع"], a:1}
+ ],
+ formB:[
+  {q:"في أي عقد وقعت العواصف الترابية؟", o:["1920s","1930s","1940s","1950s"], a:1,
+   bank:["الثلاثينيات = the 1930s"]},
+  {q:"ما الذي كان يثبّت التربة قبل الحرث؟", o:["الماء","الجذور","الرياح","الحجارة"], a:1,
+   bank:["الجذور = roots"]},
+  {q:"ما السبب المباشر لتحوّل التربة إلى غبار؟", o:["الجفاف","المطر","الثلج","الزلزال"], a:0,
+   bank:["الجفاف = drought"]},
+  {q:"إلى أي ولاية توجّه كثير من الناس؟", o:["تكساس","كاليفورنيا","نيويورك","فلوريدا"], a:1,
+   bank:["كاليفورنيا = California"]},
+  {q:"ماذا علّمت البرامج الحكومية المزارعين؟", o:["طرق حماية التربة","كيفية بيع الأرض","صناعة السيارات","بناء المدن"], a:0,
+   bank:["حماية التربة = protecting the soil"]}
+ ],
+ frame:"السبب كان ______ ، والنتيجة كانت ______ ."
+}
+];
+
+/* The supports added in round two, each tied to a lane in the four-lane model. */
+var SUPPORTS = [
+ {k:'audio',  n:"Slowed audio, one sentence at a time", lane:"Newcomer · Emerging",
+  w:"Same words, same language. Only the pace and the chunking changed — the listener gets time to hold one idea before the next arrives."},
+ {k:'visual', n:"A visual that carries the content", lane:"Newcomer",
+  w:"The diagram says what the paragraph says. A student who cannot yet read the paragraph can still reason about the content."},
+ {k:'gloss',  n:"A six-word glossary with icons", lane:"Newcomer · Emerging",
+  w:"Not a dictionary — six words, chosen because the content collapses without them."},
+ {k:'signal', n:"Cognates and signal words highlighted", lane:"Emerging · Progressing",
+  w:"Pointing at the words the reader already half-owns. This costs nothing to prepare and changes what a text feels like."},
+ {k:'bank',   n:"A word bank attached to each question", lane:"Emerging",
+  w:"The question stops being a memory test of vocabulary and becomes a test of the content you were asked to learn."},
+ {k:'frame',  n:"A sentence frame for explaining the answer", lane:"Emerging · Progressing",
+  w:"Gives the student a way to show reasoning without first having to build the sentence that carries it."}
+];
+
+</script>
+<script>
+/* Sheltered — app */
+(function(){
+"use strict";
+var KEY='sheltered.v1';
+var S={name:'',runs:[]};
+try{var r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+var $=function(s){return document.querySelector(s)};
+var view=$('#view');
+var L=null, round=1, answers=[[],[]], scores=[null,null], tmr=null;
+var STUDY=120, QUIZ=100;   // seconds — identical in both rounds, on purpose
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function head(a,b){$('#hT').textContent=a;$('#hS').textContent=b||''}
+function back(fn){var b=$('#back');if(fn){b.classList.remove('hide');b.onclick=function(){stopAll();fn()}}else b.classList.add('hide')}
+
+/* ---------- speech ---------- */
+var synth=window.speechSynthesis, halt=false;
+function speak(text,lang,rate,done){
+  if(!synth){if(done)done();return}
+  halt=false;try{synth.cancel()}catch(e){}
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=lang;u.rate=rate||1;
+  u.onend=function(){if(done)done()};u.onerror=function(){if(done)done()};
+  setTimeout(function(){try{synth.speak(u)}catch(e){if(done)done()}},40);
+}
+function speakAll(sents,lang,rate,gap,done){
+  halt=false;var i=0;
+  (function nx(){
+    if(halt||i>=sents.length){if(done)done();return}
+    var s=sents[i++];
+    speak(s,lang,rate,function(){setTimeout(nx,gap||0)});
+  })();
+}
+function stopAll(){halt=true;try{synth&&synth.cancel()}catch(e){}if(tmr){clearInterval(tmr);tmr=null}$('#ring').classList.add('hide')}
+
+/* ---------- stage card ---------- */
+function stage(k,h,p,ms,then){
+  var el=$('#stage');
+  $('#stK').textContent=k;$('#stH').innerHTML=h;$('#stP').textContent=p||'';
+  el.classList.add('on');
+  setTimeout(function(){el.classList.remove('on');setTimeout(then,420)},ms||2100);
+}
+
+/* ---------- timer ---------- */
+function startTimer(secs,onEnd){
+  var ring=$('#ring'),rc=$('#rc'),rt=$('#rt'),total=secs,left=secs;
+  ring.classList.remove('hide','warn');
+  function draw(){
+    var f=left/total;
+    rc.setAttribute('stroke-dashoffset',String((1-f)*119.4));
+    var m=Math.floor(left/60),s=left%60;
+    rt.textContent=m+':'+(s<10?'0':'')+s;
+    ring.classList.toggle('warn',left<=15);
+    rc.setAttribute('stroke',left<=15?'#FF8A80':'#C9A227');
+  }
+  draw();
+  if(tmr)clearInterval(tmr);
+  tmr=setInterval(function(){
+    left--;if(left<0){clearInterval(tmr);tmr=null;ring.classList.add('hide');onEnd();return}
+    draw();
+  },1000);
+}
+
+/* ---------- intro ---------- */
+function viewIntro(){
+  stopAll();back(null);head('Sheltered','12 minutes as an English learner');
+  view.innerHTML='';
+  var hero=document.createElement('div');hero.className='hero';
+  hero.innerHTML='<div class="in"><span class="badge">EL Publishing · Faculty PD</span>'+
+    '<h1>You know this <em>content.</em><br>Now try to prove it.</h1>'+
+    '<p>Twelve minutes. A real content lesson, delivered in a language you do not speak. You take it twice — and the only thing that changes the second time is the scaffolding.</p></div>';
+  view.parentNode.insertBefore(hero,view);
+  view.innerHTML=
+    '<div class="warnbox"><b>Pick a language you do not speak.</b> If you read Spanish, take the Algebra or History lesson. The simulation only works if the language is genuinely closed to you.</div>'+
+    '<div class="card"><p class="k">How it runs</p>'+
+    '<ol style="margin:9px 0 0;padding-left:20px;font-size:15.5px;line-height:1.65">'+
+    '<li><b>Round one.</b> Two minutes to study the lesson. Then five questions in 100 seconds. No supports of any kind.</li>'+
+    '<li><b>Round two.</b> The same lesson, in the same language. <b>Different questions of the same difficulty.</b> The same two minutes and the same 100 seconds. Six supports added.</li>'+
+    '<li><b>The debrief.</b> Your two scores side by side, what each support was doing, and — finally — what the lesson actually said.</li>'+
+    '</ol></div>'+
+    '<div class="card"><p class="k t">Why time is held constant</p><p class="tiny muted" style="margin:6px 0 0">Extended time is a real accommodation, and withholding it here is deliberate. If round two were also longer, you could not tell which change moved your score. Everything is identical except the six supports.</p></div>'+
+    '<button class="btn block sp" id="go">Choose a lesson</button>'+
+    '<p class="tiny muted sp" style="text-align:center">Nothing you do here leaves this device. No account, no sign-in.</p>';
+  $('#go').onclick=viewPick;
+}
+
+/* ---------- pick ---------- */
+function viewPick(){
+  stopAll();var h=document.querySelector('.hero');if(h)h.remove();
+  back(viewIntro);head('Choose a lesson','Pick a language you do not speak');
+  var html='<div class="pick">';
+  LESSONS.forEach(function(x){
+    html+='<button class="lcard" data-id="'+x.id+'"><span class="ic">'+x.icon+'</span><span>'+
+      '<b>'+esc(x.subject)+' · '+esc(x.topic)+'</b>'+
+      '<span class="sub">'+esc(x.grade)+'</span>'+
+      '<span class="lg">'+x.lang.flag+' Delivered in '+esc(x.lang.name)+'</span>'+
+      '<p>'+esc(x.why)+'</p></span></button>';
+  });
+  html+='</div>';
+  if(S.runs.length)html+='<div class="card sp"><p class="k">Your runs</p>'+S.runs.slice(-4).reverse().map(function(r){
+    return '<p class="tiny muted" style="margin:6px 0 0">'+esc(r.date)+' · '+esc(r.subject)+' — unsupported <b>'+r.a+'/5</b>, supported <b>'+r.b+'/5</b></p>';
+  }).join('')+'</div>';
+  view.innerHTML=html;
+  view.querySelectorAll('.lcard').forEach(function(b){
+    b.onclick=function(){
+      LESSONS.forEach(function(x){if(x.id===b.dataset.id)L=x});
+      round=1;answers=[[],[]];scores=[null,null];
+      stage('Round one','No <em>support</em>','Two minutes to study. Then five questions.',2300,viewStudy);
+    };
+  });
+}
+
+/* ---------- study ---------- */
+function viewStudy(){
+  back(function(){viewPick()});
+  head(L.subject+' · '+L.topic, 'Round '+round+' — study');
+  var rtl=L.lang.rtl, supported=round===2;
+  var html='<div class="card" style="padding:15px 18px"><p class="k">Round '+round+' · study</p>'+
+    '<p style="margin:5px 0 0;font-size:15.5px">'+(supported
+      ? 'Same lesson, same language. Six supports have been added. Same two minutes.'
+      : 'Read and listen. You have two minutes. Nothing else is coming.')+'</p></div>';
+
+  if(!supported){
+    html+='<div class="card" style="text-align:center;padding:16px"><button class="btn dark" id="play">▶︎ Play the lesson</button>'+
+      '<p class="tiny muted" style="margin:9px 0 0">Normal speaking pace, once through.</p></div>';
+    html+='<div class="lesson"'+(rtl?' dir="rtl"':'')+'>'+L.lecture.map(function(s){return '<p>'+esc(s.x)+'</p>'}).join('')+'</div>';
+  }else{
+    html+='<div class="lesson"'+(rtl?' dir="rtl"':'')+'>'+L.lecture.map(function(s,i){
+      return '<div class="sent"><button class="pl" data-i="'+i+'">▶</button><div class="tx">'+mark(s.x)+'</div></div>';
+    }).join('')+'<p class="tiny muted" style="margin-top:6px">Tap any sentence to hear it slowly.</p></div>';
+    html+='<div class="panel"><p class="k">Glossary · six words</p><div class="gl">'+
+      L.glossary.map(function(g){return '<div><b>'+g.i+' '+esc(g.t)+'</b><span>'+esc(g.e)+'</span></div>'}).join('')+'</div></div>';
+    html+='<div class="panel" style="background:var(--mist);border-color:var(--rule)"><p class="k t">'+esc(L.visual.caption)+'</p><div class="vis">'+
+      L.visual.rows.map(function(v){return '<div class="vrow"><span>'+esc(v.l)+'</span><span class="vg">'+v.g+'</span><span class="vn">'+esc(v.n)+'</span></div>'}).join('')+
+      '</div></div>';
+    html+='<p class="tiny muted" style="text-align:center">Highlighted: '+esc(L.signalLabel)+'</p>';
+  }
+  html+='<button class="btn block sp" id="toq">I\'m ready — start the questions</button>';
+  view.innerHTML=html;
+
+  if(!supported){
+    $('#play').onclick=function(){
+      $('#play').textContent='▶︎ Playing…';
+      speakAll(L.lecture.map(function(s){return s.x}),L.lang.tts,1,120,function(){$('#play').textContent='▶︎ Play again'});
+    };
+    setTimeout(function(){if($('#play'))$('#play').click()},500);
+  }else{
+    view.querySelectorAll('.pl').forEach(function(b){
+      b.onclick=function(){
+        view.querySelectorAll('.pl').forEach(function(x){x.classList.remove('on')});
+        b.classList.add('on');
+        speak(L.lecture[+b.dataset.i].x,L.lang.tts,.72,function(){b.classList.remove('on')});
+      };
+    });
+  }
+  $('#toq').onclick=function(){stopAll();viewQuiz()};
+  startTimer(STUDY,function(){stopAll();viewQuiz()});
+}
+function mark(t){
+  var out=esc(t);
+  (L.signals||[]).forEach(function(w){
+    var e=esc(w).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    out=out.replace(new RegExp('('+e+')','g'),'<mark>$1</mark>');
+  });
+  return out;
+}
+
+/* ---------- quiz ---------- */
+function viewQuiz(){
+  back(null);head(L.subject+' · '+L.topic,'Round '+round+' — five questions');
+  var supported=round===2, form=supported?L.formB:L.formA, rtl=L.lang.rtl;
+  var picks=new Array(form.length).fill(-1);
+  var html='';
+  if(supported){
+    html+='<details class="panel" style="margin-bottom:12px"><summary style="cursor:pointer;font-weight:700;color:var(--teal)">Glossary and visual stay open</summary>'+
+      '<div class="gl">'+L.glossary.map(function(g){return '<div><b>'+g.i+' '+esc(g.t)+'</b><span>'+esc(g.e)+'</span></div>'}).join('')+'</div>'+
+      '<div class="vis">'+L.visual.rows.map(function(v){return '<div class="vrow"><span>'+esc(v.l)+'</span><span class="vg">'+v.g+'</span><span class="vn">'+esc(v.n)+'</span></div>'}).join('')+'</div></details>';
+  }
+  form.forEach(function(q,i){
+    html+='<div class="q"'+(rtl?' dir="rtl"':'')+'><p class="n">Question '+(i+1)+' of '+form.length+'</p>'+
+      '<div class="stem">'+esc(q.q)+'</div>'+
+      (supported&&q.bank?'<div class="bank">'+q.bank.map(function(b){return '<span>'+esc(b)+'</span>'}).join('')+'</div>':'')+
+      '<div class="opts" data-q="'+i+'">'+q.o.map(function(o,j){return '<button class="opt" data-j="'+j+'">'+esc(o)+'</button>'}).join('')+'</div></div>';
+  });
+  if(supported)html+='<div class="card"><p class="k t">Sentence frame</p><p style="margin:6px 0 0;font-size:16.5px"'+(rtl?' dir="rtl"':'')+'>'+esc(L.frame)+'</p><p class="tiny muted" style="margin:6px 0 0">Not scored here — it is the sixth support, and in a classroom it is where the student shows reasoning.</p></div>';
+  html+='<button class="btn block sp" id="sub">Submit my answers</button>';
+  view.innerHTML=html;
+  view.querySelectorAll('.opts').forEach(function(box){
+    box.querySelectorAll('.opt').forEach(function(b){
+      b.onclick=function(){
+        [].forEach.call(box.children,function(c){c.classList.remove('sel')});
+        b.classList.add('sel');picks[+box.dataset.q]=+b.dataset.j;
+      };
+    });
+  });
+  $('#sub').onclick=grade;
+  startTimer(QUIZ,grade);
+  function grade(){
+    if(tmr){clearInterval(tmr);tmr=null}$('#ring').classList.add('hide');
+    var n=0;form.forEach(function(q,i){if(picks[i]===q.a)n++});
+    answers[round-1]=picks;scores[round-1]=n;
+    if(round===1){
+      stage('Round one','<em>'+n+'</em> out of 5','That is the lesson without support.',2400,viewR1);
+    }else{
+      var rec={date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),subject:L.subject,a:scores[0],b:scores[1]};
+      S.runs.push(rec);save();
+      stage('Round two','<em>'+n+'</em> out of 5','Same language. Same time. Different support.',2400,viewDebrief);
+    }
+  }
+}
+
+/* ---------- after round one ---------- */
+function viewR1(){
+  back(null);head('Round one','Unsupported');
+  view.innerHTML='<div class="card"><div class="scorebig"><div class="num">'+scores[0]+'</div><div class="den">out of 5 · unsupported</div></div></div>'+
+    '<div class="card"><p class="k">Before you go on</p>'+
+    '<p style="margin:7px 0 0">You were not short on content knowledge. You teach this, or you learned it years ago. What you were short on was access to the language the content arrived in — and 100 seconds.</p>'+
+    '<p class="sp" style="margin-bottom:0">That is the ordinary condition of an English learner in a content class, every block, all day. Round two changes one thing.</p></div>'+
+    '<button class="btn block sp" id="r2">Run it again, with support</button>';
+  $('#r2').onclick=function(){
+    round=2;
+    stage('Round two','With <em>support</em>','Same lesson. Same language. Same clock.',2300,viewStudy);
+  };
+}
+
+/* ---------- debrief ---------- */
+function viewDebrief(){
+  stopAll();back(viewPick);head('Debrief',L.subject+' · '+L.lang.name);
+  var a=scores[0],b=scores[1],d=b-a, rtl=L.lang.rtl;
+  var html='<div class="card"><p class="k" style="text-align:center">Your two scores</p><div class="vs">'+
+    '<div class="vcol r1"><div class="lab">Unsupported</div><div class="num">'+a+'</div><div class="pct">'+(a*20)+'%</div></div>'+
+    '<div class="arr">→</div>'+
+    '<div class="vcol r2"><div class="lab">Supported</div><div class="num">'+b+'</div><div class="pct">'+(b*20)+'%</div></div></div>'+
+    '<p class="delta'+(d<=0?' flat':'')+'">'+(d>0?('+'+d+' with the same language, the same clock, and questions of the same difficulty'):(d===0?'No change this time — see the note below':(d+' — see the note below'))) +'</p></div>';
+
+  if(d<=0){
+    html+='<div class="warnbox"><b>Your score did not rise.</b> That happens, and it is worth saying out loud rather than hiding: scaffolds are not magic, the sample is five questions, and guessing is noisy at this length. It is also the honest finding of the History lesson in particular — language-dense content resists scaffolding more than math does. What the simulation reliably shows is not a guaranteed score jump; it is what the lesson <i>felt</i> like each time.</div>';
+  }
+
+  html+='<div class="card"><p class="k t">What was added, and what each one was doing</p>'+
+    SUPPORTS.map(function(s,i){return '<div class="sup"><span class="dot">'+(i+1)+'</span><div><b>'+esc(s.n)+'</b>'+
+      '<span class="lane">'+esc(s.lane)+'</span><p>'+esc(s.w)+'</p></div></div>'}).join('')+
+    '<p class="tiny muted sp">Every one of these is free. None of them required changing the content, lowering the standard, or teaching a different lesson.</p></div>';
+
+  html+='<div class="card"><p class="k">What the lesson actually said</p>'+
+    '<p class="tiny muted" style="margin:6px 0 12px">You have heard this five times now, in a language you do not read.</p>'+
+    '<div class="reveal">'+L.lecture.map(function(s){
+      return '<div class="rv"><div class="orig"'+(rtl?' dir="rtl"':'')+'>'+esc(s.x)+'</div><div class="trn">'+esc(s.en)+'</div></div>';
+    }).join('')+'</div></div>';
+
+  html+='<div class="pd"><p class="k">For whoever runs PD</p><h3>Running this with a faculty</h3>'+
+    '<p>Twelve minutes of seat time, about twenty-five with discussion. It works best when nobody is told the second round is coming.</p>'+
+    '<ol><li><b>Everyone takes round one at the same time</b>, on phones, in silence. Do not explain anything first.</li>'+
+    '<li><b>Ask for scores by show of hands</b> before round two. The room will laugh; let it.</li>'+
+    '<li><b>Run round two.</b> Then show the two-score screen on the projector.</li>'+
+    '<li><b>Three questions:</b> Which support helped you most? Which one would take you the longest to make for Monday? Which of your current students is in round one right now, in your room?</li>'+
+    '<li><b>Close on the last one.</b> That is the whole point of the exercise.</li></ol>'+
+    '<p style="margin-top:12px"><b>Pick different lessons across the room</b> — the Algebra group will see a large jump, the History group a smaller one. That difference is itself the discussion: scaffolds carry content further in symbol-dense subjects than in language-dense ones.</p></div>';
+
+  html+='<div class="card"><p class="k">Take the record with you</p>'+
+    '<input type="text" id="nm" placeholder="Your name (for the certificate)" value="'+esc(S.name||'')+'" style="width:100%;border:2px solid var(--rule);border-radius:12px;padding:12px 15px;font-family:inherit;font-size:17px;margin-top:9px">'+
+    '<button class="btn block sp" id="print">Print my result</button>'+
+    '<button class="btn ghost block sp" id="again">Try a different lesson</button></div>';
+  view.innerHTML=html;
+
+  $('#nm').oninput=function(){S.name=this.value;save()};
+  $('#print').onclick=function(){
+    $('#cNm').textContent=S.name||'—';
+    $('#cBody').innerHTML='completed a twelve-minute sheltered-instruction simulation in <b>'+esc(L.lang.name)+'</b>,<br>taking a '+esc(L.subject)+' lesson on '+esc(L.topic)+' twice.<br><br>'+
+      'Unsupported: <b>'+a+' of 5</b> &nbsp;·&nbsp; With four-lane scaffolds: <b>'+b+' of 5</b><br>'+
+      'Same language, same time limit, parallel questions.';
+    $('#cNote').textContent='Sheltered · EL Publishing · '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+' — a professional-learning simulation, not an assessment of the participant.';
+    window.print();
+  };
+  $('#again').onclick=viewPick;
+}
+
+viewIntro();
+})();
+
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
