@@ -278,6 +278,11 @@ if write(p, t):
 
 p = ROOT / "all.html"
 t = p.read_text(encoding="utf-8")
+t = region(t, "intro", (
+    f'<p>All {N} free resources on the hub, in one place. Everything opens in a '
+    f'browser and prints. Nothing needs an account, a license or a login. Sort by '
+    f'any column; the star marks the {sum(1 for r in C if r["core"])} to start with.</p>'
+), p)
 t = region(t, "gbtns", gbtns(), p)
 t = region(t, "rows", rows(), p)
 if write(p, t):
