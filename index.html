@@ -222,7 +222,7 @@
 
 <section class="wrap" id="top">
   <h2>Resources</h2>
-  <p class="deck">52 free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
+  <p class="deck"><span id="nRes">52</span> free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
   <div class="hubstats"><div><b>52</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>6</b><span>languages in the Newcomer Guide</span></div><div><b>$0</b><span>every resource is free</span></div></div>
   <a class="feature" href="tech-radar.html">
     <div class="feature-k">New · updated weekly</div>
@@ -988,5 +988,13 @@
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
+<script>
+/* Resource counts write themselves from the live catalog, so they cannot go stale. */
+(function(){try{
+  var n=document.querySelectorAll('section .cards .card').length; if(!n)return;
+  var d=document.getElementById('nRes'); if(d)d.textContent=n;
+  var q=document.getElementById('q'); if(q)q.placeholder=q.placeholder.replace(/Search \d+ resources/,'Search '+n+' resources');
+}catch(e){}})();
+</script>
 </body>
 </html>
