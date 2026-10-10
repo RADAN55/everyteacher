@@ -1,51 +1,60 @@
 #!/usr/bin/env python3
-"""For districts — the ways a district can start a conversation.
+"""For districts — what a district can take and use, at no cost.
 
-One source for both places it appears: the full version at the foot of
-leaders.html, where district leaders actually are, and a compact version on the
-home page. Change it here and run tools/build.py.
+The point of this section is that the work is already built and already free.
+It is not a services menu. Nothing here is sold, quoted, or scoped, and no
+card should ever read like an engagement.
 
-Written as what a district needs, not as what I am looking for. Nothing here
-says available, seeking, opportunities or hire, and nothing should.
+One source for both places it appears: the foot of leaders.html, and a shorter
+version on the home page. Change it here and run tools/build.py.
 
-  head   the card's heading
-  body   two or three sentences
-  links  (label, href) — relative on this hub wherever possible
+  head   what the district can do
+  body   two or three sentences, naming the thing and its size
+  links  (label, href) — the free tool that does it
 """
 
-LEAD = ("Everything on this hub is free and stays free. But some of what a district "
-        "needs is not a file — it is time, a second set of eyes, or a decision about "
-        "who does this work next year. If that is where you are, write to me directly.")
+HEADING = "Free for your district"
 
-NOTE = ("<b>In confidence.</b> Write to my personal address. What you send stays "
-        "between us — no list, no follow-up sequence, and no one else on the thread.")
+LEAD = ("Everything on this hub is free, and it stays free. No license, no account, "
+        "no invoice, and no call with me first. A district can review its own "
+        "program, train its own staff and send its own parent notices without "
+        "paying anyone — including me. Take what you need and put your own name "
+        "on it.")
+
+NOTE = ("<b>If what your teachers need isn't here, say so.</b> Tell me and I will "
+        "build it — also free, and published here so the next district gets it too. "
+        "And if you are rebuilding an EL program and want to think it through out "
+        "loud, write to me in confidence: what you send stays between us.")
 
 MAIL = ("mailto:richard.spanishteacher@gmail.com"
         "?subject=A%20conversation%20about%20EL%20program%20work")
 
 D = [
- ("Build something that doesn't exist yet",
-  "A resource your teachers need, written for your grade bands, your levels and your "
-  "devices — and published so it keeps working long after the project is finished.",
-  [("District Partnership Kit", "district-kit.html")]),
-
- ("Professional learning",
-  "A faculty session, a department meeting, or a self-paced module your staff runs "
-  "without me in the room. Sheltered puts a whole faculty through twelve minutes as "
-  "an English learner, and it changes the conversation that follows.",
-  [("Sheltered", "sheltered.html"),
-   ("The PD module", "https://radan55.github.io/everyteacherisalanguageteacher/")]),
-
- ("A second set of eyes",
-  "The self-audit and the six-session evaluation course are free, and most districts "
-  "can run them without help. If you would rather think it through with someone who "
-  "has read the same regulations, ask.",
+ ("Review your own program",
+  "Thirty-three legal items scored in about an hour, and a six-session course that "
+  "walks your team through the evaluation a consulting firm would charge for. Your "
+  "people run it, on your numbers, and nothing leaves the browser.",
   [("EL Program Self-Audit", "el-audit.html"),
    ("Evaluate your own program", "el-evaluate.html")]),
 
- ("The longer conversation",
-  "Some districts are not looking for a resource at all. They are building or "
-  "rebuilding an EL program and working out the shape of the role that ought to run "
-  "it. I am glad to think that through with you, in confidence, wherever it leads.",
-  [("Write to me", MAIL)]),
+ ("Train your staff without a trainer",
+  "Sheltered puts a whole faculty through twelve minutes as an English learner in "
+  "about twenty-five. The PD module runs 45–60 minutes in a browser. Neither needs "
+  "a facilitator, a purchase order, or me in the room.",
+  [("Sheltered", "sheltered.html"),
+   ("The PD module", "https://radan55.github.io/everyteacherisalanguageteacher/")]),
+
+ ("Send the paperwork that has to be right",
+  "The six parent notices ESSA requires, English and Spanish side by side. Language "
+  "Service Plans that draft themselves from the ELPT levels. Forty-five obligations "
+  "placed in the month they actually come due.",
+  [("EL Parent Notification Letters", "parent-letters.html"),
+   ("EL Program Compliance Calendar", "el-compliance-calendar.html")]),
+
+ ("Put it on your own letterhead",
+  "Adapt the wording for your state, your grade bands, your district's name. Print "
+  "it, copy it, hand it to your faculty, post it on your own site. You do not need "
+  "permission and you do not owe me attribution.",
+  [("All 57 resources", "all.html"),
+   ("Start with the three questions", "leaders.html")]),
 ]

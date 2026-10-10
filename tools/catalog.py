@@ -150,7 +150,7 @@ R = [
  ("case-studies.html", "EL Case Studies", "district", "Cases", "3 cases",
   "Three composite districts, with the tool and the cost named at every step.", False),
  ("district-kit.html", "District Partnership Kit", "district", "Kit", "90 days",
-  "What a 90-day engagement delivers to a district with no EL coordinator.", False),
+  "Ninety days of resource building for a district with no EL coordinator — free, a few districts a year.", False),
  ("fact-check.html", "Mississippi Fact-Check", "district", "Review record", "24 claims",
   "Every Mississippi claim on this hub, with its source and its status.", False),
  ("https://radan55.github.io/elpublishing-magazineeditionone/#compliance", "Making Them Count", "district", "Book", "Issue One",

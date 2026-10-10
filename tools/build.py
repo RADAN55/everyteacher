@@ -244,7 +244,7 @@ def districts_block(compact=False):
         + '</div></article>'
         for head, body, links in districts.D
     )
-    h2 = "Start a conversation" if not compact else "Working with your district"
+    h2 = districts.HEADING
     # leaders.html titles its sections with h2.sec; the home page styles a bare h2
     cls = ' class="sec"' if not compact else ""
     return f'''<div class="wrap">
@@ -252,7 +252,7 @@ def districts_block(compact=False):
   <p class="deck">{e(districts.LEAD)}</p>
   <div class="dcards">{cards}</div>
   <p class="dnote">{districts.NOTE}</p>
-  <p class="dacts"><a class="dbtn" href="{e(districts.MAIL)}">Start the conversation</a>
+  <p class="dacts"><a class="dbtn" href="{e(districts.MAIL)}">Tell me what you need</a>
     <a class="dalt" href="{"leaders.html" if compact else "index.html"}">{
       "For district leaders →" if compact else "Back to the hub →"}</a></p>
 </div>'''
