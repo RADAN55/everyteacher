@@ -23,6 +23,8 @@ from datetime import date, datetime
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import catalog  # noqa: E402
+import questions  # noqa: E402
+import voices  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -185,6 +187,54 @@ def small_catalog():
     ]
 
 
+SHOWN = 6  # questions visible before "show all"
+
+
+def qa():
+    counts = {}
+    for who, *_ in questions.Q:
+        counts[who] = counts.get(who, 0) + 1
+    tabs = (f'<button type="button" data-w="all" aria-pressed="true">All'
+            f'<i>{len(questions.Q)}</i></button>')
+    for key, label in questions.WHO:
+        if counts.get(key):
+            tabs += (f'<button type="button" data-w="{key}" aria-pressed="false">'
+                     f'{e(label)}<i>{counts[key]}</i></button>')
+    cards = []
+    for i, (who, q, a, links) in enumerate(questions.Q):
+        ls = "".join(
+            f'<a href="{e(h)}"{ext_attr(h)}>{e(lab)} →</a>' for lab, h in links)
+        cards.append(
+            f'<article class="qc{"" if i < SHOWN else " over"}" data-w="{who}">'
+            f'<h3>{e(q)}</h3><p>{e(a)}</p><div class="ql">{ls}</div></article>'
+        )
+    return f'''<div class="wrap">
+  <h2>Questions people actually ask</h2>
+  <p class="deck">Straight answers, each with the resource that goes deeper.</p>
+  <div class="qtabs" role="group" aria-label="Filter the questions">{tabs}</div>
+  <div class="qgrid" id="qgrid">{"".join(cards)}</div>
+  <p class="qmore"><button type="button" id="qmore">Show all {len(questions.Q)} questions ↓</button></p>
+  <p class="qnone" id="qnone" hidden>No questions in that group yet.</p>
+</div>'''
+
+
+def voices_block():
+    items = "".join(
+        f'<figure class="voice">'
+        f'<a href="voices/{e(img)}" target="_blank" rel="noopener">'
+        f'<img src="voices/t-{e(img)}" alt="{e(alt)}" loading="lazy" decoding="async">'
+        f'</a><blockquote>{e(quote)}</blockquote>'
+        f'<figcaption><b>{e(who)}</b>{e(where)}</figcaption></figure>'
+        for img, quote, who, where, alt in voices.V
+    )
+    return f'''<div class="wrap">
+  <h2>In their own handwriting</h2>
+  <p class="deck">Notes, cards and observations I have kept — from students,
+    colleagues and administrators. Open any one to see the original.</p>
+  <div class="vgrid">{items}</div>
+</div>'''
+
+
 def titles_script():
     small = small_catalog()
     return ("<script>\n/* The catalog the search box and the weekly picks read. "
@@ -273,6 +323,8 @@ t = p.read_text(encoding="utf-8")
 t = region(t, "now", now_showing(), p)
 t = region(t, "doors", doors(), p)
 t = region(t, "week", week(), p)
+t = region(t, "qa", qa(), p)
+t = region(t, "voices", voices_block(), p)
 t = region(t, "index", index_panel(), p)
 t = region(t, "titles", titles_script(), p)
 if write(p, t):
