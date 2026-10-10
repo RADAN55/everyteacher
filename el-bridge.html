@@ -191,7 +191,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <!--/B:og-->
 </head>
-<body>
+<body data-showcase-ask="#out">
 <header><div class="head-in">
   <p class="brand"><a href="index.html">EL PUBLISHING</a> · MANY VOICES · ONE STORM</p>
   <h1>EL Bridge <em>Mississippi</em></h1>
@@ -678,7 +678,8 @@ ${pages.join("")}
 function show(t){pgs.forEach(function(p){p.hidden=t!=='all'&&p.dataset.l!==t});btns.forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});document.querySelector('.bar .all').classList.toggle('on',t==='all')}
 btns.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});document.querySelector('.bar .all').onclick=function(){show('all')};document.querySelector('.bar .print').onclick=function(){window.print()};
 show(btns.length?btns[0].dataset.t:'all');})();
-<\/script></body></html>`;
+<\/script>
+</body></html>`;
 }
 function lanesChecked(name){ return [...document.querySelectorAll(`.lanes[data-lanes="${name}"] input:checked`)].map(x=>+x.value); }
 function baseInput(){ const std=currentStandard(); return {subject:S.subject, grade:gradeLabel(), code:std.code, text:std.text}; }
@@ -989,5 +990,6 @@ $("lib-import").addEventListener("change",e=>{
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
 <script src="hub-chrome.js" defer></script>
+<script src="showcase-ask.js" defer></script>
 </body>
 </html>
