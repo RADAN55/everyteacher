@@ -100,6 +100,19 @@
   .onfile{font-size:13.5px;color:var(--muted);background:var(--mist);border:1px dashed var(--rule);padding:8px 12px;margin-top:4px}
   .lnk{font:inherit;font-size:12.5px;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;margin-left:6px}
   .tests label span small{display:block;color:var(--muted);font-size:11.5px;line-height:1.25}
+  .bad{border-color:var(--ink-red-5)!important;box-shadow:inset 3px 0 0 var(--ink-red-5)!important}
+  .derr{display:block;color:var(--ink-red-5);font-size:11.5px;line-height:1.3;margin-top:3px}
+  #gate{border:0;border-top:6px solid var(--ink-red-5);border-radius:6px;padding:22px 26px;max-width:560px;width:92vw;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:"Source Sans 3",sans-serif;color:var(--ink);background:var(--paper)}
+  #gate::backdrop{background:rgba(10,15,32,.55)}
+  #gate h3{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:0 0 4px}
+  .gate-sub{margin:0 0 12px;font-size:14px;color:var(--muted)}
+  #gatelist{list-style:none;margin:0;padding:0;max-height:50vh;overflow:auto}
+  #gatelist li{display:grid;grid-template-columns:20px 1fr auto;gap:8px;align-items:start;padding:7px 0;border-top:1px solid var(--rule);font-size:14px}
+  #gatelist li i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--rule);color:var(--muted)}
+  #gatelist li.date i{background:var(--ink-red-5);color:#fff}
+  #gatelist li a{color:var(--navy);font-weight:700;text-decoration:none;white-space:nowrap}
+  .gate-row{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+  .gate-row .btn.ghost{border-color:var(--navy);color:var(--navy)}
   .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
   .badge[hidden]{display:none}
   .hist{border-collapse:collapse;width:100%;font-size:13px;margin-top:2px}
@@ -124,7 +137,7 @@
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:700px){.g2,.g3,.g4,.g5,.chk,.sig,.comp ul,.team{grid-template-columns:1fr}.bg{grid-template-columns:auto 1fr;grid-template-areas:"s p" "s w" "s e" "b b"}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p,.comp-next,.tip,.start,.drafted{display:none}.tm input[data-k]{border-bottom:1px solid #999}[data-auto],.chk label.auto{box-shadow:none;padding-left:0}.sig{grid-template-columns:repeat(2,1fr);gap:30px 50px;margin-top:26px;break-inside:avoid}.sig div::before{height:40px}.sig div{font-size:12px}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp,.tip,.start,.drafted,.derr,#gate,.pe,.chk label:not(:has(:checked)),.rt:not(:has(:checked)),.lnk,.onfile button{display:none!important}::placeholder{color:transparent}.bad{box-shadow:none!important;border-color:#999!important}.chk{display:block}.chk label{display:flex;margin:1px 0}.chk label.auto{box-shadow:none;padding-left:0}.hd::after{content:attr(data-status);font-size:10px;color:#555;display:block}.tm input[data-k]{border-bottom:1px solid #999}[data-auto],.chk label.auto{box-shadow:none;padding-left:0}.sig{grid-template-columns:repeat(2,1fr);gap:30px 50px;margin-top:26px;break-inside:avoid}.sig div::before{height:40px}.sig div{font-size:12px}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -145,7 +158,7 @@
     <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS &amp; COORDINATORS · MISSISSIPPI · LANGUAGE SERVICE PLAN</p>
     <h1>Language Service Plan <em>builder</em></h1>
     <p class="tag">Enter the ELPT levels and the plan writes its first draft: lane, services, accommodations for class and state tests, a goal for each domain. Every component a Mississippi LSP is expected to carry is on the form — identification trail, ELPT history, grading and retention, nine-weeks reviews, the full signature block — and a checklist at the bottom tells you what is still missing before it goes for signatures. Nothing leaves your browser.</p>
-    <div class="cta"><button class="btn" type="button" onclick="window.print()">🖨 Print LSP</button><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
+    <div class="cta"><button class="btn" type="button" onclick="printPlan()">🖨 Print LSP</button><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
   </div>
 </header>
 <main>
@@ -218,8 +231,14 @@
   </aside>
 
   <p class="note">Components follow Mississippi district EL plans (demographics, first U.S. enrollment date, yearly ELPT scores, classroom accommodations, state-testing accommodations, Student Evaluation Team signatures) plus goals, nine-weeks review and the identification trail that an OCR or MDE review asks for first. Exit: Level 4 or higher in each ELPT domain on the same administration (State Board, June 2025). Monitoring: four years, reviewed every nine weeks. Accommodation allowability on MAAP and ELPT follows the current Mississippi Testing Accommodations Manual; no primary-language support or bilingual dictionary on the ELPT. Your district's form, if it has one, governs the layout; this builder produces the content.</p>
-  <div class="tools"><button type="button" onclick="document.getElementById('comp').scrollIntoView({behavior:'smooth'})">✓ Check the plan</button><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="clear">Clear</button></div>
+  <div class="tools"><button type="button" onclick="printPlan()">🖨 Print LSP</button><button type="button" onclick="document.getElementById('comp').scrollIntoView({behavior:'smooth'})">✓ Check the plan</button><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="clear">Clear</button></div>
 </article>
+<dialog id="gate">
+  <h3>Before this prints</h3>
+  <p class="gate-sub">These dates do not line up, or something a Mississippi plan has to carry is missing. Fix them, or print anyway and initial the margin.</p>
+  <ul id="gatelist"></ul>
+  <div class="gate-row"><button type="button" class="btn ghost" onclick="document.getElementById('gate').close()">Go back and fix</button><button type="button" class="btn" onclick="document.getElementById('gate').close();doPrint()">Print anyway</button></div>
+</dialog>
 </main>
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
 <script>
@@ -302,12 +321,56 @@ function mode(){
  else if(/Accepted/.test(v('declined'))&&/declined/.test(st.value)){st.value='Active EL';F.status=st.value}
  const sv=document.querySelector('[data-c="s7"]');if(sv)sv.closest('label').hidden=!monitored&&!(sv.checked);
 }
+/* ---- dates that have to line up ----
+   Each rule is a pair of dates and the order they must come in, or a window.
+   Failures mark the field in red with the reason, feed the checklist, and
+   stop the print dialog until the teacher chooses to print anyway. */
+const DATE_LABELS={usdate:'first U.S. enrollment',distdate:'district enrollment',hls:'Home Language Survey',screendate:'screener',notif:'parent notification',annual:'annual notification',testdate:'ELPT / test date',written:'plan written',postelpt:'post-ELPT review',distdate2:'given to teachers',cumdate:'cumulative folder copy'};
+function dateErrors(){
+ const v=k=>(document.querySelector(`[data-k="${k}"]`)||{}).value||'';const d=k=>v(k)?new Date(v(k)+'T12:00'):null;
+ const today=new Date();today.setHours(23,59,59,999);const E=[];
+ const first=(document.querySelector('[data-k="type"]')||{}).value==='new'||!(document.querySelector('[data-k="type"]')||{}).value&&(v('yrs')===''||+v('yrs')<=0);
+ const after=(a,b,why)=>{if(d(a)&&d(b)&&d(a)<d(b))E.push({k:a,m:`${DATE_LABELS[a]} is before the ${DATE_LABELS[b]} (${v(b)}) — ${why}`})};
+ const within=(a,b,n,why)=>{if(d(a)&&d(b)){const days=Math.round((d(a)-d(b))/864e5);if(days>n)E.push({k:a,m:`${DATE_LABELS[a]} is ${days} days after ${DATE_LABELS[b]} — ${why}`})}};
+ Object.keys(DATE_LABELS).forEach(k=>{if(d(k)&&d(k)>today)E.push({k,m:`${DATE_LABELS[k]} is in the future`})});
+ after('distdate','usdate','a student cannot enroll here before first enrolling in U.S. schools');
+ after('screendate','hls','screening follows the Home Language Survey');
+ after('notif','screendate','parents are told the result after the screener, not before');
+ if(first){within('screendate','distdate',30,'the window is 30 calendar days from the start of school, 10 school days for later enrollees');
+  within('notif','distdate',30,'same window as screening');}
+ after('written','screendate','the plan is written from the screener result');
+ after('distdate2','written','teachers receive the plan after it is written');
+ after('cumdate','written','the folder copy follows the written plan');
+ after('postelpt','written','the post-ELPT review comes after the plan');
+ if(d('testdate')&&d('written')&&d('testdate')>d('written')&&!v('postelpt'))E.push({k:'postelpt',m:'ELPT results are newer than the plan — enter the post-ELPT review date'});
+ /* show them on the fields */
+ document.querySelectorAll('.derr').forEach(e=>e.remove());document.querySelectorAll('.bad').forEach(e=>e.classList.remove('bad'));
+ E.forEach(e=>{const el=document.querySelector(`[data-k="${e.k}"]`);if(!el||el.classList.contains('bad'))return;el.classList.add('bad');const m=document.createElement('small');m.className='derr';m.textContent=e.m;el.insertAdjacentElement('afterend',m)});
+ return E;
+}
+function printPlan(){
+ const E=dateErrors();const miss=[...document.querySelectorAll('#compl li.no')].filter(li=>!/^Dates line up/.test(li.textContent.trim())).map(li=>({m:li.querySelector('span').firstChild.textContent.replace(/\s*→\s*$/,''),go:li.querySelector('[data-go]')?.dataset.go}));
+ const items=[...E.map(e=>({m:e.m,go:`[data-k="${e.k}"]`,kind:'date'})),...miss.map(x=>({m:x.m,go:x.go,kind:'miss'}))];
+ if(!items.length){doPrint();return}
+ document.getElementById('gatelist').innerHTML=items.map(i=>`<li class="${i.kind}"><i>${i.kind==='date'?'!':'·'}</i><span>${i.m}</span>${i.go?`<a href="#" data-go="${i.go.replace(/"/g,'&quot;')}" onclick="document.getElementById('gate').close()">Fix →</a>`:''}</li>`).join('');
+ document.getElementById('gate').showModal();
+}
+function doPrint(){window.print()}
+/* print only what is filled: empty history rows, unchecked team members, and the
+   placeholder text never reach paper */
+window.addEventListener('beforeprint',()=>{
+ document.querySelectorAll('.hist tbody tr').forEach(tr=>tr.classList.toggle('pe',!tr.querySelector('[data-k$="y"]').value));
+ document.querySelectorAll('.tm').forEach(l=>l.classList.toggle('pe',!l.querySelector('[data-c]').checked));
+ document.querySelectorAll('.g2>div,.g3>div,.g4>div,.g5>div').forEach(dv=>{const f=dv.querySelector('[data-k]');if(!f)return;const req=/^(name|id|grade|school|lang|L|S|R|W|status|exit|written|type|q1|q2|q3|q4|distdate2|cumdate)$/.test(f.dataset.k);dv.classList.toggle('pe',!req&&!f.value)});
+ document.querySelectorAll('.dom').forEach(dm=>{dm.querySelectorAll('.g2>div').forEach(dv=>{const f=dv.querySelector('[data-k]');dv.classList.toggle('pe',!!f&&!f.value)})});
+});
+window.addEventListener('afterprint',()=>document.querySelectorAll('.pe').forEach(e=>e.classList.remove('pe')));
 /* ---- the compliance checklist: computed from the dates and fields above ---- */
 const days=(a,b)=>{if(!a||!b)return null;const d=(new Date(b)-new Date(a))/864e5;return isFinite(d)?Math.round(d):null};
 const any=(pre)=>!!document.querySelector(`[data-c^="${pre}"]:checked`);
 const chk=(sel)=>!!document.querySelector(`[data-c="${sel}"]:checked`);
 function compliance(){
- mode();tests();
+ mode();tests();const DE=dateErrors();
  const v=k=>(F[k]||document.querySelector(`[data-k="${k}"]`)?.value||'').trim();
  const l=lv();const all4=['L','S','R','W'].every(k=>l[k]);
  const enroll=v('distdate')||v('usdate');
@@ -336,6 +399,7 @@ function compliance(){
   ['Plan written, with the Student Evaluation Team checked', v('written')&&[0,1,2,5].every(i=>chk('t'+i))?'ok':'no', !v('written')?'Due before the first progress report — enter the date.':'At least the EL teacher, a classroom teacher, an administrator and the parent must be on the team.',!v('written')?'[data-k="written"]':'#team'],
   ['Teachers of record listed and given the plan', v('dist')&&v('distdate2')?'ok':'no', 'Every teacher of record gets a copy; the cumulative folder gets one too.',v('dist')?'[data-k="distdate2"]':'[data-k="dist"]'],
   ['Translated or interpreted for the parent', v('translated')&&!/Not yet/.test(v('translated'))?'ok':'no', 'The signed plan has to be understood, not just signed.','[data-k="translated"]'],
+  ['Dates line up', DE.length?'no':'ok', DE.length?DE[0].m:'Enrollment → survey → screener → notice → plan → teachers, none in the future.',DE.length?`[data-k="${DE[0].k}"]`:''],
   ['Nine-weeks review scheduled or done', v('q1')||v('postelpt')?'ok':'no', monitored?'Monitored students: four years after exit, every nine weeks.':'Q1 date and initials, or the post-ELPT review.','[data-k="q1"]'],
  ];
  const ul=document.getElementById('compl');if(!ul)return;
@@ -344,6 +408,7 @@ function compliance(){
  sigs();
  const ok=items.filter(x=>x[1]==='ok').length, n=items.filter(x=>x[1]!=='na').length;
  document.getElementById('compn').textContent=`${ok} of ${n} in place`;
+ document.querySelector('.doc .hd').setAttribute('data-status',ok===n?`Plan complete — ${n} of ${n} components in place`:`${n-ok} of ${n} components outstanding at printing`);
  /* auto badges */
  const yrsUS=v('usdate')?(Date.now()-new Date(v('usdate')))/(365.25*864e5):null;
  document.getElementById('imm').hidden=!(v('country')&&!/^(united states|usa|u\.s\.a?\.?|us)$/i.test(v('country'))&&yrsUS!==null&&yrsUS<3);
