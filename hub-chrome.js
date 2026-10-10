@@ -43,6 +43,9 @@
     '<svg class="moon" viewBox="0 0 24 24">' +
     '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" ' +
     'stroke-linejoin="round"/></svg>';
+  var PLANE =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18' +
+    '-4-8-8-4Z" stroke-linejoin="round" stroke-linecap="round"/></svg>';
 
   /* ---- which page are we on? ---------------------------------------- */
   var here = location.pathname.split("/").pop() || HOME;
@@ -67,9 +70,12 @@
       '<a class="hb-home" href="' + HOME + '" aria-label="EL Publishing, home">' +
         MARK + "<b>EL Publishing</b></a>" +
       '<nav aria-label="Hub">' + nav + "</nav>" +
+      '<button type="button" class="hb-send" id="hbSend">' + PLANE +
+        "<span>Send to a teacher</span></button>" +
       '<button type="button" class="hb-theme" id="hbTheme" aria-live="polite">' +
         SUN + MOON + "</button>" +
-    "</div>";
+    "</div>" +
+    '<div class="hb-sheet" id="hbSheet" hidden></div>';
 
   function place() {
     if (document.body.firstChild) document.body.insertBefore(bar, document.body.firstChild);
@@ -107,7 +113,69 @@
     btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     btn.setAttribute("title", dark ? "Light mode" : "Dark mode");
   }
+  /* ---- send it to someone --------------------------------------------- */
+  /* Teachers find this site because another teacher sent it to them. That
+     should be one tap, not copy-the-address-bar. */
+  function note() {
+    var t = (document.title || "EL Publishing").split(" · ")[0];
+    /* by file, not by path — this has to keep working if the site moves */
+    var f = location.pathname.split("/").pop();
+    return (f === "" || f === HOME)
+      ? "Free resources for English learners — no login, no account, nothing to buy."
+      : "Thought of you: " + t + ". Free, no login.";
+  }
+  function wireSend() {
+    var btn = document.getElementById("hbSend"), sheet = document.getElementById("hbSheet");
+    if (!btn || !sheet) return;
+    var url = location.href.split("#")[0], msg = note();
+
+    function close() { sheet.hidden = true; btn.setAttribute("aria-expanded", "false"); }
+    function open() {
+      sheet.innerHTML =
+        '<div class="hb-sheet-in">' +
+          "<p>" + msg.replace(/</g, "&lt;") + "</p>" +
+          '<a href="mailto:?subject=' + encodeURIComponent("Something for your EL students") +
+            "&body=" + encodeURIComponent(msg + "\n\n" + url) + '">Email it</a>' +
+          '<a href="sms:?&body=' + encodeURIComponent(msg + " " + url) + '">Text it</a>' +
+          '<button type="button" id="hbCopy">Copy the link</button>' +
+        "</div>";
+      sheet.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      document.getElementById("hbCopy").addEventListener("click", function () {
+        var done = function () { this.textContent = "Copied"; }.bind(this);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done, fallback);
+        } else { fallback(); }
+        var self = this;
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = url; ta.style.cssText = "position:fixed;opacity:0";
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); self.textContent = "Copied"; } catch (e) {}
+          ta.remove();
+        }
+      });
+    }
+
+    btn.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", function () {
+      /* a phone has a better share sheet than anything built here */
+      if (navigator.share) {
+        navigator.share({ title: document.title, text: msg, url: url }).catch(function () {});
+        return;
+      }
+      sheet.hidden ? open() : close();
+    });
+    document.addEventListener("click", function (ev) {
+      if (!sheet.hidden && !sheet.contains(ev.target) && !btn.contains(ev.target)) close();
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && !sheet.hidden) { close(); btn.focus(); }
+    });
+  }
+
   function wire() {
+    wireSend();
     var btn = document.getElementById("hbTheme");
     if (!btn) return;
     label(btn);

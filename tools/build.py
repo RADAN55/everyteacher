@@ -493,6 +493,44 @@ if idx.returncode:
     sys.stderr.write(idx.stderr)
     sys.exit("search index failed — the rest of the build is written.")
 
+# ------------------------------------------------------- link previews ------
+# The card someone sees when a link is pasted into a group or a text. It is how
+# most people meet this site, so every page with a card gets the tags for it,
+# rewritten each build so a page can never keep a stale picture.
+SITE_URL = "https://radan55.github.io/everyteacher/"
+cards = 0
+for page in sorted(ROOT.glob("*.html")):
+    img = ROOT / "share" / (page.stem + ".png")
+    if not img.exists():
+        continue
+    s = page.read_text(encoding="utf-8")
+    m = re.search(r"<title>(.*?)</title>", s, re.S)
+    title = re.sub(r"\s+", " ", m.group(1)).strip() if m else "EL Publishing"
+    m = re.search(r'<meta name="description" content="([^"]*)"', s)
+    desc = m.group(1) if m else ""
+    url = SITE_URL + ("" if page.name == "index.html" else page.name)
+    tags = "\n".join([
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="EL Publishing">',
+        f'<meta property="og:url" content="{url}">',
+        f'<meta property="og:title" content="{e(title)}">',
+        f'<meta property="og:description" content="{e(desc)}">',
+        f'<meta property="og:image" content="{SITE_URL}share/{img.name}">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta name="twitter:card" content="summary_large_image">',
+    ])
+    marked = "<!--B:og-->\n" + tags + "\n<!--/B:og-->"
+    if "<!--B:og-->" in s:
+        s = re.sub(r"<!--B:og-->.*?<!--/B:og-->", lambda mo: marked, s, flags=re.S)
+    else:
+        s = re.sub(r'\s*<meta (?:property="og:|name="twitter:)[^>]*>', "", s)
+        s = insert_at(s, "</head>", marked, last=False)
+    if write(page, s):
+        cards += 1
+if cards:
+    changed.append(f"link previews on {cards} pages")
+
 core = sum(1 for r in C if r["core"])
 print(f"{N} resources · {core} starred · {len(fresh)} new · "
       f"{len(pinned)} pinned")
