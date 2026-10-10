@@ -442,7 +442,8 @@ function compliance(){
   ['Plan written, with the Student Evaluation Team checked', v('written')&&[0,1,2,5].every(i=>chk('t'+i))?'ok':'no', !v('written')?'Due before the first progress report — enter the date.':'At least the EL teacher, a classroom teacher, an administrator and the parent must be on the team.',!v('written')?'[data-k="written"]':'#team'],
   ['Teachers of record listed and given the plan', v('dist')&&v('distdate2')?'ok':'no', 'Every teacher of record gets a copy; the cumulative folder gets one too.',v('dist')?'[data-k="distdate2"]':'[data-k="dist"]'],
   ['Translated or interpreted for the parent', v('translated')&&!/Not yet/.test(v('translated'))?'ok':'no', 'The signed plan has to be understood, not just signed.','[data-k="translated"]'],
-  ['Dates line up', DE.length?'no':'ok', DE.length?DE[0].m:'Enrollment → survey → screener → notice → plan → teachers, none in the future.',DE.length?`[data-k="${DE[0].k}"]`:''],
+  ...(()=>{const need=monitored?['written']:(v('type')==='active'||(!v('type')&&+v('yrs')>=1))?['annual','written']:['distdate','hls','screendate','notif','written'];const missing=need.filter(k=>!v(k));
+   return [['Dates line up', DE.length?'no':missing.length?'no':'ok', DE.length?DE[0].m:missing.length?`Nothing to check yet — enter ${missing.map(k=>DATE_LABELS[k]).join(', ')}.`:'Enrollment → survey → screener → notice → plan → teachers, none in the future.',DE.length?`[data-k="${DE[0].k}"]`:missing.length?`[data-k="${missing[0]}"]`:'']]})(),
   ['Nine-weeks review scheduled or done', v('q1')||v('postelpt')?'ok':'no', monitored?'Monitored students: four years after exit, every nine weeks.':'Q1 date and initials, or the post-ELPT review.','[data-k="q1"]'],
  ];
  const ul=document.getElementById('compl');if(!ul)return;
