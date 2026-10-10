@@ -512,6 +512,14 @@ t = region(t, "matrix", by_subject(), p)
 if write(p, t):
     changed.append("by-subject.html")
 
+# any page that quotes the total inline
+for name in ("content-teachers.html",):
+    p = ROOT / name
+    t = p.read_text(encoding="utf-8")
+    t = region(t, "n", str(N), p).replace("<!--B:n-->\n", "<!--B:n-->").replace("\n<!--/B:n-->", "<!--/B:n-->")
+    if write(p, t):
+        changed.append(name)
+
 p = ROOT / "all.html"
 t = p.read_text(encoding="utf-8")
 t = region(t, "intro", (
