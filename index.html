@@ -188,6 +188,80 @@
   .path a{font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-lt)}
   .path a:hover{border-bottom-color:var(--gold)}
   #start{padding-top:34px;padding-bottom:10px}
+
+/* ============================================================
+   Catalog index — reading pass, Oct 2026
+   57 resources were rendering as 57 identical brochure cards.
+   A catalog's job is scanning, so the grid becomes an index:
+   type carries it, the screenshots step back, and the gold
+   eyebrow stops repeating 57 times. Hero and rails untouched.
+   ============================================================ */
+section .cards{grid-template-columns:repeat(auto-fill,minmax(318px,1fr));gap:10px;align-items:stretch}
+section .cards .card{
+  display:block;border-radius:10px;padding:13px 16px 12px;
+  position:relative;overflow:hidden;
+  transition:border-color .14s ease,background .14s ease;
+}
+section .cards .card:hover{border-color:var(--navy);background:#FCFCFE;transform:none;box-shadow:none}
+section .cards .card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* the screenshot is 57 near-identical navy rectangles at this size — it informs nothing */
+section .cards .card .shot{display:none}
+section .cards .card .card-top{
+  position:static;background:none;color:inherit;padding:0;display:block;
+  border-bottom:0;overflow:visible
+}
+section .cards .card .card-top::before{display:none}
+section .cards .card .card-top::after{display:none}
+
+/* number and audience become quiet inline marks, not badges floating on an image */
+/* 57 identical stars carry no information — the NEW chip already marks what is fresh */
+section .cards .card .num{display:none}
+section .cards .card .aud{
+  position:static;background:none;padding:0;color:var(--muted);text-shadow:none;
+  font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;display:inline;opacity:1
+}
+/* one descriptor line instead of a gold all-caps eyebrow on all 57 */
+section .cards .card .kind{
+  display:inline;padding:0;font-size:12px;letter-spacing:0;text-transform:none;
+  font-weight:500;color:var(--muted)
+}
+section .cards .card .aud + .kind::before{content:" · ";color:#C2C6D6}
+section .cards .card h3{
+  padding:0;font-size:17.5px;font-weight:600;line-height:1.28;margin:3px 0 0;color:var(--navy)
+}
+section .cards .card .card-body{padding:4px 0 0;display:block}
+section .cards .card .card-body p{
+  margin:0;font-size:14.2px;line-height:1.5;color:var(--muted);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
+}
+section .cards .card .card-body p.go{display:none}
+
+/* a rotated ribbon needs an image to sit on; at index density a chip reads better */
+section .cards .card.is-new h3::after{
+  content:"New";display:inline-block;vertical-align:2px;margin-left:8px;
+  background:var(--gold);color:var(--navy-dk);font-family:Inter,sans-serif;
+  font-size:10px;font-weight:800;letter-spacing:.08em;padding:2px 7px;border-radius:3px
+}
+
+/* section headings stop competing with each other */
+section.wrap > h2{font-size:23px;margin-top:4px}
+section.wrap > .deck{font-size:15px;margin-bottom:12px}
+#newcomer,#tools,#admin,#curriculum,#tool,#magazine,#writing,#packet{padding-top:18px;margin-top:26px;border-top:1px solid var(--rule)}
+
+/* the four doors lead, so they get the weight the cards gave up */
+#start .path{border-radius:12px;border-top:4px solid var(--gold);padding:20px 22px 16px}
+#start .path ol{font-size:14.5px;line-height:1.55}
+#start .path ol li{margin-bottom:5px}
+#start > h2{font-size:28px}
+
+@media (max-width:560px){
+  section .cards{grid-template-columns:1fr;gap:8px}
+  section .cards .card{padding:11px 14px}
+  section .cards .card .card-body p{-webkit-line-clamp:1}
+  section .cards .card h3{font-size:16.5px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -220,32 +294,6 @@
   </div>
 </section>
 
-<section class="wrap" id="top">
-  <h2>Resources</h2>
-  <p class="deck"><span id="nRes">57</span> free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
-  <div class="hubstats"><div><b>52</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>6</b><span>languages in the Newcomer Guide</span></div><div><b>$0</b><span>every resource is free</span></div></div>
-  <a class="feature" href="tech-radar.html">
-    <div class="feature-k">New · updated weekly</div>
-    <div class="feature-t">EL Tech Radar — six new tools for English learners, verified</div>
-    <div class="feature-p">New this week: Gemini in Google Classroom student study tools (open to all ages since Aug 2026). Plus Read Along, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a classroom use for each lane, and one more added every Tuesday.</div>
-    <span class="feature-go">Open the radar →</span>
-  </a>
-  <div class="week" id="week" aria-label="This week">
-    <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
-    <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
-    <a id="wk-res" href="index.html#tools"><span class="wk">Resource of the week</span><b id="wk-rt">EL Bridge Mississippi</b><small id="wk-rd">A different hub resource every week, so the back catalog gets its turn.</small></a>
-  </div>
-</section>
-<nav class="cats" aria-label="Sections"><a href="leaders.html" style="background:var(--gold);color:var(--navy-dk)">🏛️ For district leaders</a><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="el-assistants.html">🤖 EL Assistants</a><a href="el-bridge.html">🌉 EL Bridge</a><a href="showcase.html">🏆 Showcase</a><a href="policy-brief.html">📜 Policy Brief</a><a href="#tools">Teacher tools</a><a href="#admin">Admin &amp; compliance</a><a href="whats-new.html">What's new</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
-
-<div class="wrap" id="finder">
-  <div class="finder">
-    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 57 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
-    <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
-  </div>
-  <p class="fcount" id="fcount"></p>
-  <div class="deep" id="deep" hidden></div>
-</div>
 <section class="wrap" id="start"><h2>Start here</h2><p class="deck">Four short paths through the hub, depending on who you are.</p><div class="paths">
   <div class="path"><div class="ph"><span class="pn">1</span><b>New EL teacher</b><small>Your first month, in order</small></div><ol>
     <li><a href="https://radan55.github.io/RichardDaniel/language-functions/">Language functions &amp; the four lanes</a> — the model everything else uses</li>
@@ -287,6 +335,32 @@
     <li><a href="board-brief.html">Board brief &amp; deck</a> — present it in fifteen minutes</li>
     <li><a href="policy-brief.html">Policy brief</a> — what changed this month</li></ol></div>
 </div></section>
+<section class="wrap" id="top">
+  <h2>Resources</h2>
+  <p class="deck"><span id="nRes">57</span> free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
+  <div class="hubstats"><div><b id="nRes2">57</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>6</b><span>languages in the Newcomer Guide</span></div><div><b>$0</b><span>every resource is free</span></div></div>
+  <a class="feature" href="tech-radar.html">
+    <div class="feature-k">New · updated weekly</div>
+    <div class="feature-t">EL Tech Radar — six new tools for English learners, verified</div>
+    <div class="feature-p">New this week: Gemini in Google Classroom student study tools (open to all ages since Aug 2026). Plus Read Along, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a classroom use for each lane, and one more added every Tuesday.</div>
+    <span class="feature-go">Open the radar →</span>
+  </a>
+  <div class="week" id="week" aria-label="This week">
+    <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
+    <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
+    <a id="wk-res" href="index.html#tools"><span class="wk">Resource of the week</span><b id="wk-rt">EL Bridge Mississippi</b><small id="wk-rd">A different hub resource every week, so the back catalog gets its turn.</small></a>
+  </div>
+</section>
+<nav class="cats" aria-label="Sections"><a href="leaders.html" style="background:var(--gold);color:var(--navy-dk)">🏛️ For district leaders</a><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="el-assistants.html">🤖 EL Assistants</a><a href="el-bridge.html">🌉 EL Bridge</a><a href="showcase.html">🏆 Showcase</a><a href="policy-brief.html">📜 Policy Brief</a><a href="#tools">Teacher tools</a><a href="#admin">Admin &amp; compliance</a><a href="whats-new.html">What's new</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
+
+<div class="wrap" id="finder">
+  <div class="finder">
+    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 57 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
+    <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
+  </div>
+  <p class="fcount" id="fcount"></p>
+  <div class="deep" id="deep" hidden></div>
+</div>
 <section class="wrap" id="newcomer"><h2>Newcomer Series</h2><p class="deck">For students who just arrived and the families behind them — bilingual, printable, and built for the first year in a U.S. school.</p><div class="cards">
     <a class="card" href="newcomer-guide.html">
       <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students &amp; families</span>
@@ -1004,6 +1078,7 @@
 (function(){try{
   var n=document.querySelectorAll('section .cards .card').length; if(!n)return;
   var d=document.getElementById('nRes'); if(d)d.textContent=n;
+  var d2=document.getElementById('nRes2'); if(d2)d2.textContent=n;
   var q=document.getElementById('q'); if(q)q.placeholder=q.placeholder.replace(/Search \d+ resources/,'Search '+n+' resources');
 }catch(e){}})();
 </script>

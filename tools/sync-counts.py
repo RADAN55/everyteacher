@@ -31,6 +31,7 @@ if n < 10:
 before = html
 html = re.sub(r'(<span id="nRes">)\d+(</span>)', rf'\g<1>{n}\g<2>', html)
 html = re.sub(r'(placeholder="Search )\d+( resources)', rf'\g<1>{n}\g<2>', html)
+html = re.sub(r'(<b id="nRes2">)\d+(</b>)', rf'\g<1>{n}\g<2>', html)
 if html != before:
     idx.write_text(html, encoding="utf-8")
 
