@@ -176,9 +176,11 @@ def index_panel():
 
 def small_catalog():
     return [
+        # "k" is the long description, carried so the home page's search finds a
+        # resource by any phrase the full index would find it by.
         {"u": r["href"], "t": r["title"], "o": r["one"],
          "f": f'{r["fmt"]} · {r["size"]}', "g": GLABEL[r["group"]],
-         "th": r["thumb"], "pin": r["pin"], "new": r["new"]}
+         "k": r["long"], "th": r["thumb"], "pin": r["pin"], "new": r["new"]}
         for r in C
     ]
 
