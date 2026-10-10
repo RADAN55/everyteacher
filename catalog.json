@@ -165,6 +165,17 @@
   "new": ""
  },
  {
+  "u": "cognate-hunt.html",
+  "t": "Cognate Hunt",
+  "o": "Paste any reading; the words your Spanish speakers already know light up.",
+  "f": "Tool · 373 pairs",
+  "g": "Every classroom teacher",
+  "k": "Paste tomorrow's reading — a biology paragraph, a history passage, a word problem — and every English–Spanish cognate lights up, so a content teacher can see at a glance how much of the text their Spanish speakers already own. Certain pairs (373 school words, science and history heaviest) get a solid line; pattern guesses (-tion → -ción) get a dotted one and say so; false friends — library, exit, once, realize — are flagged in red with what the Spanish word really means. Prints a cognate wall, copies as a list, sends nothing anywhere. The tool for Monday Move 10.",
+  "th": "thumbs/cognate-hunt.jpg",
+  "pin": "",
+  "new": "2026-10-10"
+ },
+ {
   "u": "by-subject.html",
   "t": "By Subject & Grade",
   "o": "Your subject, your grade band: the language demand, two moves, what to use.",

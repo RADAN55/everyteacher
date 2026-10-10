@@ -47,7 +47,7 @@ CELLS = {
    "The shift from learning to read to reading to learn, with vocabulary growing "
    "faster than anyone can teach it one word at a time.",
    [(12, "Teach the Word Parts"), (10, "Go on a Cognate Hunt")],
-   ["https://radan55.github.io/mselablueprintinfo01/", "sentence-frames.html"]),
+   ["cognate-hunt.html", "https://radan55.github.io/mselablueprintinfo01/", "sentence-frames.html"]),
  ("ela", "g68"): (
    "Claim, evidence, explanation — and the sentence that holds all three together.",
    [(22, "From Sentence to Paragraph"), (23, "Grow the Sentence")],
@@ -95,7 +95,7 @@ CELLS = {
    "Cause and effect in writing, and a vocabulary load heavier than any other "
    "subject at this age.",
    [(12, "Teach the Word Parts"), (10, "Go on a Cognate Hunt")],
-   ["el-bridge.html", "sentence-frames.html"]),
+   ["cognate-hunt.html", "el-bridge.html", "sentence-frames.html"]),
  ("sci", "g912"): (
    "Biology I's terminology and the claim-evidence-reasoning paragraph, both at "
    "once, both assessed.",

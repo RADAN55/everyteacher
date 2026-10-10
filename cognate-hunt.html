@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cognate Hunt · EL Publishing</title>
+<meta name="description" content="Paste any reading — biology, history, a word problem — and the words your Spanish speakers already know light up. False friends get flagged. Prints a cognate wall for the lesson. Free, no account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--wash-gold:#FBF4DC;--wash-red:#FBE9E7;--ink-red:#9B2C2C;--ink-green:#1F6F3A}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:960px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,6.4vw,54px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:60ch}
+  main{padding:26px 0 46px}
+
+  .lab{background:var(--paper);border:1px solid var(--rule);padding:18px 20px 16px}
+  label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  textarea{width:100%;min-height:170px;resize:vertical;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;font:inherit;font-size:15.5px;line-height:1.55;background:var(--paper);color:var(--ink)}
+  textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+  .row .sp{flex:1}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 20px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--navy);color:var(--navy);padding:8px 15px;font-size:13.5px;font-weight:600}
+  .btn.done{background:var(--ok);color:#fff}
+  .samp{font-size:12.5px;color:var(--muted);margin-right:4px}
+
+  .count{margin:24px 0 0;font-family:Fraunces,Georgia,serif;font-size:clamp(24px,4vw,34px);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+  .count b{color:var(--gold)}
+  .count small{display:block;font-family:Inter,sans-serif;font-size:14.5px;font-weight:400;color:var(--muted);margin-top:6px;letter-spacing:0}
+
+  .lit{background:var(--paper);border:1px solid var(--rule);padding:22px 26px;margin-top:16px;font-size:17px;line-height:1.75;white-space:pre-wrap;word-wrap:break-word}
+  .lit mark{background:none;color:inherit;border-bottom:3px solid var(--gold);padding-bottom:1px;cursor:help;position:relative}
+  .lit mark.g{border-bottom:2px dotted var(--gold)}
+  .lit mark.x{border-bottom:3px solid var(--ink-red);background:var(--wash-red)}
+  .lit mark:hover::after{content:attr(data-es);position:absolute;left:0;bottom:calc(100% + 4px);background:var(--navy-dk);color:#fff;font-size:13px;font-family:Inter,sans-serif;line-height:1.3;padding:5px 9px;border-radius:5px;white-space:nowrap;z-index:5;pointer-events:none}
+  .lit mark.x:hover::after{background:var(--ink-red);white-space:normal;width:260px}
+  .key{display:flex;flex-wrap:wrap;gap:16px;margin:10px 0 0;font-size:13px;color:var(--muted)}
+  .key span::before{content:"";display:inline-block;width:22px;height:0;margin-right:7px;vertical-align:middle;border-bottom:3px solid var(--gold)}
+  .key span.g::before{border-bottom:2px dotted var(--gold)}
+  .key span.x::before{border-bottom:3px solid var(--ink-red)}
+
+  .two{display:grid;grid-template-columns:1.3fr .7fr;gap:16px;margin-top:22px;align-items:start}
+  .wall{background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--gold);padding:18px 22px 14px}
+  .wall h2,.ff h2{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:24px;color:var(--navy);margin:0 0 4px;letter-spacing:-.01em}
+  .wall .sub,.ff .sub{margin:0 0 12px;font-size:14px;color:var(--muted)}
+  table.w{border-collapse:collapse;width:100%;font-size:16px}
+  table.w th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 8px 6px 0;border-bottom:1px solid var(--rule)}
+  table.w td{padding:7px 8px 7px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.w td.es{font-weight:600;color:var(--navy)}
+  table.w td.q{color:var(--muted);font-size:13px;width:1%;white-space:nowrap}
+  .ff{background:var(--wash-red);border:1px solid #E8C5C0;border-left:6px solid var(--ink-red);padding:16px 18px 12px}
+  .ff h2{color:var(--ink-red);font-size:21px}
+  .ff ul{margin:0;padding:0;list-style:none;font-size:14.6px}
+  .ff li{padding:6px 0;border-top:1px solid #EBD3CF}
+  .ff li b{color:var(--ink-red)}
+  .ff .none{color:var(--muted);font-style:italic;font-size:14.5px}
+
+  .how{margin-top:28px;background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px}
+  .how h3{font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy);margin:0 0 8px}
+  .how ol{margin:0;padding-left:20px}
+  .how li{margin:4px 0}
+  .how p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px;margin-top:40px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  [hidden]{display:none!important}
+  @media (max-width:760px){.two{grid-template-columns:1fr}.lit{padding:16px 18px;font-size:16px}}
+  @media print{header,footer,.lab,.lit,.key,.how,.count,.ff,.hubbar,#elg,#elg-btn,.sc-ask{display:none!important}body{background:#fff}.two{display:block}.wall{border:0;padding:0}table.w{font-size:20px}table.w td{padding:10px 8px 10px 0}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/cognate-hunt.html">
+<meta property="og:title" content="Cognate Hunt · EL Publishing">
+<meta property="og:description" content="Paste any reading — biology, history, a word problem — and the words your Spanish speakers already know light up. False friends get flagged. Prints a cognate wall for the lesson. Free, no account.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/cognate-hunt.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body data-showcase-ask-on="copy">
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · COGNATE HUNT</p>
+    <h1>Half the words are already theirs. <em>Show them which.</em></h1>
+    <p class="tag">Paste tomorrow's reading — biology, history, a word problem — and every word your Spanish speakers already know lights up. The look-alikes that lie get flagged. Then print the wall.</p>
+  </div>
+</header>
+
+<main class="wrap">
+<div class="lab">
+  <label class="f" for="src">The text</label>
+  <textarea id="src" placeholder="Paste a paragraph from the textbook, a worksheet, a test question — anything in English." spellcheck="false"></textarea>
+  <div class="row">
+    <button class="btn" id="go" type="button">Find the cognates</button>
+    <span class="sp"></span>
+    <span class="samp">Try it on:</span>
+    <button class="btn ghost" type="button" data-s="sci">Biology</button>
+    <button class="btn ghost" type="button" data-s="soc">History</button>
+    <button class="btn ghost" type="button" data-s="math">Word problem</button>
+  </div>
+</div>
+
+<div id="out" hidden>
+  <p class="count" id="count"></p>
+  <div class="lit" id="lit"></div>
+  <p class="key"><span>Cognate — a Spanish speaker can see it</span><span class="g">Probably a cognate — check it</span><span class="x">False friend — looks Spanish, isn't</span></p>
+
+  <div class="two">
+    <div class="wall">
+      <h2>The cognate wall</h2>
+      <p class="sub">English on the left, Spanish on the right. Post it before the reading; let students add to it.</p>
+      <table class="w"><thead><tr><th>English</th><th>Español</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+      <div class="row">
+        <button class="btn ghost" id="copy" type="button" data-copy>Copy the list</button>
+        <button class="btn ghost" id="print" type="button">Print the wall</button>
+      </div>
+    </div>
+    <div class="ff">
+      <h2>False friends</h2>
+      <p class="sub">The ones that embarrass a student. Teach these on purpose.</p>
+      <ul id="ffl"></ul>
+    </div>
+  </div>
+</div>
+
+<div class="how">
+  <h3>What this is, and what it is not</h3>
+  <ol>
+    <li><b>Solid underline:</b> a pair a bilingual teacher would vouch for on sight — from a list of 373 school words, science and history heaviest.</li>
+    <li><b>Dotted underline:</b> an ending pattern (<i>-tion → -ción</i>, <i>-ity → -idad</i>) says it is probably a cognate. Usually right. Check it before it goes on the wall.</li>
+    <li><b>Red:</b> a false friend. <i>Library</i> is not <i>librería</i>. <i>Exit</i> is not <i>éxito</i>.</li>
+  </ol>
+  <p>Nothing leaves your browser — the text is never sent anywhere. The lists are small and honest rather than large and guessy; if a word your students use is missing, <a href="mailto:richard.spanishteacher@gmail.com?subject=Cognate%20Hunt%3A%20a%20missing%20word">send it</a> and it goes in. This is the tool for Monday Move 10, <a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener">Go on a Cognate Hunt</a>.</p>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    EL Publishing · Raleigh, Mississippi
+    <br><a href="mailto:richard.spanishteacher@gmail.com">richard.spanishteacher@gmail.com</a>
+    <p style="margin:6px 0 0"><a href="all.html">All resources</a> · <a href="by-subject.html">By subject &amp; grade</a> · <a href="index.html">Home</a></p>
+  </div>
+</footer>
+
+<script src="cognates.js"></script>
+<script>
+(function(){
+  "use strict";
+  var D = window.COGNATES || {sure:{}, false:{}, rules:[]};
+  var SURE = D.sure, FALSE = D["false"], RULES = D.rules;
+
+  var SAMPLES = {
+    sci: "Photosynthesis is the process plants use to produce energy. In the cells of a leaf, chlorophyll absorbs solar energy. The plant combines carbon dioxide and water in a chemical reaction that produces glucose and releases oxygen into the atmosphere. This process is essential for almost every organism in the ecosystem, because animals depend on the oxygen and the energy stored in plants. Scientists can observe the rate of photosynthesis in a laboratory by measuring the volume of oxygen a plant produces under different conditions of light and temperature.",
+    soc: "After the revolution, the leaders of the new nation had to decide how to form a government. Many citizens feared a strong central authority and wanted to protect individual liberty. The delegates to the convention debated for months and finally produced a constitution that divided power among three branches. The document was controversial. Its supporters argued that a stable republic was necessary for commerce and security; its opponents demanded a declaration of rights. The compromise that emerged still structures American democracy and remains a primary source for historians.",
+    math: "A library received a donation of 1,248 books. The librarian decided to distribute the books equally among 8 sections. Once the books were in place, she realized that 3 sections had a total of 51 damaged books, which she had to remove. Estimate the number of books that remained in each of those 3 sections, then calculate the exact quantity. Explain your reasoning and identify which operation you used first."
+  };
+
+  var STOP = /^(the|and|that|this|with|from|have|were|been|their|there|which|would|about|other|these|those|than|then|them|they|into|some|more|most|only|very|when|what|also|each|such|much|many|like|just|over|after|before|under|between|through|where|while|because|should|could|does|did|not|but|for|are|was|his|her|its|our|you|your|all|any|can|had|has|him|how|its|may|new|now|old|one|two|out|own|say|see|she|too|use|way|who|why|yet)$/;
+
+  function stems(w){
+    var out = [w];
+    if (/ies$/.test(w)) out.push(w.slice(0,-3)+"y");
+    if (/es$/.test(w)) out.push(w.slice(0,-2));
+    if (/s$/.test(w)) out.push(w.slice(0,-1));
+    if (/ed$/.test(w)) { out.push(w.slice(0,-2)); out.push(w.slice(0,-1)); }
+    if (/ing$/.test(w)) { out.push(w.slice(0,-3)); out.push(w.slice(0,-3)+"e"); }
+    return out;
+  }
+
+  function guess(w){
+    if (w.length < 6) return null;
+    for (var i=0;i<RULES.length;i++){
+      var en=RULES[i][0], es=RULES[i][1];
+      if (w.length > en.length+2 && w.slice(-en.length)===en){
+        var stem = w.slice(0, -en.length);
+        if (/^s[^aeiou]/.test(stem)) stem = "e"+stem;   /* station → estación */
+        return stem+es;
+      }
+    }
+    return null;
+  }
+
+  function look(raw){
+    var w = raw.toLowerCase();
+    if (STOP.test(w)) return null;
+    var ss = stems(w), i;
+    for (i=0;i<ss.length;i++) if (FALSE.hasOwnProperty(ss[i])) return {k:"x", en:ss[i], es:FALSE[ss[i]]};
+    for (i=0;i<ss.length;i++) if (SURE.hasOwnProperty(ss[i])) return {k:"s", en:ss[i], es:SURE[ss[i]]};
+    var g = guess(w);
+    if (g) return {k:"g", en:w, es:g};
+    return null;
+  }
+
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function run(){
+    var text = document.getElementById("src").value;
+    if (!text.trim()) return;
+    var words = 0, html = "", found = {}, order = [], ff = {};
+    text.split(/([A-Za-z][A-Za-z'’-]*)/).forEach(function(tok, i){
+      if (i % 2 === 0) { html += esc(tok); return; }
+      words++;
+      var r = look(tok);
+      if (!r) { html += esc(tok); return; }
+      var cls = r.k==="s" ? "" : r.k==="g" ? " class=\"g\"" : " class=\"x\"";
+      html += "<mark"+cls+" data-es=\""+esc(r.es)+"\">"+esc(tok)+"</mark>";
+      if (r.k==="x") { ff[r.en] = r.es; return; }
+      if (!found[r.en]) { found[r.en] = r; order.push(r.en); }
+    });
+    var sure = order.filter(function(k){ return found[k].k==="s"; }).length;
+    var maybe = order.length - sure;
+
+    document.getElementById("lit").innerHTML = html;
+    var c = document.getElementById("count");
+    c.innerHTML = "<b>"+order.length+"</b> cognate"+(order.length===1?"":"s")+" in "+words+" words" +
+      "<small>"+sure+" certain" + (maybe ? ", "+maybe+" to check" : "") +
+      (Object.keys(ff).length ? " · "+Object.keys(ff).length+" false friend"+(Object.keys(ff).length===1?"":"s") : "") +
+      ". Your Spanish speakers walk in already knowing these.</small>";
+
+    document.getElementById("rows").innerHTML = order.map(function(k){
+      var r = found[k];
+      return "<tr><td>"+esc(r.en)+"</td><td class=\"es\">"+esc(r.es)+"</td><td class=\"q\">"+(r.k==="g"?"check":"")+"</td></tr>";
+    }).join("") || "<tr><td colspan=\"3\" style=\"color:var(--muted);font-style:italic\">Nothing lit — this text may be mostly short Anglo-Saxon words. Try a textbook paragraph.</td></tr>";
+
+    var fk = Object.keys(ff);
+    document.getElementById("ffl").innerHTML = fk.length
+      ? fk.map(function(k){ return "<li><b>"+esc(k)+"</b> — "+esc(ff[k])+"</li>"; }).join("")
+      : "<li class=\"none\">None in this text.</li>";
+
+    document.getElementById("out").hidden = false;
+    document.getElementById("copy").textContent = "Copy the list";
+    document.getElementById("copy").className = "btn ghost";
+    window.__cog = order.map(function(k){ return found[k].en+"\t"+found[k].es+(found[k].k==="g"?"\t(check)":""); });
+    document.getElementById("count").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  document.getElementById("go").addEventListener("click", run);
+  document.getElementById("src").addEventListener("keydown", function(e){ if ((e.metaKey||e.ctrlKey) && e.key==="Enter") run(); });
+  [].forEach.call(document.querySelectorAll("[data-s]"), function(b){
+    b.addEventListener("click", function(){ document.getElementById("src").value = SAMPLES[b.getAttribute("data-s")]; run(); });
+  });
+  document.getElementById("copy").addEventListener("click", function(){
+    var t = "English\tEspañol\n" + (window.__cog||[]).join("\n");
+    var b = this;
+    function ok(){ b.textContent = "Copied"; b.className = "btn done"; }
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, ok); else ok();
+  });
+  document.getElementById("print").addEventListener("click", function(){ window.print(); });
+})();
+</script>
+<script src="showcase-ask.js" defer></script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
