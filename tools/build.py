@@ -348,11 +348,29 @@ def by_subject():
                 f'<div class="use">{"".join(chip(h) for h in uses)}</div>'
                 f'</article>'
             )
+        band_label = dict(bysubject.BANDS)
+        rows = []
+        for url, name, org, bands, line, note in bysubject.OUTSIDE.get(sid, []):
+            if not url.startswith("https://"):
+                sys.exit(f"by-subject.html: outside link is not https: {url}")
+            chips = "".join(f"<i>{e(band_label[b])}</i>" for b in bands.split())
+            flag = f'<em>{e(note)}</em>' if note else ""
+            rows.append(
+                f'<li data-bands="{e(bands)}">'
+                f'<a href="{e(url)}" target="_blank" rel="noopener">{e(name)}</a>'
+                f'<span class="org">{e(org)}</span>'
+                f'<span class="ln">{e(line)}{flag}</span>'
+                f'<span class="bd">{chips}</span></li>'
+            )
+        outside = (
+            f'<div class="out"><p class="lbl">Free, from elsewhere</p>'
+            f'<ul>{"".join(rows)}</ul></div>' if rows else ""
+        )
         out.append(
             f'<section class="subj" id="s-{sid}" data-subj="{sid}" '
             f'style="--sc:{light};--scd:{dark}">'
             f'<h2>{e(label)}</h2>'
-            f'<div class="cells">{"".join(cards)}</div></section>'
+            f'<div class="cells">{"".join(cards)}</div>{outside}</section>'
         )
 
     always = "".join(

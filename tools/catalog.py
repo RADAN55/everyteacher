@@ -162,7 +162,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
