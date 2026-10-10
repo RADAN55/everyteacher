@@ -26,6 +26,7 @@ import catalog  # noqa: E402
 import questions  # noqa: E402
 import voices  # noqa: E402
 import play  # noqa: E402
+import bysubject  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -285,6 +286,111 @@ def guess_game():
             ';</script>\n</div>')
 
 
+# --------------------------------------------------------- by-subject.html
+def by_subject():
+    """The subject × grade-band grid.
+
+    Two checks run before anything is written, and both are fatal. A routing
+    page whose routes are wrong is worse than no routing page: a teacher
+    follows a dead link once and stops trusting the site. So every resource a
+    cell points at has to be in the catalog, and every move a cell cites has
+    to match the published series by both number and name.
+    """
+    by_href = {r["href"]: r for r in C}
+    bad_links, bad_moves = [], []
+
+    def check(cell, uses, moves):
+        for h in uses:
+            if h not in by_href:
+                bad_links.append(f"{cell}: {h}")
+        for n, name in moves:
+            if not 1 <= n <= len(bysubject.MOVE_NAMES):
+                bad_moves.append(f"{cell}: move {n} is not in the series")
+            elif bysubject.MOVE_NAMES[n - 1] != name:
+                bad_moves.append(
+                    f"{cell}: move {n} is “{bysubject.MOVE_NAMES[n - 1]}”, "
+                    f"not “{name}”")
+
+    for (sid, bid), (_, moves, uses) in bysubject.CELLS.items():
+        check(f"{sid}/{bid}", uses, moves)
+    for _, items in bysubject.ALWAYS:
+        check("always", [h for h, _ in items], [])
+
+    if bad_links or bad_moves:
+        sys.exit("by-subject.html: " + "; ".join(bad_links + bad_moves))
+
+    for sid, _, _, _ in bysubject.SUBJECTS:
+        for bid, _ in bysubject.BANDS:
+            if (sid, bid) not in bysubject.CELLS:
+                sys.exit(f"by-subject.html: nothing written for {sid}/{bid}.")
+
+    def chip(h):
+        r = by_href[h]
+        return (f'<a href="{e(h)}"{ext_attr(h)}>{e(r["title"])}'
+                f'<small>{e(r["fmt"])}</small></a>')
+
+    out = []
+    for sid, label, light, dark in bysubject.SUBJECTS:
+        cards = []
+        for bid, band in bysubject.BANDS:
+            demand, moves, uses = bysubject.CELLS[(sid, bid)]
+            mv = "".join(
+                f'<li><a href="{e(bysubject.move_url(n))}" target="_blank" '
+                f'rel="noopener"><b>{n}</b> {e(name)}</a></li>'
+                for n, name in moves
+            )
+            cards.append(
+                f'<article class="cell" data-band="{bid}">'
+                f'<p class="band">{e(band)}</p>'
+                f'<p class="demand">{demand}</p>'
+                f'<p class="lbl">Two moves</p><ol class="mv">{mv}</ol>'
+                f'<p class="lbl">Reach for</p>'
+                f'<div class="use">{"".join(chip(h) for h in uses)}</div>'
+                f'</article>'
+            )
+        out.append(
+            f'<section class="subj" id="s-{sid}" data-subj="{sid}" '
+            f'style="--sc:{light};--scd:{dark}">'
+            f'<h2>{e(label)}</h2>'
+            f'<div class="cells">{"".join(cards)}</div></section>'
+        )
+
+    always = "".join(
+        f'<div class="always"><h3>{e(head)}</h3><div class="use">'
+        + "".join(
+            f'<a href="{e(h)}"{ext_attr(h)}>{e(by_href[h]["title"])}'
+            f'<small>{e(why)}</small></a>' for h, why in items)
+        + "</div></div>"
+        for head, items in bysubject.ALWAYS
+    )
+
+    filters = "".join(
+        f'<button type="button" data-f="{bid}">{e(band)}</button>'
+        for bid, band in bysubject.BANDS
+    )
+    keys = "".join(
+        f'<button type="button" data-k="{sid}" style="--sc:{light};--scd:{dark}">'
+        f'{e(label)}</button>'
+        for sid, label, light, dark in bysubject.SUBJECTS
+    )
+
+    return (
+        # hidden until the script that works it has run: a filter bar that does
+        # nothing is worse than no filter bar, and the grid below is all there
+        # in the HTML either way
+        '<div class="bar" role="group" aria-label="Narrow the grid" hidden>'
+        '<div class="fset"><span>Grade</span>'
+        '<button type="button" data-f="all" aria-pressed="true">All</button>'
+        + filters + '</div>'
+        '<div class="fset"><span>Subject</span>'
+        '<button type="button" data-k="all" aria-pressed="true">All</button>'
+        + keys + '</div></div>'
+        + "".join(out)
+        + always
+        + f'<p class="elsew">{bysubject.NOTE}</p>'
+    )
+
+
 def titles_script():
     small = small_catalog()
     return ("<script>\n/* The catalog the search box and the weekly picks read. "
@@ -381,6 +487,12 @@ t = region(t, "index", index_panel(), p)
 t = region(t, "titles", titles_script(), p)
 if write(p, t):
     changed.append("index.html")
+
+p = ROOT / "by-subject.html"
+t = p.read_text(encoding="utf-8")
+t = region(t, "matrix", by_subject(), p)
+if write(p, t):
+    changed.append("by-subject.html")
 
 p = ROOT / "all.html"
 t = p.read_text(encoding="utf-8")

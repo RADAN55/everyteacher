@@ -288,5 +288,10 @@
   "long": "The front door for a teacher who teaches biology, math or history and has English learners in the room. Three questions — what do I do Monday, how do I grade them, am I allowed to change the test — each answered with a free tool, plus what the moves look like by subject, a spreadsheet of the resources sorted by when you need them, and the twelve things built for a content classroom.",
   "thumb": "",
   "who": "Content teachers"
+ },
+ "by-subject.html": {
+  "long": "Sixteen squares — English/ELA, mathematics, science and social studies crossed with K–2, 3–5, 6–8 and 9–12 — each one naming what the language, not the content, asks of an English learner at that point, two moves from the Monday Moves series, and the free hub resources that genuinely apply there. Colour-coded by subject, narrowable to your own band, and printable. Electives, CTE and special education are placed too.",
+  "thumb": "",
+  "who": "Content teachers"
  }
 }

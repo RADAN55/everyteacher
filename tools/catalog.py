@@ -69,6 +69,8 @@ R = [
 
  ("content-teachers.html", "For Content Teachers", "classroom", "Start here", "3 questions",
   "Three questions every content teacher asks, each answered with a free tool.", True),
+ ("by-subject.html", "By Subject & Grade", "classroom", "Grid", "16 squares",
+  "Your subject, your grade band: the language demand, two moves, what to use.", False),
  ("sheltered.html", "Sheltered: 12 Minutes as an English Learner", "classroom", "Simulation", "12 minutes",
   "Sit a real lesson in a language you don't speak. Then sit it again with supports.", True),
  ("el-assistants.html", "EL Assistants for Content Teachers", "classroom", "AI prompts", "4 assistants",

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>By Subject &amp; Grade · EL Publishing</title>
+<meta name="description" content="Find your square: English, math, science or social studies, K–2 through 9–12. Each one names the language demand at that point, two Monday Moves, and the free resources that apply.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1180px;margin:0 auto;padding:40px 22px 34px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,6.4vw,54px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:62ch}
+  main{padding:26px 0 46px}
+
+  /* ---- the narrowing bar ------------------------------------------ */
+  .bar[hidden]{display:none}
+  .bar{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;background:var(--paper);border:1px solid var(--rule);padding:12px 16px}
+  .fset{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .fset>span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-right:2px}
+  .bar button{border:1.5px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 14px;font:600 13.5px Inter,sans-serif;cursor:pointer}
+  .bar button:hover{border-color:var(--muted)}
+  .bar button[data-k]{border-color:var(--c);color:var(--c)}
+  .bar button[aria-pressed=true]{background:var(--navy-bg);border-color:var(--navy);color:#fff}
+  .bar button[data-k][aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+  .bar button[data-k]{--c:var(--sc)}
+  html[data-theme="dark"] .subj,html[data-theme="dark"] .bar button[data-k]{--c:var(--scd)}
+
+  /* ---- a subject row ---------------------------------------------- */
+  .subj{--c:var(--sc);margin:30px 0 0}
+  .subj h2{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;letter-spacing:-.01em;color:var(--c);margin:0 0 12px;display:flex;align-items:center;gap:11px}
+  .subj h2::before{content:"";width:34px;height:9px;background:var(--c);flex:none}
+  .cells{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start}
+  .cell{background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--c);padding:15px 16px 17px;display:flex;flex-direction:column;height:100%}
+  /* .cell sets display, which outranks the browser's own [hidden] rule — the
+     grade filter would set the attribute and nothing would move. */
+  .cell[hidden],.subj[hidden]{display:none}
+  .cell .band{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:25px;line-height:1;color:var(--c);margin:0 0 9px;letter-spacing:-.01em}
+  .cell .demand{margin:0 0 14px;font-size:14.6px;line-height:1.48;color:var(--ink)}
+  .cell .demand i{color:var(--muted);font-style:italic}
+  .cell .lbl{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 5px;padding-top:11px;border-top:1px solid var(--rule)}
+  ol.mv{list-style:none;margin:0 0 4px;padding:0}
+  ol.mv li{margin:0 0 5px}
+  ol.mv a{display:block;text-decoration:none;color:var(--ink);font-size:14px;line-height:1.35}
+  ol.mv a b{display:inline-block;min-width:1.5em;color:var(--c);font-weight:700}
+  ol.mv a:hover{color:var(--c)}
+  .use{display:flex;flex-direction:column;gap:6px}
+  .use a{text-decoration:none;color:var(--navy);font-weight:600;font-size:14px;line-height:1.3;border-left:3px solid var(--c);padding:3px 0 3px 9px}
+  .use a small{display:block;font-weight:400;font-size:12.3px;color:var(--muted);letter-spacing:.02em}
+  .use a:hover{background:var(--mist)}
+
+  /* ---- what holds in every square ---------------------------------- */
+  .always{margin:36px 0 0;background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:20px 24px}
+  .always h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:23px;color:var(--navy);margin:0 0 12px}
+  .always .use{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .always .use a{border-left:3px solid var(--gold);font-size:14.6px}
+  .elsew{margin:24px 0 0;background:var(--paper);border:1px solid var(--rule);padding:16px 20px;font-size:15px;color:var(--muted);max-width:none}
+  .lede{margin:0 0 16px;font-size:16.5px;color:var(--muted);max-width:76ch}
+  .lede b{color:var(--ink);font-weight:600}
+
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px;margin-top:40px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+
+  @media (max-width:1040px){.cells,.always .use{grid-template-columns:1fr 1fr}}
+  @media (max-width:620px){.cells,.always .use{grid-template-columns:1fr}.subj h2{font-size:24px}}
+  @media print{header::before,.bar,footer{display:none}body{background:#fff}.cell{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/by-subject.html">
+<meta property="og:title" content="By Subject &amp;amp; Grade · EL Publishing">
+<meta property="og:description" content="Find your square: English, math, science or social studies, K–2 through 9–12. Each one names the language demand at that point, two Monday Moves, and the free resources that apply.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/by-subject.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · BY SUBJECT &amp; GRADE</p>
+    <h1>Find your square. <em>Start there.</em></h1>
+    <p class="tag">Four subjects, four grade bands. Each square names what the language — not the content — is asking of your English learners at that point, two moves from the Monday Moves series, and the free resources that actually apply. Nothing here needs an account.</p>
+  </div>
+</header>
+
+<main class="wrap">
+<p class="lede">Sixteen squares. <b>Narrow it to yours</b> and the rest gets out of the way — or scroll the whole grid if you teach across bands. Every resource named below is on this hub and free; every move links into the published series it comes from.</p>
+
+<!--B:matrix-->
+<div class="bar" role="group" aria-label="Narrow the grid" hidden><div class="fset"><span>Grade</span><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="k2">K–2</button><button type="button" data-f="g35">3–5</button><button type="button" data-f="g68">6–8</button><button type="button" data-f="g912">9–12</button></div><div class="fset"><span>Subject</span><button type="button" data-k="all" aria-pressed="true">All</button><button type="button" data-k="ela" style="--sc:#1E6F8E;--scd:#7CC5DF">English / ELA</button><button type="button" data-k="math" style="--sc:#7A3E9D;--scd:#C49BE0">Mathematics</button><button type="button" data-k="sci" style="--sc:#1F6F3A;--scd:#7FCB97">Science</button><button type="button" data-k="soc" style="--sc:#A6571C;--scd:#E0A66B">Social Studies</button></div></div><section class="subj" id="s-ela" data-subj="ela" style="--sc:#1E6F8E;--scd:#7CC5DF"><h2>English / ELA</h2><div class="cells"><article class="cell" data-band="k2"><p class="band">K–2</p><p class="demand">Everything at once — letters, sounds, words and a story — in a language the child is still assembling.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>2</b> Preview Three Words</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>16</b> Read Aloud, Think Aloud</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="newcomer-k5.html">Elementary Newcomer Kit (K–5)<small>Kit</small></a><a href="first-100-words.html">My First 100 Words at School<small>Interactive</small></a></div></article><article class="cell" data-band="g35"><p class="band">3–5</p><p class="demand">The shift from learning to read to reading to learn, with vocabulary growing faster than anyone can teach it one word at a time.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>12</b> Teach the Word Parts</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>10</b> Go on a Cognate Hunt</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="https://radan55.github.io/mselablueprintinfo01/" target="_blank" rel="noopener">The Blueprint / El Plano<small>Curriculum</small></a><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a></div></article><article class="cell" data-band="g68"><p class="band">6–8</p><p class="demand">Claim, evidence, explanation — and the sentence that holds all three together.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>22</b> From Sentence to Paragraph</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>23</b> Grow the Sentence</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="sentence-lab.html">Sentence Lab: English Grammar in Real Life<small>PDF packet</small></a><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a><a href="https://radan55.github.io/elpa21-reading-studio/" target="_blank" rel="noopener">ELPA21 Reading Studio<small>Practice</small></a></div></article><article class="cell" data-band="g912"><p class="band">9–12</p><p class="demand">Analysis in writing, on demand, in a second language — and the exam language wrapped around it.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>26</b> The Language of Test Questions</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>14</b> Annotate with a Purpose</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">36-Week EL Curriculum: Emerging + Progressing<small>Curriculum map</small></a><a href="sentence-lab.html">Sentence Lab: English Grammar in Real Life<small>PDF packet</small></a><a href="elpa21-practice-student.pdf">ELPA21 Task Practice · Student<small>PDF packet</small></a></div></article></div></section><section class="subj" id="s-math" data-subj="math" style="--sc:#7A3E9D;--scd:#C49BE0"><h2>Mathematics</h2><div class="cells"><article class="cell" data-band="k2"><p class="band">K–2</p><p class="demand">Number sense arrives before the English for it. Counting, comparing and position words are the language, not the math.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>3</b> Hand Over a Sentence Frame</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>5</b> Check Without Asking “Do You Understand?”</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="newcomer-k5.html">Elementary Newcomer Kit (K–5)<small>Kit</small></a><a href="first-100-words.html">My First 100 Words at School<small>Interactive</small></a></div></article><article class="cell" data-band="g35"><p class="band">3–5</p><p class="demand">The word problem, not the arithmetic. A student who can divide may not know what <i>each</i> or <i>altogether</i> is asking for.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>13</b> Read the Question First</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>15</b> Match the Organizer to the Thinking</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a><a href="el-assistants.html">EL Assistants for Content Teachers<small>AI prompts</small></a></div></article><article class="cell" data-band="g68"><p class="band">6–8</p><p class="demand">Explaining the reasoning in words, which is a language task bolted onto a math task and graded as one.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>4</b> Talk Before Writing</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>19</b> Structure the Partner Talk</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="coteaching-plan.html">Co-Teaching Lesson Plan<small>Planner</small></a></div></article><article class="cell" data-band="g912"><p class="band">9–12</p><p class="demand">Algebra's own vocabulary, plus the MAAP question stems that decide whether a student who knows the content can show it.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>26</b> The Language of Test Questions</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>8</b> Test-Ready All Year</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="accommodations-cards.html">EL Accommodations Quick Cards<small>Quick cards</small></a></div></article></div></section><section class="subj" id="s-sci" data-subj="sci" style="--sc:#1F6F3A;--scd:#7FCB97"><h2>Science</h2><div class="cells"><article class="cell" data-band="k2"><p class="band">K–2</p><p class="demand">Observation words. What a child can point at, they can often say before they can read it.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>11</b> Word Walls That Work</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>2</b> Preview Three Words</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="newcomer-k5.html">Elementary Newcomer Kit (K–5)<small>Kit</small></a><a href="first-100-words.html">My First 100 Words at School<small>Interactive</small></a></div></article><article class="cell" data-band="g35"><p class="band">3–5</p><p class="demand">Process language — <i>first</i>, <i>then</i>, <i>because</i>, <i>so</i> — carrying a sequence the student can already see happening.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>15</b> Match the Organizer to the Thinking</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>3</b> Hand Over a Sentence Frame</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a><a href="el-assistants.html">EL Assistants for Content Teachers<small>AI prompts</small></a></div></article><article class="cell" data-band="g68"><p class="band">6–8</p><p class="demand">Cause and effect in writing, and a vocabulary load heavier than any other subject at this age.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>12</b> Teach the Word Parts</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>10</b> Go on a Cognate Hunt</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a></div></article><article class="cell" data-band="g912"><p class="band">9–12</p><p class="demand">Biology I's terminology and the claim-evidence-reasoning paragraph, both at once, both assessed.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>22</b> From Sentence to Paragraph</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>7</b> Grade the Content, Grow the English</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="sample-lesson.html">One Text. Four Lanes. Five Ways to Prove It.<small>Sample lesson</small></a><a href="accommodations-cards.html">EL Accommodations Quick Cards<small>Quick cards</small></a></div></article></div></section><section class="subj" id="s-soc" data-subj="soc" style="--sc:#A6571C;--scd:#E0A66B"><h2>Social Studies</h2><div class="cells"><article class="cell" data-band="k2"><p class="band">K–2</p><p class="demand">Community and time words — <i>yesterday</i>, <i>neighbor</i>, <i>rule</i> — that assume a shared childhood the student may not have had here.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-4" target="_blank" rel="noopener"><b>32</b> Culture as Content</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>17</b> Build Background in Two Minutes</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="newcomer-k5.html">Elementary Newcomer Kit (K–5)<small>Kit</small></a><a href="newcomer-guide.html">Your Guide to School in the U.S.<small>PDF guide</small></a></div></article><article class="cell" data-band="g35"><p class="band">3–5</p><p class="demand">Background knowledge, not vocabulary. A reading about a prairie is hard if you have never seen one, however good your English.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>17</b> Build Background in Two Minutes</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-4" target="_blank" rel="noopener"><b>32</b> Culture as Content</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-assistants.html">EL Assistants for Content Teachers<small>AI prompts</small></a><a href="https://radan55.github.io/hispanicheritagemonth2026/" target="_blank" rel="noopener">Hispanic Heritage: 30 People<small>Unit</small></a></div></article><article class="cell" data-band="g68"><p class="band">6–8</p><p class="demand">Dense text with long sentences and an assumed American frame of reference.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-1" target="_blank" rel="noopener"><b>6</b> Make the Text Reachable</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-2" target="_blank" rel="noopener"><b>14</b> Annotate with a Purpose</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="sentence-frames.html">Sentence-Frame Bank<small>Bank</small></a></div></article><article class="cell" data-band="g912"><p class="band">9–12</p><p class="demand">Argument from sources — reading several, taking a position, defending it in academic English.</p><p class="lbl">Two moves</p><ol class="mv"><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>20</b> Teach the Conversation Moves</a></li><li><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mq-3" target="_blank" rel="noopener"><b>22</b> From Sentence to Paragraph</a></li></ol><p class="lbl">Reach for</p><div class="use"><a href="el-bridge.html">EL Bridge Mississippi<small>Builder</small></a><a href="sentence-lab.html">Sentence Lab: English Grammar in Real Life<small>PDF packet</small></a><a href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">36-Week EL Curriculum: Emerging + Progressing<small>Curriculum map</small></a></div></article></div></section><div class="always"><h3>Any subject, any grade</h3><div class="use"><a href="sheltered.html">Sheltered: 12 Minutes as an English Learner<small>Sit twelve minutes as an EL before changing anything</small></a><a href="can-do-checklist.html">My English Can-Do Checklist<small>What a level actually means, in student words</small></a><a href="accommodations-cards.html">EL Accommodations Quick Cards<small>What you may change, and what MAAP allows</small></a><a href="student-profile.html">EL Student Profile<small>The one page about the student for your folder</small></a></div></div><p class="elsew">Electives, CTE, art, music and PE sit closest to the K–2 column whatever the grade: the doing carries the meaning, and the language rides along with it. Special education shares this grid — a disability and a language still need separating, and the Student Profile is where that gets written down.</p>
+<!--/B:matrix-->
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    EL Publishing · Raleigh, Mississippi
+    <br><a href="mailto:richard.spanishteacher@gmail.com">richard.spanishteacher@gmail.com</a>
+    <p style="margin:6px 0 0"><a href="all.html">All resources</a> · <a href="content-teachers.html">For content teachers</a> · <a href="index.html">Home</a></p>
+  </div>
+</footer>
+
+<script>
+/* The two filters. Nothing is hidden until someone presses something, so the
+   whole grid is there with scripts off and for anything that cannot run them. */
+(function(){
+  "use strict";
+  var bar=document.querySelector(".bar"); if(!bar) return;
+  bar.hidden=false;   /* it works now, so it may be seen */
+  var subjects=[].slice.call(document.querySelectorAll(".subj"));
+  var band="all", subj="all";
+
+  function press(sel,val){
+    [].forEach.call(bar.querySelectorAll("button["+sel+"]"),function(b){
+      b.setAttribute("aria-pressed",b.getAttribute(sel)===val?"true":"false");
+    });
+  }
+
+  function apply(){
+    subjects.forEach(function(s){
+      var keep=subj==="all"||s.getAttribute("data-subj")===subj;
+      s.hidden=!keep;
+      [].forEach.call(s.querySelectorAll(".cell"),function(c){
+        c.hidden=!(keep&&(band==="all"||c.getAttribute("data-band")===band));
+      });
+    });
+  }
+
+  bar.addEventListener("click",function(ev){
+    var b=ev.target.closest("button"); if(!b) return;
+    if(b.hasAttribute("data-f")){ band=b.getAttribute("data-f"); press("data-f",band); }
+    else if(b.hasAttribute("data-k")){ subj=b.getAttribute("data-k"); press("data-k",subj); }
+    apply();
+  });
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
