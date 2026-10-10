@@ -7,6 +7,10 @@
 <meta name="description" content="Free English learner teaching resources from Laurel High School: curriculum maps, interactive practice tools, magazines, field guides, bulletins and ELPA21 practice packets.">
 <meta property="og:title" content="EL Publishing">
 <meta property="og:description" content="Free English learner teaching resources from Richard A. Daniel, M.Ed.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/img/richard-daniel.jpg">
+<link rel="icon" href="brand/mark.svg" type="image/svg+xml">
+<link rel="icon" href="icons/el-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/el-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,15 +37,48 @@
   header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;
     background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
-  .head-in{position:relative;max-width:1060px;margin:0 auto;padding:46px 26px 38px}
-  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 18px}
+  .head-in{position:relative;max-width:1060px;margin:0 auto;padding:44px 26px 40px;
+    display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,.58fr);
+    gap:44px;align-items:center}
+
+  /* the colophon: an imprint's mark and its line, not a logo floating alone */
+  .colophon{display:inline-flex;align-items:center;gap:13px;text-decoration:none;
+    margin:0 0 24px;padding:0 0 0 1px}
+  .cmark{width:44px;height:44px;flex:none;display:block}
+  .cwords{display:block;padding-left:13px;border-left:1px solid rgba(235,217,160,.34)}
+  .cwords b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600;
+    color:#fff;letter-spacing:.015em;line-height:1.05}
+  .cwords i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);margin-top:4px}
+  .colophon:hover .cwords b{color:var(--gold-lt)}
+
   h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.03em;
-    font-size:clamp(42px,9vw,72px);line-height:.92;margin:0}
+    font-size:clamp(40px,7.2vw,68px);line-height:.94;margin:0}
   h1 em{display:block;font-style:italic;font-weight:600;color:var(--gold)}
-  .tag{margin:18px 0 0;font-size:17.5px;color:#C9CEEA;max-width:52ch}
-  .who{margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(235,217,160,.28);
-    font-size:14px;color:#AEB5DA;max-width:60ch}
+  /* the subject rotates: language, reading, writing, vocabulary — every teacher
+     is all four. min-width keeps "teacher." from jumping as the word changes. */
+  .swap{display:inline-block;white-space:nowrap;vertical-align:bottom;
+    transition:opacity .34s ease,transform .34s ease,width .4s cubic-bezier(.2,.8,.2,1)}
+  .swap.sized{overflow:hidden}
+  .swap.out{opacity:0;transform:translateY(.3em) rotateX(62deg)}
+  .tag{margin:20px 0 0;font-size:17.5px;color:#C9CEEA;max-width:52ch}
+
+  .cred{margin:24px 0 0;padding-top:18px;border-top:1px solid rgba(235,217,160,.28);
+    display:flex;gap:14px;align-items:center}
+  .face{display:none;width:72px;height:72px;flex:none;border-radius:50%;
+    object-fit:cover;object-position:52% 24%;border:2px solid var(--gold)}
+  .who{margin:0;font-size:14px;color:#AEB5DA;max-width:60ch}
   .who b{color:#fff}
+
+  .head-photo{margin:0;position:relative}
+  .head-photo img{position:relative;display:block;width:100%;height:auto;
+    aspect-ratio:1;object-fit:cover;border:3px solid var(--gold);
+    box-shadow:0 26px 60px rgba(0,0,0,.42)}
+  @media (max-width:880px){
+    .head-in{grid-template-columns:1fr;gap:0}
+    .head-photo{display:none}
+    .face{display:block}
+  }
 
   /* ===== NOW SHOWING · premiere ===== */
   .premiere{background:#070914;color:#fff;position:relative;overflow:hidden;border-top:1px solid rgba(201,162,39,.35);border-bottom:1px solid rgba(201,162,39,.35)}
@@ -188,12 +225,30 @@
 
 <header>
   <div class="head-in">
-    <p class="brand">EL PUBLISHING</p>
-    <h1>Every teacher is a<em>language teacher.</em></h1>
-    <p class="tag">Free, classroom-ready resources for teaching English learners — built in a
-      Mississippi high school, used in any of them.</p>
-    <p class="who"><b>Richard A. Daniel, M.Ed.</b> · ENL/EL Specialist, Laurel High School ·
-      31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
+    <div class="head-main">
+      <a class="colophon" href="index.html" aria-label="EL Publishing, home">
+        <svg class="cmark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="9" y="34" width="10" height="18" rx="1" fill="#6B74A8"/><rect x="11" y="39" width="6" height="2" fill="#1E2761"/><rect x="11" y="44" width="6" height="1" fill="#1E2761" opacity=".55"/>
+          <rect x="22" y="27" width="10" height="25" rx="1" fill="#C9A227"/><rect x="24" y="32" width="6" height="2" fill="#1E2761"/><rect x="24" y="37" width="6" height="1" fill="#1E2761" opacity=".55"/>
+          <rect x="35" y="20" width="10" height="32" rx="1" fill="#A9B1DA"/><rect x="37" y="25" width="6" height="2" fill="#1E2761"/><rect x="37" y="30" width="6" height="1" fill="#1E2761" opacity=".55"/>
+          <rect x="48" y="13" width="10" height="39" rx="1" fill="#FFFFFF"/><rect x="50" y="18" width="6" height="2" fill="#1E2761"/><rect x="50" y="23" width="6" height="1" fill="#1E2761" opacity=".55"/>
+          <rect x="6" y="52" width="55" height="3.4" rx="1.2" fill="#C9A227"/>
+        </svg>
+        <span class="cwords"><b>EL Publishing</b><i>Laurel, Mississippi · est. 2026</i></span>
+      </a>
+      <h1>Every teacher is a<em><span class="swap" id="swapWord">language</span> teacher.</em></h1>
+      <p class="tag">Free, classroom-ready resources for teaching English learners — built in a
+        Mississippi high school, used in any of them.</p>
+      <div class="cred">
+        <img class="face" src="img/richard-daniel.jpg" alt="" width="640" height="640" decoding="async">
+        <p class="who"><b>Richard A. Daniel, M.Ed.</b> · ENL/EL Specialist, Laurel High School ·
+          31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
+      </div>
+    </div>
+    <figure class="head-photo">
+      <img src="img/richard-daniel.jpg" width="640" height="640" decoding="async"
+        alt="Richard A. Daniel at his desk, with EL Publishing titles on the shelf behind him">
+    </figure>
   </div>
 </header>
 
@@ -317,6 +372,39 @@
 window.HUB_CATALOG=[{"u": "newcomer-guide.html", "t": "Your Guide to School in the U.S.", "o": "How an American school works, for a family that arrived this week.", "f": "PDF guide · 5 languages", "g": "Students & families", "th": "thumbs/newcomer-guide.jpg", "pin": "", "new": ""}, {"u": "first-100-words.html", "t": "My First 100 Words at School", "o": "The hundred words of a first month, tap to hear, printable as flashcards.", "f": "Interactive · 100 words", "g": "Students & families", "th": "thumbs/first-100-words.jpg", "pin": "", "new": ""}, {"u": "storm-lens/", "t": "Storm Lens: Point. Name. Say.", "o": "Point a Chromebook at the room and the room becomes the vocabulary list.", "f": "Camera app · 334 words", "g": "Students & families", "th": "thumbs/storm-lens.jpg", "pin": "", "new": ""}, {"u": "english-on-your-own.html", "t": "English On Your Own", "o": "ELPA21 practice a student can do alone — speaking checked by the browser.", "f": "Practice · 22 task types", "g": "Students & families", "th": "thumbs/english-on-your-own.jpg", "pin": "", "new": ""}, {"u": "graduation-roadmap.html", "t": "Graduation Roadmap for Newcomers", "o": "Credits, state tests and a four-year plan, filled in with a counselor.", "f": "Planner · 4 diploma paths", "g": "Students & families", "th": "thumbs/graduation-roadmap.jpg", "pin": "", "new": ""}, {"u": "elpt-family-guide.html", "t": "The English Test, Explained for Families", "o": "What the ELPT measures, what the levels mean, how a student exits.", "f": "Explainer · 5 languages", "g": "Students & families", "th": "thumbs/elpt-family-guide.jpg", "pin": "", "new": ""}, {"u": "can-do-checklist.html", "t": "My English Can-Do Checklist", "o": "Eighty “I can” statements a student scores three times a year.", "f": "Self-check · 80 statements", "g": "Students & families", "th": "thumbs/can-do-checklist.jpg", "pin": "", "new": ""}, {"u": "sentence-lab.html", "t": "Sentence Lab: English Grammar in Real Life", "o": "Sixteen grammar features in real school scenes, two lanes on every page.", "f": "PDF packet · 25 pages", "g": "Students & families", "th": "thumbs/sentence-lab.jpg", "pin": "", "new": ""}, {"u": "elpa21-practice-student.pdf", "t": "ELPA21 Task Practice · Student", "o": "Practice written in the exact format of the test, all four domains.", "f": "PDF packet · 16 pages", "g": "Students & families", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21-reading-studio/", "t": "ELPA21 Reading Studio", "o": "ELPT-style reading practice under mock-test conditions, six grade bands.", "f": "Practice · 122 items", "g": "Students & families", "th": "thumbs/16-reading-studio.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21speaking01/", "t": "School Life • Language Lab", "o": "Twenty-five four-skill activities set inside an ordinary school day.", "f": "Practice · 25 activities", "g": "Students & families", "th": "thumbs/04-language-lab.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/el-publishing-grammar-songs/", "t": "Grammar Beats", "o": "Grammar as radio songs, each with a lesson built to the beat.", "f": "Music · 3 song lessons", "g": "Students & families", "th": "thumbs/14-grammar-beats.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/tamales02/", "t": "How Tamales Are Made", "o": "The feature article behind the sample lesson, with five activities.", "f": "Lesson · 1 text", "g": "Students & families", "th": "thumbs/05-tamales.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elstudentmagazine01/", "t": "Many Voices", "o": "A magazine written for multilingual high-school students.", "f": "Magazine · Issue 1", "g": "Students & families", "th": "thumbs/07-many-voices.jpg", "pin": "", "new": ""}, {"u": "sheltered.html", "t": "Sheltered: 12 Minutes as an English Learner", "o": "Sit a real lesson in a language you don't speak. Then sit it again with supports.", "f": "Simulation · 12 minutes", "g": "Every classroom teacher", "th": "thumbs/sheltered.jpg", "pin": "", "new": "2026-10-09"}, {"u": "el-assistants.html", "t": "EL Assistants for Content Teachers", "o": "Four prompts to paste: scaffold a lesson, level a text, fix a quiz, write home.", "f": "AI prompts · 4 assistants", "g": "Every classroom teacher", "th": "thumbs/el-assistants.jpg", "pin": "", "new": ""}, {"u": "el-bridge.html", "t": "EL Bridge Mississippi", "o": "A Mississippi standard in; a four-lane lesson, leveled text or MAAP items out.", "f": "Builder · K–12 + EOC", "g": "Every classroom teacher", "th": "thumbs/el-bridge.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/el-field-guide/", "t": "The EL Field Guide", "o": "The whole obligation in plain language, for staff who never trained for it.", "f": "Field guide · Web guide", "g": "Every classroom teacher", "th": "thumbs/08-field-guide.jpg", "pin": "", "new": ""}, {"u": "sentence-frames.html", "t": "Sentence-Frame Bank", "o": "150 frames by function and level, each with a Spanish gloss. Copy into a slide.", "f": "Bank · 150 frames", "g": "Every classroom teacher", "th": "thumbs/sentence-frames.jpg", "pin": "", "new": ""}, {"u": "spoken-spanish-english.html", "t": "Spoken Spanish & Spoken English", "o": "What you will hear from a Spanish speaker, and a useful reply for each.", "f": "PDF guide · 23 pages", "g": "Every classroom teacher", "th": "thumbs/spoken-spanish-english.jpg", "pin": "", "new": ""}, {"u": "accommodations-cards.html", "t": "EL Accommodations Quick Cards", "o": "How to do it tomorrow, whether MAAP allows it, and the wording for the LSP.", "f": "Quick cards · 18 cards", "g": "Every classroom teacher", "th": "thumbs/accommodations-cards.jpg", "pin": "", "new": ""}, {"u": "sub-para.html", "t": "Substitute Card & Para Guide", "o": "One page for the substitute, one for the paraprofessional. No student names.", "f": "Printable · 2 pages", "g": "Every classroom teacher", "th": "thumbs/sub-para.jpg", "pin": "", "new": ""}, {"u": "coteaching-plan.html", "t": "Co-Teaching Lesson Plan", "o": "Content and language objectives on one page, with six co-teaching models.", "f": "Planner · 1 page", "g": "Every classroom teacher", "th": "thumbs/coteaching-plan.jpg", "pin": "", "new": ""}, {"u": "newcomer-k5.html", "t": "Elementary Newcomer Kit (K–5)", "o": "The first ten days with a young newcomer, and the printables for tomorrow.", "f": "Kit · K–2 and 3–5", "g": "Every classroom teacher", "th": "thumbs/newcomer-k5.jpg", "pin": "", "new": ""}, {"u": "showcase.html", "t": "Showcase: Built by Teachers", "o": "What other Mississippi teachers made with these tools and chose to share.", "f": "Gallery · Open submissions", "g": "Every classroom teacher", "th": "thumbs/showcase.jpg", "pin": "", "new": ""}, {"u": "tech-radar.html", "t": "Six New Tech Tools for English Learners", "o": "What is new and free this month, with a classroom use for each lane.", "f": "Radar · Updated weekly", "g": "Every classroom teacher", "th": "", "pin": "", "new": ""}, {"u": "language-bridge-2026-09.html", "t": "The Language Bridge", "o": "The monthly one-page bulletin for content teachers: five findings, five moves.", "f": "Bulletin · Sept 2026", "g": "Every classroom teacher", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21speaking01/october/", "t": "The Field Atlas", "o": "Sixteen plates for the teacher who never planned to teach language.", "f": "Magazine · Oct 2026", "g": "Every classroom teacher", "th": "thumbs/06-field-atlas.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/everyteacherisalanguageteacher/", "t": "Every Teacher Is a Language Teacher", "o": "Self-paced PD that fits a department meeting. Six sections, no facilitator.", "f": "PD module · 45–60 min", "g": "Every classroom teacher", "th": "thumbs/10-every-teacher.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/RichardDaniel/language-functions/", "t": "36-Week Language Functions", "o": "Twelve language functions across four grade bands and four proficiency tiers.", "f": "Scope & sequence · 36 weeks · K–12", "g": "The EL teacher's desk", "th": "thumbs/01-language-functions.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/RichardDaniel/curriculum-36/", "t": "36-Week EL Curriculum: Emerging + Progressing", "o": "The year week by week in two lanes, built back from the ELPT window.", "f": "Curriculum map · 36 weeks · 9–12", "g": "The EL teacher's desk", "th": "thumbs/02-curriculum-36.jpg", "pin": "", "new": ""}, {"u": "sample-lesson.html", "t": "One Text. Four Lanes. Five Ways to Prove It.", "o": "One 90-minute block taken apart, decision by decision.", "f": "Sample lesson · 90 minutes", "g": "The EL teacher's desk", "th": "", "pin": "", "new": ""}, {"u": "newcomer-week1.html", "t": "Newcomer Week 1 Kit", "o": "The week a student arrives, hour by hour, ending in an exit ticket.", "f": "Kit · 5 days", "g": "The EL teacher's desk", "th": "thumbs/newcomer-week1.jpg", "pin": "", "new": ""}, {"u": "lsp-builder.html", "t": "LSP Builder", "o": "Enter the ELPT levels and the Language Service Plan drafts itself.", "f": "Generator · Mississippi LSP", "g": "The EL teacher's desk", "th": "thumbs/lsp-builder.jpg", "pin": "", "new": ""}, {"u": "newcomer-intake.html", "t": "Newcomer Intake", "o": "Type the student once; the profile, the plan and the letter fill themselves.", "f": "Generator · 3 documents", "g": "The EL teacher's desk", "th": "thumbs/newcomer-intake.jpg", "pin": "", "new": ""}, {"u": "student-profile.html", "t": "EL Student Profile", "o": "The one page a substitute or a new content teacher needs about a student.", "f": "Generator · 1 page", "g": "The EL teacher's desk", "th": "thumbs/student-profile.jpg", "pin": "", "new": ""}, {"u": "field-notes.html", "t": "What's New in Teaching English Learners", "o": "Eight ideas shaping the year, each tagged by how strong the evidence is.", "f": "Research brief · Oct 2026", "g": "The EL teacher's desk", "th": "field-notes-2026-10.jpg", "pin": "", "new": ""}, {"u": "elpa21-practice-teacher.pdf", "t": "ELPA21 Task Practice · Teacher", "o": "Read-aloud scripts, keys, look-fors, and a four-lane version of every task.", "f": "PDF packet · Teacher edition", "g": "The EL teacher's desk", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/mselablueprintinfo01/", "t": "The Blueprint / El Plano", "o": "The Mississippi ELA blueprints grade by grade, in English and Spanish.", "f": "Curriculum · K–12 · EN/ES", "g": "The EL teacher's desk", "th": "thumbs/03-blueprint.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/msellibrary/", "t": "The Mississippi EL Library", "o": "Five volumes: the shelf an EL teacher in this state should have open.", "f": "Library · 5 volumes", "g": "The EL teacher's desk", "th": "thumbs/12-library.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elvocabularycurriculumengine/", "t": "The Vocabulary Engine", "o": "A five-day instructional cycle for academic vocabulary, with handouts.", "f": "PDF · 5-day cycle", "g": "The EL teacher's desk", "th": "thumbs/13-vocab-engine.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/hispanicheritagemonth2026/", "t": "Hispanic Heritage: 30 People", "o": "Thirty bilingual biography profiles with discussion prompts and projects.", "f": "Unit · 30 profiles", "g": "The EL teacher's desk", "th": "thumbs/11-30-people.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/ms-el-command-center/", "t": "MS EL Command Center", "o": "The reference desk: identification timelines, procedures, §15 accountability.", "f": "Reference app · Mississippi", "g": "The EL teacher's desk", "th": "thumbs/09-command-center.jpg", "pin": "", "new": ""}, {"u": "leaders.html", "t": "For District Leaders", "o": "Are we compliant, are they growing, what does it cost — and the tools for each.", "f": "Start here · 3 questions", "g": "District & compliance", "th": "thumbs/leaders.jpg", "pin": "", "new": ""}, {"u": "el-evaluate.html", "t": "Evaluate Your Own EL Program", "o": "The consulting firm's method, written out so your own team can run it.", "f": "Course · 6 sessions", "g": "District & compliance", "th": "thumbs/el-evaluate.jpg", "pin": "2026-11-20", "new": "2026-10-09"}, {"u": "el-audit.html", "t": "EL Program Self-Audit", "o": "Thirty-three legal items scored live, with a corrective-action plan.", "f": "Self-audit · 33 items · 1 hour", "g": "District & compliance", "th": "thumbs/el-audit.jpg", "pin": "", "new": ""}, {"u": "el-outcomes.html", "t": "EL Outcomes Dashboard", "o": "Counts in; the annual program evaluation Castañeda asks for out.", "f": "Dashboard · 5 charts", "g": "District & compliance", "th": "thumbs/el-outcomes.jpg", "pin": "", "new": ""}, {"u": "el-compliance-calendar.html", "t": "EL Program Compliance Calendar", "o": "Forty-five obligations placed in the month they actually come due.", "f": "Checklist · 45 items", "g": "District & compliance", "th": "thumbs/el-compliance-calendar.jpg", "pin": "", "new": ""}, {"u": "title3-planner.html", "t": "Title III Funding Planner", "o": "The split, the 2 percent cap, the supplanting test, the FY27 contingency.", "f": "Fiscal planner · ESSA §3115", "g": "District & compliance", "th": "thumbs/title3-planner.jpg", "pin": "", "new": ""}, {"u": "parent-letters.html", "t": "EL Parent Notification Letters", "o": "The six letters ESSA requires, fillable, English and Spanish side by side.", "f": "Templates · 6 letters", "g": "District & compliance", "th": "thumbs/parent-letters.jpg", "pin": "", "new": ""}, {"u": "board-brief.html", "t": "Board Brief & Deck", "o": "A dozen numbers become a one-page brief and an eight-slide deck.", "f": "Template · 1 page + .pptx", "g": "District & compliance", "th": "thumbs/board-brief.jpg", "pin": "", "new": ""}, {"u": "el-data-dashboard.html", "t": "EL Data Dashboard", "o": "Paste the ELPT roster; get the eight tables a board and Title III ask for.", "f": "Excel template · 8 tables", "g": "District & compliance", "th": "thumbs/el-data-dashboard.jpg", "pin": "", "new": ""}, {"u": "policy-brief.html", "t": "Mississippi EL Policy Brief", "o": "One page a month: what changed, what it means here, what to do by when.", "f": "Monthly brief · Oct 2026", "g": "District & compliance", "th": "thumbs/policy-brief.jpg", "pin": "", "new": ""}, {"u": "case-studies.html", "t": "EL Case Studies", "o": "Three composite districts, with the tool and the cost named at every step.", "f": "Cases · 3 cases", "g": "District & compliance", "th": "thumbs/case-studies.jpg", "pin": "", "new": ""}, {"u": "district-kit.html", "t": "District Partnership Kit", "o": "What a 90-day engagement delivers to a district with no EL coordinator.", "f": "Kit · 90 days", "g": "District & compliance", "th": "thumbs/district-kit.jpg", "pin": "", "new": ""}, {"u": "fact-check.html", "t": "Mississippi Fact-Check", "o": "Every Mississippi claim on this hub, with its source and its status.", "f": "Review record · 24 claims", "g": "District & compliance", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpublishing-magazineeditionone/#compliance", "t": "Making Them Count", "o": "Teaching English learners in Mississippi's overlooked districts.", "f": "Book · Issue One", "g": "District & compliance", "th": "thumbs/15-making-them-count.jpg", "pin": "", "new": ""}];
 </script>
 <!--/B:titles-->
+<script>
+/* The headline's subject rotates. "Language teacher" is the argument, but it
+   lands harder when the word keeps changing under it — reading, writing and
+   vocabulary are the same job. Held still for anyone who asked for less motion. */
+(function(){try{
+  var el=document.getElementById('swapWord');
+  if(!el||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var words=['language','reading','writing','vocabulary'],i=0,w={};
+  function start(){
+    // Measure each word in the headline's own face and size the box to it, so
+    // "teacher." slides along instead of sitting after a reserved gap.
+    var probe=el.cloneNode(false);
+    probe.id='';probe.className='swap';
+    probe.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;width:auto';
+    el.parentNode.appendChild(probe);
+    words.forEach(function(x){probe.textContent=x;w[x]=probe.getBoundingClientRect().width});
+    probe.remove();
+    if(!w[words[0]])return;            // no measurement, no resizing — just leave it
+    el.classList.add('sized');
+    el.style.width=Math.ceil(w[words[0]])+2+'px';
+    setInterval(function(){
+      el.classList.add('out');
+      setTimeout(function(){
+        i=(i+1)%words.length;
+        el.textContent=words[i];
+        el.style.width=Math.ceil(w[words[i]])+2+'px';
+        el.classList.remove('out');
+      },360);
+    },3200);
+  }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(start);else start();
+}catch(e){}})();
+</script>
 <script>
 /* Now showing. The build writes the current release into the markup; this
    re-derives it at load so the band retires itself 21 days later without a
