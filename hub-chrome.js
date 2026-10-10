@@ -135,12 +135,26 @@
         '<div class="hb-sheet-in">' +
           "<p>" + msg.replace(/</g, "&lt;") + "</p>" +
           '<a href="mailto:?subject=' + encodeURIComponent("Something for your EL students") +
-            "&body=" + encodeURIComponent(msg + "\n\n" + url) + '">Email it</a>' +
-          '<a href="sms:?&body=' + encodeURIComponent(msg + " " + url) + '">Text it</a>' +
-          '<button type="button" id="hbCopy">Copy the link</button>' +
+            "&body=" + encodeURIComponent(msg + "\n\n" + url) +
+            '">Email it<small>Opens your mail, already written</small></a>' +
+          '<a href="sms:?&body=' + encodeURIComponent(msg + " " + url) +
+            '">Text it<small>Opens Messages on a phone</small></a>' +
+          '<button type="button" id="hbCopy">Copy the link' +
+            "<small>Paste it anywhere</small></button>" +
+          (navigator.share
+            ? '<button type="button" id="hbMore">More ways' +
+              "<small>Your device's own share sheet</small></button>" : "") +
         "</div>";
       sheet.hidden = false;
       btn.setAttribute("aria-expanded", "true");
+      var more = document.getElementById("hbMore");
+      if (more) {
+        more.addEventListener("click", function () {
+          navigator.share({ title: document.title, text: msg, url: url })
+            .catch(function () {});
+          close();
+        });
+      }
       document.getElementById("hbCopy").addEventListener("click", function () {
         var done = function () { this.textContent = "Copied"; }.bind(this);
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -159,11 +173,9 @@
 
     btn.setAttribute("aria-expanded", "false");
     btn.addEventListener("click", function () {
-      /* a phone has a better share sheet than anything built here */
-      if (navigator.share) {
-        navigator.share({ title: document.title, text: msg, url: url }).catch(function () {});
-        return;
-      }
+      /* Always show these three first. Handing straight to navigator.share
+         looked tidy but hid email behind an OS sheet on every device that
+         supports it, which is most of them. */
       sheet.hidden ? open() : close();
     });
     document.addEventListener("click", function (ev) {
