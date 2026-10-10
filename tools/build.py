@@ -244,6 +244,7 @@ def play_band():
     )
     return f'''<div class="wrap">
   <p class="freeline">{e(play.FREE)}</p>
+  <p class="usage" id="usage" hidden></p>
   <p class="playk">Try one right now</p>
   <div class="pgrid">{cards}</div>
 </div>'''

@@ -205,6 +205,12 @@
     line-height:1.3;color:var(--navy);margin:0;max-width:34ch;font-weight:600;
     letter-spacing:-.01em}
   .freeline::first-line{color:var(--gold)}
+  .usage{margin:14px 0 0;font-size:14.5px;color:var(--muted);display:flex;
+    align-items:center;gap:9px}
+  .usage[hidden]{display:none}
+  .usage b{color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums}
+  .usage i{width:7px;height:7px;border-radius:50%;background:var(--ok,#2E7D4F);
+    flex:none;font-style:normal}
   .playk{margin:22px 0 10px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
     color:var(--muted);font-weight:700}
   .pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -420,6 +426,7 @@
   <!--B:play-->
 <div class="wrap">
   <p class="freeline">Everything here is free. No account, no login, no trial, no catch — open it, use it, print it, keep it.</p>
+  <p class="usage" id="usage" hidden></p>
   <p class="playk">Try one right now</p>
   <div class="pgrid"><a class="pcard" href="storm-lens/"><b>Storm Lens</b><i>Point a camera at the room</i><span>The room becomes the word list.</span></a><a class="pcard" href="https://radan55.github.io/el-publishing-grammar-songs/" target="_blank" rel="noopener"><b>Grammar Beats</b><i>Grammar, but as radio songs</i><span>Nouns, adjectives, verbs — with a beat.</span></a><a class="pcard" href="first-100-words.html"><b>First 100 Words</b><i>Tap any word to hear it</i><span>The hundred a newcomer hears first.</span></a><a class="pcard" href="sheltered.html"><b>Sheltered</b><i>Twelve minutes as an EL</i><span>Sit a lesson in a language you don&#x27;t speak.</span></a></div>
 </div>
@@ -841,6 +848,27 @@ window.HUB_CATALOG=[{"u": "newcomer-guide.html", "t": "Your Guide to School in t
     T('wk-rt',c.t);T('wk-rd',c.o);a.href=c.u;
     if(/^https?:/.test(c.u)){a.target='_blank';a.rel='noopener'}
   }
+}catch(e){}})();
+</script>
+<script>
+/* How many people have actually opened this. GoatCounter serves the count
+   without a key once "Allow adding visitor counts to your website" is on in
+   its settings. Until then — or if the request fails, or the number is too
+   small to mean anything — this line simply never appears. A made-up number
+   on a site teachers are meant to trust is worse than no number. */
+(function(){try{
+  var el=document.getElementById('usage'); if(!el)return;
+  var FLOOR=100;
+  fetch('https://elpublishing.goatcounter.com/counter/TOTAL.json',{mode:'cors'})
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(j){
+      if(!j)return;
+      var n=parseInt(String(j.count_unique||j.count||'').replace(/[^0-9]/g,''),10);
+      if(!n||n<FLOOR)return;
+      el.innerHTML='<i aria-hidden="true"></i><span><b>'+n.toLocaleString()+
+        '</b> people have opened something here.</span>';
+      el.hidden=false;
+    }).catch(function(){});
 }catch(e){}})();
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
