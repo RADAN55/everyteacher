@@ -81,6 +81,8 @@
   .drafted b{color:var(--navy)}
   .drafted button{margin-left:auto;font:inherit;font-size:12px;font-weight:600;border:1px solid var(--navy);background:var(--paper);color:var(--navy);padding:3px 10px;border-radius:999px;cursor:pointer}
   [data-auto]{box-shadow:inset 3px 0 0 var(--gold)}
+  .chk label.auto{box-shadow:inset 3px 0 0 var(--gold);padding-left:6px}
+  .chk input[data-auto]{box-shadow:none}
   .team{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 14px;margin-top:4px}
   .tm{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"c s" "c n";gap:0 8px;align-items:center;border:1px solid var(--rule);padding:6px 8px;font-size:13.5px}
   .tm input[type=checkbox]{grid-area:c;width:auto;margin:0}
@@ -115,7 +117,7 @@
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media (max-width:700px){.g2,.g3,.g4,.chk,.sig,.comp ul,.team{grid-template-columns:1fr}.bg{grid-template-columns:auto 1fr;grid-template-areas:"s p" "s w" "s e" "b b"}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p,.comp-next,.tip,.start,.drafted{display:none}.tm input[data-k]{border-bottom:1px solid #999}[data-auto]{box-shadow:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p,.comp-next,.tip,.start,.drafted{display:none}.tm input[data-k]{border-bottom:1px solid #999}[data-auto],.chk label.auto{box-shadow:none;padding-left:0}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -175,7 +177,7 @@
     <div class="g2" style="margin-top:6px"><div><label class="f">If dual-identified (IEP/504): how language and disability goals are coordinated</label><input data-k="dual" placeholder="EL teacher sits on the IEP team; language goals cross-referenced; evaluation was bilingual/interpreted"></div><div><label class="f">If services declined: what continues anyway</label><input data-k="declnote" placeholder="EL status and MSIS coding; annual ELPT; accommodations in content classes; monitoring; annual notification"></div></div>
   </div>
 
-  <div class="sec"><h3>5 · Instructional accommodations <small>classroom — every teacher of record</small></h3><div class="chk" id="iacc"></div></div>
+  <div class="sec"><h3>5 · Instructional accommodations <small>classroom — every teacher of record · chosen from each domain's level; gold edge = the builder's pick</small></h3><div class="chk" id="iacc"></div></div>
   <div class="sec"><h3>6 · Assessment accommodations <button type="button" class="tip" aria-label="What this means" data-tip="What is allowed on MAAP and ELPT comes from the Mississippi Testing Accommodations Manual, not the LSP. Two rules trip people most: nothing in the primary language on the ELPT (no bilingual dictionary), and a test accommodation must be one the student uses routinely in class.">i</button><small>classroom and state tests (MAAP, ELPT) — must match the Mississippi Testing Accommodations Manual and be used routinely in class</small></h3><div class="chk" id="aacc"></div><div class="g2" style="margin-top:6px"><div><label class="f">Notes for the District Test Coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all MAAP; none on ELPT."></div><div><label class="f">First-year EL and the ELA state test <button type="button" class="tip" aria-label="What this means" data-tip="ESSA lets a state exempt a student in their first 12 months in U.S. schools from one ELA administration. Whether and how Mississippi applies it this year is the District Test Coordinator's call to state — record what the DTC confirmed, not an assumption.">i</button></label><select data-k="firstyr"><option value="">—</option><option>Not applicable — not in first 12 months</option><option>DTC confirmed: takes ELA with accommodations</option><option>DTC confirmed: exempt from this year's ELA administration</option><option>Not yet confirmed with the DTC</option></select></div></div></div>
 
   <div class="sec"><h3>7 · Grading, promotion &amp; retention <button type="button" class="tip" aria-label="What this means" data-tip="Retaining a student because of early-stage English violates civil-rights law. Retention is defensible only with documented interventions showing English was not the barrier, a meeting with the parents, and the parents' signed agreement.">i</button></h3>
@@ -228,7 +230,7 @@ const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
 document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><span class="tb"><button type="button" data-g="${k}">Suggest from level</button><button type="button" data-bank="${k}" class="bk">Goal bank</button></span></div><div class="bank" id="bank${k}" hidden></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who <small style="text-transform:none;letter-spacing:0;font-weight:400">— what is done, and by whom</small></label><textarea data-k="s${k}" class="ev" placeholder="e.g., EL teacher: daily partner retell with frames; Biology co-teacher: frames posted; para: prompts before the student gives up"></textarea></div><div><label class="f">Evidence of progress <small style="text-transform:none;letter-spacing:0;font-weight:400">— instrument, how often, where kept, what counts</small></label><textarea data-k="e${k}" class="ev" placeholder="e.g., monthly 1-minute voice memo scored on the 3-point retell rubric, kept in the folder; progress is 1 → 2 → 3 across the semester"></textarea></div></div></div>`).join('');
 const F={};const fields=()=>[...document.querySelectorAll('[data-k]')];
 fields().forEach(i=>i.addEventListener('input',e=>{if(e.isTrusted)delete i.dataset.auto;F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k)||i.dataset.k==='yrs')derive();compliance()}));
-document.addEventListener('change',e=>{if(e.target.matches('[data-c],select')){if(e.isTrusted)delete e.target.dataset.auto;compliance()}});
+document.addEventListener('change',e=>{if(e.target.matches('[data-c],select')){if(e.isTrusted){const t=e.target;if(t.matches('[data-c]')&&!t.checked&&t.dataset.auto)t.dataset.off='1';delete t.dataset.auto;if(t.closest('label'))t.closest('label').classList.remove('auto')}compliance()}});
 document.getElementById('team').addEventListener('input',sigs);
 function lv(){return {L:+F.L||0,S:+F.S||0,R:+F.R||0,W:+F.W||0}}
 /* ---- the compliance checklist: computed from the dates and fields above ---- */
@@ -277,12 +279,38 @@ function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.le
  const o=document.querySelector('[data-k="overall"]');if(!o.value||o.dataset.auto){o.value=ov;o.dataset.auto='1';F.overall=ov}
  const low=Object.entries(l).filter(x=>x[1]).sort((p,q)=>p[1]-q[1])[0];const fo=document.querySelector('[data-k="focus"]');if(low&&(!fo.value||fo.dataset.auto)){fo.value=names[low[0]];fo.dataset.auto='1';F.focus=fo.value}
  ['L','S','R','W'].forEach(k=>{document.getElementById('gl'+k).textContent=l[k]?'· Level '+l[k]:''});
- // suggest services + accommodations once, if nothing checked
- if(!document.querySelector('[data-c]:checked')){const pick=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c){c.checked=true;c.dataset.auto='1'}});
-  if(a<2.5)pick(['s0','s1','s3','i0','i1','i2','i3','i5','i6','i7','i8','i9','i11','a0','a1','a2','a3','a4','a5','a6','a8','a9','a10']);
-  else if(a<4)pick(['s0','s1','s3','i0','i1','i2','i7','i10','i11','a0','a1','a2','a3','a8']);
-  else pick(['s1','i0','i7','a0','a1','a2']);}
+ accommodations(l,a,all,yrs);
  autofill(l,a,all);
+}
+
+/* ---- services and accommodations, domain by domain ----
+   Each domain's level picks the supports that answer it: a low Reading
+   level brings leveled texts, the bilingual dictionary and read-aloud on
+   MAAP; a low Writing level brings frames, oral response and reduced
+   length; a low Listening level brings repeated directions, wait time and
+   small group. Re-run on every change to the levels — but only the
+   builder's own picks move. A box the teacher checked stays; a box the
+   teacher unchecked (data-off) is never re-checked. */
+function accommodations(l,a,all,yrs){
+ const S=new Set();const add=(...ids)=>ids.forEach(i=>S.add(i));
+ const el=Object.values(l).some(x=>x&&x<4);
+ const proficient=all&&Object.values(l).every(x=>x>=4);
+ const newcomer=a<1.5&&yrs<=1;
+ if(proficient){add('s7','i0','i7','a0');}
+ else{
+  if(a<2.5)add('s0','s1','s3');else if(a<4)add('s0','s1','s3');else add('s1');
+  if(newcomer)add('s4','i3','i9','a5','a6','a7');
+  if(el)add('i0','i10','a0','a2');
+  if(l.L&&l.L<=2)add('i7','i8','i2','a4');else if(l.L===3)add('i7');
+  if(l.S&&l.S<=2)add('i1','i8');else if(l.S===3)add('i1');
+  if(l.R&&l.R<=2)add('i4','i11','i3','a1','a3','i2');else if(l.R===3)add('i4','i11','a1','a3');
+  if(l.W&&l.W<=2)add('i1','i5','i6','a8','a9','a10');else if(l.W===3)add('i1','a8');
+ }
+ document.querySelectorAll('[data-c]').forEach(c=>{const id=c.dataset.c;if(!/^[sia]/.test(id))return;
+  const want=S.has(id);
+  if(want&&!c.checked&&!c.dataset.off){c.checked=true;c.dataset.auto='1'}
+  else if(!want&&c.checked&&c.dataset.auto){c.checked=false;delete c.dataset.auto}
+  c.closest('label').classList.toggle('auto',!!(c.checked&&c.dataset.auto))});
 }
 
 /* ---- once the four levels are in, draft the rest of the plan ----
@@ -290,7 +318,7 @@ function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.le
    teacher's own words are never overwritten. "Re-draft from levels" clears
    the auto-filled fields and writes them again. */
 const setIf=(k,val)=>{const el=document.querySelector(`[data-k="${k}"]`);if(!el||val===undefined||val==='')return false;if(el.value&&!el.dataset.auto)return false;el.value=val;el.dataset.auto='1';F[k]=val;return true};
-const check=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c&&!c.checked){c.checked=true;c.dataset.auto='1'}});
+const check=(ids)=>ids.forEach(i=>{const c=document.querySelector(`[data-c="${i}"]`);if(c&&!c.checked&&!c.dataset.off){c.checked=true;c.dataset.auto='1';c.closest('label').classList.add('auto')}});
 function autofill(l,a,all){
  const G=window.ELPA21_GOALS;const done=[];
  /* goals, strategies and evidence: the first bank goal at each domain's level */
@@ -314,12 +342,12 @@ function autofill(l,a,all){
  else if(low&&Object.values(l).filter(x=>x>=4).length===3)note+=` One domain from exit — ${names[low[0]]} is next year's focus; consider summer or fall support in that domain.`;
  if(setIf('rnotes',note))done.push('review note');
  /* say what was drafted */
- const bar=document.getElementById('drafted');if(bar){bar.hidden=false;document.getElementById('draftedwhat').textContent=done.length?done.join(', ')+' — plus services, accommodations and the grading safeguards.':'already drafted — your edits are kept.'}
+ const bar=document.getElementById('drafted');if(bar){bar.hidden=false;const na=document.querySelectorAll('[data-c^="i"][data-auto]:checked').length,nt=document.querySelectorAll('[data-c^="a"][data-auto]:checked').length;document.getElementById('draftedwhat').textContent=(done.length?done.join(', ')+', ':'')+`${na} classroom and ${nt} testing accommodations chosen domain by domain, services and the grading safeguards. Gold edge = the builder's pick; your own checks and unchecks are kept.`}
 }
 function redraft(){
  if(!confirm('Clear everything the builder drafted and draft it again from the levels? Fields you typed yourself are kept.'))return;
  document.querySelectorAll('[data-k][data-auto]').forEach(el=>{if(!/^(overall|focus|exit|year)$/.test(el.dataset.k)){el.value='';delete el.dataset.auto;F[el.dataset.k]=''}});
- document.querySelectorAll('[data-c][data-auto]').forEach(c=>{c.checked=false;delete c.dataset.auto});
+ document.querySelectorAll('[data-c]').forEach(c=>{if(c.dataset.auto)c.checked=false;delete c.dataset.auto;delete c.dataset.off;c.closest('label')?.classList.remove('auto')});
  derive();compliance();
 }
 /* ---- the ELPA21 goal bank ---- */
@@ -344,7 +372,7 @@ function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i
 document.getElementById('save').addEventListener('click',()=>{const o=snapshot();const b=new Blob([JSON.stringify(o,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='LSP-'+((o.f.name||'student').replace(/\s+/g,'_'))+'-'+(o.f.year||'').replace('–','-')+'.json';a.click()});
 document.getElementById('open').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{restore(JSON.parse(r.result))}catch(x){alert('Not a saved LSP file.')}};r.readAsText(f)});
 document.getElementById('local').addEventListener('click',()=>{try{localStorage.setItem('lsp',JSON.stringify(snapshot()));alert('Kept on this device (one plan). Use “Save as file” for more.')}catch(e){}});
-document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4 or higher in each ELPT domain, same administration':'';delete i.dataset.auto;F[i.dataset.k]=i.value});document.querySelectorAll('[data-c]').forEach(c=>delete c.dataset.auto);const db=document.getElementById('drafted');if(db)db.hidden=true;document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —';compliance()}});
+document.getElementById('clear').addEventListener('click',()=>{if(confirm('Clear the plan on screen?')){fields().forEach(i=>{i.value=i.dataset.k==='year'?'2026–27':i.dataset.k==='exit'?'Level 4 or higher in each ELPT domain, same administration':'';delete i.dataset.auto;F[i.dataset.k]=i.value});document.querySelectorAll('[data-c]').forEach(c=>{delete c.dataset.auto;delete c.dataset.off;c.closest('label')?.classList.remove('auto')});const db=document.getElementById('drafted');if(db)db.hidden=true;document.querySelectorAll('[data-c]').forEach(c=>c.checked=false);document.getElementById('lane').textContent='Lane: —';compliance()}});
 /* a red checklist line takes you to the field */
 document.addEventListener('click',e=>{const a=e.target.closest('[data-go]');if(!a)return;e.preventDefault();const sel=a.dataset.go;if(!sel)return;const el=document.querySelector(sel);if(!el)return;
  const box=el.closest('.sec')||el;box.scrollIntoView({behavior:'smooth',block:'center'});
