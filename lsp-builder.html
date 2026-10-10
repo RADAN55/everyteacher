@@ -349,7 +349,7 @@ function dateErrors(){
  return E;
 }
 function printPlan(){
- const E=dateErrors();const miss=[...document.querySelectorAll('#compl li.no')].filter(li=>!/^Dates line up/.test(li.textContent.trim())).map(li=>({m:li.querySelector('span').firstChild.textContent.replace(/\s*→\s*$/,''),go:li.querySelector('[data-go]')?.dataset.go}));
+ const E=dateErrors();const miss=[...document.querySelectorAll('#compl li.no')].filter(li=>!/^Dates line up/.test((li.querySelector('span')?.firstChild?.textContent||'').trim())).map(li=>({m:li.querySelector('span').firstChild.textContent.replace(/\s*→\s*$/,''),go:li.querySelector('[data-go]')?.dataset.go}));
  const items=[...E.map(e=>({m:e.m,go:`[data-k="${e.k}"]`,kind:'date'})),...miss.map(x=>({m:x.m,go:x.go,kind:'miss'}))];
  if(!items.length){doPrint();return}
  document.getElementById('gatelist').innerHTML=items.map(i=>`<li class="${i.kind}"><i>${i.kind==='date'?'!':'·'}</i><span>${i.m}</span>${i.go?`<a href="#" data-go="${i.go.replace(/"/g,'&quot;')}" onclick="document.getElementById('gate').close()">Fix →</a>`:''}</li>`).join('');
