@@ -116,10 +116,13 @@
   .drv{margin-top:10px;font-size:13.5px;background:var(--mist);border:1px solid var(--rule);border-left:4px solid var(--gold);padding:9px 12px}
   .drv small{display:block;color:var(--muted);margin-top:3px}
   .acc-head{display:none}
-  .plang{display:inline-flex;align-items:center;gap:6px;color:#C9CEEA;font-size:13px;margin-left:4px}
-  .plang select{width:auto;padding:5px 8px;font-size:13px;border-radius:999px;background:var(--paper);color:var(--navy)}
-  .plang2{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
-  .plang2 select{width:auto;padding:4px 8px;font-size:13px;border-radius:999px}
+  .langs{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;margin-left:6px}
+  .langs>span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-right:3px}
+  .langs button{font:inherit;font-size:13.5px;font-weight:600;border:1.5px solid rgba(235,217,160,.55);background:transparent;color:var(--gold-lt);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .langs button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:var(--navy-dk)}
+  .langs2>span{color:var(--muted)}.langs2 button{border-color:var(--rule);color:var(--navy);background:var(--paper)}
+  .langs2 button[aria-pressed=true]{background:var(--navy-bg);border-color:var(--navy);color:#fff}
+  .cta .langs{flex-basis:100%;margin:4px 0 0}
   .lang-note{display:none}
   .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
   .badge[hidden]{display:none}
@@ -163,7 +166,7 @@
   header,footer,.tools,.drv,.dom .t button,.bank,.note,.comp,.tip,.start,.drafted,.derr,#gate,.pe,.chk label:not(:has(:checked)),.rt:not(:has(:checked)),.lnk,.onfile button{display:none!important}::placeholder{color:transparent}.bad{box-shadow:none!important;border-color:#999!important}.chk{display:block}.chk label{display:flex;margin:1px 0}.chk label.auto{box-shadow:none;padding-left:0}.hd::after{content:attr(data-status);font-size:10px;color:#555;display:block}.tm input[data-k]{border-bottom:1px solid #999}[data-auto],.chk label.auto{box-shadow:none;padding-left:0}.sig{grid-template-columns:repeat(2,1fr);gap:30px 50px;margin-top:26px;break-inside:avoid}.sig div::before{height:40px}.sig div{font-size:12px}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}textarea.ev{min-height:34px}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
-<script src="lsp-lang.js"></script>
+<script src="lsp-lang.js?v=4"></script>
 <!--B:og-->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EL Publishing">
@@ -182,7 +185,7 @@
     <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS &amp; COORDINATORS · MISSISSIPPI · LANGUAGE SERVICE PLAN</p>
     <h1>Language Service Plan <em>builder</em></h1>
     <p class="tag">Enter the ELPT levels and the plan writes its first draft: lane, services, accommodations for class and state tests, a goal for each domain. Every component a Mississippi LSP is expected to carry is on the form — identification trail, ELPT history, grading and retention, nine-weeks reviews, the full signature block — and a checklist at the bottom tells you what is still missing before it goes for signatures. Nothing leaves your browser.</p>
-    <div class="cta"><button class="btn" type="button" onclick="printPlan()">🖨 Print LSP</button><button class="btn ghost" type="button" onclick="printAcc()">🧾 Accommodations page only</button><label class="plang">Print in <select id="plang"></select></label><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
+    <div class="cta"><button class="btn" type="button" onclick="printPlan()">🖨 Print LSP</button><button class="btn ghost" type="button" onclick="printAcc()">🧾 Accommodations page only</button><div class="langs" id="plang" role="group" aria-label="Print language"><span>Print in</span></div><a class="btn ghost" href="accommodations-cards.html">Accommodation cards →</a><a class="btn ghost" href="el-compliance-calendar.html">When it's due →</a></div>
   </div>
 </header>
 <main>
@@ -256,7 +259,7 @@
   </aside>
 
   <p class="note">Components follow Mississippi district EL plans (demographics, first U.S. enrollment date, yearly ELPT scores, classroom accommodations, state-testing accommodations, Student Evaluation Team signatures) plus goals, nine-weeks review and the identification trail that an OCR or MDE review asks for first. Exit: Level 4 or higher in each ELPT domain on the same administration (State Board, June 2025). Monitoring: four years, reviewed every nine weeks. Accommodation allowability on MAAP and ELPT follows the current Mississippi Testing Accommodations Manual; no primary-language support or bilingual dictionary on the ELPT. Your district's form, if it has one, governs the layout; this builder produces the content.</p>
-  <div class="tools"><label class="plang2">Print in <select id="plang2"></select></label><button type="button" onclick="printPlan()">🖨 Print LSP</button><button type="button" onclick="printAcc()">🧾 Accommodations page (for the DTC)</button><button type="button" onclick="document.getElementById('comp').scrollIntoView({behavior:'smooth'})">✓ Check the plan</button><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="drive">☁ Save to Google Drive</button><button type="button" id="clear">Clear</button></div>
+  <div class="tools"><div class="langs langs2" id="plang2" role="group" aria-label="Print language"><span>Print in</span></div><button type="button" onclick="printPlan()">🖨 Print LSP</button><button type="button" onclick="printAcc()">🧾 Accommodations page (for the DTC)</button><button type="button" onclick="document.getElementById('comp').scrollIntoView({behavior:'smooth'})">✓ Check the plan</button><button type="button" id="save">💾 Save as file (.json)</button><label>📂 Open a saved plan<input type="file" id="open" accept=".json"></label><button type="button" id="local">Keep on this device</button><button type="button" id="drive">☁ Save to Google Drive</button><button type="button" id="clear">Clear</button></div>
   <div class="drv" id="drv" hidden></div>
 </article>
 <p class="lang-note" id="langnote" hidden></p>
@@ -387,8 +390,11 @@ function printPlan(){
    through lsp-lang.js for the print, then puts the English back. Typed
    content is left as typed; the printed note says so. */
 const LANGS=window.LSP_LANG||{};const LANG_NAMES=window.LSP_LANG_NAMES||{en:'English'};
-(function(){const opts=Object.keys(LANG_NAMES).map(k=>`<option value="${k}">${LANG_NAMES[k]}</option>`).join('');['plang','plang2'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.innerHTML=opts;el.addEventListener('change',()=>{['plang','plang2'].forEach(o=>{const e2=document.getElementById(o);if(e2&&e2!==el)e2.value=el.value})})})})();
-function printLang(){return (document.getElementById('plang')||{}).value||'en'}
+let _printLang='en';
+(function(){const btns=Object.keys(LANG_NAMES).map(k=>`<button type="button" data-lang="${k}" aria-pressed="${k==='en'}" lang="${k}">${LANG_NAMES[k]}</button>`).join('');
+ ['plang','plang2'].forEach(id=>{const el=document.getElementById(id);if(!el)return;el.insertAdjacentHTML('beforeend',btns)});
+ document.addEventListener('click',e=>{const b=e.target.closest('.langs [data-lang]');if(!b)return;_printLang=b.dataset.lang;document.querySelectorAll('.langs [data-lang]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.lang===_printLang))});})();
+function printLang(){return _printLang}
 const _orig=new Map();
 function translate(lang){
  const D=LANGS[lang];if(!D)return;
