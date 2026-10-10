@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluate Your Own EL Program · EL Publishing</title>
+<meta name="description" content="A six-session course that teaches a district team to evaluate its own English learner program — the sequence of questions, the exact data request, how to read what comes back, and the one-page board memo at the end. Free. No consulting firm required.">
+<meta property="og:title" content="Evaluate Your Own EL Program">
+<meta property="og:description" content="Six sessions, ninety minutes each. The method a consulting firm sells — framing, the data request, identification, growth, access and outcomes, root cause and the board memo — written out so your own team can run it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2761;--navy-dk:#0E1333;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-lt:#E8F5ED;--bad:#B3261E;--bad-lt:#FDECEA;--teal:#0E7C86;--teal-lt:#E6F2F3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.65}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+h1,h2,h3,h4{font-family:Fraunces,Georgia,serif;letter-spacing:-.015em;line-height:1.14;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+a{color:var(--navy)}
+
+header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 26px)}
+.hin{position:relative;max-width:860px;margin:0 auto;padding:44px 20px 38px}
+.brand{font-size:11.5px;letter-spacing:.2em;color:var(--gold);font-weight:800;margin:0 0 16px}
+.brand a{color:var(--gold);text-decoration:none}
+h1{font-size:clamp(36px,8vw,60px);font-weight:900}
+h1 em{font-style:italic;color:var(--gold);font-weight:600}
+.tag{margin:14px 0 0;font-size:18.5px;color:#C2CAEE;max-width:56ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;font-weight:700}
+
+nav.toc{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(30,39,97,.06)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:0 0 auto;font-size:13px;font-weight:700;text-decoration:none;color:var(--navy);padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.toc a:hover{background:var(--mist)}
+nav.toc a.on{background:var(--navy);color:#fff}
+
+main{padding:28px 0 50px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:15px;padding:20px 23px;margin:0 0 15px}
+.k{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:var(--gold);margin:0}
+.k.t{color:var(--teal)}
+.muted{color:var(--muted)}
+.tiny{font-size:14px}
+.sp{margin-top:14px}
+.lead{font-size:19.5px;line-height:1.6}
+.btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:800;border:0;border-radius:999px;padding:13px 26px;font-size:16.5px;text-align:center;text-decoration:none}
+.btn.block{display:block;width:100%}
+.btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn.sm{padding:8px 17px;font-size:14.5px}
+
+.cost{background:var(--navy);color:#fff;border-radius:15px;padding:22px 24px;margin-bottom:15px}
+.cost .k{color:var(--gold)}
+.cost p{color:#C2CAEE;margin:8px 0 0}
+.cost b{color:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+ul.tight{margin:9px 0 0;padding-left:20px}
+ul.tight li{margin-bottom:7px}
+.room{width:100%;border-collapse:collapse;margin-top:10px;font-size:15.5px}
+.room td{padding:9px 10px;border-top:1px solid var(--rule);vertical-align:top}
+.room td:first-child{font-weight:700;color:var(--navy);width:40%}
+@media (max-width:600px){.room td{display:block;border-top:0;padding:3px 0}.room tr{display:block;border-top:1px solid var(--rule);padding:9px 0}.room td:first-child{width:auto}}
+
+/* sessions */
+.sess{background:var(--paper);border:1px solid var(--rule);border-radius:16px;margin-bottom:16px;overflow:hidden;scroll-margin-top:62px}
+.shead{display:flex;gap:15px;align-items:flex-start;padding:20px 23px;background:linear-gradient(180deg,#FAFBFF,#fff);border-bottom:1px solid var(--rule)}
+.shead .num{flex:none;width:46px;height:46px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:Fraunces,Georgia,serif;font-size:23px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.shead .tx{flex:1;min-width:0}
+.shead h2{font-size:25px;color:var(--navy)}
+.shead .sub{color:var(--muted);font-size:15.5px;margin:4px 0 0}
+.shead .meta{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:800;margin-top:7px}
+.sbody{padding:20px 23px}
+.sbody h4{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:22px 0 7px}
+.sbody h4:first-child{margin-top:0}
+.sbody p{margin:0 0 11px}
+.sbody p:last-child{margin-bottom:0}
+
+.consult{background:var(--teal-lt);border-left:5px solid var(--teal);border-radius:0 11px 11px 0;padding:14px 18px;font-size:16px}
+.asks{background:var(--mist);border-radius:11px;padding:14px 18px}
+.asks li{margin-bottom:8px;font-weight:600;color:var(--navy)}
+.asks li:last-child{margin-bottom:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+@media (max-width:640px){.split{grid-template-columns:1fr}}
+.sp1,.sp2{border-radius:12px;padding:15px 17px;font-size:15.5px}
+.sp1{background:#F3F0FA;border:1px solid #DDD5EE}
+.sp2{background:var(--ok-lt);border:1px solid #BFE0CC}
+.sp1 b,.sp2 b{display:block;font-family:Fraunces,Georgia,serif;font-size:18px;margin-bottom:6px;color:var(--navy)}
+
+.warn{background:#FFF8E6;border:1px solid #EBD9A0;border-left:5px solid var(--gold);border-radius:0 11px 11px 0;padding:14px 18px;font-size:15.5px}
+.warn b{color:var(--navy)}
+
+.req{background:var(--navy-dk);border-radius:12px;overflow:hidden;margin-top:8px}
+.req .rh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 16px;background:rgba(255,255,255,.07)}
+.req .rh span{color:var(--gold);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.req .rh button{background:var(--gold);color:var(--navy-dk);border:0;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:800}
+.req pre{margin:0;padding:16px;color:#D9DEF5;font-family:"SFMono-Regular",Menlo,Consolas,monospace;font-size:13.4px;line-height:1.62;white-space:pre-wrap;word-wrap:break-word;max-height:none}
+
+.rd{width:100%;border-collapse:collapse;font-size:15.5px;margin-top:6px}
+.rd td{padding:11px 12px;border-top:1px solid var(--rule);vertical-align:top}
+.rd td:first-child{font-weight:700;color:var(--navy);width:32%}
+@media (max-width:640px){.rd td{display:block;border-top:0;padding:2px 0}.rd tr{display:block;border-top:1px solid var(--rule);padding:10px 0}.rd td:first-child{width:auto;margin-bottom:3px}}
+
+.flags{background:var(--bad-lt);border:1px solid #F3C9C5;border-radius:12px;padding:14px 18px}
+.flags li{margin-bottom:8px;font-size:15.5px}
+.flags li:last-child{margin-bottom:0}
+.ex{background:var(--mist);border-radius:12px;padding:14px 18px;font-size:15.5px;font-style:italic;color:#3A3F55}
+.ex b{font-style:normal}
+
+.deliver{background:var(--ok-lt);border:1px solid #BFE0CC;border-radius:12px;padding:15px 18px;margin-top:18px}
+.deliver .k{color:var(--ok)}
+textarea{width:100%;border:2px solid var(--rule);border-radius:11px;padding:12px 14px;font-family:inherit;font-size:16px;line-height:1.6;resize:vertical;min-height:110px;margin-top:9px;background:#fff}
+textarea:focus{outline:0;border-color:var(--navy)}
+.saved{font-size:13px;color:var(--ok);font-weight:700;margin-top:6px;height:17px}
+
+.report{background:var(--navy);color:#fff;border-radius:16px;padding:24px 26px}
+.report .k{color:var(--gold)}
+.report h2{color:#fff;font-size:27px;margin:6px 0 9px}
+.report p{color:#C2CAEE}
+.rbtns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.rbtns .btn.ghost{border-color:var(--gold-lt);color:var(--gold-lt)}
+
+footer{background:var(--navy-dk);color:#9AA3CC;font-size:14px;padding:28px 0;margin-top:34px}
+footer a{color:var(--gold-lt)}
+footer b{color:#fff;display:block;font-size:15px}
+
+#sheet{display:none}
+@media print{
+  body{background:#fff;font-size:12pt}
+  header,nav.toc,main,footer,#elg,#elg-btn{display:none!important}
+  #sheet{display:block!important;padding:0}
+  #sheet h1{font-size:26pt;color:#1E2761;margin-bottom:4px}
+  #sheet .sb{font-family:Inter,sans-serif;font-size:10pt;color:#666;margin-bottom:22px;letter-spacing:.1em;text-transform:uppercase}
+  #sheet section{break-inside:avoid;margin-bottom:20px;border-top:2px solid #1E2761;padding-top:10px}
+  #sheet h3{font-size:15pt;color:#1E2761;margin-bottom:5px}
+  #sheet .body{white-space:pre-wrap;font-family:Inter,sans-serif;font-size:11pt;line-height:1.6}
+  #sheet .empty{color:#999;font-style:italic}
+}
+</style>
+</head>
+<body>
+
+<header><div class="hin">
+  <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR DISTRICT LEADERS</p>
+  <h1>Evaluate your own <em>EL program.</em></h1>
+  <p class="tag">Six sessions. The sequence of questions a consulting firm works through, the data request they send on day one, how to read what comes back, and the one-page memo your board can actually vote on.</p>
+  <div class="chips"><span>6 × 90 minutes</span><span>District team</span><span>Data request included</span><span>Board memo at the end</span><span>Free</span></div>
+</div></header>
+
+<nav class="toc"><div class="wrap" id="toc"></div></nav>
+
+<main><div class="wrap" id="view"></div></main>
+
+<footer><div class="wrap">
+  <b>Richard A. Daniel, M.Ed.</b>
+  ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+</div></footer>
+
+<div id="sheet"></div>
+
+<script>
+/* Evaluate Your Own EL Program — six sessions
+   The method a consulting firm sells, written out so a district team can run it.
+   Compliance is a different question and lives in the EL Program Self-Audit;
+   this course is about whether the program works. */
+
+var INTRO = {
+  cost:"A district-level EL program evaluation from an outside firm typically runs from the low five figures for a desk review to the mid five figures for one with site visits and a written report. Most of that money buys three things you already have or can get free: a sequence of questions, a data request, and someone willing to say the finding out loud.",
+  cant:[
+    "An outside evaluator sees your district for a few days. You see it every day — the scheduling fight in August, the teacher who quit in October, the bus that gets there late. Causal explanations live in that knowledge, and it does not transfer in an interview.",
+    "A consultant's report arrives finished. Nobody in the building owns it, and the recommendations are implemented by people who never argued with them. A team that ran its own analysis argues first and owns the result.",
+    "You can repeat this every year for the cost of the meetings."
+  ],
+  honest:[
+    "An outside evaluator can say things a staff member cannot say safely. If the finding implicates a principal, a program, or the superintendent's own initiative, name that risk in session one and decide who will carry the finding.",
+    "You will be tempted to stop when the data flatters you. Build the disconfirming question into every session — the course does this for you, but it only works if someone enforces it.",
+    "Small n. Many Mississippi districts have EL counts in the dozens. Percentages on small groups swing wildly, suppression rules will hide cells, and one family moving changes a rate. Session four handles this; take it seriously or you will chase noise."
+  ],
+  room:[
+    {r:"Superintendent or assistant superintendent", w:"Has to be in the room at session one and session six. Not the middle four."},
+    {r:"Federal programs director", w:"Owns Title III and the money that follows any finding."},
+    {r:"EL coordinator or lead EL teacher", w:"The only person who knows what actually happens in a block."},
+    {r:"One building principal", w:"Preferably from the building with the most ELs. They will push back, which is the point."},
+    {r:"Whoever runs student data", w:"Half of this course is data requests. Without them you wait a month between sessions."},
+    {r:"A counselor or registrar", w:"Scheduling and course access questions die without one."}
+  ],
+  cadence:"Six sessions of about ninety minutes, one per week, is the shape that works. A two-day intensive also works if the data arrives beforehand — but the data almost never arrives beforehand, which is why session two exists.",
+  rule:"One ground rule, stated aloud at the start of every session: nobody defends. You are diagnosing, not evaluating staff. The moment the conversation turns into a performance review, the analysis stops and you will not get it back."
+};
+
+var SESSIONS = [
+{
+ n:1, id:'s1', icon:'🎯', time:"90 minutes",
+ title:"Decide what you are actually asking",
+ sub:"The session districts skip, and the reason most EL evaluations produce a binder nobody opens.",
+ consultant:"The first thing a good evaluator does is refuse to start. They make you say what decision this evaluation has to inform, and by when. Districts hate this because they want the answer to be \"tell us how we're doing.\" That is not a question anyone can answer.",
+ ask:[
+  "What decision will this evaluation inform, and when does that decision get made? Budget season? A board presentation? A staffing plan?",
+  "Who has to believe the finding for anything to change?",
+  "What would we have to learn to change our minds about something we currently believe?"
+ ],
+ split:{
+  t:"Separate the two questions before you start",
+  a:{h:"Compliance — are we legal?", b:"Do we identify, notify, serve, assess and exit according to law? This is a yes-or-no question against a standard. It is answered by the EL Program Self-Audit, not by this course. Run that first; it takes about an hour. A compliance finding is urgent and narrow: you fix it because you must."},
+  b:{h:"Effectiveness — is it working?", b:"Are students learning English, keeping up in content, and graduating? This is a comparison question with no fixed standard, and it is what this course answers. An effectiveness finding is strategic: you act on it because the trajectory is wrong, even when everything is perfectly legal."}
+ },
+ warn:"A district that is fully compliant can still be failing its English learners, and a district with excellent outcomes can still be out of compliance. Mixing the two produces a report that satisfies nobody — the lawyers skim the outcomes and the board skims the citations.",
+ read:null,
+ flags:[
+  "The evaluation has no deadline. It will not finish.",
+  "The superintendent is not in the room. Sessions two through five can run without them; one and six cannot.",
+  "Someone describes the purpose as \"to show the board we're doing a good job.\" That is a communications project, not an evaluation. It can be a legitimate goal — but name it, because it changes what you are willing to look at."
+ ],
+ example:"A composite district writes: \"By the February board meeting we need to decide whether to add a second EL teacher at the high school or move the existing position to the middle school. We need to know where the program is losing students.\" That is a usable question. It has a decision, a date, and it can be answered wrong.",
+ deliver:"Write one to three evaluation questions. Each one names a decision and a date. Tape them to the wall for the next five sessions — every analysis either serves one of them or gets cut.",
+ prompt:"Our evaluation questions, each with the decision it informs and the date that decision is made:"
+},
+
+{
+ n:2, id:'s2', icon:'🗂️', time:"90 minutes, plus two to three weeks of waiting",
+ title:"Get the data, and find out what you do not have",
+ sub:"Most of what a firm bills for in month one is waiting on a data request that was written badly.",
+ consultant:"An evaluator sends a single, precise data request on day one and then works on something else for three weeks. The request is specific about the unit of analysis — one row per student per school year — because that is the thing districts get wrong and it costs a month to discover.",
+ ask:[
+  "Can we produce one row per student per school year, with EL status attached to the year rather than to today?",
+  "Do we know, for each student, how many years they have been in the program?",
+  "Do we keep former ELs flagged for the monitoring years, and can we pull them as a group?"
+ ],
+ request:{
+  t:"Send this to your data office, as written",
+  body:"Please pull a student-level file covering the last four school years, one row per student per year, for all students in grades K–12. Suppress nothing at this stage; we will handle suppression in reporting.\n\nFor each row:\n• Student ID (consistent across years), school, grade\n• EL status that year: current EL / former EL in monitoring year 1 / monitoring year 2 / never EL / parent declined services\n• Date of first EL identification, and years in program as of that year\n• Home language\n• ELPT or ELPA21: overall level and the four domain levels, plus prior-year levels\n• Screener date and enrollment date, for students first identified that year\n• Courses taken with final grades and credits earned\n• Days enrolled and days absent\n• Discipline: number of office referrals, in-school and out-of-school suspension days\n• Students with disabilities flag; gifted or advanced-program flag\n• Graduation or exit status for twelfth graders, with diploma type\n\nIf any field is unavailable for any year, list it rather than leaving it blank, and tell us when the district began collecting it."
+ },
+ read:{
+  t:"What to do while you wait",
+  rows:[
+   ["Build the roster of questions","Write, for each evaluation question from session one, the specific comparison that would answer it. If you cannot name the comparison, the question is still too vague."],
+   ["Find the denominators","Decide now whether rates are per enrolled student, per student enrolled 90+ days, or per student with a valid test. Changing this later invalidates everything you have already looked at."],
+   ["Decide your suppression rule","Pick a minimum cell size for anything that leaves the room — ten is common — and apply it consistently."]
+  ]
+ },
+ flags:[
+  "The data office can produce current EL status but not historical. This is the single most common blocker, and it means you cannot do cohort analysis until it is fixed. Fix it; it is a reporting change, not a new system.",
+  "Nobody tracks former ELs after exit. You have lost your best outcome measure. Start tracking now even if it does not help this evaluation.",
+  "Years in program does not exist and cannot be derived. Use first-identification date as a proxy, and note the limitation in the write-up.",
+  "The file arrives with one row per student, current status only. Send it back. One row per student per year is not negotiable."
+ ],
+ example:"A composite district asks for four years and gets two, because the student information system changed in 2024 and nobody migrated EL history. That is itself a finding, and it belongs in the report: the district cannot currently evaluate its own longitudinal outcomes. It goes in the 30-day actions.",
+ deliver:"A data inventory: what you asked for, what arrived, what is missing, and what each gap prevents you from analyzing.",
+ prompt:"What we received, what is missing, and what each gap prevents us from answering:"
+},
+
+{
+ n:3, id:'s3', icon:'🔎', time:"90 minutes",
+ title:"Who is in the program, and should they be?",
+ sub:"Before you ask whether the program works, find out whether the right students are in it.",
+ consultant:"An evaluator checks the front door first, because errors here contaminate every downstream number. If you are under-identifying, your outcomes look better than they are. If you are over-identifying, your growth rates look worse.",
+ ask:[
+  "What share of our students are identified as EL, and how does that compare to the share whose home language survey indicates another language?",
+  "How long does it take from enrollment to screening, and how long from screening to a service schedule?",
+  "How many of our ELs have been in the program more than six years?"
+ ],
+ read:{
+  t:"How to read what you get",
+  rows:[
+   ["Identification rate vs. home language","Compare the percentage identified EL to the percentage whose HLS flags another language. A large gap in either direction is the finding. Under-identification usually means the screener is not happening; over-identification usually means nobody is exiting."],
+   ["Compare outward, carefully","Your rate against the state average and against two or three demographically similar districts. Different is not wrong — it is a question. Ask what explains it before you decide it is a problem."],
+   ["Enrollment to screening","Count days, by student, not an average. Averages hide the student who waited seventy days. Look at the distribution and the maximum. Your district's required window is in the Self-Audit; this session is about the pattern, not the citation."],
+   ["Screening to service","The gap districts never measure. A student can be screened on time and sit in a general education class with no schedule change for a semester. Measure the date the student's schedule actually changed."],
+   ["Long-term ELs","Count students identified six or more years ago who are still EL. Express it as a share of your EL population. This single number tells you more about program design than any growth rate, because it is the accumulation of every year the program did not move a student."]
+  ]
+ },
+ flags:[
+  "A large share of ELs concentrated in one school with no demographic reason. Usually a placement practice nobody decided on.",
+  "Long-term ELs are more than about a third of your secondary EL population. The program is holding students rather than moving them.",
+  "Parent declines cluster in one building or one registrar's caseload. Declines should be scattered; clustering means someone is steering families.",
+  "Dual-identified students (EL and a disability) are a much larger or smaller share of your ELs than of your general population. Both directions are findings."
+ ],
+ example:"A composite district of 3,100 students identifies 4.2% as EL while 6.8% of home language surveys indicate another language. The gap is about eighty students. Screening logs show the backlog sits entirely in two elementary schools that enroll mid-year arrivals through a front office with no screener-trained staff. The finding is not \"we under-identify\" — it is \"mid-year enrollees at two schools are not screened, because screening depends on one person at the district office who visits weekly.\"",
+ deliver:"Identification findings: your rate against the comparisons, the screening and service timelines, the long-term EL count, and one named cause for each gap you found.",
+ prompt:"What we found about who is identified, how fast, and who has been in the program too long:"
+},
+
+{
+ n:4, id:'s4', icon:'📈', time:"90 minutes",
+ title:"Are they learning English?",
+ sub:"Growth and attainment are different questions, and districts routinely answer the wrong one.",
+ consultant:"An evaluator separates two things immediately: how many students moved up, and how many have arrived. A program can be excellent at moving students and still have few proficient students, if most arrived last year. The reverse is also true, and it is the more dangerous case.",
+ ask:[
+  "What share of our ELs made the expected amount of progress on the ELPT last year?",
+  "What share reached the exit standard?",
+  "Does progress hold up as years in program increase — and if not, at which year does it stall?"
+ ],
+ read:{
+  t:"How to read what you get",
+  rows:[
+   ["Progress, not just level","Compare each student's level to their own prior year. Count the share that moved. This is what state accountability rewards in Mississippi and it is the number a board understands."],
+   ["Then attainment","Separately, the share meeting the exit standard. Report both, never one. A district reporting only attainment is usually hiding stalled growth; a district reporting only progress is usually hiding that nobody exits."],
+   ["Cut by years in program — the key move","Build one table: years in program down the side, percent making progress across. Healthy programs show strong movement in years one to three and slower, steady movement after. If your year one to two looks fine and year four onward collapses, you have a program design problem at the intermediate level, not a student problem. This is the most useful table in the entire evaluation."],
+   ["Cut by domain","Four domains, four separate stories. Speaking and listening usually move first; writing is usually last and is usually what blocks exit. If writing is your bottleneck, that is a curriculum finding with an obvious owner."],
+   ["Then stop","Resist cutting by teacher, by building, by subgroup, by anything else, until you have written down what the three tables above say. This is where evaluations get lost."]
+  ]
+ },
+ flags:[
+  "Small n. With fewer than about thirty students in a cell, report counts rather than percentages — \"four of eleven\" not \"36%\" — and say out loud that one student moving changes the rate by nine points.",
+  "Mobility. If a third of your ELs were not enrolled the full year, prior-year comparison is measuring a different group. Report the matched-cohort number separately from the all-students number.",
+  "A sudden jump or drop that lines up with a test administration change rather than anything instructional.",
+  "Nobody has exited in two years. Either the exit criteria are not being applied or the program is not moving anyone — and those have opposite fixes."
+ ],
+ example:"A composite district finds 61% of ELs made progress overall — respectable. Cut by years in program: 78% in years one and two, 64% in year three, 31% in years four and beyond. The headline number was hiding the fact that the program works for newcomers and stops working for everyone else. The cause, found in session six, was that the intermediate block had been collapsed into a study hall two years earlier to free a teaching period.",
+ deliver:"Growth findings: the progress rate, the attainment rate, the years-in-program table, the domain breakdown, and your honest note on n-sizes and mobility.",
+ prompt:"Progress rate, attainment rate, what the years-in-program table shows, and where growth stalls:"
+},
+
+{
+ n:5, id:'s5', icon:'🚪', time:"90 minutes",
+ title:"Are they getting the same education?",
+ sub:"The question that separates a real evaluation from a language-growth report.",
+ consultant:"This is where outside evaluators earn their fee, and where districts almost never look on their own. English growth is necessary and not sufficient. A student can gain a proficiency level every year and still be on track for a diploma they cannot use.",
+ ask:[
+  "Are ELs taking the same courses as everyone else, or is the EL block crowding out something?",
+  "Are they earning credits on time?",
+  "How do former ELs compare to students who were never ELs?"
+ ],
+ read:{
+  t:"How to read what you get",
+  rows:[
+   ["Three groups, always","Current EL, former EL in monitoring, never EL. Almost every interesting finding in this session is a comparison among these three, and districts that only compare ELs to non-ELs miss all of it."],
+   ["The former-EL test","Former ELs should perform at or above never-ELs — they have cleared a bar never-ELs were not asked to clear. If your former ELs match or beat never-ELs, your program and your exit criteria are sound. If former ELs fall off sharply after exit, you are exiting students too early or dropping monitoring support. This is the single best indicator of program quality you can compute, and it costs nothing."],
+   ["Course access","Advanced courses, dual credit, CTE pathways, fine arts. Compute participation rates for each of the three groups. Then check what EL students take instead — if the EL block occupies the elective period, you have traded belonging and pathway access for language minutes, and that is a schedule decision somebody made without naming the trade."],
+   ["Credit accumulation","By the end of ninth grade, what share of each group is on track? This predicts graduation better than any test score and is available to you in October rather than in June."],
+   ["Attendance and discipline","Chronic absenteeism and referral rates by group. Large gaps here are rarely about language; they are about whether a student feels like they belong in the building. Treat them as belonging findings, not behavior findings."],
+   ["Graduation and diploma type","Not just the rate — which diploma. A graduation rate that holds up while ELs cluster in a less rigorous diploma option is not the success it appears to be."]
+  ]
+ },
+ flags:[
+  "ELs are absent from every advanced course in the building. Check whether a prerequisite, a counselor practice or the master schedule is doing it — one of the three always is.",
+  "Former ELs look worse than current ELs. Usually means exit happens on the test and support ends the same day.",
+  "EL chronic absenteeism far above the district rate at one school only.",
+  "The EL block is scheduled opposite a required course, so students must choose. Look at the master schedule directly; this never appears in a data file."
+ ],
+ example:"A composite high school finds former ELs outperform never-ELs on credit accumulation — the program works. But only 2 of 47 current ELs are enrolled in any CTE pathway, because the EL block sits in the same period as the pathway sequence. Nobody chose that; it emerged from the master schedule three years ago. It is a thirty-minute fix at scheduling time and it was invisible until someone compared the three groups.",
+ deliver:"Access and outcomes findings: the three-group comparison on course access, credits, attendance, discipline and graduation, with the former-EL test called out separately.",
+ prompt:"What the three-group comparison shows about access, credits, attendance, discipline and graduation:"
+},
+
+{
+ n:6, id:'s6', icon:'🧭', time:"90 minutes, with the superintendent present",
+ title:"Why it is happening, and what you will say",
+ sub:"A finding without a cause is a complaint. A cause without an owner is a wish.",
+ consultant:"The deliverable a firm hands over is not the analysis — it is a short document a board can act on. Most of the value is in compression and in the willingness to name one cause rather than list nine.",
+ ask:[
+  "For each finding, why? And then why again, until you reach something the district controls.",
+  "Which causes are inside our control, and which are conditions we plan around?",
+  "Who owns each action, and what is the first thing that happens?"
+ ],
+ read:{
+  t:"Getting from finding to cause",
+  rows:[
+   ["Ask why five times, in the room","Growth stalls at year four. Why? The intermediate block was cut. Why? A teaching period was needed. Why? A section of Algebra I was added. Why? Enrollment grew and no position was added. You have arrived at a staffing decision, which is actionable, rather than at \"students plateau,\" which is not."],
+   ["Separate controllable from not","Mobility, poverty and interrupted schooling are real and they are not excuses or action items. Name them as conditions, then set them aside and work on the schedule, the staffing, the curriculum and the ownership — which are yours."],
+   ["Triangulate before you commit","Three sources or do not publish: the data, a look at classrooms, and what students and families say. A finding that survives all three is one you can defend at a board meeting. Student voice is the one districts skip and the one that most often changes the explanation."],
+   ["The three usual causes","In most districts, the real cause is one of three: the master schedule, a staffing gap, or nobody owns the thing. Check those before you reach for curriculum or professional development."]
+  ]
+ },
+ memo:{
+  t:"The one-page board memo",
+  rows:[
+   ["The ask, first","One sentence: what you want the board to decide or approve. If there is no ask, say that too — some memos are information only, and saying so stops the guessing."],
+   ["What we found","Three findings. Not nine. Each one sentence, each with the number attached."],
+   ["Why","One paragraph per finding, naming the cause you reached and the evidence that supports it."],
+   ["What we will do","30 days, 90 days, 180 days. Each action has a named owner — a role, not \"the district\" — and a date."],
+   ["What it costs","Even if the answer is nothing. A board that cannot see the cost assumes the worst."],
+   ["What we will watch","The two or three numbers that will tell you next year whether this worked. Commit to reporting them."]
+  ]
+ },
+ flags:[
+  "The memo has nine findings. Nobody will act on nine. Pick three and put the rest in an appendix.",
+  "Every action is \"provide professional development.\" This is the default when the team has not found the real cause. Go back to the five whys.",
+  "No action has a named owner. It will not happen.",
+  "The memo contains no number that could embarrass anyone. You either have an unusually healthy program or an unusually careful memo."
+ ],
+ example:"A composite memo opens: \"We are asking the board to approve a 0.5 FTE EL position at the high school for the second semester. We found that 31% of students in year four or beyond of EL services made progress last year, against 78% in years one and two; that the intermediate EL block was eliminated in 2024 when enrollment growth required an additional Algebra I section; and that no current EL is enrolled in a CTE pathway because the EL block conflicts with the pathway sequence.\" Three findings, each with a number, and an ask the board can vote on.",
+ deliver:"The one-page board memo, and a short internal appendix with the tables behind it.",
+ prompt:"Our three findings, the cause behind each, the ask, and the 30/90/180-day actions with owners:"
+}
+];
+
+</script>
+<script>
+/* Evaluate Your Own EL Program — renderer and workbook */
+(function(){
+"use strict";
+var KEY='elevaluate.v1';
+var S={};
+try{var r=localStorage.getItem(KEY);if(r)S=JSON.parse(r)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function nl(s){return esc(s).replace(/\n/g,'<br>')}
+
+/* ---------- table of contents ---------- */
+var toc='<a href="#start" class="on">Before you start</a>'+
+  SESSIONS.map(function(x){return '<a href="#'+x.id+'">'+x.n+' · '+esc(x.title.split(/[,—]/)[0])+'</a>'}).join('')+
+  '<a href="#report">Your report</a>';
+document.getElementById('toc').innerHTML=toc;
+
+/* ---------- before you start ---------- */
+var h='<section id="start" style="scroll-margin-top:62px">';
+h+='<div class="cost"><p class="k">What this replaces</p><p>'+esc(INTRO.cost)+'</p></div>';
+h+='<div class="two">'+
+  '<div class="card"><p class="k t">What your own team has that a firm does not</p><ul class="tight">'+
+  INTRO.cant.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
+  '<div class="card"><p class="k" style="color:var(--bad)">And what a firm has that you do not</p><ul class="tight">'+
+  INTRO.honest.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
+  '</div>';
+h+='<div class="card"><p class="k">Who is in the room</p><table class="room"><tbody>'+
+  INTRO.room.map(function(x){return '<tr><td>'+esc(x.r)+'</td><td>'+esc(x.w)+'</td></tr>'}).join('')+
+  '</tbody></table></div>';
+h+='<div class="card"><p class="k">Cadence</p><p style="margin:7px 0 0">'+esc(INTRO.cadence)+'</p></div>';
+h+='<div class="warn" style="border-radius:12px;border-left-width:5px"><b>The one ground rule.</b> '+esc(INTRO.rule)+'</div>';
+h+='<div class="card sp"><p class="k t">Run this first</p><p style="margin:7px 0 0">This course asks whether your program <i>works</i>. Whether it is <i>legal</i> is a different question with a different instrument — the <a href="el-audit.html">EL Program Self-Audit</a>, 33 items against Castañeda and ESSA, about an hour. Do that first so that session one can set compliance aside and stay on effectiveness.</p></div>';
+h+='</section>';
+
+/* ---------- sessions ---------- */
+SESSIONS.forEach(function(x){
+  h+='<div class="sess" id="'+x.id+'">';
+  h+='<div class="shead"><span class="num">'+x.n+'</span><div class="tx">'+
+     '<h2>'+esc(x.title)+'</h2><p class="sub">'+esc(x.sub)+'</p>'+
+     '<p class="meta">'+x.icon+' Session '+x.n+' · '+esc(x.time)+'</p></div></div>';
+  h+='<div class="sbody">';
+  h+='<h4>What a consultant does here</h4><div class="consult">'+esc(x.consultant)+'</div>';
+  h+='<h4>The questions this session answers</h4><div class="asks"><ul class="tight">'+
+     x.ask.map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ul></div>';
+  if(x.split){
+    h+='<h4>'+esc(x.split.t)+'</h4><div class="split">'+
+       '<div class="sp1"><b>'+esc(x.split.a.h)+'</b>'+esc(x.split.a.b)+'</div>'+
+       '<div class="sp2"><b>'+esc(x.split.b.h)+'</b>'+esc(x.split.b.b)+'</div></div>';
+  }
+  if(x.warn)h+='<div class="warn sp">'+esc(x.warn)+'</div>';
+  if(x.request){
+    h+='<h4>'+esc(x.request.t)+'</h4><div class="req"><div class="rh"><span>Data request · send as written</span>'+
+       '<button data-copy="'+x.id+'">Copy</button></div><pre id="req-'+x.id+'">'+esc(x.request.body)+'</pre></div>';
+  }
+  if(x.read){
+    h+='<h4>'+esc(x.read.t)+'</h4><table class="rd"><tbody>'+
+       x.read.rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'}).join('')+
+       '</tbody></table>';
+  }
+  if(x.memo){
+    h+='<h4>'+esc(x.memo.t)+'</h4><table class="rd"><tbody>'+
+       x.memo.rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>'}).join('')+
+       '</tbody></table>';
+  }
+  h+='<h4>Red flags</h4><div class="flags"><ul class="tight" style="padding-left:18px">'+
+     x.flags.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul></div>';
+  h+='<h4>A worked example</h4><div class="ex">'+esc(x.example)+'</div>';
+  h+='<div class="deliver"><p class="k">Deliverable</p><p style="margin:6px 0 0">'+esc(x.deliver)+'</p>'+
+     '<label class="tiny muted" style="display:block;margin-top:11px">'+esc(x.prompt)+'</label>'+
+     '<textarea data-s="'+x.id+'" placeholder="Type here. Saved on this device as you go.">'+esc(S[x.id]||'')+'</textarea>'+
+     '<div class="saved" id="sv-'+x.id+'"></div></div>';
+  h+='</div></div>';
+});
+
+/* ---------- report ---------- */
+h+='<div class="report" id="report" style="scroll-margin-top:62px"><p class="k">When the six sessions are done</p>'+
+  '<h2>Your findings report</h2>'+
+  '<p>Everything you wrote above assembles into one document — six sections, in order, ready to print or paste into a board packet. Nothing you type leaves this device; it is saved in this browser only, so finish on the machine you started on.</p>'+
+  '<div class="rbtns"><button class="btn" id="print">Print the findings report</button>'+
+  '<button class="btn ghost" id="copy">Copy it as text</button>'+
+  '<button class="btn ghost" id="clear">Erase my answers</button></div>'+
+  '<p class="tiny" style="color:#8F98C8;margin-top:14px">Progress: <b id="prog">0 of 6</b> sessions written.</p></div>';
+
+document.getElementById('view').innerHTML=h;
+
+/* ---------- behavior ---------- */
+function count(){
+  var n=0;SESSIONS.forEach(function(x){if((S[x.id]||'').trim())n++});
+  var e=document.getElementById('prog');if(e)e.textContent=n+' of 6';
+}
+document.querySelectorAll('textarea[data-s]').forEach(function(ta){
+  var id=ta.dataset.s,t=null;
+  ta.addEventListener('input',function(){
+    S[id]=ta.value;save();count();
+    var sv=document.getElementById('sv-'+id);
+    if(sv){sv.textContent='Saved';clearTimeout(t);t=setTimeout(function(){sv.textContent=''},1400)}
+  });
+});
+document.querySelectorAll('button[data-copy]').forEach(function(b){
+  b.onclick=function(){
+    var txt=document.getElementById('req-'+b.dataset.copy).textContent;
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1600)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback)}else fallback();
+    function fallback(){
+      var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}ta.remove();
+    }
+  };
+});
+function reportText(){
+  var out='EL PROGRAM EVALUATION — FINDINGS\n'+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+'\n\n';
+  SESSIONS.forEach(function(x){
+    out+='SESSION '+x.n+' — '+x.title.toUpperCase()+'\n'+x.prompt+'\n'+((S[x.id]||'').trim()||'[not yet written]')+'\n\n';
+  });
+  return out;
+}
+document.getElementById('print').onclick=function(){
+  var s='<h1>EL Program Evaluation — Findings</h1><div class="sb">'+
+    new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+' · prepared with EL Publishing</div>';
+  SESSIONS.forEach(function(x){
+    var v=(S[x.id]||'').trim();
+    s+='<section><h3>Session '+x.n+' — '+esc(x.title)+'</h3>'+
+       '<div class="body'+(v?'':' empty')+'">'+(v?nl(v):'Not yet written.')+'</div></section>';
+  });
+  document.getElementById('sheet').innerHTML=s;
+  window.print();
+};
+document.getElementById('copy').onclick=function(){
+  var b=document.getElementById('copy'),txt=reportText();
+  var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy it as text'},1600)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){})}
+};
+document.getElementById('clear').onclick=function(){
+  if(!confirm('Erase everything you have written in all six sessions? This cannot be undone.'))return;
+  S={};save();document.querySelectorAll('textarea[data-s]').forEach(function(t){t.value=''});count();
+};
+count();
+
+/* sticky toc highlight */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  function upd(){
+    var y=window.scrollY+90,cur=secs[0];
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id)});
+  }
+  window.addEventListener('scroll',upd,{passive:true});upd();
+})();
+})();
+
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
