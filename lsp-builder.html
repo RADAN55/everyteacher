@@ -147,6 +147,7 @@
   @media (max-width:700px){.g2,.g3,.g4,.g5,.chk,.sig,.comp ul,.team{grid-template-columns:1fr}.bg{grid-template-columns:auto 1fr;grid-template-areas:"s p" "s w" "s e" "b b"}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
   @media print{
   .hd.nostatus::after{display:none!important}
+  .doc[dir=rtl]{text-align:right}.doc[dir=rtl] .lvrow input{direction:ltr}
   .lang-note:not([hidden]){display:block;font-size:10.5px;color:#444;border:1px solid #999;padding:6px 8px;margin:10px 0 0}
   body.print-acc .doc>*:not(.hd):not(.acc-head):not(.sec.acc){display:none!important}
   body.print-acc .acc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-bottom:2px solid #333;padding:6px 0 8px;margin:4px 0 8px}
@@ -406,8 +407,9 @@ function translate(lang){
  document.querySelectorAll('.doc select option').forEach(o=>{const k=o.textContent.trim();if(D[k]){_orig.set(o,o.textContent);o.textContent=D[k]}});
  const note=document.getElementById('langnote');if(note){note.textContent=D['_note']||'';note.hidden=!D['_note']}
  document.documentElement.lang=lang;
+ if((window.LSP_LANG_RTL||{})[lang])document.querySelector('.doc').setAttribute('dir','rtl');
 }
-function untranslate(){_orig.forEach((v,n)=>{if(n.nodeType===3)n.nodeValue=v;else if(n.tagName==='INPUT')n.value=v;else n.textContent=v});document.querySelector('.doc .hd').classList.remove('nostatus');_orig.clear();const note=document.getElementById('langnote');if(note)note.hidden=true;document.documentElement.lang='en'}
+function untranslate(){_orig.forEach((v,n)=>{if(n.nodeType===3)n.nodeValue=v;else if(n.tagName==='INPUT')n.value=v;else n.textContent=v});document.querySelector('.doc .hd').classList.remove('nostatus');document.querySelector('.doc').removeAttribute('dir');_orig.clear();const note=document.getElementById('langnote');if(note)note.hidden=true;document.documentElement.lang='en'}
 function doPrint(){const lang=printLang();if(lang!=='en'){translate(lang);const back=()=>{untranslate();window.removeEventListener('afterprint',back)};window.addEventListener('afterprint',back)}window.print()}
 /* one page for the test coordinator: who the student is, the levels, the
    state tests and the accommodations that apply on them — nothing else */
