@@ -49,6 +49,22 @@
   .dom .t{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
   .dom .t b{color:var(--navy)}
   .dom .t button{font:inherit;font-size:12px;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:3px 9px;border-radius:999px;cursor:pointer}
+  .dom .tb{display:flex;gap:6px}
+  .dom .t button.bk{background:var(--gold);border-color:var(--gold);color:var(--navy-dk);font-weight:700}
+  .bank{border:1px solid var(--gold-lt);background:var(--mist);padding:10px 12px;margin:0 0 8px}
+  .bank[hidden]{display:none}
+  .bank-h{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+  .bank-h>span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-right:2px}
+  .bank-h .sp{flex:1}
+  .bank-h button{font:inherit;font-size:12.5px;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:3px 10px;border-radius:999px;cursor:pointer}
+  .bank-h button[aria-pressed=true]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bank-n{margin:8px 0 6px;font-size:12.5px;color:var(--muted)}
+  .bg{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"s p b" "s e b";gap:2px 10px;align-items:center;background:var(--paper);border:1px solid var(--rule);padding:8px 10px;margin-top:5px}
+  .bg .std{grid-area:s;align-self:start;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--navy);border-radius:4px;padding:1px 5px;white-space:nowrap;cursor:help}
+  .bg p{grid-area:p;margin:0;font-size:13.5px;line-height:1.35}
+  .bg small{grid-area:e;font-size:12px;color:var(--muted)}
+  .bg button{grid-area:b;font:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--navy);background:var(--paper);color:var(--navy);padding:4px 10px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .bg button:hover{background:var(--navy-bg);color:#fff}
   .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
   .sig div{border-top:1px solid #333;padding-top:4px;font-size:12px;color:var(--muted)}
   .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
@@ -75,8 +91,8 @@
   footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
-  @media (max-width:700px){.g2,.g3,.g4,.chk,.sig,.comp ul{grid-template-columns:1fr}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
-  @media print{header,footer,.tools,.dom .t button,.note,.comp p{display:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
+  @media (max-width:700px){.g2,.g3,.g4,.chk,.sig,.comp ul{grid-template-columns:1fr}.bg{grid-template-columns:auto 1fr;grid-template-areas:"s p" "s e" "b b"}.lvrow{grid-template-columns:1fr 1fr}.doc{padding:18px 14px}}
+  @media print{header,footer,.tools,.dom .t button,.bank,.note,.comp p{display:none}.comp{break-inside:avoid;background:#fff}.sig{grid-template-columns:repeat(4,1fr)}body{background:var(--paper);font-size:11.5px}main{padding:0;max-width:none}.doc{border:0;padding:0}input,select,textarea{border:0;border-bottom:1px solid #999;border-radius:0;padding:1px 3px;font-size:11px}textarea{min-height:0;height:auto}.sec{margin-top:8px;padding-top:4px}.lvrow input{font-size:18px}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -140,7 +156,7 @@
     <div style="margin-top:6px"><label class="f">If retention is under consideration: interventions documented showing English is not the barrier</label><input data-k="retain" placeholder="Leave blank unless it applies. Retention solely for English proficiency is not permitted."></div>
   </div>
 
-  <div class="sec"><h3>8 · Goals by domain <small>suggested from the level — edit to the student</small></h3><div id="goals"></div></div>
+  <div class="sec"><h3>8 · Goals by domain <small>one measurable goal each — suggest from the level, or choose from the ELPA21 goal bank (80 goals, each tied to an ELP Standard)</small></h3><div id="goals"></div></div>
 
   <div class="sec"><h3>9 · Status, monitoring &amp; review</h3>
     <div class="g4"><div><label class="f">Status (MSIS)</label><select data-k="status"><option>Active EL</option><option>Active EL — parent declined services</option><option>Monitored Year 1</option><option>Monitored Year 2</option><option>Monitored Year 3</option><option>Monitored Year 4</option></select></div><div><label class="f">Exit criterion</label><input data-k="exit" value="Level 4 or higher in each ELPT domain, same administration"></div><div><label class="f">Plan written</label><input data-k="written" type="date"></div><div><label class="f">Reviewed after ELPT results</label><input data-k="postelpt" type="date"></div></div>
@@ -177,7 +193,7 @@ S:["Ask for help and clarification using set phrases; answer with words and shor
 R:["Read environmental print, schedules and simple sentences with picture support; use a bilingual dictionary (target: Level 2).","Read short texts on familiar topics and identify main idea and details; use context to guess word meaning (target: Level 3).","Read grade-level text with vocabulary preview; locate evidence; distinguish fact from opinion (target: Level 4).","Read grade-level and primary-source texts independently; compare texts; read for information and for pleasure (target: Level 5).","Maintain Level 5 reading; build technical vocabulary in each content area."],
 W:["Write name, date, labels and copied sentences accurately; complete forms; write simple sentences about self with frames (target: Level 2).","Write a paragraph with a topic sentence and three details, in past and present tense, using a word bank (target: Level 3).","Write a five-paragraph essay with evidence, transitions and a conclusion; write lab reports and summaries (target: Level 4).","Write research with citations and in multiple genres with few errors that affect meaning (target: Level 5).","Maintain Level 5 writing; focus on revision for clarity and register."]};
 const names={L:'Listening',S:'Speaking',R:'Reading',W:'Writing'};
-document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><button type="button" data-g="${k}">Suggest from level</button></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who</label><input data-k="s${k}" placeholder="e.g., daily partner retell (EL teacher); frames in Biology (co-teacher)"></div><div><label class="f">Evidence of progress</label><input data:k="e${k}" data-k="e${k}" placeholder="e.g., monthly 1-min speaking sample scored 1–5"></div></div></div>`).join('');
+document.getElementById('goals').innerHTML=['L','S','R','W'].map(k=>`<div class="dom"><div class="t"><b>${names[k]} <span id="gl${k}" style="color:var(--muted);font-weight:400"></span></b><span class="tb"><button type="button" data-g="${k}">Suggest from level</button><button type="button" data-bank="${k}" class="bk">Goal bank</button></span></div><div class="bank" id="bank${k}" hidden></div><textarea data-k="g${k}" placeholder="Goal for ${names[k].toLowerCase()}…"></textarea><div class="g2" style="margin-top:4px"><div><label class="f">Strategies / who</label><input data-k="s${k}" placeholder="e.g., daily partner retell (EL teacher); frames in Biology (co-teacher)"></div><div><label class="f">Evidence of progress</label><input data:k="e${k}" data-k="e${k}" placeholder="e.g., monthly 1-min speaking sample scored 1–5"></div></div></div>`).join('');
 const F={};const fields=()=>[...document.querySelectorAll('[data-k]')];
 fields().forEach(i=>i.addEventListener('input',()=>{F[i.dataset.k]=i.value;if('LSRW'.includes(i.dataset.k)||i.dataset.k==='yrs')derive();compliance()}));
 document.addEventListener('change',e=>{if(e.target.matches('[data-c],select'))compliance()});
@@ -232,6 +248,22 @@ function derive(){const l=lv();const v=Object.values(l).filter(Boolean);if(!v.le
   else if(a<4)pick(['s0','s1','s3','i0','i1','i2','i7','i10','i11','a0','a1','a2','a3','a8']);
   else pick(['s1','i0','i7','a0','a1','a2']);}
 }
+/* ---- the ELPA21 goal bank ---- */
+function bank(k,level){
+ const B=window.ELPA21_GOALS&&window.ELPA21_GOALS[k];const box=document.getElementById('bank'+k);if(!B||!box)return;
+ const cur=lv()[k]; level=level||cur||1;
+ const tabs=[1,2,3,4,5].map(n=>`<button type="button" data-lv="${n}" aria-pressed="${n===level}">${n}${n===cur?' ·now':n===cur+1?' ·next':''}</button>`).join('');
+ const items=(B[level]||[]).map((g,i)=>`<div class="bg"><span class="std" title="ELP Standard ${g.std}: ${window.ELP_STD[g.std]}">ELP ${g.std}</span><p>${g.g}</p><small>Evidence: ${g.ev}</small><button type="button" data-use="${i}">Use this</button></div>`).join('');
+ box.innerHTML=`<div class="bank-h"><span>Level</span>${tabs}<span class="sp"></span><button type="button" data-close>Close</button></div><p class="bank-n">${level===cur?'Goals at the student\'s current level — pick the one that names the next thing to teach, or move up a level for a stretch target.':level===cur+1?'One level up: a stretch target for the spring ELPT.':'Each goal names a behavior, the condition and how it is measured; edit any of it to the student.'}</p>${items}`;
+ box.hidden=false;box.dataset.lv=level;
+}
+document.getElementById('goals').addEventListener('click',e=>{
+ const open=e.target.closest('[data-bank]');if(open){const k=open.dataset.bank;const box=document.getElementById('bank'+k);if(!box.hidden){box.hidden=true;return}bank(k);return}
+ const tab=e.target.closest('.bank [data-lv]');if(tab){bank(tab.closest('.bank').id.slice(4),+tab.dataset.lv);return}
+ const cl=e.target.closest('.bank [data-close]');if(cl){cl.closest('.bank').hidden=true;return}
+ const use=e.target.closest('.bank [data-use]');if(use){const box=use.closest('.bank');const k=box.id.slice(4);const g=window.ELPA21_GOALS[k][+box.dataset.lv][+use.dataset.use];
+  const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=g.g;F['g'+k]=g.g;const ev=document.querySelector(`[data-k="e${k}"]`);if(ev&&!ev.value){ev.value=g.ev;F['e'+k]=g.ev}box.hidden=true;compliance();return}
+});
 document.getElementById('goals').addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const k=b.dataset.g;const l=lv()[k];if(!l)return alert('Enter the '+names[k]+' level first.');const ta=document.querySelector(`[data-k="g${k}"]`);ta.value=G[k][l-1];F['g'+k]=ta.value;compliance()});
 function snapshot(){const o={f:{},c:{}};fields().forEach(i=>o.f[i.dataset.k]=i.value);document.querySelectorAll('[data-c]').forEach(c=>o.c[c.dataset.c]=c.checked);return o}
 function restore(o){fields().forEach(i=>{if(o.f&&o.f[i.dataset.k]!==undefined){i.value=o.f[i.dataset.k];F[i.dataset.k]=i.value}});document.querySelectorAll('[data-c]').forEach(c=>{if(o.c)c.checked=!!o.c[c.dataset.c]});derive();compliance()}
@@ -251,6 +283,7 @@ try{if(new URLSearchParams(location.search).get('from')!=='intake'){const s=loca
  var y=document.querySelector('[data-k="yrs"]');if(y)y.dispatchEvent(new Event('input',{bubbles:true}));
 })();
 </script>
+<script src="elpa21-goals.js"></script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
 <script src="hub-chrome.js" defer></script>
