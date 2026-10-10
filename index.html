@@ -68,10 +68,18 @@
   .who{margin:0;font-size:14px;color:#AEB5DA;max-width:60ch}
   .who b{color:#fff}
 
-  .head-photo{margin:0;position:relative}
+  /* the portrait: a tall 4:5 crop that keeps him and the shelf of his own
+     titles, mounted a little proud of a thin gold frame — a print on a wall,
+     not a thumbnail in a box */
+  .head-photo{margin:0 0 0 auto;position:relative;width:min(100%,330px)}
+  .head-photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;
+    border:1.5px solid var(--gold);border-radius:3px;opacity:.9}
+  .head-photo::after{content:"";position:absolute;left:-18px;bottom:-18px;width:72px;height:4px;
+    background:var(--gold)}
   .head-photo img{position:relative;display:block;width:100%;height:auto;
-    aspect-ratio:1;object-fit:cover;border:3px solid var(--gold);
-    box-shadow:0 26px 60px rgba(0,0,0,.42)}
+    aspect-ratio:4/5;object-fit:cover;object-position:36% 14%;border-radius:3px;
+    box-shadow:0 22px 48px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.3)}
+
   @media (max-width:880px){
     .head-in{grid-template-columns:1fr;gap:0}
     .head-photo{display:none}
