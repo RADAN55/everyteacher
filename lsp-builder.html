@@ -99,6 +99,7 @@
   [data-when][hidden]{display:none!important}
   .onfile{font-size:13.5px;color:var(--muted);background:var(--mist);border:1px dashed var(--rule);padding:8px 12px;margin-top:4px}
   .lnk{font:inherit;font-size:12.5px;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;margin-left:6px}
+  .tests label span small{display:block;color:var(--muted);font-size:11.5px;line-height:1.25}
   .badge.auto{background:var(--gold);color:var(--navy-dk);font-size:11.5px}
   .badge[hidden]{display:none}
   .hist{border-collapse:collapse;width:100%;font-size:13px;margin-top:2px}
@@ -185,7 +186,10 @@
   </div>
 
   <div class="sec" data-when="active"><h3>5 · Instructional accommodations <small>classroom — every teacher of record · chosen from each domain's level; gold edge = the builder's pick</small></h3><div class="chk" id="iacc"></div></div>
-  <div class="sec" data-when="active"><h3>6 · Assessment accommodations <button type="button" class="tip" aria-label="What this means" data-tip="What is allowed on MAAP and ELPT comes from the Mississippi Testing Accommodations Manual, not the LSP. Two rules trip people most: nothing in the primary language on the ELPT (no bilingual dictionary), and a test accommodation must be one the student uses routinely in class.">i</button><small>classroom and state tests (MAAP, ELPT) — must match the Mississippi Testing Accommodations Manual and be used routinely in class</small></h3><div class="chk" id="aacc"></div><div class="g2" style="margin-top:6px"><div><label class="f">Notes for the District Test Coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all MAAP; none on ELPT."></div><div><label class="f">First-year EL and the ELA state test <button type="button" class="tip" aria-label="What this means" data-tip="ESSA lets a state exempt a student in their first 12 months in U.S. schools from one ELA administration. Whether and how Mississippi applies it this year is the District Test Coordinator's call to state — record what the DTC confirmed, not an assumption.">i</button></label><select data-k="firstyr"><option value="">—</option><option>Not applicable — not in first 12 months</option><option>DTC confirmed: takes ELA with accommodations</option><option>DTC confirmed: exempt from this year's ELA administration</option><option>Not yet confirmed with the DTC</option></select></div></div></div>
+  <div class="sec" data-when="active"><h3>6 · Assessment accommodations <button type="button" class="tip" aria-label="What this means" data-tip="What is allowed on MAAP and ELPT comes from the Mississippi Testing Accommodations Manual, not the LSP. Two rules trip people most: nothing in the primary language on the ELPT (no bilingual dictionary), and a test accommodation must be one the student uses routinely in class.">i</button><small>classroom and state tests (MAAP, ELPT) — must match the Mississippi Testing Accommodations Manual and be used routinely in class</small></h3><div class="chk" id="aacc"></div>
+    <label class="f" style="margin-top:10px">State assessments this student takes this year <button type="button" class="tip" aria-label="What this means" data-tip="Checked from the grade; end-of-course tests follow the courses on the schedule, so check those yourself. Every EL takes the ELPT in all four domains every year until exit — including students whose parents declined services. MAAP-A is an IEP-team decision for students with the most significant cognitive disabilities, never an EL decision. The accommodations above apply to every test checked here.">i</button> <small style="text-transform:none;letter-spacing:0;font-weight:400">— the accommodations above apply to each one checked</small></label>
+    <div class="chk tests" id="tests"></div>
+    <div class="g2" style="margin-top:6px"><div><label class="f">Notes for the District Test Coordinator</label><input data-k="tnote" placeholder="Small group with read-aloud on Biology I and U.S. History; print dictionary on all MAAP; none on ELPT."></div><div><label class="f">First-year EL and the ELA state test <button type="button" class="tip" aria-label="What this means" data-tip="ESSA lets a state exempt a student in their first 12 months in U.S. schools from one ELA administration. Whether and how Mississippi applies it this year is the District Test Coordinator's call to state — record what the DTC confirmed, not an assumption.">i</button></label><select data-k="firstyr"><option value="">—</option><option>Not applicable — not in first 12 months</option><option>DTC confirmed: takes ELA with accommodations</option><option>DTC confirmed: exempt from this year's ELA administration</option><option>Not yet confirmed with the DTC</option></select></div></div></div>
 
   <div class="sec"><h3>7 · Grading, promotion &amp; retention <button type="button" class="tip" aria-label="What this means" data-tip="Retaining a student because of early-stage English violates civil-rights law. Retention is defensible only with documented interventions showing English was not the barrier, a meeting with the parents, and the parents' signed agreement.">i</button></h3>
     <div class="chk" id="grd"></div>
@@ -227,6 +231,34 @@ document.getElementById('team').innerHTML=TEAM.map((t,i)=>`<label class="tm"><in
 function sigs(){const on=TEAM.map((t,i)=>[t,i]).filter(([t,i])=>document.querySelector(`[data-c="t${i}"]`)?.checked);
  const rows=(on.length?on:TEAM.filter(t=>t[1]).map((t,i)=>[t,TEAM.indexOf(t)])).map(([t,i])=>{const n=(document.querySelector(`[data-k="tn${i}"]`)||{}).value||'';return `<div><b>${n}</b>${t[0]} · date</div>`});
  document.getElementById('sig').innerHTML=rows.join('')}
+const TESTS=[
+ ["ELPT (ELPA21) — listening, speaking, reading, writing","every EL, K–12, each spring until exit"],
+ ["Kindergarten Readiness Assessment — pre and post","K"],
+ ["K–3 universal reading screener","K–3, three times a year"],
+ ["MAAP English Language Arts","grades 3–8 · grade 3 is the reading gate (Literacy-Based Promotion Act)"],
+ ["MAAP Mathematics","grades 3–8"],
+ ["MAAP Science","grades 5 and 8"],
+ ["MAAP End-of-Course · English II","when enrolled in the course"],
+ ["MAAP End-of-Course · Algebra I","when enrolled — high school, or grade 8 if taking it early"],
+ ["MAAP End-of-Course · Biology I","when enrolled in the course"],
+ ["MAAP End-of-Course · U.S. History","when enrolled in the course"],
+ ["ACT — state administration","grade 11"],
+ ["ACT WorkKeys","grade 11–12, career and technical pathways"],
+ ["MAAP-A (alternate assessment)","IEP-team decision only · significant cognitive disability"],
+];
+document.getElementById('tests').innerHTML=TESTS.map((t,i)=>`<label><input type="checkbox" data-c="x${i}"><span>${t[0]}<small>${t[1]}</small></span></label>`).join('');
+/* which tests follow from the grade — the teacher adds the course-based ones */
+function tests(){
+ const g=(document.querySelector('[data-k="grade"]')||{}).value||'';const type=(document.querySelector('[data-k="type"]')||{}).value||'';
+ const mon=/^m\d/.test(type);const n=g==='K'?0:+g;const S=new Set();
+ if(g!==''&&!mon)S.add('x0');
+ if(g==='K'){S.add('x1');S.add('x2')} if(g!==''&&n>=1&&n<=3)S.add('x2');
+ if(n>=3&&n<=8){S.add('x3');S.add('x4')} if(n===5||n===8)S.add('x5'); if(n===11)S.add('x10');
+ document.querySelectorAll('[data-c^="x"]').forEach(c=>{const want=S.has(c.dataset.c);
+  if(want&&!c.checked&&!c.dataset.off){c.checked=true;c.dataset.auto='1'}
+  else if(!want&&c.checked&&c.dataset.auto){c.checked=false;delete c.dataset.auto}
+  c.closest('label').classList.toggle('auto',!!(c.checked&&c.dataset.auto))});
+}
 const mk=(id,list,pre)=>document.getElementById(id).innerHTML=list.map((s,i)=>`<label><input type="checkbox" data-c="${pre}${i}">${s}</label>`).join('');
 const GRD=["Content graded for accuracy; language errors not penalized on non-ELA work","Report card / progress report notes that the student receives EL supports and accommodations","Parents told, in a language they understand, what accommodations are used and how grades are earned","Progress reports and report cards sent home translated or orally interpreted","Student is not retained solely because of English proficiency","Promotion decisions consider ELPT growth and time in U.S. schools, not grade-level English alone"];
 mk('svc',SVC,'s');mk('iacc',IACC,'i');mk('aacc',AACC,'a');mk('grd',GRD,'g');sigs();
@@ -275,7 +307,7 @@ const days=(a,b)=>{if(!a||!b)return null;const d=(new Date(b)-new Date(a))/864e5
 const any=(pre)=>!!document.querySelector(`[data-c^="${pre}"]:checked`);
 const chk=(sel)=>!!document.querySelector(`[data-c="${sel}"]:checked`);
 function compliance(){
- mode();
+ mode();tests();
  const v=k=>(F[k]||document.querySelector(`[data-k="${k}"]`)?.value||'').trim();
  const l=lv();const all4=['L','S','R','W'].every(k=>l[k]);
  const enroll=v('distdate')||v('usdate');
@@ -295,6 +327,7 @@ function compliance(){
   ['All four ELPT domains entered', all4?'ok':'no', v('exempt')&&!/None/.test(v('exempt'))?'Exemption noted — IEP team documentation must be on file.':'Listening, speaking, reading, writing, with the test date.','[data-k="L"]'],
   ['ELPT history for prior years', monitored?(v('h1y')?'ok':'no'):v('yrs')===''?'no':+v('yrs')<=1?'na':v('h1y')?'ok':'no', v('yrs')===''?'Enter years in the EL program.':+v('yrs')<=1?'First year — there are no prior scores to record.':'Yearly scores are a required component for a continuing EL; fill the rows you have.',v('yrs')===''?'[data-k="yrs"]':'[data-k="h1y"]'],
   ['Services named, with minutes per week', monitored?'na':(any('s')||declined)&&(v('min')||declined)?'ok':'no', declined?'Declined services — note in §4 what continues.':'Check at least one service and state the minutes.','#svc'],
+  ['ELPT this spring, all four domains', monitored?'na':chk('x0')?'ok':'no', monitored?'Monitored students do not take the ELPT.':declined?'Parents declined services — the ELPT is still required.':'Every EL, every year, until exit.','#tests'],
   ['Classroom accommodations for every teacher of record', monitored?'na':any('i')?'ok':'no', monitored?'Monitored — classroom supports at teacher discretion.':'','#iacc'],
   ['State-test accommodations match what is used in class', monitored?'na':any('a')?(any('i')?'ok':'no'):(all4?'no':'na'), any('a')&&!any('i')?'A test accommodation with no classroom use behind it will not hold up.':'Must match the Testing Accommodations Manual; nothing primary-language on the ELPT.',any('a')&&!any('i')?'#iacc':'#aacc'],
   ['Grading and retention safeguards in place', chk('g0')&&chk('g4')&&(!chk('r0')||v('retain'))?'ok':'no', chk('r0')&&!v('retain')?'Retention is under consideration: document the interventions, the parent meeting and the signed agreement.':'At minimum: content graded for accuracy, and no retention for English proficiency alone.',chk('r0')&&!v('retain')?'[data-k="retain"]':'#grd'],
@@ -374,7 +407,8 @@ function autofill(l,a,all){
  check(['g0','g2','g4']);if(a<4)check(['g1','g3']);
  /* notes for the test coordinator, from what is checked */
  const acc=[...document.querySelectorAll('[data-c^="a"]:checked')].map(c=>AACC[+c.dataset.c.slice(1)]).filter(t=>!/^Classroom only/.test(t)).map(t=>t.split(' — ')[0]);
- if(acc.length&&setIf('tnote',acc.join('; ')+'. Nothing in the primary language on the ELPT.'))done.push('DTC notes');
+ const tk=[...document.querySelectorAll('[data-c^="x"]:checked')].map(c=>TESTS[+c.dataset.c.slice(1)][0].split(' — ')[0]);
+ if(acc.length&&setIf('tnote',(tk.length?'Tests: '+tk.join('; ')+'. ':'')+'Accommodations: '+acc.join('; ')+'. Nothing in the primary language on the ELPT.'))done.push('DTC notes');
  /* what continues if services are declined */
  setIf('declnote','EL status and MSIS coding; annual ELPT in all four domains; classroom and testing accommodations in every content class; nine-weeks monitoring; annual parent notification.');
  /* the review note that tells the next reader what this draft is */
