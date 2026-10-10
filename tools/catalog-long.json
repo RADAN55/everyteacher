@@ -1,0 +1,287 @@
+{
+ "newcomer-guide.html": {
+  "long": "For any K–12 student new to an American school: how schools work, enrolling, a school day, grades and graduation, legal rights and EL support, classroom culture, family tips and a 60-word glossary — English side by side with Spanish, Vietnamese, Arabic, Chinese or Haitian Creole. Free PDF in each language.",
+  "thumb": "thumbs/newcomer-guide.jpg",
+  "who": "Students & families"
+ },
+ "first-100-words.html": {
+  "long": "The words a newcomer hears in the first month — people, places, the schedule, teacher instructions, lunch, rules, grades and asking for help — ten groups of ten, with tap-to-hear pronunciation, two quiz modes, a progress counter and printable flashcards. Five languages.",
+  "thumb": "thumbs/first-100-words.jpg",
+  "who": "Students"
+ },
+ "elpt-family-guide.html": {
+  "long": "What the ELPT (ELPA21) is, the four domains, what Levels 1–5 actually mean, a sample score report decoded, the exit rule (Level 4 in all four), the EL year calendar, and what families can do at home — in five languages.",
+  "thumb": "thumbs/elpt-family-guide.jpg",
+  "who": "Families"
+ },
+ "graduation-roadmap.html": {
+  "long": "Pick a diploma path (Traditional, CTE, Academic, Distinguished), type the credits you have and watch the meters, check off the four state tests, learn how home-country classes and your first language count, and fill in a four-year plan with your counselor. Five languages.",
+  "thumb": "thumbs/graduation-roadmap.jpg",
+  "who": "Students 9–12"
+ },
+ "can-do-checklist.html": {
+  "long": "Eighty “I can…” statements across listening, speaking, reading and writing at Levels 1–5. Students check what is true today, see an estimated level per skill, set a goal for each, and copy a summary for their teacher — a mirror of the ELPT they can use three times a year. Five languages.",
+  "thumb": "thumbs/can-do-checklist.jpg",
+  "who": "Students 6–12"
+ },
+ "newcomer-week1.html": {
+  "long": "The week a student arrives, hour by hour where it matters: the before-day-one checklist, the walkthrough script, the buddy brief, the family call, which Newcomer Series resource to use each day, and a day-5 exit ticket that tells you the week worked.",
+  "thumb": "thumbs/newcomer-week1.jpg",
+  "who": "Teachers"
+ },
+ "newcomer-k5.html": {
+  "long": "The first ten days with a young newcomer, in two bands: what to get right each day, room setup, what transfers from the home language, and the printables for the desk tomorrow — picture-schedule and “I need” cards, 20 phrases, a family call script, a week-one show-me check. English and Spanish.",
+  "thumb": "thumbs/newcomer-k5.jpg",
+  "who": "Teachers K–5"
+ },
+ "sheltered.html": {
+  "long": "Take a real Biology, Algebra I or U.S. History lesson in a language you do not speak — Spanish, Vietnamese or Arabic — then take it again with the four lanes in place. Same language, same clock, parallel questions. Your two scores end up side by side, each support is named with the lane it serves, and the last screen finally tells you what the lesson said. Built to run with a whole faculty in twenty-five minutes.",
+  "thumb": "thumbs/sheltered.jpg",
+  "who": "Faculty PD"
+ },
+ "el-bridge.html": {
+  "long": "Pick a Mississippi standard (K–12 ELA, math, science, or Algebra I, Biology I, English II), describe the lesson you already teach, and get it back in four lanes: Newcomer, Emerging, Progressing, Challenge. Also writes leveled texts with text-dependent questions and MAAP-style items with a linguistically accessible twin for every item. Builds the prompt, you run it in Claude, ChatGPT, Gemini or Copilot, paste the answer back, and it lays out the plan. No sign-up on this site.",
+  "thumb": "thumbs/el-bridge.jpg",
+  "who": "Teachers"
+ },
+ "showcase.html": {
+  "long": "Real adaptations, leveled texts, and item sets Mississippi teachers made with EL Bridge and the Assistants and chose to share. Filter by subject, open the materials, add your own through the short form.",
+  "thumb": "thumbs/showcase.jpg",
+  "who": "Teachers"
+ },
+ "sub-para.html": {
+  "long": "A one-page “English learners in this room” card for the substitute (lane counts, allowed supports, what to do and not do, no names) and a one-page guide for the paraprofessional or tutor working one-on-one: eight moves, a 20-minute session, a log, Spanish phrases.",
+  "thumb": "thumbs/sub-para.jpg",
+  "who": "Subs · Paras · Tutors"
+ },
+ "el-assistants.html": {
+  "long": "Four copy-and-paste assistants for the teacher who teaches biology, not English: scaffold a lesson by lane, level a text and prep the vocabulary, make a quiz measure content instead of English (Mississippi accommodations built in), and write to families in English and Spanish. Works in Claude, Gemini, ChatGPT or Copilot; no student names ever.",
+  "thumb": "thumbs/el-assistants.jpg",
+  "who": "Teachers"
+ },
+ "newcomer-intake.html": {
+  "long": "Type the student once; open the EL Student Profile, the Language Service Plan and the identification letter already filled in. Lane and overall determination compute as you type. Save the student as one file; reopen it at the semester review.",
+  "thumb": "thumbs/newcomer-intake.jpg",
+  "who": "Teachers"
+ },
+ "sentence-frames.html": {
+  "long": "150 frames by language function — narrate, inform, explain, argue, classroom talk — and by level 1–5, each with a Spanish gloss. Filter to today's function and your students' levels, tick the ones you want, copy them into your slide.",
+  "thumb": "thumbs/sentence-frames.jpg",
+  "who": "Teachers"
+ },
+ "accommodations-cards.html": {
+  "long": "Eighteen cards: what the accommodation is, who it fits, how to do it in class tomorrow, whether it is allowed on MAAP and ELPT, and the exact wording for the LSP. Filter by state-test-allowed, classroom-only, newcomer, reading, writing. Prints two-up.",
+  "thumb": "thumbs/accommodations-cards.jpg",
+  "who": "Teachers"
+ },
+ "coteaching-plan.html": {
+  "long": "Content objective + language objective on one page, with a language-objective bank by subject and function, six co-teaching models, who-does-what, supports by lane, and separate assessments for content and language. Fills in the browser, prints on one page.",
+  "thumb": "thumbs/coteaching-plan.jpg",
+  "who": "Teachers"
+ },
+ "student-profile.html": {
+  "long": "Type the ELPT levels and a few facts; get the one page a sub or a new content teacher needs — what the student can do in each domain, the lane, what helps every day, strengths, watch-fors, LSP accommodations, and who to call. For the sub folder.",
+  "thumb": "thumbs/student-profile.jpg",
+  "who": "Teachers"
+ },
+ "lsp-builder.html": {
+  "long": "Enter the ELPT levels and the Language Service Plan drafts itself: lane, services, instructional and assessment accommodations, a goal for each domain, focus domain, monitoring status and signatures. Edit anything, print for signatures, save as a file to reopen at the semester review.",
+  "thumb": "thumbs/lsp-builder.jpg",
+  "who": "Teachers"
+ },
+ "el-evaluate.html": {
+  "long": "The method a consulting firm sells, written out so your own team can run it: frame the question, send the data request (copy it as written), check who is in the program, read growth against years-in-program, compare current ELs to former ELs to never-ELs, then find the cause and write the one-page board memo. Each session has the reading thresholds, the red flags, a worked example, and a deliverable that saves as you type and prints as one findings report.",
+  "thumb": "thumbs/el-evaluate.jpg",
+  "who": "District leaders"
+ },
+ "leaders.html": {
+  "long": "Are we compliant? Are our ELs growing? What does it cost? The front door for superintendents, federal programs directors, and EL coordinators: a two-week path, a program-at-a-glance strip that fills from your own numbers, and every district-office tool in one place.",
+  "thumb": "thumbs/leaders.jpg",
+  "who": "Administrators"
+ },
+ "el-audit.html": {
+  "long": "Thirty-three items from Castañeda, Title VI, the EEOA, ESSA Title III, and the February 2026 accommodations manual. Scored live, legal gaps in red, and a printable corrective-action plan with owners, dates, and the authority for each item. Nothing leaves your browser.",
+  "thumb": "thumbs/el-audit.jpg",
+  "who": "Administrators"
+ },
+ "el-outcomes.html": {
+  "long": "Enter counts, not names, and get the annual evaluation Castañeda asks for: ELPT level distribution, growth and exit, participation against the 95% rule, the achievement and graduation gap for current and former ELs, the three-year trend, and a board paragraph written from your numbers.",
+  "thumb": "thumbs/el-outcomes.jpg",
+  "who": "Administrators"
+ },
+ "title3-planner.html": {
+  "long": "Estimate the subgrant, split it across the three required activities, check the 2 percent administrative cap and the supplement-not-supplant pattern, and see what the district owes anyway if the House FY2027 bill ends Title III.",
+  "thumb": "thumbs/title3-planner.jpg",
+  "who": "Administrators"
+ },
+ "board-brief.html": {
+  "long": "“The State of English Learners in [District]”: a dozen numbers and three recommendations become a one-page executive brief in board language, plus a matching eight-slide PowerPoint template with speaker notes and a decision requested.",
+  "thumb": "thumbs/board-brief.jpg",
+  "who": "Administrators"
+ },
+ "case-studies.html": {
+  "long": "A newcomer’s first ninety days, the eighth grader stuck one ELPT domain short of exit, and a district with six weeks before the monitor arrives. Composite cases from Mississippi patterns, with the hub tool and the cost named at every step.",
+  "thumb": "thumbs/case-studies.jpg",
+  "who": "Administrators"
+ },
+ "district-kit.html": {
+  "long": "What a 90-day engagement delivers to a district with one EL teacher and no coordinator: the audit, the letters, the LSPs, the newcomer flow, the staff module, the dashboard, and the board brief, built on your numbers and letterhead. You keep everything.",
+  "thumb": "thumbs/district-kit.jpg",
+  "who": "Administrators"
+ },
+ "policy-brief.html": {
+  "long": "One page a month for superintendents, federal programs directors, and EL coordinators: what changed at MDE, in Congress, at the U.S. Department of Education, and in the courts; what it means for a district of about 2,000 students; what to do and by when. A board-ready paragraph to copy, dates ahead, a watch list, and the primary source on every item. October 2026: OELA's closure, the House FY27 bill that zeroes Title III, and Mississippi's 2026–27 ELPT rules.",
+  "thumb": "thumbs/policy-brief.jpg",
+  "who": "Administrators"
+ },
+ "el-compliance-calendar.html": {
+  "long": "Forty-five obligations placed in the month they come due — HLS and 30-day screening, parent notices, Language Service Plans, ELPT window, exit and four-year monitoring, Title III, MSIS coding, accommodations, the annual program evaluation — each tagged federal, Mississippi or best practice, with the standing Castañeda, Lau and Plyler duties up top. Check off, save, print.",
+  "thumb": "thumbs/el-compliance-calendar.jpg",
+  "who": "Administrators"
+ },
+ "parent-letters.html": {
+  "long": "Six letters every program sends, written to ESSA §1112(e)(3): initial identification and placement with every required element, annual continuing notice, exit, monitoring notice, parent refusal form, and meeting invitation. Fill in the student once; print the English and Spanish pages together.",
+  "thumb": "thumbs/parent-letters.jpg",
+  "who": "Administrators"
+ },
+ "el-data-dashboard.html": {
+  "long": "Paste your ELPT roster; get overall determination, domain averages, level distribution, growth, years in program, lowest domain, by-grade proficiency and home-language counts — eight formula-driven tables and three charts for the board, Title III and Castañeda prong three.",
+  "thumb": "thumbs/el-data-dashboard.jpg",
+  "who": "Administrators"
+ },
+ "fact-check.html": {
+  "long": "Every Mississippi-specific claim on the hub — credits, endorsements, ELPT window, exit rule, monitoring, screening deadlines, test accommodations, Seal of Biliteracy — in one table with its status (14 verified, 5 corrected, 5 for the district to confirm), the source, and a sign-off line for the Title III director.",
+  "thumb": "",
+  "who": "Administrators"
+ },
+ "https://radan55.github.io/RichardDaniel/language-functions/": {
+  "long": "Twelve language functions across four grade bands and four proficiency tiers: calendar themes, daily plans, texts with quizzes, a standards crosswalk, a sentence-frame ladder and a bilingual student tracker.",
+  "thumb": "thumbs/01-language-functions.jpg",
+  "who": "K–12"
+ },
+ "https://radan55.github.io/RichardDaniel/curriculum-36/": {
+  "long": "One theme calendar, two language lanes. Eight units mapped week by week with grammar ladders, ELP and MS CCRS codes, writing products, ELPA21 mirror tasks, a 90-minute block template and an assessment calendar built back from the ELPT window — every recommendation tagged by evidence strength.",
+  "thumb": "thumbs/02-curriculum-36.jpg",
+  "who": "9–12"
+ },
+ "https://radan55.github.io/mselablueprintinfo01/": {
+  "long": "Bilingual guide to the Mississippi ELA standard blueprints: grade-by-grade reviews, practice passages and test-style items, Grammar Beats songs, four-lane supports, family pages and a lesson builder.",
+  "thumb": "thumbs/03-blueprint.jpg",
+  "who": "K–12"
+ },
+ "https://radan55.github.io/hispanicheritagemonth2026/": {
+  "long": "Bilingual biography profiles of thirty Hispanic figures with discussion prompts and classroom projects. Featured below.",
+  "thumb": "thumbs/11-30-people.jpg",
+  "who": "Heritage"
+ },
+ "https://radan55.github.io/msellibrary/": {
+  "long": "A free five-volume resource system for English-learner success in Mississippi schools: the shelf every EL teacher and coordinator in the state should have open.",
+  "thumb": "thumbs/12-library.jpg",
+  "who": "5 volumes"
+ },
+ "https://radan55.github.io/elvocabularycurriculumengine/": {
+  "long": "A five-day instructional cycle for academic vocabulary, with PD modules, ELPA21-aligned activities and reproducible student handouts as a free PDF.",
+  "thumb": "thumbs/13-vocab-engine.jpg",
+  "who": "ELPA21"
+ },
+ "storm-lens/": {
+  "long": "Point the Chromebook camera at anything in the room and the room becomes the vocabulary list. Two recognition models run in the browser (80 objects live, 1,000 on scan) against a 334-word school bank; every word opens a card with Spanish, the cognate flag, four-lane sentence frames, a verb collocation, pronunciation coaching for Spanish speakers, plurals, a quick check, an ELPA21-style “describe the picture” speaking task and a write-it check — all speech-checked. The student's own photos become their word wall, four practice modes, scavenger missions and rolling end credits. Narrated like a film. Teachers get hunt links, a class view from student files, an exit ticket and a device check. Installs and works offline. No account, nothing uploaded.",
+  "thumb": "thumbs/storm-lens.jpg",
+  "who": "Students 9–12"
+ },
+ "english-on-your-own.html": {
+  "long": "Built to the published ELPA21 grades 9–12 blueprint: all twenty-two task types — Listen and Match, Academic Debate, Short Conversation, Argument and Support Essay, Discrete Editing, Construct a Claim, Compare Pictures, Observe and Report and the rest — plus a sixty-item full practice form (23 listening, 26 reading, 5 writing, 6 speaking) that returns a level estimate per domain and an Emerging / Progressing / Proficient determination. Speaking records and checks what the student actually said; writing gets an automatic check and the rater's checklist. Directions in six languages. No account, no teacher needed.",
+  "thumb": "thumbs/english-on-your-own.jpg",
+  "who": "Students & families"
+ },
+ "https://radan55.github.io/elpa21speaking01/": {
+  "long": "Twenty-five four-skill ELPA21-style activities built around school-life scenarios: reading, listening, speaking and writing in the format students will see on the test.",
+  "thumb": "thumbs/04-language-lab.jpg",
+  "who": "9–12"
+ },
+ "https://radan55.github.io/tamales02/": {
+  "long": "Feature article plus five interactive activities, vocabulary matching and a student progress report. The text behind the sample-lesson breakdown.",
+  "thumb": "thumbs/05-tamales.jpg",
+  "who": "9–12"
+ },
+ "sample-lesson.html": {
+  "long": "The 90-minute arc, the lane-by-lane differentiation and the reasoning behind a Storm Studio block, built on the How Tamales Are Made lesson. Read it before you run your first block.",
+  "thumb": "",
+  "who": "9–12"
+ },
+ "https://radan55.github.io/ms-el-command-center/": {
+  "long": "The Mississippi EL teacher's reference hub: identification timelines, ELPA21 procedures, service plans, MTAM accommodations, §15 accountability and the documentation to prove it.",
+  "thumb": "thumbs/09-command-center.jpg",
+  "who": "Compliance"
+ },
+ "https://radan55.github.io/everyteacherisalanguageteacher/": {
+  "long": "Self-paced professional development for general- and special-education teachers: six sections on supporting English learners in any classroom.",
+  "thumb": "thumbs/10-every-teacher.jpg",
+  "who": "PD"
+ },
+ "https://radan55.github.io/el-publishing-grammar-songs/": {
+  "long": "Radio-style grammar songs with full interactive lessons: nouns, adjectives and verbs, each with an audio track and a student lesson built to the beat.",
+  "thumb": "thumbs/14-grammar-beats.jpg",
+  "who": "Music"
+ },
+ "https://radan55.github.io/elpa21-reading-studio/": {
+  "long": "Mississippi ELPT-style reading practice for English learners: six grade bands, 122 original items, eight item types, mock-test conditions, accommodations, bilingual supports, levels, badges and a teacher dashboard.",
+  "thumb": "thumbs/16-reading-studio.jpg",
+  "who": "K–12"
+ },
+ "https://radan55.github.io/elpa21speaking01/october/": {
+  "long": "\"For the teacher who never planned to teach language.\" Sixteen plates on working with English learners in the general-education classroom.",
+  "thumb": "thumbs/06-field-atlas.jpg",
+  "who": "Teachers"
+ },
+ "https://radan55.github.io/elstudentmagazine01/": {
+  "long": "A magazine for multilingual high-school students: articles, interactive features, vocabulary tools and a teacher resource page.",
+  "thumb": "thumbs/07-many-voices.jpg",
+  "who": "Students"
+ },
+ "spoken-spanish-english.html": {
+  "long": "Shared strengths, different patterns: what the two languages share, where sounds and sentences differ, what you may hear in class and a helpful response for each. Phrase banks in English and Spanish by lane, a correct-now-or-later decision guide, three practice cases, a twelve-error table, and a first-week belonging routine. Free 23-page PDF.",
+  "thumb": "thumbs/spoken-spanish-english.jpg",
+  "who": "Teachers"
+ },
+ "https://radan55.github.io/el-field-guide/": {
+  "long": "Plain-language guide for general-education, special-education and administrative staff: identification, instruction, assessment and the legal obligations, with strategies you can use tomorrow.",
+  "thumb": "thumbs/08-field-guide.jpg",
+  "who": "All staff"
+ },
+ "https://radan55.github.io/elpublishing-magazineeditionone/#compliance": {
+  "long": "Teaching English Learners in Mississippi's Overlooked Districts. A field manual for small districts with big obligations, published in the 2026 Educator Edition.",
+  "thumb": "thumbs/15-making-them-count.jpg",
+  "who": "Book"
+ },
+ "field-notes.html": {
+  "long": "Eight ideas shaping 2026 — Science of Reading \"yes AND,\" cross-linguistic transfer, Key Language Uses, newcomer programs, co-teaching, AI, and Mississippi's four-domain exit — each tagged by evidence strength, with sources.",
+  "thumb": "field-notes-2026-10.jpg",
+  "who": "Research brief"
+ },
+ "tech-radar.html": {
+  "long": "Verified this month: Gemini in Google Classroom student study tools (newest, Oct 6), Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a four-lane classroom use for each, and a watch list.",
+  "thumb": "",
+  "who": "Teachers"
+ },
+ "language-bridge-2026-09.html": {
+  "long": "A one-page bulletin for content teachers: five findings from acquisition research with a classroom move attached to each, the eight SIOP components translated for a content classroom, paired content and language objectives, and a compliance corner.",
+  "thumb": "",
+  "who": "Teachers"
+ },
+ "sentence-lab.html": {
+  "long": "Sixteen grammar features in realistic school scenes — subject and verb, pronouns, be, articles, plurals, adjectives, present, negatives, questions, right now, past, future plans, prepositions, connectors, sentence repair, expansion — with a Newcomer lane and a Progressing lane on every page. A shared writing project, a before/after six-skill check, and the full teacher key with a scoring rubric. Free 25-page PDF.",
+  "thumb": "thumbs/sentence-lab.jpg",
+  "who": "Students 9–12"
+ },
+ "elpa21-practice-student.pdf": {
+  "long": "Sixteen pages of practice across all four domains, written in the format of the assessment: construct a claim, respond to a message, observe and report, state an opinion, follow instructions, academic lecture, informational set, short paragraph.",
+  "thumb": "",
+  "who": "Grades 9–12"
+ },
+ "elpa21-practice-teacher.pdf": {
+  "long": "The teacher edition: read-aloud scripts, question sets, proficiency look-fors at Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge, answer keys and a two-axis scoring guide.",
+  "thumb": "",
+  "who": "Teacher edition"
+ }
+}

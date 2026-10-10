@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Build search-index.json for the EL Publishing Hub.
-Run from the repo root: python3 tools/build-search-index.py
+Run through tools/build.py, which calls this last.
 Indexes every top-level .html page by heading section so the home-page search
 can find text inside pages, not only catalog cards."""
 import re, json, html, glob, os
 
-SKIP = {"search.html"}
+# index.html and all.html are the catalog itself — the typeahead already searches
+# the catalog, so indexing them would bury page text under 57 duplicate blurbs.
+SKIP = {"search.html", "index.html", "all.html"}
 out = []
 def clean(s):
     s = re.sub(r"<script.*?</script>|<style.*?</style>", " ", s, flags=re.S)

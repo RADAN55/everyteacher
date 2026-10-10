@@ -23,6 +23,12 @@
   .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
   a{color:var(--navy)}
   p{margin:0 0 14px}
+  section{padding:44px 0}
+  section.wrap{padding:38px 26px}
+  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;
+    letter-spacing:-.02em;color:var(--navy);margin:0 0 6px}
+  h2::before{content:"";display:block;width:38px;height:3px;background:var(--gold);margin-bottom:14px}
+  .deck{color:var(--muted);margin:0 0 26px;max-width:62ch}
 
   header{background:var(--navy);color:#fff;position:relative;overflow:hidden}
   header::before{content:"";position:absolute;inset:0;
@@ -37,7 +43,6 @@
     font-size:14px;color:#AEB5DA;max-width:60ch}
   .who b{color:#fff}
 
-
   /* ===== NOW SHOWING · premiere ===== */
   .premiere{background:#070914;color:#fff;position:relative;overflow:hidden;border-top:1px solid rgba(201,162,39,.35);border-bottom:1px solid rgba(201,162,39,.35)}
   .premiere::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 15% 30%,rgba(30,39,97,.9),transparent 60%),radial-gradient(700px 400px at 90% 80%,rgba(201,162,39,.16),transparent 60%);pointer-events:none}
@@ -51,9 +56,7 @@
   .prem-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;margin-top:14px}
   .prem-t{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,5.6vw,60px);line-height:.98;margin:0;color:#fff;text-shadow:0 0 50px rgba(201,162,39,.35)}
   .prem-t .wd{white-space:nowrap;display:inline-block}.prem-t .ch{display:inline-block;animation:pletter .6s cubic-bezier(.2,.9,.3,1.3) both}
-  .prem-t::before,.prem-t::after{display:none!important;content:none!important}
   @keyframes pletter{from{opacity:0;transform:translateY(18px) rotate(4deg)}}
-  .prem-t .gold{color:var(--gold)}
   .prem-kind{margin:12px 0 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#cdd1e6}
   .prem-p{margin:14px 0 0;font-size:17px;line-height:1.55;color:#dfe2f2;max-width:56ch}
   .prem-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
@@ -71,7 +74,7 @@
   .prem-shot .vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
   .prem-rail{margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)}
   .prem-rail .rk{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9aa0bd;margin:0 0 12px;font-weight:600}
-  .prem-rail .rr{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .prem-rail .rr{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
   .prem-rail a{position:relative;display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:10px;color:#fff;text-decoration:none;transition:.2s}
   .prem-rail a:hover{background:rgba(201,162,39,.12);border-color:rgba(201,162,39,.5);transform:translateY(-2px)}
   .prem-rail img,.prem-rail .ph{width:84px;height:56px;object-fit:cover;border-radius:8px;background:#121735;flex:none;display:grid;place-items:center;font-size:24px}
@@ -79,44 +82,98 @@
   .prem-rail small{display:block;color:#9aa0bd;font-size:12px;margin-top:3px}
   .prem-rail .nb{position:absolute;top:-8px;left:12px;background:var(--gold);color:#121735;font-size:10px;font-weight:800;letter-spacing:.14em;padding:2px 8px;border-radius:6px}
   @media(max-width:760px){.prem-grid{grid-template-columns:1fr}.prem-shot{order:-1}}
-  @media(prefers-reduced-motion:reduce){.prem-shot img,.premiere .beam,.prem-t .ch{animation:none}}
-  /* NEW ribbon on fresh cards */
-  .card.is-new .card-top::after{content:"NEW";position:absolute;top:10px;left:-30px;transform:rotate(-35deg);background:var(--gold);color:var(--navy-dk);font-size:11px;font-weight:800;letter-spacing:.2em;padding:4px 36px;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:2}
-  .card.is-new .card-top{position:relative;overflow:hidden}
-  section{padding:44px 0}
-  h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;
-    letter-spacing:-.02em;color:var(--navy);margin:0 0 6px}
-  h2::before{content:"";display:block;width:38px;height:3px;background:var(--gold);margin-bottom:14px}
-  .deck{color:var(--muted);margin:0 0 26px;max-width:62ch}
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-  .card{background:var(--paper);border:1px solid var(--rule);display:flex;flex-direction:column;
-    text-decoration:none;color:inherit;transition:transform .12s ease,box-shadow .12s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,39,97,.14)}
-  .card-top{background:var(--navy);color:#fff;padding:16px 20px}
-  .kind{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--gold)}
-  .card h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;line-height:1.15;
-    margin:6px 0 0}
-  .card-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
-  .card p{font-size:14.5px;color:var(--ink);margin:0 0 14px}
-  .meta{margin-top:auto;font-size:12.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
-  .meta span{border:1px solid var(--rule);padding:2px 9px;border-radius:999px}
-  .go{font-weight:600;font-size:14px;color:var(--navy);margin-top:12px}
+  /* ===== find it ===== */
+  .findbar{background:var(--paper);border-bottom:1px solid var(--rule);position:relative;z-index:5}
+  .findbar .wrap{padding:14px 26px}
+  .srch{display:flex;align-items:center;gap:10px;background:var(--mist);
+    border:1px solid var(--rule);border-radius:999px;padding:9px 18px}
+  .srch:focus-within{border-color:var(--navy);background:var(--paper)}
+  .srch svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex:0 0 18px}
+  .srch input{flex:1;border:0;background:transparent;font:inherit;font-size:15.5px;color:var(--ink);outline:none;min-width:0}
+  .srch button{flex:none;border:0;background:var(--navy);color:#fff;font:inherit;font-size:13.5px;
+    font-weight:600;padding:7px 15px;border-radius:999px;cursor:pointer}
+  .jump{margin:10px 0 0;background:var(--paper);border:1px solid var(--rule);
+    border-left:4px solid var(--gold);max-height:60vh;overflow:auto}
+  .jump[hidden]{display:none}
+  .jump .jk{margin:0;padding:9px 16px 7px;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold);font-weight:700;background:#FBFBFE}
+  .jump a{display:block;padding:9px 16px;border-top:1px solid var(--rule);
+    text-decoration:none;color:var(--ink)}
+  .jump a:hover,.jump a:focus{background:#F7F8FD;outline:none}
+  .jump b{color:var(--navy);font-weight:600}
+  .jump small{display:block;color:var(--muted);font-size:13px;margin-top:1px}
+  .jump mark{background:#FFF1B8;color:inherit;padding:0 1px}
+  .jump .more{font-weight:600;color:var(--navy);background:#FBFBFE}
+  .jump .none{padding:12px 16px;color:var(--muted);font-size:14px}
 
-  .about{background:var(--navy);color:#DDE1F2;position:relative;overflow:hidden}
-  .about::before{content:"";position:absolute;inset:0;
+  /* ===== four doors ===== */
+  .doors{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .door{background:var(--paper);border:1px solid var(--rule);border-top:4px solid var(--gold);
+    padding:20px 22px 16px;display:flex;flex-direction:column}
+  .door-h{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .door-n{font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:700;color:var(--gold);
+    line-height:1;flex:none}
+  .door-h b{font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:600;
+    color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+  .door-h small{display:block;font-size:13px;color:var(--muted);margin-top:3px;font-weight:400}
+  .door ol{margin:12px 0 0;padding:0;list-style:none;counter-reset:s}
+  .door li{counter-increment:s;padding:8px 0 8px 26px;border-top:1px solid var(--rule);position:relative}
+  .door li::before{content:counter(s);position:absolute;left:0;top:9px;font-size:11.5px;
+    font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+  .door li a{font-weight:600;text-decoration:none;font-size:15.5px;line-height:1.3;
+    display:inline-block;border-bottom:1px solid var(--gold-lt)}
+  .door li a:hover{border-bottom-color:var(--gold)}
+  .door li span{display:block;font-size:13.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+  .door .rest{margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:600;
+    text-decoration:none;color:var(--navy)}
+  .door .rest:hover{text-decoration:underline}
+  @media (max-width:860px){.doors{grid-template-columns:1fr}}
+
+  /* ===== this week ===== */
+  .week{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0}
+  .week a{display:block;background:var(--paper);border:1px solid var(--rule);
+    border-top:5px solid var(--gold);padding:14px 16px 12px;text-decoration:none;color:var(--ink)}
+  .week a:hover{box-shadow:0 8px 24px rgba(30,39,97,.12)}
+  .week .wk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .week b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy);line-height:1.15;margin:4px 0}
+  .week small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
+  .week .es{font-style:italic;color:var(--muted);font-size:13px}
+  @media (max-width:760px){.week{grid-template-columns:1fr}}
+
+  /* ===== the full index ===== */
+  .idx{background:var(--navy);color:#DDE1F2;position:relative;overflow:hidden}
+  .idx::before{content:"";position:absolute;inset:0;
     background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
-  .about .wrap{position:relative}
-  .about h2{color:#fff}
-  .about h2::before{background:var(--gold)}
-  .about p{max-width:66ch}
-  .about b{color:var(--gold-lt)}
+  .idx .wrap{position:relative;padding:40px 26px}
+  .idx h2{color:#fff;margin-bottom:10px}
+  .idx h2::before{background:var(--gold)}
+  .idx > .wrap > p{color:#C9CEEA;max-width:60ch}
+  .idx-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin:22px 0 0}
+  .idx-g a{display:block;background:rgba(255,255,255,.06);border:1px solid rgba(235,217,160,.22);
+    padding:13px 16px;text-decoration:none;color:#fff}
+  .idx-g a:hover{background:rgba(201,162,39,.14);border-color:var(--gold)}
+  .idx-g b{display:block;font-family:Fraunces,Georgia,serif;font-size:17px;font-weight:600;line-height:1.2}
+  .idx-g span{display:block;font-size:12.5px;color:#AEB5DA;margin-top:3px}
+  .idx-all{display:inline-block;margin:22px 0 0;background:var(--gold);color:var(--navy-dk);
+    font-weight:700;padding:11px 22px;border-radius:999px;text-decoration:none;font-size:15px}
+  .idx-s{display:flex;flex-wrap:wrap;gap:0 30px;margin:26px 0 0;padding-top:20px;
+    border-top:1px solid rgba(235,217,160,.22)}
+  .idx-s div{font-size:12.5px;color:#AEB5DA}
+  .idx-s b{display:block;font-family:Fraunces,Georgia,serif;font-size:27px;font-weight:600;
+    color:#fff;line-height:1.1}
 
-  .use{background:var(--paper);border:1px solid var(--rule);padding:24px 26px;margin-top:8px}
-  .use h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;color:var(--navy);
-    margin:0 0 8px}
-  .use ul{margin:0;padding-left:20px}
-  .use li{margin-bottom:8px;font-size:15px}
+  /* ===== closing prose ===== */
+  .about{background:var(--paper);padding:0;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .about .wrap{padding:40px 26px}
+  .about p{max-width:66ch}
+  .about b{color:var(--navy)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .two h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:19px;color:var(--navy);margin:0 0 8px}
+  .two ul{margin:0;padding-left:20px}
+  .two li{margin-bottom:7px;font-size:14.5px;color:var(--muted)}
+  @media (max-width:760px){.two{grid-template-columns:1fr;gap:24px}}
 
   footer{background:var(--navy-dk);color:#AEB5DA;padding:30px 0;font-size:14px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
@@ -124,144 +181,7 @@
   .mail{display:inline-block;margin:12px 0 14px;background:var(--gold);color:var(--navy-dk);
     padding:8px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14.5px}
 
-  .cats{display:flex;flex-wrap:wrap;gap:8px;max-width:1060px;margin:0 auto;padding:0 26px 10px}
-  .cats a{text-decoration:none;font-size:13.5px;font-weight:600;border:1px solid var(--navy);color:var(--navy);padding:6px 14px;border-radius:999px;background:var(--paper)}
-  .cats a:hover{background:var(--navy);color:#fff}
-  .hubstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:6px}
-  .hubstats div{background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
-  .hubstats b{display:block;font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:600;color:var(--navy);line-height:1}
-  .hubstats span{font-size:12.5px;color:var(--muted)}
-  section.wrap{padding:34px 26px}
-  .card-top{position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;border-bottom:3px solid var(--gold)}
-  .card-top .shot{display:block;width:100%;height:140px;object-fit:cover;object-position:top;opacity:.92;filter:saturate(.85);transform:scale(1.02);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .35s,opacity .35s}
-  .card-top::before{content:"";position:absolute;left:0;right:0;top:0;height:140px;background:linear-gradient(180deg,rgba(20,26,68,.35) 0%,rgba(20,26,68,0) 45%,rgba(20,26,68,.55) 100%);pointer-events:none}
-  .card-top:not(.has-shot)::before{height:0}
-  .card-top .num{position:absolute;left:12px;top:10px;font-family:Fraunces,Georgia,serif;font-size:24px;font-weight:500;color:var(--gold);line-height:1;background:rgba(20,26,68,.82);padding:5px 10px;border-radius:3px;z-index:1}
-  .card-top .aud{background:rgba(20,26,68,.82);padding:4px 8px;border-radius:3px}
-  .card-top:not(.has-shot) .num{position:static;padding:14px 20px 0;font-size:28px}
-  .card-top .aud{position:absolute;right:14px;top:14px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.6);z-index:1}
-  .card-top .kind{padding:14px 20px 0}
-  .card-top h3{padding:0 20px 16px}
-  .card:hover .card-top .shot{opacity:1;filter:saturate(1);transform:scale(1.06)}
-  @media (prefers-reduced-motion:reduce){.card-top .shot{transition:none}}
-
-  .feature{display:block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;padding:22px 26px;border-left:6px solid var(--gold);position:relative;overflow:hidden;transition:transform .12s}
-  .feature::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
-  .feature:hover{transform:translateY(-2px)}
-  .feature>*{position:relative}
-  .feature-k{font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--gold);text-transform:uppercase}
-  .feature-t{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;margin:6px 0 6px}
-  .feature-p{font-size:14.5px;color:#C9CEEA;max-width:70ch}
-  .feature-go{display:inline-block;margin-top:12px;background:var(--gold);color:var(--navy-dk);font-weight:700;padding:8px 16px;border-radius:999px;font-size:14px}
-
-  .finder{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:26px 0 0}
-  .srch{flex:1 1 320px;display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:8px 16px}
-  .srch svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex:0 0 18px}
-  .srch input{flex:1;border:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);outline:none;min-width:0}
-  .audf{display:flex;gap:6px;flex-wrap:wrap}
-  .audf button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:7px 13px;border-radius:999px;cursor:pointer}
-  .audf button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
-  .week{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0}
-  .week a{display:block;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:14px 16px 12px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
-  .week a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
-  .week .wk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
-  .week b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy);line-height:1.15;margin:4px 0 4px}
-  .week small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
-  .week .es{font-style:italic;color:var(--muted);font-size:13px}
-  @media (max-width:760px){.week{grid-template-columns:1fr}}
-  .fcount{font-size:13px;color:var(--muted);margin:8px 0 0;min-height:18px}
-  .deep{margin:10px 0 0;background:var(--paper);border:1px solid var(--rule);border-left:5px solid var(--gold);padding:12px 16px}
-  .deep h4{margin:0 0 6px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-  .deep a{display:block;padding:7px 0;border-top:1px solid var(--rule);text-decoration:none;color:var(--ink)}
-  .deep a:first-of-type{border-top:0}
-  .deep b{color:var(--navy)}.deep small{display:block;color:var(--muted);font-size:13px;margin-top:2px}.deep mark{background:#FFF1B8;color:inherit;padding:0 1px}
-  .card.hide{display:none}
-  section.empty{display:none}
-  .paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-  .path{background:var(--paper);border:1px solid var(--rule);padding:18px 20px 14px}
-  .ph{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-  .pn{font-family:Fraunces,Georgia,serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1}
-  .ph b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.1}
-  .ph small{display:block;font-size:12.5px;color:var(--muted)}
-  .path ol{margin:0;padding-left:20px;font-size:14px;line-height:1.4}
-  .path li{margin-bottom:6px}
-  .path a{font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-lt)}
-  .path a:hover{border-bottom-color:var(--gold)}
-  #start{padding-top:34px;padding-bottom:10px}
-
-/* ============================================================
-   Catalog index — reading pass, Oct 2026
-   57 resources were rendering as 57 identical brochure cards.
-   A catalog's job is scanning, so the grid becomes an index:
-   type carries it, the screenshots step back, and the gold
-   eyebrow stops repeating 57 times. Hero and rails untouched.
-   ============================================================ */
-section .cards{grid-template-columns:repeat(auto-fill,minmax(318px,1fr));gap:10px;align-items:stretch}
-section .cards .card{
-  display:block;border-radius:10px;padding:13px 16px 12px;
-  position:relative;overflow:hidden;
-  transition:border-color .14s ease,background .14s ease;
-}
-section .cards .card:hover{border-color:var(--navy);background:#FCFCFE;transform:none;box-shadow:none}
-section .cards .card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-
-/* the screenshot is 57 near-identical navy rectangles at this size — it informs nothing */
-section .cards .card .shot{display:none}
-section .cards .card .card-top{
-  position:static;background:none;color:inherit;padding:0;display:block;
-  border-bottom:0;overflow:visible
-}
-section .cards .card .card-top::before{display:none}
-section .cards .card .card-top::after{display:none}
-
-/* number and audience become quiet inline marks, not badges floating on an image */
-/* 57 identical stars carry no information — the NEW chip already marks what is fresh */
-section .cards .card .num{display:none}
-section .cards .card .aud{
-  position:static;background:none;padding:0;color:var(--muted);text-shadow:none;
-  font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;display:inline;opacity:1
-}
-/* one descriptor line instead of a gold all-caps eyebrow on all 57 */
-section .cards .card .kind{
-  display:inline;padding:0;font-size:12px;letter-spacing:0;text-transform:none;
-  font-weight:500;color:var(--muted)
-}
-section .cards .card .aud + .kind::before{content:" · ";color:#C2C6D6}
-section .cards .card h3{
-  padding:0;font-size:17.5px;font-weight:600;line-height:1.28;margin:3px 0 0;color:var(--navy)
-}
-section .cards .card .card-body{padding:4px 0 0;display:block}
-section .cards .card .card-body p{
-  margin:0;font-size:14.2px;line-height:1.5;color:var(--muted);
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
-}
-section .cards .card .card-body p.go{display:none}
-
-/* a rotated ribbon needs an image to sit on; at index density a chip reads better */
-section .cards .card.is-new h3::after{
-  content:"New";display:inline-block;vertical-align:2px;margin-left:8px;
-  background:var(--gold);color:var(--navy-dk);font-family:Inter,sans-serif;
-  font-size:10px;font-weight:800;letter-spacing:.08em;padding:2px 7px;border-radius:3px
-}
-
-/* section headings stop competing with each other */
-section.wrap > h2{font-size:23px;margin-top:4px}
-section.wrap > .deck{font-size:15px;margin-bottom:12px}
-#newcomer,#tools,#admin,#curriculum,#tool,#magazine,#writing,#packet{padding-top:18px;margin-top:26px;border-top:1px solid var(--rule)}
-
-/* the four doors lead, so they get the weight the cards gave up */
-#start .path{border-radius:12px;border-top:4px solid var(--gold);padding:20px 22px 16px}
-#start .path ol{font-size:14.5px;line-height:1.55}
-#start .path ol li{margin-bottom:5px}
-#start > h2{font-size:28px}
-
-@media (max-width:560px){
-  section .cards{grid-template-columns:1fr;gap:8px}
-  section .cards .card{padding:11px 14px}
-  section .cards .card .card-body p{-webkit-line-clamp:1}
-  section .cards .card h3{font-size:16.5px}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -277,676 +197,76 @@ section.wrap > .deck{font-size:15px;margin-bottom:12px}
   </div>
 </header>
 
+<!--B:now-->
 <section class="premiere" id="premiere" aria-label="Now showing">
   <div class="beam"></div>
   <div class="prem-in">
-    <p class="prem-k"><i></i>Now showing <small id="prem-date">· new this week</small></p>
+    <p class="prem-k"><i></i>Now showing <small id="prem-date">· released Oct 9</small></p>
     <div class="prem-grid">
       <div>
-        <h2 class="prem-t" id="prem-title">Storm Lens: Point. Name. Say.</h2>
-        <p class="prem-kind" id="prem-kind">Camera vocabulary · four lanes · ELPA21 speaking · English / Español</p>
-        <p class="prem-p" id="prem-p">Point the Chromebook camera at anything in the room and the room becomes the vocabulary list. Every word: Spanish, four-lane frames, pronunciation coaching, a describe-the-picture speaking task — all speech-checked. Narrated like a film.</p>
-        <div class="prem-cta"><a class="go" id="prem-go" href="storm-lens/">▶ &nbsp;Open Storm Lens</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
+        <h2 class="prem-t" id="prem-title">Sheltered: 12 Minutes as an English Learner</h2>
+        <p class="prem-kind" id="prem-kind">Simulation · 12 minutes</p>
+        <p class="prem-p" id="prem-p">Sit a real lesson in a language you don&#x27;t speak. Then sit it again with supports.</p>
+        <div class="prem-cta"><a class="go" id="prem-go" href="sheltered.html">▶ &nbsp;Open Sheltered</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
       </div>
-      <a class="prem-shot" id="prem-shot" href="storm-lens/" aria-label="Open the featured resource"><img id="prem-img" src="thumbs/storm-lens.jpg" alt=""><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
+      <a class="prem-shot" id="prem-shot" href="sheltered.html" aria-label="Open the featured resource"><img id="prem-img" src="thumbs/sheltered.jpg" alt=""><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
     </div>
-    <div class="prem-rail" id="prem-rail" hidden><p class="rk">New releases</p><div class="rr" id="prem-rr"></div></div>
+    <div class="prem-rail" id="prem-rail"><p class="rk">Also new</p><div class="rr" id="prem-rr"><a href="el-evaluate.html"><span class="nb">NEW · Oct 9</span><img src="thumbs/el-evaluate.jpg" alt=""><span><b>Evaluate Your Own EL Program</b><small>Course · 6 sessions</small></span></a></div></div>
   </div>
 </section>
+<!--/B:now-->
 
-<section class="wrap" id="start"><h2>Start here</h2><p class="deck">Four short paths through the hub, depending on who you are.</p><div class="paths">
-  <div class="path"><div class="ph"><span class="pn">1</span><b>New EL teacher</b><small>Your first month, in order</small></div><ol>
-    <li><a href="https://radan55.github.io/RichardDaniel/language-functions/">Language functions &amp; the four lanes</a> — the model everything else uses</li>
-    <li><a href="https://radan55.github.io/RichardDaniel/curriculum-36/">36-week combined-block curriculum</a> — the year, week by week</li>
-    <li><a href="sample-lesson.html">Sample 90-minute lesson</a> — one block, start to finish</li>
-    <li><a href="elpt-family-guide.html">The ELPT, explained</a> — know the levels before you plan to them</li>
-    <li><a href="lsp-builder.html">LSP Builder</a> — the plan you owe for every student, drafted from the levels</li>
-    <li><a href="newcomer-k5.html">Elementary Newcomer Kit</a> — if your school is K–8, start your classroom teachers here</li>
-    <li><a href="sheltered.html">Sheltered</a> — the twelve-minute simulation to open your next faculty PD with</li>
-    <li><a href="showcase.html">Showcase</a> — see what other teachers built, then add yours</li></ol></div>
-  <div class="path"><div class="ph"><span class="pn">2</span><b>Content teacher with ELs</b><small>You teach biology, not English — this is enough</small></div><ol>
-    <li><a href="sheltered.html">Sheltered: 12 minutes as an EL</a> — do this one first; it takes twelve minutes</li>
-    <li><a href="el-assistants.html">EL Assistants</a> — paste your lesson, get four-lane supports back</li>
-    <li><a href="el-bridge.html">EL Bridge Mississippi</a> — standard in, four-lane lesson, leveled text, or MAAP-style items out</li>
-    <li><a href="https://radan55.github.io/el-field-guide/">Every Teacher Is a Language Teacher</a> — the field guide for gen-ed staff</li>
-    <li><a href="spoken-spanish-english.html">Spoken Spanish &amp; Spoken English</a> — what you'll hear from a Spanish speaker, and what to say back</li>
-    <li><a href="language-bridge-2026-09.html">The Language Bridge</a> — the monthly faculty bulletin</li>
-    <li><a href="can-do-checklist.html">Can-Do checklist</a> — what a Level 2 vs. Level 4 student can actually do</li>
-    <li><a href="first-100-words.html">First 100 Words</a> — hand it to the newcomer who arrived today</li>
-    <li><a href="sentence-frames.html">Sentence-frame bank</a> — two frames on tomorrow's slide</li>
-    <li><a href="sentence-lab.html">Sentence Lab</a> — one grammar feature per page, two lanes, the key included
-    <li><a href="newcomer-k5.html">Elementary Newcomer Kit</a> — K–5 teachers: the first ten days, with printables</li>
-    <li><a href="sub-para.html">Sub card &amp; para guide</a> — leave one, hand one over</li></ol></div>
-  <div class="path"><div class="ph"><span class="pn">3</span><b>Family or student</b><small>Nuevo en la escuela — empieza aquí</small></div><ol>
-    <li><a href="storm-lens/">Storm Lens</a> — point your camera at anything, learn the word, say it back</li>
-    <li><a href="english-on-your-own.html">English On Your Own</a> — ELPA21 practice you can do alone, 6 languages</li>
-    <li><a href="newcomer-guide.html">Your Guide to School in the U.S.</a> — 5 languages, printable</li>
-    <li><a href="first-100-words.html">My First 100 Words at School</a> — tap to hear</li>
-    <li><a href="elpt-family-guide.html">The English test, explained for families</a></li>
-    <li><a href="graduation-roadmap.html">Graduation roadmap</a> — credits, tests, a four-year plan</li>
-    <li><a href="can-do-checklist.html">Can-Do checklist</a> — see your own growth</li>
-    <li><a href="sentence-lab.html">Sentence Lab</a> — grammar practice in real school scenes, two levels, English + Español</ol></div>
-  <div class="path"><div class="ph"><span class="pn">4</span><b>District leader</b><small>Superintendent, federal programs, EL coordinator</small></div><ol>
-    <li><a href="leaders.html">For district leaders</a> — three questions, the tools attached</li>
-    <li><a href="el-evaluate.html">Evaluate your own EL program</a> — six sessions, the consultant's method, no consultant</li>
-    <li><a href="el-audit.html">Program self-audit</a> — score, legal gaps, action plan in an hour</li>
-    <li><a href="el-outcomes.html">Outcomes dashboard</a> — five charts and the board paragraph</li>
-    <li><a href="title3-planner.html">Title III planner</a> — the split, the cap, the contingency</li>
-    <li><a href="board-brief.html">Board brief &amp; deck</a> — present it in fifteen minutes</li>
-    <li><a href="policy-brief.html">Policy brief</a> — what changed this month</li></ol></div>
-</div></section>
-<section class="wrap" id="top">
-  <h2>Resources</h2>
-  <p class="deck"><span id="nRes">57</span> free resources. Everything opens in a browser and prints. Nothing needs an account, a license or a login.</p>
-  <div class="hubstats"><div><b id="nRes2">57</b><span>live resources</span></div><div><b>187</b><span>leveled readables</span></div><div><b>36</b><span>week curriculum, 9–12</span></div><div><b>6</b><span>languages in the Newcomer Guide</span></div><div><b>$0</b><span>every resource is free</span></div></div>
-  <a class="feature" href="tech-radar.html">
-    <div class="feature-k">New · updated weekly</div>
-    <div class="feature-t">EL Tech Radar — six new tools for English learners, verified</div>
-    <div class="feature-p">New this week: Gemini in Google Classroom student study tools (open to all ages since Aug 2026). Plus Read Along, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a classroom use for each lane, and one more added every Tuesday.</div>
-    <span class="feature-go">Open the radar →</span>
-  </a>
-  <div class="week" id="week" aria-label="This week">
-    <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
-    <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
-    <a id="wk-res" href="index.html#tools"><span class="wk">Resource of the week</span><b id="wk-rt">EL Bridge Mississippi</b><small id="wk-rd">A different hub resource every week, so the back catalog gets its turn.</small></a>
+<div class="findbar">
+  <div class="wrap">
+    <form class="srch" action="all.html" method="get" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" id="q" name="q" autocomplete="off"
+        placeholder="Find a resource or a page — try “newcomer”, “Title III”, “sentence frames”…"
+        aria-label="Search the hub" aria-controls="jump" aria-expanded="false">
+      <button type="submit">Search</button>
+    </form>
+    <div class="jump" id="jump" role="listbox" aria-label="Search results" hidden></div>
   </div>
-</section>
-<nav class="cats" aria-label="Sections"><a href="leaders.html" style="background:var(--gold);color:var(--navy-dk)">🏛️ For district leaders</a><a href="tech-radar.html" style="background:var(--navy);color:#fff">📡 Tech Radar</a><a href="sample-lesson.html">Sample lesson</a><a href="field-notes.html">Field Notes</a><a href="#newcomer">Newcomer Series</a><a href="el-assistants.html">🤖 EL Assistants</a><a href="el-bridge.html">🌉 EL Bridge</a><a href="showcase.html">🏆 Showcase</a><a href="policy-brief.html">📜 Policy Brief</a><a href="#tools">Teacher tools</a><a href="#admin">Admin &amp; compliance</a><a href="whats-new.html">What's new</a><a href="#curriculum">Curriculum &amp; scope</a><a href="#tool">Interactive tools</a><a href="#magazine">Magazines</a><a href="#writing">Guides &amp; writing</a><a href="#packet">Bulletins &amp; packets</a></nav>
-
-<div class="wrap" id="finder">
-  <div class="finder">
-    <label class="srch"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search 57 resources and every page — try “newcomer”, “vocabulary”, “Title III”, “ELPT”…" aria-label="Search resources"></label>
-    <div class="audf" role="group" aria-label="Audience"><button type="button" data-a="all" aria-pressed="true">All</button><button type="button" data-a="teachers" aria-pressed="false">Teachers</button><button type="button" data-a="students" aria-pressed="false">Students &amp; families</button><button type="button" data-a="admin" aria-pressed="false">Administrators</button></div>
-  </div>
-  <p class="fcount" id="fcount"></p>
-  <div class="deep" id="deep" hidden></div>
 </div>
-<section class="wrap" id="newcomer"><h2>Newcomer Series</h2><p class="deck">For students who just arrived and the families behind them — bilingual, printable, and built for the first year in a U.S. school.</p><div class="cards">
-    <a class="card" href="newcomer-guide.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students &amp; families</span>
-        <span class="kind">Newcomer Series · 5 languages · PDF</span>
-        <h3>Your Guide to School in the U.S.</h3>
-      </div>
-      <div class="card-body">
-        <p>For any K–12 student new to an American school: how schools work, enrolling, a school day, grades and graduation, legal rights and EL support, classroom culture, family tips and a 60-word glossary — English side by side with Spanish, Vietnamese, Arabic, Chinese or Haitian Creole. Free PDF in each language.</p>
-        <p class="go">Open the guide →</p>
-      </div>
-    </a>
-    <a class="card" href="first-100-words.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/first-100-words.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students</span>
-        <span class="kind">Newcomer Series · Interactive · 5 languages</span>
-        <h3>My First 100 Words at School</h3>
-      </div>
-      <div class="card-body">
-        <p>The words a newcomer hears in the first month — people, places, the schedule, teacher instructions, lunch, rules, grades and asking for help — ten groups of ten, with tap-to-hear pronunciation, two quiz modes, a progress counter and printable flashcards. Five languages.</p>
-        <p class="go">Open the words →</p>
-      </div>
-    </a>
-    <a class="card" href="elpt-family-guide.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/elpt-family-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Families</span>
-        <span class="kind">Newcomer Series · One-page explainer · 5 languages</span>
-        <h3>The English Test, Explained for Families</h3>
-      </div>
-      <div class="card-body">
-        <p>What the ELPT (ELPA21) is, the four domains, what Levels 1–5 actually mean, a sample score report decoded, the exit rule (Level 4 in all four), the EL year calendar, and what families can do at home — in five languages.</p>
-        <p class="go">Read the explainer →</p>
-      </div>
-    </a>
-    <a class="card" href="graduation-roadmap.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/graduation-roadmap.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 9–12</span>
-        <span class="kind">Newcomer Series · Interactive planner · Mississippi</span>
-        <h3>Graduation Roadmap for Newcomers</h3>
-      </div>
-      <div class="card-body">
-        <p>Pick a diploma path (Traditional, CTE, Academic, Distinguished), type the credits you have and watch the meters, check off the four state tests, learn how home-country classes and your first language count, and fill in a four-year plan with your counselor. Five languages.</p>
-        <p class="go">Open the roadmap →</p>
-      </div>
-    </a>
-    <a class="card" href="can-do-checklist.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/can-do-checklist.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 6–12</span>
-        <span class="kind">Newcomer Series · Self-assessment · 5 languages</span>
-        <h3>My English Can-Do Checklist</h3>
-      </div>
-      <div class="card-body">
-        <p>Eighty “I can…” statements across listening, speaking, reading and writing at Levels 1–5. Students check what is true today, see an estimated level per skill, set a goal for each, and copy a summary for their teacher — a mirror of the ELPT they can use three times a year. Five languages.</p>
-        <p class="go">Open the checklist →</p>
-      </div>
-    </a>
-    <a class="card" href="newcomer-week1.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-week1.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Newcomer Series · For the EL teacher · 5-day plan</span>
-        <h3>Newcomer Week 1 Kit</h3>
-      </div>
-      <div class="card-body">
-        <p>The week a student arrives, hour by hour where it matters: the before-day-one checklist, the walkthrough script, the buddy brief, the family call, which Newcomer Series resource to use each day, and a day-5 exit ticket that tells you the week worked.</p>
-        <p class="go">Open the kit →</p>
-      </div>
-    </a>
-    <a class="card" href="newcomer-k5.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-k5.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers K–5</span>
-        <span class="kind">Newcomer Series · Elementary · K–2 and 3–5 · Printables</span>
-        <h3>Elementary Newcomer Kit (K–5)</h3>
-      </div>
-      <div class="card-body">
-        <p>The first ten days with a young newcomer, in two bands: what to get right each day, room setup, what transfers from the home language, and the printables for the desk tomorrow — picture-schedule and “I need” cards, 20 phrases, a family call script, a week-one show-me check. English and Spanish.</p>
-        <p class="go">Open the K–5 kit →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="tools"><h2>Teacher tools</h2><p class="deck">For the EL teacher and every content teacher with ELs in the room — the documents and scaffolds you produce every week, made in minutes.</p><div class="cards">
-    <a class="card" href="sheltered.html" data-new="2026-10-09">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/sheltered.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Faculty PD</span>
-        <span class="kind">Simulation · 12 minutes · for teachers and administrators</span>
-        <h3>Sheltered: 12 Minutes as an English Learner</h3>
-      </div>
-      <div class="card-body">
-        <p>Take a real Biology, Algebra I or U.S. History lesson in a language you do not speak — Spanish, Vietnamese or Arabic — then take it again with the four lanes in place. Same language, same clock, parallel questions. Your two scores end up side by side, each support is named with the lane it serves, and the last screen finally tells you what the lesson said. Built to run with a whole faculty in twenty-five minutes.</p>
-        <p class="go">Start the simulation →</p>
-      </div>
-    </a>
-    <a class="card" href="el-bridge.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-bridge.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Standards K–12 · MAAP EOC · Works with any AI</span>
-        <h3>EL Bridge Mississippi</h3>
-      </div>
-      <div class="card-body">
-        <p>Pick a Mississippi standard (K–12 ELA, math, science, or Algebra I, Biology I, English II), describe the lesson you already teach, and get it back in four lanes: Newcomer, Emerging, Progressing, Challenge. Also writes leveled texts with text-dependent questions and MAAP-style items with a linguistically accessible twin for every item. Builds the prompt, you run it in Claude, ChatGPT, Gemini or Copilot, paste the answer back, and it lays out the plan. No sign-up on this site.</p>
-        <p class="go">Open EL Bridge →</p>
-      </div>
-    </a>
-    <a class="card" href="showcase.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/showcase.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Showcase · Teacher-made · Reviewed before posting</span>
-        <h3>Showcase: Built by Teachers</h3>
-      </div>
-      <div class="card-body">
-        <p>Real adaptations, leveled texts, and item sets Mississippi teachers made with EL Bridge and the Assistants and chose to share. Filter by subject, open the materials, add your own through the short form.</p>
-        <p class="go">Open the showcase →</p>
-      </div>
-    </a>
-    <a class="card" href="sub-para.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/sub-para.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Subs · Paras · Tutors</span>
-        <span class="kind">Teacher tools · Printable · No student names · English / Español</span>
-        <h3>Substitute Card &amp; Para Guide</h3>
-      </div>
-      <div class="card-body">
-        <p>A one-page “English learners in this room” card for the substitute (lane counts, allowed supports, what to do and not do, no names) and a one-page guide for the paraprofessional or tutor working one-on-one: eight moves, a 20-minute session, a log, Spanish phrases.</p>
-        <p class="go">Open the cards →</p>
-      </div>
-    </a>
-    <a class="card" href="el-assistants.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-assistants.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · AI prompts · Copy &amp; paste · English / Español</span>
-        <h3>EL Assistants for Content Teachers</h3>
-      </div>
-      <div class="card-body">
-        <p>Four copy-and-paste assistants for the teacher who teaches biology, not English: scaffold a lesson by lane, level a text and prep the vocabulary, make a quiz measure content instead of English (Mississippi accommodations built in), and write to families in English and Spanish. Works in Claude, Gemini, ChatGPT or Copilot; no student names ever.</p>
-        <p class="go">Open the assistants →</p>
-      </div>
-    </a>
-    <a class="card" href="newcomer-intake.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/newcomer-intake.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Intake · One form, three documents</span>
-        <h3>Newcomer Intake</h3>
-      </div>
-      <div class="card-body">
-        <p>Type the student once; open the EL Student Profile, the Language Service Plan and the identification letter already filled in. Lane and overall determination compute as you type. Save the student as one file; reopen it at the semester review.</p>
-        <p class="go">Start an intake →</p>
-      </div>
-    </a>
-    <a class="card" href="sentence-frames.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/sentence-frames.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Bank · English / Español</span>
-        <h3>Sentence-Frame Bank</h3>
-      </div>
-      <div class="card-body">
-        <p>150 frames by language function — narrate, inform, explain, argue, classroom talk — and by level 1–5, each with a Spanish gloss. Filter to today's function and your students' levels, tick the ones you want, copy them into your slide.</p>
-        <p class="go">Open the bank →</p>
-      </div>
-    </a>
-    <a class="card" href="accommodations-cards.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/accommodations-cards.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Quick cards · Mississippi</span>
-        <h3>EL Accommodations Quick Cards</h3>
-      </div>
-      <div class="card-body">
-        <p>Eighteen cards: what the accommodation is, who it fits, how to do it in class tomorrow, whether it is allowed on MAAP and ELPT, and the exact wording for the LSP. Filter by state-test-allowed, classroom-only, newcomer, reading, writing. Prints two-up.</p>
-        <p class="go">Open the cards →</p>
-      </div>
-    </a>
-    <a class="card" href="coteaching-plan.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/coteaching-plan.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · One-page planner</span>
-        <h3>Co-Teaching Lesson Plan</h3>
-      </div>
-      <div class="card-body">
-        <p>Content objective + language objective on one page, with a language-objective bank by subject and function, six co-teaching models, who-does-what, supports by lane, and separate assessments for content and language. Fills in the browser, prints on one page.</p>
-        <p class="go">Open the planner →</p>
-      </div>
-    </a>
-    <a class="card" href="student-profile.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/student-profile.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Generator · Confidential</span>
-        <h3>EL Student Profile</h3>
-      </div>
-      <div class="card-body">
-        <p>Type the ELPT levels and a few facts; get the one page a sub or a new content teacher needs — what the student can do in each domain, the lane, what helps every day, strengths, watch-fors, LSP accommodations, and who to call. For the sub folder.</p>
-        <p class="go">Make a profile →</p>
-      </div>
-    </a>
-    <a class="card" href="lsp-builder.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/lsp-builder.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Teacher tools · Mississippi · Language Service Plan</span>
-        <h3>LSP Builder</h3>
-      </div>
-      <div class="card-body">
-        <p>Enter the ELPT levels and the Language Service Plan drafts itself: lane, services, instructional and assessment accommodations, a goal for each domain, focus domain, monitoring status and signatures. Edit anything, print for signatures, save as a file to reopen at the semester review.</p>
-        <p class="go">Build an LSP →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="admin"><h2>Administrators &amp; compliance</h2><p class="deck">For EL coordinators, Title III directors and principals — the calendar, the letters and the numbers.</p><div class="cards">
-    <a class="card" href="el-evaluate.html" data-pin-until="2026-11-20" data-new="2026-10-09">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-evaluate.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">District leaders</span>
-        <span class="kind">Course · 6 sessions · district team · no consultant</span>
-        <h3>Evaluate Your Own EL Program</h3>
-      </div>
-      <div class="card-body">
-        <p>The method a consulting firm sells, written out so your own team can run it: frame the question, send the data request (copy it as written), check who is in the program, read growth against years-in-program, compare current ELs to former ELs to never-ELs, then find the cause and write the one-page board memo. Each session has the reading thresholds, the red flags, a worked example, and a deliverable that saves as you type and prints as one findings report.</p>
-        <p class="go">Open the course →</p>
-      </div>
-    </a>
-    <a class="card" href="leaders.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/leaders.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">For district leaders · Start here · Three questions</span>
-        <h3>For District Leaders</h3>
-      </div>
-      <div class="card-body">
-        <p>Are we compliant? Are our ELs growing? What does it cost? The front door for superintendents, federal programs directors, and EL coordinators: a two-week path, a program-at-a-glance strip that fills from your own numbers, and every district-office tool in one place.</p>
-        <p class="go">Open the leaders page →</p>
-      </div>
-    </a>
-    <a class="card" href="el-audit.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-audit.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Self-audit · 33 items · Action plan with citations</span>
-        <h3>EL Program Self-Audit</h3>
-      </div>
-      <div class="card-body">
-        <p>Thirty-three items from Castañeda, Title VI, the EEOA, ESSA Title III, and the February 2026 accommodations manual. Scored live, legal gaps in red, and a printable corrective-action plan with owners, dates, and the authority for each item. Nothing leaves your browser.</p>
-        <p class="go">Run the audit →</p>
-      </div>
-    </a>
-    <a class="card" href="el-outcomes.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-outcomes.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Outcomes · Program evaluation · Five charts · Board paragraph</span>
-        <h3>EL Outcomes Dashboard</h3>
-      </div>
-      <div class="card-body">
-        <p>Enter counts, not names, and get the annual evaluation Castañeda asks for: ELPT level distribution, growth and exit, participation against the 95% rule, the achievement and graduation gap for current and former ELs, the three-year trend, and a board paragraph written from your numbers.</p>
-        <p class="go">Open the dashboard →</p>
-      </div>
-    </a>
-    <a class="card" href="title3-planner.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/title3-planner.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Fiscal · ESSA §3115 · 2% cap · Supplanting test · FY27 contingency</span>
-        <h3>Title III Funding Planner</h3>
-      </div>
-      <div class="card-body">
-        <p>Estimate the subgrant, split it across the three required activities, check the 2 percent administrative cap and the supplement-not-supplant pattern, and see what the district owes anyway if the House FY2027 bill ends Title III.</p>
-        <p class="go">Open the planner →</p>
-      </div>
-    </a>
-    <a class="card" href="board-brief.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/board-brief.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Governance · One-page brief · 8-slide deck (.pptx) · Speaker notes</span>
-        <h3>Board Brief &amp; Deck</h3>
-      </div>
-      <div class="card-body">
-        <p>“The State of English Learners in [District]”: a dozen numbers and three recommendations become a one-page executive brief in board language, plus a matching eight-slide PowerPoint template with speaker notes and a decision requested.</p>
-        <p class="go">Build the brief →</p>
-      </div>
-    </a>
-    <a class="card" href="case-studies.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/case-studies.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Practice · Three composites · Tool at every step</span>
-        <h3>EL Case Studies</h3>
-      </div>
-      <div class="card-body">
-        <p>A newcomer’s first ninety days, the eighth grader stuck one ELPT domain short of exit, and a district with six weeks before the monitor arrives. Composite cases from Mississippi patterns, with the hub tool and the cost named at every step.</p>
-        <p class="go">Read the cases →</p>
-      </div>
-    </a>
-    <a class="card" href="district-kit.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/district-kit.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Partnership · 90 days · Resource-building only · Mississippi 500–5,000</span>
-        <h3>District Partnership Kit</h3>
-      </div>
-      <div class="card-body">
-        <p>What a 90-day engagement delivers to a district with one EL teacher and no coordinator: the audit, the letters, the LSPs, the newcomer flow, the staff module, the dashboard, and the board brief, built on your numbers and letterhead. You keep everything.</p>
-        <p class="go">See the kit →</p>
-      </div>
-    </a>
-    <a class="card" href="policy-brief.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/policy-brief.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Monthly brief · Mississippi + federal · Sourced</span>
-        <h3>Mississippi EL Policy Brief</h3>
-      </div>
-      <div class="card-body">
-        <p>One page a month for superintendents, federal programs directors, and EL coordinators: what changed at MDE, in Congress, at the U.S. Department of Education, and in the courts; what it means for a district of about 2,000 students; what to do and by when. A board-ready paragraph to copy, dates ahead, a watch list, and the primary source on every item. October 2026: OELA's closure, the House FY27 bill that zeroes Title III, and Mississippi's 2026–27 ELPT rules.</p>
-        <p class="go">Read this month's brief →</p>
-      </div>
-    </a>
-    <a class="card" href="el-compliance-calendar.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-compliance-calendar.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Mississippi 2026–27 · Checklist</span>
-        <h3>EL Program Compliance Calendar</h3>
-      </div>
-      <div class="card-body">
-        <p>Forty-five obligations placed in the month they come due — HLS and 30-day screening, parent notices, Language Service Plans, ELPT window, exit and four-year monitoring, Title III, MSIS coding, accommodations, the annual program evaluation — each tagged federal, Mississippi or best practice, with the standing Castañeda, Lau and Plyler duties up top. Check off, save, print.</p>
-        <p class="go">Open the calendar →</p>
-      </div>
-    </a>
-    <a class="card" href="parent-letters.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/parent-letters.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Fillable templates · English / Español</span>
-        <h3>EL Parent Notification Letters</h3>
-      </div>
-      <div class="card-body">
-        <p>Six letters every program sends, written to ESSA §1112(e)(3): initial identification and placement with every required element, annual continuing notice, exit, monitoring notice, parent refusal form, and meeting invitation. Fill in the student once; print the English and Spanish pages together.</p>
-        <p class="go">Open the letters →</p>
-      </div>
-    </a>
-    <a class="card" href="el-data-dashboard.html">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/el-data-dashboard.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Excel template · ELPT</span>
-        <h3>EL Data Dashboard</h3>
-      </div>
-      <div class="card-body">
-        <p>Paste your ELPT roster; get overall determination, domain averages, level distribution, growth, years in program, lowest domain, by-grade proficiency and home-language counts — eight formula-driven tables and three charts for the board, Title III and Castañeda prong three.</p>
-        <p class="go">Download the template →</p>
-      </div>
-    </a>
-    <a class="card" href="fact-check.html">
-      <div class="card-top"><b class="num">✓</b><span class="aud">Administrators</span>
-        <span class="kind">Compliance · Review record · Oct 2026</span>
-        <h3>Mississippi Fact-Check</h3>
-      </div>
-      <div class="card-body">
-        <p>Every Mississippi-specific claim on the hub — credits, endorsements, ELPT window, exit rule, monitoring, screening deadlines, test accommodations, Seal of Biliteracy — in one table with its status (14 verified, 5 corrected, 5 for the district to confirm), the source, and a sign-off line for the Title III director.</p>
-        <p class="go">Open the review →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="curriculum"><h2>Curriculum &amp; scope</h2><p class="deck">Year-long maps, standards guides, libraries and reading programs.</p><div class="cards">
-    <a class="card" href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/01-language-functions.jpg" alt="" loading="lazy" decoding="async"><b class="num">01</b><span class="aud">K–12</span>
-        <span class="kind">Scope &amp; sequence · K–12 · ELPA21</span>
-        <h3>36-Week Language Functions</h3>
-      </div>
-      <div class="card-body">
-        <p>Twelve language functions across four grade bands and four proficiency tiers: calendar themes, daily plans, texts with quizzes, a standards crosswalk, a sentence-frame ladder and a bilingual student tracker.</p>
-        <p class="go">Open site →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/02-curriculum-36.jpg" alt="" loading="lazy" decoding="async"><b class="num">02</b><span class="aud">9–12</span>
-        <span class="kind">Curriculum map · 9–12 · ELPA21 Levels 1–4</span>
-        <h3>36-Week EL Curriculum: Emerging + Progressing</h3>
-      </div>
-      <div class="card-body">
-        <p>One theme calendar, two language lanes. Eight units mapped week by week with grammar ladders, ELP and MS CCRS codes, writing products, ELPA21 mirror tasks, a 90-minute block template and an assessment calendar built back from the ELPT window — every recommendation tagged by evidence strength.</p>
-        <p class="go">Open site →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/mselablueprintinfo01/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/03-blueprint.jpg" alt="" loading="lazy" decoding="async"><b class="num">03</b><span class="aud">K–12</span>
-        <span class="kind">Curriculum · K–12 · EN/ES</span>
-        <h3>The Blueprint / El Plano</h3>
-      </div>
-      <div class="card-body">
-        <p>Bilingual guide to the Mississippi ELA standard blueprints: grade-by-grade reviews, practice passages and test-style items, Grammar Beats songs, four-lane supports, family pages and a lesson builder.</p>
-        <p class="go">Open site →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/hispanicheritagemonth2026/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/11-30-people.jpg" alt="" loading="lazy" decoding="async"><b class="num">04</b><span class="aud">Heritage</span>
-        <span class="kind">Heritage · 9–12 · EN/ES</span>
-        <h3>Hispanic Heritage: 30 People</h3>
-      </div>
-      <div class="card-body">
-        <p>Bilingual biography profiles of thirty Hispanic figures with discussion prompts and classroom projects. Featured below.</p>
-        <p class="go">Open site →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/msellibrary/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/12-library.jpg" alt="" loading="lazy" decoding="async"><b class="num">05</b><span class="aud">5 volumes</span>
-        <span class="kind">Library · five volumes · K–12</span>
-        <h3>The Mississippi EL Library</h3>
-      </div>
-      <div class="card-body">
-        <p>A free five-volume resource system for English-learner success in Mississippi schools: the shelf every EL teacher and coordinator in the state should have open.</p>
-        <p class="go">Open the library →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/elvocabularycurriculumengine/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/13-vocab-engine.jpg" alt="" loading="lazy" decoding="async"><b class="num">06</b><span class="aud">ELPA21</span>
-        <span class="kind">Curriculum · vocabulary · ELPA21</span>
-        <h3>The Vocabulary Engine</h3>
-      </div>
-      <div class="card-body">
-        <p>A five-day instructional cycle for academic vocabulary, with PD modules, ELPA21-aligned activities and reproducible student handouts as a free PDF.</p>
-        <p class="go">Open site →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="tool"><h2>Interactive tools</h2><p class="deck">Practice platforms, games and apps that run in any browser.</p><div class="cards">
-    <a class="card" href="storm-lens/" data-pin-until="2026-10-23" data-new="2026-10-09">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/storm-lens.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 9–12</span>
-        <span class="kind">Camera vocabulary · four lanes · ELPA21 speaking · English / Español</span>
-        <h3>Storm Lens: Point. Name. Say.</h3>
-      </div>
-      <div class="card-body">
-        <p>Point the Chromebook camera at anything in the room and the room becomes the vocabulary list. Two recognition models run in the browser (80 objects live, 1,000 on scan) against a 334-word school bank; every word opens a card with Spanish, the cognate flag, four-lane sentence frames, a verb collocation, pronunciation coaching for Spanish speakers, plurals, a quick check, an ELPA21-style “describe the picture” speaking task and a write-it check — all speech-checked. The student's own photos become their word wall, four practice modes, scavenger missions and rolling end credits. Narrated like a film. Teachers get hunt links, a class view from student files, an exit ticket and a device check. Installs and works offline. No account, nothing uploaded.</p>
-        <p class="go">Open Storm Lens →</p>
-      </div>
-    </a>
-    <a class="card" href="english-on-your-own.html" data-pin-until="2026-10-29" data-new="2026-10-08">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/english-on-your-own.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students &amp; families</span>
-        <span class="kind">ELPA21 practice · grades 9–12 · all four domains</span>
-        <h3>English On Your Own</h3>
-      </div>
-      <div class="card-body">
-        <p>Built to the published ELPA21 grades 9–12 blueprint: all twenty-two task types — Listen and Match, Academic Debate, Short Conversation, Argument and Support Essay, Discrete Editing, Construct a Claim, Compare Pictures, Observe and Report and the rest — plus a sixty-item full practice form (23 listening, 26 reading, 5 writing, 6 speaking) that returns a level estimate per domain and an Emerging / Progressing / Proficient determination. Speaking records and checks what the student actually said; writing gets an automatic check and the rater's checklist. Directions in six languages. No account, no teacher needed.</p>
-        <p class="go">Open the practice →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/elpa21speaking01/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/04-language-lab.jpg" alt="" loading="lazy" decoding="async"><b class="num">07</b><span class="aud">9–12</span>
-        <span class="kind">Practice · ELPA21 · 9–12</span>
-        <h3>School Life • Language Lab</h3>
-      </div>
-      <div class="card-body">
-        <p>Twenty-five four-skill ELPA21-style activities built around school-life scenarios: reading, listening, speaking and writing in the format students will see on the test.</p>
-        <p class="go">Open workbook →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/tamales02/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/05-tamales.jpg" alt="" loading="lazy" decoding="async"><b class="num">08</b><span class="aud">9–12</span>
-        <span class="kind">Lesson · Reading · 9–12</span>
-        <h3>How Tamales Are Made</h3>
-      </div>
-      <div class="card-body">
-        <p>Feature article plus five interactive activities, vocabulary matching and a student progress report. The text behind the sample-lesson breakdown.</p>
-        <p class="go">Open lesson →</p>
-      </div>
-    </a>
-    <a class="card" href="sample-lesson.html">
-      <div class="card-top"><b class="num">★</b><span class="aud">9–12</span>
-        <span class="kind">Sample lesson · anatomy of a block</span>
-        <h3>One Text. Four Lanes. Five Ways to Prove It.</h3>
-      </div>
-      <div class="card-body">
-        <p>The 90-minute arc, the lane-by-lane differentiation and the reasoning behind a Storm Studio block, built on the How Tamales Are Made lesson. Read it before you run your first block.</p>
-        <p class="go">Open the breakdown →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/ms-el-command-center/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/09-command-center.jpg" alt="" loading="lazy" decoding="async"><b class="num">09</b><span class="aud">Compliance</span>
-        <span class="kind">Teacher app · compliance</span>
-        <h3>MS EL Command Center</h3>
-      </div>
-      <div class="card-body">
-        <p>The Mississippi EL teacher's reference hub: identification timelines, ELPA21 procedures, service plans, MTAM accommodations, §15 accountability and the documentation to prove it.</p>
-        <p class="go">Open the app →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/everyteacherisalanguageteacher/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/10-every-teacher.jpg" alt="" loading="lazy" decoding="async"><b class="num">10</b><span class="aud">PD</span>
-        <span class="kind">PD module · 45–60 min</span>
-        <h3>Every Teacher Is a Language Teacher</h3>
-      </div>
-      <div class="card-body">
-        <p>Self-paced professional development for general- and special-education teachers: six sections on supporting English learners in any classroom.</p>
-        <p class="go">Start the module →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/el-publishing-grammar-songs/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/14-grammar-beats.jpg" alt="" loading="lazy" decoding="async"><b class="num">11</b><span class="aud">Music</span>
-        <span class="kind">Music · Grammar · 9–12</span>
-        <h3>Grammar Beats</h3>
-      </div>
-      <div class="card-body">
-        <p>Radio-style grammar songs with full interactive lessons: nouns, adjectives and verbs, each with an audio track and a student lesson built to the beat.</p>
-        <p class="go">Press play →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/elpa21-reading-studio/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/16-reading-studio.jpg" alt="" loading="lazy" decoding="async"><b class="num">12</b><span class="aud">K–12</span>
-        <span class="kind">Practice platform · ELPT Reading · K–12</span>
-        <h3>ELPA21 Reading Studio</h3>
-      </div>
-      <div class="card-body">
-        <p>Mississippi ELPT-style reading practice for English learners: six grade bands, 122 original items, eight item types, mock-test conditions, accommodations, bilingual supports, levels, badges and a teacher dashboard.</p>
-        <p class="go">Open the studio →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="magazine"><h2>Magazines</h2><p class="deck">Issues for teachers and for students, in print and on the web.</p><div class="cards">
-    <a class="card" href="https://radan55.github.io/elpa21speaking01/october/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/06-field-atlas.jpg" alt="" loading="lazy" decoding="async"><b class="num">13</b><span class="aud">Teachers</span>
-        <span class="kind">Magazine · Teachers · Oct 2026</span>
-        <h3>The Field Atlas</h3>
-      </div>
-      <div class="card-body">
-        <p>"For the teacher who never planned to teach language." Sixteen plates on working with English learners in the general-education classroom.</p>
-        <p class="go">Read issue →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/elstudentmagazine01/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/07-many-voices.jpg" alt="" loading="lazy" decoding="async"><b class="num">14</b><span class="aud">Students</span>
-        <span class="kind">Magazine · Students · Issue 1</span>
-        <h3>Many Voices</h3>
-      </div>
-      <div class="card-body">
-        <p>A magazine for multilingual high-school students: articles, interactive features, vocabulary tools and a teacher resource page.</p>
-        <p class="go">Read issue →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="writing"><h2>Guides &amp; writing</h2><p class="deck">Field guides and the book behind the work.</p><div class="cards">
-    <a class="card" href="spoken-spanish-english.html" data-new="2026-10-08">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/spoken-spanish-english.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Language Bridge · teacher guide · PDF</span>
-        <h3>Spoken Spanish &amp; Spoken English</h3>
-      </div>
-      <div class="card-body">
-        <p>Shared strengths, different patterns: what the two languages share, where sounds and sentences differ, what you may hear in class and a helpful response for each. Phrase banks in English and Spanish by lane, a correct-now-or-later decision guide, three practice cases, a twelve-error table, and a first-week belonging routine. Free 23-page PDF.</p>
-        <p class="go">Open the guide →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/08-field-guide.jpg" alt="" loading="lazy" decoding="async"><b class="num">15</b><span class="aud">All staff</span>
-        <span class="kind">Field guide · every educator</span>
-        <h3>The EL Field Guide</h3>
-      </div>
-      <div class="card-body">
-        <p>Plain-language guide for general-education, special-education and administrative staff: identification, instruction, assessment and the legal obligations, with strategies you can use tomorrow.</p>
-        <p class="go">Open the guide →</p>
-      </div>
-    </a>
-    <a class="card" href="https://radan55.github.io/elpublishing-magazineeditionone/#compliance" target="_blank" rel="noopener">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/15-making-them-count.jpg" alt="" loading="lazy" decoding="async"><b class="num">16</b><span class="aud">Book</span>
-        <span class="kind">Book · EL Publishing Issue One</span>
-        <h3>Making Them Count</h3>
-      </div>
-      <div class="card-body">
-        <p>Teaching English Learners in Mississippi's Overlooked Districts. A field manual for small districts with big obligations, published in the 2026 Educator Edition.</p>
-        <p class="go">Read it →</p>
-      </div>
-    </a>
-</div></section>
-<section class="wrap" id="packet"><h2>Bulletins &amp; packets</h2><p class="deck">Printable one-pagers, grammar and ELPA21 practice packets.</p><div class="cards">
-    <a class="card" href="field-notes.html">
-      <div class="card-top has-shot"><img class="shot" src="field-notes-2026-10.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Research brief</span>
-        <span class="kind">Field Notes · October 2026</span>
-        <h3>What's New in Teaching English Learners</h3>
-      </div>
-      <div class="card-body">
-        <p>Eight ideas shaping 2026 — Science of Reading "yes AND," cross-linguistic transfer, Key Language Uses, newcomer programs, co-teaching, AI, and Mississippi's four-domain exit — each tagged by evidence strength, with sources.</p>
-        <p class="go">Read the brief →</p>
-      </div>
-    </a>
-    <a class="card" href="tech-radar.html">
-      <div class="card-top"><b class="num">★</b><span class="aud">Teachers</span>
-        <span class="kind">Tech Radar · October 2026</span>
-        <h3>Six New Tech Tools for English Learners</h3>
-      </div>
-      <div class="card-body">
-        <p>Verified this month: Gemini in Google Classroom student study tools (newest, Oct 6), Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a four-lane classroom use for each, and a watch list.</p>
-        <p class="go">Open the radar →</p>
-      </div>
-    </a>
-    <a class="card" href="language-bridge-2026-09.html">
-      <div class="card-top"><b class="num">17</b><span class="aud">Teachers</span>
-        <span class="kind">Faculty bulletin · Sept 2026 · Issue 1</span>
-        <h3>The Language Bridge</h3>
-      </div>
-      <div class="card-body">
-        <p>A one-page bulletin for content teachers: five findings from acquisition research with a classroom move attached to each, the eight SIOP components translated for a content classroom, paired content and language objectives, and a compliance corner.</p>
-        <p class="go">Read the issue →</p>
-      </div>
-    </a>
-    <a class="card" href="sentence-lab.html" data-pin-until="2026-11-05" data-new="2026-10-09">
-      <div class="card-top has-shot"><img class="shot" src="thumbs/sentence-lab.jpg" alt="" loading="lazy" decoding="async"><b class="num">★</b><span class="aud">Students 9–12</span>
-        <span class="kind">Grammar packet · two lanes · English / Español · PDF</span>
-        <h3>Sentence Lab: English Grammar in Real Life</h3>
-      </div>
-      <div class="card-body">
-        <p>Sixteen grammar features in realistic school scenes — subject and verb, pronouns, <i>be</i>, articles, plurals, adjectives, present, negatives, questions, right now, past, future plans, prepositions, connectors, sentence repair, expansion — with a Newcomer lane and a Progressing lane on every page. A shared writing project, a before/after six-skill check, and the full teacher key with a scoring rubric. Free 25-page PDF.</p>
-        <p class="go">Open the packet →</p>
-      </div>
-    </a>
-    <a class="card" href="elpa21-practice-student.pdf">
-      <div class="card-top"><b class="num">18</b><span class="aud">Grades 9–12</span>
-        <span class="kind">Practice packet · student · PDF</span>
-        <h3>ELPA21 Task Practice · Student</h3>
-      </div>
-      <div class="card-body">
-        <p>Sixteen pages of practice across all four domains, written in the format of the assessment: construct a claim, respond to a message, observe and report, state an opinion, follow instructions, academic lecture, informational set, short paragraph.</p>
-        <p class="go">Download the packet →</p>
-      </div>
-    </a>
-    <a class="card" href="elpa21-practice-teacher.pdf">
-      <div class="card-top"><b class="num">19</b><span class="aud">Teacher edition</span>
-        <span class="kind">Practice packet · teacher · PDF</span>
-        <h3>ELPA21 Task Practice · Teacher</h3>
-      </div>
-      <div class="card-body">
-        <p>The teacher edition: read-aloud scripts, question sets, proficiency look-fors at Emerging and Progressing, a four-lane version of every task from Newcomer to Challenge, answer keys and a two-axis scoring guide.</p>
-        <p class="go">Download the packet →</p>
-      </div>
-    </a>
-</div></section>
+
+<section class="wrap" id="start">
+  <h2>Start here</h2>
+  <p class="deck">Four paths through the hub. Pick the one that describes you and take the steps in order —
+    or <a href="all.html">open the full index</a> if you already know what you came for.</p>
+  <!--B:doors-->
+<div class="doors"><div class="door"><div class="door-h"><span class="door-n">1</span><div><b>New EL teacher</b><small>Your first month, in order</small></div></div><ol><li><a href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">36-Week Language Functions</a><span>Twelve language functions across four grade bands and four proficiency tiers.</span></li><li><a href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">36-Week EL Curriculum: Emerging + Progressing</a><span>The year week by week in two lanes, built back from the ELPT window.</span></li><li><a href="sample-lesson.html">One Text. Four Lanes. Five Ways to Prove It.</a><span>One 90-minute block taken apart, decision by decision.</span></li><li><a href="newcomer-week1.html">Newcomer Week 1 Kit</a><span>The week a student arrives, hour by hour, ending in an exit ticket.</span></li><li><a href="lsp-builder.html">LSP Builder</a><span>Enter the ELPT levels and the Language Service Plan drafts itself.</span></li></ol><a class="rest" href="all.html?g=elteacher">The EL teacher&#x27;s desk · 9 more →</a></div><div class="door"><div class="door-h"><span class="door-n">2</span><div><b>Content teacher with ELs</b><small>You teach biology, not English — this is enough</small></div></div><ol><li><a href="sheltered.html">Sheltered: 12 Minutes as an English Learner</a><span>Sit a real lesson in a language you don&#x27;t speak. Then sit it again with supports.</span></li><li><a href="el-assistants.html">EL Assistants for Content Teachers</a><span>Four prompts to paste: scaffold a lesson, level a text, fix a quiz, write home.</span></li><li><a href="el-bridge.html">EL Bridge Mississippi</a><span>A Mississippi standard in; a four-lane lesson, leveled text or MAAP items out.</span></li><li><a href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener">The EL Field Guide</a><span>The whole obligation in plain language, for staff who never trained for it.</span></li><li><a href="sentence-frames.html">Sentence-Frame Bank</a><span>150 frames by function and level, each with a Spanish gloss. Copy into a slide.</span></li></ol><a class="rest" href="all.html?g=classroom">Every classroom teacher · 10 more →</a></div><div class="door"><div class="door-h"><span class="door-n">3</span><div><b>Family or student</b><small>Nuevo en la escuela — empieza aquí</small></div></div><ol><li><a href="newcomer-guide.html">Your Guide to School in the U.S.</a><span>How an American school works, for a family that arrived this week.</span></li><li><a href="first-100-words.html">My First 100 Words at School</a><span>The hundred words of a first month, tap to hear, printable as flashcards.</span></li><li><a href="storm-lens/">Storm Lens: Point. Name. Say.</a><span>Point a Chromebook at the room and the room becomes the vocabulary list.</span></li><li><a href="english-on-your-own.html">English On Your Own</a><span>ELPA21 practice a student can do alone — speaking checked by the browser.</span></li><li><a href="graduation-roadmap.html">Graduation Roadmap for Newcomers</a><span>Credits, state tests and a four-year plan, filled in with a counselor.</span></li></ol><a class="rest" href="all.html?g=students">Students &amp; families · 9 more →</a></div><div class="door"><div class="door-h"><span class="door-n">4</span><div><b>District leader</b><small>Superintendent, federal programs, EL coordinator</small></div></div><ol><li><a href="leaders.html">For District Leaders</a><span>Are we compliant, are they growing, what does it cost — and the tools for each.</span></li><li><a href="el-evaluate.html">Evaluate Your Own EL Program</a><span>The consulting firm&#x27;s method, written out so your own team can run it.</span></li><li><a href="el-audit.html">EL Program Self-Audit</a><span>Thirty-three legal items scored live, with a corrective-action plan.</span></li><li><a href="el-outcomes.html">EL Outcomes Dashboard</a><span>Counts in; the annual program evaluation Castañeda asks for out.</span></li><li><a href="el-compliance-calendar.html">EL Program Compliance Calendar</a><span>Forty-five obligations placed in the month they actually come due.</span></li></ol><a class="rest" href="all.html?g=district">District &amp; compliance · 9 more →</a></div></div>
+<!--/B:doors-->
+</section>
+
+<section class="wrap" id="week" style="padding-top:0">
+  <h2 style="font-size:23px">This week</h2>
+  <!--B:week-->
+<div class="week" aria-label="This week">
+  <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
+  <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
+  <a id="wk-res" href="el-evaluate.html"><span class="wk">Resource of the week</span><b id="wk-rt">Evaluate Your Own EL Program</b><small id="wk-rd">The consulting firm&#x27;s method, written out so your own team can run it.</small></a>
+</div>
+<!--/B:week-->
+</section>
+
+<section class="idx" id="index" aria-label="The full index">
+  <!--B:index-->
+<div class="wrap">
+  <h2>The full index</h2>
+  <p>All 57 resources in one sortable table — by name, by who they are for, by format.
+    The twenty worth starting with are starred.</p>
+  <div class="idx-g"><a href="all.html?g=elteacher"><b>The EL teacher&#x27;s desk</b><span>14 resources · the year, the plans and the paperwork the EL teacher is responsible for</span></a><a href="all.html?g=classroom"><b>Every classroom teacher</b><span>15 resources · for the teacher who teaches biology, not English</span></a><a href="all.html?g=students"><b>Students &amp; families</b><span>14 resources · built to be handed straight to a student or sent home to a family</span></a><a href="all.html?g=district"><b>District &amp; compliance</b><span>14 resources · for EL coordinators, Title III directors, principals and superintendents</span></a></div>
+  <a class="idx-all" href="all.html">Open the full index · 57 resources →</a>
+  <div class="idx-s">
+    <div><b>57</b>live resources</div>
+    <div><b>187</b>leveled readables</div>
+    <div><b>36</b>week curriculum, 9–12</div>
+    <div><b>6</b>languages in the Newcomer Guide</div>
+    <div><b>$0</b>every resource is free</div>
+  </div>
+</div>
+<!--/B:index-->
+</section>
 
 <section class="about">
   <div class="wrap">
@@ -958,28 +278,26 @@ section.wrap > .deck{font-size:15px;margin-bottom:12px}
       teachers with thirty students and one planning period, and a compliance file that has to
       hold up. Every packet includes a differentiated version for newcomers through challenge
       level, because that is what a single class period actually requires.</p>
-  </div>
-</section>
-
-<section class="wrap">
-  <h2>Using these in your building</h2>
-  <div class="use">
-    <h3>Yes, please</h3>
-    <ul>
-      <li>Print, copy and distribute anything here for your students and your faculty.</li>
-      <li>Adapt the wording for your own school, state or grade band.</li>
-      <li>Share the link with a colleague, a department, or a district PD session.</li>
-    </ul>
-    <h3 style="margin-top:18px">Two cautions</h3>
-    <ul>
-      <li>Compliance content is written to Mississippi requirements — MTAM, LSP, ELPA21. Check it
-        against your own state's before you republish it.</li>
-      <li>Illustrations in the Hispanic Heritage gallery are AI-generated interpretations, not
-        photographs. Say so when you display them, and send students to the linked source for
-        verified facts.</li>
-      <li>Most resources open on their own site in a new tab; the bulletin and the practice
-        packets live here.</li>
-    </ul>
+    <div class="two" style="margin-top:28px">
+      <div>
+        <h3>Using these in your building</h3>
+        <ul>
+          <li>Print, copy and distribute anything here for your students and your faculty.</li>
+          <li>Adapt the wording for your own school, state or grade band.</li>
+          <li>Share the link with a colleague, a department or a district PD session.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Two cautions</h3>
+        <ul>
+          <li>Compliance content is written to Mississippi requirements — MTAM, LSP, ELPA21.
+            Check it against your own state's before you republish it.</li>
+          <li>Illustrations in the Hispanic Heritage gallery are AI-generated interpretations,
+            not photographs. Say so when you display them, and send students to the linked
+            source for verified facts.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -989,68 +307,141 @@ section.wrap > .deck{font-size:15px;margin-bottom:12px}
     ENL/EL Specialist · Laurel High School · Laurel, Mississippi
     <br><a class="mail" href="mailto:richard.spanishteacher@gmail.com">richard.spanishteacher@gmail.com</a>
     <p style="margin:0">Questions from teachers get answered in the next bulletin. Send one.</p>
-    <p style="margin:6px 0 0"><a href="about.html">About EL Publishing · accuracy · accessibility · privacy</a> · <a href="leaders.html">For district leaders</a> · <a href="whats-new.html">What's new</a></p>
+    <p style="margin:6px 0 0"><a href="all.html">All resources</a> · <a href="about.html">About EL Publishing · accuracy · accessibility · privacy</a> · <a href="leaders.html">For district leaders</a> · <a href="whats-new.html">What's new</a></p>
   </div>
 </footer>
 
-
+<!--B:titles-->
 <script>
-(function(){
-  var cards=[].slice.call(document.querySelectorAll('section .cards .card'));
-  function aud(c){var t=(c.querySelector('.aud')||{}).textContent||'';t=t.toLowerCase();
-    if(/compliance|administrator|all staff|pd\b/.test(t))return 'admin';
-    if(/student|famil|heritage|9–12|9-12|6–12/.test(t))return 'students';return 'teachers';}
-  cards.forEach(function(c){c.dataset.aud=aud(c);c.dataset.txt=c.textContent.toLowerCase().replace(/\s+/g,' ')});
-  var q=document.getElementById('q'),bs=document.querySelectorAll('.audf button'),fc=document.getElementById('fcount');var A='all';
-  function run(){var s=(q.value||'').trim().toLowerCase();var n=0;
-    cards.forEach(function(c){var ok=(A==='all'||c.dataset.aud===A)&&(!s||c.dataset.txt.indexOf(s)>-1);c.classList.toggle('hide',!ok);if(ok)n++});
-    document.querySelectorAll('section').forEach(function(sec){var cs=sec.querySelectorAll('.cards .card');if(cs.length)sec.classList.toggle('empty',!sec.querySelector('.cards .card:not(.hide)'))});
-    var st=document.getElementById('start');if(st)st.classList.toggle('empty',!!s||A!=='all');
-    fc.textContent=(s||A!=='all')?(n+' resource'+(n===1?'':'s')+(s?' matching “'+q.value.trim()+'”':'')+(A!=='all'?' for '+({teachers:'teachers',students:'students & families',admin:'administrators'})[A]:'')):'';}
-  var IDX=null,loading=false,deep=document.getElementById('deep');
-  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  function hl(t,words){var e=esc(t);words.forEach(function(w){if(w.length>2)e=e.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return e}
-  function deepRun(){var s=(q.value||'').trim().toLowerCase();if(s.length<3){deep.hidden=true;return}
-    if(!IDX){if(!loading){loading=true;fetch('search-index.json').then(function(r){return r.json()}).then(function(j){IDX=j;deepRun()}).catch(function(){})}return}
-    var words=s.split(/\s+/).filter(Boolean);
-    var hits=IDX.map(function(e){var hay=(e.p+' '+e.h+' '+e.t).toLowerCase();var sc=0;words.forEach(function(w){if(hay.indexOf(w)>-1)sc+=1;if((e.h+' '+e.p).toLowerCase().indexOf(w)>-1)sc+=2});return {e:e,sc:sc}}).filter(function(x){return x.sc>0}).sort(function(a,b){return b.sc-a.sc}).slice(0,8);
-    if(!hits.length){deep.hidden=true;return}
-    deep.innerHTML='<h4>Inside the pages</h4>'+hits.map(function(x){var e=x.e;var i=e.t.toLowerCase().indexOf(words[0]);var snip=e.t.slice(Math.max(0,i-80),i+160);return '<a href="'+esc(e.u)+'"><b>'+esc(e.p)+(e.h?' › '+esc(e.h):'')+'</b><small>…'+hl(snip,words)+'…</small></a>'}).join('');
-    deep.hidden=false;}
-  q.addEventListener('input',function(){run();deepRun()});
-  bs.forEach(function(b){b.addEventListener('click',function(){A=b.dataset.a;bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});run()})});
-  var p=new URLSearchParams(location.search);if(p.get('q')){q.value=p.get('q')}if(p.get('aud')){A=p.get('aud');bs.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.a===A?'true':'false')})}
-  if(p.get('q')||p.get('aud')){run();deepRun();}
-})();
+/* The catalog the search box and the weekly picks read. Generated by tools/build.py — edit tools/catalog.py instead. */
+window.HUB_CATALOG=[{"u": "newcomer-guide.html", "t": "Your Guide to School in the U.S.", "o": "How an American school works, for a family that arrived this week.", "f": "PDF guide · 5 languages", "g": "Students & families", "th": "thumbs/newcomer-guide.jpg", "pin": "", "new": ""}, {"u": "first-100-words.html", "t": "My First 100 Words at School", "o": "The hundred words of a first month, tap to hear, printable as flashcards.", "f": "Interactive · 100 words", "g": "Students & families", "th": "thumbs/first-100-words.jpg", "pin": "", "new": ""}, {"u": "storm-lens/", "t": "Storm Lens: Point. Name. Say.", "o": "Point a Chromebook at the room and the room becomes the vocabulary list.", "f": "Camera app · 334 words", "g": "Students & families", "th": "thumbs/storm-lens.jpg", "pin": "", "new": ""}, {"u": "english-on-your-own.html", "t": "English On Your Own", "o": "ELPA21 practice a student can do alone — speaking checked by the browser.", "f": "Practice · 22 task types", "g": "Students & families", "th": "thumbs/english-on-your-own.jpg", "pin": "", "new": ""}, {"u": "graduation-roadmap.html", "t": "Graduation Roadmap for Newcomers", "o": "Credits, state tests and a four-year plan, filled in with a counselor.", "f": "Planner · 4 diploma paths", "g": "Students & families", "th": "thumbs/graduation-roadmap.jpg", "pin": "", "new": ""}, {"u": "elpt-family-guide.html", "t": "The English Test, Explained for Families", "o": "What the ELPT measures, what the levels mean, how a student exits.", "f": "Explainer · 5 languages", "g": "Students & families", "th": "thumbs/elpt-family-guide.jpg", "pin": "", "new": ""}, {"u": "can-do-checklist.html", "t": "My English Can-Do Checklist", "o": "Eighty “I can” statements a student scores three times a year.", "f": "Self-check · 80 statements", "g": "Students & families", "th": "thumbs/can-do-checklist.jpg", "pin": "", "new": ""}, {"u": "sentence-lab.html", "t": "Sentence Lab: English Grammar in Real Life", "o": "Sixteen grammar features in real school scenes, two lanes on every page.", "f": "PDF packet · 25 pages", "g": "Students & families", "th": "thumbs/sentence-lab.jpg", "pin": "", "new": ""}, {"u": "elpa21-practice-student.pdf", "t": "ELPA21 Task Practice · Student", "o": "Practice written in the exact format of the test, all four domains.", "f": "PDF packet · 16 pages", "g": "Students & families", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21-reading-studio/", "t": "ELPA21 Reading Studio", "o": "ELPT-style reading practice under mock-test conditions, six grade bands.", "f": "Practice · 122 items", "g": "Students & families", "th": "thumbs/16-reading-studio.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21speaking01/", "t": "School Life • Language Lab", "o": "Twenty-five four-skill activities set inside an ordinary school day.", "f": "Practice · 25 activities", "g": "Students & families", "th": "thumbs/04-language-lab.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/el-publishing-grammar-songs/", "t": "Grammar Beats", "o": "Grammar as radio songs, each with a lesson built to the beat.", "f": "Music · 3 song lessons", "g": "Students & families", "th": "thumbs/14-grammar-beats.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/tamales02/", "t": "How Tamales Are Made", "o": "The feature article behind the sample lesson, with five activities.", "f": "Lesson · 1 text", "g": "Students & families", "th": "thumbs/05-tamales.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elstudentmagazine01/", "t": "Many Voices", "o": "A magazine written for multilingual high-school students.", "f": "Magazine · Issue 1", "g": "Students & families", "th": "thumbs/07-many-voices.jpg", "pin": "", "new": ""}, {"u": "sheltered.html", "t": "Sheltered: 12 Minutes as an English Learner", "o": "Sit a real lesson in a language you don't speak. Then sit it again with supports.", "f": "Simulation · 12 minutes", "g": "Every classroom teacher", "th": "thumbs/sheltered.jpg", "pin": "", "new": "2026-10-09"}, {"u": "el-assistants.html", "t": "EL Assistants for Content Teachers", "o": "Four prompts to paste: scaffold a lesson, level a text, fix a quiz, write home.", "f": "AI prompts · 4 assistants", "g": "Every classroom teacher", "th": "thumbs/el-assistants.jpg", "pin": "", "new": ""}, {"u": "el-bridge.html", "t": "EL Bridge Mississippi", "o": "A Mississippi standard in; a four-lane lesson, leveled text or MAAP items out.", "f": "Builder · K–12 + EOC", "g": "Every classroom teacher", "th": "thumbs/el-bridge.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/el-field-guide/", "t": "The EL Field Guide", "o": "The whole obligation in plain language, for staff who never trained for it.", "f": "Field guide · Web guide", "g": "Every classroom teacher", "th": "thumbs/08-field-guide.jpg", "pin": "", "new": ""}, {"u": "sentence-frames.html", "t": "Sentence-Frame Bank", "o": "150 frames by function and level, each with a Spanish gloss. Copy into a slide.", "f": "Bank · 150 frames", "g": "Every classroom teacher", "th": "thumbs/sentence-frames.jpg", "pin": "", "new": ""}, {"u": "spoken-spanish-english.html", "t": "Spoken Spanish & Spoken English", "o": "What you will hear from a Spanish speaker, and a useful reply for each.", "f": "PDF guide · 23 pages", "g": "Every classroom teacher", "th": "thumbs/spoken-spanish-english.jpg", "pin": "", "new": ""}, {"u": "accommodations-cards.html", "t": "EL Accommodations Quick Cards", "o": "How to do it tomorrow, whether MAAP allows it, and the wording for the LSP.", "f": "Quick cards · 18 cards", "g": "Every classroom teacher", "th": "thumbs/accommodations-cards.jpg", "pin": "", "new": ""}, {"u": "sub-para.html", "t": "Substitute Card & Para Guide", "o": "One page for the substitute, one for the paraprofessional. No student names.", "f": "Printable · 2 pages", "g": "Every classroom teacher", "th": "thumbs/sub-para.jpg", "pin": "", "new": ""}, {"u": "coteaching-plan.html", "t": "Co-Teaching Lesson Plan", "o": "Content and language objectives on one page, with six co-teaching models.", "f": "Planner · 1 page", "g": "Every classroom teacher", "th": "thumbs/coteaching-plan.jpg", "pin": "", "new": ""}, {"u": "newcomer-k5.html", "t": "Elementary Newcomer Kit (K–5)", "o": "The first ten days with a young newcomer, and the printables for tomorrow.", "f": "Kit · K–2 and 3–5", "g": "Every classroom teacher", "th": "thumbs/newcomer-k5.jpg", "pin": "", "new": ""}, {"u": "showcase.html", "t": "Showcase: Built by Teachers", "o": "What other Mississippi teachers made with these tools and chose to share.", "f": "Gallery · Open submissions", "g": "Every classroom teacher", "th": "thumbs/showcase.jpg", "pin": "", "new": ""}, {"u": "tech-radar.html", "t": "Six New Tech Tools for English Learners", "o": "What is new and free this month, with a classroom use for each lane.", "f": "Radar · Updated weekly", "g": "Every classroom teacher", "th": "", "pin": "", "new": ""}, {"u": "language-bridge-2026-09.html", "t": "The Language Bridge", "o": "The monthly one-page bulletin for content teachers: five findings, five moves.", "f": "Bulletin · Sept 2026", "g": "Every classroom teacher", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpa21speaking01/october/", "t": "The Field Atlas", "o": "Sixteen plates for the teacher who never planned to teach language.", "f": "Magazine · Oct 2026", "g": "Every classroom teacher", "th": "thumbs/06-field-atlas.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/everyteacherisalanguageteacher/", "t": "Every Teacher Is a Language Teacher", "o": "Self-paced PD that fits a department meeting. Six sections, no facilitator.", "f": "PD module · 45–60 min", "g": "Every classroom teacher", "th": "thumbs/10-every-teacher.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/RichardDaniel/language-functions/", "t": "36-Week Language Functions", "o": "Twelve language functions across four grade bands and four proficiency tiers.", "f": "Scope & sequence · 36 weeks · K–12", "g": "The EL teacher's desk", "th": "thumbs/01-language-functions.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/RichardDaniel/curriculum-36/", "t": "36-Week EL Curriculum: Emerging + Progressing", "o": "The year week by week in two lanes, built back from the ELPT window.", "f": "Curriculum map · 36 weeks · 9–12", "g": "The EL teacher's desk", "th": "thumbs/02-curriculum-36.jpg", "pin": "", "new": ""}, {"u": "sample-lesson.html", "t": "One Text. Four Lanes. Five Ways to Prove It.", "o": "One 90-minute block taken apart, decision by decision.", "f": "Sample lesson · 90 minutes", "g": "The EL teacher's desk", "th": "", "pin": "", "new": ""}, {"u": "newcomer-week1.html", "t": "Newcomer Week 1 Kit", "o": "The week a student arrives, hour by hour, ending in an exit ticket.", "f": "Kit · 5 days", "g": "The EL teacher's desk", "th": "thumbs/newcomer-week1.jpg", "pin": "", "new": ""}, {"u": "lsp-builder.html", "t": "LSP Builder", "o": "Enter the ELPT levels and the Language Service Plan drafts itself.", "f": "Generator · Mississippi LSP", "g": "The EL teacher's desk", "th": "thumbs/lsp-builder.jpg", "pin": "", "new": ""}, {"u": "newcomer-intake.html", "t": "Newcomer Intake", "o": "Type the student once; the profile, the plan and the letter fill themselves.", "f": "Generator · 3 documents", "g": "The EL teacher's desk", "th": "thumbs/newcomer-intake.jpg", "pin": "", "new": ""}, {"u": "student-profile.html", "t": "EL Student Profile", "o": "The one page a substitute or a new content teacher needs about a student.", "f": "Generator · 1 page", "g": "The EL teacher's desk", "th": "thumbs/student-profile.jpg", "pin": "", "new": ""}, {"u": "field-notes.html", "t": "What's New in Teaching English Learners", "o": "Eight ideas shaping the year, each tagged by how strong the evidence is.", "f": "Research brief · Oct 2026", "g": "The EL teacher's desk", "th": "field-notes-2026-10.jpg", "pin": "", "new": ""}, {"u": "elpa21-practice-teacher.pdf", "t": "ELPA21 Task Practice · Teacher", "o": "Read-aloud scripts, keys, look-fors, and a four-lane version of every task.", "f": "PDF packet · Teacher edition", "g": "The EL teacher's desk", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/mselablueprintinfo01/", "t": "The Blueprint / El Plano", "o": "The Mississippi ELA blueprints grade by grade, in English and Spanish.", "f": "Curriculum · K–12 · EN/ES", "g": "The EL teacher's desk", "th": "thumbs/03-blueprint.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/msellibrary/", "t": "The Mississippi EL Library", "o": "Five volumes: the shelf an EL teacher in this state should have open.", "f": "Library · 5 volumes", "g": "The EL teacher's desk", "th": "thumbs/12-library.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elvocabularycurriculumengine/", "t": "The Vocabulary Engine", "o": "A five-day instructional cycle for academic vocabulary, with handouts.", "f": "PDF · 5-day cycle", "g": "The EL teacher's desk", "th": "thumbs/13-vocab-engine.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/hispanicheritagemonth2026/", "t": "Hispanic Heritage: 30 People", "o": "Thirty bilingual biography profiles with discussion prompts and projects.", "f": "Unit · 30 profiles", "g": "The EL teacher's desk", "th": "thumbs/11-30-people.jpg", "pin": "", "new": ""}, {"u": "https://radan55.github.io/ms-el-command-center/", "t": "MS EL Command Center", "o": "The reference desk: identification timelines, procedures, §15 accountability.", "f": "Reference app · Mississippi", "g": "The EL teacher's desk", "th": "thumbs/09-command-center.jpg", "pin": "", "new": ""}, {"u": "leaders.html", "t": "For District Leaders", "o": "Are we compliant, are they growing, what does it cost — and the tools for each.", "f": "Start here · 3 questions", "g": "District & compliance", "th": "thumbs/leaders.jpg", "pin": "", "new": ""}, {"u": "el-evaluate.html", "t": "Evaluate Your Own EL Program", "o": "The consulting firm's method, written out so your own team can run it.", "f": "Course · 6 sessions", "g": "District & compliance", "th": "thumbs/el-evaluate.jpg", "pin": "2026-11-20", "new": "2026-10-09"}, {"u": "el-audit.html", "t": "EL Program Self-Audit", "o": "Thirty-three legal items scored live, with a corrective-action plan.", "f": "Self-audit · 33 items · 1 hour", "g": "District & compliance", "th": "thumbs/el-audit.jpg", "pin": "", "new": ""}, {"u": "el-outcomes.html", "t": "EL Outcomes Dashboard", "o": "Counts in; the annual program evaluation Castañeda asks for out.", "f": "Dashboard · 5 charts", "g": "District & compliance", "th": "thumbs/el-outcomes.jpg", "pin": "", "new": ""}, {"u": "el-compliance-calendar.html", "t": "EL Program Compliance Calendar", "o": "Forty-five obligations placed in the month they actually come due.", "f": "Checklist · 45 items", "g": "District & compliance", "th": "thumbs/el-compliance-calendar.jpg", "pin": "", "new": ""}, {"u": "title3-planner.html", "t": "Title III Funding Planner", "o": "The split, the 2 percent cap, the supplanting test, the FY27 contingency.", "f": "Fiscal planner · ESSA §3115", "g": "District & compliance", "th": "thumbs/title3-planner.jpg", "pin": "", "new": ""}, {"u": "parent-letters.html", "t": "EL Parent Notification Letters", "o": "The six letters ESSA requires, fillable, English and Spanish side by side.", "f": "Templates · 6 letters", "g": "District & compliance", "th": "thumbs/parent-letters.jpg", "pin": "", "new": ""}, {"u": "board-brief.html", "t": "Board Brief & Deck", "o": "A dozen numbers become a one-page brief and an eight-slide deck.", "f": "Template · 1 page + .pptx", "g": "District & compliance", "th": "thumbs/board-brief.jpg", "pin": "", "new": ""}, {"u": "el-data-dashboard.html", "t": "EL Data Dashboard", "o": "Paste the ELPT roster; get the eight tables a board and Title III ask for.", "f": "Excel template · 8 tables", "g": "District & compliance", "th": "thumbs/el-data-dashboard.jpg", "pin": "", "new": ""}, {"u": "policy-brief.html", "t": "Mississippi EL Policy Brief", "o": "One page a month: what changed, what it means here, what to do by when.", "f": "Monthly brief · Oct 2026", "g": "District & compliance", "th": "thumbs/policy-brief.jpg", "pin": "", "new": ""}, {"u": "case-studies.html", "t": "EL Case Studies", "o": "Three composite districts, with the tool and the cost named at every step.", "f": "Cases · 3 cases", "g": "District & compliance", "th": "thumbs/case-studies.jpg", "pin": "", "new": ""}, {"u": "district-kit.html", "t": "District Partnership Kit", "o": "What a 90-day engagement delivers to a district with no EL coordinator.", "f": "Kit · 90 days", "g": "District & compliance", "th": "thumbs/district-kit.jpg", "pin": "", "new": ""}, {"u": "fact-check.html", "t": "Mississippi Fact-Check", "o": "Every Mississippi claim on this hub, with its source and its status.", "f": "Review record · 24 claims", "g": "District & compliance", "th": "", "pin": "", "new": ""}, {"u": "https://radan55.github.io/elpublishing-magazineeditionone/#compliance", "t": "Making Them Count", "o": "Teaching English learners in Mississippi's overlooked districts.", "f": "Book · Issue One", "g": "District & compliance", "th": "thumbs/15-making-them-count.jpg", "pin": "", "new": ""}];
 </script>
+<!--/B:titles-->
 <script>
-// Now Showing: built from catalog cards tagged data-new="YYYY-MM-DD" (fresh for 21 days). Newest = hero, next three = rail, all get a NEW ribbon.
+/* Now showing. The build writes the current release into the markup; this
+   re-derives it at load so the band retires itself 21 days later without a
+   rebuild, and so the title gets its letter-by-letter entrance. */
 (function(){try{
-  var DAYS=21,now=new Date();
-  var cards=[].slice.call(document.querySelectorAll('section .cards .card[data-new]')).map(function(c){return {el:c,d:new Date(c.getAttribute('data-new')+'T12:00:00')}})
-    .filter(function(x){return !isNaN(x.d)&&(now-x.d)/864e5<=DAYS&&x.d<=now}).sort(function(a,b){return b.d-a.d});
-  cards.forEach(function(x){x.el.classList.add('is-new')});
-  var sec=document.getElementById('premiere'); if(!cards.length){sec.hidden=true;return}
-  function txt(el){return el?el.textContent.replace(/\s+/g,' ').trim():''}
-  function clip(t,n){return t.length>n?t.slice(0,n).replace(/\s+\S*$/,'')+'…':t}
+  var DAYS=21,now=new Date(),sec=document.getElementById('premiere');
+  var C=(window.HUB_CATALOG||[]).filter(function(r){return r['new']})
+    .map(function(r){r=Object.assign({},r);r.d=new Date(r['new']+'T12:00:00');return r})
+    .filter(function(r){return !isNaN(r.d)&&r.d<=now&&(now-r.d)/864e5<=DAYS})
+    .sort(function(a,b){return b.d-a.d});
+  if(!sec)return;
+  if(!C.length){sec.hidden=true;return}
+  sec.hidden=false;
   function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
-  var h=cards[0].el, img=h.querySelector('img.shot');
-  var title=txt(h.querySelector('h3'));
-  var tEl=document.getElementById('prem-title');
-  var k=0; tEl.innerHTML=title.split(' ').map(function(w){return '<span class="wd">'+w.split('').map(function(c){return '<span class="ch" style="animation-delay:'+((k++)*28)+'ms">'+c.replace(/[&<>]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[m]})+'</span>'}).join('')+'</span>'}).join(' ');
-  document.getElementById('prem-kind').textContent=txt(h.querySelector('.kind'));
-  document.getElementById('prem-p').textContent=clip(txt(h.querySelector('.card-body p')),260);
-  document.getElementById('prem-date').textContent='· released '+fmt(cards[0].d);
-  var go=document.getElementById('prem-go'); go.href=h.getAttribute('href'); go.innerHTML='▶ &nbsp;Open '+title.split(':')[0];
-  if(/^https?:/.test(go.href)&&h.target){go.target='_blank';go.rel='noopener'}
-  var shot=document.getElementById('prem-shot'); shot.href=h.getAttribute('href'); if(img)document.getElementById('prem-img').src=img.getAttribute('src'); else document.getElementById('prem-img').remove();
-  var rest=cards.slice(1,4); if(rest.length){var rr=document.getElementById('prem-rr');
-    rr.innerHTML=rest.map(function(x){var c=x.el,im=c.querySelector('img.shot');return '<a href="'+c.getAttribute('href')+'"'+(c.target?' target="_blank" rel="noopener"':'')+'><span class="nb">NEW · '+fmt(x.d)+'</span>'+(im?'<img src="'+im.getAttribute('src')+'" alt="">':'<span class="ph">✦</span>')+'<span><b>'+txt(c.querySelector('h3'))+'</b><small>'+clip(txt(c.querySelector('.kind')),60)+'</small></span></a>'}).join('');
-    document.getElementById('prem-rail').hidden=false}
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){
+    return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function T(id,v){var el=document.getElementById(id);if(el)el.textContent=v}
+  var h=C[0],k=0,tEl=document.getElementById('prem-title');
+  if(tEl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    tEl.innerHTML=h.t.split(' ').map(function(w){
+      return '<span class="wd">'+w.split('').map(function(c){
+        return '<span class="ch" style="animation-delay:'+((k++)*28)+'ms">'+esc(c)+'</span>'
+      }).join('')+'</span>'}).join(' ');
+  } else if(tEl){tEl.textContent=h.t}
+  T('prem-kind',h.f);T('prem-p',h.o);T('prem-date','· released '+fmt(h.d));
+  var go=document.getElementById('prem-go');
+  if(go){go.href=h.u;go.innerHTML='▶ &nbsp;Open '+esc(h.t.split(':')[0]);
+    if(/^https?:/.test(h.u)){go.target='_blank';go.rel='noopener'}}
+  var shot=document.getElementById('prem-shot');if(shot)shot.href=h.u;
+  var img=document.getElementById('prem-img');
+  if(img){if(h.th)img.src=h.th; else img.remove()}
+  var rail=document.getElementById('prem-rail'),rr=document.getElementById('prem-rr');
+  var rest=C.slice(1,4);
+  if(rail&&rr){
+    if(!rest.length){rail.hidden=true}
+    else{rail.hidden=false;
+      rr.innerHTML=rest.map(function(r){
+        return '<a href="'+esc(r.u)+'"'+(/^https?:/.test(r.u)?' target="_blank" rel="noopener"':'')+
+        '><span class="nb">NEW · '+fmt(r.d)+'</span>'+
+        (r.th?'<img src="'+esc(r.th)+'" alt="">':'<span class="ph">✦</span>')+
+        '<span><b>'+esc(r.t)+'</b><small>'+esc(r.f)+'</small></span></a>'}).join('');
+    }
+  }
 }catch(e){}})();
 </script>
 <script>
-// This week strip: Monday Move (Week 1 = Aug 3, 2026; skips winter + spring break), Tech Radar tool, resource of the week
+/* Find a resource: typeahead over the catalog, then inside the pages.
+   Without JavaScript the form still submits to all.html?q= — which is the
+   page that can actually filter 57 rows. */
+(function(){try{
+  var q=document.getElementById('q'),box=document.getElementById('jump'),form=q.form;
+  var CAT=window.HUB_CATALOG||[],IDX=null,loading=false,t=null;
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){
+    return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function hl(s,w){var e=esc(s);w.forEach(function(x){if(x.length>1)
+    e=e.replace(new RegExp('('+x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return e}
+  function close(){box.hidden=true;q.setAttribute('aria-expanded','false')}
+  function render(s,words,deep){
+    var hits=CAT.map(function(e){
+      var sc=0,hay=(e.t+' '+e.o+' '+e.f+' '+e.g).toLowerCase();
+      words.forEach(function(w){if(e.t.toLowerCase().indexOf(w)>-1)sc+=3;else if(hay.indexOf(w)>-1)sc+=1});
+      return{e:e,sc:sc}}).filter(function(x){return x.sc>0})
+      .sort(function(a,b){return b.sc-a.sc||a.e.t.localeCompare(b.e.t)});
+    var h='',top=hits.slice(0,6);
+    if(top.length){
+      h+='<p class="jk">'+hits.length+' resource'+(hits.length===1?'':'s')+'</p>';
+      h+=top.map(function(x){var e=x.e;
+        return '<a href="'+esc(e.u)+'"'+(/^https?:/.test(e.u)?' target="_blank" rel="noopener"':'')+
+          ' role="option"><b>'+hl(e.t,words)+'</b><small>'+hl(e.o,words)+'</small></a>'}).join('');
+    }
+    if(deep&&deep.length){
+      h+='<p class="jk">Inside the pages</p>';
+      h+=deep.map(function(e){
+        var i=e.t.toLowerCase().indexOf(words[0]);
+        var snip=e.t.slice(Math.max(0,i-70),i+150);
+        return '<a href="'+esc(e.u)+'" role="option"><b>'+esc(e.p)+(e.h?' › '+esc(e.h):'')+
+          '</b><small>…'+hl(snip,words)+'…</small></a>'}).join('');
+    }
+    if(!h){box.innerHTML='<p class="none">Nothing matches “'+esc(s)+'”. '+
+      '<a href="all.html">Browse all '+CAT.length+' →</a></p>';box.hidden=false;
+      q.setAttribute('aria-expanded','true');return}
+    if(hits.length>top.length)
+      h+='<a class="more" href="all.html?q='+encodeURIComponent(s)+'">See all '+hits.length+
+        ' in the full index →</a>';
+    box.innerHTML=h;box.hidden=false;q.setAttribute('aria-expanded','true');
+  }
+  function run(){
+    var s=(q.value||'').trim();if(s.length<2){close();return}
+    var words=s.toLowerCase().split(/\s+/).filter(Boolean);
+    if(s.length<3){render(s,words,null);return}
+    if(!IDX){
+      render(s,words,null);
+      if(!loading){loading=true;fetch('search-index.json').then(function(r){return r.json()})
+        .then(function(j){IDX=j;run()}).catch(function(){IDX=[]})}
+      return;
+    }
+    var deep=IDX.map(function(e){var hay=(e.p+' '+e.h+' '+e.t).toLowerCase();var sc=0;
+      words.forEach(function(w){if(hay.indexOf(w)>-1)sc+=1;
+        if((e.h+' '+e.p).toLowerCase().indexOf(w)>-1)sc+=2});return{e:e,sc:sc}})
+      .filter(function(x){return x.sc>0}).sort(function(a,b){return b.sc-a.sc})
+      .slice(0,5).map(function(x){return x.e});
+    render(s,words,deep);
+  }
+  q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,110)});
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){close();q.blur()}
+    if(e.key==='ArrowDown'&&!box.hidden){var a=box.querySelector('a');if(a){e.preventDefault();a.focus()}}
+  });
+  box.addEventListener('keydown',function(e){
+    var as=[].slice.call(box.querySelectorAll('a')),i=as.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'&&i<as.length-1){e.preventDefault();as[i+1].focus()}
+    if(e.key==='ArrowUp'){e.preventDefault();(i<=0?q:as[i-1]).focus()}
+    if(e.key==='Escape'){close();q.focus()}
+  });
+  document.addEventListener('click',function(e){
+    if(!box.contains(e.target)&&e.target!==q)close()});
+  form.addEventListener('submit',function(e){
+    if(!(q.value||'').trim())e.preventDefault()});
+  var p=new URLSearchParams(location.search);
+  if(p.get('q')){q.value=p.get('q');run()}
+}catch(e){}})();
+</script>
+<script>
+// This week strip: Monday Move (Week 1 = Aug 3, 2026; skips winter + spring break)
+// and the Tech Radar tool. The resource of the week is written in at build time.
 (function(){try{
   var MOVES=[{"n": 1, "en": "Post and Say the Language Goal", "es": "Publica y di el objetivo de lenguaje", "tag": "Students hit targets they can see."}, {"n": 2, "en": "Preview Three Words", "es": "Anticipa tres palabras", "tag": "Thirty seconds that save ten minutes."}, {"n": 3, "en": "Hand Over a Sentence Frame", "es": "Entrega un marco de oración", "tag": "A frame is a ramp, not a crutch."}, {"n": 4, "en": "Talk Before Writing", "es": "Hablar antes de escribir", "tag": "If they can say it, they can write it."}, {"n": 5, "en": "Check Without Asking “Do You Understand?”", "es": "Comprueba sin preguntar «¿Entienden?»", "tag": "Everyone says yes. Ask them to show you."}, {"n": 6, "en": "Make the Text Reachable", "es": "Haz alcanzable el texto", "tag": "Keep the text. Change the path to it."}, {"n": 7, "en": "Grade the Content, Grow the English", "es": "Califica el contenido, haz crecer el inglés", "tag": "Two different questions. Two different marks."}, {"n": 8, "en": "Test-Ready All Year", "es": "Listos para el examen todo el año", "tag": "A support met on test day is not a support."}, {"n": 9, "en": "Families and Wins", "es": "Familias y logros", "tag": "The first call home should be good news."}, {"n": 10, "en": "Go on a Cognate Hunt", "es": "Sal a cazar cognados", "tag": "Thousands of words your students already know."}, {"n": 11, "en": "Word Walls That Work", "es": "Muros de palabras que funcionan", "tag": "If nobody points at it, it is wallpaper."}, {"n": 12, "en": "Teach the Word Parts", "es": "Enseña las partes de las palabras", "tag": "One root unlocks twenty words."}, {"n": 13, "en": "Read the Question First", "es": "Lee primero la pregunta", "tag": "Reading with a purpose is a different activity."}, {"n": 14, "en": "Annotate with a Purpose", "es": "Anota con un propósito", "tag": "Three marks, not a rainbow."}, {"n": 15, "en": "Match the Organizer to the Thinking", "es": "Ajusta el organizador al pensamiento", "tag": "The shape of the chart is the shape of the idea."}, {"n": 16, "en": "Read Aloud, Think Aloud", "es": "Lee en voz alta, piensa en voz alta", "tag": "Let them hear what a reader’s mind does."}, {"n": 17, "en": "Build Background in Two Minutes", "es": "Construye contexto en dos minutos", "tag": "You cannot comprehend what you cannot picture."}, {"n": 18, "en": "Look at the Work Together", "es": "Miren juntos el trabajo", "tag": "Mid-year: who has moved, and who is stuck?"}, {"n": 19, "en": "Structure the Partner Talk", "es": "Estructura la conversación en parejas", "tag": "“Turn and talk” works when everyone knows their job."}, {"n": 20, "en": "Teach the Conversation Moves", "es": "Enseña los movimientos de la conversación", "tag": "Academic talk has a script. Hand it out."}, {"n": 21, "en": "Share the Air", "es": "Reparte la palabra", "tag": "Who talked today? Who never does?"}, {"n": 22, "en": "From Sentence to Paragraph", "es": "De la oración al párrafo", "tag": "Claim, evidence, explain. Every subject."}, {"n": 23, "en": "Grow the Sentence", "es": "Haz crecer la oración", "tag": "Short, correct sentences are a stage, not a goal."}, {"n": 24, "en": "Feedback That Sticks", "es": "Retroalimentación que se queda", "tag": "Mark less. Teach more."}, {"n": 25, "en": "ELPA21 Season: What It Measures", "es": "Temporada de ELPA21: qué mide", "tag": "Four domains, and every class teaches them."}, {"n": 26, "en": "The Language of Test Questions", "es": "El lenguaje de las preguntas de examen", "tag": "They often know the content. The question trips them."}, {"n": 27, "en": "Stamina and Calm", "es": "Resistencia y calma", "tag": "Long tests are a physical event."}, {"n": 28, "en": "Review with Games", "es": "Repasa con juegos", "tag": "Repetition without boredom."}, {"n": 29, "en": "Use the Home Language as a Tool", "es": "Usa el idioma del hogar como herramienta", "tag": "Two languages are an advantage. Treat them like one."}, {"n": 30, "en": "Technology That Helps", "es": "Tecnología que ayuda", "tag": "The Chromebook can be a scaffold or a shortcut."}, {"n": 31, "en": "When a Newcomer Arrives in Spring", "es": "Cuando llega un estudiante nuevo en primavera", "tag": "The first week decides how the year ends."}, {"n": 32, "en": "Culture as Content", "es": "La cultura como contenido", "tag": "Students learn from people who know who they are."}, {"n": 33, "en": "State Test Week", "es": "La semana del examen estatal", "tag": "Nothing new. Everything familiar."}, {"n": 34, "en": "Projects and Presentations", "es": "Proyectos y presentaciones", "tag": "Speaking in front of the class is the hardest task we assign."}, {"n": 35, "en": "Celebrate the Growth", "es": "Celebra el crecimiento", "tag": "Show them how far they have come."}, {"n": 36, "en": "Hand Off and Reflect", "es": "Entrega y reflexiona", "tag": "What next year’s teacher needs to know."}];
   var TOOLS=[["Gemini in Google Classroom · student study tools","tech-radar.html"],["Read Along in Google Classroom","tech-radar.html"],["SpeakingMonkey","tech-radar.html"],["MinuteMic","tech-radar.html"],["Brisk Boost","tech-radar.html"],["Google Translate · Practice mode","tech-radar.html"]];
@@ -1061,26 +452,25 @@ section.wrap > .deck{font-size:15px;margin-bottom:12px}
   var w=weekNow(),m=MOVES[w-1];
   function T(id,v){var e=document.getElementById(id);if(e)e.textContent=v}
   T('wk-n','Week '+w);T('wk-mt',m.en);T('wk-mes',m.es);T('wk-mtag',m.tag);
-  document.getElementById('wk-move').href='https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mv-'+w;
-  var t=TOOLS[(w-1)%TOOLS.length];T('wk-tt',t[0]);document.getElementById('wk-tool').href=t[1];
-  var cards=[].slice.call(document.querySelectorAll('section .cards .card'));
-  if(cards.length){var abs=Math.floor((new Date()-new Date(2026,7,3))/6048e5);var c=cards[((abs%cards.length)+cards.length)%cards.length];
-    // A card with data-pin-until="YYYY-MM-DD" is the resource of the week until that date (new releases get two weeks).
-    var pin=cards.filter(function(x){var d=x.getAttribute('data-pin-until');return d&&new Date(d+'T23:59:59')>=new Date()})[0];if(pin)c=pin;
-    var h=c.querySelector('h3'),d=c.querySelector('.card-body p');var a=document.getElementById('wk-res');
-    if(h)T('wk-rt',h.textContent);if(d)T('wk-rd',d.textContent.slice(0,120).replace(/\s+\S*$/,'')+'…');a.href=c.getAttribute('href');if(/^https?:/.test(a.href)){a.target='_blank';a.rel='noopener'}}
+  var mv=document.getElementById('wk-move');
+  if(mv)mv.href='https://radan55.github.io/mselablueprintinfo01/monday-moves.html#mv-'+w;
+  var t=TOOLS[(w-1)%TOOLS.length];T('wk-tt',t[0]);
+  var tl=document.getElementById('wk-tool');if(tl)tl.href=t[1];
+  /* Resource of the week rotates through the whole catalog so the back list gets
+     its turn. A pinned entry wins while its date holds. The build writes a pick
+     into the markup as well, so this card is never blank without JavaScript. */
+  var C=window.HUB_CATALOG||[],a=document.getElementById('wk-res');
+  if(C.length&&a){
+    var abs=Math.floor((new Date()-new Date(2026,7,3))/6048e5);
+    var c=C[((abs%C.length)+C.length)%C.length];
+    var pin=C.filter(function(x){return x.pin&&new Date(x.pin+'T23:59:59')>=new Date()})[0];
+    if(pin)c=pin;
+    T('wk-rt',c.t);T('wk-rd',c.o);a.href=c.u;
+    if(/^https?:/.test(c.u)){a.target='_blank';a.rel='noopener'}
+  }
 }catch(e){}})();
 </script>
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
-<script>
-/* Resource counts write themselves from the live catalog, so they cannot go stale. */
-(function(){try{
-  var n=document.querySelectorAll('section .cards .card').length; if(!n)return;
-  var d=document.getElementById('nRes'); if(d)d.textContent=n;
-  var d2=document.getElementById('nRes2'); if(d2)d2.textContent=n;
-  var q=document.getElementById('q'); if(q)q.placeholder=q.placeholder.replace(/Search \d+ resources/,'Search '+n+' resources');
-}catch(e){}})();
-</script>
 </body>
 </html>

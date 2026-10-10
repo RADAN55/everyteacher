@@ -71,3 +71,21 @@ Other educators are welcome to adapt these for their own buildings. Compliance c
 to Mississippi requirements and should be checked against your own state's before republishing.
 
 Contact: richard.spanishteacher@gmail.com
+
+## Adding or changing a resource
+
+Everything on the hub comes from one file: `tools/catalog.py`. Add the entry
+there — href, title, group, format, size and one line of description — then run
+
+    python3 tools/build.py
+
+That writes the home page's four doors and Now Showing band, every row of
+`all.html`, the Hub Guide's catalog, `catalog.json` (which the personal site
+reads), the resource counts and the full-text search index. Nothing about a
+resource is typed in two places, and every count is written into the HTML
+itself rather than calculated by a browser, so a search engine or a link
+preview sees the right number too.
+
+Mark a resource `core=True` to star it in the index and put it on the home
+page. Add its release date to `NEW` to make it the Now Showing hero for three
+weeks, and a date in `PIN` to make it the resource of the week until then.
