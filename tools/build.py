@@ -664,6 +664,7 @@ if idx.returncode:
 # most people meet this site, so every page with a card gets the tags for it,
 # rewritten each build so a page can never keep a stale picture.
 SITE_URL = "https://radan55.github.io/everyteacher/"
+SITECFG = json.loads((ROOT / "tools" / "site.json").read_text(encoding="utf-8")) if (ROOT / "tools" / "site.json").exists() else {}
 cards = 0
 for page in sorted(ROOT.glob("*.html")):
     img = ROOT / "share" / (page.stem + ".png")
@@ -675,7 +676,26 @@ for page in sorted(ROOT.glob("*.html")):
     m = re.search(r'<meta name="description" content="([^"]*)"', s)
     desc = m.group(1) if m else ""
     url = SITE_URL + ("" if page.name == "index.html" else page.name)
+    # what search engines read: a canonical address, structured data naming
+    # the resource as a free work by its author, and the Search Console tag
+    # once it is set in tools/site.json
+    cat = seen.get(page.name)
+    ld = {"@context": "https://schema.org", "@type": "WebSite" if page.name == "index.html" else "CreativeWork",
+          "name": title.split(" · ")[0], "url": url, "description": desc, "inLanguage": "en",
+          "isAccessibleForFree": True,
+          "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"},
+          "publisher": {"@type": "Organization", "name": "EL Publishing", "url": SITE_URL},
+          "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"},
+          "about": "English learners, Mississippi K–12"}
+    if page.name == "index.html":
+        ld["potentialAction"] = {"@type": "SearchAction", "target": SITE_URL + "all.html?q={q}", "query-input": "required name=q"}
+    if cat:
+        ld["learningResourceType"] = cat["fmt"]
+    verify = SITECFG.get("google_site_verification", "")
     tags = "\n".join([
+        f'<link rel="canonical" href="{url}">',
+        (f'<meta name="google-site-verification" content="{e(verify)}">' if verify and page.name == "index.html" else ""),
+        '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>',
         '<meta property="og:type" content="website">',
         '<meta property="og:site_name" content="EL Publishing">',
         f'<meta property="og:url" content="{url}">',
@@ -686,6 +706,7 @@ for page in sorted(ROOT.glob("*.html")):
         '<meta property="og:image:height" content="630">',
         '<meta name="twitter:card" content="summary_large_image">',
     ])
+    tags = "\n".join(t for t in tags.split("\n") if t)
     marked = "<!--B:og-->\n" + tags + "\n<!--/B:og-->"
     if "<!--B:og-->" in s:
         s = re.sub(r"<!--B:og-->.*?<!--/B:og-->", lambda mo: marked, s, flags=re.S)
