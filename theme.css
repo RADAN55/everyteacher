@@ -2,13 +2,14 @@
    Linked from every page's head so the colours exist before first paint.
    The page's own <style> keeps its :root; [data-theme] outranks it. */
 
-:root{ --hubbar-h:50px }
+:root{ --hubbar-h:50px; --gold-ink:#7A5F0E }
 
 /* ---------------------------------------------------------------- dark ----
    --navy does two jobs across this hub: it colours headings and it paints
    panels. Those were split into --navy / --navy-bg so they can part company
    here. Text navy becomes light; panel navy stays dark. --navy-dk is left
    alone because it is the ink on gold buttons, which stay gold. */
+html[data-theme="dark"]{ --gold-ink:#E3C66A }
 html[data-theme="dark"]{
   --paper:#141A2C;
   --mist:#0C1120;
@@ -91,7 +92,7 @@ html[data-theme="dark"]{
 /* ------------------------------------------------------------ the bar ---- */
 .hubbar{
   position:sticky;top:0;z-index:900;
-  background:var(--navy-dk-bg);border-bottom:1px solid rgba(201,162,39,.4);
+  background:var(--navy-dk-bg,#141A44);border-bottom:1px solid rgba(201,162,39,.4);
   font-family:Inter,-apple-system,"Segoe UI",sans-serif;
   /* 42 pages were written before this bar existed; none of their rules apply */
   margin:0;padding:0;overflow:visible;line-height:normal;color:#fff;

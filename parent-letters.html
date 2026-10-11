@@ -83,21 +83,21 @@
     <button type="button" data-t="meet" aria-pressed="false">6 · Meeting invitation</button>
   </div>
   <h2 style="margin-top:16px">Details</h2>
-  <div class="row"><div><label>District</label><input data-f="district" placeholder="School district"></div><div><label>School</label><input data-f="school" placeholder="School"></div></div>
-  <div class="row"><div><label>Date</label><input data-f="date" type="date"></div><div><label>School year</label><input data-f="year" value="2026–27"></div></div>
-  <label>Parent / guardian name</label><input data-f="parent" placeholder="Sr. y Sra. García">
-  <div class="row"><div><label>Student</label><input data-f="student" placeholder="Ana García"></div><div><label>Grade</label><input data-f="grade" placeholder="9"></div></div>
-  <label>Home language</label><input data-f="lang" value="Spanish / español">
-  <label>Test used &amp; date</label><input data-f="test" placeholder="ELPT Screener, Aug 12, 2026">
-  <div class="row"><div><label>Listening</label><input data-f="L" placeholder="2"></div><div><label>Speaking</label><input data-f="S" placeholder="2"></div></div>
-  <div class="row"><div><label>Reading</label><input data-f="R" placeholder="1"></div><div><label>Writing</label><input data-f="W" placeholder="1"></div></div>
-  <label>Overall level / determination</label><input data-f="overall" placeholder="Emerging (Level 1–2)">
-  <label>Program description (one line)</label><textarea data-f="program">Daily ESL/ELD class with a certified EL teacher, plus language support and accommodations in all content classes (sheltered instruction, bilingual dictionary, extended time).</textarea>
-  <label>Meeting date / time / place (letter 6)</label><input data-f="meeting" placeholder="Tuesday, Oct 14, 3:30 p.m., Room 118">
-  <label>EL contact name</label><input data-f="contact" placeholder="Name, title (EL teacher or coordinator)">
-  <label>Contact phone / email</label><input data-f="phone" placeholder="(601) 000-0000 · you@school.org">
-  <label>Signer / title</label><input data-f="signer" placeholder="Principal name, Principal">
-  <button class="btn" type="button" onclick="window.print()">🖨 Print English + Spanish</button>
+  <div class="row"><div><label>District</label><input aria-label="District" data-f="district" placeholder="School district"></div><div><label>School</label><input aria-label="School" data-f="school" placeholder="School"></div></div>
+  <div class="row"><div><label>Date</label><input aria-label="Date" data-f="date" type="date"></div><div><label>School year</label><input aria-label="School year" data-f="year" value="2026–27"></div></div>
+  <label>Parent / guardian name</label><input aria-label="Parent / guardian name" data-f="parent" placeholder="Sr. y Sra. García"
+  ><div class="row"><div><label>Student</label><input aria-label="Student" data-f="student" placeholder="Ana García"></div><div><label>Grade</label><input aria-label="Grade" data-f="grade" placeholder="9"></div></div>
+  <label>Home language</label><input aria-label="Home language" data-f="lang" value="Spanish / español"
+  ><label>Test used &amp; date</label><input aria-label="Test used &amp; date" data-f="test" placeholder="ELPT Screener, Aug 12, 2026"
+  ><div class="row"><div><label>Listening</label><input aria-label="Listening" data-f="L" placeholder="2"></div><div><label>Speaking</label><input aria-label="Speaking" data-f="S" placeholder="2"></div></div>
+  <div class="row"><div><label>Reading</label><input aria-label="Reading" data-f="R" placeholder="1"></div><div><label>Writing</label><input aria-label="Writing" data-f="W" placeholder="1"></div></div>
+  <label>Overall level / determination</label><input aria-label="Overall level / determination" data-f="overall" placeholder="Emerging (Level 1–2)"
+  ><label>Program description (one line)</label><textarea aria-label="Program description (one line)" data-f="program"Daily ESL/ELD class with a certified EL teacher, plus language support and accommodations in all content classes (sheltered instruction, bilingual dictionary, extended time).></textarea>
+  <label>Meeting date / time / place (letter 6)</label><input aria-label="Meeting date / time / place (letter 6)" data-f="meeting" placeholder="Tuesday, Oct 14, 3:30 p.m., Room 118"
+  ><label>EL contact name</label><input aria-label="EL contact name" data-f="contact" placeholder="Name, title (EL teacher or coordinator)"
+  ><label>Contact phone / email</label><input aria-label="Contact phone / email" data-f="phone" placeholder="(601) 000-0000 · you@school.org"
+  ><label>Signer / title</label><input aria-label="Signer / title" data-f="signer" placeholder="Principal name, Principal"
+  ><button class="btn" type="button" onclick="window.print()">🖨 Print English + Spanish</button>
 </aside>
 <div id="out"></div>
 </main>

@@ -33,11 +33,11 @@
   .pick a:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,39,97,.12)}
   .pick b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15;margin-bottom:4px}
   .pick small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
-  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .pick .k{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-bottom:6px}
 
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0}
   .step{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
-  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold);font-weight:700;line-height:1}
+  .step .n{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--gold-ink);font-weight:700;line-height:1}
   .step b{display:block;color:var(--navy);margin:6px 0 4px;font-size:16.5px}
   .step p{margin:0;font-size:14.5px;color:var(--muted)}
   .priv{background:var(--wash-red-2);border:1px solid #EBD9A0;border-left:6px solid var(--gold);padding:14px 18px;margin:14px 0 0;font-size:15px}
@@ -45,7 +45,7 @@
 
   .asst{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:24px 26px;margin:18px 0 0;scroll-margin-top:14px}
   .asst .top{display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
-  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1}
+  .asst .n{font-family:Fraunces,Georgia,serif;font-size:48px;font-weight:700;color:var(--gold-ink);line-height:1}
   .asst h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:27px;line-height:1.12;margin:0 0 4px;color:var(--navy)}
   .asst .meta{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:8px}
   .asst p{margin:0 0 10px}
@@ -73,7 +73,7 @@
   .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}
   .lane{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14px}
   .lane b{display:block;font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:17px}
-  .lane small{display:block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .lane small{display:block;color:var(--gold-ink);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
   .note{background:var(--paper);border:1px solid var(--rule);padding:18px 22px;font-size:15px;margin-top:22px}
   .note h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 8px}
   .note ul{margin:0;padding-left:20px}
@@ -88,7 +88,7 @@
   @media (max-width:760px){.grid2,.grid3,.two,.steps,.pick,.lanes{grid-template-columns:1fr}}
   .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
   .card h3{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:21px;margin:0 0 6px;line-height:1.15}
-  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;display:block;margin-bottom:4px}
+  .card .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;display:block;margin-bottom:4px}
   .card p,.card li{font-size:14.5px}.card ul,.card ol{margin:6px 0 0;padding-left:18px}
   label.f{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
   input[type=text],select,textarea{width:100%;border:1px solid var(--rule);border-radius:6px;padding:9px 11px;font:inherit;background:var(--paper)}
@@ -100,6 +100,7 @@
   .sheet h3{font-family:Fraunces,Georgia,serif;color:var(--navy);margin:0 0 4px;font-size:22px}.sheet h4{color:var(--navy);margin:12px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border-left:4px solid var(--gold);padding-left:8px}
   .sheet ul{margin:4px 0;padding-left:18px;font-size:14.5px}.sheet .line{border-bottom:1px solid #9aa0b5;height:24px}
   .es{color:var(--muted);font-style:italic}
+  .card .chips span{color:var(--ink);border-color:var(--rule)}
   .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;background:var(--mist);margin:2px 2px 0 0}
   .filters{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.filters button{border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:5px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.filters button[aria-pressed=true]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
   .entry{background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--gold);padding:16px 18px;margin-top:12px}
@@ -134,7 +135,7 @@
 
   <div class="grid2">
     <div class="card"><span class="k">Who builds this</span><h3>Richard A. Daniel, M.Ed.</h3><p style="font-size:15px">ENL/EL Specialist at Laurel High School in Laurel, Mississippi, teaching 90-minute EL blocks for grades 9–12 across Emerging and Progressing tracks. Thirty-one years in classrooms in Mississippi, Alabama, and Georgia. Bilingual in English and Spanish. National Board candidate in English as a New Language (Component 1 complete; Components 2–4 in the 2026–27 cycle). Pursuing an Ed.S. in Educational Leadership. Presenting at AMTESOL 2027 in Birmingham.</p><p style="font-size:15px;margin-top:8px">Everything on this hub comes out of a working classroom first and is published when it has survived a semester of use.</p><p style="margin-top:10px"><a href="mailto:richard.spanishteacher@gmail.com">richard.spanishteacher@gmail.com</a></p></div>
-    <div class="card"><span class="k">What EL Publishing is</span><h3>A resource studio, not a vendor</h3><p style="font-size:15px">Curriculum, interactive tools, magazines, guides, and compliance aids for anyone who teaches or leads English learners in Mississippi, usable anywhere. Free, no login, no license. Credit back to EL Publishing is appreciated when something is reused. The tagline, <i>Many Voices · One Storm</i>, is Laurel High School's Golden Tornadoes and the students who arrive here from everywhere.</p><div class="chips" style="margin-top:10px"><span class="pill">44+ resources</span><span class="pill">K–12</span><span class="pill">English · Español</span><span class="pill">Built in Laurel, MS</span></div></div>
+    <div class="card"><span class="k">What EL Publishing is</span><h3>A resource studio, not a vendor</h3><p style="font-size:15px">Curriculum, interactive tools, magazines, guides, and compliance aids for anyone who teaches or leads English learners in Mississippi, usable anywhere. Free, no login, no license. Credit back to EL Publishing is appreciated when something is reused. The tagline, <i>Many Voices · One Storm</i>, is Laurel High School's Golden Tornadoes and the students who arrive here from everywhere.</p><div class="chips" style="margin-top:10px"><span class="pill"><!--B:n-->60<!--/B:n--> resources</span><span class="pill">K–12</span><span class="pill">English · Español</span><span class="pill">Built in Laurel, MS</span></div></div>
   </div>
   <h2 class="sec">How the hub is built and kept accurate</h2>
   <div class="grid3">

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-bg:var(--navy);--ink-red:#8A6E14;--ink-blue-2:#4A5068;--ink-red-5:#A32020;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--ink-red:#7A5F0E;--ink-blue-2:#4A5068;--ink-red-5:#A32020;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
@@ -80,20 +80,20 @@
 <main>
 <aside class="panel">
   <h2>Student</h2>
-  <div class="row"><div><label>Name</label><input data-k="name" placeholder="Ana G."></div><div><label>Grade</label><input data-k="grade" placeholder="9"></div></div>
-  <div class="row"><div><label>Home language</label><input data-k="lang" value="Spanish"></div><div><label>Country / schooling</label><input data-k="origin" placeholder="Honduras · 8 yrs, interrupted 1 yr"></div></div>
-  <div class="row"><div><label>Arrived in U.S.</label><input data-k="arrived" placeholder="July 2026"></div><div><label>Years in EL program</label><input data-k="yrs" placeholder="1"></div></div>
+  <div class="row"><div><label>Name</label><input aria-label="Name" data-k="name" placeholder="Ana G."></div><div><label>Grade</label><input aria-label="Grade" data-k="grade" placeholder="9"></div></div>
+  <div class="row"><div><label>Home language</label><input aria-label="Home language" data-k="lang" value="Spanish"></div><div><label>Country / schooling</label><input aria-label="Country / schooling" data-k="origin" placeholder="Honduras · 8 yrs, interrupted 1 yr"></div></div>
+  <div class="row"><div><label>Arrived in U.S.</label><input aria-label="Arrived in U.S." data-k="arrived" placeholder="July 2026"></div><div><label>Years in EL program</label><input aria-label="Years in EL program" data-k="yrs" placeholder="1"></div></div>
   <label>ELPT levels (1–5)</label>
   <div class="row4"><input data-k="L" type="number" min="1" max="5" placeholder="L"><input data-k="S" type="number" min="1" max="5" placeholder="S"><input data-k="R" type="number" min="1" max="5" placeholder="R"><input data-k="W" type="number" min="1" max="5" placeholder="W"></div>
-  <label>Literacy in home language</label><select data-k="lit"><option>Strong — reads and writes at grade level</option><option>Developing — basic reading and writing</option><option>Limited or interrupted schooling</option><option>Unknown yet</option></select>
-  <label>Strengths (what this student is good at)</label><textarea data-k="str" placeholder="Math — above grade level; draws well; helps younger siblings; soccer."></textarea>
-  <label>Interests / what motivates</label><input data-k="int" placeholder="Soccer, drawing, cars, music">
-  <label>Watch for</label><textarea data-k="watch" placeholder="Goes quiet when confused rather than asking; needs a bilingual peer nearby; anxious about reading aloud."></textarea>
+  <label>Literacy in home language</label><select aria-label="Literacy in home language" data-k="lit"><option>Strong — reads and writes at grade level</option><option>Developing — basic reading and writing</option><option>Limited or interrupted schooling</option><option>Unknown yet</option></select>
+  <label>Strengths (what this student is good at)</label><textarea aria-label="Strengths (what this student is good at)" data-k="str" placeholder="Math — above grade level; draws well; helps younger siblings; soccer."></textarea>
+  <label>Interests / what motivates</label><input aria-label="Interests / what motivates" data-k="int" placeholder="Soccer, drawing, cars, music"
+  ><label>Watch for</label><textarea aria-label="Watch for" data-k="watch" placeholder="Goes quiet when confused rather than asking; needs a bilingual peer nearby; anxious about reading aloud."></textarea>
   <label>Accommodations in the LSP</label>
   <div class="chk" id="acc"></div>
-  <div class="row"><div><label>EL teacher / contact</label><input data-k="contact" value="Richard A. Daniel · Rm 118"></div><div><label>Phone / email</label><input data-k="phone" placeholder="ext. 2118"></div></div>
-  <label>Family contact &amp; language</label><input data-k="fam" placeholder="Mother, María · Spanish · (601) 000-0000 · texts work best">
-  <div class="row"><div><label>IEP / 504?</label><select data-k="iep"><option>No</option><option>Yes — see plan</option><option>Referral in progress</option></select></div><div><label>Date</label><input data-k="date" type="date"></div></div>
+  <div class="row"><div><label>EL teacher / contact</label><input aria-label="EL teacher / contact" data-k="contact" value="Richard A. Daniel · Rm 118"></div><div><label>Phone / email</label><input aria-label="Phone / email" data-k="phone" placeholder="ext. 2118"></div></div>
+  <label>Family contact &amp; language</label><input aria-label="Family contact &amp; language" data-k="fam" placeholder="Mother, María · Spanish · (601) 000-0000 · texts work best"
+  ><div class="row"><div><label>IEP / 504?</label><select aria-label="IEP / 504?" data-k="iep"><option>No</option><option>Yes — see plan</option><option>Referral in progress</option></select></div><div><label>Date</label><input aria-label="Date" data-k="date" type="date"></div></div>
   <button class="btn" type="button" onclick="window.print()">🖨 Print profile</button>
 </aside>
 <article class="sheet" id="sheet"></article>

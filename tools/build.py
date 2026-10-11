@@ -540,7 +540,7 @@ if write(p, t):
     changed.append("by-subject.html")
 
 # any page that quotes the total inline
-for name in ("content-teachers.html",):
+for name in ("content-teachers.html", "about.html"):
     p = ROOT / name
     t = p.read_text(encoding="utf-8")
     t = region(t, "n", str(N), p).replace("<!--B:n-->\n", "<!--B:n-->").replace("\n<!--/B:n-->", "<!--/B:n-->")

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red:#F7F1DC;--wash-red-3:#FBF6E6;--ink-red:#8A6E14;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-red:#F7F1DC;--wash-red-3:#FBF6E6;--ink-red:#7A5F0E;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
   *{box-sizing:border-box}
   body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
   a{color:var(--navy)}
@@ -86,14 +86,14 @@
 <section class="plan" id="plan">
   <h2>Lesson plan</h2>
   <div class="meta">
-    <div><label class="f">Class / period</label><input data-k="cls" placeholder="Biology I · 3rd"></div>
-    <div><label class="f">Date</label><input data-k="date" type="date"></div>
-    <div><label class="f">Content teacher</label><input data-k="t1" placeholder="Ms. Lee"></div>
-    <div><label class="f">EL teacher</label><input data-k="t2" placeholder="Mr. Daniel"></div>
+    <div><label class="f">Class / period</label><input aria-label="Class / period" data-k="cls" placeholder="Biology I · 3rd"></div>
+    <div><label class="f">Date</label><input aria-label="Date" data-k="date" type="date"></div>
+    <div><label class="f">Content teacher</label><input aria-label="Content teacher" data-k="t1" placeholder="Ms. Lee"></div>
+    <div><label class="f">EL teacher</label><input aria-label="EL teacher" data-k="t2" placeholder="Mr. Daniel"></div>
   </div>
   <div class="blk"><h3>Content objective</h3><p class="hint">Students will be able to… (the standard, in one sentence)</p><textarea data-k="co" placeholder="Students will be able to explain how the structure of a cell membrane controls what enters and leaves the cell."></textarea></div>
   <div class="blk"><h3>Language objective</h3><p class="hint">Students will [function] [content] using [language form / vocabulary] — pick from the bank or write your own.</p><textarea data-k="lo" placeholder="Students will explain membrane transport orally and in writing using cause-and-effect sentences (because / so / which causes) and the words permeable, concentration, gradient."></textarea>
-    <div class="two" style="margin-top:8px"><div><label class="f">Key vocabulary (5–8)</label><input data-k="vocab" placeholder="membrane · permeable · concentration · gradient · diffusion · osmosis"></div><div><label class="f">Sentence frames posted</label><input data-k="frames" placeholder="___ moves across the membrane because ___. · If ___ increases, then ___."></div></div></div>
+    <div class="two" style="margin-top:8px"><div><label class="f">Key vocabulary (5–8)</label><input aria-label="Key vocabulary (5–8)" data-k="vocab" placeholder="membrane · permeable · concentration · gradient · diffusion · osmosis"></div><div><label class="f">Sentence frames posted</label><input aria-label="Sentence frames posted" data-k="frames" placeholder="___ moves across the membrane because ___. · If ___ increases, then ___."></div></div></div>
   <div class="blk"><h3>Co-teaching model for this lesson</h3><p class="hint">Check the one you will use for the main activity; note who does what.</p>
     <div class="models">
       <label><input type="radio" name="m" data-k="m" value="One teach, one support"><span><b>One teach, one support</b><br>One leads; the other circulates, checks for understanding, feeds frames.</span></label>
@@ -103,7 +103,7 @@
       <label><input type="radio" name="m" data-k="m" value="Team teaching"><span><b>Team teaching</b><br>Both lead together — one models the content, the other the language.</span></label>
       <label><input type="radio" name="m" data-k="m" value="One teach, one observe"><span><b>One teach, one observe</b><br>Data collection on language use for the LSP.</span></label>
     </div>
-    <div class="two" style="margin-top:8px"><div><label class="f">Content teacher does</label><textarea data-k="r1" placeholder="Opens with the diagram; direct instruction 12 min; runs station A."></textarea></div><div><label class="f">EL teacher does</label><textarea data-k="r2" placeholder="Previews vocabulary with Lane 1–2 group first 8 min; runs station C (frames + oral explanation); collects exit tickets from ELs."></textarea></div></div>
+    <div class="two" style="margin-top:8px"><div><label class="f">Content teacher does</label><textarea aria-label="Content teacher does" data-k="r1" placeholder="Opens with the diagram; direct instruction 12 min; runs station A."></textarea></div><div><label class="f">EL teacher does</label><textarea aria-label="EL teacher does" data-k="r2" placeholder="Previews vocabulary with Lane 1–2 group first 8 min; runs station C (frames + oral explanation); collects exit tickets from ELs."></textarea></div></div>
   </div>
   <div class="blk"><h3>Supports by lane</h3><p class="hint">Same objective, four ways in. Lanes follow ELPA21 levels: Newcomer (new 1), Emerging (1–2), Progressing (3–4), Challenge (4–5 / exited).</p>
     <div class="lanes">
@@ -113,14 +113,14 @@
       <div class="lane"><b>Challenge</b><textarea data-k="l4" placeholder="Explain to a Level 2 partner; extend to a new scenario; academic-register rewrite."></textarea></div>
     </div></div>
   <div class="blk"><div class="two"><div><h3>Assessment of the content objective</h3><textarea data-k="a1" placeholder="Exit ticket: diagram + 2 questions."></textarea></div><div><h3>Assessment of the language objective</h3><textarea data-k="a2" placeholder="Each student says or writes one cause-effect sentence using 2 key words; EL teacher scores on the 1–5 rubric."></textarea></div></div></div>
-  <div class="blk"><h3>Notes after the lesson</h3><p class="hint">What worked for which lane; what to change; who needs a follow-up.</p><textarea data-k="notes"></textarea></div>
+  <div class="blk"><h3>Notes after the lesson</h3><p class="hint">What worked for which lane; what to change; who needs a follow-up.</p><textarea data-k="notes" aria-label="Notes after the lesson"></textarea></div>
 </section>
 <aside class="side">
   <div class="bank">
     <h2>Language-objective bank</h2>
     <p>Pick subject and function; click a line to drop it into the plan (then edit the specifics).</p>
-    <select id="subj"><option value="sci">Science</option><option value="math">Math</option><option value="ss">Social studies</option><option value="ela">English / ELA</option><option value="cte">CTE / electives</option></select>
-    <select id="fn"><option value="explain">Explain</option><option value="inform">Inform / describe</option><option value="argue">Argue</option><option value="narrate">Narrate / sequence</option></select>
+    <select id="subj" aria-label="Subject"><option value="sci">Science</option><option value="math">Math</option><option value="ss">Social studies</option><option value="ela">English / ELA</option><option value="cte">CTE / electives</option></select>
+    <select id="fn" aria-label="Language function"><option value="explain">Explain</option><option value="inform">Inform / describe</option><option value="argue">Argue</option><option value="narrate">Narrate / sequence</option></select>
     <ul id="bank"></ul>
   </div>
   <div class="tools"><button type="button" id="save">Save on this device</button><button type="button" id="load">Load saved</button><button type="button" id="clear">Clear</button></div>
