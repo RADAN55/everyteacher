@@ -1,0 +1,134 @@
+{
+ "n": 4,
+ "title": "Reading the textbook",
+ "desc": "The textbook is not the enemy, but it is dense. Before, during and after a reading, the thirty-second preview, the one sentence to unpack, leveled versions of the same passage, and when to read aloud.",
+ "duration": 306.0,
+ "bytes": 3061208,
+ "cues": [
+  {
+   "who": "M",
+   "t": 4.4,
+   "text": "This is Every Teacher, from EL Publishing. Marcus and Elena. Episode four, reading. Here's my problem. My Progressing students, the level threes and fours, do fine in discussion. Then I assign four pages of the textbook and they come back with nothing."
+  },
+  {
+   "who": "E",
+   "t": 21.31,
+   "text": "Textbook prose is the hardest English your students will see all day. A science textbook is packed with academic words, and the sentences run three clauses long. Passive voice everywhere. Oxygen is released. The energy is stored. Nobody talks like that. So a student who is fluent in conversation still gets stopped by the page."
+  },
+  {
+   "who": "M",
+   "t": 41.06,
+   "text": "So do I stop assigning it?"
+  },
+  {
+   "who": "E",
+   "t": 43.13,
+   "text": "No. You stop assigning it cold. Reading in a content class has a before, a during, and an after, and most of the work is in the before."
+  },
+  {
+   "who": "M",
+   "t": 51.22,
+   "text": "Before. Go."
+  },
+  {
+   "who": "E",
+   "t": 53.28,
+   "text": "Thirty seconds of preview. Before anyone reads a word, walk the page together. What's the title? What are the headings? What's in the picture? What's the caption say? What are the bold words? A textbook page is built to be previewed; the headings are basically an outline of the content. A level two student who previews the page already knows what it's about before reading it, and that changes everything about how the reading goes."
+  },
+  {
+   "who": "M",
+   "t": 75.86,
+   "text": "That's the text features thing."
+  },
+  {
+   "who": "E",
+   "t": 78.05,
+   "text": "That's text features. And then one more thing before reading: say the five words. Same five-word habit from episode two. Bold words on the page, picture, say them, students say them. Now the student has heard the hard words before meeting them in a sentence."
+  },
+  {
+   "who": "M",
+   "t": 92.76,
+   "text": "During."
+  },
+  {
+   "who": "E",
+   "t": 93.97,
+   "text": "Two moves. First, chunk the reading. Not four pages. One section. Read, stop, do something, read the next section. Second, give them a job while reading. Underline the sentence that says what photosynthesis makes. Put a star next to the word you don't know. Draw a box around the cause and a circle around the effect. A reading job turns a wall of text into a search, and a search is something a level two can do."
+  },
+  {
+   "who": "M",
+   "t": 118.12,
+   "text": "What about the sentence they just can't get? There's always one."
+  },
+  {
+   "who": "E",
+   "t": 122.12,
+   "text": "Pick it on purpose and unpack it on the board. Take, During photosynthesis, energy from sunlight is used by plants to convert carbon dioxide and water into glucose and oxygen. That's one sentence, and it has five things happening. Put it up, and take it apart together. Who does it? Plants. Does what? Convert. Convert what into what? Carbon dioxide and water, into glucose and oxygen. Using what? Energy from sunlight. Now rewrite it as three short sentences. That's three minutes, and you've taught every student in the room how to read a science sentence, not just the English learners."
+  },
+  {
+   "who": "M",
+   "t": 156.31,
+   "text": "That's sentence unpacking."
+  },
+  {
+   "who": "E",
+   "t": 158.52,
+   "text": "Sentence unpacking. Do one a day. It's the single most useful reading move for a level three or four, because it attacks the exact thing that stops them: the long sentence."
+  },
+  {
+   "who": "M",
+   "t": 168.81,
+   "text": "What about the level ones? They can't read the page at all."
+  },
+  {
+   "who": "E",
+   "t": 172.53,
+   "text": "Then they read a different version of the same page. Same topic, same picture, same five words, shorter sentences, and in some cases a Spanish gloss. There are a hundred and eighty-seven leveled readables on the hub, each one written at three levels, so a newcomer and a level four can read about the same thing and join the same discussion. If you don't have one for your topic, write the short version yourself: six sentences, each one with one idea. It takes ten minutes and you'll use it for years."
+  },
+  {
+   "who": "M",
+   "t": 199.9,
+   "text": "Read-alouds. I feel like I'm in elementary school when I read to ninth graders."
+  },
+  {
+   "who": "E",
+   "t": 205.83,
+   "text": "Read the first paragraph out loud, every time. You're modeling how the sentences sound, where the pauses go, how the hard words are pronounced. And when you read aloud, think aloud. Hmm, it says energy is stored, so where did it go? Oh, in the glucose. That's a bond. That's you showing what a reader does inside their head, and a learner of English has never seen that in English. Thirty seconds. Then they read the rest."
+  },
+  {
+   "who": "M",
+   "t": 228.92,
+   "text": "After."
+  },
+  {
+   "who": "E",
+   "t": 230.29,
+   "text": "After is where you get the in and the out together. The student just took language in. Now they put it out. One sentence: the most important idea on this page is blank. Or a quick draw: sketch the process in three boxes. Or back to a partner: tell your partner the two things photosynthesis makes. Keep it tiny. The point is that the reading leads to a production, and the production tells you who understood."
+  },
+  {
+   "who": "M",
+   "t": 252.85,
+   "text": "Grading. If a level two reads the leveled version, do they get full credit?"
+  },
+  {
+   "who": "E",
+   "t": 257.78,
+   "text": "Yes. They did the reading. They engaged with the content. The accommodation is the shorter text; the standard is the same. We'll do grading properly in episode six, but the short version is: grade the biology, not the English."
+  },
+  {
+   "who": "M",
+   "t": 271.13,
+   "text": "Stop worrying about?"
+  },
+  {
+   "who": "E",
+   "t": 273.05,
+   "text": "Stop worrying that the newcomer is reading on their phone in Spanish. If they're reading about photosynthesis in Spanish, they're learning photosynthesis. Then they come to your word wall and learn the English words for it. First language is an asset, not a detour."
+  },
+  {
+   "who": "M",
+   "t": 287.31,
+   "text": "Next time, writing. Which is the domain that scares students the most. Every Teacher, EL Publishing. Free at radan55 dot github dot io slash everyteacher."
+  }
+ ]
+}

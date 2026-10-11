@@ -298,5 +298,10 @@
   "long": "Paste tomorrow's reading — a biology paragraph, a history passage, a word problem — and every English–Spanish cognate lights up, so a content teacher can see at a glance how much of the text their Spanish speakers already own. Certain pairs (373 school words, science and history heaviest) get a solid line; pattern guesses (-tion → -ción) get a dotted one and say so; false friends — library, exit, once, realize — are flagged in red with what the Spanish word really means. Prints a cognate wall, copies as a list, sends nothing anywhere. The tool for Monday Move 10.",
   "thumb": "thumbs/cognate-hunt.jpg",
   "who": "Content teachers"
+ },
+ "podcast.html": {
+  "long": "Six audio episodes, five to six minutes each, for the biology, algebra and history teacher with English learners in the room: who is in your room (what Emerging and Progressing students can do), making a lesson understandable without watering it down, structured talk with sentence frames by level, reading the textbook, writing that actually happens, and grading the content rather than the English — plus the Language Service Plan and the five people who can help. Two synthesized voices, a content teacher and an EL specialist; full transcripts, two discussion questions per episode for a department meeting, MP3 downloads and an RSS feed for any podcast app.",
+  "thumb": "thumbs/podcast.jpg",
+  "who": "Content teachers · PD"
  }
 }

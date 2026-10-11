@@ -69,6 +69,8 @@ R = [
 
  ("content-teachers.html", "For Content Teachers", "classroom", "Start here", "3 questions",
   "Three questions every content teacher asks, each answered with a free tool.", True),
+ ("podcast.html", "Every Teacher: the Podcast", "classroom", "Podcast", "6 episodes",
+  "Six five-minute conversations on strengthening English in a content class.", False),
  ("cognate-hunt.html", "Cognate Hunt", "classroom", "Tool", "373 pairs",
   "Paste any reading; the words your Spanish speakers already know light up.", False),
  ("by-subject.html", "By Subject & Grade", "classroom", "Grid", "16 squares",
@@ -164,7 +166,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}

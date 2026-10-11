@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+ <channel>
+  <title>Every Teacher</title>
+  <link>https://radan55.github.io/everyteacher/podcast.html</link>
+  <atom:link href="https://radan55.github.io/everyteacher/podcast.xml" rel="self" type="application/rss+xml"/>
+  <language>en-us</language>
+  <copyright>© 2026 Richard A. Daniel · EL Publishing · free for any school to use</copyright>
+  <description>Six short conversations for the biology teacher, the algebra teacher, the history teacher — anyone who teaches content, not English, and has English learners in the room. What Emerging and Progressing students can do, what to change tomorrow, and what to stop worrying about. From EL Publishing, free, no login.</description>
+  <itunes:subtitle>Strengthening English in the content classroom</itunes:subtitle>
+  <itunes:summary>Six short conversations for the biology teacher, the algebra teacher, the history teacher — anyone who teaches content, not English, and has English learners in the room. What Emerging and Progressing students can do, what to change tomorrow, and what to stop worrying about. From EL Publishing, free, no login.</itunes:summary>
+  <itunes:author>EL Publishing</itunes:author>
+  <itunes:owner><itunes:name>Richard A. Daniel</itunes:name><itunes:email>richard.spanishteacher@gmail.com</itunes:email></itunes:owner>
+  <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  <image><url>https://radan55.github.io/everyteacher/podcast/cover-3000.jpg</url><title>Every Teacher</title><link>https://radan55.github.io/everyteacher/podcast.html</link></image>
+  <itunes:category text="Education"><itunes:category text="How To"/></itunes:category>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:type>serial</itunes:type>
+  <podcast:locked>no</podcast:locked>
+  <item>
+   <title>1. Who is in your room</title>
+   <itunes:title>Who is in your room</itunes:title>
+   <itunes:episode>1</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Emerging and Progressing are not labels, they are predictions. What a level-one, a level-two and a level-three student can already do in your class, and the one habit that helps all of them.</description>
+   <itunes:summary>Emerging and Progressing are not labels, they are predictions. What a level-one, a level-two and a level-three student can already do in your class, and the one habit that helps all of them.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep1</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep1</guid>
+   <pubDate>Mon, 12 Oct 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-1.mp3" length="3316422" type="audio/mpeg"/>
+   <itunes:duration>331</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+  <item>
+   <title>2. Make it understandable, not easier</title>
+   <itunes:title>Make it understandable, not easier</itunes:title>
+   <itunes:episode>2</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Comprehensible input is not watered-down input. Five words before the lesson, cognates on the board, chunk the talk, show everything twice, and the two-minute test for whether they got it.</description>
+   <itunes:summary>Comprehensible input is not watered-down input. Five words before the lesson, cognates on the board, chunk the talk, show everything twice, and the two-minute test for whether they got it.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep2</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep2</guid>
+   <pubDate>Mon, 19 Oct 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-2.mp3" length="3144305" type="audio/mpeg"/>
+   <itunes:duration>314</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+  <item>
+   <title>3. Get them talking</title>
+   <itunes:title>Get them talking</itunes:title>
+   <itunes:episode>3</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Speaking is where English grows fastest and where most classrooms give the least time. Sentence frames by level, structured pair talk, wait time, and how to ask a question a level-one student can answer.</description>
+   <itunes:summary>Speaking is where English grows fastest and where most classrooms give the least time. Sentence frames by level, structured pair talk, wait time, and how to ask a question a level-one student can answer.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep3</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep3</guid>
+   <pubDate>Mon, 26 Oct 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-3.mp3" length="3125983" type="audio/mpeg"/>
+   <itunes:duration>312</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+  <item>
+   <title>4. Reading the textbook</title>
+   <itunes:title>Reading the textbook</itunes:title>
+   <itunes:episode>4</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>The textbook is not the enemy, but it is dense. Before, during and after a reading, the thirty-second preview, the one sentence to unpack, leveled versions of the same passage, and when to read aloud.</description>
+   <itunes:summary>The textbook is not the enemy, but it is dense. Before, during and after a reading, the thirty-second preview, the one sentence to unpack, leveled versions of the same passage, and when to read aloud.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep4</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep4</guid>
+   <pubDate>Mon, 02 Nov 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-4.mp3" length="3061208" type="audio/mpeg"/>
+   <itunes:duration>306</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+  <item>
+   <title>5. Writing that actually happens</title>
+   <itunes:title>Writing that actually happens</itunes:title>
+   <itunes:episode>5</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>From a labeled diagram to a lab conclusion. Why the blank page is the problem, word banks and frames, the two-minute quick write, feedback on one thing, and what a good level-two paragraph looks like.</description>
+   <itunes:summary>From a labeled diagram to a lab conclusion. Why the blank page is the problem, word banks and frames, the two-minute quick write, feedback on one thing, and what a good level-two paragraph looks like.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep5</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep5</guid>
+   <pubDate>Mon, 09 Nov 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-5.mp3" length="2925389" type="audio/mpeg"/>
+   <itunes:duration>292</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+  <item>
+   <title>6. Grade the biology, and get help</title>
+   <itunes:title>Grade the biology, and get help</itunes:title>
+   <itunes:episode>6</itunes:episode>
+   <itunes:episodeType>full</itunes:episodeType>
+   <description>Accommodations versus modifications, what to grade and what to let go, the state tests your students actually take, the Language Service Plan you&#x27;re supposed to have a copy of, and the five people who can make your year easier.</description>
+   <itunes:summary>Accommodations versus modifications, what to grade and what to let go, the state tests your students actually take, the Language Service Plan you&#x27;re supposed to have a copy of, and the five people who can make your year easier.</itunes:summary>
+   <link>https://radan55.github.io/everyteacher/podcast.html#ep6</link>
+   <guid isPermaLink="false">elpublishing-everyteacher-ep6</guid>
+   <pubDate>Mon, 16 Nov 2026 12:00:00 +0000</pubDate>
+   <enclosure url="https://radan55.github.io/everyteacher/podcast/ep-6.mp3" length="3233638" type="audio/mpeg"/>
+   <itunes:duration>323</itunes:duration>
+   <itunes:explicit>false</itunes:explicit>
+   <itunes:image href="https://radan55.github.io/everyteacher/podcast/cover-3000.jpg"/>
+  </item>
+ </channel>
+</rss>
