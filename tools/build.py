@@ -609,7 +609,10 @@ def insert_at(s, tag, payload, last):
 
 
 wired = 0
+NO_CHROME = {"commercial.html"}  # a full-screen stage; no bar, no theme toggle
 for page in sorted(ROOT.glob("*.html")):
+    if page.name in NO_CHROME:
+        continue
     s = page.read_text(encoding="utf-8")
     before = s
     if "elhub.theme" not in s:

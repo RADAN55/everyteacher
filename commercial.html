@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EL Publishing · the 60-second spot</title>
+<meta name="description" content="A sixty-second commercial for EL Publishing: sixty free resources for the teacher who got the student.">
+<style>
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces.woff2) format("woff2");font-weight:100 900;font-display:block}
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:block}
+  :root{--navy:#070914;--gold:#C9A227;--gold-lt:#EBD9A0;--ink:#fff;--mute:#AEB5DA}
+  html,body{margin:0;height:100%;background:#000;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+  body{position:relative}
+  /* The stage is always 1920×1080 and is scaled to fit whatever is showing it */
+  .stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;background:var(--navy);overflow:hidden;transform:translate(-50%,-50%);contain:strict}
+  .stage::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(1100px 700px at 18% 35%,rgba(30,39,97,.95),transparent 62%),
+    radial-gradient(900px 600px at 88% 85%,rgba(201,162,39,.16),transparent 60%)}
+  .beam{position:absolute;left:60%;top:-30%;width:6px;height:160%;background:linear-gradient(180deg,transparent,rgba(201,162,39,.38),transparent);filter:blur(18px);transform:rotate(14deg)}
+  .grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+
+  .s{position:absolute;inset:0;opacity:0;display:grid;place-items:center;padding:0 160px;box-sizing:border-box;text-align:center}
+  .eyebrow{font-size:22px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .h{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.04;margin:0;color:#fff;text-wrap:balance}
+  .h .w{display:inline-block;opacity:0;margin-right:.26em}
+  .h .w:last-child{margin-right:0}
+  .h em{font-style:italic;color:var(--gold-lt)}
+  .h1{font-size:112px;max-width:1500px}
+  .h2{font-size:92px;max-width:1500px}
+  .gold{color:var(--gold)}
+
+  /* logo */
+  .logo{display:grid;gap:26px;justify-items:center}
+  .mark{display:flex;align-items:center;gap:30px}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:78px}
+  .bars i{width:22px;background:var(--gold);border-radius:4px 4px 0 0;transform-origin:bottom;display:block}
+  .wordmark{font-family:Fraunces,Georgia,serif;font-size:150px;font-weight:700;letter-spacing:-.03em;line-height:1}
+  .rule{width:0;height:3px;background:var(--gold)}
+  .tag{font-family:Fraunces,Georgia,serif;font-size:50px;font-style:italic;color:#DFE2F2;max-width:30ch;line-height:1.25;opacity:0}
+
+  /* montage */
+  .m{position:absolute;inset:0;opacity:0;display:grid;grid-template-columns:600px 1fr;gap:70px;align-items:center;padding:0 110px;box-sizing:border-box}
+  .m.r{grid-template-columns:1fr 600px}
+  .m.r .cap{order:2;text-align:right}
+  .cap{text-align:left}
+  .cap .k{font-size:20px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 22px}
+  .cap h3{font-family:Fraunces,Georgia,serif;font-size:76px;font-weight:600;letter-spacing:-.025em;line-height:1;margin:0 0 26px}
+  .cap p{font-size:30px;line-height:1.4;color:#DFE2F2;margin:0;max-width:19em;font-weight:400}
+  .m.r .cap p{margin-left:auto}
+  .shot{position:relative;height:580px;border-radius:22px;overflow:hidden;background:#0d1024;
+    box-shadow:0 60px 120px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.1);perspective:1600px}
+  .shot img{position:absolute;left:0;top:0;width:100%;height:auto;display:block}
+  .shot .vig{position:absolute;inset:0;background:linear-gradient(180deg,transparent 72%,rgba(7,9,20,.7));pointer-events:none}
+  .shot .frame{position:absolute;inset:0;pointer-events:none}
+  .shot .frame i{position:absolute;width:38px;height:38px;border:3px solid var(--gold);filter:drop-shadow(0 0 8px rgba(201,162,39,.6))}
+  .shot .frame i:nth-child(1){left:18px;top:18px;border-right:0;border-bottom:0}.shot .frame i:nth-child(2){right:18px;top:18px;border-left:0;border-bottom:0}
+  .shot .frame i:nth-child(3){left:18px;bottom:18px;border-right:0;border-top:0}.shot .frame i:nth-child(4){right:18px;bottom:18px;border-left:0;border-top:0}
+  .n{position:absolute;right:46px;bottom:40px;font-family:Fraunces,Georgia,serif;font-size:28px;color:var(--mute);letter-spacing:.1em}
+
+  /* proof */
+  .zero{font-family:Fraunces,Georgia,serif;font-size:420px;font-weight:700;letter-spacing:-.06em;line-height:.9;color:var(--gold);text-shadow:0 0 90px rgba(201,162,39,.35)}
+  .nc{font-family:Fraunces,Georgia,serif;font-size:72px;font-weight:600;letter-spacing:-.02em;margin:0;transform:translateY(-130px)}
+  .nc span{opacity:0;display:inline-block;margin:0 .35em}
+  .stats{display:flex;gap:0;margin-top:70px;transform:translateY(-110px);border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+  .stats div{padding:34px 54px;border-right:1px solid rgba(255,255,255,.14);opacity:0}
+  .stats div:last-child{border-right:0}
+  .stats b{display:block;font-family:Fraunces,Georgia,serif;font-size:84px;font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1}
+  .stats small{display:block;margin-top:10px;font-size:20px;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+
+  /* maker */
+  .maker{display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:center;text-align:left;max-width:1500px}
+  .pic{position:relative;width:420px}
+  .pic::before{content:"";position:absolute;inset:22px -22px -22px 22px;border:2px solid var(--gold);border-radius:4px}
+  .pic img{position:relative;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.6)}
+  .maker h3{font-family:Fraunces,Georgia,serif;font-size:72px;font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:0 0 24px}
+  .maker p{font-size:32px;line-height:1.45;color:#DFE2F2;margin:0;max-width:24em}
+
+  /* end */
+  .end .h{font-size:84px}
+  .url{font-family:Fraunces,Georgia,serif;font-size:96px;font-weight:700;letter-spacing:-.02em;color:var(--gold);margin:34px 0 0;text-shadow:0 0 70px rgba(201,162,39,.35)}
+  .url small{display:block;font-family:Inter,system-ui,sans-serif;font-weight:500;font-size:28px;letter-spacing:.02em;color:#DFE2F2;margin-top:26px;text-shadow:none}
+  .black{position:absolute;inset:0;background:#000;opacity:0}
+
+  /* chrome around the stage for the live page (hidden while rendering) */
+  .ui{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55);z-index:5;transition:opacity .4s}
+  .ui[hidden]{display:none}
+  .ui button{font:700 22px/1 Inter,system-ui,sans-serif;background:var(--gold);color:#141A44;border:0;border-radius:999px;padding:22px 42px;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 14px 50px rgba(201,162,39,.4)}
+  .ui p{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#AEB5DA;font-size:14px;margin:0}
+  .ui p a{color:#fff}
+  .bar{position:fixed;left:0;bottom:0;height:4px;background:var(--gold);width:0;z-index:6}
+  @media(prefers-reduced-motion:reduce){.ui p::after{content:" Motion is reduced on this device; the spot still plays when you press play."}}
+</style>
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/commercial.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/commercial.html", "description": "A sixty-second commercial for EL Publishing: sixty free resources for the teacher who got the student.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/commercial.html">
+<meta property="og:title" content="EL Publishing · the 60-second spot">
+<meta property="og:description" content="A sixty-second commercial for EL Publishing: sixty free resources for the teacher who got the student.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/commercial.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="beam" id="beam"></div>
+  <div class="grain"></div>
+
+  <!-- 1 · the student -->
+  <section class="s" id="s1">
+    <div>
+      <p class="eyebrow" id="s1k">Tuesday · second period</p>
+      <h1 class="h h1" id="s1h">A student walks in who doesn't speak English <em>yet.</em></h1>
+    </div>
+  </section>
+
+  <!-- 2 · the load -->
+  <section class="s" id="s2">
+    <h1 class="h h1" id="s2h">You have twenty-seven other students, a pacing guide, and forty-one minutes.</h1>
+  </section>
+
+  <!-- 3 · nobody trained you -->
+  <section class="s" id="s3">
+    <div>
+      <h1 class="h h1" id="s3h">Nobody trained you for this.</h1>
+      <h1 class="h h1 gold" id="s3b" style="margin-top:24px;opacity:0">Until now.</h1>
+    </div>
+  </section>
+
+  <!-- 4 · logo -->
+  <section class="s" id="s4">
+    <div class="logo">
+      <div class="mark">
+        <div class="bars" id="bars"><i style="height:34%"></i><i style="height:58%"></i><i style="height:100%"></i></div>
+        <div class="wordmark" id="wm">EL Publishing</div>
+      </div>
+      <div class="rule" id="rule"></div>
+      <p class="tag" id="tag">Sixty free resources for the teacher who got the student.</p>
+    </div>
+  </section>
+
+  <!-- 5 · montage -->
+  <div class="m" id="m1">
+    <div class="cap"><p class="k">For EL teachers &amp; coordinators</p><h3>LSP Builder</h3><p>Enter four ELPA21 scores. It drafts a compliant Mississippi Language Service Plan — accommodations, goals, signatures, the lot.</p></div>
+    <div class="shot"><img src="video/lsp.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="m r" id="m2">
+    <div class="cap"><p class="k">For every content teacher</p><h3>Cognate Hunt</h3><p>Paste tomorrow's reading. The words your Spanish speakers already know light up — then print the wall.</p></div>
+    <div class="shot"><img src="video/cog.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="m" id="m3">
+    <div class="cap"><p class="k">By subject &amp; grade</p><h3>Find your square.</h3><p>Four subjects, four grade bands. Each square: what the language is asking, two moves that work, and the free resources that fit.</p></div>
+    <div class="shot"><img src="video/sub.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="m r" id="m4">
+    <div class="cap"><p class="k">Faculty PD</p><h3>Sheltered</h3><p>Twelve minutes as an English learner. A real lesson in a language you don't speak — twice, once with supports.</p></div>
+    <div class="shot"><img src="video/shel.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="m" id="m5">
+    <div class="cap"><p class="k">For students</p><h3>Storm Lens</h3><p>Point a camera at the room. The room becomes the word list — spoken, saved, practiced.</p></div>
+    <div class="shot"><img src="video/storm.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="m r" id="m6">
+    <div class="cap"><p class="k">For newcomers</p><h3>First 100 Words</h3><p>Day one, in the languages your newcomers bring. Tap a word, hear it, keep it.</p></div>
+    <div class="shot"><img src="video/first.jpg" alt=""><div class="vig"></div><div class="frame"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+
+  <!-- 6 · proof -->
+  <section class="s" id="s6">
+    <div>
+      <div class="zero" id="zero">$0</div>
+      <p class="nc" id="nc"><span>No login.</span><span>No trial.</span><span>No catch.</span></p>
+      <div class="stats" id="stats">
+        <div><b>60</b><small>resources</small></div>
+        <div><b>187</b><small>leveled readables</small></div>
+        <div><b>36</b><small>week curriculum</small></div>
+        <div><b>6</b><small>languages</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · maker -->
+  <section class="s" id="s7">
+    <div class="maker">
+      <div class="pic"><img src="img/richard-daniel-portrait.jpg" alt=""></div>
+      <div>
+        <h3>Built by a working EL specialist, not a company.</h3>
+        <p>Richard A. Daniel, M.Ed. — thirty-one years in Mississippi, Alabama and Georgia classrooms. Everything here was made for his own students first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · end -->
+  <section class="s end" id="s8">
+    <div>
+      <h1 class="h" id="e1">Every teacher gets that student.</h1>
+      <h1 class="h" id="e2" style="opacity:0;margin-top:14px">Now every teacher has <em>this.</em></h1>
+      <p class="url" id="url" style="opacity:0">radan55.github.io/everyteacher<small>Free. No login. Send it to the teacher down the hall.</small></p>
+    </div>
+  </section>
+
+  <div class="black" id="black"></div>
+</div>
+
+<div class="ui" id="ui">
+  <button type="button" id="play">▶&nbsp; Play the 60-second spot</button>
+  <p>Sound on. <a href="video/el-publishing-60.mp4" download>Download the MP4</a> · <a href="index.html">Back to the hub</a></p>
+</div>
+<div class="bar" id="bar"></div>
+<audio id="bed" src="video/el-publishing-60.mp3" preload="auto"></audio>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var T=60000, A=[];  // all animations, for seeking
+  var E='cubic-bezier(.2,.8,.2,1)';
+  function an(el,kf,o){var a=el.animate(kf,Object.assign({fill:'both',easing:E},o));a.pause();A.push(a);return a}
+  // visible from s to e (ms) with fades, plus an optional drift
+  function show(el,s,e,o){o=o||{};var i=o.in||600,x=o.out||500,d=e-s;
+    an(el,[{opacity:0,offset:0},{opacity:1,offset:i/d},{opacity:1,offset:1-x/d},{opacity:0,offset:1}],{delay:s,duration:d,easing:'linear'});
+    if(o.from)an(el,[{transform:o.from},{transform:'none'}],{delay:s,duration:i+300});
+  }
+  // word-by-word reveal
+  function words(el,s,gap,o){o=o||{};var html=el.innerHTML;
+    el.innerHTML=html.split(/(<em>.*?<\/em>)/).map(function(part){
+      if(/^<em>/.test(part))return '<span class="w">'+part+'</span>';
+      return part.trim().split(/\s+/).filter(Boolean).map(function(w){return '<span class="w">'+w+'</span>'}).join('');
+    }).join('');
+    Array.prototype.forEach.call(el.querySelectorAll('.w'),function(w,i){
+      an(w,[{opacity:0,transform:'translateY(.35em)',filter:'blur(6px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{delay:s+i*gap,duration:o.dur||520});
+    });
+    return s+el.querySelectorAll('.w').length*gap;
+  }
+
+  // ===== timeline (ms) =====
+  // 1 · the student · 0–5.2s
+  show($('#s1'),0,5200,{in:400,out:500});
+  show($('#s1k'),300,5200,{in:700,out:400,from:'translateY(10px)'});
+  words($('#s1h'),1100,210);
+  // 2 · the load · 5.2–9.8
+  show($('#s2'),5200,9800,{in:300,out:450});
+  words($('#s2h'),5500,190);
+  // 3 · nobody · 9.8–14.4
+  show($('#s3'),9800,14400,{in:300,out:400});
+  words($('#s3h'),10050,230);
+  show($('#s3b'),12300,14400,{in:500,out:400,from:'translateY(18px) scale(.98)'});
+  an($('#s3b'),[{letterSpacing:'.02em'},{letterSpacing:'-.02em'}],{delay:12300,duration:1800});
+  // 4 · logo · 14.4–20
+  show($('#s4'),14400,20000,{in:200,out:600});
+  Array.prototype.forEach.call(document.querySelectorAll('#bars i'),function(b,i){
+    an(b,[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{delay:14500+i*110,duration:700,easing:'cubic-bezier(.2,.9,.3,1.25)'});
+  });
+  an($('#wm'),[{opacity:0,transform:'translateX(-22px)',filter:'blur(8px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{delay:14800,duration:900});
+  an($('#rule'),[{width:'0px'},{width:'560px'}],{delay:15600,duration:900});
+  show($('#tag'),16300,20000,{in:800,out:500,from:'translateY(14px)'});
+  // 5 · montage · 20–41.6 (6 × 3.6s)
+  var M=['#m1','#m2','#m3','#m4','#m5','#m6'],D=3600,t0=20000;
+  M.forEach(function(id,i){var el=$(id),s=t0+i*D,e=s+D,cap=el.querySelector('.cap'),sh=el.querySelector('.shot'),img=el.querySelector('img');
+    var right=el.classList.contains('r');
+    show(el,s,e,{in:350,out:350});
+    an(cap,[{transform:'translateY(26px)'},{transform:'none'}],{delay:s,duration:900});
+    an(sh,[{transform:'perspective(1600px) rotateY('+(right?10:-10)+'deg) scale(.94)'},{transform:'perspective(1600px) rotateY('+(right?4:-4)+'deg) scale(1)'}],{delay:s,duration:D,easing:'linear'});
+    an(img,[{transform:'translateY(0)'},{transform:'translateY(-70px)'}],{delay:s,duration:D,easing:'linear'});
+    Array.prototype.forEach.call(cap.children,function(c,j){an(c,[{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{delay:s+150+j*140,duration:600})});
+  });
+  // 6 · proof · 41.6–48.6
+  show($('#s6'),41600,48600,{in:250,out:450});
+  an($('#zero'),[{opacity:0,transform:'scale(.6)',filter:'blur(14px)'},{opacity:1,transform:'scale(1)',filter:'blur(0)'}],{delay:41700,duration:900,easing:'cubic-bezier(.2,.9,.3,1.15)'});
+  an($('#zero'),[{transform:'scale(1)'},{transform:'scale(.42) translateY(-120px)'}],{delay:43300,duration:700});
+  Array.prototype.forEach.call(document.querySelectorAll('#nc span'),function(w,i){
+    an(w,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{delay:43700+i*330,duration:450});
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#stats div'),function(d,i){
+    an(d,[{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{delay:45200+i*220,duration:520});
+  });
+  // 7 · maker · 48.6–54
+  show($('#s7'),48600,54000,{in:400,out:450});
+  an($('.pic'),[{opacity:0,transform:'translateX(-30px)'},{opacity:1,transform:'none'}],{delay:48700,duration:900});
+  an($('.maker h3'),[{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{delay:49100,duration:700});
+  an($('.maker p'),[{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{delay:49500,duration:700});
+  // 8 · end · 54–60
+  show($('#s8'),54000,60000,{in:300,out:1});
+  words($('#e1'),54200,170);
+  show($('#e2'),55600,60000,{in:600,out:1,from:'translateY(14px)'});
+  show($('#url'),57000,60000,{in:700,out:1,from:'translateY(16px) scale(.98)'});
+  an($('#black'),[{opacity:0},{opacity:1}],{delay:59300,duration:700,easing:'linear'});
+  // ambient beam drifts the whole minute
+  an($('#beam'),[{transform:'rotate(14deg) translateX(0)'},{transform:'rotate(14deg) translateX(-160px)'}],{delay:0,duration:T,easing:'linear'});
+
+  // ===== control =====
+  function seek(t){A.forEach(function(a){a.currentTime=t})}
+  function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);$('#stage').style.transform='translate(-50%,-50%) scale('+s+')'}
+  fit();addEventListener('resize',fit);
+  window.__spot={seek:seek,duration:T,ready:document.fonts?document.fonts.ready:Promise.resolve()};
+  seek(0);
+  if(new URLSearchParams(location.search).has('render')){$('#ui').hidden=true;$('#bar').hidden=true;return}
+
+  var bed=$('#bed'),raf=0,start=0,playing=false;
+  function tick(){if(!playing)return;var t=Math.min(T,performance.now()-start);seek(t);$('#bar').style.width=(t/T*100)+'%';
+    if(t>=T){playing=false;$('#ui').hidden=false;$('#play').innerHTML='↻&nbsp; Play it again';return}
+    raf=requestAnimationFrame(tick)}
+  $('#play').addEventListener('click',function(){
+    $('#ui').hidden=true;seek(0);start=performance.now();playing=true;
+    try{bed.currentTime=0;bed.volume=.9;var p=bed.play();if(p&&p.catch)p.catch(function(){})}catch(e){}
+    raf=requestAnimationFrame(tick);
+  });
+  document.addEventListener('keydown',function(e){if(e.key===' '){e.preventDefault();if(!playing)$('#play').click()}});
+})();
+</script>
+</body>
+</html>
