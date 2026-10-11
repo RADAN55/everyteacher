@@ -34,6 +34,26 @@ ALL = "k2 g35 g68 g912"
 EPM = "e p m"
 
 ITEMS = [
+ # ── the video series (players at the top of the page) ────────────────
+ ("v1", "Six Moves 1 · Five Words First", "pd-library.html#v1", "EL Publishing · video", "Watch", 3, ALL, "e p", "input",
+  "Pick the five words the lesson falls apart without. Say them, show them, use them ten times.",
+  "Pick your five for tomorrow and write them on the board before the bell."),
+ ("v2", "Six Moves 2 · Frames in Four Lanes", "pd-library.html#v2", "EL Publishing · video", "Watch", 3, ALL, EPM, "talk",
+  "Post four sentence frames, one per level, and let every student join the same discussion.",
+  "One question, four frames, partner talk with say-it-back."),
+ ("v3", "Six Moves 3 · Unpack One Sentence", "pd-library.html#v3", "EL Publishing · video", "Watch", 3, "g35 g68 g912", "p m", "read",
+  "Take the textbook sentence that will stop your level threes and take it apart on the board.",
+  "Find the sentence in next week's reading. Who? Does what? To what? Using what?"),
+ ("v4", "Six Moves 4 · Word Bank, Frame, Model", "pd-library.html#v4", "EL Publishing · video", "Watch", 3, ALL, EPM, "write",
+  "Take the blank off the page: three things on it before anyone writes a word.",
+  "Add a word bank, a frame and a model to your next prompt."),
+ ("v5", "Six Moves 5 · Check Without Asking", "pd-library.html#v5", "EL Publishing · video", "Watch", 3, ALL, "e p", "input",
+  "Everyone says yes to “do you understand?” Ask them to show you instead.",
+  "Replace one “do you understand?” with “point to it.”"),
+ ("v6", "Six Moves 6 · Grade the Content", "pd-library.html#v6", "EL Publishing · video", "Watch", 3, ALL, EPM, "assess",
+  "Two rows on the rubric: grade the science fully, note the English, fix one thing.",
+  "Two rows on the next thing you grade."),
+
  # ── start here ─────────────────────────────────────────────────────────
  ("sheltered", "Sheltered: 12 Minutes as an English Learner", "sheltered.html", "EL Publishing", "Do", 25, ALL, EPM, "start",
   "Sit a real content lesson in a language you don't speak, twice. Faster than being told.",
@@ -215,7 +235,8 @@ ITEMS = [
 
 # Curated sequences. (title, who it is for, total minutes label, [item ids])
 PATHS = [
- ("Your first ninety minutes", "You have an English learner for the first time and no training.", ["sheltered", "pod1", "pod2", "bysubject", "frames", "accom"]),
+ ("Six moves in twenty minutes", "The video series, start to finish. Watch one a day for a week, or all six at a department meeting.", ["v1", "v2", "v3", "v4", "v5", "v6"]),
+ ("Your first ninety minutes", "You have an English learner for the first time and no training.", ["sheltered", "v1", "pod1", "v2", "bysubject", "frames", "accom"]),
  ("A six-week department PLC", "One podcast episode and one tool a week; discuss with the two questions under each transcript.", ["pod1", "pod2", "pod3", "pod4", "pod5", "pod6"]),
  ("A newcomer arrives Monday", "Level one, this week.", ["k5kit", "week1", "first100", "nguide", "stormlens", "cognate", "subpara"]),
  ("Elementary, K–5", "Routines, read-alouds, frames and the family.", ["pod1", "k5kit", "rrockets", "pz", "frames", "cando", "nguide"]),

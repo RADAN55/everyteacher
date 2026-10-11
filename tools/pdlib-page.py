@@ -59,6 +59,31 @@ def main():
         for t, who, ids in L.PATHS)
 
     meta = json.dumps({i[0]: {"t": i[1], "m": i[5]} for i in L.ITEMS})
+    vids = []
+    try:
+        import videos as VV
+        for v in VV.VIDEOS:
+            j = ROOT / "video" / f"moves-{v['n']}.json"
+            if not (ROOT / "video" / f"moves-{v['n']}.mp4").exists(): continue
+            tot = json.loads(j.read_text())["total"] if j.exists() else 0
+            vids.append((v["n"], v["title"], v["one"], tot))
+    except Exception as ex:
+        print("videos:", ex)
+    def vcard(n, title, one, tot):
+        return f'''<figure class="vid" id="v{n}">
+  <video controls preload="none" playsinline width="1280" height="720" poster="video/moves-{n}-poster.jpg" crossorigin="anonymous">
+    <source src="video/moves-{n}.mp4" type="video/mp4">
+    <track kind="captions" srclang="en" label="English" src="video/moves-{n}.vtt" default>
+    Your browser can't play this video. <a href="video/moves-{n}.mp4">Download it</a>.
+  </video>
+  <figcaption><b>{n} · {e(title)}</b> <span>{int(tot//60)}:{int(tot%60):02d}</span><p>{e(one)}</p><a class="dl" href="video/moves-{n}.mp4" download>Download MP4</a></figcaption>
+</figure>'''
+    videos_html = ("" if not vids else f'''
+  <section class="videos" id="videos">
+    <h2 class="sec">Watch: Six Moves</h2>
+    <p class="sub">One classroom move per video, under three minutes, captioned. The same guide as the podcast. Watch one at the start of a department meeting and try it that week.</p>
+    <div class="vgrid">{"".join(vcard(*v) for v in vids)}</div>
+  </section>''')
 
     page = f'''<!DOCTYPE html>
 <html lang="en">
@@ -131,6 +156,15 @@ def main():
   .act{{font:inherit;font-size:13.5px;font-weight:700;border:0;background:var(--gold);color:var(--navy-dk);padding:8px 14px;border-radius:999px;cursor:pointer}}
   .act.q{{background:var(--paper);border:1px solid var(--rule);color:var(--navy)}}
   .note{{font-size:13px;color:var(--muted);margin:0}}
+  .videos{{margin:0 0 30px}}
+  .vgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}}
+  .vid{{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:12px;overflow:hidden}}
+  .vid video{{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#1E2761}}
+  .vid figcaption{{padding:12px 16px 14px;font-size:14px}}
+  .vid figcaption b{{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);display:block}}
+  .vid figcaption span{{color:var(--muted);font-size:12.5px}}
+  .vid figcaption p{{margin:4px 0 8px;color:var(--ink)}}
+  .vid .dl{{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1px solid var(--rule);padding:4px 10px;border-radius:999px}}
   footer{{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}}
   footer .wrap{{max-width:1100px;margin:0 auto;padding:0 22px}}
   footer b{{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}}
@@ -165,6 +199,7 @@ def main():
     <p class="note">The log is a record for you and your district's PD documentation; whether it earns credit is your district's call.</p>
   </div>
 
+{videos_html}
   <h2 class="sec">Guided paths</h2>
   <p class="sub">Don't know where to start? Pick the sentence that sounds like you. Each path is in order.</p>
   <div class="paths">{paths}</div>

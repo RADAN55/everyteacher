@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Six Moves · render stage</title>
+<style>
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces.woff2) format("woff2");font-weight:100 900;font-display:block}
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:block}
+  html,body{margin:0;background:#000;overflow:hidden}
+  .stage{position:relative;width:1280px;height:720px;background:#1E2761;overflow:hidden;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;contain:strict}
+  .stage::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 26px)}
+  .stage::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 600px at 15% 20%,rgba(255,255,255,.05),transparent 60%),radial-gradient(700px 500px at 90% 90%,rgba(7,9,20,.45),transparent 70%);pointer-events:none}
+  .chrome{position:absolute;left:56px;top:34px;display:flex;align-items:center;gap:14px;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:#C9A227;font-weight:700;z-index:2}
+  .bars{display:flex;align-items:flex-end;gap:3px;height:20px}.bars i{width:6px;background:#C9A227;border-radius:2px 2px 0 0;display:block}
+  .chrome span{color:#AEB5DA;letter-spacing:.2em;font-weight:500}
+  .prog{position:absolute;left:0;bottom:0;height:5px;background:#C9A227;width:0;z-index:3}
+  .card{position:absolute;left:56px;right:56px;top:96px;bottom:150px;opacity:0;display:grid;align-content:start;z-index:1}
+  /* title */
+  .t .k{font-size:20px;letter-spacing:.36em;text-transform:uppercase;color:#C9A227;font-weight:700}
+  .t h1{font-family:Fraunces,Georgia,serif;font-size:96px;font-weight:700;letter-spacing:-.025em;line-height:1;margin:18px 0 0;max-width:12ch}
+  .t p{font-size:24px;color:#C9CEEA;margin:26px 0 0;max-width:46ch;line-height:1.35}
+  /* board */
+  .b{background:#fff;color:#1F2340;border-radius:14px;padding:28px 36px;box-shadow:0 30px 70px rgba(0,0,0,.45);align-self:start;min-height:220px;display:grid;align-content:start;gap:0}
+  .b h2{font-family:Fraunces,Georgia,serif;font-size:30px;color:#1E2761;margin:0 0 14px;padding-bottom:10px;border-bottom:3px solid #C9A227;display:inline-block;justify-self:start}
+  .b .ln{font-size:30px;line-height:1.3;padding:8px 0;opacity:0;display:flex;gap:14px;align-items:baseline}
+  .b .ln::before{content:"";width:10px;height:10px;border-radius:50%;background:#C9A227;flex:none;position:relative;top:-4px}
+  .b.quote .ln{font-family:Fraunces,Georgia,serif;font-size:34px;line-height:1.3;font-style:italic;color:#1E2761}
+  .b.quote .ln::before{display:none}
+  .b.big .ln{font-size:40px;font-weight:600}
+  /* frame */
+  .f{background:#fff;color:#1F2340;border-radius:14px;padding:40px 44px;box-shadow:0 30px 70px rgba(0,0,0,.45);align-self:center;justify-self:center;max-width:1000px}
+  .f .s{font-family:Fraunces,Georgia,serif;font-size:60px;line-height:1.2;color:#1E2761}
+  .f u{text-decoration:none;border-bottom:4px solid #C9A227;color:#7A5F0E;display:inline-block;min-width:4ch;position:relative}
+  .f u b{position:absolute;left:0;top:0;opacity:0;font-weight:600;white-space:nowrap}
+  .f u i{font-style:normal;opacity:1}
+  /* split */
+  .sp{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-self:stretch}
+  .sp>div{background:#fff;color:#1F2340;border-radius:14px;padding:24px 30px;box-shadow:0 30px 70px rgba(0,0,0,.45);display:grid;align-content:start}
+  .sp h2{font-family:Fraunces,Georgia,serif;font-size:26px;color:#1E2761;margin:0 0 10px;padding-bottom:8px;border-bottom:3px solid #C9A227;justify-self:start}
+  .sp>div:first-child h2{border-color:#B6BCD8}
+  .sp .ln{font-size:25px;line-height:1.3;padding:7px 0;opacity:0;display:flex;gap:12px;align-items:baseline}
+  .sp .ln::before{content:"";width:8px;height:8px;border-radius:50%;background:#C9A227;flex:none;position:relative;top:-3px}
+  .sp>div:first-child .ln::before{background:#B6BCD8}
+  .sp .ln.empty::before{display:none}
+  .sp .ln.empty{min-height:1.3em;color:#9aa0bd;font-style:italic}
+  /* end */
+  .e h1{font-family:Fraunces,Georgia,serif;font-size:72px;font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;max-width:16ch}
+  .e p{font-family:Fraunces,Georgia,serif;font-size:40px;color:#C9A227;margin:34px 0 0;font-weight:700}
+  .e small{display:block;font-family:Inter,system-ui,sans-serif;font-size:20px;color:#C9CEEA;margin-top:14px;font-weight:500}
+  /* captions */
+  .cap{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:center;z-index:2}
+  .cap div{position:absolute;bottom:0;background:rgba(7,9,20,.78);color:#fff;font-size:25px;line-height:1.35;padding:10px 18px;border-radius:8px;max-width:1100px;text-align:center;opacity:0}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="chrome"><div class="bars"><i style="height:35%"></i><i style="height:60%"></i><i style="height:100%"></i></div>EL Publishing <span id="crumb"></span></div>
+  <div id="cards"></div>
+  <div class="cap" id="cap"></div>
+  <div class="prog" id="prog"></div>
+</div>
+<script>
+(async function(){
+  var q=new URLSearchParams(location.search),n=q.get('v')||'1';
+  var D=await (await fetch('video/moves-'+n+'.json')).json();
+  var T=D.total*1000,A=[],E='cubic-bezier(.2,.8,.2,1)';
+  function an(el,kf,o){var a=el.animate(kf,Object.assign({fill:'both',easing:E},o));a.pause();A.push(a);return a}
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  document.getElementById('crumb').textContent='· Six Moves · '+n+' of 6';
+  var cards=document.getElementById('cards'),cur=null,curLines=null;
+  var B=D.beats;
+  function endOf(i){return (i+1<B.length?B[i+1].t:D.total)*1000}
+  function newCard(cls,i){ // hide the previous card at this beat's start
+    var t=B[i].t*1000;
+    if(cur){cur.anim.effect.updateTiming({duration:Math.max(1,t-cur.t0)});} // close previous
+    var el=document.createElement('div');el.className='card '+cls;cards.appendChild(el);
+    var a=an(el,[{opacity:0,transform:'translateY(14px)',offset:0},{opacity:1,transform:'none',offset:.04},{opacity:1,transform:'none',offset:.97},{opacity:0,transform:'translateY(-10px)',offset:1}],{delay:t,duration:T-t,easing:'linear'});
+    cur={el:el,anim:a,t0:t};return el}
+  function reveal(el,t,dur){an(el,[{opacity:0,transform:'translateX(-12px)'},{opacity:1,transform:'none'}],{delay:t,duration:dur||420})}
+  B.forEach(function(b,i){
+    var t=b.t*1000,dur=endOf(i)-t,k=b.type;
+    if(k==='title'){var el=newCard('t',i);el.innerHTML='<div class="k">'+esc(b.a[0])+'</div><h1>'+esc(b.a[1])+'</h1><p>'+esc(D.tag)+'</p>';
+      ['.k','h1','p'].forEach(function(s,j){reveal(el.querySelector(s),t+200+j*350,600)})}
+    else if(k==='board'){var lines=b.a[1],el=newCard('b'+(lines.length===1&&lines[0].length>60?' quote':'')+(lines.length&&lines.length<=5&&lines.every(function(x){return x.length<26})?' big':''),i);
+      el.innerHTML='<h2>'+esc(b.a[0])+'</h2>'+lines.map(function(l){return '<div class="ln">'+esc(l)+'</div>'}).join('');
+      reveal(el.querySelector('h2'),t+100,400);
+      var ls=el.querySelectorAll('.ln'),st=lines.length?Math.min(900,(dur*.72)/lines.length):0;
+      ls.forEach(function(l,j){reveal(l,t+500+j*st)});curLines=el}
+    else if(k==='add'){var l=document.createElement('div');l.className='ln';l.textContent=b.a[0];(curLines||cur.el).appendChild(l);reveal(l,t+120)}
+    else if(k==='frame'){var el=newCard('f',i),parts=b.a[0].split('___');
+      el.innerHTML='<div class="s">'+esc(parts[0])+'<u><i>&nbsp;</i><b>'+esc(b.a[1])+'</b></u>'+esc(parts[1]||'')+'</div>';
+      reveal(el.querySelector('.s'),t+150,500);var u=el.querySelector('u'),bb=u.querySelector('b');
+      var ft=t+Math.min(1600,dur*.45);
+      an(u,[{minWidth:'4ch'},{minWidth:(b.a[1].length*0.62+0.6)+'ch'}],{delay:ft-200,duration:400});
+      an(bb,[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{delay:ft,duration:450})}
+    else if(k==='split'){var el=newCard('sp',i);
+      el.innerHTML='<div><h2>'+esc(b.a[0])+'</h2>'+b.a[1].map(function(l){return '<div class="ln'+(l?'':' empty')+'">'+(esc(l)||'&nbsp;')+'</div>'}).join('')+'</div><div><h2>'+esc(b.a[2])+'</h2>'+b.a[3].map(function(l){return '<div class="ln'+(l?'':' empty')+'">'+(esc(l)||'&nbsp;')+'</div>'}).join('')+'</div>';
+      var L=el.querySelectorAll('div:first-child .ln'),R=el.querySelectorAll('div:last-child .ln');
+      el.querySelectorAll('h2').forEach(function(h,j){reveal(h,t+100+j*(dur*.45),400)});
+      L.forEach(function(l,j){reveal(l,t+400+j*Math.min(800,(dur*.4)/Math.max(1,L.length)))});
+      R.forEach(function(l,j){reveal(l,t+dur*.48+j*Math.min(800,(dur*.4)/Math.max(1,R.length)))})}
+    else if(k==='end'){var el=newCard('e',i);el.innerHTML='<h1>'+esc(b.a[0])+'</h1><p>radan55.github.io/everyteacher<small>Six Moves · the PD Library · free, no login</small></p>';
+      reveal(el.querySelector('h1'),t+150,600);reveal(el.querySelector('p'),t+900,700)}
+    // captions: chunks spread over the narration length
+    var chunks=b.chunks||[],cap=document.getElementById('cap');
+    chunks.forEach(function(c){var d=document.createElement('div');d.textContent=c.text;cap.appendChild(d);
+      var s=c.t*1000,e2=c.e*1000;an(d,[{opacity:0,offset:0},{opacity:1,offset:Math.min(.3,120/(e2-s))},{opacity:1,offset:1-Math.min(.3,120/(e2-s))},{opacity:0,offset:1}],{delay:s,duration:Math.max(1,e2-s),easing:'linear'})});
+  });
+  if(cur)cur.anim.effect.updateTiming({duration:Math.max(1,T-cur.t0)});
+  an(document.getElementById('prog'),[{width:'0px'},{width:'1280px'}],{delay:0,duration:T,easing:'linear'});
+  function seek(t){A.forEach(function(a){a.currentTime=t})}
+  window.__spot={seek:seek,duration:T,ready:document.fonts?document.fonts.ready:Promise.resolve()};
+  seek(0);
+  if(!q.has('render')){var s=performance.now();(function tick(){var t=Math.min(T,performance.now()-s);seek(t);if(t<T)requestAnimationFrame(tick)})()}
+})();
+</script>
+</body>
+</html>
