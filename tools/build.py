@@ -137,6 +137,7 @@ def now_showing():
         <p class="prem-kind" id="prem-kind">{e(h["fmt"])} · {e(h["size"])}</p>
         <p class="prem-p" id="prem-p">{e(h["one"])}</p>
         <div class="prem-cta"><a class="go" id="prem-go" href="{e(h["href"])}"{ext_attr(h["href"])}>▶ &nbsp;Open {e(verb)}</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
+        <div class="prem-dots" id="prem-dots" role="tablist" aria-label="New releases" hidden></div>
       </div>
       <a class="prem-shot" id="prem-shot" href="{e(h["href"])}"{ext_attr(h["href"])} aria-label="Open the featured resource">{shot}<i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
     </div>

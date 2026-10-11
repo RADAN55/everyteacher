@@ -148,6 +148,20 @@
   .prem-rail b{display:block;font-family:Fraunces,Georgia,serif;font-size:16px;line-height:1.2;font-weight:600}
   .prem-rail small{display:block;color:#9aa0bd;font-size:12px;margin-top:3px}
   .prem-rail .nb{position:absolute;top:-8px;left:12px;background:var(--gold);color:var(--ink-blue-8);font-size:10px;font-weight:800;letter-spacing:.14em;padding:2px 8px;border-radius:6px}
+  .prem-dots{display:flex;gap:8px;margin-top:18px;align-items:center}
+  .prem-dots button{width:26px;height:4px;border-radius:2px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+  .prem-dots button::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left}
+  .prem-dots button[aria-current="true"]{background:rgba(255,255,255,.3)}
+  .prem-dots button[aria-current="true"]::after{animation:pfill var(--pdur,7s) linear forwards}
+  .premiere.paused .prem-dots button::after{animation-play-state:paused}
+  .prem-dots button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .prem-dots .pn{font-size:11px;color:#9aa0bd;letter-spacing:.15em;margin-left:6px}
+  @keyframes pfill{to{transform:scaleX(1)}}
+  .prem-shot img{transition:opacity .45s}
+  .prem-shot.fade img{opacity:0}
+  .prem-t,.prem-kind,.prem-p{transition:opacity .35s}
+  .premiere.swapping .prem-t,.premiere.swapping .prem-kind,.premiere.swapping .prem-p{opacity:0}
+  @media(prefers-reduced-motion:reduce){.prem-dots button[aria-current="true"]::after{animation:none;transform:scaleX(1)}}
   @media(max-width:760px){.prem-grid{grid-template-columns:1fr}.prem-shot{order:-1}}
 
   /* ===== find it ===== */
@@ -435,6 +449,7 @@
         <p class="prem-kind" id="prem-kind">Tool · 373 pairs</p>
         <p class="prem-p" id="prem-p">Paste any reading; the words your Spanish speakers already know light up.</p>
         <div class="prem-cta"><a class="go" id="prem-go" href="cognate-hunt.html">▶ &nbsp;Open Cognate Hunt</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
+        <div class="prem-dots" id="prem-dots" role="tablist" aria-label="New releases" hidden></div>
       </div>
       <a class="prem-shot" id="prem-shot" href="cognate-hunt.html" aria-label="Open the featured resource"><img id="prem-img" src="thumbs/cognate-hunt.jpg" alt=""><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
     </div>
@@ -755,32 +770,72 @@ window.HUB_CATALOG=[{"u": "newcomer-guide.html", "t": "Your Guide to School in t
   function esc(x){return String(x).replace(/[&<>"]/g,function(c){
     return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function T(id,v){var el=document.getElementById(id);if(el)el.textContent=v}
-  var h=C[0],k=0,tEl=document.getElementById('prem-title');
-  if(tEl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    tEl.innerHTML=h.t.split(' ').map(function(w){
+  var tEl=document.getElementById('prem-title'),dots=document.getElementById('prem-dots');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR=7000,cur=0,timer=null,paused=false,first=true;
+  C=C.slice(0,6);
+  function letters(t){var k=0;
+    tEl.innerHTML=t.split(' ').map(function(w){
       return '<span class="wd">'+w.split('').map(function(c){
         return '<span class="ch" style="animation-delay:'+((k++)*28)+'ms">'+esc(c)+'</span>'
-      }).join('')+'</span>'}).join(' ');
-  } else if(tEl){tEl.textContent=h.t}
-  T('prem-kind',h.f);T('prem-p',h.o);T('prem-date','· released '+fmt(h.d));
-  var go=document.getElementById('prem-go');
-  if(go){go.href=h.u;go.innerHTML='▶ &nbsp;Open '+esc(h.t.split(':')[0]);
-    if(/^https?:/.test(h.u)){go.target='_blank';go.rel='noopener'}}
-  var shot=document.getElementById('prem-shot');if(shot)shot.href=h.u;
-  var img=document.getElementById('prem-img');
-  if(img){if(h.th)img.src=h.th; else img.remove()}
-  var rail=document.getElementById('prem-rail'),rr=document.getElementById('prem-rr');
-  var rest=C.slice(1,4);
-  if(rail&&rr){
-    if(!rest.length){rail.hidden=true}
-    else{rail.hidden=false;
-      rr.innerHTML=rest.map(function(r){
-        return '<a href="'+esc(r.u)+'"'+(/^https?:/.test(r.u)?' target="_blank" rel="noopener"':'')+
-        '><span class="nb">NEW · '+fmt(r.d)+'</span>'+
-        (r.th?'<img src="'+esc(r.th)+'" alt="">':'<span class="ph">✦</span>')+
-        '<span><b>'+esc(r.t)+'</b><small>'+esc(r.f)+'</small></span></a>'}).join('');
+      }).join('')+'</span>'}).join(' ');}
+  function fill(i){
+    var h=C[i];
+    if(tEl){if(reduce)tEl.textContent=h.t;else letters(h.t)}
+    T('prem-kind',h.f);T('prem-p',h.o);T('prem-date','· released '+fmt(h.d));
+    var go=document.getElementById('prem-go');
+    if(go){go.href=h.u;go.innerHTML='▶ &nbsp;Open '+esc(h.t.split(':')[0]);
+      if(/^https?:/.test(h.u)){go.target='_blank';go.rel='noopener'}else{go.removeAttribute('target');go.removeAttribute('rel')}}
+    var shot=document.getElementById('prem-shot');if(shot)shot.href=h.u;
+    var img=document.getElementById('prem-img');
+    if(img){if(h.th){img.src=h.th;img.hidden=false}else img.hidden=true}
+    var rail=document.getElementById('prem-rail'),rr=document.getElementById('prem-rr');
+    var rest=C.filter(function(r,j){return j!==i}).slice(0,3);
+    if(rail&&rr){
+      if(!rest.length){rail.hidden=true}
+      else{rail.hidden=false;
+        rr.innerHTML=rest.map(function(r){
+          return '<a href="'+esc(r.u)+'"'+(/^https?:/.test(r.u)?' target="_blank" rel="noopener"':'')+
+          '><span class="nb">NEW · '+fmt(r.d)+'</span>'+
+          (r.th?'<img src="'+esc(r.th)+'" alt="">':'<span class="ph">✦</span>')+
+          '<span><b>'+esc(r.t)+'</b><small>'+esc(r.f)+'</small></span></a>'}).join('');
+      }
     }
+    if(dots){Array.prototype.forEach.call(dots.querySelectorAll('button'),function(b,j){
+      b.setAttribute('aria-current',j===i?'true':'false');b.tabIndex=j===i?0:-1});
+      var pn=dots.querySelector('.pn');if(pn)pn.textContent=(i+1)+' / '+C.length}
   }
+  function show(i,user){
+    i=(i+C.length)%C.length;
+    if(first){first=false;cur=i;fill(i);return}
+    var shot=document.getElementById('prem-shot');
+    sec.classList.add('swapping');if(shot)shot.classList.add('fade');
+    setTimeout(function(){cur=i;fill(i);
+      sec.classList.remove('swapping');if(shot)shot.classList.remove('fade')},reduce?0:380);
+  }
+  function arm(){clearInterval(timer);if(C.length<2||reduce)return;
+    timer=setInterval(function(){if(!paused&&!document.hidden)show(cur+1)},DUR)}
+  if(dots&&C.length>1){
+    dots.hidden=false;dots.style.setProperty('--pdur',DUR+'ms');
+    dots.innerHTML=C.map(function(r,j){return '<button type="button" role="tab" aria-label="'+esc(r.t)+'"></button>'}).join('')+'<span class="pn" aria-hidden="true"></span>';
+    dots.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;
+      var j=Array.prototype.indexOf.call(dots.querySelectorAll('button'),b);show(j,true);arm()});
+    dots.addEventListener('keydown',function(ev){
+      if(ev.key==='ArrowRight'||ev.key==='ArrowLeft'){ev.preventDefault();
+        show(cur+(ev.key==='ArrowRight'?1:-1),true);arm();
+        var b=dots.querySelectorAll('button')[cur];if(b)b.focus()}});
+    if(window.matchMedia('(hover:hover)').matches){
+      sec.addEventListener('mouseenter',function(){paused=true;sec.classList.add('paused')});
+      sec.addEventListener('mouseleave',function(){paused=false;sec.classList.remove('paused')});}
+    sec.addEventListener('focusin',function(){paused=true;sec.classList.add('paused')});
+    sec.addEventListener('focusout',function(){paused=false;sec.classList.remove('paused')});
+    /* swipe on phones */
+    var x0=null;
+    sec.addEventListener('touchstart',function(ev){x0=ev.touches[0].clientX},{passive:true});
+    sec.addEventListener('touchend',function(ev){if(x0===null)return;var dx=ev.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>50){show(cur+(dx<0?1:-1),true);arm()}},{passive:true});
+  }
+  show(0);arm();
 }catch(e){}})();
 </script>
 <script>
