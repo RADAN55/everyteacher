@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The PD Library · English learners for content teachers, K–12 · EL Publishing</title>
+<meta name="description" content="A professional-learning library for the biology, algebra and history teacher with English learners: 54 pieces of PD on eight shelves, filterable by grade band K–12 and language level (Emerging, Progressing, Proficient), each under 60 minutes with a thing to do in your own classroom afterward. Seven guided paths, a done-list and a printable PD log.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--gold-ink:#7A5F0E;--paper:#fff;--mist:#F4F5FA;--ink:#1F2340;--muted:#5B6078;--rule:#E3E5EF;--wash:#F7F1DC;--teal:#17606F;--teal-lt:#E3F1F4;--ok:#2E7D4F;--ok-lt:#E6F3EA}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1100px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,50px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16.5px;color:#C9CEEA;max-width:66ch}
+  .tag b{color:#fff;font-weight:600}
+  .stats{display:flex;gap:26px;flex-wrap:wrap;margin:20px 0 0}
+  .stats div{font-size:13px;color:#AEB5DA} .stats b{display:block;font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--gold);line-height:1}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1100px;margin:0 auto;padding:10px 22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .srch{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:999px;padding:6px 12px;flex:1 1 220px}
+  .srch input{border:0;font:inherit;font-size:14px;outline:none;flex:1;min-width:0;background:transparent;color:inherit}
+  .grp{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+  .grp span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+  .grp button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:5px 11px;border-radius:999px;cursor:pointer}
+  .grp button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .grp.lv button[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  .cnt{font-size:13px;color:var(--muted);margin-left:auto}
+  main{max-width:1100px;margin:0 auto;padding:22px 22px 40px}
+  .paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:0 0 30px}
+  .path{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:14px 18px}
+  .path h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:0 0 4px}
+  .path p{font-size:14px;color:var(--muted);margin:0 0 8px} .path p b{color:var(--gold-ink)}
+  .path ol{margin:0;padding-left:20px;font-size:14px} .path li{margin:2px 0} .path small{color:var(--muted)}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 14px;font-size:15px}
+  .shelf{margin:0 0 30px}
+  .shelf h2{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);margin:0;padding-top:10px;border-top:3px solid var(--gold);display:inline-block}
+  .shelf .sd{font-size:15px;color:var(--muted);margin:4px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .it{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:14px 16px 12px;display:flex;flex-direction:column;gap:4px}
+  .it.isdone{background:var(--ok-lt);border-color:#BFE0CA}
+  .it .top{display:flex;align-items:center;gap:8px;font-size:12px}
+  .kind{font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:5px;background:var(--mist);color:var(--navy)}
+  .k-Listen{background:var(--wash);color:var(--gold-ink)} .k-Do{background:var(--teal-lt);color:var(--teal)} .k-Watch{background:#EEE9FA;color:#5B3FA8} .k-Print{background:var(--mist)} .k-Plan{background:#FCEBE4;color:#9A4C2E}
+  .min{color:var(--muted)}
+  .done{margin-left:auto;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:4px} .done input{accent-color:var(--ok)}
+  .it h3{font-family:Fraunces,Georgia,serif;font-size:18px;line-height:1.2;margin:4px 0 0}
+  .it h3 a{text-decoration:none} .it h3 a:hover{text-decoration:underline}
+  .src{font-size:12.5px;color:var(--muted);margin:0}
+  .why{font-size:14.5px;margin:4px 0 0}
+  .then{font-size:13.5px;margin:4px 0 0;padding:8px 10px;background:var(--mist);border-radius:6px;border-left:3px solid var(--gold)}
+  .then b{color:var(--gold-ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px}
+  .tags{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+  .tags i{font-style:normal;font-size:11.5px;padding:1px 7px;border-radius:999px;border:1px solid var(--rule);color:var(--muted)}
+  .tags .sep{width:6px}
+  .tags .lve{border-color:#E3C66A;color:var(--gold-ink)} .tags .lvp{border-color:#9FC4CC;color:var(--teal)} .tags .lvm{border-color:#BFE0CA;color:var(--ok)}
+  .hide{display:none!important}
+  .log{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:16px 20px;margin:0 0 30px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .log b{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy)}
+  .log .n{font-size:14px;color:var(--muted)}
+  .act{font:inherit;font-size:13.5px;font-weight:700;border:0;background:var(--gold);color:var(--navy-dk);padding:8px 14px;border-radius:999px;cursor:pointer}
+  .act.q{background:var(--paper);border:1px solid var(--rule);color:var(--navy)}
+  .note{font-size:13px;color:var(--muted);margin:0}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  #printlog{display:none}
+  @media(max-width:760px){.cnt{margin-left:0;flex-basis:100%}}
+  @media print{header,.bar,main>*:not(#printlog),footer{display:none!important}body{background:#fff}#printlog{display:block;font-size:12.5pt}#printlog h1{font-size:22pt;color:#000}#printlog table{width:100%;border-collapse:collapse;margin-top:12px}#printlog th,#printlog td{border-bottom:1px solid #999;text-align:left;padding:6px 4px;vertical-align:top}#printlog .sig{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:30px}#printlog .sig div{border-top:1px solid #000;padding-top:4px;font-size:10.5pt}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/pd-library.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The PD Library", "url": "https://radan55.github.io/everyteacher/pd-library.html", "description": "A professional-learning library for the biology, algebra and history teacher with English learners: 54 pieces of PD on eight shelves, filterable by grade band K–12 and language level (Emerging, Progressing, Proficient), each under 60 minutes with a thing to do in your own classroom afterward. Seven guided paths, a done-list and a printable PD log.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "PD library"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/pd-library.html">
+<meta property="og:title" content="The PD Library · English learners for content teachers, K–12 · EL Publishing">
+<meta property="og:description" content="A professional-learning library for the biology, algebra and history teacher with English learners: 54 pieces of PD on eight shelves, filterable by grade band K–12 and language level (Emerging, Progressing, Proficient), each under 60 minutes with a thing to do in your own classroom afterward. Seven guided paths, a done-list and a printable PD log.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/pd-library.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EVERY CONTENT TEACHER · PD LIBRARY · K–12</p>
+    <h1>The PD <em>library.</em></h1>
+    <p class="tag">Professional learning for the teacher who teaches <b>content, not English</b> and has English learners in the room. Eight shelves, every grade band, every language level, nothing over an hour — and every piece ends with <b>the thing to do in your own classroom</b>, because that is the PD. Tick what you finish; print the log for your district's records.</p>
+    <div class="stats"><div><b>54</b>pieces of PD</div><div><b>8</b>shelves</div><div><b>7</b>guided paths</div><div><b>11h</b>in all, 16 from outside EL Publishing</div><div><b>$0</b>no login, nothing to join</div></div>
+  </div>
+</header>
+<nav class="bar" aria-label="Filter the library"><div class="bar-in">
+  <label class="srch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Search the library… (frames, newcomer, grading)" aria-label="Search the library"></label>
+  <div class="grp" id="gr"><span>Grade</span><button type="button" data-g="k2" aria-pressed="true">K–2</button><button type="button" data-g="g35" aria-pressed="true">3–5</button><button type="button" data-g="g68" aria-pressed="true">6–8</button><button type="button" data-g="g912" aria-pressed="true">9–12</button></div>
+  <div class="grp lv" id="lv"><span>Level</span><button type="button" data-l="e" aria-pressed="true">Emerging</button><button type="button" data-l="p" aria-pressed="true">Progressing</button><button type="button" data-l="m" aria-pressed="true">Proficient / monitored</button></div>
+  <div class="grp" id="kd"><span>Kind</span><button type="button" data-k="Watch" aria-pressed="true">Watch</button><button type="button" data-k="Listen" aria-pressed="true">Listen</button><button type="button" data-k="Do" aria-pressed="true">Do</button><button type="button" data-k="Read" aria-pressed="true">Read</button><button type="button" data-k="Print" aria-pressed="true">Print</button><button type="button" data-k="Plan" aria-pressed="true">Plan</button></div>
+  <div class="grp" id="tm"><span>Time</span><button type="button" data-m="15" aria-pressed="false">≤ 15 min</button><button type="button" data-hide-done="1" aria-pressed="false">Hide done</button></div>
+  <p class="cnt" id="cnt"></p>
+</div></nav>
+<main>
+  <div class="log" id="log">
+    <div><b><span id="done-n">0</span> done · <span id="done-m">0</span> min</b><div class="n">Your done-list lives in this browser only. Nothing is sent anywhere.</div></div>
+    <button type="button" class="act" id="printbtn">🖨 Print my PD log</button>
+    <button type="button" class="act q" id="clearbtn">Clear</button>
+    <p class="note">The log is a record for you and your district's PD documentation; whether it earns credit is your district's call.</p>
+  </div>
+
+  <h2 class="sec">Guided paths</h2>
+  <p class="sub">Don't know where to start? Pick the sentence that sounds like you. Each path is in order.</p>
+  <div class="paths"><article class="path"><h3>Your first ninety minutes</h3><p>You have an English learner for the first time and no training. <b>67 min.</b></p><ol><li><a href="#it-sheltered" data-jump="sheltered">Sheltered: 12 Minutes as an English Learner</a> <small>25 min</small></li><li><a href="#it-pod1" data-jump="pod1">Podcast 1 · Who is in your room</a> <small>6 min</small></li><li><a href="#it-pod2" data-jump="pod2">Podcast 2 · Make it understandable, not easier</a> <small>6 min</small></li><li><a href="#it-bysubject" data-jump="bysubject">By Subject &amp; Grade</a> <small>10 min</small></li><li><a href="#it-frames" data-jump="frames">Sentence-Frame Bank</a> <small>10 min</small></li><li><a href="#it-accom" data-jump="accom">EL Accommodations Quick Cards</a> <small>10 min</small></li></ol></article><article class="path"><h3>A six-week department PLC</h3><p>One podcast episode and one tool a week; discuss with the two questions under each transcript. <b>36 min.</b></p><ol><li><a href="#it-pod1" data-jump="pod1">Podcast 1 · Who is in your room</a> <small>6 min</small></li><li><a href="#it-pod2" data-jump="pod2">Podcast 2 · Make it understandable, not easier</a> <small>6 min</small></li><li><a href="#it-pod3" data-jump="pod3">Podcast 3 · Get them talking</a> <small>6 min</small></li><li><a href="#it-pod4" data-jump="pod4">Podcast 4 · Reading the textbook</a> <small>6 min</small></li><li><a href="#it-pod5" data-jump="pod5">Podcast 5 · Writing that actually happens</a> <small>6 min</small></li><li><a href="#it-pod6" data-jump="pod6">Podcast 6 · Grade the biology, and get help</a> <small>6 min</small></li></ol></article><article class="path"><h3>A newcomer arrives Monday</h3><p>Level one, this week. <b>70 min.</b></p><ol><li><a href="#it-k5kit" data-jump="k5kit">Elementary Newcomer Kit (K–5)</a> <small>15 min</small></li><li><a href="#it-week1" data-jump="week1">Newcomer Week 1 Kit</a> <small>15 min</small></li><li><a href="#it-first100" data-jump="first100">My First 100 Words at School</a> <small>10 min</small></li><li><a href="#it-nguide" data-jump="nguide">Your Guide to School in the U.S.</a> <small>10 min</small></li><li><a href="#it-stormlens" data-jump="stormlens">Storm Lens</a> <small>10 min</small></li><li><a href="#it-cognate" data-jump="cognate">Cognate Hunt</a> <small>5 min</small></li><li><a href="#it-subpara" data-jump="subpara">Substitute Card &amp; Para Guide</a> <small>5 min</small></li></ol></article><article class="path"><h3>Elementary, K–5</h3><p>Routines, read-alouds, frames and the family. <b>76 min.</b></p><ol><li><a href="#it-pod1" data-jump="pod1">Podcast 1 · Who is in your room</a> <small>6 min</small></li><li><a href="#it-k5kit" data-jump="k5kit">Elementary Newcomer Kit (K–5)</a> <small>15 min</small></li><li><a href="#it-rrockets" data-jump="rrockets">Classroom Strategy Library</a> <small>15 min</small></li><li><a href="#it-pz" data-jump="pz">Thinking Routines</a> <small>10 min</small></li><li><a href="#it-frames" data-jump="frames">Sentence-Frame Bank</a> <small>10 min</small></li><li><a href="#it-cando" data-jump="cando">My English Can-Do Checklist</a> <small>10 min</small></li><li><a href="#it-nguide" data-jump="nguide">Your Guide to School in the U.S.</a> <small>10 min</small></li></ol></article><article class="path"><h3>Secondary, 6–12</h3><p>The textbook, the lab, the essay and the state test. <b>116 min.</b></p><ol><li><a href="#it-sheltered" data-jump="sheltered">Sheltered: 12 Minutes as an English Learner</a> <small>25 min</small></li><li><a href="#it-pod4" data-jump="pod4">Podcast 4 · Reading the textbook</a> <small>6 min</small></li><li><a href="#it-sample" data-jump="sample">One Text. Four Lanes. Five Ways to Prove It.</a> <small>20 min</small></li><li><a href="#it-mlr" data-jump="mlr">Mathematical Language Routines</a> <small>25 min</small></li><li><a href="#it-sentencelab" data-jump="sentencelab">Sentence Lab: English Grammar in Real Life</a> <small>15 min</small></li><li><a href="#it-eoyo" data-jump="eoyo">English On Your Own</a> <small>10 min</small></li><li><a href="#it-roadmap" data-jump="roadmap">Graduation Roadmap for Newcomers</a> <small>15 min</small></li></ol></article><article class="path"><h3>They sound fluent and still stall</h3><p>Progressing students, levels 3–4: academic language, not social language. <b>78 min.</b></p><ol><li><a href="#it-pod1" data-jump="pod1">Podcast 1 · Who is in your room</a> <small>6 min</small></li><li><a href="#it-pod4" data-jump="pod4">Podcast 4 · Reading the textbook</a> <small>6 min</small></li><li><a href="#it-pod5" data-jump="pod5">Podcast 5 · Writing that actually happens</a> <small>6 min</small></li><li><a href="#it-mlr" data-jump="mlr">Mathematical Language Routines</a> <small>25 min</small></li><li><a href="#it-wordgen" data-jump="wordgen">WordGen Weekly</a> <small>15 min</small></li><li><a href="#it-frames" data-jump="frames">Sentence-Frame Bank</a> <small>10 min</small></li><li><a href="#it-eoyo" data-jump="eoyo">English On Your Own</a> <small>10 min</small></li></ol></article><article class="path"><h3>Exited, monitored — and slipping</h3><p>Former English learners in the four-year window. <b>46 min.</b></p><ol><li><a href="#it-pod6" data-jump="pod6">Podcast 6 · Grade the biology, and get help</a> <small>6 min</small></li><li><a href="#it-accom" data-jump="accom">EL Accommodations Quick Cards</a> <small>10 min</small></li><li><a href="#it-cando" data-jump="cando">My English Can-Do Checklist</a> <small>10 min</small></li><li><a href="#it-profile" data-jump="profile">EL Student Profile</a> <small>10 min</small></li><li><a href="#it-letters" data-jump="letters">EL Parent Notification Letters</a> <small>10 min</small></li></ol></article></div>
+
+  <h2 class="sec">The shelves</h2>
+  <p class="sub">Filter by your grade band and your students' levels above. Everything stays filtered as you scroll.</p>
+<section class="shelf" id="s-start" data-s="start"><h2>Start here</h2><p class="sd">Who English learners are, what the levels mean, what the law expects of a content teacher.</p><div class="grid"><article class="it" id="it-sheltered" data-id="sheltered" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="25" data-s="start" data-t="sheltered: 12 minutes as an english learner el publishing sit a real content lesson in a language you don&#x27;t speak, twice. faster than being told. write down the one support that changed round two. use it tomorrow.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">25 min</span><label class="done"><input type="checkbox" data-done="sheltered" aria-label="Mark done: Sheltered: 12 Minutes as an English Learner"> Done</label></div>
+  <h3><a href="sheltered.html">Sheltered: 12 Minutes as an English Learner</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Sit a real content lesson in a language you don&#x27;t speak, twice. Faster than being told.</p>
+  <p class="then"><b>Then, in your room:</b> Write down the one support that changed round two. Use it tomorrow.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-pod1" data-id="pod1" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Listen" data-m="6" data-s="start" data-t="podcast 1 · who is in your room el publishing emerging, progressing, proficient — what each student can already do in your class, and the one daily habit. pull the four domain scores for one of your english learners. which domain is lowest?">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod1" aria-label="Mark done: Podcast 1 · Who is in your room"> Done</label></div>
+  <h3><a href="podcast.html#ep1">Podcast 1 · Who is in your room</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Emerging, Progressing, Proficient — what each student can already do in your class, and the one daily habit.</p>
+  <p class="then"><b>Then, in your room:</b> Pull the four domain scores for one of your English learners. Which domain is lowest?</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-etlt" data-id="etlt" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="50" data-s="start" data-t="every teacher is a language teacher el publishing a self-paced module with tracks for general education, special education and administrators. finish the track for your role and keep the one-page summary it produces.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">50 min</span><label class="done"><input type="checkbox" data-done="etlt" aria-label="Mark done: Every Teacher Is a Language Teacher"> Done</label></div>
+  <h3><a href="https://radan55.github.io/everyteacherisalanguageteacher/" target="_blank" rel="noopener">Every Teacher Is a Language Teacher</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">A self-paced module with tracks for general education, special education and administrators.</p>
+  <p class="then"><b>Then, in your room:</b> Finish the track for your role and keep the one-page summary it produces.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-fieldguide" data-id="fieldguide" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="20" data-s="start" data-t="the el field guide el publishing the whole landscape in one web guide: levels, law, what works, what to stop doing. mark the three pages you&#x27;ll come back to.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">20 min</span><label class="done"><input type="checkbox" data-done="fieldguide" aria-label="Mark done: The EL Field Guide"> Done</label></div>
+  <h3><a href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener">The EL Field Guide</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">The whole landscape in one web guide: levels, law, what works, what to stop doing.</p>
+  <p class="then"><b>Then, in your room:</b> Mark the three pages you&#x27;ll come back to.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-wida" data-id="wida" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="15" data-s="start" data-t="can do descriptors wida what a student at each level can do when they recount, explain, argue and discuss — by grade band. find your grade band and read the row for your lowest-level student. plan one task they can do.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="wida" aria-label="Mark done: Can Do Descriptors"> Done</label></div>
+  <h3><a href="https://wida.wisc.edu/teach/can-do/descriptors" target="_blank" rel="noopener">Can Do Descriptors</a></h3>
+  <p class="src">WIDA</p>
+  <p class="why">What a student at each level can do when they recount, explain, argue and discuss — by grade band.</p>
+  <p class="then"><b>Then, in your room:</b> Find your grade band and read the row for your lowest-level student. Plan one task they can do.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-fieldnotes" data-id="fieldnotes" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="15" data-s="start" data-t="what&#x27;s new in teaching english learners el publishing eight ideas shaping the year, each tagged by how strong the evidence is, sources attached. pick the one idea with the strongest evidence you aren&#x27;t using yet.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="fieldnotes" aria-label="Mark done: What&#x27;s New in Teaching English Learners"> Done</label></div>
+  <h3><a href="field-notes.html">What&#x27;s New in Teaching English Learners</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Eight ideas shaping the year, each tagged by how strong the evidence is, sources attached.</p>
+  <p class="then"><b>Then, in your room:</b> Pick the one idea with the strongest evidence you aren&#x27;t using yet.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-coteach" data-id="coteach" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Plan" data-m="15" data-s="start" data-t="co-teaching lesson plan el publishing one page that gives the content teacher and the el teacher each a job in the same lesson. plan one lesson with your el teacher on it. teach it together.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="coteach" aria-label="Mark done: Co-Teaching Lesson Plan"> Done</label></div>
+  <h3><a href="coteaching-plan.html">Co-Teaching Lesson Plan</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">One page that gives the content teacher and the EL teacher each a job in the same lesson.</p>
+  <p class="then"><b>Then, in your room:</b> Plan one lesson with your EL teacher on it. Teach it together.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-subpara" data-id="subpara" data-g="k2 g35 g68 g912" data-l="e p" data-k="Print" data-m="5" data-s="start" data-t="substitute card &amp; para guide el publishing what a substitute or paraprofessional needs to know about your english learners, on two pages. fill it in and leave it in your sub folder.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">5 min</span><label class="done"><input type="checkbox" data-done="subpara" aria-label="Mark done: Substitute Card &amp; Para Guide"> Done</label></div>
+  <h3><a href="sub-para.html">Substitute Card &amp; Para Guide</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">What a substitute or paraprofessional needs to know about your English learners, on two pages.</p>
+  <p class="then"><b>Then, in your room:</b> Fill it in and leave it in your sub folder.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-moves" data-id="moves" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="5" data-s="start" data-t="monday moves el publishing one el move for every teacher, every monday — 36 of them across the year. try this week&#x27;s move once before friday.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">5 min</span><label class="done"><input type="checkbox" data-done="moves" aria-label="Mark done: Monday Moves"> Done</label></div>
+  <h3><a href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener">Monday Moves</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">One EL move for every teacher, every Monday — 36 of them across the year.</p>
+  <p class="then"><b>Then, in your room:</b> Try this week&#x27;s move once before Friday.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article></div></section><section class="shelf" id="s-input" data-s="input"><h2>Make it understandable</h2><p class="sd">Same content, more handholds: words before the lesson, cognates, chunked talk, visuals.</p><div class="grid"><article class="it" id="it-pod2" data-id="pod2" data-g="k2 g35 g68 g912" data-l="e p" data-k="Listen" data-m="6" data-s="input" data-t="podcast 2 · make it understandable, not easier el publishing five words before the lesson, cognates on the board, chunk the talk, show everything twice. pick the five words for your next lesson. put a picture next to each.">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod2" aria-label="Mark done: Podcast 2 · Make it understandable, not easier"> Done</label></div>
+  <h3><a href="podcast.html#ep2">Podcast 2 · Make it understandable, not easier</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Five words before the lesson, cognates on the board, chunk the talk, show everything twice.</p>
+  <p class="then"><b>Then, in your room:</b> Pick the five words for your next lesson. Put a picture next to each.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-bysubject" data-id="bysubject" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Plan" data-m="10" data-s="input" data-t="by subject &amp; grade el publishing your subject, your grade band: what the language is asking, two moves that work, what to reach for. open your square. do one of the two moves this week.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="bysubject" aria-label="Mark done: By Subject &amp; Grade"> Done</label></div>
+  <h3><a href="by-subject.html">By Subject &amp; Grade</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Your subject, your grade band: what the language is asking, two moves that work, what to reach for.</p>
+  <p class="then"><b>Then, in your room:</b> Open your square. Do one of the two moves this week.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-cognate" data-id="cognate" data-g="k2 g35 g68 g912" data-l="e p" data-k="Do" data-m="5" data-s="input" data-t="cognate hunt el publishing paste tomorrow&#x27;s reading; the words your spanish speakers already own light up. paste tomorrow&#x27;s reading. write the cognates on the board before you teach.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">5 min</span><label class="done"><input type="checkbox" data-done="cognate" aria-label="Mark done: Cognate Hunt"> Done</label></div>
+  <h3><a href="cognate-hunt.html">Cognate Hunt</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Paste tomorrow&#x27;s reading; the words your Spanish speakers already own light up.</p>
+  <p class="then"><b>Then, in your room:</b> Paste tomorrow&#x27;s reading. Write the cognates on the board before you teach.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-stormlens" data-id="stormlens" data-g="k2 g35 g68 g912" data-l="e" data-k="Do" data-m="10" data-s="input" data-t="storm lens el publishing point a chromebook at the room and the room becomes the word list — try it as the teacher first. scan your own classroom. hand the word wall it makes to a newcomer.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="stormlens" aria-label="Mark done: Storm Lens"> Done</label></div>
+  <h3><a href="storm-lens/">Storm Lens</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Point a Chromebook at the room and the room becomes the word list — try it as the teacher first.</p>
+  <p class="then"><b>Then, in your room:</b> Scan your own classroom. Hand the word wall it makes to a newcomer.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i></p>
+</article><article class="it" id="it-vocab" data-id="vocab" data-g="g35 g68 g912" data-l="e p" data-k="Plan" data-m="15" data-s="input" data-t="the vocabulary engine el publishing a five-day cycle for academic vocabulary that fits any subject. run one five-day cycle on your next unit&#x27;s words.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="vocab" aria-label="Mark done: The Vocabulary Engine"> Done</label></div>
+  <h3><a href="https://radan55.github.io/elvocabularycurriculumengine/" target="_blank" rel="noopener">The Vocabulary Engine</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">A five-day cycle for academic vocabulary that fits any subject.</p>
+  <p class="then"><b>Then, in your room:</b> Run one five-day cycle on your next unit&#x27;s words.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-colorin" data-id="colorin" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Watch" data-m="20" data-s="input" data-t="ell strategies &amp; best practices colorín colorado articles and classroom videos on language objectives, background knowledge and checking understanding. watch one classroom video. name the move. steal it.">
+  <div class="top"><span class="kind k-Watch">Watch</span><span class="min">20 min</span><label class="done"><input type="checkbox" data-done="colorin" aria-label="Mark done: ELL Strategies &amp; Best Practices"> Done</label></div>
+  <h3><a href="https://www.colorincolorado.org/teaching-ells/ell-strategies-best-practices" target="_blank" rel="noopener">ELL Strategies &amp; Best Practices</a></h3>
+  <p class="src">Colorín Colorado</p>
+  <p class="why">Articles and classroom videos on language objectives, background knowledge and checking understanding.</p>
+  <p class="then"><b>Then, in your room:</b> Watch one classroom video. Name the move. Steal it.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-stemtt" data-id="stemtt" data-g="k2 g35 g68 g912" data-l="e p" data-k="Read" data-m="10" data-s="input" data-t="engaging english learners in the science practices stem teaching tools, u. of washington a two-page brief of concrete moves — sentence stems, pictorial input charts, bilingual journals. add one pictorial input chart to your next lab.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="stemtt" aria-label="Mark done: Engaging English Learners in the Science Practices"> Done</label></div>
+  <h3><a href="https://stemteachingtools.org/brief/27" target="_blank" rel="noopener">Engaging English Learners in the Science Practices</a></h3>
+  <p class="src">STEM Teaching Tools, U. of Washington</p>
+  <p class="why">A two-page brief of concrete moves — sentence stems, pictorial input charts, bilingual journals.</p>
+  <p class="then"><b>Then, in your room:</b> Add one pictorial input chart to your next lab.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-ngssd" data-id="ngssd" data-g="k2 g35 g68 g912" data-l="e p" data-k="Read" data-m="20" data-s="input" data-t="english language learners and the ngss ngss appendix d a classroom vignette and five strategy sets: literacy, language, discourse, home language, home culture. choose one of the five sets and plan it into a lesson.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">20 min</span><label class="done"><input type="checkbox" data-done="ngssd" aria-label="Mark done: English Language Learners and the NGSS"> Done</label></div>
+  <h3><a href="https://www.nextgenscience.org/sites/default/files/%284%29%20Case%20Study%20ELL%206-14-13.pdf" target="_blank" rel="noopener">English Language Learners and the NGSS</a></h3>
+  <p class="src">NGSS Appendix D</p>
+  <p class="why">A classroom vignette and five strategy sets: literacy, language, discourse, home language, home culture.</p>
+  <p class="then"><b>Then, in your room:</b> Choose one of the five sets and plan it into a lesson.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-glossaries" data-id="glossaries" data-g="g35 g68 g912" data-l="e p" data-k="Print" data-m="5" data-s="input" data-t="bilingual glossaries nyu steinhardt printable english-to-home-language term lists for math, science and social studies, in dozens of languages. print the glossary for your course in your students&#x27; languages. put it in their binders.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">5 min</span><label class="done"><input type="checkbox" data-done="glossaries" aria-label="Mark done: Bilingual Glossaries"> Done</label></div>
+  <h3><a href="https://steinhardt.nyu.edu/metrocenter/resources/glossaries" target="_blank" rel="noopener">Bilingual Glossaries</a></h3>
+  <p class="src">NYU Steinhardt</p>
+  <p class="why">Printable English-to-home-language term lists for math, science and social studies, in dozens of languages.</p>
+  <p class="then"><b>Then, in your room:</b> Print the glossary for your course in your students&#x27; languages. Put it in their binders.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article></div></section><section class="shelf" id="s-talk" data-s="talk"><h2>Get them talking</h2><p class="sd">Structured partner talk, frames by level, wait time, questions a level-one can answer.</p><div class="grid"><article class="it" id="it-pod3" data-id="pod3" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Listen" data-m="6" data-s="talk" data-t="podcast 3 · get them talking el publishing frames in four lanes, the ten-minute partner-talk routine, five seconds of wait time. count to five after your next question. notice what happens.">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod3" aria-label="Mark done: Podcast 3 · Get them talking"> Done</label></div>
+  <h3><a href="podcast.html#ep3">Podcast 3 · Get them talking</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Frames in four lanes, the ten-minute partner-talk routine, five seconds of wait time.</p>
+  <p class="then"><b>Then, in your room:</b> Count to five after your next question. Notice what happens.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-frames" data-id="frames" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Print" data-m="10" data-s="talk" data-t="sentence-frame bank el publishing 150 frames by language function and level 1–5, with spanish glosses. pick, copy, print. post two frames for your next discussion — one for level 1–2, one for level 3–4.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="frames" aria-label="Mark done: Sentence-Frame Bank"> Done</label></div>
+  <h3><a href="sentence-frames.html">Sentence-Frame Bank</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">150 frames by language function and level 1–5, with Spanish glosses. Pick, copy, print.</p>
+  <p class="then"><b>Then, in your room:</b> Post two frames for your next discussion — one for level 1–2, one for level 3–4.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-spoken" data-id="spoken" data-g="k2 g35 g68 g912" data-l="e p" data-k="Read" data-m="20" data-s="talk" data-t="spoken spanish &amp; spoken english el publishing why a spanish speaker says what they say in english — the sounds and structures that transfer and the ones that don&#x27;t. stop correcting the one pattern that is transfer, not error.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">20 min</span><label class="done"><input type="checkbox" data-done="spoken" aria-label="Mark done: Spoken Spanish &amp; Spoken English"> Done</label></div>
+  <h3><a href="spoken-spanish-english.html">Spoken Spanish &amp; Spoken English</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Why a Spanish speaker says what they say in English — the sounds and structures that transfer and the ones that don&#x27;t.</p>
+  <p class="then"><b>Then, in your room:</b> Stop correcting the one pattern that is transfer, not error.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-mlr" data-id="mlr" data-g="g35 g68 g912" data-l="e p m" data-k="Read" data-m="25" data-s="talk" data-t="mathematical language routines understanding language, stanford the eight routines — three reads, stronger and clearer, collect and display — with numbered steps. run stronger and clearer each time on one problem this week.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">25 min</span><label class="done"><input type="checkbox" data-done="mlr" aria-label="Mark done: Mathematical Language Routines"> Done</label></div>
+  <h3><a href="https://ul.stanford.edu/sites/default/files/resource/2021-11/Principles%20for%20the%20Design%20of%20Mathematics%20Curricula_1.pdf" target="_blank" rel="noopener">Mathematical Language Routines</a></h3>
+  <p class="src">Understanding Language, Stanford</p>
+  <p class="why">The eight routines — Three Reads, Stronger and Clearer, Collect and Display — with numbered steps.</p>
+  <p class="then"><b>Then, in your room:</b> Run Stronger and Clearer Each Time on one problem this week.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-pz" data-id="pz" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="10" data-s="talk" data-t="thinking routines project zero, harvard short discussion routines — see-think-wonder and dozens more — with printable handouts, several in spanish. open a lesson with see-think-wonder on a single image.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="pz" aria-label="Mark done: Thinking Routines"> Done</label></div>
+  <h3><a href="https://pz.harvard.edu/thinking-routines" target="_blank" rel="noopener">Thinking Routines</a></h3>
+  <p class="src">Project Zero, Harvard</p>
+  <p class="why">Short discussion routines — See-Think-Wonder and dozens more — with printable handouts, several in Spanish.</p>
+  <p class="then"><b>Then, in your room:</b> Open a lesson with See-Think-Wonder on a single image.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-scitalk" data-id="scitalk" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="10" data-s="talk" data-t="guiding classroom science talk stem teaching tools, u. of washington how to run science conversations, with talk cards and partner-talk supports. print the talk cards. use them in one lab debrief.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="scitalk" aria-label="Mark done: Guiding Classroom Science Talk"> Done</label></div>
+  <h3><a href="https://stemteachingtools.org/brief/48" target="_blank" rel="noopener">Guiding Classroom Science Talk</a></h3>
+  <p class="src">STEM Teaching Tools, U. of Washington</p>
+  <p class="why">How to run science conversations, with talk cards and partner-talk supports.</p>
+  <p class="then"><b>Then, in your room:</b> Print the talk cards. Use them in one lab debrief.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-langfn" data-id="langfn" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Plan" data-m="15" data-s="talk" data-t="36-week language functions el publishing a k–12 scope and sequence of what students should be able to do with language each week — describe, compare, explain, argue. find this week&#x27;s function. ask one question that requires it.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="langfn" aria-label="Mark done: 36-Week Language Functions"> Done</label></div>
+  <h3><a href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">36-Week Language Functions</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">A K–12 scope and sequence of what students should be able to do with language each week — describe, compare, explain, argue.</p>
+  <p class="then"><b>Then, in your room:</b> Find this week&#x27;s function. Ask one question that requires it.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article></div></section><section class="shelf" id="s-read" data-s="read"><h2>Reading in the content area</h2><p class="sd">Previewing the page, unpacking a sentence, leveled texts, read-alouds that model.</p><div class="grid"><article class="it" id="it-pod4" data-id="pod4" data-g="g35 g68 g912" data-l="e p m" data-k="Listen" data-m="6" data-s="read" data-t="podcast 4 · reading the textbook el publishing preview the page, give a reading job, unpack one sentence, hand a level-one the leveled version. pick the one sentence in next week&#x27;s reading that will stop a level three. unpack it on the board.">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod4" aria-label="Mark done: Podcast 4 · Reading the textbook"> Done</label></div>
+  <h3><a href="podcast.html#ep4">Podcast 4 · Reading the textbook</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Preview the page, give a reading job, unpack one sentence, hand a level-one the leveled version.</p>
+  <p class="then"><b>Then, in your room:</b> Pick the one sentence in next week&#x27;s reading that will stop a level three. Unpack it on the board.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-library" data-id="library" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="15" data-s="read" data-t="the mississippi el library el publishing 187 leveled readables in five volumes — the same topic at three levels, so everyone joins the same discussion. find a readable near your next topic. give the three levels to three students.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="library" aria-label="Mark done: The Mississippi EL Library"> Done</label></div>
+  <h3><a href="https://radan55.github.io/msellibrary/" target="_blank" rel="noopener">The Mississippi EL Library</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">187 leveled readables in five volumes — the same topic at three levels, so everyone joins the same discussion.</p>
+  <p class="then"><b>Then, in your room:</b> Find a readable near your next topic. Give the three levels to three students.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-sample" data-id="sample" data-g="g68 g912" data-l="e p m" data-k="Read" data-m="20" data-s="read" data-t="one text. four lanes. five ways to prove it. el publishing a full 90-minute lesson that keeps one text and changes the path to it for four lanes of students. take your next text and write the four lanes for it in the margin.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">20 min</span><label class="done"><input type="checkbox" data-done="sample" aria-label="Mark done: One Text. Four Lanes. Five Ways to Prove It."> Done</label></div>
+  <h3><a href="sample-lesson.html">One Text. Four Lanes. Five Ways to Prove It.</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">A full 90-minute lesson that keeps one text and changes the path to it for four lanes of students.</p>
+  <p class="then"><b>Then, in your room:</b> Take your next text and write the four lanes for it in the margin.</p>
+  <p class="tags"><i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-rrockets" data-id="rrockets" data-g="k2 g35 g68" data-l="e p m" data-k="Read" data-m="15" data-s="read" data-t="classroom strategy library reading rockets named reading and writing strategies, each with the steps and a printable. choose one before-reading strategy and one during-reading strategy. run both this week.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="rrockets" aria-label="Mark done: Classroom Strategy Library"> Done</label></div>
+  <h3><a href="https://readingrockets.org/strategies" target="_blank" rel="noopener">Classroom Strategy Library</a></h3>
+  <p class="src">Reading Rockets</p>
+  <p class="why">Named reading and writing strategies, each with the steps and a printable.</p>
+  <p class="then"><b>Then, in your room:</b> Choose one before-reading strategy and one during-reading strategy. Run both this week.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-loc" data-id="loc" data-g="g35 g68 g912" data-l="e p m" data-k="Print" data-m="10" data-s="read" data-t="primary source analysis tool library of congress observe–reflect–question: a reading routine that works on a photograph before it works on a paragraph. start your next history lesson with a photo and the three questions.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="loc" aria-label="Mark done: Primary Source Analysis Tool"> Done</label></div>
+  <h3><a href="https://www.loc.gov/programs/teachers/getting-started-with-primary-sources/guides/" target="_blank" rel="noopener">Primary Source Analysis Tool</a></h3>
+  <p class="src">Library of Congress</p>
+  <p class="why">Observe–Reflect–Question: a reading routine that works on a photograph before it works on a paragraph.</p>
+  <p class="then"><b>Then, in your room:</b> Start your next history lesson with a photo and the three questions.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-archives" data-id="archives" data-g="k2 g35 g68 g912" data-l="e p" data-k="Print" data-m="10" data-s="read" data-t="document analysis worksheets national archives two tiers of analysis sheets; the novice tier is written for english learners, with spanish versions. give the novice sheet to your level 1–2 students and the standard sheet to everyone else, same document.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="archives" aria-label="Mark done: Document Analysis Worksheets"> Done</label></div>
+  <h3><a href="https://www.archives.gov/education/lessons/worksheets" target="_blank" rel="noopener">Document Analysis Worksheets</a></h3>
+  <p class="src">National Archives</p>
+  <p class="why">Two tiers of analysis sheets; the novice tier is written for English learners, with Spanish versions.</p>
+  <p class="then"><b>Then, in your room:</b> Give the novice sheet to your level 1–2 students and the standard sheet to everyone else, same document.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-phet" data-id="phet" data-g="g35 g68 g912" data-l="e p" data-k="Do" data-m="15" data-s="read" data-t="interactive simulations phet, u. of colorado science simulations that run in a browser, each in spanish — meaning before the reading, not after. open the simulation before the textbook page on the same topic.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="phet" aria-label="Mark done: Interactive Simulations"> Done</label></div>
+  <h3><a href="https://phet.colorado.edu/en/simulations/browse" target="_blank" rel="noopener">Interactive Simulations</a></h3>
+  <p class="src">PhET, U. of Colorado</p>
+  <p class="why">Science simulations that run in a browser, each in Spanish — meaning before the reading, not after.</p>
+  <p class="then"><b>Then, in your room:</b> Open the simulation before the textbook page on the same topic.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article></div></section><section class="shelf" id="s-write" data-s="write"><h2>Writing that happens</h2><p class="sd">Word bank, frame, model; quick writes; feedback on one thing; what each level&#x27;s writing looks like.</p><div class="grid"><article class="it" id="it-pod5" data-id="pod5" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Listen" data-m="6" data-s="write" data-t="podcast 5 · writing that actually happens el publishing take the blank off the page: word bank, frame, model. two-minute quick writes. feedback on one thing. add a word bank, a frame and a model to your next writing prompt.">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod5" aria-label="Mark done: Podcast 5 · Writing that actually happens"> Done</label></div>
+  <h3><a href="podcast.html#ep5">Podcast 5 · Writing that actually happens</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Take the blank off the page: word bank, frame, model. Two-minute quick writes. Feedback on one thing.</p>
+  <p class="then"><b>Then, in your room:</b> Add a word bank, a frame and a model to your next writing prompt.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-sentencelab" data-id="sentencelab" data-g="g68 g912" data-l="e p" data-k="Print" data-m="15" data-s="write" data-t="sentence lab: english grammar in real life el publishing sixteen grammar features in real school scenes, a newcomer lane and a progressing lane on every page. hand the page that matches the one thing you&#x27;re giving feedback on this week.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="sentencelab" aria-label="Mark done: Sentence Lab: English Grammar in Real Life"> Done</label></div>
+  <h3><a href="sentence-lab.html">Sentence Lab: English Grammar in Real Life</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Sixteen grammar features in real school scenes, a Newcomer lane and a Progressing lane on every page.</p>
+  <p class="then"><b>Then, in your room:</b> Hand the page that matches the one thing you&#x27;re giving feedback on this week.</p>
+  <p class="tags"><i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-assistants" data-id="assistants" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="15" data-s="write" data-t="el assistants for content teachers el publishing paste what you already teach and get it back in four lanes — frames, word banks and models included. run tomorrow&#x27;s writing task through the assistant. keep the level-two version.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="assistants" aria-label="Mark done: EL Assistants for Content Teachers"> Done</label></div>
+  <h3><a href="el-assistants.html">EL Assistants for Content Teachers</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Paste what you already teach and get it back in four lanes — frames, word banks and models included.</p>
+  <p class="then"><b>Then, in your room:</b> Run tomorrow&#x27;s writing task through the assistant. Keep the level-two version.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-wordgen" data-id="wordgen" data-g="g68" data-l="p m" data-k="Print" data-m="15" data-s="write" data-t="wordgen weekly serp institute a week of five short academic-vocabulary activities ending in a written argument. run one week of it in advisory or at the start of class.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="wordgen" aria-label="Mark done: WordGen Weekly"> Done</label></div>
+  <h3><a href="https://www.serpinstitute.org/wordgen-weekly/sample" target="_blank" rel="noopener">WordGen Weekly</a></h3>
+  <p class="src">SERP Institute</p>
+  <p class="why">A week of five short academic-vocabulary activities ending in a written argument.</p>
+  <p class="then"><b>Then, in your room:</b> Run one week of it in advisory or at the start of class.</p>
+  <p class="tags"><i>6–8</i><span class="sep"></span><i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article></div></section><section class="shelf" id="s-assess" data-s="assess"><h2>Assess and grade fairly</h2><p class="sd">Accommodations versus modifications, grading the content, the Language Service Plan, state tests.</p><div class="grid"><article class="it" id="it-pod6" data-id="pod6" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Listen" data-m="6" data-s="assess" data-t="podcast 6 · grade the biology, and get help el publishing accommodation versus modification, two rows on the rubric, the lsp you&#x27;re supposed to have, the five people who help. get a copy of the language service plan for each english learner you teach.">
+  <div class="top"><span class="kind k-Listen">Listen</span><span class="min">6 min</span><label class="done"><input type="checkbox" data-done="pod6" aria-label="Mark done: Podcast 6 · Grade the biology, and get help"> Done</label></div>
+  <h3><a href="podcast.html#ep6">Podcast 6 · Grade the biology, and get help</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Accommodation versus modification, two rows on the rubric, the LSP you&#x27;re supposed to have, the five people who help.</p>
+  <p class="then"><b>Then, in your room:</b> Get a copy of the Language Service Plan for each English learner you teach.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-accom" data-id="accom" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Print" data-m="10" data-s="assess" data-t="el accommodations quick cards el publishing eighteen cards: the accommodation, when it applies, how it looks in class and on the state test. match each card to a student on your roster. tape the ones you need inside your plan book.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="accom" aria-label="Mark done: EL Accommodations Quick Cards"> Done</label></div>
+  <h3><a href="accommodations-cards.html">EL Accommodations Quick Cards</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Eighteen cards: the accommodation, when it applies, how it looks in class and on the state test.</p>
+  <p class="then"><b>Then, in your room:</b> Match each card to a student on your roster. Tape the ones you need inside your plan book.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-cando" data-id="cando" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="10" data-s="assess" data-t="my english can-do checklist el publishing eighty &#x27;i can&#x27; statements a student scores three times a year — the plainest picture of a level there is. have one english learner score it. compare their answers with the elpt domains.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="cando" aria-label="Mark done: My English Can-Do Checklist"> Done</label></div>
+  <h3><a href="can-do-checklist.html">My English Can-Do Checklist</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Eighty &#x27;I can&#x27; statements a student scores three times a year — the plainest picture of a level there is.</p>
+  <p class="then"><b>Then, in your room:</b> Have one English learner score it. Compare their answers with the ELPT domains.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-eoyo" data-id="eoyo" data-g="g912" data-l="p" data-k="Do" data-m="10" data-s="assess" data-t="english on your own el publishing elpa21 practice in all twenty-two task types. take three tasks yourself to see what the test actually asks. do the speaking task. then look at what your class talk does and doesn&#x27;t practice.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="eoyo" aria-label="Mark done: English On Your Own"> Done</label></div>
+  <h3><a href="english-on-your-own.html">English On Your Own</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">ELPA21 practice in all twenty-two task types. Take three tasks yourself to see what the test actually asks.</p>
+  <p class="then"><b>Then, in your room:</b> Do the speaking task. Then look at what your class talk does and doesn&#x27;t practice.</p>
+  <p class="tags"><i>9–12</i><span class="sep"></span><i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-elptguide" data-id="elptguide" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="5" data-s="assess" data-t="the english test, explained for families el publishing what the elpt measures, what the levels mean, how a student exits — written for families, useful for you. read it once so you can answer the question a parent will ask you.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">5 min</span><label class="done"><input type="checkbox" data-done="elptguide" aria-label="Mark done: The English Test, Explained for Families"> Done</label></div>
+  <h3><a href="elpt-family-guide.html">The English Test, Explained for Families</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">What the ELPT measures, what the levels mean, how a student exits — written for families, useful for you.</p>
+  <p class="then"><b>Then, in your room:</b> Read it once so you can answer the question a parent will ask you.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-profile" data-id="profile" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Print" data-m="10" data-s="assess" data-t="el student profile el publishing one page per student: levels, languages, accommodations, what works. the thing to hand the next teacher. make one for the student you worry about most.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="profile" aria-label="Mark done: EL Student Profile"> Done</label></div>
+  <h3><a href="student-profile.html">EL Student Profile</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">One page per student: levels, languages, accommodations, what works. The thing to hand the next teacher.</p>
+  <p class="then"><b>Then, in your room:</b> Make one for the student you worry about most.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article></div></section><section class="shelf" id="s-newcomer" data-s="newcomer"><h2>Newcomers and families</h2><p class="sd">The first week, the first month, and the family on the other end of the letter.</p><div class="grid"><article class="it" id="it-k5kit" data-id="k5kit" data-g="k2 g35" data-l="e" data-k="Print" data-m="15" data-s="newcomer" data-t="elementary newcomer kit (k–5) el publishing the first weeks for a k–2 or 3–5 newcomer: routines, survival language, what to send home. print the first-week pages before the student arrives, not after.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="k5kit" aria-label="Mark done: Elementary Newcomer Kit (K–5)"> Done</label></div>
+  <h3><a href="newcomer-k5.html">Elementary Newcomer Kit (K–5)</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">The first weeks for a K–2 or 3–5 newcomer: routines, survival language, what to send home.</p>
+  <p class="then"><b>Then, in your room:</b> Print the first-week pages before the student arrives, not after.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i><span class="sep"></span><i class="lve">Emerging</i></p>
+</article><article class="it" id="it-week1" data-id="week1" data-g="g68 g912" data-l="e" data-k="Print" data-m="15" data-s="newcomer" data-t="newcomer week 1 kit el publishing five days for a secondary newcomer: the schedule, the people, the building, the first hundred words. run day one as written. adjust from day two.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="week1" aria-label="Mark done: Newcomer Week 1 Kit"> Done</label></div>
+  <h3><a href="newcomer-week1.html">Newcomer Week 1 Kit</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Five days for a secondary newcomer: the schedule, the people, the building, the first hundred words.</p>
+  <p class="then"><b>Then, in your room:</b> Run day one as written. Adjust from day two.</p>
+  <p class="tags"><i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i></p>
+</article><article class="it" id="it-first100" data-id="first100" data-g="k2 g35 g68 g912" data-l="e" data-k="Do" data-m="10" data-s="newcomer" data-t="my first 100 words at school el publishing the hundred words of a first month, tap to hear, printable as flashcards, five languages. hand a newcomer the flashcards for &#x27;in the classroom&#x27; on day one.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="first100" aria-label="Mark done: My First 100 Words at School"> Done</label></div>
+  <h3><a href="first-100-words.html">My First 100 Words at School</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">The hundred words of a first month, tap to hear, printable as flashcards, five languages.</p>
+  <p class="then"><b>Then, in your room:</b> Hand a newcomer the flashcards for &#x27;In the classroom&#x27; on day one.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i></p>
+</article><article class="it" id="it-nguide" data-id="nguide" data-g="k2 g35 g68 g912" data-l="e p" data-k="Print" data-m="10" data-s="newcomer" data-t="your guide to school in the u.s. el publishing how an american school works, for a family that arrived this week — english beside five languages. send it home in the family&#x27;s language with the first parent letter.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="nguide" aria-label="Mark done: Your Guide to School in the U.S."> Done</label></div>
+  <h3><a href="newcomer-guide.html">Your Guide to School in the U.S.</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">How an American school works, for a family that arrived this week — English beside five languages.</p>
+  <p class="then"><b>Then, in your room:</b> Send it home in the family&#x27;s language with the first parent letter.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-letters" data-id="letters" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Print" data-m="10" data-s="newcomer" data-t="el parent notification letters el publishing the six letters every program sends, in english plus five family languages. know what your families received. read the initial-placement letter so you know what the family was promised.">
+  <div class="top"><span class="kind k-Print">Print</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="letters" aria-label="Mark done: EL Parent Notification Letters"> Done</label></div>
+  <h3><a href="parent-letters.html">EL Parent Notification Letters</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">The six letters every program sends, in English plus five family languages. Know what your families received.</p>
+  <p class="then"><b>Then, in your room:</b> Read the initial-placement letter so you know what the family was promised.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-roadmap" data-id="roadmap" data-g="g912" data-l="e p" data-k="Plan" data-m="15" data-s="newcomer" data-t="graduation roadmap for newcomers el publishing credits, state tests and a four-year plan for a student who arrived at sixteen. sit with the counselor and fill it in for one newcomer.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="roadmap" aria-label="Mark done: Graduation Roadmap for Newcomers"> Done</label></div>
+  <h3><a href="graduation-roadmap.html">Graduation Roadmap for Newcomers</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Credits, state tests and a four-year plan for a student who arrived at sixteen.</p>
+  <p class="then"><b>Then, in your room:</b> Sit with the counselor and fill it in for one newcomer.</p>
+  <p class="tags"><i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article><article class="it" id="it-heritage" data-id="heritage" data-g="g35 g68 g912" data-l="e p m" data-k="Plan" data-m="15" data-s="newcomer" data-t="hispanic heritage: 30 people el publishing thirty profiles that put your students&#x27; world on the wall — and a leveled reading in every one. put one profile a week on the board, whatever month it is.">
+  <div class="top"><span class="kind k-Plan">Plan</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="heritage" aria-label="Mark done: Hispanic Heritage: 30 People"> Done</label></div>
+  <h3><a href="https://radan55.github.io/hispanicheritagemonth2026/" target="_blank" rel="noopener">Hispanic Heritage: 30 People</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Thirty profiles that put your students&#x27; world on the wall — and a leveled reading in every one.</p>
+  <p class="then"><b>Then, in your room:</b> Put one profile a week on the board, whatever month it is.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-icivics" data-id="icivics" data-g="g35 g68 g912" data-l="e p" data-k="Do" data-m="10" data-s="newcomer" data-t="spanish &amp; el/ml supports icivics civics games playable in spanish, bilingual glossaries and constitution videos. let a newcomer play one game in spanish, then the same game in english.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="icivics" aria-label="Mark done: Spanish &amp; EL/ML Supports"> Done</label></div>
+  <h3><a href="https://vision.icivics.org/how-to-use/spanish-el-ml" target="_blank" rel="noopener">Spanish &amp; EL/ML Supports</a></h3>
+  <p class="src">iCivics</p>
+  <p class="why">Civics games playable in Spanish, bilingual glossaries and Constitution videos.</p>
+  <p class="then"><b>Then, in your room:</b> Let a newcomer play one game in Spanish, then the same game in English.</p>
+  <p class="tags"><i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i></p>
+</article></div></section><section class="shelf" id="s-tech" data-s="tech"><h2>Tools and AI</h2><p class="sd">What is worth your planning period, and what is not.</p><div class="grid"><article class="it" id="it-radar" data-id="radar" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Read" data-m="10" data-s="tech" data-t="el tech radar el publishing six tools verified this month, free and chromebook-ready, a use named for every lane, and a watch list. try the one tool marked for your lane this week.">
+  <div class="top"><span class="kind k-Read">Read</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="radar" aria-label="Mark done: EL Tech Radar"> Done</label></div>
+  <h3><a href="tech-radar.html">EL Tech Radar</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Six tools verified this month, free and Chromebook-ready, a use named for every lane, and a watch list.</p>
+  <p class="then"><b>Then, in your room:</b> Try the one tool marked for your lane this week.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-bridge" data-id="bridge" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="15" data-s="tech" data-t="el bridge mississippi el publishing give it a mississippi standard; it builds the lesson, a leveled text or maap-style items. runs on whatever ai you already have. build one leveled text for next week. read it before you use it.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="bridge" aria-label="Mark done: EL Bridge Mississippi"> Done</label></div>
+  <h3><a href="el-bridge.html">EL Bridge Mississippi</a></h3>
+  <p class="src">EL Publishing</p>
+  <p class="why">Give it a Mississippi standard; it builds the lesson, a leveled text or MAAP-style items. Runs on whatever AI you already have.</p>
+  <p class="then"><b>Then, in your room:</b> Build one leveled text for next week. Read it before you use it.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-openmiddle" data-id="openmiddle" data-g="k2 g35 g68 g912" data-l="e p m" data-k="Do" data-m="10" data-s="tech" data-t="open middle open middle problems with one answer and many ways in, by grade and course, also in spanish. put one open middle problem on the board as the warm-up.">
+  <div class="top"><span class="kind k-Do">Do</span><span class="min">10 min</span><label class="done"><input type="checkbox" data-done="openmiddle" aria-label="Mark done: Open Middle"> Done</label></div>
+  <h3><a href="https://www.openmiddle.com/" target="_blank" rel="noopener">Open Middle</a></h3>
+  <p class="src">Open Middle</p>
+  <p class="why">Problems with one answer and many ways in, by grade and course, also in Spanish.</p>
+  <p class="then"><b>Then, in your room:</b> Put one Open Middle problem on the board as the warm-up.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i> <i>9–12</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article><article class="it" id="it-ntalks" data-id="ntalks" data-g="k2 g35 g68" data-l="e p m" data-k="Watch" data-m="15" data-s="tech" data-t="number talks on video inside mathematics seven full classroom number talks, grades 1–7, one taught in spanish. watch the spanish one. notice how much you understood from the gestures and the board.">
+  <div class="top"><span class="kind k-Watch">Watch</span><span class="min">15 min</span><label class="done"><input type="checkbox" data-done="ntalks" aria-label="Mark done: Number Talks on video"> Done</label></div>
+  <h3><a href="https://insidemathematics.org/classroom-videos/number-talks" target="_blank" rel="noopener">Number Talks on video</a></h3>
+  <p class="src">Inside Mathematics</p>
+  <p class="why">Seven full classroom number talks, grades 1–7, one taught in Spanish.</p>
+  <p class="then"><b>Then, in your room:</b> Watch the Spanish one. Notice how much you understood from the gestures and the board.</p>
+  <p class="tags"><i>K–2</i> <i>3–5</i> <i>6–8</i><span class="sep"></span><i class="lve">Emerging</i> <i class="lvp">Progressing</i> <i class="lvm">Proficient / monitored</i></p>
+</article></div></section>
+  <section id="printlog" aria-hidden="true">
+    <h1>Professional learning log · English learners for content teachers</h1>
+    <p>Name: ______________________________ &nbsp; School: ______________________________ &nbsp; Printed: <span id="pl-date"></span></p>
+    <p>Source: The PD Library, EL Publishing — radan55.github.io/everyteacher/pd-library.html. Each item is self-paced; times are the publisher's estimates.</p>
+    <table><thead><tr><th>Completed</th><th>Title</th><th>Shelf</th><th>Minutes</th></tr></thead><tbody id="pl-rows"></tbody>
+    <tfoot><tr><th colspan="3">Total</th><th id="pl-total"></th></tr></tfoot></table>
+    <div class="sig"><div>Teacher signature · date</div><div>Administrator · date</div></div>
+  </section>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+(function(){
+  var META={"sheltered": {"t": "Sheltered: 12 Minutes as an English Learner", "m": 25}, "pod1": {"t": "Podcast 1 \u00b7 Who is in your room", "m": 6}, "etlt": {"t": "Every Teacher Is a Language Teacher", "m": 50}, "fieldguide": {"t": "The EL Field Guide", "m": 20}, "wida": {"t": "Can Do Descriptors", "m": 15}, "fieldnotes": {"t": "What's New in Teaching English Learners", "m": 15}, "coteach": {"t": "Co-Teaching Lesson Plan", "m": 15}, "subpara": {"t": "Substitute Card & Para Guide", "m": 5}, "moves": {"t": "Monday Moves", "m": 5}, "pod2": {"t": "Podcast 2 \u00b7 Make it understandable, not easier", "m": 6}, "bysubject": {"t": "By Subject & Grade", "m": 10}, "cognate": {"t": "Cognate Hunt", "m": 5}, "stormlens": {"t": "Storm Lens", "m": 10}, "vocab": {"t": "The Vocabulary Engine", "m": 15}, "colorin": {"t": "ELL Strategies & Best Practices", "m": 20}, "stemtt": {"t": "Engaging English Learners in the Science Practices", "m": 10}, "ngssd": {"t": "English Language Learners and the NGSS", "m": 20}, "glossaries": {"t": "Bilingual Glossaries", "m": 5}, "pod3": {"t": "Podcast 3 \u00b7 Get them talking", "m": 6}, "frames": {"t": "Sentence-Frame Bank", "m": 10}, "spoken": {"t": "Spoken Spanish & Spoken English", "m": 20}, "mlr": {"t": "Mathematical Language Routines", "m": 25}, "pz": {"t": "Thinking Routines", "m": 10}, "scitalk": {"t": "Guiding Classroom Science Talk", "m": 10}, "langfn": {"t": "36-Week Language Functions", "m": 15}, "pod4": {"t": "Podcast 4 \u00b7 Reading the textbook", "m": 6}, "library": {"t": "The Mississippi EL Library", "m": 15}, "sample": {"t": "One Text. Four Lanes. Five Ways to Prove It.", "m": 20}, "rrockets": {"t": "Classroom Strategy Library", "m": 15}, "loc": {"t": "Primary Source Analysis Tool", "m": 10}, "archives": {"t": "Document Analysis Worksheets", "m": 10}, "phet": {"t": "Interactive Simulations", "m": 15}, "pod5": {"t": "Podcast 5 \u00b7 Writing that actually happens", "m": 6}, "sentencelab": {"t": "Sentence Lab: English Grammar in Real Life", "m": 15}, "assistants": {"t": "EL Assistants for Content Teachers", "m": 15}, "wordgen": {"t": "WordGen Weekly", "m": 15}, "pod6": {"t": "Podcast 6 \u00b7 Grade the biology, and get help", "m": 6}, "accom": {"t": "EL Accommodations Quick Cards", "m": 10}, "cando": {"t": "My English Can-Do Checklist", "m": 10}, "eoyo": {"t": "English On Your Own", "m": 10}, "elptguide": {"t": "The English Test, Explained for Families", "m": 5}, "profile": {"t": "EL Student Profile", "m": 10}, "k5kit": {"t": "Elementary Newcomer Kit (K\u20135)", "m": 15}, "week1": {"t": "Newcomer Week 1 Kit", "m": 15}, "first100": {"t": "My First 100 Words at School", "m": 10}, "nguide": {"t": "Your Guide to School in the U.S.", "m": 10}, "letters": {"t": "EL Parent Notification Letters", "m": 10}, "roadmap": {"t": "Graduation Roadmap for Newcomers", "m": 15}, "heritage": {"t": "Hispanic Heritage: 30 People", "m": 15}, "icivics": {"t": "Spanish & EL/ML Supports", "m": 10}, "radar": {"t": "EL Tech Radar", "m": 10}, "bridge": {"t": "EL Bridge Mississippi", "m": 15}, "openmiddle": {"t": "Open Middle", "m": 10}, "ntalks": {"t": "Number Talks on video", "m": 15}};
+  var SHELF={"start": "Start here", "input": "Make it understandable", "talk": "Get them talking", "read": "Reading in the content area", "write": "Writing that happens", "assess": "Assess and grade fairly", "newcomer": "Newcomers and families", "tech": "Tools and AI"};
+  var KEY='elhub.pdlog';
+  var log={};try{log=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(log))}catch(e){}}
+  var items=[].slice.call(document.querySelectorAll('.it'));
+  var G=new Set(['k2','g35','g68','g912']),LV=new Set(['e','p','m']),K=new Set(["Watch", "Listen", "Do", "Read", "Print", "Plan"]),MAXM=0,HIDE=false;
+  var q=document.getElementById('q');
+  function run(){var s=q.value.trim().toLowerCase(),n=0;
+    items.forEach(function(it){var g=it.dataset.g.split(' '),l=it.dataset.l.split(' ');
+      var ok=g.some(function(x){return G.has(x)})&&l.some(function(x){return LV.has(x)})&&K.has(it.dataset.k)&&(!MAXM||+it.dataset.m<=MAXM)&&(!s||it.dataset.t.indexOf(s)>=0)&&!(HIDE&&log[it.dataset.id]);
+      it.classList.toggle('hide',!ok);if(ok)n++});
+    document.querySelectorAll('.shelf').forEach(function(sh){sh.classList.toggle('hide',!sh.querySelector('.it:not(.hide)'))});
+    document.getElementById('cnt').textContent=n+' of '+items.length+' shown';}
+  function tog(id,set,attr){document.getElementById(id).addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!(attr in b.dataset))return;
+    var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);on?set.add(b.dataset[attr]):set.delete(b.dataset[attr]);run()})}
+  tog('gr',G,'g');tog('lv',LV,'l');tog('kd',K,'k');
+  document.getElementById('tm').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);
+    if(b.dataset.m)MAXM=on?+b.dataset.m:0;else HIDE=on;run()});
+  q.addEventListener('input',run);
+  // done-list
+  function paint(){var n=0,m=0;items.forEach(function(it){var id=it.dataset.id,d=!!log[id];it.classList.toggle('isdone',d);it.querySelector('[data-done]').checked=d;if(d){n++;m+=META[id].m}});
+    document.getElementById('done-n').textContent=n;document.getElementById('done-m').textContent=m}
+  document.addEventListener('change',function(e){var c=e.target.closest('[data-done]');if(!c)return;var id=c.dataset.done;if(c.checked)log[id]=new Date().toISOString().slice(0,10);else delete log[id];save();paint();if(HIDE)run()});
+  document.getElementById('clearbtn').addEventListener('click',function(){if(!confirm('Clear your done-list?'))return;log={};save();paint();run()});
+  document.getElementById('printbtn').addEventListener('click',function(){var rows=Object.keys(log).sort(function(a,b){return log[a]<log[b]?-1:1}),tot=0;
+    document.getElementById('pl-rows').innerHTML=rows.map(function(id){var it=document.getElementById('it-'+id);tot+=META[id].m;
+      return '<tr><td>'+log[id]+'</td><td>'+META[id].t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</td><td>'+(SHELF[it?it.dataset.s:'']||'')+'</td><td>'+META[id].m+'</td></tr>'}).join('')||'<tr><td colspan="4">Nothing marked done yet.</td></tr>';
+    document.getElementById('pl-total').textContent=tot+' min';document.getElementById('pl-date').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    window.print()});
+  document.querySelectorAll('[data-jump]').forEach(function(a){a.addEventListener('click',function(){var it=document.getElementById('it-'+a.dataset.jump);if(it&&it.classList.contains('hide')){q.value='';G=new Set(['k2','g35','g68','g912']);LV=new Set(['e','p','m']);K=new Set(["Watch", "Listen", "Do", "Read", "Print", "Plan"]);MAXM=0;HIDE=false;document.querySelectorAll('.bar button').forEach(function(b){b.setAttribute('aria-pressed',!(b.dataset.m||b.dataset.hideDone))});run()}})});
+  paint();run();
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

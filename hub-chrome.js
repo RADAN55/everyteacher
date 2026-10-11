@@ -20,6 +20,7 @@
   var LINKS = [
     ["Start here", "index.html#start"],
     ["By subject", "by-subject.html"],
+    ["PD library", "pd-library.html"],
     ["All resources", "all.html"],
     ["For districts", "leaders.html"],
     ["What's new", "whats-new.html"],
