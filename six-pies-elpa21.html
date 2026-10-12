@@ -78,7 +78,7 @@
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
   footer a{color:var(--gold)}
   @media(max-width:760px){.head-in{grid-template-columns:1fr}.head-in img{width:200px}.lanes{grid-template-columns:1fr 1fr}.cog{columns:2}.opts{grid-template-columns:1fr}.pies{grid-template-columns:repeat(2,1fr)}}
-  @media print{header,.bar,footer{display:none}.lanes,.cog,table,.passage,.script,.pies{break-inside:avoid}body{background:#fff;font-size:12pt}main{max-width:none;padding:0}.sheet{border:0;border-radius:0;padding:0;margin:0 0 .2in;break-after:page;background:#fff}.sheet:last-child{break-after:auto}.sheet.teacher{background:#fff}.lanes{grid-template-columns:repeat(4,1fr)}.lane{border:1px solid #bbb;background:#fff!important}.passage,.script,.box{background:#fff;border:1px solid #bbb}.pies img{aspect-ratio:1.25}.hide{display:none!important}.lines{height:24pt}}
+  @media print{header,.bar,footer{display:none}.lanes,.cog,tr,.passage,.script,.pies{break-inside:avoid}thead{display:table-header-group}body{background:#fff;font-size:12pt}main{max-width:none;padding:0}.sheet{border:0;border-radius:0;padding:0;margin:0 0 .2in;break-after:page;background:#fff}.sheet:last-child{break-after:auto}.sheet.teacher{background:#fff}.lanes{grid-template-columns:repeat(4,1fr)}.lane{border:1px solid #bbb;background:#fff!important}.passage,.script,.box{background:#fff;border:1px solid #bbb}.pies img{aspect-ratio:1.25}.hide{display:none!important}.lines{height:24pt}}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -101,7 +101,7 @@
     <div>
       <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS · ELPA21-STYLE TASK SET · GRADES 6–12</p>
       <h1>Six Southern pies, <em>four domains.</em></h1>
-      <p class="tag">One infographic becomes a full ELPA21-format practice set: <b>listening</b> scripts, a <b>reading</b> passage with test-style items, <b>writing</b> from a frame to an opinion essay, and four <b>speaking</b> tasks — every task in four lanes, with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Nothing to log into. Print the student pages; keep the teacher pages.</p>
+      <p class="tag">One infographic becomes a full ELPA21-format practice set with a <b>minute-by-minute 90-minute lesson plan</b>: <b>listening</b> scripts, a <b>reading</b> passage with test-style items, <b>writing</b> from a frame to an opinion essay, and four <b>speaking</b> tasks — every task in four lanes, with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Nothing to log into. Print the student pages; keep the teacher pages.</p>
     </div>
     <img src="img/six-pies.jpg" alt="Infographic of six Southern pies with their ingredients: buttermilk, chess, coconut cream, sweet potato, pecan and lemon icebox">
   </div>
@@ -111,6 +111,7 @@
   <button type="button" data-v="all" aria-pressed="true">Everything</button>
   <button type="button" data-v="student" aria-pressed="false">Student pages</button>
   <button type="button" data-v="teacher" aria-pressed="false">Teacher pages</button>
+  <a class="btn" href="#plan">90-minute plan</a>
   <span class="k" style="margin-left:10px">Domain</span>
   <button type="button" data-d="L" aria-pressed="true">Listening</button>
   <button type="button" data-d="R" aria-pressed="true">Reading</button>
@@ -274,6 +275,55 @@
     <div class="lane p"><b>Progressing</b>S1–S4. Record S4.</div>
     <div class="lane c"><b>Challenge</b>S1–S4; in S4, address a counterargument.</div>
   </div>
+</section>
+
+
+<!-- ───────── TEACHER: THE 90-MINUTE LESSON ───────── -->
+<section class="sheet teacher" id="plan" data-who="teacher" data-d="LRWS">
+  <div class="dom"><i class="T">Teacher</i><small>Lesson plan · one 90-minute block · grades 6–12 · EL block or sheltered content class</small></div>
+  <h2>The 90-minute lesson: Six Southern pies</h2>
+  <table>
+    <tr><th style="width:22%">Content objective</th><td>Students will compare and contrast two Southern pies using details from an infographic and an informational text, and state and support an opinion about which one a school should serve.</td></tr>
+    <tr><th>Language objectives</th><td><b>Listening:</b> identify a described item and key details in a conversation and a short lecture. <b>Reading:</b> locate details, infer word meaning from context, and sequence a procedure. <b>Speaking:</b> describe a picture and give an opinion with reasons using <em>because</em> and <em>first/then/finally</em>. <b>Writing:</b> compare two items using <em>both / only / unlike / however</em> at the lane's length (frame sentences → paragraph → essay or email).</td></tr>
+    <tr><th>Standards</th><td>MS ELP 1, 2, 3, 4, 8, 9 (10 in feedback). ELPA21 task formats: Listen and Match, Short Conversation, Academic Lecture, Read for Details, Word Meaning, Sequence, Compare, Opinion, Observe and Report, Give Directions, Classroom Chat.</td></tr>
+    <tr><th>Key vocabulary</th><td><b>Five words first:</b> ingredient · crust · filling · bake · slice. <b>Connectors:</b> both, only, unlike, however, because, first/then/finally. <b>Cognates on the wall:</b> ingrediente, crema, canela, vainilla, limón, coco, tradicional, similar, diferente, receta.</td></tr>
+    <tr><th>Materials</th><td>Infographic projected and on the student cover page · student packet by lane (print "Student pages") · teacher pages (scripts, key) · word bank and four frames on the board · a device per Progressing/Challenge pair for recording S4 · timer.</td></tr>
+    <tr><th>Grouping</th><td>Pairs, rotated: Newcomer with a partner who <em>shows</em> (not translates); Emerging with Progressing for the reading; same-lane pairs for writing. Teacher pulls the Newcomer/Emerging group during the writing block.</td></tr>
+  </table>
+
+  <h3>Minute by minute</h3>
+  <table>
+    <tr><th style="width:9%">Time</th><th style="width:22%">Segment</th><th>Teacher does</th><th>Students do</th><th style="width:18%">Check</th></tr>
+    <tr><td><b>0–5</b></td><td>Open · one slice</td><td>Project pie 1 only. "What do you see?" Three answers, any level: a word counts. Post the language objective in student words: <em>Today I can compare two pies and say which one is better, with a reason.</em></td><td>Say one thing they see. Read the objective aloud with the class.</td><td>Thumbs: Have you eaten pie like this? Who has a dessert like this at home?</td></tr>
+    <tr><td><b>5–12</b></td><td>Five words first</td><td>Board: ingredient · crust · filling · bake · slice, each with a picture/gesture (point to crust and filling on the slice). Say → class echoes → pairs say to each other. Write <em>ingrediente</em> beside ingredient.</td><td>Echo the words; point to crust and filling on the projected slice; say each word to a partner.</td><td>Point to the crust. Point to the filling. One finger = ingredient, two = slice.</td></tr>
+    <tr><td><b>12–18</b></td><td>Cognate hunt</td><td>Hand out the student packet. "Circle every word on the word list that looks like a word in your language." Pairs compare. Collect five on the board.</td><td>Circle cognates on the cover page; compare with a partner; call out one.</td><td>Hold up fingers: how many did you find? (Target ≥ 10.)</td></tr>
+    <tr><td><b>18–33</b></td><td>Listening A → B → C</td><td>Read Script A twice; students show the pie number with fingers before writing. Read Script B twice (three times for Emerging if needed); students answer, then pairs compare. Read Script C twice for Progressing/Challenge while Newcomers re-do A with the teacher.</td><td>Hold up the pie number; answer B; compare answers; C for upper lanes.</td><td>Fingers for A (whole class, 2 seconds). Spot-check B2 — the "why" item.</td></tr>
+    <tr><td><b>33–50</b></td><td>Reading</td><td>Preview the page together (30 seconds): title, bold pie names, the one picture. Give the reading job: <em>underline the sentence that tells the difference between buttermilk and chess pie.</em> Unpack one sentence on the board: "Some people say 'chess' comes from 'chest,' because the pie kept well in a pie chest, a wooden cabinet used before refrigerators." (Who? Does what? Why?) Students read by lane; pairs compare before the class check.</td><td>Newcomers: match bold names to pictures, sequence the procedure with a partner. Emerging: items 1, 2, 4 + procedure. Progressing/Challenge: all five + extension.</td><td>Class check with fingers (a / b / c / d). Collect the underlined sentence from three students.</td></tr>
+    <tr><td><b>50–60</b></td><td>Talk before writing · S1 + S3</td><td>Frames on the board: <em>I see ___. It has ___. It looks ___ because ___.</em> Run S1 on pie 3 in pairs with say-it-back (A talks, B repeats one thing). Then S3: three partner questions. Count to five before calling on anyone.</td><td>Describe the coconut cream pie; ask and answer the three questions; write one thing the partner said.</td><td>Pick three students to share — you pick. Listen for <em>because</em>.</td></tr>
+    <tr><td><b>60–80</b></td><td>Writing by lane</td><td>Word bank and the four frames stay up. Model one W2 sentence on the board about two pies you did <em>not</em> assign. Pull Newcomers/Emerging to a table for W1/W2 with the teacher; Progressing writes W3; Challenge writes W4 (essay or email). Circulate: feedback on <b>one</b> thing (this lesson: <em>both / only / unlike</em> used correctly).</td><td>W1 label + frames · W2 four frame sentences · W3 paragraph · W4 essay or email.</td><td>Every student has a sentence with <em>both</em> or <em>unlike</em> by minute 70. Read two aloud.</td></tr>
+    <tr><td><b>80–87</b></td><td>S4 / S2</td><td>Progressing/Challenge record S4 (opinion, 45–60 s) on a device. Newcomers/Emerging do S2 with the teacher: give the steps for pecan pie with first/then/finally, pointing to the ingredient list.</td><td>Record an opinion with two reasons, or give the steps orally.</td><td>Recording exists; S2 uses at least two sequence words.</td></tr>
+    <tr><td><b>87–90</b></td><td>Exit ticket</td><td>Board: <em>Today I learned that ___ pie ___.</em> Collect.</td><td>One sentence, any lane.</td><td>Sort tickets into lanes: who used a connector, who used a frame, who wrote a word.</td></tr>
+  </table>
+
+  <h3>Differentiation at a glance</h3>
+  <div class="lanes">
+    <div class="lane n"><b>Newcomer · ELPT 1</b>Listening A; bold-word matching; procedure with a partner; W1 labels + frames; S1 words, S3 with a showing partner; S2 with the teacher. Bilingual word list; pointing counts.</div>
+    <div class="lane e"><b>Emerging · ELPT 2</b>Listening A + B (read 3×); reading 1, 2, 4 + procedure; W2 four frames; S1–S3 with frames on the board. Teacher-table during writing.</div>
+    <div class="lane p"><b>Progressing · ELPT 3–4</b>All listening; all reading + evidence sentence; W3 paragraph with <em>both/however/unlike</em>; S1–S4, S4 recorded. Unpack the sentence with the class.</div>
+    <div class="lane c"><b>Challenge · ELPT 4–5 / native speakers</b>All of the above; reading extension (which "chess" story is more believable); W4 essay or email with a counterargument; S4 with a rebuttal.</div>
+  </div>
+
+  <h3>Assessment</h3>
+  <table>
+    <tr><th style="width:22%">Formative, in the room</th><td>Finger checks after A and the reading; the underlined sentence; the W2/W3 connector check at minute 70; the exit ticket sorted by lane.</td></tr>
+    <tr><th>Products to score</th><td>Listening + reading items (key on the teacher page); the writing task for the lane; the S4 recording (Progressing/Challenge) or the teacher's S2 note (Newcomer/Emerging). Score content fully; one language pattern.</td></tr>
+    <tr><th>Evidence for the LSP</th><td>Each product maps to a domain: a dated W2/W3 sample for the writing goal, the S4 recording for speaking, item scores for listening and reading. File one per student.</td></tr>
+  </table>
+
+  <h3>If you have 45 minutes instead</h3>
+  <p>Day 1: open, five words, cognate hunt, Listening A–B, Reading (0–45). Day 2: unpack the sentence, S1 + S3, writing by lane, exit ticket. Save S4 for a warm-up on day 3.</p>
+  <h3>Extension and home connection</h3>
+  <p>Students bring (or draw) a dessert from home and fill in the same six-line ingredient card as the infographic, in English and the home language. Next class, the class infographic becomes the next task set. Content tie-ins: FACS/Culinary (the procedure), Chemistry (Script C: protein denaturation), U.S. History (foodways, the icebox).</p>
 </section>
 
 <!-- ───────── TEACHER: KEY, SCORING, STANDARDS ───────── -->
