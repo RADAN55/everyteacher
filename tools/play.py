@@ -10,8 +10,8 @@ FREE = ("Everything here is free. No account, no login, no trial, no catch — "
         "open it, use it, print it, keep it.")
 
 PLAY = [
- ("grammar-calisthenics/", "Grammar Calisthenics", "Fifteen minutes with the coach",
-  "Stand up. Say it. Write it."),
+ ("grammar-calisthenics/", "Grammar Calisthenics", "Grammar you do on your feet",
+  "Verb jumps, error hunts, rapid fire."),
  ("storm-lens/", "Storm Lens", "Point a camera at the room",
   "The room becomes the word list."),
  ("https://radan55.github.io/el-publishing-grammar-songs/", "Grammar Beats",

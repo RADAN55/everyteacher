@@ -45,7 +45,7 @@ R = [
  ("storm-lens/", "Storm Lens: Point. Name. Say.", "students", "Camera app", "334 words",
   "Point a Chromebook at the room and the room becomes the vocabulary list.", True),
  ("grammar-calisthenics/", "Storm Grammar Calisthenics", "students", "Daily coach", "180 routines",
-  "A bilingual coach runs a 15-minute grammar workout every day, both lanes on one screen.", True),
+  "Verb jumps, error hunts, rapid fire, dictation sprints — a bilingual coach, fifteen minutes a day.", True),
  ("english-on-your-own.html", "English On Your Own", "students", "Practice", "22 task types",
   "ELPA21 practice a student can do alone — speaking checked by the browser.", True),
  ("graduation-roadmap.html", "Graduation Roadmap for Newcomers", "students", "Planner", "4 diploma paths",
