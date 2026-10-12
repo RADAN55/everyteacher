@@ -29,7 +29,7 @@ main{flex:1;max-width:1180px;width:100%;margin:0 auto;padding:16px}
 .stage{display:grid;grid-template-columns:320px 1fr;gap:16px}
 @media(max-width:860px){.stage{grid-template-columns:1fr}}
 .coach{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;position:sticky;top:12px;align-self:start}
-.coach svg{width:100%;max-width:260px;height:auto}
+.coach svg{width:100%;max-width:260px;height:auto;border-radius:18px;box-shadow:0 10px 30px rgba(15,20,55,.35)}
 .bubble{background:var(--navy);color:#fff;border-radius:14px;padding:12px 14px;width:100%;min-height:84px;position:relative;font-size:.98rem;line-height:1.4}
 .bubble:before{content:"";position:absolute;top:-10px;left:40px;border:10px solid transparent;border-bottom-color:var(--navy);border-top:0}
 .bubble .es{display:block;color:var(--gold2);font-style:italic;margin-top:6px;font-size:.9rem}
@@ -102,13 +102,10 @@ footer a{color:var(--navy)}
 .mouth{transition:d .08s}
 .talk .mouth-closed{display:none}.talk .mouth-open{display:block}
 .mouth-open{display:none}
-.arm{transform-origin:118px 150px;transition:transform .5s}
-.armR{transform-origin:182px 150px;transition:transform .5s}
-.raise .arm{transform:rotate(130deg)}.raise .armR{transform:rotate(-130deg)}
-.talk .armR{animation:ges 1.4s infinite}
-@keyframes ges{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(-30deg)}}
 .bob{animation:bob 3s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+.talk .bob{animation:nod 1.6s ease-in-out infinite}
+@keyframes nod{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-1px) rotate(.6deg)}}
 </style>
 </head>
 <body>
@@ -144,43 +141,68 @@ footer a{color:var(--navy)}
   <div class="stage">
     <aside class="coach" id="coachbox">
       <svg viewBox="0 0 300 330" id="avatar" aria-label="Coach Marisol, EL Specialist">
-        <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1E2761"/><stop offset="1" stop-color="#3b4aa0"/></linearGradient></defs>
-        <rect x="0" y="0" width="300" height="330" rx="22" fill="url(#bg)"/>
-        <circle cx="150" cy="140" r="118" fill="#2b3680" opacity=".5"/>
-        <g class="bob">
-          <!-- body -->
-          <path d="M70 330 C70 240 110 215 150 215 C190 215 230 240 230 330 Z" fill="#C9A227"/>
-          <path d="M118 222 L150 262 L182 222 L150 212 Z" fill="#1E2761"/>
-          <circle cx="150" cy="248" r="8" fill="#fff"/>
-          <text x="150" y="252" text-anchor="middle" font-family="Fraunces,serif" font-size="9" font-weight="700" fill="#1E2761">EL</text>
-          <!-- arms -->
-          <g class="arm"><path d="M118 150 C80 170 60 220 70 290" stroke="#C9A227" stroke-width="26" stroke-linecap="round" fill="none"/><circle cx="70" cy="292" r="15" fill="#c68a5a"/></g>
-          <g class="armR"><path d="M182 150 C220 170 240 220 230 290" stroke="#C9A227" stroke-width="26" stroke-linecap="round" fill="none"/><circle cx="230" cy="292" r="15" fill="#c68a5a"/></g>
-          <!-- neck & head -->
-          <rect x="135" y="180" width="30" height="36" rx="12" fill="#c68a5a"/>
-          <ellipse cx="150" cy="130" rx="62" ry="70" fill="#d79b68"/>
-          <path d="M88 130 C88 60 120 48 150 48 C180 48 212 60 212 130 C212 110 196 92 180 90 C170 112 120 112 112 90 C100 96 88 112 88 130 Z" fill="#2a1a12"/>
-          <path d="M88 130 C84 170 92 196 106 206 C98 180 96 150 100 130 Z" fill="#2a1a12"/>
-          <path d="M212 130 C216 170 208 196 194 206 C202 180 204 150 200 130 Z" fill="#2a1a12"/>
-          <!-- glasses & eyes -->
-          <g class="eye" style="transform-origin:128px 128px"><ellipse cx="128" cy="128" rx="9" ry="10" fill="#fff"/><circle cx="129" cy="129" r="5" fill="#2a1a12"/><circle cx="131" cy="127" r="1.6" fill="#fff"/></g>
-          <g class="eye" style="transform-origin:172px 128px"><ellipse cx="172" cy="128" rx="9" ry="10" fill="#fff"/><circle cx="173" cy="129" r="5" fill="#2a1a12"/><circle cx="175" cy="127" r="1.6" fill="#fff"/></g>
-          <rect x="110" y="114" width="36" height="28" rx="9" fill="none" stroke="#C9A227" stroke-width="3"/>
-          <rect x="154" y="114" width="36" height="28" rx="9" fill="none" stroke="#C9A227" stroke-width="3"/>
-          <path d="M146 126 L154 126" stroke="#C9A227" stroke-width="3"/>
-          <path d="M110 124 L94 120 M190 124 L206 120" stroke="#C9A227" stroke-width="3"/>
-          <path d="M116 110 C122 104 134 104 140 108 M160 108 C166 104 178 104 184 110" stroke="#2a1a12" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-          <!-- nose, cheeks -->
-          <path d="M150 140 C146 150 146 156 152 158" stroke="#b67f52" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <circle cx="118" cy="156" r="9" fill="#e8a083" opacity=".5"/><circle cx="182" cy="156" r="9" fill="#e8a083" opacity=".5"/>
-          <!-- mouth -->
-          <path class="mouth mouth-closed" d="M132 172 C142 182 158 182 168 172" stroke="#7a2d2d" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path class="mouth mouth-open" d="M132 170 C140 190 160 190 168 170 C160 166 140 166 132 170 Z" fill="#7a2d2d"/>
-          <path class="mouth mouth-open" d="M138 171 C144 174 156 174 162 171 Z" fill="#fff"/>
-          <!-- earrings -->
-          <circle cx="94" cy="150" r="4" fill="#C9A227"/><circle cx="206" cy="150" r="4" fill="#C9A227"/>
+        <defs>
+          <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1E2761"/><stop offset="1" stop-color="#151c47"/></linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#C9A227" stop-opacity=".22"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/></radialGradient>
+          <linearGradient id="blazer" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2a3474"/><stop offset="1" stop-color="#1b2256"/></linearGradient>
+          <clipPath id="frame"><rect x="0" y="0" width="300" height="330" rx="22"/></clipPath>
+        </defs>
+        <g clip-path="url(#frame)">
+          <rect width="300" height="330" fill="url(#bg)"/>
+          <rect width="300" height="330" fill="url(#glow)"/>
+          <path d="M-20 300 L320 120" stroke="#C9A227" stroke-opacity=".12" stroke-width="1"/>
+          <path d="M-20 330 L320 150" stroke="#C9A227" stroke-opacity=".08" stroke-width="1"/>
+          <g class="bob">
+            <!-- hair back (low bun) -->
+            <ellipse cx="150" cy="134" rx="60" ry="64" fill="#2b1d14"/>
+            <circle cx="200" cy="158" r="17" fill="#2b1d14"/>
+            <!-- shoulders / blazer -->
+            <path d="M62 330 C62 258 100 236 128 232 L150 246 L172 232 C200 236 238 258 238 330 Z" fill="url(#blazer)"/>
+            <!-- blouse -->
+            <path d="M128 232 L150 272 L172 232 L160 226 L150 236 L140 226 Z" fill="#f4f1e8"/>
+            <!-- lapels -->
+            <path d="M128 232 L118 262 L146 300 L150 272 Z" fill="#161c4c"/>
+            <path d="M172 232 L182 262 L154 300 L150 272 Z" fill="#161c4c"/>
+            <!-- lanyard + badge -->
+            <path d="M138 240 L146 266 M162 240 L154 266" stroke="#C9A227" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <rect x="136" y="262" width="28" height="20" rx="3" fill="#fff"/>
+            <rect x="136" y="262" width="28" height="5" rx="2" fill="#C9A227"/>
+            <text x="150" y="278" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="700" fill="#1E2761">EL</text>
+            <!-- neck -->
+            <path d="M136 194 L136 226 C140 236 160 236 164 226 L164 186 Z" fill="#c08a62"/>
+            <path d="M136 206 C144 216 156 216 164 206 L164 194 L136 194 Z" fill="#aa7651"/>
+            <g transform="translate(0,8)">
+            <!-- face -->
+            <path d="M96 128 C96 86 118 62 150 62 C182 62 204 86 204 128 C204 164 180 198 150 198 C120 198 96 164 96 128 Z" fill="#cf9a70"/>
+            <!-- ears -->
+            <ellipse cx="97" cy="136" rx="7" ry="10" fill="#c08a62"/><ellipse cx="203" cy="136" rx="7" ry="10" fill="#c08a62"/>
+            <circle cx="97" cy="146" r="2.6" fill="#C9A227"/><circle cx="203" cy="146" r="2.6" fill="#C9A227"/>
+            <!-- hair front: swept side part -->
+            <path d="M96 128 C94 92 112 60 150 58 C186 58 206 86 204 124 C198 104 184 96 168 100 C152 86 128 84 112 102 C104 110 99 118 96 128 Z" fill="#2b1d14"/>
+            <path d="M112 102 C124 90 146 86 168 100 C156 94 136 94 120 106 Z" fill="#3a281c" opacity=".35"/>
+            <!-- brows -->
+            <path d="M118 118 C126 112 138 112 144 116" stroke="#2b1d14" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+            <path d="M156 116 C162 112 174 112 182 118" stroke="#2b1d14" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+            <!-- eyes -->
+            <g class="eye" style="transform-origin:131px 131px"><path d="M120 131 C124 125 138 125 142 131 C138 136 124 136 120 131 Z" fill="#fbf7f0"/><circle cx="132" cy="131" r="4.2" fill="#2b1d14"/><circle cx="133.4" cy="129.6" r="1.1" fill="#fff"/></g>
+            <g class="eye" style="transform-origin:169px 131px"><path d="M158 131 C162 125 176 125 180 131 C176 136 162 136 158 131 Z" fill="#fbf7f0"/><circle cx="168" cy="131" r="4.2" fill="#2b1d14"/><circle cx="169.4" cy="129.6" r="1.1" fill="#fff"/></g>
+            <!-- glasses: thin gold -->
+            <rect x="115" y="121" width="32" height="21" rx="7" fill="none" stroke="#C9A227" stroke-width="1.8"/>
+            <rect x="153" y="121" width="32" height="21" rx="7" fill="none" stroke="#C9A227" stroke-width="1.8"/>
+            <path d="M147 130 L153 130 M115 128 L102 126 M185 128 L198 126" stroke="#C9A227" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- nose -->
+            <path d="M150 136 L146 156 C148 159 153 159 155 156" stroke="#b07a55" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- mouth -->
+            <path class="mouth mouth-closed" d="M136 172 C142 178 158 178 164 172" stroke="#8d3f3f" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path class="mouth mouth-open" d="M137 171 C143 184 157 184 163 171 C157 169 143 169 137 171 Z" fill="#7a2f2f"/>
+            <path class="mouth mouth-open" d="M141 172 C146 174 154 174 159 172 Z" fill="#fff"/>
+          </g>
+          </g>
+          <!-- nameplate -->
+          <rect x="0" y="282" width="300" height="48" fill="#0f1437" fill-opacity=".72"/>
+          <text x="150" y="303" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="15" font-weight="700" fill="#fff">Coach Marisol</text>
+          <text x="150" y="319" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="600" letter-spacing="2" fill="#C9A227">EL SPECIALIST · ENL</text>
         </g>
-        <text x="150" y="318" text-anchor="middle" font-family="Fraunces,serif" font-size="15" font-weight="700" fill="#fff">Coach Marisol · EL Specialist</text>
       </svg>
       <div class="bubble" id="bubble">Ready when you are. <span class="es">Lista cuando ustedes lo estén.</span></div>
       <div class="coachbtns"><button class="say" id="replay">🔊 Say it again</button><button class="stop" id="stop">■ Quiet</button></div>
@@ -690,7 +712,7 @@ function render(){
   $("#bubble").innerHTML=esc(s.say[0])+(S.bil?`<span class="es">${esc(s.say[1])}</span>`:"");
   const cur=PH.indexOf(s.ph);
   $("#phasebar").innerHTML=PH.filter(p=>steps.some(x=>x.ph===p)).map(p=>`<span class="${p===s.ph?"on":PH.indexOf(p)<cur?"done":""}">${p}</span>`).join("");
-  const av=$("#coachbox");av.classList.toggle("raise",s.ph==="Warm-up");
+  
   $("#back").disabled=S.i===0;$("#next").textContent=S.i===steps.length-1?"Finish ✓":"Next ▶";
   // timer
   clearInterval(timerId);let left=s.secs;const t=document.createElement("div");t.className="timer";t.innerHTML=`<span class="ring"><i></i></span><span class="tt"></span>`;
