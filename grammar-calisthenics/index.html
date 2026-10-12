@@ -90,6 +90,8 @@ footer a{color:var(--navy)}
 .hidden{display:none!important}
 .proj .big{font-size:1.9rem}.proj .models li{font-size:1.45rem}.proj .rule{font-size:1.3rem}.proj .bubble{font-size:1.15rem}.proj .opts button{font-size:1.3rem}
 .std{font-size:.78rem;color:var(--mute);margin-top:8px}
+.astat{width:100%;font-size:.8rem;line-height:1.35;padding:8px 10px;border-radius:10px;background:#eef7f3;color:#14533f}
+.astat.warn{background:#fff6dc;color:#6b4e00}.astat.bad{background:#fdecea;color:#7a1f1f}
 .weekstrip{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .weekstrip button{border:0;background:#e9e6dc;border-radius:8px;padding:5px 9px;font-size:.78rem;font-weight:700}
 .weekstrip button.on{background:var(--gold);color:var(--navy)}
@@ -117,7 +119,7 @@ footer a{color:var(--navy)}
     <p><b>Coach Marisol</b>, your bilingual EL Specialist, leads a 15–20 minute daily grammar workout for the combined Emerging + Progressing block, grades 9–12. Every session: a body move, sets and reps out loud, an error hunt, a sprint, and three exit checks. Nobody sits still.</p>
     <p class="serif" style="color:var(--navy);font-size:1.1rem">Calistenia de gramática — ¡de pie, en voz alta, en movimiento!</p>
     <button class="btn gold" id="start" style="font-size:1.1rem;padding:14px 26px">Start today's workout ▶</button>
-    <p style="font-size:.8rem;margin-top:14px">Tip: turn on sound. The coach speaks in English with a Spanish bridge. Works best on Chromebooks with Chrome.</p>
+    <p style="font-size:.8rem;margin-top:14px">Tip: volume up. The coach speaks in English with a Spanish bridge. If she is silent, tap <b>Test audio</b> under her picture, then <b>Voices</b> to pick a local voice.</p>
   </div>
 </div>
 
@@ -182,6 +184,8 @@ footer a{color:var(--navy)}
       </svg>
       <div class="bubble" id="bubble">Ready when you are. <span class="es">Lista cuando ustedes lo estén.</span></div>
       <div class="coachbtns"><button class="say" id="replay">🔊 Say it again</button><button class="stop" id="stop">■ Quiet</button></div>
+      <div class="astat" id="audiostat">🔈 Checking audio…</div>
+      <button class="btn light" id="testaudio" style="width:100%">🎧 Test audio</button>
       <div class="std" id="stdline"></div>
     </aside>
 
@@ -619,14 +623,62 @@ function build(){
   return seq;
 }
 
-/* ===================== SPEECH ===================== */
-const synth=window.speechSynthesis;
-function pickVoices(){const v=synth.getVoices();const en=v.filter(x=>/^en[-_]/i.test(x.lang));const es=v.filter(x=>/^es[-_]/i.test(x.lang));const pref=(arr,re)=>arr.find(x=>re.test(x.name))||arr[0]||null;S.voiceEn=S.voiceEn||pref(en,/Google US English|Samantha|Aria|Jenny|Natural/i);S.voiceEs=S.voiceEs||pref(es,/Google español|Paulina|Mónica|Monica|Sabina|Natural/i);}
-if(synth){synth.onvoiceschanged=pickVoices;pickVoices();}
-let talking=false;
-function speak(en,es){if(!synth)return;synth.cancel();const av=$("#coachbox");const mk=(t,v,lang,rate)=>{const u=new SpeechSynthesisUtterance(t);if(v)u.voice=v;u.lang=lang;u.rate=rate;u.pitch=1.02;u.onstart=()=>av.classList.add("talk");u.onend=()=>av.classList.remove("talk");u.onboundary=()=>{av.classList.remove("talk");setTimeout(()=>av.classList.add("talk"),30);};return u;};
-  synth.speak(mk(en,S.voiceEn,"en-US",0.93));if(S.bil&&es)synth.speak(mk(es,S.voiceEs,"es-MX",0.95));}
-function quiet(){if(synth)synth.cancel();$("#coachbox").classList.remove("talk");}
+/* ===================== SPEECH (hardened) ===================== */
+const synth=window.speechSynthesis||null;
+let audioState={unlocked:false,voices:0,lastErr:"",spoke:false};
+function allVoices(){try{return synth?synth.getVoices():[];}catch(e){return [];}}
+function pickVoices(){
+  const v=allVoices();audioState.voices=v.length;
+  const en=v.filter(x=>/^en[-_]?/i.test(x.lang)),es=v.filter(x=>/^es[-_]?/i.test(x.lang));
+  // Prefer voices that live on the device: network voices (Google's) are blocked by many school filters.
+  const rank=(arr,re)=>arr.slice().sort((a,b)=>(b.localService?2:0)+(re.test(b.name)?1:0)-((a.localService?2:0)+(re.test(a.name)?1:0)))[0]||null;
+  const savedEn=ls("sgc-voice-en"),savedEs=ls("sgc-voice-es");
+  S.voiceEn=v.find(x=>x.name===savedEn)||S.voiceEn||rank(en,/US English|Samantha|Aria|Jenny|Natural|Allison|Ava/i);
+  S.voiceEs=v.find(x=>x.name===savedEs)||S.voiceEs||rank(es,/español|Paulina|Mónica|Monica|Sabina|Natural|Juan|Luciana/i);
+  audioStatus();
+}
+function ls(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+if(synth){synth.onvoiceschanged=pickVoices;pickVoices();setTimeout(pickVoices,500);setTimeout(pickVoices,2000);}
+function audioStatus(msg){
+  const el=$("#audiostat");if(!el)return;
+  if(!synth){el.innerHTML='🔇 This browser has no speech engine. Use Chrome.';el.className="astat bad";return;}
+  if(msg){el.innerHTML=msg;el.className="astat bad";return;}
+  const n=audioState.voices;
+  el.innerHTML=n?`🔊 Audio ready · ${S.voiceEn?esc(S.voiceEn.name):"default voice"}${S.voiceEn&&!S.voiceEn.localService?" <i>(network voice — if silent, pick a local one in Voices)</i>":""}`:'🔈 No voices yet — tap <b>Test audio</b>';
+  el.className="astat"+(n?"":" warn");
+}
+/* Chrome stops speaking at ~15 s per utterance; speak by sentence instead. */
+function chunks(t){const out=[];(t.match(/[^.!?…]+[.!?…]+["”]?|[^.!?…]+$/g)||[t]).forEach(x=>{x=x.trim();while(x.length>180){let cut=x.lastIndexOf(",",180);if(cut<60)cut=x.lastIndexOf(" ",180);if(cut<1)cut=180;out.push(x.slice(0,cut).trim());x=x.slice(cut).trim();}if(x)out.push(x);});return out;}
+let speakSeq=0,keepAlive=null;
+function speak(en,es){
+  if(!synth)return;const my=++speakSeq;const av=$("#coachbox");
+  try{synth.cancel();}catch(e){}
+  const queue=()=>{if(my!==speakSeq)return;try{synth.resume();}catch(e){}
+    const say=(t,v,lang,rate)=>chunks(t).forEach(c=>{const u=new SpeechSynthesisUtterance(c);if(v)u.voice=v;u.lang=(v&&v.lang)||lang;u.rate=rate;u.pitch=1.02;u.volume=1;
+      u.onstart=()=>{av.classList.add("talk");audioState.spoke=true;audioStatus();};u.onend=()=>{if(!synth.pending)av.classList.remove("talk");};
+      u.onerror=ev=>{av.classList.remove("talk");if(ev.error&&ev.error!=="interrupted"&&ev.error!=="canceled"){audioState.lastErr=ev.error;audioStatus(`🔇 Speech error: <b>${esc(ev.error)}</b>. ${ev.error==="network"?"The chosen voice needs the internet — open <b>Voices</b> and pick a local one.":"Tap Test audio, check the volume, or pick another voice."}`);}};
+      u.onboundary=()=>{av.classList.remove("talk");setTimeout(()=>av.classList.add("talk"),30);};synth.speak(u);});
+    say(en,S.voiceEn,"en-US",0.93);if(S.bil&&es)say(es,S.voiceEs,"es-MX",0.95);
+    // Chrome desktop pauses long queues; nudge it.
+    clearInterval(keepAlive);keepAlive=setInterval(()=>{if(!synth.speaking){clearInterval(keepAlive);return;}if(!/Android|iPhone|iPad/i.test(navigator.userAgent)){synth.pause();synth.resume();}},10000);
+  };
+  // iOS/Android need the first utterance inside the tap; afterwards a short delay avoids Chrome's cancel/speak race.
+  if(!audioState.unlocked)queue();else setTimeout(queue,80);
+}
+function unlockAudio(){if(!synth||audioState.unlocked)return;try{synth.resume();const u=new SpeechSynthesisUtterance(" ");u.volume=0;synth.speak(u);audioState.unlocked=true;}catch(e){}}
+function quiet(){speakSeq++;clearInterval(keepAlive);if(synth){try{synth.cancel();}catch(e){}}$("#coachbox").classList.remove("talk");}
+function testAudio(){unlockAudio();pickVoices();audioState.spoke=false;speak("Hello! I'm Coach Marisol. If you can hear me, we're ready.","¡Hola! Soy la Coach Marisol.");setTimeout(()=>{if(!audioState.spoke)audioStatus(`🔇 Nothing played. Check: volume up and not muted · on a Chromebook, Settings → Accessibility → Text-to-speech → add an English voice · then tap <b>Voices</b> and choose a voice marked <b>local</b>.`);},3500);}
+function voicePicker(){
+  pickVoices();const v=allVoices();
+  const en=v.filter(x=>/^en/i.test(x.lang)),es=v.filter(x=>/^es/i.test(x.lang));
+  const opt=(list,cur)=>list.map(x=>`<option value="${esc(x.name)}" ${cur&&cur.name===x.name?"selected":""}>${esc(x.name)} · ${esc(x.lang)}${x.localService?" · local":" · network"}</option>`).join("")||'<option value="">(none found)</option>';
+  const m=document.createElement("div");m.className="overlay";m.innerHTML=`<div class="box" style="text-align:left"><div class="kicker">Voices · Voces</div><h1 style="font-size:1.5rem">Choose the coach's voices</h1><p>Voices marked <b>local</b> work without the internet and get past school filters. ${v.length?"":"<b>No voices found yet.</b> On a Chromebook: Settings → Accessibility → Text-to-speech → add voices, then reload."}</p><label>English<br><select id="vEn" style="width:100%;padding:8px;font:inherit">${opt(en,S.voiceEn)}</select></label><br><br><label>Spanish<br><select id="vEs" style="width:100%;padding:8px;font:inherit">${opt(es,S.voiceEs)}</select></label><div class="row"><button class="btn gold" id="vTest">🔊 Test</button><button class="btn" id="vOk">Save</button><button class="btn light" id="vX">Close</button></div></div>`;
+  document.body.appendChild(m);
+  const apply=()=>{const a=v.find(x=>x.name===m.querySelector("#vEn").value);const b=v.find(x=>x.name===m.querySelector("#vEs").value);if(a)S.voiceEn=a;if(b)S.voiceEs=b;audioStatus();};
+  m.querySelector("#vTest").onclick=()=>{apply();unlockAudio();speak("Hello, I'm Coach Marisol.","Hola, soy la Coach Marisol.");};
+  m.querySelector("#vOk").onclick=()=>{apply();try{localStorage.setItem("sgc-voice-en",S.voiceEn?S.voiceEn.name:"");localStorage.setItem("sgc-voice-es",S.voiceEs?S.voiceEs.name:"");}catch(e){}m.remove();};
+  m.querySelector("#vX").onclick=()=>m.remove();
+}
 
 /* ===================== RENDER ===================== */
 const PH=["Warm-up","The Move","Reps","Quick Write","Exit Check","Cool-down"];
@@ -680,12 +732,14 @@ function init(){
   $("#today").onclick=()=>{const t=todayWD();load(t.w,t.d);};
   $("#next").onclick=()=>{if(S.i<steps.length-1){S.i++;render();}else{quiet();alert("Workout complete. ¡Entrenamiento completo!");}};
   $("#back").onclick=()=>{if(S.i>0){S.i--;render();}};
-  $("#replay").onclick=()=>{const s=steps[S.i];speak(s.say[0],s.say[1]);};$("#stop").onclick=quiet;
-  $("#voices").onclick=()=>{pickVoices();const v=synth?synth.getVoices():[];if(!v.length){alert("No voices found on this device yet. Try again in a moment, or use Chrome.");return;}const en=v.filter(x=>/^en/i.test(x.lang)),es=v.filter(x=>/^es/i.test(x.lang));const pick=(list,cur,label)=>{const names=list.map((x,i)=>`${i+1}. ${x.name} (${x.lang})`).join("\n");const r=prompt(`${label}\n\n${names}\n\nType a number:`,String(Math.max(1,list.indexOf(cur)+1)));const n=parseInt(r,10);return list[n-1]||cur;};S.voiceEn=pick(en,S.voiceEn,"English voice / Voz en inglés");S.voiceEs=pick(es,S.voiceEs,"Spanish voice / Voz en español");speak("Hello, I'm Coach Marisol.","Hola, soy la Coach Marisol.");};
+  $("#replay").onclick=()=>{unlockAudio();const s=steps[S.i];speak(s.say[0],s.say[1]);};$("#stop").onclick=quiet;
+  $("#voices").onclick=()=>{unlockAudio();voicePicker();};
+  $("#testaudio").onclick=testAudio;
+  document.addEventListener("pointerdown",()=>unlockAudio(),{once:false});
   document.addEventListener("keydown",e=>{if(e.target.tagName==="TEXTAREA")return;if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();$("#next").click();}if(e.key==="ArrowLeft")$("#back").click();if(e.key.toLowerCase()==="r")$("#replay").click();});
   const m=location.hash.match(/w(\d+)d(\d+)/);const t=todayWD();
   const w=m?Math.min(35,Math.max(0,+m[1]-1)):t.w,d=m?Math.min(4,Math.max(0,+m[2]-1)):t.d;
-  $("#start").onclick=()=>{$("#gate").classList.add("hidden");pickVoices();load(w,d);};
+  $("#start").onclick=()=>{unlockAudio();$("#gate").classList.add("hidden");pickVoices();load(w,d);};
   if("serviceWorker" in navigator){/* optional: register sw.js if present */}
 }
 init();
