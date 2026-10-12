@@ -12,17 +12,17 @@ Every href is checked against the catalog by tools/build.py.
   MORE   [(href, why), …]  — three beside it
 """
 
-LEAD = ("lsp-builder.html",
-        "Enter four ELPT levels and the Language Service Plan drafts itself — services, "
-        "accommodations, a measurable goal for every domain — then checks its own dates "
-        "and prints only what matters.",
-        "Rebuilt this week")
+LEAD = ("session.html",
+        "Elena, an animated presenter, teaches an eight-minute PD session: what Emerging and "
+        "Progressing students can already do in your class, the five things you change for "
+        "each, and one lesson taught in two sizes. Captioned, with chapters and a transcript.",
+        "New: taught on screen")
 
 MORE = [
     ("cognate-hunt.html",
      "Paste tomorrow's reading. The words your Spanish speakers already own light up; the false friends go red."),
     ("by-subject.html",
      "Your subject, your grade band: the language demand, two moves, what to reach for — and 27 free resources from elsewhere."),
-    ("sheltered.html",
-     "Twelve minutes as an English learner. Sit the lesson once in a language you don't speak, then again with supports."),
+    ("lsp-builder.html",
+     "Enter four ELPT levels and the Language Service Plan drafts itself — services, accommodations, a goal for every domain — then checks its own dates."),
 ]
