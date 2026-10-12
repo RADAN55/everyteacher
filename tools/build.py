@@ -609,7 +609,7 @@ def insert_at(s, tag, payload, last):
 
 
 wired = 0
-NO_CHROME = {"commercial.html", "video-stage.html", "avatar-stage.html"}  # a full-screen stage; no bar, no theme toggle
+NO_CHROME = {"commercial.html", "video-stage.html", "avatar-stage.html", "timer.html"}  # a full-screen stage; no bar, no theme toggle
 for page in sorted(ROOT.glob("*.html")):
     if page.name in NO_CHROME:
         continue
@@ -633,7 +633,7 @@ if wired:
 # 57 titles for a crawler to follow. all.html is listed first after the root.
 SITE = "https://radan55.github.io/everyteacher/"
 pages = ["", "all.html"] + sorted(
-    f.name for f in ROOT.glob("*.html") if f.name not in {"index.html", "all.html", "video-stage.html", "avatar-stage.html"}
+    f.name for f in ROOT.glob("*.html") if f.name not in {"index.html", "all.html", "video-stage.html", "avatar-stage.html", "timer.html"}
 )
 pages += sorted({r["href"] for r in C
                  if not r["ext"] and r["href"].endswith("/")})

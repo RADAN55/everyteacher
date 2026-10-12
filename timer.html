@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Classroom timer · EL Publishing</title>
+<meta name="description" content="A full-screen classroom countdown. Open with ?m=7 for seven minutes and &t=Five words first for a label; space starts and pauses.">
+<meta name="robots" content="noindex">
+<style>
+  html,body{margin:0;height:100%;background:#1E2761;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+  body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 26px);pointer-events:none}
+  .wrap{position:relative;min-height:100%;display:grid;place-items:center;text-align:center;padding:24px}
+  .k{font-size:clamp(12px,1.6vw,16px);letter-spacing:.34em;text-transform:uppercase;color:#C9A227;font-weight:700}
+  h1{font-family:Georgia,serif;font-weight:700;font-size:clamp(28px,5vw,64px);margin:10px 0 0;letter-spacing:-.02em}
+  .time{font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(90px,26vw,340px);line-height:1;margin:10px 0 0;letter-spacing:-.04em}
+  .time.warn{color:#EBD9A0}.time.over{color:#F5A3B3}
+  .bar{position:fixed;left:0;bottom:0;height:10px;background:#C9A227;width:100%;transform-origin:left;transition:transform .9s linear}
+  .btns{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  button{font:inherit;font-size:clamp(15px,1.8vw,20px);font-weight:700;border:0;border-radius:999px;padding:12px 26px;cursor:pointer;background:#C9A227;color:#141A44}
+  button.q{background:rgba(255,255,255,.12);color:#fff}
+  .pre{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .pre button{font-size:14px;padding:7px 14px;background:rgba(255,255,255,.1);color:#fff}
+  .hint{font-size:13px;color:#AEB5DA;margin-top:14px}
+  .done{position:fixed;inset:0;background:#141A44;display:grid;place-items:center;font-family:Georgia,serif;font-size:clamp(40px,8vw,120px);opacity:0;pointer-events:none;transition:opacity .4s}
+  .done.on{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<div class="wrap"><div>
+  <div class="k" id="k">EL Publishing · classroom timer</div>
+  <h1 id="title">Timer</h1>
+  <div class="time" id="time">7:00</div>
+  <div class="btns"><button id="go">Start</button><button class="q" id="reset">Reset</button><button class="q" id="full">Full screen</button></div>
+  <div class="pre" id="pre"></div>
+  <p class="hint">Space = start / pause · R = reset · F = full screen · ?m=7&amp;t=Five+words+first sets it from a link</p>
+</div></div>
+<div class="bar" id="bar"></div>
+<div class="done" id="done">Time.</div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var total=Math.max(5,Math.round((parseFloat(q.get('m'))||7)*60)),left=total,run=false,last=0,raf=0;
+  var t=document.getElementById('time'),bar=document.getElementById('bar'),go=document.getElementById('go');
+  document.getElementById('title').textContent=q.get('t')||'Timer';document.title=(q.get('t')||'Timer')+' · '+Math.round(total/60)+' min';
+  function mm(s){s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+('0'+s%60).slice(-2)}
+  function paint(){t.textContent=mm(left);t.className='time'+(left<=30?' warn':'');bar.style.transform='scaleX('+(left/total)+')'}
+  function beep(){try{var a=new (window.AudioContext||window.webkitAudioContext)();[0,.35,.7].forEach(function(d){var o=a.createOscillator(),g=a.createGain();o.frequency.value=880;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.001,a.currentTime+d);g.gain.exponentialRampToValueAtTime(.4,a.currentTime+d+.02);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d+.3);o.start(a.currentTime+d);o.stop(a.currentTime+d+.32)})}catch(e){}}
+  function tick(now){if(!run)return;left-=(now-last)/1000;last=now;if(left<=0){left=0;run=false;paint();go.textContent='Start';document.getElementById('done').classList.add('on');beep();return}paint();raf=requestAnimationFrame(tick)}
+  function toggle(){if(left<=0)return;run=!run;go.textContent=run?'Pause':'Start';if(run){last=performance.now();raf=requestAnimationFrame(tick)}}
+  function reset(){run=false;left=total;go.textContent='Start';document.getElementById('done').classList.remove('on');paint()}
+  go.addEventListener('click',toggle);document.getElementById('reset').addEventListener('click',reset);
+  document.getElementById('full').addEventListener('click',function(){(document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()).catch(function(){})});
+  document.getElementById('done').addEventListener('click',reset);
+  document.addEventListener('keydown',function(e){if(e.key===' '){e.preventDefault();toggle()}else if(e.key==='r'||e.key==='R')reset();else if(e.key==='f'||e.key==='F')document.getElementById('full').click()});
+  var pre=document.getElementById('pre');[1,2,3,5,7,10,15,20].forEach(function(m){var b=document.createElement('button');b.textContent=m+' min';b.addEventListener('click',function(){total=m*60;left=total;run=false;go.textContent='Start';document.getElementById('done').classList.remove('on');paint()});pre.appendChild(b)});
+  paint();
+})();
+</script>
+</body>
+</html>
