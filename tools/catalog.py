@@ -44,6 +44,8 @@ R = [
   "The hundred words of a first month, tap to hear, printable as flashcards.", True),
  ("storm-lens/", "Storm Lens: Point. Name. Say.", "students", "Camera app", "334 words",
   "Point a Chromebook at the room and the room becomes the vocabulary list.", True),
+ ("grammar-calisthenics/", "Storm Grammar Calisthenics", "students", "Daily coach", "180 routines",
+  "A bilingual coach runs a 15-minute grammar workout every day, both lanes on one screen.", True),
  ("english-on-your-own.html", "English On Your Own", "students", "Practice", "22 task types",
   "ELPA21 practice a student can do alone — speaking checked by the browser.", True),
  ("graduation-roadmap.html", "Graduation Roadmap for Newcomers", "students", "Planner", "4 diploma paths",
@@ -172,8 +174,8 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
-PIN = {"el-evaluate.html": "2026-11-20"}
+NEW = {"grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+PIN = {"grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 

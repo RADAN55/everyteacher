@@ -135,6 +135,15 @@ Q = [
    ("Storm Lens", "storm-lens/")]),
 
  ("students",
+  "How can I practice English grammar a little every day?",
+  "Storm Grammar Calisthenics is a daily fifteen-minute workout led by a bilingual coach: "
+  "one grammar move a week for thirty-six weeks, with a Spanish bridge, reps for both the "
+  "Emerging and Progressing lanes, a quick write and three exit checks. Sentence Lab is the "
+  "printable packet that goes with it.",
+  [("Storm Grammar Calisthenics", "grammar-calisthenics/"),
+   ("Sentence Lab", "sentence-lab.html")]),
+
+ ("students",
   "Is there something to read that was written for students like me?",
   "Many Voices is a magazine for multilingual high-school students. The Mississippi EL "
   "Library has 187 leveled readables across five volumes. And Sentence Lab puts sixteen "

@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Grammar Calisthenics · EL Publishing</title>
+<meta name="description" content="A bilingual EL Specialist coach leads a 15–20 minute daily grammar routine for combined Emerging + Progressing EL classes, grades 9–12. 36 weeks, 180 sessions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2761;--navy2:#2b3680;--gold:#C9A227;--gold2:#e4c35a;--ink:#17203a;--paper:#f7f5ef;--card:#ffffff;--mute:#6b7280;--em:#1f8a70;--pr:#b4542a;--ok:#1f8a70;--bad:#c0392b;--line:#e5e1d6;--sh:0 8px 30px rgba(30,39,97,.12)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px}
+body{min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,.serif{font-family:Fraunces,Georgia,serif}
+button{font:inherit;cursor:pointer}
+header{background:var(--navy);color:#fff;padding:12px 16px;overflow:hidden;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .mark{width:34px;height:34px}
+.brand b{font-family:Fraunces,serif;font-weight:700;font-size:1.05rem;letter-spacing:.2px}
+.brand small{display:block;color:var(--gold2);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrl{max-width:100%}.ctrl select{max-width:100%;min-width:0}
+.ctrl select,.ctrl button,.ctrl label{background:#fff;color:var(--ink);border:0;border-radius:8px;padding:7px 10px;font-size:.85rem;font-weight:600}
+.ctrl label{display:flex;gap:6px;align-items:center}
+.ctrl .ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.ctrl .gold{background:var(--gold);color:var(--navy)}
+main{flex:1;max-width:1180px;width:100%;margin:0 auto;padding:16px}
+.stage{display:grid;grid-template-columns:320px 1fr;gap:16px}
+@media(max-width:860px){.stage{grid-template-columns:1fr}}
+.coach{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;position:sticky;top:12px;align-self:start}
+.coach svg{width:100%;max-width:260px;height:auto}
+.bubble{background:var(--navy);color:#fff;border-radius:14px;padding:12px 14px;width:100%;min-height:84px;position:relative;font-size:.98rem;line-height:1.4}
+.bubble:before{content:"";position:absolute;top:-10px;left:40px;border:10px solid transparent;border-bottom-color:var(--navy);border-top:0}
+.bubble .es{display:block;color:var(--gold2);font-style:italic;margin-top:6px;font-size:.9rem}
+.coachbtns{display:flex;gap:8px;width:100%}
+.coachbtns button{flex:1;border:0;border-radius:10px;padding:10px;font-weight:700}
+.coachbtns .say{background:var(--gold);color:var(--navy)}
+.coachbtns .stop{background:#eee;color:var(--ink)}
+.phasebar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.phasebar span{flex:1;min-width:70px;text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 4px;border-radius:999px;background:#e9e6dc;color:var(--mute)}
+.phasebar span.on{background:var(--navy);color:#fff}
+.phasebar span.done{background:var(--gold);color:var(--navy)}
+.card{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:22px}
+.kicker{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.card h2{margin:4px 0 10px;font-size:1.7rem;line-height:1.15;color:var(--navy)}
+.card h2 small{display:block;font-size:1rem;font-style:italic;color:var(--mute);font-weight:500}
+.timer{font-family:Fraunces,serif;font-size:1.3rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.timer .ring{width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--gold) var(--p,0%),#e9e6dc 0);display:grid;place-items:center}
+.timer .ring i{width:34px;height:34px;border-radius:50%;background:#fff}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:700px){.lanes{grid-template-columns:1fr}}
+.lane{border:2px solid var(--line);border-radius:14px;padding:14px}
+.lane.em{border-color:var(--em)}.lane.pr{border-color:var(--pr)}
+.lane .tag{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:#fff;margin-bottom:8px}
+.lane.em .tag{background:var(--em)}.lane.pr .tag{background:var(--pr)}
+.big{font-size:1.45rem;line-height:1.35;font-family:Fraunces,serif;color:var(--ink)}
+.rule{background:#fbf7ea;border-left:5px solid var(--gold);padding:12px 14px;border-radius:8px;margin:10px 0;font-size:1.08rem;line-height:1.5}
+.rule .es{display:block;color:var(--navy2);font-style:italic;margin-top:6px}
+.models li{font-size:1.15rem;line-height:1.55;margin:4px 0}
+.models b{color:var(--navy);background:#fbf7ea;padding:0 4px;border-radius:4px}
+.ans{margin-top:10px;display:none;background:#eef7f3;border-radius:10px;padding:10px 12px;font-size:1.15rem}
+.ans.show{display:block}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:700}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.light{background:#eceae2;color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+textarea{width:100%;min-height:110px;border:2px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:1.05rem}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opts button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font-size:1.08rem}
+.opts button.ok{border-color:var(--ok);background:#eef7f3}
+.opts button.bad{border-color:var(--bad);background:#fdecea}
+.fb{margin-top:8px;font-weight:700}
+.stretch{display:flex;gap:10px;align-items:center;background:#eef1fb;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:1.05rem}
+.stretch .ic{font-size:1.6rem}
+.scorebox{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.scorebox div{background:#f1efe7;border-radius:10px;padding:8px 12px;font-size:.9rem}
+.scorebox b{display:block;font-size:1.3rem;color:var(--navy);font-family:Fraunces,serif}
+footer{padding:18px 16px;text-align:center;color:var(--mute);font-size:.8rem}
+footer a{color:var(--navy)}
+.overlay{position:fixed;inset:0;background:rgba(30,39,97,.92);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .box{background:#fff;border-radius:22px;padding:30px;max-width:560px;width:100%;text-align:center}
+.overlay h1{color:var(--navy);margin:0 0 6px;font-size:2rem}
+.overlay p{color:var(--mute);line-height:1.5}
+.hidden{display:none!important}
+.proj .big{font-size:1.9rem}.proj .models li{font-size:1.45rem}.proj .rule{font-size:1.3rem}.proj .bubble{font-size:1.15rem}.proj .opts button{font-size:1.3rem}
+.std{font-size:.78rem;color:var(--mute);margin-top:8px}
+.weekstrip{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
+.weekstrip button{border:0;background:#e9e6dc;border-radius:8px;padding:5px 9px;font-size:.78rem;font-weight:700}
+.weekstrip button.on{background:var(--gold);color:var(--navy)}
+.pill{display:inline-block;background:#e9e6dc;border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:700;margin-right:6px}
+/* avatar */
+.eye{animation:blink 4.2s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.mouth{transition:d .08s}
+.talk .mouth-closed{display:none}.talk .mouth-open{display:block}
+.mouth-open{display:none}
+.arm{transform-origin:118px 150px;transition:transform .5s}
+.armR{transform-origin:182px 150px;transition:transform .5s}
+.raise .arm{transform:rotate(130deg)}.raise .armR{transform:rotate(-130deg)}
+.talk .armR{animation:ges 1.4s infinite}
+@keyframes ges{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(-30deg)}}
+.bob{animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+</style>
+</head>
+<body>
+<div class="overlay" id="gate">
+  <div class="box">
+    <div class="kicker">EL Publishing · Storm Studio</div>
+    <h1>Storm Grammar Calisthenics</h1>
+    <p><b>Coach Marisol</b>, your bilingual EL Specialist, leads a 15–20 minute daily grammar workout for the combined Emerging + Progressing block, grades 9–12. Stand up, speak up, write it down.</p>
+    <p class="serif" style="color:var(--navy);font-size:1.1rem">Calistenia de gramática — ¡de pie, en voz alta, y por escrito!</p>
+    <button class="btn gold" id="start" style="font-size:1.1rem;padding:14px 26px">Start today's workout ▶</button>
+    <p style="font-size:.8rem;margin-top:14px">Tip: turn on sound. The coach speaks in English with a Spanish bridge. Works best on Chromebooks with Chrome.</p>
+  </div>
+</div>
+
+<header>
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#fff"/><text x="9" y="30" font-family="Fraunces,serif" font-size="26" font-weight="700" fill="#1E2761">“</text><text x="18" y="34" font-family="Fraunces,serif" font-size="26" font-weight="700" fill="#C9A227">”</text></svg>
+    <div><b>Storm Grammar Calisthenics</b><small>EL Publishing · Many Voices · One Storm</small></div>
+  </div>
+  <div class="ctrl">
+    <select id="week" style="max-width:180px"></select>
+    <select id="day"></select>
+    <select id="lanepick"><option value="both">Both lanes</option><option value="em">Emerging focus</option><option value="pr">Progressing focus</option></select>
+    <label><input type="checkbox" id="bil" checked> ES bridge</label>
+    <label><input type="checkbox" id="auto" checked> Auto-speak</label>
+    <button class="ghost" id="proj">Projector</button>
+    <button class="ghost" id="voices">Voices</button>
+    <button class="gold" id="today">Today</button>
+  </div>
+</header>
+
+<main>
+  <div class="stage">
+    <aside class="coach" id="coachbox">
+      <svg viewBox="0 0 300 330" id="avatar" aria-label="Coach Marisol, EL Specialist">
+        <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1E2761"/><stop offset="1" stop-color="#3b4aa0"/></linearGradient></defs>
+        <rect x="0" y="0" width="300" height="330" rx="22" fill="url(#bg)"/>
+        <circle cx="150" cy="140" r="118" fill="#2b3680" opacity=".5"/>
+        <g class="bob">
+          <!-- body -->
+          <path d="M70 330 C70 240 110 215 150 215 C190 215 230 240 230 330 Z" fill="#C9A227"/>
+          <path d="M118 222 L150 262 L182 222 L150 212 Z" fill="#1E2761"/>
+          <circle cx="150" cy="248" r="8" fill="#fff"/>
+          <text x="150" y="252" text-anchor="middle" font-family="Fraunces,serif" font-size="9" font-weight="700" fill="#1E2761">EL</text>
+          <!-- arms -->
+          <g class="arm"><path d="M118 150 C80 170 60 220 70 290" stroke="#C9A227" stroke-width="26" stroke-linecap="round" fill="none"/><circle cx="70" cy="292" r="15" fill="#c68a5a"/></g>
+          <g class="armR"><path d="M182 150 C220 170 240 220 230 290" stroke="#C9A227" stroke-width="26" stroke-linecap="round" fill="none"/><circle cx="230" cy="292" r="15" fill="#c68a5a"/></g>
+          <!-- neck & head -->
+          <rect x="135" y="180" width="30" height="36" rx="12" fill="#c68a5a"/>
+          <ellipse cx="150" cy="130" rx="62" ry="70" fill="#d79b68"/>
+          <path d="M88 130 C88 60 120 48 150 48 C180 48 212 60 212 130 C212 110 196 92 180 90 C170 112 120 112 112 90 C100 96 88 112 88 130 Z" fill="#2a1a12"/>
+          <path d="M88 130 C84 170 92 196 106 206 C98 180 96 150 100 130 Z" fill="#2a1a12"/>
+          <path d="M212 130 C216 170 208 196 194 206 C202 180 204 150 200 130 Z" fill="#2a1a12"/>
+          <!-- glasses & eyes -->
+          <g class="eye" style="transform-origin:128px 128px"><ellipse cx="128" cy="128" rx="9" ry="10" fill="#fff"/><circle cx="129" cy="129" r="5" fill="#2a1a12"/><circle cx="131" cy="127" r="1.6" fill="#fff"/></g>
+          <g class="eye" style="transform-origin:172px 128px"><ellipse cx="172" cy="128" rx="9" ry="10" fill="#fff"/><circle cx="173" cy="129" r="5" fill="#2a1a12"/><circle cx="175" cy="127" r="1.6" fill="#fff"/></g>
+          <rect x="110" y="114" width="36" height="28" rx="9" fill="none" stroke="#C9A227" stroke-width="3"/>
+          <rect x="154" y="114" width="36" height="28" rx="9" fill="none" stroke="#C9A227" stroke-width="3"/>
+          <path d="M146 126 L154 126" stroke="#C9A227" stroke-width="3"/>
+          <path d="M110 124 L94 120 M190 124 L206 120" stroke="#C9A227" stroke-width="3"/>
+          <path d="M116 110 C122 104 134 104 140 108 M160 108 C166 104 178 104 184 110" stroke="#2a1a12" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <!-- nose, cheeks -->
+          <path d="M150 140 C146 150 146 156 152 158" stroke="#b67f52" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="118" cy="156" r="9" fill="#e8a083" opacity=".5"/><circle cx="182" cy="156" r="9" fill="#e8a083" opacity=".5"/>
+          <!-- mouth -->
+          <path class="mouth mouth-closed" d="M132 172 C142 182 158 182 168 172" stroke="#7a2d2d" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path class="mouth mouth-open" d="M132 170 C140 190 160 190 168 170 C160 166 140 166 132 170 Z" fill="#7a2d2d"/>
+          <path class="mouth mouth-open" d="M138 171 C144 174 156 174 162 171 Z" fill="#fff"/>
+          <!-- earrings -->
+          <circle cx="94" cy="150" r="4" fill="#C9A227"/><circle cx="206" cy="150" r="4" fill="#C9A227"/>
+        </g>
+        <text x="150" y="318" text-anchor="middle" font-family="Fraunces,serif" font-size="15" font-weight="700" fill="#fff">Coach Marisol · EL Specialist</text>
+      </svg>
+      <div class="bubble" id="bubble">Ready when you are. <span class="es">Lista cuando ustedes lo estén.</span></div>
+      <div class="coachbtns"><button class="say" id="replay">🔊 Say it again</button><button class="stop" id="stop">■ Quiet</button></div>
+      <div class="std" id="stdline"></div>
+    </aside>
+
+    <section>
+      <div class="phasebar" id="phasebar"></div>
+      <div class="card" id="card"></div>
+      <div class="nav">
+        <button class="btn light" id="back">◀ Back</button>
+        <div class="pill" id="stepno"></div>
+        <button class="btn" id="next">Next ▶</button>
+      </div>
+      <div class="weekstrip" id="weekstrip"></div>
+    </section>
+  </div>
+</main>
+<footer>Storm Grammar Calisthenics · EL Publishing · Aligned to Mississippi ELP Standards 9–12 (Std 9–10, ELPA21) · Chromebook friendly · No account needed · <a href="https://radan55.github.io/everyteacher/">EL Publishing Hub</a></footer>
+
+<script>
+/* =========================================================
+   36-WEEK GRAMMAR LADDER  (ELP Std 10: language forms)
+   w = week, t/ts = title EN/ES, rule/rs = rule EN/ES,
+   tr/trs = Spanish transfer note, m = model sentences (**bold** = target),
+   e = Emerging frames [frame, answer], p = Progressing transforms [prompt, answer],
+   q = exit check [question, [options], correctIndex]
+   ========================================================= */
+const W=[
+{t:"Nouns and plurals",ts:"Sustantivos y plurales",std:"ELP 10 · nouns, plural -s/-es",
+rule:"A noun names a person, place, thing, or idea. Add -s for more than one; add -es after s, x, ch, sh.",
+rs:"Un sustantivo nombra una persona, un lugar, una cosa o una idea. Agrega -s para más de uno; -es después de s, x, ch, sh.",
+tr:"Spanish also adds -s or -es, so this transfers well. Watch the irregular ones: child → children, person → people.",
+trs:"El español también usa -s o -es, así que la regla se transfiere. Cuidado con los irregulares: child → children, person → people.",
+m:["The **students** carry heavy **backpacks**.","Two **buses** stop at Laurel High every morning.","My **teachers** give us many **classes**.","The **children** play after school.","Three **boxes** of pencils are on the desk."],
+e:[["I have two ___ (book).","books"],["The ___ (class) start at 8:00.","classes"],["My ___ (friend) are in the cafeteria.","friends"],["There are many ___ (bus) outside.","buses"],["The ___ (child) read every day.","children"]],
+p:[["Make it plural: The student has a book.","The students have books."],["Make it plural: The box is on the shelf.","The boxes are on the shelf."],["Make it plural: The person is waiting.","The people are waiting."],["Fix it: Two teacher help the childs.","Two teachers help the children."],["Write a sentence with two plural nouns about our school.","The students eat lunches in the cafeteria. (answers vary)"]],
+q:[["Which is correct?",["two boxs","two boxes","two boxies"],1],["The plural of child is…",["childs","childrens","children"],2],["Which word is a noun?",["quickly","Laurel","is"],1]]},
+{t:"Subject pronouns and BE",ts:"Pronombres de sujeto y el verbo BE",std:"ELP 10 · subject pronouns, am/is/are",
+rule:"Every English sentence needs a subject you can hear. Use I am, you/we/they are, he/she/it is.",
+rs:"Toda oración en inglés necesita un sujeto que se oiga. Usa I am, you/we/they are, he/she/it is.",
+tr:"In Spanish you can say 'Es alto.' In English you must say the subject: 'HE is tall.' Never drop the pronoun.",
+trs:"En español se puede decir 'Es alto.' En inglés hay que decir el sujeto: 'HE is tall.' Nunca omitas el pronombre.",
+m:["**I am** a student at Laurel High School.","**She is** my science teacher.","**They are** from Honduras.","**We are** ready for class.","**It is** cold in the gym."],
+e:[["I ___ from Mexico.","am"],["She ___ a nurse.","is"],["We ___ in Room 112.","are"],["It ___ Monday.","is"],["They ___ my cousins.","are"]],
+p:[["Fix it: Is a good student.","He is a good student. / She is a good student."],["Fix it: My friends is tired.","My friends are tired."],["Fix it: I is happy today.","I am happy today."],["Fix it: Are from Laurel.","We are from Laurel. / They are from Laurel."],["Write two sentences with 'is' and 'are' about your family.","My mother is a cook. My brothers are students. (answers vary)"]],
+q:[["Choose the correct sentence.",["Is my teacher.","She is my teacher.","She my teacher."],1],["They ___ in the library.",["is","am","are"],2],["I ___ sixteen years old.",["am","is","are"],0]]},
+{t:"Articles: a, an, the",ts:"Artículos: a, an, the",std:"ELP 10 · determiners",
+rule:"Use a before a consonant sound, an before a vowel sound, and the for something specific that both people know.",
+rs:"Usa a antes de un sonido de consonante, an antes de un sonido de vocal, y the para algo específico que ambos conocen.",
+tr:"English does not use 'the' with general ideas: 'Education is important,' not 'The education is important.'",
+trs:"El inglés no usa 'the' con ideas generales: 'Education is important', no 'The education is important'.",
+m:["I need **a** pencil and **an** eraser.","**The** principal is in **the** office.","She wants **an** apple, not **a** banana.","**The** bus is late today.","Music is **a** universal language."],
+e:[["I have ___ idea.","an"],["He is ___ good friend.","a"],["Open ___ door, please.","the"],["We saw ___ elephant at the zoo.","an"],["___ teacher is in the hallway.","The"]],
+p:[["Fix it: I am a honest person.","I am an honest person."],["Fix it: The life is beautiful.","Life is beautiful."],["Fix it: She is teacher.","She is a teacher."],["Fix it: I need a umbrella.","I need an umbrella."],["Write a sentence using a, an, and the.","I ate an apple and a sandwich in the cafeteria. (answers vary)"]],
+q:[["___ hour has sixty minutes.",["A","An","The"],1],["Which is correct?",["The science is hard.","Science is hard.","A science is hard."],1],["I saw ___ movie last night.",["a","an","—"],0]]},
+{t:"Simple present: the -s rule",ts:"Presente simple: la regla de -s",std:"ELP 10 · present tense agreement",
+rule:"For he, she, it, add -s to the verb: he works, she studies, it rains. I, you, we, they use the base form.",
+rs:"Para he, she, it, agrega -s al verbo: he works, she studies, it rains. I, you, we, they usan la forma base.",
+tr:"Spanish changes the verb for every person. English changes it only for he/she/it. That little -s is easy to forget — say it loud.",
+trs:"El español cambia el verbo para cada persona. El inglés lo cambia solo para he/she/it. Esa -s es fácil de olvidar: dila fuerte.",
+m:["My sister **works** at the hospital.","The bell **rings** at 3:30.","We **walk** to school together.","He **studies** English every night.","The cafeteria **opens** at seven."],
+e:[["She ___ (like) math.","likes"],["They ___ (play) soccer.","play"],["He ___ (watch) TV at night.","watches"],["I ___ (eat) lunch at 11:30.","eat"],["It ___ (rain) a lot in Mississippi.","rains"]],
+p:[["Fix it: My father work in Laurel.","My father works in Laurel."],["Fix it: She don't likes pizza.","She doesn't like pizza."],["Change the subject to 'he': I go to practice every day.","He goes to practice every day."],["Fix it: The students studies hard.","The students study hard."],["Write two sentences about what a friend does every weekend.","My friend plays basketball. She visits her grandmother. (answers vary)"]],
+q:[["My brother ___ in a restaurant.",["work","works","working"],1],["The teachers ___ early.",["arrive","arrives","arrivs"],0],["It ___ fast.",["go","goes","gos"],1]]},
+{t:"Negatives: don't and doesn't",ts:"Negativos: don't y doesn't",std:"ELP 10 · negation",
+rule:"Use do not (don't) with I, you, we, they and does not (doesn't) with he, she, it. After doesn't, the verb has NO -s.",
+rs:"Usa do not (don't) con I, you, we, they y does not (doesn't) con he, she, it. Después de doesn't, el verbo NO lleva -s.",
+tr:"Spanish puts 'no' before the verb: 'No tengo.' English needs a helper: 'I do NOT have.' The helper takes the -s, not the verb.",
+trs:"El español pone 'no' antes del verbo: 'No tengo.' El inglés necesita un auxiliar: 'I do NOT have.' El auxiliar lleva la -s, no el verbo.",
+m:["I **don't** have my homework.","She **doesn't** eat meat.","We **don't** understand the question.","He **doesn't** play football.","They **don't** live in Laurel."],
+e:[["I ___ like coffee.","don't"],["He ___ speak French.","doesn't"],["We ___ have class on Saturday.","don't"],["It ___ work.","doesn't"],["They ___ know the answer.","don't"]],
+p:[["Make it negative: She likes spicy food.","She doesn't like spicy food."],["Make it negative: We go to the gym.","We don't go to the gym."],["Fix it: He don't has a car.","He doesn't have a car."],["Fix it: I no understand.","I don't understand."],["Write two negative sentences about yourself.","I don't drive. I don't like cold weather. (answers vary)"]],
+q:[["My cousin ___ live here.",["don't","doesn't","not"],1],["Which is correct?",["She doesn't likes it.","She doesn't like it.","She don't like it."],1],["We ___ have practice today.",["doesn't","don't","no"],1]]},
+{t:"Yes/No questions with do/does",ts:"Preguntas de sí/no con do/does",std:"ELP 10 · interrogatives",
+rule:"Start with Do or Does, then the subject, then the base verb: Do you play? Does she work? Answer: Yes, I do. / No, she doesn't.",
+rs:"Empieza con Do o Does, luego el sujeto, luego el verbo base: Do you play? Does she work? Responde: Yes, I do. / No, she doesn't.",
+tr:"In Spanish, a question is often just voice: '¿Trabajas?' In English you need the helper at the front: 'DO you work?'",
+trs:"En español, la pregunta es muchas veces solo la entonación: '¿Trabajas?' En inglés necesitas el auxiliar al principio: 'DO you work?'",
+m:["**Do you** have a pencil?","**Does she** speak Spanish?","**Do they** ride the bus?","**Does it** rain in October?","**Do we** have a quiz today?"],
+e:[["___ you like music?","Do"],["___ he play soccer?","Does"],["___ they live near school?","Do"],["___ she work on weekends?","Does"],["___ it snow in Mississippi?","Does"]],
+p:[["Make a question: She has a job.","Does she have a job?"],["Make a question: They eat breakfast.","Do they eat breakfast?"],["Fix it: Does she speaks English?","Does she speak English?"],["Answer in a full short answer: Do you have brothers?","Yes, I do. / No, I don't."],["Write two questions to ask a new classmate.","Do you play sports? Do you have a phone? (answers vary)"]],
+q:[["___ your mother cook dinner?",["Do","Does","Is"],1],["Short answer to 'Do they study?'",["Yes, they does.","Yes, they do.","Yes, they study."],1],["Which is correct?",["Does he likes it?","Do he like it?","Does he like it?"],2]]},
+{t:"Wh- questions",ts:"Preguntas con Wh-",std:"ELP 10 · interrogatives",
+rule:"Who, what, where, when, why, how + do/does + subject + verb: Where do you live? Why does she study? For 'be': Where is it?",
+rs:"Who, what, where, when, why, how + do/does + sujeto + verbo: Where do you live? Why does she study? Con 'be': Where is it?",
+tr:"Matching words: who=quién, what=qué, where=dónde, when=cuándo, why=por qué, how=cómo. The helper 'do' still comes second.",
+trs:"Equivalentes: who=quién, what=qué, where=dónde, when=cuándo, why=por qué, how=cómo. El auxiliar 'do' sigue en segundo lugar.",
+m:["**Where do** you live?","**What time does** school start?","**Why is** the gym closed?","**Who is** your English teacher?","**How do** you get to school?"],
+e:[["___ do you live? — In Laurel.","Where"],["___ is your birthday? — In May.","When"],["___ do you like soccer? — Because it's fun.","Why"],["___ is that? — My brother.","Who"],["___ do you spell your name?","How"]],
+p:[["Ask about the time: ____ ? — At 7:45.","What time does school start?"],["Ask about the reason: ____ ? — Because I was sick.","Why were you absent?"],["Fix it: Where you live?","Where do you live?"],["Fix it: What she wants?","What does she want?"],["Write three Wh- questions for an interview with a teacher.","Where are you from? Why do you teach? What do you like? (answers vary)"]],
+q:[["___ does the bus leave?",["Who","When","Why"],1],["Which is correct?",["Where he works?","Where does he work?","Where he does work?"],1],["___ is your favorite class?",["What","Why","When"],0]]},
+{t:"Adjectives before nouns",ts:"Adjetivos antes del sustantivo",std:"ELP 10 · noun phrases",
+rule:"In English the adjective comes BEFORE the noun and never changes form: a red car, two red cars, a tall girl, a tall boy.",
+rs:"En inglés el adjetivo va ANTES del sustantivo y nunca cambia: a red car, two red cars, a tall girl, a tall boy.",
+tr:"Spanish: 'el carro rojo' (noun first, adjective agrees). English flips it and freezes it: 'the red car.' No -s, no -a.",
+trs:"Español: 'el carro rojo' (sustantivo primero, el adjetivo concuerda). El inglés lo invierte y lo congela: 'the red car'. Sin -s, sin -a.",
+m:["She has a **blue** backpack.","The **long** hallway is quiet.","We read an **interesting** story.","They are **good** friends.","It is a **small** town."],
+e:[["I want a ___ (grande) pizza.","big"],["She wears a ___ (rojo) jacket.","red"],["It is a ___ (difícil) test.","difficult / hard"],["They are ___ (altos) players.","tall"],["He is a ___ (nuevo) student.","new"]],
+p:[["Fix it: The house white is on the corner.","The white house is on the corner."],["Fix it: They are students intelligents.","They are intelligent students."],["Add two adjectives: We ate a pizza.","We ate a hot, delicious pizza. (answers vary)"],["Fix it: I have a car reds.","I have a red car."],["Describe our classroom in two sentences with adjectives.","It is a bright, big room. The desks are new. (answers vary)"]],
+q:[["Which is correct?",["a dog big","a big dog","a bigs dog"],1],["They are ___.",["talls girls","tall girls","girls tall"],1],["Adjectives in English…",["change for plural","go after the noun","never change form"],2]]},
+{t:"Possessives: 's and my/your/his/her",ts:"Posesivos: 's y my/your/his/her",std:"ELP 10 · possessives",
+rule:"Add 's to a person to show owning: Maria's phone. Possessive words: my, your, his, her, its, our, their — they go before the noun.",
+rs:"Agrega 's a una persona para mostrar posesión: Maria's phone. Palabras posesivas: my, your, his, her, its, our, their, van antes del sustantivo.",
+tr:"Spanish says 'el teléfono DE María.' English flips it: 'María'S phone.' And 'su' splits into his (él), her (ella), their (ellos).",
+trs:"El español dice 'el teléfono DE María.' El inglés lo invierte: 'María'S phone.' Y 'su' se divide en his (él), her (ella), their (ellos).",
+m:["**Carlos's** brother plays football.","**My** locker is near the gym.","**Her** mother works at night.","**Their** house is on 5th Avenue.","The **school's** mascot is a Tornado."],
+e:[["This is ___ (de Ana) book.","Ana's"],["___ (de él) name is Luis.","His"],["___ (de nosotros) class is fun.","Our"],["Is this ___ (de ti) phone?","your"],["___ (de ellos) car is new.","Their"]],
+p:[["Rewrite: the backpack of Jose","Jose's backpack"],["Fix it: She book is here.","Her book is here."],["Fix it: The car of my father is blue.","My father's car is blue."],["Fix it: Is this you pencil?","Is this your pencil?"],["Write two sentences about a family member's things.","My sister's phone is new. Her room is small. (answers vary)"]],
+q:[["The ___ office is open.",["principals","principal's","principal"],1],["___ name is Marisol. (ella)",["His","Her","Their"],1],["Which is correct?",["the dog of Ana","Ana's dog","Ana dog"],1]]},
+{t:"There is / There are",ts:"There is / There are",std:"ELP 10 · existential sentences",
+rule:"Use there is for one thing and there are for more than one: There is a map. There are thirty desks. Negative: There isn't / There aren't.",
+rs:"Usa there is para una cosa y there are para más de una: There is a map. There are thirty desks. Negativo: There isn't / There aren't.",
+tr:"Spanish uses one word, 'hay,' for both. English counts: 'hay un libro' → there IS a book; 'hay libros' → there ARE books.",
+trs:"El español usa una sola palabra, 'hay', para ambos. El inglés cuenta: 'hay un libro' → there IS a book; 'hay libros' → there ARE books.",
+m:["**There is** a library on the second floor.","**There are** two gyms at our school.","**There isn't** a pool here.","**There are** many clubs to join.","**Is there** a test today?"],
+e:[["___ a pencil on the floor.","There is"],["___ twenty students in class.","There are"],["___ no milk in the fridge.","There is"],["___ three buses outside.","There are"],["___ a problem with my Chromebook.","There is"]],
+p:[["Translate: Hay un parque cerca.","There is a park nearby."],["Translate: Hay muchas tiendas en Laurel.","There are many stores in Laurel."],["Make it negative: There are chairs in the hall.","There aren't chairs in the hall. / There are no chairs in the hall."],["Make a question: There is a quiz tomorrow.","Is there a quiz tomorrow?"],["Describe your neighborhood with there is and there are.","There is a church. There are two restaurants. (answers vary)"]],
+q:[["___ five people in my family.",["There is","There are","Is there"],1],["___ a window in this room?",["Is there","There is","Are there"],0],["'Hay' in English can be…",["there is or there are","have","is"],0]]},
+{t:"Prepositions of place and time",ts:"Preposiciones de lugar y tiempo",std:"ELP 10 · prepositional phrases",
+rule:"Place: in a room, on a table, at school, under, next to, between. Time: at 3:00, on Monday, in October, in the morning.",
+rs:"Lugar: in a room, on a table, at school, under, next to, between. Tiempo: at 3:00, on Monday, in October, in the morning.",
+tr:"Spanish 'en' covers in, on, AND at. English chooses: in (inside), on (surface / day), at (point / exact time).",
+trs:"El español 'en' cubre in, on Y at. El inglés escoge: in (adentro), on (superficie / día), at (punto / hora exacta).",
+m:["The books are **on** the shelf **in** the library.","Practice is **at** 4:00 **on** Tuesday.","My house is **next to** the church.","We have a break **in** the morning.","The gym is **between** the office and the cafeteria."],
+e:[["Class starts ___ 8:00.","at"],["My birthday is ___ June.","in"],["The test is ___ Friday.","on"],["The cat is ___ the table.","on / under"],["We live ___ Laurel.","in"]],
+p:[["Fix it: I was born in May 3.","I was born on May 3."],["Fix it: She is in the bus.","She is on the bus."],["Fix it: We eat lunch in 11:30.","We eat lunch at 11:30."],["Combine: The pencil is here. The desk is here. (use 'on')","The pencil is on the desk."],["Write your schedule for one day with at, on, and in.","On Monday I wake up at 6:00. I study in the evening. (answers vary)"]],
+q:[["The meeting is ___ Monday.",["in","on","at"],1],["I'll see you ___ noon.",["at","on","in"],0],["The keys are ___ my pocket.",["on","in","at"],1]]},
+{t:"Present progressive: be + -ing",ts:"Presente progresivo: be + -ing",std:"ELP 10 · verb aspect",
+rule:"For actions happening right now: am/is/are + verb-ing. She is reading. They are talking. Spelling: run → running, write → writing.",
+rs:"Para acciones que pasan ahora mismo: am/is/are + verbo-ing. She is reading. They are talking. Ortografía: run → running, write → writing.",
+tr:"Spanish 'está leyendo' matches 'is reading' almost exactly. The trap: don't drop 'be.' 'She reading' is incomplete.",
+trs:"'Está leyendo' coincide casi exacto con 'is reading'. La trampa: no omitas 'be'. 'She reading' está incompleta.",
+m:["I **am writing** my essay.","The students **are practicing** English.","It **is raining** right now.","She **is sitting** in the front row.","We **are learning** grammar."],
+e:[["He ___ (play) basketball now.","is playing"],["I ___ (listen) to the coach.","am listening"],["They ___ (eat) lunch.","are eating"],["She ___ (run) to class.","is running"],["We ___ (study) for the test.","are studying"]],
+p:[["Fix it: She cooking dinner.","She is cooking dinner."],["Fix it: They are runing fast.","They are running fast."],["Change to right now: I read every day.","I am reading right now."],["Make a question: He is sleeping.","Is he sleeping?"],["Write three sentences about what people in this room are doing now.","Marisol is talking. We are listening. Jose is writing. (answers vary)"]],
+q:[["Look! The bus ___.",["is come","is coming","coming"],1],["We ___ a movie now.",["are watching","watching","watch"],0],["Spelling: write → ",["writeing","writting","writing"],2]]},
+{t:"Can and can't",ts:"Can y can't",std:"ELP 10 · modals (ability)",
+rule:"Can + base verb shows ability or permission: I can swim. She can't drive. Question: Can you help me? Never add -s or 'to'.",
+rs:"Can + verbo base expresa habilidad o permiso: I can swim. She can't drive. Pregunta: Can you help me? Nunca agregues -s ni 'to'.",
+tr:"Spanish 'puede nadar' = 'can swim' — no 'to'! Also, 'can' never changes: he can, she can, they can.",
+trs:"'Puede nadar' = 'can swim', ¡sin 'to'! Además, 'can' nunca cambia: he can, she can, they can.",
+m:["I **can speak** two languages.","She **can't come** to practice today.","**Can you** open the window?","We **can finish** this by Friday.","He **can play** the guitar."],
+e:[["I ___ (poder) ride a bike.","can"],["She ___ (no poder) hear you.","can't"],["___ you help me? (poder)","Can"],["They ___ (poder) stay after school.","can"],["We ___ (no poder) use phones in class.","can't"]],
+p:[["Fix it: He cans swim.","He can swim."],["Fix it: I can to cook.","I can cook."],["Make it negative: We can see the board.","We can't see the board."],["Make a question: She can drive.","Can she drive?"],["Write three things you can do and one you can't.","I can cook. I can dance. I can run fast. I can't swim. (answers vary)"]],
+q:[["___ you speak English?",["Can","Cans","Do can"],0],["She ___ play piano.",["can to","cans","can"],2],["Which is correct?",["They can't comes.","They can't come.","They can't to come."],1]]},
+{t:"Simple past: regular -ed",ts:"Pasado simple: regular -ed",std:"ELP 10 · past tense",
+rule:"Add -ed to regular verbs for the past: walked, played, studied (y → ied), stopped (double the consonant). Same form for every subject.",
+rs:"Agrega -ed a los verbos regulares para el pasado: walked, played, studied (y → ied), stopped (dobla la consonante). Misma forma para todos los sujetos.",
+tr:"Good news: one form for everyone. 'Caminé, caminaste, caminó' → walked, walked, walked. Pronounce -ed as /t/ (walked), /d/ (played), or /id/ (wanted).",
+trs:"Buena noticia: una sola forma. 'Caminé, caminaste, caminó' → walked, walked, walked. Pronuncia -ed como /t/ (walked), /d/ (played) o /id/ (wanted).",
+m:["Yesterday we **watched** a video.","She **finished** her homework at ten.","They **moved** to Laurel last year.","I **studied** for the test.","The game **started** late."],
+e:[["Last night I ___ (watch) TV.","watched"],["She ___ (clean) her room.","cleaned"],["We ___ (play) soccer on Saturday.","played"],["He ___ (stop) at the store.","stopped"],["They ___ (study) together.","studied"]],
+p:[["Change to past: I walk to school.","I walked to school."],["Change to past: She tries hard.","She tried hard."],["Fix it: Yesterday we visit the museum.","Yesterday we visited the museum."],["Fix it: He planed a party.","He planned a party."],["Write three sentences about last weekend using -ed verbs.","I cleaned my room. We cooked dinner. I called my cousin. (answers vary)"]],
+q:[["Last week we ___ a project.",["start","started","starting"],1],["Spelling of 'study' in the past:",["studyed","studied","studed"],1],["The -ed in 'wanted' sounds like…",["/t/","/d/","/id/"],2]]},
+{t:"Simple past: irregular verbs",ts:"Pasado simple: verbos irregulares",std:"ELP 10 · past tense",
+rule:"Some verbs change completely: go → went, eat → ate, have → had, see → saw, make → made, take → took, say → said, get → got.",
+rs:"Algunos verbos cambian por completo: go → went, eat → ate, have → had, see → saw, make → made, take → took, say → said, get → got.",
+tr:"No rule — memory and rhythm. Say them like a beat: go-went, eat-ate, see-saw. Was/were is the past of be.",
+trs:"No hay regla: memoria y ritmo. Dilos como un beat: go-went, eat-ate, see-saw. Was/were es el pasado de be.",
+m:["We **went** to the game on Friday.","I **ate** tamales for dinner.","She **had** a doctor's appointment.","They **saw** a tornado warning.","He **made** a mistake but fixed it."],
+e:[["Yesterday I ___ (go) to work.","went"],["We ___ (eat) pizza.","ate"],["She ___ (have) a test.","had"],["They ___ (see) the movie.","saw"],["I ___ (be) tired last night.","was"]],
+p:[["Change to past: I take the bus.","I took the bus."],["Change to past: She says hello.","She said hello."],["Fix it: We goed to the mall.","We went to the mall."],["Fix it: He eated lunch early.","He ate lunch early."],["Write a three-sentence story about yesterday using went, saw, and had.","I went to the park. I saw my friends. We had a great time. (answers vary)"]],
+q:[["Past of 'get':",["getted","got","gat"],1],["Yesterday she ___ to Hattiesburg.",["goed","went","go"],1],["They ___ at home last night.",["was","were","be"],1]]},
+{t:"Past negatives and questions",ts:"Negativos y preguntas en pasado",std:"ELP 10 · past tense",
+rule:"Use did for all past questions and didn't for negatives, and the verb goes back to base form: Did you go? I didn't go.",
+rs:"Usa did para todas las preguntas en pasado y didn't para los negativos; el verbo vuelve a la forma base: Did you go? I didn't go.",
+tr:"'Did' carries the past, so the verb drops it: NOT 'didn't went.' One past marker per sentence.",
+trs:"'Did' lleva el pasado, así que el verbo lo suelta: NO 'didn't went'. Un solo marcador de pasado por oración.",
+m:["**Did you** finish the project?","I **didn't** see the message.","**Did she** call you last night?","We **didn't** have school on Monday.","**Did they** win the game?"],
+e:[["___ you eat breakfast? (pasado)","Did"],["I ___ (no) study last night.","didn't"],["___ she come to class?","Did"],["They ___ (no) like the movie.","didn't"],["We ___ (no) go to the party.","didn't"]],
+p:[["Make it negative: He went to practice.","He didn't go to practice."],["Make a question: They ate lunch.","Did they eat lunch?"],["Fix it: Did you saw the game?","Did you see the game?"],["Fix it: She didn't finished.","She didn't finish."],["Write two past questions for a partner about last weekend.","Did you work? Did you watch a movie? (answers vary)"]],
+q:[["___ you watch the game?",["Do","Did","Were"],1],["Which is correct?",["I didn't went.","I didn't go.","I no went."],1],["She ___ her phone.",["didn't found","didn't find","don't found"],1]]},
+{t:"Future: going to and will",ts:"Futuro: going to y will",std:"ELP 10 · future",
+rule:"Going to = plans: I am going to study. Will = promises, offers, predictions: I will help you. It will rain. Will never changes.",
+rs:"Going to = planes: I am going to study. Will = promesas, ofertas, predicciones: I will help you. It will rain. Will nunca cambia.",
+tr:"'Voy a estudiar' = 'I am going to study' (keep 'am'!). 'Estudiaré' = 'I will study.' Short form: I'll, you'll, she'll.",
+trs:"'Voy a estudiar' = 'I am going to study' (¡no omitas 'am'!). 'Estudiaré' = 'I will study.' Forma corta: I'll, you'll, she'll.",
+m:["We **are going to** visit the college on Friday.","I **will** call you tonight.","She **is going to** graduate in May.","It **will be** hot tomorrow.","They **won't** be late."],
+e:[["I ___ (going to) study tonight.","am going to"],["She ___ (will) help us.","will"],["We ___ (going to) play on Saturday.","are going to"],["It ___ (will, no) rain.","won't"],["They ___ (going to) move.","are going to"]],
+p:[["Translate: Voy a trabajar mañana.","I am going to work tomorrow."],["Translate: Te ayudaré.","I will help you."],["Fix it: I going to eat.","I am going to eat."],["Fix it: She wills come.","She will come."],["Write three plans for next year with going to.","I am going to pass my classes. I am going to get my license. (answers vary)"]],
+q:[["Next year I ___ graduate.",["am going to","going to","will going to"],0],["Promise: I ___ be there.",["am will","will","going"],1],["Which is correct?",["She will comes.","She will come.","She wills come."],1]]},
+{t:"Count and noncount: much, many, some, any",ts:"Contables y no contables: much, many, some, any",std:"ELP 10 · quantifiers",
+rule:"Count nouns have plurals (books, many books). Noncount nouns don't (water, much water, rice, homework). Some = positive, any = questions/negatives.",
+rs:"Los contables tienen plural (books, many books). Los no contables no (water, much water, rice, homework). Some = afirmativo, any = preguntas/negativos.",
+tr:"Surprise words: homework, furniture, advice, information, money are noncount in English — no -s. 'I have a lot of homework.'",
+trs:"Palabras sorpresa: homework, furniture, advice, information, money son no contables en inglés: sin -s. 'I have a lot of homework.'",
+m:["How **many** classes do you have?","How **much** water do you drink?","I have **some** homework tonight.","We don't have **any** money.","There are **a lot of** students here."],
+e:[["How ___ brothers do you have?","many"],["How ___ time do we have?","much"],["I need ___ help.","some"],["Do you have ___ questions?","any"],["There isn't ___ milk.","any"]],
+p:[["Fix it: I have many homeworks.","I have a lot of homework."],["Fix it: How much books are there?","How many books are there?"],["Fix it: Do you have some pencils?","Do you have any pencils?"],["Fix it: She gave me good advices.","She gave me good advice."],["Write two questions with how much and how many.","How much money do you have? How many friends do you have? (answers vary)"]],
+q:[["How ___ money is it?",["many","much","a lot"],1],["I don't have ___ time.",["some","many","any"],2],["Which is noncount?",["desk","information","student"],1]]},
+{t:"Comparatives: -er and more",ts:"Comparativos: -er y more",std:"ELP 10 · comparison",
+rule:"Short adjectives add -er + than: taller than, bigger than. Long adjectives use more: more interesting than. Irregular: good → better, bad → worse.",
+rs:"Adjetivos cortos: -er + than: taller than, bigger than. Adjetivos largos: more: more interesting than. Irregulares: good → better, bad → worse.",
+tr:"Spanish always says 'más ... que.' English says 'more ... than' only for long words. Short words get -er. Never 'more taller.'",
+trs:"El español siempre dice 'más ... que'. El inglés dice 'more ... than' solo con palabras largas. Las cortas llevan -er. Nunca 'more taller'.",
+m:["Laurel is **smaller than** Jackson.","This book is **more interesting than** that one.","My brother is **older than** me.","English is **easier than** I thought.","Today is **better than** yesterday."],
+e:[["A truck is ___ (big) than a car.","bigger"],["Math is ___ (hard) than art for me.","harder"],["This movie is ___ (interesting) than the book.","more interesting"],["Her grade is ___ (good) than mine.","better"],["Summer is ___ (hot) than spring.","hotter"]],
+p:[["Compare: Mississippi / Texas (big)","Texas is bigger than Mississippi."],["Fix it: She is more tall than me.","She is taller than me."],["Fix it: This test is difficulter.","This test is more difficult."],["Fix it: My phone is more good.","My phone is better."],["Write three comparisons between two classes you take.","Biology is harder than PE. English is more interesting than math. (answers vary)"]],
+q:[["A bus is ___ than a bike.",["more fast","faster","fastest"],1],["This class is ___ than that one.",["more important","importanter","most important"],0],["Bad → ",["badder","more bad","worse"],2]]},
+{t:"Superlatives: -est and most",ts:"Superlativos: -est y most",std:"ELP 10 · comparison",
+rule:"The + -est for short adjectives: the tallest, the biggest. The most for long ones: the most important. Irregular: the best, the worst.",
+rs:"The + -est para adjetivos cortos: the tallest, the biggest. The most para los largos: the most important. Irregulares: the best, the worst.",
+tr:"Spanish 'el más alto' → 'the tallest' (not 'the most tall'). Always keep 'the.'",
+trs:"'El más alto' → 'the tallest' (no 'the most tall'). Nunca olvides 'the'.",
+m:["Mr. Daniel is **the most patient** teacher.","This is **the hardest** question on the test.","Jackson is **the biggest** city in Mississippi.","Friday is **the best** day of the week.","That was **the worst** storm this year."],
+e:[["Ana is ___ (tall) student in class.","the tallest"],["This is ___ (good) pizza in Laurel.","the best"],["Math is ___ (difficult) subject for me.","the most difficult"],["January is ___ (cold) month.","the coldest"],["That was ___ (funny) movie ever.","the funniest"]],
+p:[["Fix it: She is the most smart.","She is the smartest."],["Fix it: It is the importantest day.","It is the most important day."],["Complete: Of all my friends, ___ is the ___.","Of all my friends, Luis is the funniest. (answers vary)"],["Fix it: He is best player.","He is the best player."],["Write three superlative sentences about our school.","The gym is the biggest room. Lunch is the best time. (answers vary)"]],
+q:[["Mount Everest is ___ mountain.",["the highest","the most high","higher"],0],["She is ___ student in the class.",["the most hard-working","the hard-workingest","more hard-working"],0],["Good → ",["the goodest","the best","the most good"],1]]},
+{t:"Adverbs of frequency and manner",ts:"Adverbios de frecuencia y modo",std:"ELP 10 · adverbs",
+rule:"Frequency (always, usually, often, sometimes, never) goes BEFORE the main verb but AFTER be. Manner adverbs add -ly: quickly, carefully.",
+rs:"Los de frecuencia (always, usually, often, sometimes, never) van ANTES del verbo principal pero DESPUÉS de be. Los de modo llevan -ly: quickly, carefully.",
+tr:"'-mente' = '-ly': rápidamente → quickly. Position matters: 'I always eat' but 'I am always late.'",
+trs:"'-mente' = '-ly': rápidamente → quickly. La posición importa: 'I always eat' pero 'I am always late'.",
+m:["I **usually** take the bus.","She is **never** late.","They speak **quietly** in the library.","We **sometimes** eat in the courtyard.","He writes **carefully**."],
+e:[["I ___ (siempre) do my homework.","always"],["She drives ___ (lento).","slowly"],["We are ___ (a veces) tired on Mondays.","sometimes"],["He ___ (nunca) misses practice.","never"],["They sing ___ (bonito).","beautifully"]],
+p:[["Fix it: I eat always breakfast.","I always eat breakfast."],["Fix it: She always is happy.","She is always happy."],["Add an -ly adverb: He answered the question.","He answered the question quickly. (answers vary)"],["Fix it: They talk very quiet.","They talk very quietly."],["Write three sentences about your routine with frequency adverbs.","I usually wake up at 6. I never skip lunch. I sometimes read. (answers vary)"]],
+q:[["Which is correct?",["I never am late.","I am never late.","Never I am late."],1],["Careful → ",["carefuly","carefully","carefull"],1],["She ___ studies at night.",["usually","usual","usualy"],0]]},
+{t:"Object pronouns",ts:"Pronombres de objeto",std:"ELP 10 · pronouns",
+rule:"After a verb or preposition use me, you, him, her, it, us, them: Call me. Give it to her. I saw them.",
+rs:"Después de un verbo o preposición usa me, you, him, her, it, us, them: Call me. Give it to her. I saw them.",
+tr:"Spanish puts object pronouns BEFORE the verb: 'Lo vi.' English puts them AFTER: 'I saw HIM.' And 'lo/la' split into him/her/it.",
+trs:"El español pone el pronombre de objeto ANTES del verbo: 'Lo vi.' El inglés lo pone DESPUÉS: 'I saw HIM.' Y 'lo/la' se divide en him/her/it.",
+m:["The teacher helped **us** with the project.","I called **him** last night.","Please give **it** to **me**.","She invited **them** to the party.","Can you see **her**?"],
+e:[["I know ___ (a ella).","her"],["Call ___ (a mí) tomorrow.","me"],["We saw ___ (a ellos) at the mall.","them"],["Give ___ (a él) the book.","him"],["The teacher talked to ___ (a nosotros).","us"]],
+p:[["Translate: Lo vi ayer.","I saw him yesterday. / I saw it yesterday."],["Translate: Ella me ayuda.","She helps me."],["Fix it: I him called.","I called him."],["Fix it: Give the pencil to she.","Give the pencil to her."],["Write three sentences using him, her, and them.","I texted her. We helped him. The coach praised them. (answers vary)"]],
+q:[["My mom drives ___ to school. (a mí)",["I","me","my"],1],["Where is Ana? I don't see ___.",["she","her","hers"],1],["Which is correct?",["I them know.","I know them.","I know they."],1]]},
+{t:"Compound sentences: and, but, so",ts:"Oraciones compuestas: and, but, so",std:"ELP 10 · compound sentences",
+rule:"Join two complete sentences with a comma + and (adds), but (contrast), or so (result): I was tired, so I went to bed.",
+rs:"Une dos oraciones completas con coma + and (agrega), but (contraste), o so (resultado): I was tired, so I went to bed.",
+tr:"and = y, but = pero, so = así que. Both halves need a subject and a verb. Put the comma before the connector.",
+trs:"and = y, but = pero, so = así que. Las dos partes necesitan sujeto y verbo. Pon la coma antes del conector.",
+m:["I like soccer, **and** my brother likes basketball.","She studied hard, **but** the test was difficult.","It was raining, **so** practice was canceled.","We finished early, **so** we played a game.","He is quiet, **but** he is very funny."],
+e:[["I was hungry, ___ I ate a snack.","so"],["She is tall, ___ her sister is short.","but"],["We sing, ___ we dance.","and"],["It is late, ___ I am not tired.","but"],["The bus was late, ___ we missed first period.","so"]],
+p:[["Combine: I called her. She didn't answer.","I called her, but she didn't answer."],["Combine: It was cold. I wore a jacket.","It was cold, so I wore a jacket."],["Combine: Maria plays guitar. Luis sings.","Maria plays guitar, and Luis sings."],["Fix the comma: We were late so we ran.","We were late, so we ran."],["Write three compound sentences about your week.","I worked Saturday, but I rested Sunday. (answers vary)"]],
+q:[["I wanted pizza, ___ the line was long.",["and","so","but"],2],["She was sick, ___ she stayed home.",["so","but","and"],0],["Where does the comma go?",["before the connector","after the connector","nowhere"],0]]},
+{t:"Complex sentences: because, when, if",ts:"Oraciones complejas: because, when, if",std:"ELP 10 · complex sentences",
+rule:"Because, when, if, after, before start a part that can't stand alone. If it comes first, add a comma: When the bell rings, we leave.",
+rs:"Because, when, if, after, before inician una parte que no puede ir sola. Si va primero, agrega coma: When the bell rings, we leave.",
+tr:"because = porque, when = cuando, if = si. Same idea as Spanish — but in English 'because' alone is not a sentence.",
+trs:"because = porque, when = cuando, if = si. Misma idea que en español, pero en inglés 'because' solo no es una oración.",
+m:["I stayed home **because** I was sick.","**When** I get home, I eat dinner.","**If** you study, you will pass.","We left **after** the game ended.","**Before** class starts, I check my phone."],
+e:[["I am happy ___ it is Friday.","because"],["___ it rains, we stay inside.","When / If"],["Call me ___ you need help.","if"],["We eat ___ we finish practice.","after"],["___ I was young, I lived in Guatemala.","When"]],
+p:[["Combine: I was absent. I was sick.","I was absent because I was sick."],["Combine: The bell rings. We go to lunch.","When the bell rings, we go to lunch."],["Fix it: Because I was tired.","I went to bed early because I was tired."],["Add a comma: If you need help ask the coach.","If you need help, ask the coach."],["Write three complex sentences about school using because, when, and if.","I like English because the teacher is kind. (answers vary)"]],
+q:[["I wear a coat ___ it is cold.",["when","so","and"],0],["___ you practice, you will improve.",["Because","If","But"],1],["Which needs a comma?",["I eat when I'm hungry.","When I'm hungry I eat.","I eat and I drink."],1]]},
+{t:"Modals: should, must, have to",ts:"Modales: should, must, have to",std:"ELP 10 · modals (advice/obligation)",
+rule:"Should = advice. Must / have to = obligation. Don't have to = not necessary. Mustn't = prohibited. Base verb after each: You should rest.",
+rs:"Should = consejo. Must / have to = obligación. Don't have to = no es necesario. Mustn't = prohibido. Verbo base después: You should rest.",
+tr:"'Debería' = should, 'tener que' = have to. Careful: 'don't have to' means 'no es necesario,' not 'no debe.'",
+trs:"'Debería' = should, 'tener que' = have to. Cuidado: 'don't have to' significa 'no es necesario', no 'no debe'.",
+m:["You **should** drink more water.","Students **must** wear ID badges.","I **have to** work tonight.","We **don't have to** come on Saturday.","You **mustn't** run in the hallway."],
+e:[["You ___ (consejo) study tonight.","should"],["Drivers ___ (obligación) stop at red lights.","must / have to"],["She ___ (tener que) babysit.","has to"],["We ___ (no es necesario) bring lunch.","don't have to"],["You ___ (prohibido) cheat.","mustn't"]],
+p:[["Give advice: My friend is always tired.","You should sleep more. (answers vary)"],["Fix it: She have to go.","She has to go."],["Fix it: You should to listen.","You should listen."],["Which means 'no es necesario'? mustn't / don't have to","don't have to"],["Write three rules for our class with must and should.","You must respect others. You should ask questions. (answers vary)"]],
+q:[["You look sick. You ___ see a doctor.",["should","must to","have"],0],["He ___ wake up at 5 for work.",["have to","has to","should to"],1],["'You don't have to pay' means…",["prohibited","not necessary","you must"],1]]},
+{t:"Present perfect: have + past participle",ts:"Presente perfecto: have + participio",std:"ELP 10 · perfect aspect",
+rule:"Have/has + past participle for experiences and things that started before now: I have lived here for two years. She has never seen snow.",
+rs:"Have/has + participio pasado para experiencias y cosas que empezaron antes de ahora: I have lived here for two years. She has never seen snow.",
+tr:"Spanish 'he vivido' ≈ 'I have lived.' Key difference: for time that continues, English uses present perfect, not present: 'I have been here since May.'",
+trs:"'He vivido' ≈ 'I have lived.' Diferencia clave: para tiempo que continúa, el inglés usa presente perfecto, no presente: 'I have been here since May.'",
+m:["I **have studied** English for three years.","She **has visited** Mexico twice.","We **have never eaten** sushi.","**Have you ever seen** a tornado?","They **have lived** in Laurel since 2024."],
+e:[["I ___ (live) here since August.","have lived"],["She ___ (finish) her work.","has finished"],["We ___ (never / be) to New York.","have never been"],["___ you ever ___ (try) grits?","Have / tried"],["They ___ (not / see) the movie yet.","haven't seen"]],
+p:[["Fix it: I live here for two years.","I have lived here for two years."],["Fix it: She has saw it.","She has seen it."],["Make a question: You have eaten crawfish.","Have you ever eaten crawfish?"],["Since or for? I've been here ___ 2025. / ___ a year.","since 2025 / for a year"],["Write three experiences with 'I have' and one with 'I have never.'","I have traveled to Texas. I have never flown on a plane. (answers vary)"]],
+q:[["I ___ this class since August.",["have taken","take","took"],0],["She has ___ her homework.",["did","done","do"],1],["We have lived here ___ five years.",["since","for","from"],1]]},
+{t:"Imperatives and Let's",ts:"Imperativos y Let's",std:"ELP 10 · imperatives (lab & classroom language)",
+rule:"Commands use the base verb with no subject: Open your book. Don't talk. Add please to be polite. Let's + verb invites the group: Let's begin.",
+rs:"Las órdenes usan el verbo base sin sujeto: Open your book. Don't talk. Agrega please para ser cortés. Let's + verbo invita al grupo: Let's begin.",
+tr:"Spanish has many command forms (abre, abra, abran). English has one: open. Negative is always 'don't.' 'Vamos a empezar' = 'Let's begin.'",
+trs:"El español tiene muchas formas de mandato (abre, abra, abran). El inglés tiene una: open. El negativo siempre es 'don't'. 'Vamos a empezar' = 'Let's begin'.",
+m:["**Take out** your Chromebooks.","**Don't forget** your ID.","**Please raise** your hand.","**Let's review** the vocabulary.","**Mix** the solution carefully."],
+e:[["___ (abran) your books to page 10.","Open"],["___ (no hablen) during the test.","Don't talk"],["___ (vamos a) start.","Let's"],["___ (escriban) your name.","Write"],["___ (no corran) in the hall.","Don't run"]],
+p:[["Give a lab instruction with 'measure.'","Measure 50 milliliters of water."],["Make it negative: Touch the screen.","Don't touch the screen."],["Make it polite: Close the door.","Please close the door."],["Invite the group: We review the notes.","Let's review the notes."],["Write four steps for a recipe using commands.","Boil the water. Add the rice. Stir. Wait 15 minutes. (answers vary)"]],
+q:[["Which is a command?",["You open the window.","Open the window.","She opens the window."],1],["Negative command:",["No talk.","Don't talk.","Not talk."],1],["'Vamos a leer' = ",["Let's read.","We read.","Go to read."],0]]},
+{t:"Gerunds and infinitives",ts:"Gerundios e infinitivos",std:"ELP 10 · verb complements",
+rule:"Some verbs take -ing (enjoy, finish, keep): I enjoy reading. Some take to + verb (want, need, plan, decide): I want to read. Like, love, start take both.",
+rs:"Algunos verbos llevan -ing (enjoy, finish, keep): I enjoy reading. Otros llevan to + verbo (want, need, plan, decide): I want to read. Like, love, start aceptan ambos.",
+tr:"After prepositions, English uses -ing: 'good at playing,' 'interested in learning.' Spanish uses the infinitive there — flip it.",
+trs:"Después de preposiciones, el inglés usa -ing: 'good at playing', 'interested in learning'. El español usa infinitivo ahí: inviértelo.",
+m:["I **enjoy playing** soccer.","She **wants to be** a nurse.","We **need to finish** by Friday.","He **is good at drawing**.","They **decided to stay**."],
+e:[["I want ___ (learn) English.","to learn"],["She enjoys ___ (cook).","cooking"],["We plan ___ (visit) the college.","to visit"],["He is interested in ___ (play) music.","playing"],["They finished ___ (eat).","eating"]],
+p:[["Fix it: I enjoy to swim.","I enjoy swimming."],["Fix it: She wants going home.","She wants to go home."],["Fix it: He is good at play soccer.","He is good at playing soccer."],["Complete: I need ___ and I enjoy ___.","I need to work and I enjoy dancing. (answers vary)"],["Write three sentences: one with want to, one with enjoy -ing, one with good at -ing.","I want to graduate. I enjoy singing. I am good at cooking. (answers vary)"]],
+q:[["I decided ___ hard.",["study","to study","studying"],1],["He keeps ___.",["to talk","talking","talk"],1],["She is interested ___ science.",["in learning","to learn","in learn"],0]]},
+{t:"Phrasal verbs",ts:"Verbos frasales",std:"ELP 10 · multi-word verbs",
+rule:"Verb + particle makes a new meaning: turn on, turn off, look up, hand in, give up, pick up, get up, figure out. Learn them as one word.",
+rs:"Verbo + partícula crea un nuevo significado: turn on, turn off, look up, hand in, give up, pick up, get up, figure out. Apréndelos como una sola palabra.",
+tr:"Spanish uses one verb (encender, entregar, buscar). English often uses two words. Hear the pair as a unit: 'hand in' = entregar.",
+trs:"El español usa un solo verbo (encender, entregar, buscar). El inglés usa dos palabras. Escucha el par como una unidad: 'hand in' = entregar.",
+m:["Please **turn off** your phones.","**Hand in** your essays by Friday.","I **looked up** the word in the dictionary.","Don't **give up** — keep trying.","We **figured out** the answer together."],
+e:[["___ (enciende) the lights.","Turn on"],["___ (entreguen) your homework.","Hand in"],["I ___ (busqué) the definition.","looked up"],["Never ___ (te rindas).","give up"],["I ___ (me levanto) at 6:00.","get up"]],
+p:[["Replace with a phrasal verb: Please submit your work.","Please hand in your work."],["Replace with a phrasal verb: I searched for the word.","I looked up the word."],["Replace: She wakes up and leaves her bed at 5.","She gets up at 5."],["Use 'figure out' in a sentence.","We need to figure out the problem. (answers vary)"],["Write three sentences with turn off, pick up, and give up.","Turn off the TV. Pick up your trash. Don't give up. (answers vary)"]],
+q:[["'Entregar la tarea' = ",["hand in homework","hand out homework","hand on homework"],0],["Please ___ the computer.",["turn on","turn up","turn in"],0],["'Look up' means…",["look at the sky","search for information","give up"],1]]},
+{t:"Passive voice",ts:"Voz pasiva",std:"ELP 10 · passive (academic register)",
+rule:"Be + past participle when the action matters more than the doer: The test was graded. Tamales are made with masa. Add 'by' only if the doer matters.",
+rs:"Be + participio pasado cuando la acción importa más que quien la hace: The test was graded. Tamales are made with masa. Agrega 'by' solo si importa quién.",
+tr:"Spanish often uses 'se': 'Se habla español.' English uses passive: 'Spanish is spoken.' Science and history texts use it a lot.",
+trs:"El español suele usar 'se': 'Se habla español'. El inglés usa pasiva: 'Spanish is spoken'. Los textos de ciencias e historia la usan mucho.",
+m:["The school **was built** in 1950.","Spanish **is spoken** in many countries.","The projects **were presented** on Friday.","Water **is made** of hydrogen and oxygen.","The game **was canceled** because of rain."],
+e:[["This book ___ (write) in 1952.","was written"],["Tamales ___ (make) with corn.","are made"],["The tests ___ (grade) yesterday.","were graded"],["English ___ (speak) here.","is spoken"],["The window ___ (break) last night.","was broken"]],
+p:[["Change to passive: They built the gym in 2010.","The gym was built in 2010."],["Change to passive: People speak Spanish in Honduras.","Spanish is spoken in Honduras."],["Translate: Se venden tacos aquí.","Tacos are sold here."],["Fix it: The essay was wrote by Ana.","The essay was written by Ana."],["Write two passive sentences about a science or history fact.","The Declaration was signed in 1776. Oxygen is produced by plants. (answers vary)"]],
+q:[["The homework ___ by the teacher.",["was collect","was collected","collected"],1],["Rice ___ in many countries.",["is grown","grows","is grow"],0],["'Se cierra a las 5' = ",["It closes at 5.","It is closed at 5.","Both are possible."],2]]},
+{t:"Relative clauses: who, that, which",ts:"Cláusulas relativas: who, that, which",std:"ELP 10 · relative clauses",
+rule:"Add information with who (people), that (people/things), which (things): The teacher who helps me is Mr. Daniel. The book that I read was long.",
+rs:"Agrega información con who (personas), that (personas/cosas), which (cosas): The teacher who helps me is Mr. Daniel. The book that I read was long.",
+tr:"'que' becomes who for people and that/which for things. Don't repeat the pronoun: NOT 'the book that I read it.'",
+trs:"'que' se convierte en who para personas y that/which para cosas. No repitas el pronombre: NO 'the book that I read it'.",
+m:["The student **who sits** next to me is from El Salvador.","This is the song **that** we sang on Friday.","Laurel is a town **which has** a famous art museum.","The coach **who trains** us is strict.","I lost the pencil **that** you gave me."],
+e:[["The girl ___ won the race is my cousin.","who"],["The movie ___ we watched was long.","that"],["A tornado is a storm ___ spins.","that / which"],["The man ___ lives here is a doctor.","who"],["I like the shirt ___ you are wearing.","that"]],
+p:[["Combine: I have a friend. She plays guitar.","I have a friend who plays guitar."],["Combine: This is the book. I told you about it.","This is the book that I told you about."],["Fix it: The teacher that she helps me is nice.","The teacher who helps me is nice."],["Fix it: The car which I bought it is red.","The car that I bought is red."],["Write two sentences with who and that about people and things at school.","The counselor who helps us is kind. The class that I like is science. (answers vary)"]],
+q:[["The nurse ___ works here is kind.",["which","who","what"],1],["The phone ___ I lost was new.",["who","that","where"],1],["Which is correct?",["The food that we ate it was good.","The food that we ate was good.","The food who we ate was good."],1]]},
+{t:"Reported speech",ts:"Discurso indirecto",std:"ELP 10 · reported speech",
+rule:"Report what someone said with 'said (that)' and shift the tense back: 'I am tired' → She said that she was tired. Commands: told me to + verb.",
+rs:"Reporta lo que alguien dijo con 'said (that)' y retrocede el tiempo: 'I am tired' → She said that she was tired. Órdenes: told me to + verbo.",
+tr:"Same shift as Spanish: 'Dijo que estaba cansada.' Say is used alone; tell needs a person: 'She told ME.'",
+trs:"Mismo cambio que en español: 'Dijo que estaba cansada'. Say se usa solo; tell necesita una persona: 'She told ME'.",
+m:["The coach **said that** practice was canceled.","She **told me to** bring my ID.","He **said that** he **liked** the project.","They **said that** they **would** come.","Mom **told us not to** be late."],
+e:[["'I am sick.' → He said that he ___ sick.","was"],["'We have a test.' → They said that they ___ a test.","had"],["'Sit down.' → She told us ___ down.","to sit"],["'I will call.' → He said he ___ call.","would"],["'Don't run.' → The teacher told them ___ run.","not to"]],
+p:[["Report: 'I love this class.' (Ana)","Ana said that she loved the class."],["Report: 'Open your books.' (the teacher, to us)","The teacher told us to open our books."],["Fix it: She said me that she was tired.","She told me that she was tired."],["Fix it: He told that he was late.","He said that he was late."],["Report three things a friend said to you today.","Luis said that he was hungry. (answers vary)"]],
+q:[["'I'm happy.' → She said she ___ happy.",["is","was","be"],1],["The coach ___ us to run.",["said","told","say"],1],["'Don't talk.' → He told them ___.",["not to talk","to not talking","don't talk"],0]]},
+{t:"Conditionals: first and second",ts:"Condicionales: primero y segundo",std:"ELP 10 · conditionals",
+rule:"Real future: If + present, will: If it rains, we will stay inside. Imaginary: If + past, would: If I had a car, I would drive to school.",
+rs:"Futuro real: If + presente, will: If it rains, we will stay inside. Imaginario: If + pasado, would: If I had a car, I would drive to school.",
+tr:"'Si llueve, nos quedaremos' = first conditional. 'Si tuviera, manejaría' = second. English never puts 'will' or 'would' in the if-part.",
+trs:"'Si llueve, nos quedaremos' = primer condicional. 'Si tuviera, manejaría' = segundo. El inglés nunca pone 'will' ni 'would' en la parte del if.",
+m:["**If** you **study**, you **will pass**.","**If** I **had** a million dollars, I **would help** my family.","**If** it **is** sunny, we **will practice** outside.","**If** she **were** here, she **would know** the answer.","**If** we **finish** early, we **will play** a game."],
+e:[["If it rains, we ___ (stay) inside.","will stay"],["If I ___ (have) time, I would travel.","had"],["If you ___ (call) me, I will answer.","call"],["If she were rich, she ___ (buy) a house.","would buy"],["If we ___ (win), we will celebrate.","win"]],
+p:[["Fix it: If it will rain, we will stay home.","If it rains, we will stay home."],["Fix it: If I would have money, I would travel.","If I had money, I would travel."],["Complete: If I were the principal, ___.","If I were the principal, I would make lunch longer. (answers vary)"],["Complete: If I pass this class, ___.","If I pass this class, I will be a junior. (answers vary)"],["Write one real and one imaginary conditional about your future.","If I graduate, I will go to college. If I could fly, I would visit Mexico. (answers vary)"]],
+q:[["If I ___ you, I would rest.",["am","was","were"],2],["If it snows, school ___ close.",["will","would","would be"],0],["Which part never has 'will'?",["the if-part","the result","both can"],0]]},
+{t:"Transition words for academic writing",ts:"Palabras de transición para escritura académica",std:"ELP 10 · cohesion",
+rule:"Connect ideas across sentences: First, Next, Finally (order); However (contrast); For example (evidence); Therefore (result); In addition (more).",
+rs:"Conecta ideas entre oraciones: First, Next, Finally (orden); However (contraste); For example (evidencia); Therefore (resultado); In addition (más).",
+tr:"Sin embargo = However; Por ejemplo = For example; Por lo tanto = Therefore; Además = In addition. Follow each with a comma.",
+trs:"Sin embargo = However; Por ejemplo = For example; Por lo tanto = Therefore; Además = In addition. Pon coma después de cada una.",
+m:["**First**, mix the flour. **Next**, add water. **Finally**, bake it.","I like math. **However**, it is difficult.","Laurel has history. **For example**, the Lauren Rogers Museum opened in 1923.","It rained all week. **Therefore**, the game was canceled.","She studies hard. **In addition**, she works."],
+e:[["I was tired. ___ (sin embargo), I finished.","However"],["Mississippi is hot. ___ (por ejemplo), July is 95 degrees.","For example"],["He practiced daily. ___ (por lo tanto), he improved.","Therefore"],["___ (primero), read the question.","First"],["She plays soccer. ___ (además), she runs track.","In addition"]],
+p:[["Add a transition: I studied. I failed the test.","I studied. However, I failed the test."],["Add a transition: Laurel is small. There are only two high schools.","Laurel is small. For example, there are only two high schools."],["Add a transition: It was icy. School was closed.","It was icy. Therefore, school was closed."],["Order these with First / Next / Finally: wake up, eat breakfast, take the bus.","First, I wake up. Next, I eat breakfast. Finally, I take the bus."],["Write a four-sentence paragraph about your weekend using three transition words.","(answers vary — check for commas after transitions)"]],
+q:[["'Sin embargo' = ",["Therefore","However","In addition"],1],["Which gives an example?",["For example","Finally","Therefore"],0],["After 'However' you need…",["a period","a comma","nothing"],1]]},
+{t:"Sentence variety and punctuation",ts:"Variedad de oraciones y puntuación",std:"ELP 10 · sentence combining",
+rule:"Mix short and long sentences. Combine with and/but/so, with because/when/if, or with who/that. Use commas for lists and after openers. Avoid run-ons.",
+rs:"Mezcla oraciones cortas y largas. Combina con and/but/so, con because/when/if, o con who/that. Usa comas para listas y después de aperturas. Evita las oraciones sin fin.",
+tr:"English sentences are usually shorter than Spanish ones. One idea, one sentence — then combine on purpose.",
+trs:"Las oraciones en inglés suelen ser más cortas que en español. Una idea, una oración; luego combina a propósito.",
+m:["I woke up late**, so** I missed the bus.","**Although** it was raining, we played.","We need pencils**,** paper**,** and glue.","The teacher**, who** is from Texas**,** loves barbecue.","Stop. Think. Then write."],
+e:[["I like pizza___ tacos___ and rice.",", ,"],["___ (aunque) I was tired, I studied.","Although"],["She ran fast___ she won.",", so"],["When I got home___ I ate.",","],["He is tall___ but his brother is short.",","]],
+p:[["Combine three ways: I was late. The bus was slow.","I was late because the bus was slow. / The bus was slow, so I was late. / Since the bus was slow, I was late."],["Fix the run-on: I like Laurel it is quiet the people are friendly.","I like Laurel. It is quiet, and the people are friendly."],["Add a relative clause: My cousin plays football.","My cousin, who lives in Jackson, plays football."],["Expand: We won.","We won the game on Friday because we practiced all week. (answers vary)"],["Rewrite a paragraph of five short sentences into three varied sentences.","(answers vary — check for one compound and one complex sentence)"]],
+q:[["Which is a run-on?",["I ran, and I fell.","I ran I fell.","I ran. I fell."],1],["Commas in a list:",["red blue and green","red, blue, and green","red, blue and, green"],1],["'Although' needs…",["a second complete part","a period after it","will"],0]]},
+{t:"Championship review",ts:"Repaso de campeonato",std:"ELP 10 · cumulative review",
+rule:"Thirty-five moves, one body of English. Today we put it all together: subject + verb agreement, tense, connectors, and clear punctuation in every sentence.",
+rs:"Treinta y cinco movimientos, un solo cuerpo de inglés. Hoy lo juntamos todo: concordancia de sujeto y verbo, tiempo, conectores y puntuación clara en cada oración.",
+tr:"Your Spanish was never the problem — it was the map. Now you know where English flips, freezes, and adds a helper. Trust the map.",
+trs:"Tu español nunca fue el problema; era el mapa. Ahora sabes dónde el inglés invierte, congela y agrega un auxiliar. Confía en el mapa.",
+m:["**She has studied** English since August**, and** now **she speaks** with confidence.","**If** we **practice** every day**,** we **will** be ready.","The students **who** came to Laurel this year **have learned** a lot.","Yesterday **was** hard**, but** today **is** better.","**First**, breathe. **Then** speak. **Finally**, write."],
+e:[["My sister ___ (work) at the hospital. (present)","works"],["Yesterday we ___ (go) to the museum.","went"],["I ___ (live) here for two years.","have lived"],["The girl ___ sits here is new.","who"],["If it rains, we ___ (stay) inside.","will stay"]],
+p:[["Fix it all: She don't have no homework because she finish it.","She doesn't have any homework because she finished it."],["Fix it all: The students which came yesterday was happy.","The students who came yesterday were happy."],["Fix it all: I am live here since 2024 and I like very much.","I have lived here since 2024, and I like it very much."],["Combine into one sentence: It rained. We stayed in. We watched a movie.","Because it rained, we stayed in and watched a movie."],["Write a six-sentence paragraph about your growth this year. Use three different tenses.","(answers vary — check for present, past, and present perfect)"]],
+q:[["Which is correct?",["She have went.","She has gone.","She has went."],1],["The books ___ on the desk were mine.",["who","that","what"],1],["If I ___ time, I will help.",["have","will have","had"],0]]}
+];
+
+/* ===================== DAY ROUTINES ===================== */
+const DAYS=[
+{k:"Mon",n:"Meet the Move",ns:"Conoce el movimiento",plan:["stretch","rule","models","reps:4","write","check"]},
+{k:"Tue",n:"Reps Day",ns:"Día de repeticiones",plan:["stretch","rulequick","reps:8","write","check"]},
+{k:"Wed",n:"Spanish Bridge",ns:"Puente al español",plan:["stretch","transfer","models","reps:6","write","check"]},
+{k:"Thu",n:"Apply It",ns:"Aplícalo",plan:["stretch","rulequick","models","writelong","check"]},
+{k:"Fri",n:"Challenge Round",ns:"Ronda de desafío",plan:["stretch","rulequick","speed","check","celebrate"]}
+];
+const STRETCH=[
+["Stand up. Roll your shoulders back. Say the sentence with me, loud and clear.","De pie. Hombros atrás. Digan la oración conmigo, fuerte y claro."],
+["On your feet! Hands up when you hear the target word.","¡De pie! Manos arriba cuando escuchen la palabra meta."],
+["Stand tall. Clap once for every word in the sentence.","Párense derechos. Un aplauso por cada palabra de la oración."],
+["Everybody up. Whisper it, then say it, then shout it.","Todos de pie. Susúrrenla, díganla, grítenla."],
+["Stand, stretch to the ceiling, and read the sentence in your strongest voice.","De pie, estírense al techo y lean la oración con su voz más fuerte."]
+];
+const lanes={em:["Emerging","Emergente"],pr:["Progressing","Progresando"]};
+
+/* ===================== STATE ===================== */
+const $=s=>document.querySelector(s);
+let S={w:0,d:0,i:0,lane:"both",bil:true,auto:true,score:{right:0,total:0},voiceEn:null,voiceEs:null};
+let steps=[];let timerId=null;
+const AUG=new Date(2026,9,12); // Week 12 = Oct 12, 2026
+function todayWD(){const n=new Date();const diff=Math.floor((n-AUG)/864e5);let w=11+Math.floor(diff/7);w=Math.max(0,Math.min(35,w));let d=n.getDay()-1;if(d<0||d>4)d=0;return{w,d};}
+function strip(t){return t.replace(/\*\*/g,"");}
+function bold(t){return t.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");}
+function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+
+/* ===================== BUILD STEPS ===================== */
+function build(){
+  const wk=W[S.w],day=DAYS[S.d],seq=[];
+  const st=STRETCH[S.d];
+  const model=wk.m[S.d%wk.m.length];
+  day.plan.forEach(item=>{
+    const [kind,arg]=item.split(":");
+    if(kind==="stretch")seq.push({ph:"Warm-up",say:[`${st[0]} ${strip(model)}`,`${st[1]} ${strip(model)}`],secs:120,html:`<div class="kicker">Warm-up · Calentamiento</div><h2>Stretch the sentence <small>Estira la oración</small></h2><div class="stretch"><span class="ic">🙌</span><span>${st[0]}<br><i>${st[1]}</i></span></div><p class="big">${bold(model)}</p><div class="lanes"><div class="lane em"><span class="tag">Emerging</span>Repeat it 3 times. Point to the target word. <i>Repítela 3 veces. Señala la palabra meta.</i></div><div class="lane pr"><span class="tag">Progressing</span>Say it, then change one word and say it again. <i>Dila, cambia una palabra y dila otra vez.</i></div></div>`});
+    if(kind==="rule")seq.push({ph:"The Move",say:[`Today's move: ${wk.t}. ${wk.rule}`,`El movimiento de hoy: ${wk.ts}. ${wk.rs}`],secs:240,html:`<div class="kicker">The Move · El movimiento</div><h2>${wk.t} <small>${wk.ts}</small></h2><div class="rule">${wk.rule}<span class="es">${wk.rs}</span></div><div class="lanes"><div class="lane em"><span class="tag">Emerging</span>Copy the rule in your notebook. Circle the key words. <i>Copia la regla. Encierra las palabras clave.</i></div><div class="lane pr"><span class="tag">Progressing</span>Explain the rule to a partner in your own words — English first, Spanish if needed. <i>Explica la regla a un compañero.</i></div></div>`});
+    if(kind==="rulequick")seq.push({ph:"The Move",say:[`Quick review. ${wk.t}. ${wk.rule}`,`Repaso rápido. ${wk.ts}. ${wk.rs}`],secs:90,html:`<div class="kicker">The Move · El movimiento</div><h2>${wk.t} <small>${wk.ts}</small></h2><div class="rule">${wk.rule}<span class="es">${wk.rs}</span></div>`});
+    if(kind==="transfer")seq.push({ph:"The Move",say:[`Spanish bridge. ${wk.tr}`,`Puente al español. ${wk.trs}`],secs:180,html:`<div class="kicker">Spanish Bridge · Puente</div><h2>Where English flips <small>Dónde el inglés cambia</small></h2><div class="rule">${wk.tr}<span class="es">${wk.trs}</span></div><div class="rule" style="border-color:var(--navy)">${wk.rule}<span class="es">${wk.rs}</span></div>`});
+    if(kind==="models")seq.push({ph:"The Move",say:[`Listen to the models. Echo each one after me. ${wk.m.map(strip).join(" ")}`,`Escuchen los modelos. Repitan cada uno después de mí.`],secs:150,html:`<div class="kicker">Model sentences · Oraciones modelo</div><h2>Echo the models <small>Repite los modelos</small></h2><ol class="models">${wk.m.map(x=>`<li>${bold(x)}</li>`).join("")}</ol><div class="lanes"><div class="lane em"><span class="tag">Emerging</span>Echo each sentence. Clap on the <b>bold</b> word.</div><div class="lane pr"><span class="tag">Progressing</span>Echo, then make one sentence true about <i>you</i>.</div></div>`});
+    if(kind==="reps"){const n=+arg;for(let r=0;r<n;r++){const useEm=(S.lane==="em")||(S.lane==="both"&&r%2===0);const bank=useEm?wk.e:wk.p;const idx=(r>>(S.lane==="both"?1:0))%bank.length;const [pr,an]=bank[idx];seq.push({ph:"Reps",rep:r+1,of:n,lane:useEm?"em":"pr",say:[`Rep ${r+1}. ${useEm?"Emerging lane":"Progressing lane"}. ${pr.replace(/___/g,"blank")}`,`Repetición ${r+1}. Carril ${useEm?"emergente":"progresando"}.`],ans:an,secs:40,html:`<div class="kicker">Reps · Repeticiones ${r+1} of ${n}</div><h2>${useEm?"Fill the frame":"Transform it"} <small>${useEm?"Completa el marco":"Transfórmala"}</small></h2><div class="lane ${useEm?"em":"pr"}"><span class="tag">${useEm?"Emerging":"Progressing"}</span><p class="big">${esc(pr)}</p><div class="row"><button class="btn gold" data-reveal>Reveal ✓</button><button class="btn light" data-again>🔊 Repeat</button></div><div class="ans">✔ ${esc(an)}</div></div>`});}}
+    if(kind==="speed"){for(let r=0;r<6;r++){const useEm=r<3?true:false;const bank=useEm?wk.e:wk.p;const [pr,an]=bank[r%bank.length];seq.push({ph:"Reps",rep:r+1,of:6,lane:useEm?"em":"pr",say:[`Speed round ${r+1}. Thirty seconds. ${pr.replace(/___/g,"blank")}`,`Ronda rápida ${r+1}. Treinta segundos.`],ans:an,secs:30,html:`<div class="kicker">Speed round · Ronda rápida ${r+1} of 6</div><h2>${useEm?"Fill it fast":"Transform it fast"} <small>${useEm?"Rápido: completa":"Rápido: transforma"}</small></h2><div class="lane ${useEm?"em":"pr"}"><span class="tag">${useEm?"Emerging":"Progressing"}</span><p class="big">${esc(pr)}</p><div class="row"><button class="btn gold" data-reveal>Reveal ✓</button></div><div class="ans">✔ ${esc(an)}</div></div>`});}}
+    if(kind==="write"||kind==="writelong"){const long=kind==="writelong";const fe=wk.e[(S.d+1)%wk.e.length][0];const fp=wk.p[wk.p.length-1][0];seq.push({ph:"Quick Write",say:[long?`Apply it. ${fp} Write at least four sentences. Use today's move in every one.`:`Quick write. Two sentences using ${wk.t}. Go.`,long?`Aplícalo. Escribe al menos cuatro oraciones usando el movimiento de hoy.`:`Escritura rápida. Dos oraciones con ${wk.ts}.`],secs:long?360:180,html:`<div class="kicker">${long?"Apply It · Aplícalo":"Quick Write · Escritura rápida"}</div><h2>${long?"Write it out":"Two sentences"} <small>${long?"Escríbelo":"Dos oraciones"}</small></h2><div class="lanes"><div class="lane em"><span class="tag">Emerging</span><p>Frame: <b>${esc(fe)}</b> — then write one more like it.</p><textarea data-key="em" placeholder="Write here… / Escribe aquí…"></textarea></div><div class="lane pr"><span class="tag">Progressing</span><p>${esc(fp)}${long?" Add a connector (and/but/so/because).":""}</p><textarea data-key="pr" placeholder="Write here… / Escribe aquí…"></textarea></div></div><p class="std">Writing saves on this device. Share one sentence out loud when the timer ends. · <i>Comparte una oración en voz alta cuando termine el tiempo.</i></p>`});}
+    if(kind==="check"){wk.q.forEach((qq,qi)=>{const [q,o,c]=qq;seq.push({ph:"Exit Check",quiz:{o,c},say:[`Exit check ${qi+1}. ${q} ${o.map((x,i)=>`Option ${i+1}: ${x}.`).join(" ")}`,`Chequeo de salida ${qi+1}.`],secs:45,html:`<div class="kicker">Exit check · Chequeo de salida ${qi+1} of 3</div><h2>${esc(q)}</h2><div class="opts">${o.map((x,i)=>`<button data-opt="${i}">${i+1}. ${esc(x)}</button>`).join("")}</div><div class="fb"></div>`});});}
+    if(kind==="celebrate")seq.push({ph:"Cool-down",say:[`Great work, team. Week ${S.w+1} is complete. Say it with me: I can use ${wk.t}. See you Monday.`,`Buen trabajo, equipo. Semana ${S.w+1} completa. Díganlo conmigo: Puedo usar ${wk.ts}. Nos vemos el lunes.`],secs:60,html:`<div class="kicker">Cool-down · Enfriamiento</div><h2>Week ${S.w+1} complete <small>Semana ${S.w+1} completa</small></h2><p class="big">"I can use <b>${wk.t}</b>." · «Puedo usar <b>${wk.ts}</b>.»</p><div class="scorebox"><div>Exit checks right<b id="scR">0</b></div><div>Exit checks total<b id="scT">0</b></div><div>Streak (this device)<b id="scS">0</b></div></div><div class="row"><button class="btn gold" data-cert>Print certificate</button></div>`});
+  });
+  if(S.d!==4)seq.push({ph:"Cool-down",say:[`Nice work. Breathe out. Tomorrow we ${S.d===3?"finish the week with a challenge round":"keep building"}. Say it with me: I can use ${wk.t}.`,`Buen trabajo. Exhalen. Díganlo conmigo: Puedo usar ${wk.ts}.`],secs:30,html:`<div class="kicker">Cool-down · Enfriamiento</div><h2>Done for today <small>Listo por hoy</small></h2><p class="big">"I can use <b>${wk.t}</b>." · «Puedo usar <b>${wk.ts}</b>.»</p><div class="scorebox"><div>Exit checks right<b id="scR">0</b></div><div>Exit checks total<b id="scT">0</b></div></div>`});
+  return seq;
+}
+
+/* ===================== SPEECH ===================== */
+const synth=window.speechSynthesis;
+function pickVoices(){const v=synth.getVoices();const en=v.filter(x=>/^en[-_]/i.test(x.lang));const es=v.filter(x=>/^es[-_]/i.test(x.lang));const pref=(arr,re)=>arr.find(x=>re.test(x.name))||arr[0]||null;S.voiceEn=S.voiceEn||pref(en,/Google US English|Samantha|Aria|Jenny|Natural/i);S.voiceEs=S.voiceEs||pref(es,/Google español|Paulina|Mónica|Monica|Sabina|Natural/i);}
+if(synth){synth.onvoiceschanged=pickVoices;pickVoices();}
+let talking=false;
+function speak(en,es){if(!synth)return;synth.cancel();const av=$("#coachbox");const mk=(t,v,lang,rate)=>{const u=new SpeechSynthesisUtterance(t);if(v)u.voice=v;u.lang=lang;u.rate=rate;u.pitch=1.02;u.onstart=()=>av.classList.add("talk");u.onend=()=>av.classList.remove("talk");u.onboundary=()=>{av.classList.remove("talk");setTimeout(()=>av.classList.add("talk"),30);};return u;};
+  synth.speak(mk(en,S.voiceEn,"en-US",0.93));if(S.bil&&es)synth.speak(mk(es,S.voiceEs,"es-MX",0.95));}
+function quiet(){if(synth)synth.cancel();$("#coachbox").classList.remove("talk");}
+
+/* ===================== RENDER ===================== */
+const PH=["Warm-up","The Move","Reps","Quick Write","Exit Check","Cool-down"];
+function render(){
+  const s=steps[S.i],wk=W[S.w],day=DAYS[S.d];
+  $("#card").innerHTML=s.html;
+  $("#stepno").textContent=`${S.i+1} / ${steps.length}`;
+  $("#stdline").textContent=`${wk.std} · Week ${S.w+1} · ${day.k}: ${day.n} / ${day.ns}`;
+  $("#bubble").innerHTML=esc(s.say[0])+(S.bil?`<span class="es">${esc(s.say[1])}</span>`:"");
+  const cur=PH.indexOf(s.ph);
+  $("#phasebar").innerHTML=PH.filter(p=>steps.some(x=>x.ph===p)).map(p=>`<span class="${p===s.ph?"on":PH.indexOf(p)<cur?"done":""}">${p}</span>`).join("");
+  const av=$("#coachbox");av.classList.toggle("raise",s.ph==="Warm-up");
+  $("#back").disabled=S.i===0;$("#next").textContent=S.i===steps.length-1?"Finish ✓":"Next ▶";
+  // timer
+  clearInterval(timerId);let left=s.secs;const t=document.createElement("div");t.className="timer";t.innerHTML=`<span class="ring"><i></i></span><span class="tt"></span>`;
+  const top=document.createElement("div");top.className="top";const k=$("#card .kicker");if(k){k.parentNode.insertBefore(top,k);top.appendChild(k);top.appendChild(t);}
+  const tick=()=>{const m=Math.floor(left/60),sec=left%60;t.querySelector(".tt").textContent=`${m}:${String(sec).padStart(2,"0")}`;t.querySelector(".ring").style.setProperty("--p",(100-left/s.secs*100)+"%");if(left<=0){clearInterval(timerId);t.querySelector(".tt").textContent="⏰";}left--;};tick();timerId=setInterval(tick,1000);
+  // interactions
+  $("#card").querySelectorAll("[data-reveal]").forEach(b=>b.onclick=()=>{$("#card .ans").classList.add("show");speak(`The answer is: ${s.ans}`, S.bil?`La respuesta es: ${s.ans}`:null);});
+  $("#card").querySelectorAll("[data-again]").forEach(b=>b.onclick=()=>speak(s.say[0],s.say[1]));
+  $("#card").querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{if(b.dataset.done)return;const i=+b.dataset.opt;const ok=i===s.quiz.c;b.classList.add(ok?"ok":"bad");if(ok){$("#card").querySelectorAll("[data-opt]").forEach(x=>x.dataset.done=1);S.score.right++;S.score.total++;$("#card .fb").textContent="✔ Correct! · ¡Correcto!";speak("Correct! Say the full sentence with me.","¡Correcto!");saveScore();}else{S.score.total++;$("#card .fb").textContent="✘ Try again · Inténtalo otra vez";speak("Not yet. Try again.","Todavía no. Inténtalo otra vez.");}});
+  $("#card").querySelectorAll("textarea").forEach(ta=>{const key=`sgc-w${S.w}-d${S.d}-${ta.dataset.key}`;try{ta.value=localStorage.getItem(key)||"";}catch(e){}ta.oninput=()=>{try{localStorage.setItem(key,ta.value);}catch(e){}};});
+  const cert=$("#card [data-cert]");if(cert)cert.onclick=printCert;
+  if($("#scR")){$("#scR").textContent=S.score.right;$("#scT").textContent=S.score.total;const st=$("#scS");if(st)st.textContent=getStreak();}
+  if(S.auto)speak(s.say[0],s.say[1]);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function saveScore(){try{const k="sgc-score";const o=JSON.parse(localStorage.getItem(k)||"{}");o[`${S.w}-${S.d}`]={r:S.score.right,t:S.score.total,at:Date.now()};localStorage.setItem(k,JSON.stringify(o));}catch(e){}}
+function getStreak(){try{const o=JSON.parse(localStorage.getItem("sgc-score")||"{}");return Object.keys(o).length;}catch(e){return 0;}}
+function printCert(){const wk=W[S.w];const w=window.open("","_blank");w.document.write(`<html><head><title>Certificate</title><style>body{font-family:Georgia,serif;text-align:center;padding:60px;color:#1E2761}h1{font-size:44px;margin:0}h2{color:#C9A227}p{font-size:20px}.b{border:12px double #C9A227;padding:50px}</style></head><body><div class="b"><h2>EL Publishing · Storm Grammar Calisthenics</h2><h1>Certificate of Completion</h1><p>This certifies that <b>_______________________</b></p><p>completed Week ${S.w+1}: <b>${wk.t}</b> / <i>${wk.ts}</i></p><p>Exit checks: ${S.score.right} / ${S.score.total}</p><p>Coach Marisol, EL Specialist · ${new Date().toLocaleDateString()}</p></div><script>window.print()<\/script></body></html>`);w.document.close();}
+
+/* ===================== WIRING ===================== */
+function load(w,d){S.w=w;S.d=d;S.i=0;S.score={right:0,total:0};steps=build();$("#week").value=w;$("#day").value=d;$("#weekstrip").querySelectorAll("button").forEach((b,i)=>b.classList.toggle("on",i===w));location.hash=`w${w+1}d${d+1}`;render();}
+function init(){
+  W.forEach((x,i)=>$("#week").insertAdjacentHTML("beforeend",`<option value="${i}">Week ${i+1}: ${x.t}</option>`));
+  DAYS.forEach((x,i)=>$("#day").insertAdjacentHTML("beforeend",`<option value="${i}">${x.k} · ${x.n}</option>`));
+  W.forEach((x,i)=>$("#weekstrip").insertAdjacentHTML("beforeend",`<button title="${x.t}">${i+1}</button>`));
+  $("#weekstrip").querySelectorAll("button").forEach((b,i)=>b.onclick=()=>load(i,S.d));
+  $("#week").onchange=e=>load(+e.target.value,S.d);$("#day").onchange=e=>load(S.w,+e.target.value);
+  $("#lanepick").onchange=e=>{S.lane=e.target.value;load(S.w,S.d);};
+  $("#bil").onchange=e=>{S.bil=e.target.checked;render();};$("#auto").onchange=e=>{S.auto=e.target.checked;};
+  $("#proj").onclick=()=>document.body.classList.toggle("proj");
+  $("#today").onclick=()=>{const t=todayWD();load(t.w,t.d);};
+  $("#next").onclick=()=>{if(S.i<steps.length-1){S.i++;render();}else{quiet();alert("Workout complete. ¡Entrenamiento completo!");}};
+  $("#back").onclick=()=>{if(S.i>0){S.i--;render();}};
+  $("#replay").onclick=()=>{const s=steps[S.i];speak(s.say[0],s.say[1]);};$("#stop").onclick=quiet;
+  $("#voices").onclick=()=>{pickVoices();const v=synth?synth.getVoices():[];if(!v.length){alert("No voices found on this device yet. Try again in a moment, or use Chrome.");return;}const en=v.filter(x=>/^en/i.test(x.lang)),es=v.filter(x=>/^es/i.test(x.lang));const pick=(list,cur,label)=>{const names=list.map((x,i)=>`${i+1}. ${x.name} (${x.lang})`).join("\n");const r=prompt(`${label}\n\n${names}\n\nType a number:`,String(Math.max(1,list.indexOf(cur)+1)));const n=parseInt(r,10);return list[n-1]||cur;};S.voiceEn=pick(en,S.voiceEn,"English voice / Voz en inglés");S.voiceEs=pick(es,S.voiceEs,"Spanish voice / Voz en español");speak("Hello, I'm Coach Marisol.","Hola, soy la Coach Marisol.");};
+  document.addEventListener("keydown",e=>{if(e.target.tagName==="TEXTAREA")return;if(e.key==="ArrowRight"||e.key===" "){e.preventDefault();$("#next").click();}if(e.key==="ArrowLeft")$("#back").click();if(e.key.toLowerCase()==="r")$("#replay").click();});
+  const m=location.hash.match(/w(\d+)d(\d+)/);const t=todayWD();
+  const w=m?Math.min(35,Math.max(0,+m[1]-1)):t.w,d=m?Math.min(4,Math.max(0,+m[2]-1)):t.d;
+  $("#start").onclick=()=>{$("#gate").classList.add("hidden");pickVoices();load(w,d);};
+  if("serviceWorker" in navigator){/* optional: register sw.js if present */}
+}
+init();
+</script>
+</body>
+</html>
