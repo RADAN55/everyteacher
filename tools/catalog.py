@@ -114,6 +114,8 @@ R = [
   "Twelve language functions across four grade bands and four proficiency tiers.", True),
  ("https://radan55.github.io/RichardDaniel/curriculum-36/", "36-Week EL Curriculum: Emerging + Progressing", "elteacher", "Curriculum map", "36 weeks · 9–12",
   "The year week by week in two lanes, built back from the ELPT window.", True),
+ ("six-pies-elpa21.html", "Six Southern Pies: an ELPA21 Task Set", "elteacher", "Task set", "4 domains · 4 lanes",
+  "One infographic, all four ELPA21 domains, every task in four lanes.", False),
  ("sample-lesson.html", "One Text. Four Lanes. Five Ways to Prove It.", "elteacher", "Sample lesson", "90 minutes",
   "One 90-minute block taken apart, decision by decision.", True),
  ("newcomer-week1.html", "Newcomer Week 1 Kit", "elteacher", "Kit", "5 days",
@@ -170,7 +172,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}

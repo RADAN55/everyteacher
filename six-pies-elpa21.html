@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Six Southern Pies · an ELPA21-style task set in four domains · EL Publishing</title>
+<meta name="description" content="One infographic, all four ELPA21 domains: listening scripts, a reading passage with test-format items, writing tasks from a frame to an opinion essay, and four speaking tasks — each in four lanes (Newcomer, Emerging, Progressing, Challenge), with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Grades 6–12. Print the student pages; keep the teacher pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--gold-ink:#7A5F0E;--paper:#fff;--mist:#F4F5FA;--ink:#1F2340;--muted:#5B6078;--rule:#E3E5EF;--wash:#F7F1DC;--teal:#17606F;--teal-lt:#E3F1F4;--ok:#2E7D4F;--ok-lt:#E6F3EA;--rose:#B5213F;--rose-lt:#FBE8EC;--plum:#5B3FA8;--plum-lt:#EEE9FA}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:36px 22px 30px;display:grid;grid-template-columns:1fr 260px;gap:26px;align-items:center}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:60ch} .tag b{color:#fff;font-weight:600}
+  .head-in img{width:260px;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:10px 22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .bar .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+  .bar button,.bar a.btn{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:5px 11px;border-radius:999px;cursor:pointer;text-decoration:none}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .act{background:var(--gold);color:var(--navy-dk);border:0;font-weight:700;margin-left:auto}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 40px}
+  .sheet{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:28px 34px;margin:0 0 18px}
+  .sheet.teacher{border-color:#E3C66A;background:#FFFDF6}
+  .dom{display:flex;align-items:center;gap:12px;margin:0 0 4px}
+  .dom i{font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:3px 10px;border-radius:999px;color:#fff;background:var(--navy)}
+  .dom i.L{background:var(--teal)} .dom i.R{background:var(--plum)} .dom i.W{background:var(--rose)} .dom i.S{background:var(--ok)} .dom i.T{background:var(--gold-ink)}
+  .dom small{color:var(--muted);font-size:13px}
+  h2{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--navy);margin:0 0 6px;letter-spacing:-.01em}
+  h3{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);margin:18px 0 6px}
+  .task{border-top:1px solid var(--rule);padding-top:12px;margin-top:14px}
+  .task .tt{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0 0}
+  .lane{border-radius:8px;padding:9px 11px;font-size:13.5px;line-height:1.4}
+  .lane b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+  .lane.n{background:var(--rose-lt)} .lane.n b{color:var(--rose)}
+  .lane.e{background:var(--wash)} .lane.e b{color:var(--gold-ink)}
+  .lane.p{background:var(--teal-lt)} .lane.p b{color:var(--teal)}
+  .lane.c{background:var(--plum-lt)} .lane.c b{color:var(--plum)}
+  .q{margin:10px 0 0;padding-left:0;list-style:none;counter-reset:q}
+  .q>li{counter-increment:q;margin:0 0 10px;padding-left:30px;position:relative}
+  .q>li::before{content:counter(q);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+  .opts{list-style:none;padding:0;margin:4px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:3px 14px}
+  .opts li{display:flex;gap:8px}
+  .opts li::before{content:"○";color:var(--muted)}
+  .passage{background:var(--mist);border-left:4px solid var(--gold);padding:12px 16px;border-radius:0 8px 8px 0;font-size:15.5px;margin:8px 0}
+  .passage p{margin:0 0 8px} .passage p:last-child{margin:0}
+  .script{background:var(--teal-lt);border-left:4px solid var(--teal);padding:12px 16px;border-radius:0 8px 8px 0;font-size:15px;margin:8px 0}
+  .script b{color:var(--teal)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;margin:8px 0}
+  th,td{border:1px solid var(--rule);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:var(--mist);font-weight:700}
+  .lines{border-bottom:1px solid #999;height:26px}
+  .wb{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+  .wb span{border:1px solid var(--rule);border-radius:999px;padding:2px 10px;font-size:13.5px;background:var(--paper)}
+  .frame{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);margin:6px 0}
+  .frame u{text-decoration:none;border-bottom:2px solid var(--gold);display:inline-block;min-width:90px}
+  .pies{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+  .pies figure{margin:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--paper)}
+  .pies img{display:block;width:100%;aspect-ratio:1.25;object-fit:cover}
+  .pies figcaption{font-size:12.5px;padding:5px 8px;text-align:center;font-weight:600}
+  .box{background:var(--mist);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;font-size:14px;margin:8px 0}
+  .cog{columns:3;font-size:14px} .cog div{break-inside:avoid;padding:2px 0} .cog b{color:var(--navy)} .cog i{color:var(--muted);font-style:normal}
+  .key li{margin:2px 0}
+  .std td:first-child{white-space:nowrap;font-weight:700;color:var(--navy)}
+  .hide{display:none!important}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media(max-width:760px){.head-in{grid-template-columns:1fr}.head-in img{width:200px}.lanes{grid-template-columns:1fr 1fr}.cog{columns:2}.opts{grid-template-columns:1fr}.pies{grid-template-columns:repeat(2,1fr)}}
+  @media print{header,.bar,footer{display:none}.lanes,.cog,table,.passage,.script,.pies{break-inside:avoid}body{background:#fff;font-size:12pt}main{max-width:none;padding:0}.sheet{border:0;border-radius:0;padding:0;margin:0 0 .2in;break-after:page;background:#fff}.sheet:last-child{break-after:auto}.sheet.teacher{background:#fff}.lanes{grid-template-columns:repeat(4,1fr)}.lane{border:1px solid #bbb;background:#fff!important}.passage,.script,.box{background:#fff;border:1px solid #bbb}.pies img{aspect-ratio:1.25}.hide{display:none!important}.lines{height:24pt}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/six-pies-elpa21.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Six Southern Pies", "url": "https://radan55.github.io/everyteacher/six-pies-elpa21.html", "description": "One infographic, all four ELPA21 domains: listening scripts, a reading passage with test-format items, writing tasks from a frame to an opinion essay, and four speaking tasks — each in four lanes (Newcomer, Emerging, Progressing, Challenge), with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Grades 6–12. Print the student pages; keep the teacher pages.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Task set"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/six-pies-elpa21.html">
+<meta property="og:title" content="Six Southern Pies · an ELPA21-style task set in four domains · EL Publishing">
+<meta property="og:description" content="One infographic, all four ELPA21 domains: listening scripts, a reading passage with test-format items, writing tasks from a frame to an opinion essay, and four speaking tasks — each in four lanes (Newcomer, Emerging, Progressing, Challenge), with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Grades 6–12. Print the student pages; keep the teacher pages.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/six-pies-elpa21.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <div>
+      <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS · ELPA21-STYLE TASK SET · GRADES 6–12</p>
+      <h1>Six Southern pies, <em>four domains.</em></h1>
+      <p class="tag">One infographic becomes a full ELPA21-format practice set: <b>listening</b> scripts, a <b>reading</b> passage with test-style items, <b>writing</b> from a frame to an opinion essay, and four <b>speaking</b> tasks — every task in four lanes, with a cognate list, answer key, scoring notes and MS ELP Standards alignment. Nothing to log into. Print the student pages; keep the teacher pages.</p>
+    </div>
+    <img src="img/six-pies.jpg" alt="Infographic of six Southern pies with their ingredients: buttermilk, chess, coconut cream, sweet potato, pecan and lemon icebox">
+  </div>
+</header>
+<nav class="bar" aria-label="Show"><div class="bar-in">
+  <span class="k">Show</span>
+  <button type="button" data-v="all" aria-pressed="true">Everything</button>
+  <button type="button" data-v="student" aria-pressed="false">Student pages</button>
+  <button type="button" data-v="teacher" aria-pressed="false">Teacher pages</button>
+  <span class="k" style="margin-left:10px">Domain</span>
+  <button type="button" data-d="L" aria-pressed="true">Listening</button>
+  <button type="button" data-d="R" aria-pressed="true">Reading</button>
+  <button type="button" data-d="W" aria-pressed="true">Writing</button>
+  <button type="button" data-d="S" aria-pressed="true">Speaking</button>
+  <button type="button" class="act" onclick="window.print()">🖨 Print what's shown</button>
+</div></nav>
+<main>
+
+<!-- ───────── COVER / WORD BANK (student) ───────── -->
+<section class="sheet" data-who="student" data-d="LRWS">
+  <div class="dom"><i>Student</i><small>Name: ____________________ &nbsp; Class: ____________ &nbsp; Date: ____________</small></div>
+  <h2>Six Southern pies</h2>
+  <p>Look at the picture. Each pie has a <b>number</b>, a <b>name</b> and a list of <b>ingredients</b> (the things you need to make it). You will listen, read, write and speak about these pies.</p>
+  <img src="img/six-pies.jpg" alt="" style="width:100%;max-width:560px;display:block;margin:8px auto;border-radius:8px;border:1px solid var(--rule)">
+  <h3>Words you need · Palabras que necesitas</h3>
+  <div class="cog">
+    <div><b>ingredient</b> <i>· ingrediente</i></div><div><b>crust</b> <i>· masa, base</i></div><div><b>filling</b> <i>· relleno</i></div>
+    <div><b>cream</b> <i>· crema</i></div><div><b>sugar</b> <i>· azúcar</i></div><div><b>butter</b> <i>· mantequilla</i></div>
+    <div><b>eggs</b> <i>· huevos</i></div><div><b>flour</b> <i>· harina</i></div><div><b>vanilla extract</b> <i>· extracto de vainilla</i></div>
+    <div><b>cinnamon</b> <i>· canela</i></div><div><b>lemon</b> <i>· limón</i></div><div><b>coconut</b> <i>· coco</i></div>
+    <div><b>pecan</b> <i>· nuez pecana</i></div><div><b>sweet potato</b> <i>· camote, batata</i></div><div><b>condensed milk</b> <i>· leche condensada</i></div>
+    <div><b>evaporated milk</b> <i>· leche evaporada</i></div><div><b>bake</b> <i>· hornear</i></div><div><b>mix</b> <i>· mezclar</i></div>
+    <div><b>pour</b> <i>· verter</i></div><div><b>cool / chill</b> <i>· enfriar</i></div><div><b>slice</b> <i>· rebanada</i></div>
+    <div><b>sweet</b> <i>· dulce</i></div><div><b>creamy</b> <i>· cremoso</i></div><div><b>crunchy</b> <i>· crujiente</i></div>
+    <div><b>traditional</b> <i>· tradicional</i></div><div><b>similar / different</b> <i>· similar / diferente</i></div><div><b>recipe</b> <i>· receta</i></div>
+  </div>
+  <div class="box"><b>Cognate hunt:</b> circle every word in the list that looks like a word in your language. (There are at least ten.)</div>
+</section>
+
+<!-- ───────── LISTENING ───────── -->
+<section class="sheet teacher" data-who="teacher" data-d="L">
+  <div class="dom"><i class="T">Teacher</i><i class="L">Listening</i><small>Read each script twice at a natural pace. Students may look at the picture. ELPA21 task types mirrored: <em>Listen and Match</em>, <em>Short Conversation</em>, <em>Academic Lecture</em>.</small></div>
+  <h2>Listening scripts</h2>
+  <div class="task"><div class="tt">Script A · Listen and match (3 items)</div>
+    <div class="script"><b>Say:</b> I will describe a pie. Write the number of the pie.<br>
+    <b>A1.</b> This pie is made with nuts. The top is brown and sticky because of the corn syrup.<br>
+    <b>A2.</b> This pie has a white topping and a yellow filling. The topping is whipped cream, and there is lemon zest on top. The crust is made of graham crackers.<br>
+    <b>A3.</b> This pie is orange. It is made with a vegetable, brown sugar and cinnamon.</div></div>
+  <div class="task"><div class="tt">Script B · Short conversation (3 items)</div>
+    <div class="script"><b>Say:</b> Two students are planning a bake sale. Listen, then answer the questions.<br>
+    <b>Maya:</b> We need two pies for the bake sale on Friday. I was thinking pecan pie — everybody loves it.<br>
+    <b>Daniel:</b> Pecan is good, but pecans are expensive right now. Buttermilk pie costs almost nothing. It's just buttermilk, sugar, eggs and butter.<br>
+    <b>Maya:</b> True. But people don't always know what buttermilk pie is. Pecan sells itself.<br>
+    <b>Daniel:</b> Then let's do one of each. The pecan for the people who know what they want, and the buttermilk for the people who are curious.<br>
+    <b>Maya:</b> Deal. I'll buy the pecans tonight. Can you make the buttermilk pie Thursday after school?<br>
+    <b>Daniel:</b> Sure — it only takes an hour.</div></div>
+  <div class="task"><div class="tt">Script C · Short lecture (2 items)</div>
+    <div class="script"><b>Say:</b> Listen to part of a cooking class.<br>
+    Three of these pies — buttermilk, chess and sweet potato — are called <em>custard pies</em>. A custard is a mixture of eggs, sugar and milk or cream. When you bake a custard, the proteins in the eggs change shape and link together. That is what turns a liquid into a soft solid. If the oven is too hot, the proteins tighten too much, and the pie cracks or turns watery. So custard pies are usually baked at a moderate temperature, and the center should still move a little — the cooks say it should <em>jiggle</em> — when you take the pie out. It finishes setting as it cools.</div></div>
+</section>
+
+<section class="sheet" data-who="student" data-d="L">
+  <div class="dom"><i class="L">Listening</i><small>Your teacher will read. Listen two times.</small></div>
+  <h2>Listening</h2>
+  <div class="task"><div class="tt">A · Listen and match</div><p>Write the <b>number</b> of the pie your teacher describes.</p>
+    <table><tr><th style="width:33%">A1 → Pie number ____</th><th style="width:33%">A2 → Pie number ____</th><th>A3 → Pie number ____</th></tr></table></div>
+  <div class="task"><div class="tt">B · Short conversation</div>
+    <ol class="q">
+      <li>What are the students planning?<ul class="opts"><li>a cooking class</li><li>a bake sale</li><li>a birthday party</li><li>a science project</li></ul></li>
+      <li>Why does Daniel suggest buttermilk pie?<ul class="opts"><li>It is his favorite.</li><li>It is cheap to make.</li><li>It sells better than pecan.</li><li>It is a new recipe.</li></ul></li>
+      <li>What do they decide to do?<ul class="opts"><li>make only pecan pie</li><li>make only buttermilk pie</li><li>make one of each</li><li>buy the pies</li></ul></li>
+    </ol></div>
+  <div class="task"><div class="tt">C · Short lecture</div>
+    <ol class="q" start="4">
+      <li>What makes a custard turn from a liquid into a soft solid?<ul class="opts"><li>the sugar melting</li><li>the egg proteins linking together</li><li>the milk evaporating</li><li>the crust absorbing water</li></ul></li>
+      <li>According to the speaker, when should you take a custard pie out of the oven?<ul class="opts"><li>when the center is completely hard</li><li>when it cracks</li><li>when the center still moves a little</li><li>when the crust is white</li></ul></li>
+    </ol></div>
+  <div class="lanes">
+    <div class="lane n"><b>Newcomer</b>Do A only. Point to the pie before you write the number.</div>
+    <div class="lane e"><b>Emerging</b>Do A and B. Your teacher can read B three times.</div>
+    <div class="lane p"><b>Progressing</b>Do A, B and C.</div>
+    <div class="lane c"><b>Challenge</b>Do all, then write one sentence: why do custard pies crack?</div>
+  </div>
+</section>
+
+<!-- ───────── READING ───────── -->
+<section class="sheet" data-who="student" data-d="R">
+  <div class="dom"><i class="R">Reading</i><small>Read the passage. Then answer the questions.</small></div>
+  <h2>Reading</h2>
+  <div class="passage">
+    <p><b>Pies of the American South</b></p>
+    <p>In the American South, pie is more than a dessert. For many families it is a tradition that connects generations. Several of the most famous Southern pies were invented by cooks who had very little: no fresh fruit, no chocolate, and sometimes no refrigerator. They used what was in the kitchen — eggs, sugar, butter and milk — and created something new.</p>
+    <p><b>Buttermilk pie</b> and <b>chess pie</b> are two examples. Both are simple custards. The difference is small: chess pie adds a spoonful of cornmeal, which gives the top a thin, crisp layer. Some people say "chess" comes from "chest," because the pie kept well in a pie chest, a wooden cabinet used before refrigerators. Others say a cook once called it "jes' pie" — just pie — and the name stuck.</p>
+    <p><b>Sweet potato pie</b> has deep roots in African American cooking and is a center of the Thanksgiving table in many homes. <b>Pecan pie</b> uses the nut of a tree native to Mississippi and its neighbors; the sticky filling comes from corn syrup. <b>Coconut cream pie</b> and <b>lemon icebox pie</b> are newer. The icebox pie did not need an oven at all; it set in the icebox — the first home refrigerator — which made it popular in the hot summers of the 1930s.</p>
+    <p>Today you can find all six in diners from Texas to Virginia. The recipes have changed very little, which is exactly the point.</p>
+  </div>
+  <ol class="q">
+    <li>According to the passage, why did Southern cooks invent pies like buttermilk pie?<ul class="opts"><li>They had too much fruit.</li><li>They used what they had in the kitchen.</li><li>They wanted to copy French desserts.</li><li>They needed to use their refrigerators.</li></ul></li>
+    <li>What is the difference between buttermilk pie and chess pie?<ul class="opts"><li>Chess pie has no eggs.</li><li>Chess pie adds cornmeal.</li><li>Buttermilk pie is baked longer.</li><li>Buttermilk pie uses brown sugar.</li></ul></li>
+    <li>In paragraph 2, the word <b>stuck</b> most nearly means<ul class="opts"><li>glued to the pan</li><li>stayed; continued to be used</li><li>became difficult</li><li>was forgotten</li></ul></li>
+    <li>Why was lemon icebox pie popular in the 1930s?<ul class="opts"><li>It used expensive ingredients.</li><li>It needed a very hot oven.</li><li>It did not need an oven and set in the refrigerator.</li><li>It was served only in winter.</li></ul></li>
+    <li>What is the main idea of the passage?<ul class="opts"><li>Pecan trees grow in Mississippi.</li><li>Southern pies are hard to make.</li><li>Southern pies come from simple ingredients and strong traditions.</li><li>Chess pie has two possible names.</li></ul></li>
+  </ol>
+  <div class="task"><div class="tt">Procedure · put the steps in order (1–5)</div>
+    <p><b>How to make a lemon icebox pie.</b> Number the steps.</p>
+    <table><tr><td style="width:40px">___</td><td>Pour the filling into a graham cracker crust.</td></tr>
+      <tr><td>___</td><td>Mix the sweetened condensed milk, egg yolks and lemon juice until smooth.</td></tr>
+      <tr><td>___</td><td>Add whipped cream and lemon zest on top before serving.</td></tr>
+      <tr><td>___</td><td>Bake for 10 minutes, then let it cool.</td></tr>
+      <tr><td>___</td><td>Chill the pie in the refrigerator for at least four hours.</td></tr></table></div>
+  <div class="lanes">
+    <div class="lane n"><b>Newcomer</b>Read the bold words only. Match each bold pie name to its picture. Do the procedure with a partner.</div>
+    <div class="lane e"><b>Emerging</b>Questions 1, 2 and 4, plus the procedure. Underline the sentence where you found each answer.</div>
+    <div class="lane p"><b>Progressing</b>All questions. For question 5, write one sentence from the text that supports your answer.</div>
+    <div class="lane c"><b>Challenge</b>All questions. Then: the author gives two stories for the name "chess." Which is more believable, and why? Two sentences.</div>
+  </div>
+</section>
+
+<!-- ───────── WRITING ───────── -->
+<section class="sheet" data-who="student" data-d="W">
+  <div class="dom"><i class="W">Writing</i><small>Choose the task for your lane. Use the word bank.</small></div>
+  <h2>Writing</h2>
+  <div class="wb"><span>ingredients</span><span>both</span><span>only</span><span>unlike</span><span>because</span><span>however</span><span>similar</span><span>different</span><span>sweet</span><span>creamy</span><span>crunchy</span><span>traditional</span><span>first · then · finally</span><span>in my opinion</span><span>for example</span></div>
+
+  <div class="task"><div class="tt">W1 · Label and complete (Newcomer)</div>
+    <div class="pies">
+      <figure><img src="img/pie-pecan.jpg" alt=""><figcaption>Pie number ____ : ______________</figcaption></figure>
+      <figure><img src="img/pie-lemon.jpg" alt=""><figcaption>Pie number ____ : ______________</figcaption></figure>
+      <figure><img src="img/pie-sweetpotato.jpg" alt=""><figcaption>Pie number ____ : ______________</figcaption></figure>
+    </div>
+    <p class="frame">Pecan pie has <u></u> and <u></u>.</p>
+    <p class="frame">Lemon icebox pie is <u></u>.</p>
+    <p class="frame">My favorite pie is <u></u> because <u></u>.</p></div>
+
+  <div class="task"><div class="tt">W2 · Compare two pies (Emerging)</div>
+    <p>Choose two pies. Write four sentences.</p>
+    <p class="frame">Both <u></u> and <u></u> have <u></u>.</p>
+    <p class="frame">Only <u></u> has <u></u>.</p>
+    <p class="frame">Unlike <u></u>, <u></u> is <u></u>.</p>
+    <p class="frame">I would choose <u></u> because <u></u>.</p></div>
+
+  <div class="task"><div class="tt">W3 · Compare-and-contrast paragraph (Progressing)</div>
+    <p>Choose two pies. Write one paragraph (5–7 sentences) that explains how they are similar and how they are different. Use <b>both</b>, <b>however</b>, and <b>unlike</b> at least once each. Name at least three ingredients.</p>
+    <div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div></div>
+
+  <div class="task"><div class="tt">W4 · Opinion essay (Challenge) · also an ELPA21 "write an email" option</div>
+    <p>The cafeteria will serve <b>one</b> of these six pies at the Thanksgiving lunch. Which pie should it be? Write an essay of two or three paragraphs. State your opinion, give <b>two reasons</b> with details from the picture or the reading, and answer one argument against your choice. <em>Or:</em> write the same argument as an <b>email to the cafeteria manager</b> (greeting, purpose, reasons, polite closing).</p>
+    <div class="box"><b>Structure:</b> In my opinion, the cafeteria should serve ___ because ___ and ___. · First, ___. For example, ___. · Second, ___. · Some people might say ___; however, ___. · For these reasons, ___.</div>
+    <div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div><div class="lines"></div></div>
+</section>
+
+<!-- ───────── SPEAKING ───────── -->
+<section class="sheet" data-who="student" data-d="S">
+  <div class="dom"><i class="S">Speaking</i><small>Work with a partner or record on a device. Use full sentences when you can.</small></div>
+  <h2>Speaking</h2>
+  <div class="task"><div class="tt">S1 · Observe and report (all lanes)</div>
+    <p>Look at pie number 3 (coconut cream). Describe it. Say <b>three</b> things you see. <em>Newcomer:</em> three words. <em>Emerging:</em> three sentences with "It has…" / "It is…". <em>Progressing / Challenge:</em> describe it and guess how it tastes, using <b>because</b>.</p>
+    <p class="frame">I see <u></u>. &nbsp; It has <u></u>. &nbsp; It looks <u></u> because <u></u>.</p></div>
+  <div class="task"><div class="tt">S2 · Give the steps (Emerging and up)</div>
+    <p>Explain how to make pecan pie, in order, using the ingredient list. Use <b>first, then, next, finally</b>. (30–45 seconds)</p></div>
+  <div class="task"><div class="tt">S3 · Classroom chat · ask and answer (all lanes)</div>
+    <p>Ask your partner these questions, then switch. Write one thing your partner said.</p>
+    <ul><li>Which pie would you like to try? Why?</li><li>Is there a dessert like this in your family or your country? What is in it?</li><li>Which pie do you think is the easiest to make? Why?</li></ul>
+    <p>My partner said: ___________________________________________________________</p></div>
+  <div class="task"><div class="tt">S4 · Opinion (Progressing and Challenge)</div>
+    <p>Your school is choosing one pie for the Thanksgiving lunch. Which one should it be? Give your opinion with <b>two reasons</b>. Speak for 45–60 seconds. <em>Challenge:</em> also say why someone might disagree, and answer them.</p></div>
+  <div class="lanes">
+    <div class="lane n"><b>Newcomer</b>S1 (words) and S3 with a partner who shows, not translates.</div>
+    <div class="lane e"><b>Emerging</b>S1, S2 and S3. Frames on the board.</div>
+    <div class="lane p"><b>Progressing</b>S1–S4. Record S4.</div>
+    <div class="lane c"><b>Challenge</b>S1–S4; in S4, address a counterargument.</div>
+  </div>
+</section>
+
+<!-- ───────── TEACHER: KEY, SCORING, STANDARDS ───────── -->
+<section class="sheet teacher" data-who="teacher" data-d="LRWS">
+  <div class="dom"><i class="T">Teacher</i><small>Answer key · scoring · alignment · how to run it</small></div>
+  <h2>Teacher pages</h2>
+  <h3>Answer key</h3>
+  <table><tr><th style="width:22%">Listening</th><td>A1 = <b>5</b> (pecan) · A2 = <b>6</b> (lemon icebox) · A3 = <b>4</b> (sweet potato) · B1 bake sale · B2 it is cheap to make · B3 one of each · C4 egg proteins linking together · C5 when the center still moves a little</td></tr>
+  <tr><th>Reading</th><td>1 used what they had · 2 chess adds cornmeal · 3 stayed; continued to be used · 4 no oven, set in the refrigerator · 5 simple ingredients and strong traditions · Procedure: Mix = 1, Pour = 2, Bake = 3, Chill = 4, Whipped cream = 5</td></tr>
+  <tr><th>Writing / Speaking</th><td>Open response — score with the notes below. W1 pictures: pecan = 5, lemon icebox = 6, sweet potato = 4.</td></tr></table>
+
+  <h3>Scoring notes (in the spirit of the ELPA21 rubrics)</h3>
+  <table><tr><th style="width:22%">Writing</th><td><b>Emerging (W1–W2):</b> credit a correct idea in a frame even with spelling or verb errors; a label or list counts. <b>Progressing (W3):</b> look for the three connectors used correctly, three ingredients named, and sentences that compare rather than list. <b>Challenge (W4):</b> a stated opinion, two supported reasons, a counterargument addressed, paragraph structure, and the email conventions if that option is chosen. Grade the content fully; give language feedback on <em>one</em> pattern.</td></tr>
+  <tr><th>Speaking</th><td>Score what was communicated first: task completed? Then language: sentence-level control, vocabulary from the set, connectors (because, first/then), and for S4 the counterargument. Pronunciation counts only if it blocks meaning. Let Newcomers point and name; that is the task at their level.</td></tr></table>
+
+  <h3>How to run it (one 90-minute block, or two 45s)</h3>
+  <table><tr><td style="width:22%"><b>0–10</b></td><td>Project the infographic. Five words first: <em>ingredient, crust, filling, bake, slice</em>. Cognate hunt on the word list (students circle; pairs compare).</td></tr>
+  <tr><td><b>10–25</b></td><td>Listening A → B → C, each script read twice. Check A by having everyone hold up fingers for the pie number.</td></tr>
+  <tr><td><b>25–45</b></td><td>Reading. Newcomers work the bold words and the procedure with a partner; everyone else reads silently, then pairs compare answers before the class check.</td></tr>
+  <tr><td><b>45–55</b></td><td>Speaking S1 and S3 in pairs — talk before writing.</td></tr>
+  <tr><td><b>55–80</b></td><td>Writing by lane. Word bank stays on the board. Circulate; feedback on one thing.</td></tr>
+  <tr><td><b>80–90</b></td><td>S4 recorded on a device (Progressing/Challenge) while Newcomers and Emerging do S2 with the teacher. Exit: one sentence — "Today I learned that ___ pie ___."</td></tr></table>
+
+  <h3>Alignment · Mississippi English Language Proficiency Standards</h3>
+  <table class="std">
+    <tr><td>ELP 1</td><td>Construct meaning from oral presentations and literary and informational text — Listening B/C, Reading passage</td></tr>
+    <tr><td>ELP 2</td><td>Participate in grade-appropriate oral and written exchanges — S3 classroom chat, W4 email option</td></tr>
+    <tr><td>ELP 3</td><td>Speak and write about grade-appropriate complex texts and topics — S1, S2, W2, W3</td></tr>
+    <tr><td>ELP 4</td><td>Construct claims and support them with reasoning and evidence — W4, S4</td></tr>
+    <tr><td>ELP 5</td><td>Conduct research and evaluate and communicate findings — Challenge reading extension (which "chess" story is more believable)</td></tr>
+    <tr><td>ELP 6</td><td>Analyze and critique the arguments of others — S4 Challenge counterargument</td></tr>
+    <tr><td>ELP 7</td><td>Adapt language choices to purpose, task and audience — W4 essay vs. email</td></tr>
+    <tr><td>ELP 8</td><td>Determine the meaning of words and phrases — Reading item 3, cognate hunt</td></tr>
+    <tr><td>ELP 9</td><td>Create clear and coherent speech and text — W3, S2 sequence words</td></tr>
+    <tr><td>ELP 10</td><td>Accuracy with standard English — connectors, comparatives, verb forms in W2–W4</td></tr>
+  </table>
+  <p class="box"><b>ELPA21 task types mirrored:</b> Listen and Match · Short Conversation · Academic Lecture (listening); Read for Details, Word Meaning, Procedural Text / Sequence (reading); Write a Sentence, Compare, Opinion Essay, Write an Email (writing); Observe and Report, Give Directions, Classroom Chat, Opinion (speaking). This is classroom practice in the formats of the test, not released test material. Content area tie-ins: Family and Consumer Science, Culinary Arts, U.S. History (foodways), Biology/Chemistry (protein denaturation in custards).</p>
+  <p class="box">Build the next one yourself: paste any infographic's text into <a href="cognate-hunt.html">Cognate Hunt</a> for the word list, pull frames by function from the <a href="sentence-frames.html">Sentence-Frame Bank</a>, and let the <a href="el-assistants.html">EL Assistants</a> draft the four lanes. Students practice the same formats alone in <a href="english-on-your-own.html">English On Your Own</a>.</p>
+</section>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+(function(){var V='all',D=new Set(['L','R','W','S']);
+  function run(){document.querySelectorAll('.sheet').forEach(function(s){var okV=V==='all'||s.dataset.who===V;var okD=[].some.call(s.dataset.d,function(c){return D.has(c)});s.classList.toggle('hide',!(okV&&okD))})}
+  document.querySelectorAll('.bar button[data-v]').forEach(function(b){b.addEventListener('click',function(){V=b.dataset.v;document.querySelectorAll('.bar button[data-v]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});run()})});
+  document.querySelectorAll('.bar button[data-d]').forEach(function(b){b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);on?D.add(b.dataset.d):D.delete(b.dataset.d);run()})});
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
