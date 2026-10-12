@@ -58,6 +58,8 @@ R = [
   "Sixteen grammar features in real school scenes, two lanes on every page.", False),
  ("elpa21-practice-student.pdf", "ELPA21 Task Practice · Student", "students", "PDF packet", "16 pages",
   "Practice written in the exact format of the test, all four domains.", False),
+ ("listening-speaking-studio.html", "ELPA21 Listening & Speaking Studio", "students", "Practice", "48 items · 8 speaking tasks",
+  "Hear it twice, choose, check; then record your answer and compare it with a model.", True),
  ("https://radan55.github.io/elpa21-reading-studio/", "ELPA21 Reading Studio", "students", "Practice", "122 items",
   "ELPT-style reading practice under mock-test conditions, six grade bands.", False),
  ("https://radan55.github.io/elpa21speaking01/", "School Life • Language Lab", "students", "Practice", "25 activities",
@@ -174,7 +176,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Listening &amp; Speaking Studio · ELPA21 practice · EL Publishing</title>
+<meta name="description" content="Free ELPA21-style listening and speaking practice for English learners in grades 6–12: Listen and Match, Short Conversation and Academic Lecture items you hear twice, and speaking tasks you record on your own phone and check against a model answer. Four units, 48 listening items, 8 speaking tasks, four lanes of support. Nothing to log into.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<meta property="og:title" content="Listening &amp; Speaking Studio · ELPA21 practice">
+<meta property="og:description" content="Hear it twice, choose, check. Then record your answer and compare it with a model. Four units in the ELPA21 listening and speaking formats, with support in four lanes.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/thumbs/listening-speaking-studio.jpg">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/listening-speaking-studio.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+<style>
+:root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-lt:#E8F5ED;--bad:#B3261E;--bad-lt:#FDECEA;--teal:#0B6670;--teal-lt:#E6F2F3;--tint:#F2F4FF}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px}
+button{font-family:inherit;font-size:inherit;cursor:pointer;color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;line-height:1.12;margin:0}
+a{color:var(--teal)}
+.hide{display:none!important}
+.k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-ink);margin:0}
+.muted{color:var(--muted)}
+.tiny{font-size:13.5px}
+.fine{font-size:12.5px;color:var(--muted);line-height:1.5}
+.btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;border:0;border-radius:999px;padding:12px 24px;font-size:16px;text-align:center;text-decoration:none}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn.go{background:var(--navy-bg);color:#fff}
+.btn.sm{padding:8px 16px;font-size:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:18px 20px;margin:0 0 14px}
+
+/* ── header ── */
+header.hero{background:var(--navy-bg);color:#fff;padding:34px 0 30px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.07) 0 2px,transparent 2px 26px);pointer-events:none}
+header.hero .wrap{position:relative}
+.brand{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin:0 0 10px}
+.brand a{color:inherit;text-decoration:none}
+header.hero h1{font-size:clamp(34px,7vw,52px);color:#fff}
+header.hero h1 em{font-style:italic;color:var(--gold)}
+header.hero p.sub{color:#C9CEEA;font-size:17.5px;max-width:600px;margin:12px 0 0}
+.ears{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+.ears div{font-size:13.5px;color:#C9CEEA}
+.ears b{display:block;font-family:Fraunces,Georgia,serif;font-size:26px;color:#fff;line-height:1}
+.voice-note{margin-top:18px;font-size:12.5px;color:#A9B2DC;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;max-width:620px}
+
+/* ── mode & progress ── */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:-22px 0 18px;position:relative}
+.modes button{background:var(--paper);border:1.5px solid var(--rule);border-radius:16px;padding:16px 16px 14px;text-align:left;box-shadow:0 6px 24px rgba(20,26,68,.10)}
+.modes button b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;color:var(--navy)}
+.modes button span{font-size:13.5px;color:var(--muted)}
+.modes button.on{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.25)}
+.prog{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--muted);margin:0 0 20px}
+.prog .bar{flex:1;height:8px;background:var(--rule);border-radius:999px;overflow:hidden}
+.prog .bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
+
+/* ── units ── */
+.unit{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start}
+.unit .n{width:52px;height:52px;border-radius:14px;background:var(--navy-bg);color:var(--gold-lt);display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:24px;font-weight:700}
+.unit h2{font-size:22px;color:var(--navy)}
+.unit p.s{margin:2px 0 10px;font-size:14px;color:var(--muted)}
+.tasks{display:flex;flex-wrap:wrap;gap:8px}
+.tasks button{background:var(--mist);border:1.5px solid var(--rule);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600;color:var(--ink);display:inline-flex;gap:7px;align-items:center}
+.tasks button i{font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--teal);font-weight:800}
+.tasks button i.s{color:var(--gold-ink)}
+.tasks button.done{border-color:var(--ok);background:var(--ok-lt)}
+.tasks button.done::after{content:"✓";color:var(--ok);font-weight:800}
+.words{margin-top:10px;font-size:13px;color:var(--muted)}
+.words b{color:var(--ink);font-weight:600}
+
+/* ── task view ── */
+#task{display:none}
+#task.open{display:block}
+.crumb{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 10px;font-size:13.5px;color:var(--muted)}
+.crumb button{background:none;border:0;color:var(--teal);font-weight:600;padding:4px 0}
+.fmt{display:inline-block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--teal);background:var(--teal-lt);border-radius:999px;padding:3px 10px}
+.fmt.s{color:var(--gold-ink);background:#FFF8E6}
+html[data-theme="dark"] .fmt.s{background:#2B2515}
+.task h2{font-size:24px;color:var(--navy);margin:8px 0 4px}
+.setting{font-size:15px;color:var(--muted);margin:0 0 14px}
+
+/* the stage: one big play control, a ring that fills, and the two listens */
+.stage{background:var(--navy-bg);color:#fff;border-radius:18px;padding:18px 18px 16px;display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:center;margin:0 0 14px;position:relative;overflow:hidden}
+.stage::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.06) 0 2px,transparent 2px 26px);pointer-events:none}
+.play{position:relative;width:84px;height:84px;border-radius:50%;border:0;background:var(--gold);color:var(--navy-dk);display:grid;place-items:center;z-index:1}
+.play svg.ring{position:absolute;inset:-6px;width:96px;height:96px;transform:rotate(-90deg)}
+.play svg.ring circle{fill:none;stroke-width:4}
+.play svg.ring .bg{stroke:rgba(255,255,255,.18)}
+.play svg.ring .fg{stroke:#fff;stroke-dasharray:289;stroke-dashoffset:289;transition:stroke-dashoffset .25s linear}
+.play .ico{font-size:30px;line-height:1}
+.play:disabled{background:#6C6F8A;color:#C9CEEA}
+.stage .meta{position:relative;z-index:1;min-width:0}
+.stage .meta b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px}
+.stage .meta small{display:block;color:#C9CEEA;font-size:13.5px;margin-top:2px}
+.listens{display:flex;gap:6px;margin-top:10px;align-items:center;font-size:12.5px;color:#C9CEEA}
+.listens i{display:inline-block;width:22px;height:8px;border-radius:999px;background:rgba(255,255,255,.22)}
+.listens i.used{background:var(--gold)}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ctl button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600}
+.ctl button[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+
+.q{font-size:18.5px;font-weight:600;margin:4px 0 12px}
+.q small{display:block;font-size:13px;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.opts{display:grid;gap:10px}
+.opts.pics{grid-template-columns:repeat(3,1fr)}
+.opts.icons{grid-template-columns:repeat(2,1fr)}
+.opt{background:var(--paper);border:1.5px solid var(--rule);border-radius:14px;padding:13px 15px;text-align:left;font-size:16px;line-height:1.35;display:flex;gap:12px;align-items:center}
+.opt .ic{font-size:28px;line-height:1;flex:none}
+.opt img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;display:block}
+.opts.pics .opt{flex-direction:column;align-items:stretch;gap:8px;padding:8px;font-size:13.5px;text-align:center;font-weight:600}
+.opt:hover{border-color:var(--navy)}
+.opt.right{border-color:var(--ok);background:var(--ok-lt)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-lt)}
+.opt:disabled{cursor:default;opacity:.85}
+.fb{margin-top:12px;border-radius:12px;padding:12px 14px;font-size:15px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-lt);border-left:4px solid var(--ok)}
+.fb.no{background:var(--bad-lt);border-left:4px solid var(--bad)}
+.script{background:var(--tint);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.6;margin-top:12px}
+.script b{color:var(--navy)}
+.steps{font-size:13px;color:var(--muted);margin:0 0 8px}
+.result{text-align:center;padding:10px 0 4px}
+.result .big{font-family:Fraunces,Georgia,serif;font-size:46px;color:var(--navy);line-height:1}
+.result p{margin:8px 0 14px;color:var(--muted)}
+
+/* ── speaking ── */
+.lanes{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.lanes button{border:1.5px solid var(--rule);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.lanes button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy-bg)}
+.frame{background:var(--tint);border-left:4px solid var(--gold);border-radius:12px;padding:12px 14px;font-size:17px;font-family:Fraunces,Georgia,serif;line-height:1.5}
+.pic{width:100%;max-width:300px;border-radius:12px;display:block;margin:0 auto 12px}
+.rec{display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:center;background:var(--paper);border:1.5px solid var(--rule);border-radius:18px;padding:16px 18px;margin:14px 0}
+.rec .play{background:var(--bad);color:#fff}
+.rec .play.live{animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(179,38,30,.35)}50%{box-shadow:0 0 0 14px rgba(179,38,30,0)}}
+.rec .meta b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+.rec .meta small{color:var(--muted);font-size:13.5px}
+.rec .clock{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px;color:var(--navy)}
+.check{list-style:none;padding:0;margin:8px 0 0}
+.check li{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--rule);font-size:15.5px}
+.check li:first-child{border-top:0}
+.check input{width:22px;height:22px;accent-color:var(--ok)}
+audio{width:100%;margin-top:8px}
+
+/* ── teacher ── */
+details.teacher{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:0 20px;margin:28px 0 20px}
+details.teacher summary{cursor:pointer;padding:16px 0;font-family:Fraunces,Georgia,serif;font-size:21px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.teacher summary::-webkit-details-marker{display:none}
+details.teacher summary::after{content:"+";font-size:26px;color:var(--gold-ink)}
+details.teacher[open] summary::after{content:"−"}
+details.teacher .in{padding:0 0 18px;font-size:15.5px}
+details.teacher h3{font-size:17px;color:var(--navy);margin:16px 0 6px}
+details.teacher table{width:100%;border-collapse:collapse;font-size:14px}
+details.teacher td,details.teacher th{border-top:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top}
+details.teacher th{color:var(--muted);font-weight:600;width:28%}
+.tx{font-size:14px;line-height:1.6}
+.tx b{color:var(--navy)}
+.tx .ans{color:var(--ok);font-weight:600}
+footer{background:var(--navy-dk-bg);color:#C9CEEA;padding:26px 0 40px;font-size:14px;margin-top:20px}
+footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:17px;margin-bottom:4px}
+footer a{color:var(--gold-lt)}
+@media print{header.hero,.modes,.prog,#units,#task,footer{display:none!important}details.teacher{border:0}details.teacher summary::after{content:""}}
+@media (max-width:520px){.opts.pics{grid-template-columns:repeat(2,1fr)}.stage,.rec{grid-template-columns:72px 1fr}.play{width:72px;height:72px}.play svg.ring{width:84px;height:84px}}
+@media (prefers-reduced-motion:reduce){.rec .play.live{animation:none}.play svg.ring .fg{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <p class="brand"><a href="index.html">EL Publishing</a> · For students · ELPA21 practice · Grades 6–12</p>
+  <h1>Hear it twice. <em>Say it once.</em></h1>
+  <p class="sub">The Listening &amp; Speaking Studio. Listen the way the test asks you to, choose, and see why. Then record your own answer on your phone and compare it with a model. Four units, four lanes of support, nothing to log into.</p>
+  <div class="ears"><div><b>48</b>listening items</div><div><b>8</b>speaking tasks</div><div><b>3</b>test formats</div><div><b>2</b>listens, like the test</div></div>
+  <p class="voice-note">All the voices you hear here are <b>synthesized</b>. The scripts were written and edited by Richard A. Daniel, M.Ed. Your recordings stay on your own device; nothing is uploaded.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="modes" role="tablist">
+    <button type="button" id="mListen" class="on" role="tab" aria-selected="true"><b>🎧 Listen</b><span>Match · Conversation · Lecture</span></button>
+    <button type="button" id="mSpeak" role="tab" aria-selected="false"><b>🎙️ Speak</b><span>Report · Steps · Chat · Opinion</span></button>
+  </div>
+  <div class="prog"><span id="progT">0 of 56 done</span><div class="bar"><i id="progB"></i></div><button type="button" class="btn ghost sm" id="reset">Start over</button></div>
+
+  <section id="units" aria-label="Units"></section>
+
+  <section id="task" class="task" aria-live="polite"></section>
+
+  <details class="teacher" id="teacher">
+    <summary>For the teacher: how to use it, transcripts and key</summary>
+    <div class="in">
+      <p>Four units, each with the three ELPA21 listening formats and two speaking formats. A student hears each clip at most <b>twice</b> at a natural pace, which is the test's own rule; the <b>Support</b> switch on each task allows unlimited listens, a slower speed and the transcript after the first listen, for Newcomer and Emerging students. The transcript and the reason for the answer appear after every item, so a wrong answer is a lesson, not a loss.</p>
+      <p>Speaking tasks are recorded on the student's own device with the browser's microphone and never leave it. The student listens back, ticks a three-line self-check, and then hears a model answer at the Progressing / Challenge level. Lane frames (Newcomer, Emerging, Progressing, Challenge) sit under every prompt. If the browser cannot record, the task still works with a phone voice memo and the on-screen clock.</p>
+      <h3>In class</h3>
+      <p>Pairs, one device, earbuds split. Listening: both listen, each chooses on paper, then compare before tapping. Speaking: A records while B listens for the self-check lines, then swap. The recordings are evidence for the LSP speaking goal when a student saves one to the class folder; the date is in the file name.</p>
+      <h3>At home</h3>
+      <p>One task a night, ten minutes. Families can listen along; the transcript is in English, and the pie unit's words are on the <a href="six-pies-elpa21.html">Six Southern Pies</a> cover page in English and Spanish.</p>
+      <h3>Alignment</h3>
+      <table>
+        <tr><th>ELPA21 task types mirrored</th><td>Listen and Match · Short Conversation · Academic Lecture (listening) · Observe and Report · Give Directions / Give the Steps · Classroom Chat · Opinion (speaking)</td></tr>
+        <tr><th>MS ELP Standards</th><td>ELP 1 (construct meaning from oral presentations), ELP 2 (participate in oral exchanges), ELP 3 (speak about topics), ELP 4 (claims with reasons), ELP 8 (word meaning from context), ELP 9 (clear, coherent speech)</td></tr>
+        <tr><th>Lecture content</th><td>Custard chemistry (Unit 1), high-school credits (Unit 2), hurricane formation (Unit 3), checks and balances (Unit 4): everyday academic content a grade 6–12 student meets in school, kept to stable, uncontested facts.</td></tr>
+      </table>
+      <h3>Transcripts and answer key <button type="button" class="btn ghost sm" onclick="window.print()">🖨 Print</button></h3>
+      <div id="transcripts" class="tx"></div>
+    </div>
+  </details>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a><br><span class="fine" style="color:#A9B2DC">Voices synthesized with an open-source text-to-speech model; scripts written and edited by the author. Student recordings are stored only in the browser session and are never uploaded.</span></div></footer>
+
+<script>
+(function(){
+'use strict';
+var DATA=null, MODE='listen', STATE=load(), CUR=null, AUD=null, REC={};
+var LANES=[["n","Newcomer"],["e","Emerging"],["p","Progressing"],["c","Challenge"]];
+var $=function(s,r){return (r||document).querySelector(s)}, el=function(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+
+function load(){try{return JSON.parse(localStorage.getItem('elhub.studio.v1'))||{done:{},lane:'e',support:false}}catch(e){return {done:{},lane:'e',support:false}}}
+function save(){try{localStorage.setItem('elhub.studio.v1',JSON.stringify(STATE))}catch(e){}}
+
+fetch('studio/data.json').then(function(r){return r.json()}).then(function(d){DATA=d;renderUnits();renderTranscripts();progress()})
+ .catch(function(){$('#units').innerHTML='<div class="card">The Studio needs its audio files. Open this page from <a href="https://radan55.github.io/everyteacher/listening-speaking-studio.html">radan55.github.io/everyteacher</a>.</div>'});
+
+$('#mListen').onclick=function(){setMode('listen')}; $('#mSpeak').onclick=function(){setMode('speak')};
+$('#reset').onclick=function(){if(confirm('Clear your progress on this device?')){STATE.done={};save();closeTask();renderUnits();progress()}};
+function setMode(m){MODE=m;$('#mListen').classList.toggle('on',m==='listen');$('#mSpeak').classList.toggle('on',m==='speak');$('#mListen').setAttribute('aria-selected',m==='listen');$('#mSpeak').setAttribute('aria-selected',m==='speak');closeTask();renderUnits()}
+
+function total(){var n=0;DATA.units.forEach(function(u){n+=u.listen.length+u.speak.length});return n}
+function progress(){var d=Object.keys(STATE.done).length,t=total();$('#progT').textContent=d+' of '+t+' done';$('#progB').style.width=(100*d/t)+'%'}
+
+function renderUnits(){
+  var box=$('#units');box.innerHTML='';
+  DATA.units.forEach(function(u){
+    var c=el('div','card unit');
+    c.appendChild(el('div','n',u.n));
+    var b=el('div');
+    b.appendChild(el('h2',null,esc(u.title)));
+    b.appendChild(el('p','s',esc(u.sub)));
+    var t=el('div','tasks');
+    (MODE==='listen'?u.listen:u.speak).forEach(function(T){
+      var btn=el('button',STATE.done[T.id]?'done':'');
+      btn.type='button';
+      btn.innerHTML='<i class="'+(MODE==='speak'?'s':'')+'">'+(MODE==='listen'?'🎧':'🎙️')+'</i>'+esc(T.title)+(T.secs?' · '+T.secs+' s':'');
+      btn.onclick=function(){openTask(u,T)};
+      t.appendChild(btn);
+    });
+    b.appendChild(t);
+    b.appendChild(el('p','words','Words: '+u.words.map(function(w){return '<b>'+esc(w)+'</b>'}).join(' · ')));
+    c.appendChild(b);box.appendChild(c);
+  });
+}
+
+function closeTask(){stopAudio();stopRec();$('#task').classList.remove('open');$('#task').innerHTML='';CUR=null}
+function openTask(u,T){
+  closeTask();CUR={u:u,T:T};
+  var v=$('#task');v.classList.add('open');
+  var crumb=el('div','crumb');
+  crumb.innerHTML='<span>Unit '+u.n+' · '+esc(u.title)+'</span>';
+  var back=el('button',null,'← All units');back.type='button';back.onclick=function(){closeTask();window.scrollTo({top:$('#units').offsetTop-70,behavior:'smooth'})};
+  crumb.appendChild(back);v.appendChild(crumb);
+  if(MODE==='listen')listenTask(v,u,T);else speakTask(v,u,T);
+  v.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ───────────── audio ───────────── */
+function stopAudio(){if(AUD){AUD.pause();AUD.onended=null;AUD.ontimeupdate=null;AUD=null}}
+function makeStage(opts){
+  // opts: {title, sub, src, maxPlays, onEnd}
+  var s=el('div','stage');
+  s.innerHTML='<button type="button" class="play" aria-label="Play"><svg class="ring" viewBox="0 0 96 96"><circle class="bg" cx="48" cy="48" r="46"/><circle class="fg" cx="48" cy="48" r="46"/></svg><span class="ico">▶</span></button>'+
+    '<div class="meta"><b>'+esc(opts.title)+'</b><small>'+esc(opts.sub)+'</small><div class="listens"></div><div class="ctl">'+
+    '<button type="button" class="slow" aria-pressed="false">Slower</button><button type="button" class="sup" aria-pressed="'+(STATE.support?'true':'false')+'">Support</button></div></div>';
+  var play=$('.play',s),ring=$('.fg',s),ico=$('.ico',s),lis=$('.listens',s),slow=$('.slow',s),sup=$('.sup',s);
+  var plays=0,playing=false;
+  function dots(){var n=STATE.support?Infinity:opts.maxPlays;lis.innerHTML=(STATE.support?'<span>Support on: listen as many times as you need</span>':'<span>Listens:</span>'+Array.apply(null,{length:opts.maxPlays}).map(function(_,i){return '<i class="'+(i<plays?'used':'')+'"></i>'}).join(''));play.disabled=!playing&&plays>=n}
+  dots();
+  slow.onclick=function(){var on=slow.getAttribute('aria-pressed')!=='true';slow.setAttribute('aria-pressed',on);if(AUD)AUD.playbackRate=on?0.85:1};
+  sup.onclick=function(){STATE.support=sup.getAttribute('aria-pressed')!=='true';sup.setAttribute('aria-pressed',STATE.support);save();dots();if(opts.onSupport)opts.onSupport(STATE.support)};
+  play.onclick=function(){
+    if(playing){stopAudio();playing=false;ico.textContent='▶';ring.style.strokeDashoffset=289;dots();return}
+    stopAudio();AUD=new Audio(opts.src);AUD.playbackRate=slow.getAttribute('aria-pressed')==='true'?0.85:1;
+    AUD.ontimeupdate=function(){if(AUD&&AUD.duration)ring.style.strokeDashoffset=289*(1-AUD.currentTime/AUD.duration)};
+    AUD.onended=function(){playing=false;ico.textContent='▶';ring.style.strokeDashoffset=289;dots();if(opts.onEnd)opts.onEnd(plays)};
+    AUD.play().then(function(){playing=true;plays++;ico.textContent='▮▮';dots()}).catch(function(){lis.innerHTML='<span>Tap again to play.</span>'});
+  };
+  s.setSrc=function(src,resetPlays){stopAudio();playing=false;ico.textContent='▶';ring.style.strokeDashoffset=289;opts.src=src;if(resetPlays){plays=0}dots()};
+  s.getPlays=function(){return plays};
+  return s;
+}
+
+/* ───────────── listening ───────────── */
+function listenTask(v,u,T){
+  var head=el('div');head.innerHTML='<span class="fmt">🎧 '+esc(T.title)+'</span><h2>'+esc(T.type==='match'?T.intro:(T.setting||T.title))+'</h2>'+(T.type==='conv'?'<p class="setting">Listen to the conversation. Then answer four questions.</p>':T.type==='lecture'?'<p class="setting">Listen to the short lecture. Then answer four questions.</p>':'<p class="setting">Listen. Then choose the picture or the words that match.</p>');
+  v.appendChild(head);
+  var items=T.type==='match'?T.items:T.qs, i=0, score=0, answered=false;
+  var stage, body=el('div'), script=el('div','script hide');
+  if(T.type==='match'){
+    stage=makeStage({title:'Item 1 of '+items.length,sub:'Listen, then choose.',src:'studio/'+T.id+'-1.mp3',maxPlays:2,onEnd:function(){if(STATE.support)showScript()}});
+  }else{
+    var names=T.names||{};
+    stage=makeStage({title:T.type==='conv'?'The conversation':'The lecture',sub:fmtDur(DATA.dur[T.id])+' · you may listen twice',src:'studio/'+T.id+'.mp3',maxPlays:2,onEnd:function(){if(STATE.support)showScript()}});
+    script.innerHTML=T.type==='conv'?T.turns.map(function(t){return '<b>'+esc(names[t[0]]||t[0])+':</b> '+esc(t[1])}).join('<br>'):esc(T.text);
+  }
+  v.appendChild(stage);v.appendChild(body);v.appendChild(script);
+  function showScript(){script.classList.remove('hide')}
+  function fmtDur(s){return s?Math.round(s)+' seconds':''}
+  function render(){
+    body.innerHTML='';answered=false;
+    if(i>=items.length){return finish()}
+    var it=items[i];
+    if(T.type==='match'){stage.setSrc('studio/'+T.id+'-'+(i+1)+'.mp3',true);$('.meta b',stage).textContent='Item '+(i+1)+' of '+items.length;script.classList.add('hide');script.innerHTML='<b>You heard:</b> '+esc(it.say)}
+    var q=el('div','q');q.innerHTML='<small>'+(T.type==='match'?'Which one is it?':'Question '+(i+1)+' of '+items.length)+'</small>'+(T.type==='match'?'':esc(it.q));
+    body.appendChild(q);
+    var opts=el('div','opts '+(T.type==='match'?(T.options[0].img?'pics':'icons'):''));
+    var list=T.type==='match'?T.options:it.options;
+    list.forEach(function(o,k){
+      var b=el('button','opt');b.type='button';
+      b.innerHTML=T.type==='match'?(o.img?'<img src="'+o.img+'" alt=""><span>'+esc(o.t)+'</span>':'<span class="ic">'+o.ic+'</span><span>'+esc(o.t)+'</span>'):'<span>'+esc(o)+'</span>';
+      b.onclick=function(){if(answered)return;answered=true;var ok=k===it.ans;if(ok)score++;
+        [].forEach.call(opts.children,function(x,j){x.disabled=true;if(j===it.ans)x.classList.add('right');else if(j===k)x.classList.add('wrong')});
+        var fb=el('div','fb show '+(ok?'ok':'no'));fb.innerHTML=(ok?'<b>Right.</b> ':'<b>Not this time.</b> ')+esc(it.why);body.appendChild(fb);showScript();
+        var nx=el('button','btn go',i+1<items.length?'Next →':'See my result');nx.type='button';nx.style.marginTop='12px';nx.onclick=function(){i++;render();stage.scrollIntoView({behavior:'smooth',block:'start'})};body.appendChild(nx)};
+      opts.appendChild(b);
+    });
+    body.appendChild(opts);
+  }
+  function finish(){
+    stopAudio();STATE.done[T.id]={s:score,t:items.length};save();progress();
+    body.innerHTML='<div class="result"><div class="big">'+score+' / '+items.length+'</div><p>'+(score===items.length?'Every one. Try the next task.':score>=items.length-1?'Almost all of them. Read the transcript once more, then move on.':'Listen once more with the transcript open, then try again tomorrow.')+'</p></div>';
+    showScript();
+    var row=el('div','row');row.style.justifyContent='center';
+    var again=el('button','btn ghost','Try again');again.type='button';again.onclick=function(){i=0;score=0;delete STATE.done[T.id];save();progress();if(T.type!=='match')stage.setSrc('studio/'+T.id+'.mp3',true);render()};
+    var next=nextTask(u,T);
+    row.appendChild(again);
+    if(next){var nb=el('button','btn go','Next: '+esc(next.T.title)+' →');nb.type='button';nb.onclick=function(){openTask(next.u,next.T)};row.appendChild(nb)}
+    body.appendChild(row);renderUnits();
+  }
+  render();
+}
+function nextTask(u,T){
+  var list=MODE==='listen'?'listen':'speak';
+  var k=u[list].indexOf(T);
+  if(k+1<u[list].length)return {u:u,T:u[list][k+1]};
+  var ui=DATA.units.indexOf(u);
+  if(ui+1<DATA.units.length)return {u:DATA.units[ui+1],T:DATA.units[ui+1][list][0]};
+  return null;
+}
+
+/* ───────────── speaking ───────────── */
+function stopRec(){if(REC.mr&&REC.mr.state!=='inactive'){try{REC.mr.stop()}catch(e){}}if(REC.stream){REC.stream.getTracks().forEach(function(t){t.stop()})}if(REC.tick)clearInterval(REC.tick);REC={}}
+function speakTask(v,u,T){
+  var head=el('div');head.innerHTML='<span class="fmt s">🎙️ '+esc(T.title)+'</span><h2>'+esc(T.prompt)+'</h2><p class="setting">Think for a few seconds. Then speak for about '+T.secs+' seconds. You can record as many times as you like.</p>';
+  v.appendChild(head);
+  if(T.img){var im=el('img','pic');im.src=T.img;im.alt='';v.appendChild(im)}
+  var pst=makeStage({title:'Hear the question',sub:'Read along, then record.',src:'studio/'+T.id+'-prompt.mp3',maxPlays:99});
+  $('.ctl',pst).remove();$('.listens',pst).remove();
+  v.appendChild(pst);
+  // lanes + frame
+  var lanes=el('div','lanes'),frame=el('div','frame');
+  LANES.forEach(function(L){var b=el('button',null,L[1]);b.type='button';b.setAttribute('aria-pressed',STATE.lane===L[0]);b.onclick=function(){STATE.lane=L[0];save();[].forEach.call(lanes.children,function(x){x.setAttribute('aria-pressed',x===b)});frame.innerHTML=esc(T.frames[L[0]])};lanes.appendChild(b)});
+  frame.innerHTML=esc(T.frames[STATE.lane]||T.frames.e);
+  var lk=el('p','k','Your frame · pick your lane');lk.style.margin='14px 0 0';v.appendChild(lk);v.appendChild(lanes);v.appendChild(frame);
+  // recorder
+  var rec=el('div','rec');
+  rec.innerHTML='<button type="button" class="play" aria-label="Record"><span class="ico">●</span></button><div class="meta"><b>Record your answer</b><small>Tap the red button. Tap again to stop.</small><div class="clock">0:'+pad(T.secs)+'</div></div>';
+  v.appendChild(rec);
+  var btn=$('.play',rec),clock=$('.clock',rec),small=$('small',rec),player=null,left=T.secs;
+  var canRec=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+  if(!canRec){small.textContent='This browser cannot record. Use your phone’s voice memo app and the clock here.';btn.onclick=function(){if(REC.tick){clearInterval(REC.tick);REC={};btn.classList.remove('live');return}left=T.secs;btn.classList.add('live');REC.tick=setInterval(tick,1000)}}
+  else btn.onclick=function(){
+    if(REC.mr&&REC.mr.state==='recording'){REC.mr.stop();return}
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+      var chunks=[],mr=new MediaRecorder(stream);REC={mr:mr,stream:stream};
+      mr.ondataavailable=function(e){chunks.push(e.data)};
+      mr.onstop=function(){stream.getTracks().forEach(function(t){t.stop()});clearInterval(REC.tick);REC={};btn.classList.remove('live');$('.ico',btn).textContent='●';
+        var blob=new Blob(chunks,{type:mr.mimeType||'audio/webm'});if(player)player.remove();player=el('audio');player.controls=true;player.src=URL.createObjectURL(blob);rec.appendChild(player);player.style.gridColumn='1 / -1';
+        small.textContent='Listen to yourself. Then tick the check below, or record again.';check.classList.remove('hide');$('.meta b',rec).textContent='Your recording'};
+      mr.start();left=T.secs;btn.classList.add('live');$('.ico',btn).textContent='■';small.textContent='Recording… tap to stop.';clock.textContent='0:'+pad(left);
+      REC.tick=setInterval(tick,1000);
+    }).catch(function(){small.textContent='Microphone not allowed. Use your phone’s voice memo app and the clock here.'});
+  };
+  function tick(){left--;clock.textContent=(left<0?'+':'')+'0:'+pad(Math.abs(left));if(left===0&&REC.mr&&REC.mr.state==='recording'){/* let them finish the sentence; stop at -10 */}if(left<=-10&&REC.mr&&REC.mr.state==='recording')REC.mr.stop();if(left<=-10&&!REC.mr){clearInterval(REC.tick);REC={};btn.classList.remove('live')}}
+  function pad(n){return (n<10?'0':'')+n}
+  // self-check
+  var check=el('div','card hide');check.style.marginTop='14px';
+  check.innerHTML='<p class="k">Check yourself</p><ul class="check">'+T.check.map(function(c,k){return '<li><input type="checkbox" id="ck'+k+'"><label for="ck'+k+'">'+esc(c)+'</label></li>'}).join('')+'</ul>';
+  var mb=el('button','btn go','Hear a model answer');mb.type='button';mb.style.marginTop='10px';check.appendChild(mb);
+  v.appendChild(check);
+  var model=el('div','hide');
+  var mst=makeStage({title:'A model answer',sub:'Progressing / Challenge level · synthesized voice',src:'studio/'+T.id+'-model.mp3',maxPlays:99});
+  $('.ctl',mst).remove();$('.listens',mst).remove();
+  var ms=el('div','script');ms.innerHTML=esc(T.model);
+  model.appendChild(mst);model.appendChild(ms);
+  var done=el('button','btn','Mark this task done ✓');done.type='button';done.style.marginTop='14px';
+  done.onclick=function(){STATE.done[T.id]={s:1,t:1};save();progress();renderUnits();var next=nextTask(u,T);done.replaceWith(next?Object.assign(el('button','btn go','Next: '+esc(next.T.title)+' →'),{type:'button',onclick:function(){openTask(next.u,next.T)}}):el('p','muted','That was the last speaking task. Try the Listen side.'))};
+  model.appendChild(done);
+  v.appendChild(model);
+  mb.onclick=function(){model.classList.remove('hide');mb.disabled=true;model.scrollIntoView({behavior:'smooth',block:'start'})};
+  // a skip for students who recorded elsewhere
+  var skip=el('button','btn ghost sm','I recorded on another app → show the check');skip.type='button';skip.style.marginTop='6px';skip.onclick=function(){check.classList.remove('hide');skip.remove()};
+  rec.after(skip);
+}
+
+/* ───────────── transcripts (teacher) ───────────── */
+function renderTranscripts(){
+  var out=[];
+  DATA.units.forEach(function(u){
+    out.push('<h3>Unit '+u.n+' · '+esc(u.title)+'</h3>');
+    u.listen.forEach(function(T){
+      out.push('<p><b>'+esc(T.title)+'</b>'+(T.setting?' · '+esc(T.setting):'')+'</p>');
+      if(T.type==='match'){out.push('<p>'+esc(T.intro)+'</p><ol>'+T.items.map(function(it){return '<li>'+esc(it.say)+' <span class="ans">→ '+esc(T.options[it.ans].t)+'</span></li>'}).join('')+'</ol>')}
+      else{var names=T.names||{};out.push('<p>'+(T.type==='conv'?T.turns.map(function(t){return '<b>'+esc(names[t[0]]||t[0])+':</b> '+esc(t[1])}).join('<br>'):esc(T.text))+'</p><ol>'+T.qs.map(function(q){return '<li>'+esc(q.q)+' <span class="ans">→ '+esc(q.options[q.ans])+'</span></li>'}).join('')+'</ol>')}
+    });
+    u.speak.forEach(function(T){out.push('<p><b>'+esc(T.title)+'</b> ('+T.secs+' s) · '+esc(T.prompt)+'<br><span class="muted">Model:</span> '+esc(T.model)+'</p>')});
+  });
+  $('#transcripts').innerHTML=out.join('');
+}
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

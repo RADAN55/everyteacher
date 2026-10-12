@@ -110,6 +110,17 @@
   "new": ""
  },
  {
+  "u": "listening-speaking-studio.html",
+  "t": "ELPA21 Listening & Speaking Studio",
+  "o": "Hear it twice, choose, check; then record your answer and compare it with a model.",
+  "f": "Practice · 48 items · 8 speaking tasks",
+  "g": "Students & families",
+  "k": "ELPA21-style listening and speaking practice a student can do alone on a phone. Four units (six Southern pies, first week at a new school, storms over the Gulf, three branches of government), each with the three listening formats of the test, Listen and Match, Short Conversation and Academic Lecture, heard at most twice at a natural pace, with the transcript and the reason for the answer after every item; and two speaking tasks in the Observe and Report, Give the Steps, Classroom Chat and Opinion formats, recorded on the student's own device, self-checked against three lines, then compared with a model answer. Frames in four lanes under every prompt; a Support switch for unlimited listens, slower speed and early transcripts. All voices synthesized and labeled as such; recordings never leave the device. Teacher section with transcripts, key and alignment. 48 listening items, 8 speaking tasks. Grades 6–12.",
+  "th": "thumbs/listening-speaking-studio.jpg",
+  "pin": "",
+  "new": "2026-10-12"
+ },
+ {
   "u": "https://radan55.github.io/elpa21-reading-studio/",
   "t": "ELPA21 Reading Studio",
   "o": "ELPT-style reading practice under mock-test conditions, six grade bands.",
