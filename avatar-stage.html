@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>The session · render stage</title>
+<style>
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces.woff2) format("woff2");font-weight:100 900;font-display:block}
+  @font-face{font-family:"Fraunces";src:url(fonts/fraunces-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:block}
+  html,body{margin:0;background:#000;overflow:hidden}
+  .stage{position:relative;width:1280px;height:720px;background:#1E2761;overflow:hidden;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;contain:strict}
+  .stage::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 26px)}
+  .floor{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(180deg,rgba(7,9,20,0),rgba(7,9,20,.5))}
+  .chrome{position:absolute;left:48px;top:30px;display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#C9A227;font-weight:700;z-index:2}
+  .bars{display:flex;align-items:flex-end;gap:3px;height:18px}.bars i{width:5px;background:#C9A227;border-radius:2px 2px 0 0;display:block}
+  .chrome span{color:#AEB5DA;letter-spacing:.2em;font-weight:500}
+  .prog{position:absolute;left:0;bottom:0;height:5px;background:#C9A227;width:0;z-index:3}
+  .who{position:absolute;left:48px;top:64px;z-index:2;background:rgba(7,9,20,.7);border-left:4px solid #C9A227;padding:6px 12px;font-size:14px;line-height:1.25}
+  .who b{display:block;font-family:Fraunces,Georgia,serif;font-size:19px}
+  .who span{color:#C9CEEA}
+  #av{position:absolute;left:30px;bottom:20px;width:560px;height:560px;z-index:1}
+  .card{position:absolute;left:430px;right:48px;top:88px;bottom:140px;opacity:0;display:grid;align-content:start;z-index:1}
+  .t .k{font-size:17px;letter-spacing:.34em;text-transform:uppercase;color:#C9A227;font-weight:700}
+  .t h1{font-family:Fraunces,Georgia,serif;font-size:74px;font-weight:700;letter-spacing:-.025em;line-height:1;margin:16px 0 0;max-width:12ch}
+  .t p{font-size:21px;color:#C9CEEA;margin:22px 0 0;max-width:40ch;line-height:1.35}
+  .b{background:#fff;color:#1F2340;border-radius:14px;padding:22px 30px;box-shadow:0 30px 70px rgba(0,0,0,.45);align-self:start;min-height:200px;display:grid;align-content:start}
+  .b h2{font-family:Fraunces,Georgia,serif;font-size:27px;color:#1E2761;margin:0 0 10px;padding-bottom:8px;border-bottom:3px solid #C9A227;display:inline-block;justify-self:start}
+  .b .ln{font-size:24px;line-height:1.3;padding:6px 0;opacity:0;display:flex;gap:12px;align-items:baseline}
+  .b .ln::before{content:"";width:9px;height:9px;border-radius:50%;background:#C9A227;flex:none;position:relative;top:-3px}
+  .b.big .ln{font-size:32px;font-weight:600}
+  .sp{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-self:start}
+  .sp>div{background:#fff;color:#1F2340;border-radius:14px;padding:18px 22px;box-shadow:0 30px 70px rgba(0,0,0,.45);display:grid;align-content:start;min-height:200px}
+  .sp h2{font-family:Fraunces,Georgia,serif;font-size:22px;color:#1E2761;margin:0 0 8px;padding-bottom:6px;border-bottom:3px solid #C9A227;justify-self:start}
+  .sp>div:first-child h2{border-color:#B6BCD8}
+  .sp .ln{font-size:20px;line-height:1.28;padding:5px 0;opacity:0;display:flex;gap:10px;align-items:baseline}
+  .sp .ln::before{content:"";width:7px;height:7px;border-radius:50%;background:#C9A227;flex:none;position:relative;top:-3px}
+  .sp>div:first-child .ln::before{background:#B6BCD8}
+  .e h1{font-family:Fraunces,Georgia,serif;font-size:60px;font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;max-width:16ch}
+  .e p{font-family:Fraunces,Georgia,serif;font-size:34px;color:#C9A227;margin:30px 0 0;font-weight:700}
+  .e small{display:block;font-family:Inter,system-ui,sans-serif;font-size:18px;color:#C9CEEA;margin-top:12px;font-weight:500}
+  .cap{position:absolute;left:430px;right:48px;bottom:36px;display:flex;justify-content:center;z-index:2}
+  .cap div{position:absolute;bottom:0;background:rgba(7,9,20,.8);color:#fff;font-size:22px;line-height:1.35;padding:9px 16px;border-radius:8px;max-width:800px;text-align:center;opacity:0}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="floor"></div>
+  <div class="chrome"><div class="bars"><i style="height:35%"></i><i style="height:60%"></i><i style="height:100%"></i></div>EL Publishing <span id="crumb"></span></div>
+  <svg id="av" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <clipPath id="eyeL"><ellipse cx="166" cy="178" rx="13" ry="9"/></clipPath>
+      <clipPath id="eyeR"><ellipse cx="214" cy="178" rx="13" ry="9"/></clipPath>
+    </defs>
+    <ellipse cx="190" cy="552" rx="150" ry="10" fill="rgba(0,0,0,.25)"/>
+    <g id="body">
+      <!-- left arm (viewer's left), resting -->
+      <line x1="76" y1="374" x2="62" y2="512" stroke="#1F7A8C" stroke-width="48" stroke-linecap="round"/>
+      <circle cx="62" cy="532" r="20" fill="#8D5524"/>
+      <!-- torso / blazer -->
+      <path d="M58 560 L64 362 Q78 328 150 318 L190 304 L230 318 Q302 328 316 362 L322 560 Z" fill="#1F7A8C"/>
+      <path d="M150 318 L190 304 L230 318 L214 392 L190 412 L166 392 Z" fill="#fff"/>
+      <path d="M150 318 L190 304 L166 392 L152 430 L140 560 L64 560 L64 362 Q78 328 150 318 Z" fill="#17606F"/>
+      <path d="M230 318 L190 304 L214 392 L228 430 L240 560 L316 560 L316 362 Q302 328 230 318 Z" fill="#17606F"/>
+      <path d="M166 392 L190 412 L214 392 L228 430 L190 452 L152 430 Z" fill="#fff"/>
+      <circle cx="190" cy="470" r="4.5" fill="#C9A227"/><circle cx="190" cy="500" r="4.5" fill="#C9A227"/>
+      <!-- neck -->
+      <path d="M170 258 L210 258 L214 306 L190 322 L166 306 Z" fill="#7B4A1E"/>
+    </g>
+    <g id="head">
+      <!-- hair back -->
+      <ellipse cx="190" cy="160" rx="78" ry="84" fill="#2A1A12"/>
+      <circle cx="190" cy="78" r="34" fill="#2A1A12"/>
+      <!-- ears + earrings -->
+      <ellipse cx="124" cy="185" rx="9" ry="13" fill="#8D5524"/><ellipse cx="256" cy="185" rx="9" ry="13" fill="#8D5524"/>
+      <circle cx="124" cy="206" r="6" fill="#C9A227"/><circle cx="256" cy="206" r="6" fill="#C9A227"/>
+      <!-- face -->
+      <path d="M128 150 Q128 96 190 92 Q252 96 252 150 L250 196 Q246 250 190 264 Q134 250 130 196 Z" fill="#8D5524"/>
+      <!-- hair front -->
+      <path d="M126 150 Q136 98 190 94 Q244 98 254 150 Q238 120 190 118 Q142 120 126 150 Z" fill="#2A1A12"/>
+      <!-- brows -->
+      <path id="browL" d="M150 160 Q166 150 182 158" stroke="#2A1A12" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path id="browR" d="M198 158 Q214 150 230 160" stroke="#2A1A12" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- eyes -->
+      <ellipse cx="166" cy="178" rx="13" ry="9" fill="#fff"/><ellipse cx="214" cy="178" rx="13" ry="9" fill="#fff"/>
+      <g id="pupils"><circle cx="168" cy="179" r="5.5" fill="#2A1A12"/><circle cx="216" cy="179" r="5.5" fill="#2A1A12"/>
+        <circle cx="170" cy="177" r="1.6" fill="#fff"/><circle cx="218" cy="177" r="1.6" fill="#fff"/></g>
+      <g id="lids"><ellipse cx="166" cy="178" rx="14" ry="10" fill="#8D5524" clip-path="url(#eyeL)" transform="translate(0,-20)"/><ellipse cx="214" cy="178" rx="14" ry="10" fill="#8D5524" clip-path="url(#eyeR)" transform="translate(0,-20)"/></g>
+      <!-- nose -->
+      <path d="M186 192 Q182 212 190 216 Q198 212 194 192" stroke="#6B3E18" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- mouth shapes -->
+      <g id="mouth">
+        <path id="m0" d="M170 234 Q190 244 210 234" stroke="#5A2E14" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path id="m1" d="M172 232 Q190 250 208 232 Q190 240 172 232 Z" fill="#5A2E14" style="display:none"/>
+        <path id="m2" d="M170 230 Q190 258 210 230 Q190 238 170 230 Z" fill="#5A2E14" style="display:none"/>
+        <path id="m3" d="M168 228 Q190 268 212 228 Q190 236 168 228 Z" fill="#5A2E14" style="display:none"/>
+        <path id="m3t" d="M176 231 Q190 237 204 231 L204 236 Q190 240 176 236 Z" fill="#fff" style="display:none"/>
+      </g>
+    </g>
+    <!-- right arm (viewer's right), points at the board -->
+    <g id="armR" transform="rotate(0 298 372)">
+      <line x1="298" y1="372" x2="306" y2="512" stroke="#1F7A8C" stroke-width="48" stroke-linecap="round"/>
+      <circle cx="306" cy="532" r="20" fill="#8D5524"/>
+      <ellipse id="finger" cx="306" cy="556" rx="7" ry="14" fill="#8D5524" style="display:none"/>
+    </g>
+  </svg>
+  <div class="who" id="who"></div>
+  <div id="cards"></div>
+  <div class="cap" id="cap"></div>
+  <div class="prog" id="prog"></div>
+</div>
+<script>
+(async function(){
+  var q=new URLSearchParams(location.search);
+  var D=await (await fetch('video/session.json')).json();
+  var T=D.total*1000,A=[],E='cubic-bezier(.2,.8,.2,1)',FPS=D.fps||24,ENV=D.env||[];
+  function an(el,kf,o){var a=el.animate(kf,Object.assign({fill:'both',easing:E},o));a.pause();A.push(a);return a}
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  document.getElementById('crumb').textContent='· The session · '+D.title;
+  document.getElementById('who').innerHTML='<b>'+esc(D.presenter)+'</b><span>EL specialist · animated presenter</span>';
+  var cards=document.getElementById('cards'),cur=null,curLines=null,gest=[];
+  var B=D.beats;
+  function endOf(i){return (i+1<B.length?B[i+1].t:D.total)*1000}
+  function newCard(cls,i){var t=B[i].t*1000;
+    if(cur){cur.anim.effect.updateTiming({duration:Math.max(1,t-cur.t0)})}
+    var el=document.createElement('div');el.className='card '+cls;cards.appendChild(el);
+    var a=an(el,[{opacity:0,transform:'translateY(14px)',offset:0},{opacity:1,transform:'none',offset:.04},{opacity:1,transform:'none',offset:.97},{opacity:0,transform:'translateY(-10px)',offset:1}],{delay:t,duration:T-t,easing:'linear'});
+    cur={el:el,anim:a,t0:t};gest.push([t/1000,2.2]);return el}
+  function reveal(el,t,dur){an(el,[{opacity:0,transform:'translateX(-12px)'},{opacity:1,transform:'none'}],{delay:t,duration:dur||420})}
+  B.forEach(function(b,i){
+    var t=b.t*1000,dur=endOf(i)-t,k=b.type;
+    if(k==='title'){var el=newCard('t',i);el.innerHTML='<div class="k">'+esc(b.a[0])+'</div><h1>'+esc(b.a[1])+'</h1><p>'+esc(D.sub)+'</p>';
+      ['.k','h1','p'].forEach(function(s,j){reveal(el.querySelector(s),t+200+j*350,600)})}
+    else if(k==='slide'||k==='board'){var lines=b.a[1],el=newCard('b'+(lines.length&&lines.length<=6&&lines.every(function(x){return x.length<30})?' big':''),i);
+      el.innerHTML='<h2>'+esc(b.a[0])+'</h2>'+lines.map(function(l){return '<div class="ln">'+esc(l)+'</div>'}).join('');
+      reveal(el.querySelector('h2'),t+100,400);var ls=el.querySelectorAll('.ln'),st=lines.length?Math.min(1100,(dur*.75)/lines.length):0;
+      ls.forEach(function(l,j){reveal(l,t+500+j*st)});curLines=el}
+    else if(k==='add'){var l=document.createElement('div');l.className='ln';l.textContent=b.a[0];(curLines||cur.el).appendChild(l);reveal(l,t+120);gest.push([b.t,1.6])}
+    else if(k==='two'||k==='split'){var el=newCard('sp',i);
+      el.innerHTML='<div><h2>'+esc(b.a[0])+'</h2>'+b.a[1].map(function(l){return '<div class="ln">'+esc(l)+'</div>'}).join('')+'</div><div><h2>'+esc(b.a[2])+'</h2>'+b.a[3].map(function(l){return '<div class="ln">'+esc(l)+'</div>'}).join('')+'</div>';
+      var L=el.querySelectorAll('div:first-child .ln'),R=el.querySelectorAll('div:last-child .ln');
+      el.querySelectorAll('h2').forEach(function(h,j){reveal(h,t+100+j*(dur*.46),400)});
+      L.forEach(function(l,j){reveal(l,t+400+j*Math.min(1100,(dur*.4)/Math.max(1,L.length)))});
+      R.forEach(function(l,j){reveal(l,t+dur*.5+j*Math.min(1100,(dur*.4)/Math.max(1,R.length)))});gest.push([b.t+dur/2000,1.8])}
+    else if(k==='end'){var el=newCard('e',i);el.innerHTML='<h1>'+esc(b.a[0])+'</h1><p>radan55.github.io/everyteacher<small>The PD Library · free, no login</small></p>';
+      reveal(el.querySelector('h1'),t+150,600);reveal(el.querySelector('p'),t+900,700)}
+    var cap=document.getElementById('cap');(b.chunks||[]).forEach(function(c){var d=document.createElement('div');d.textContent=c.text;cap.appendChild(d);
+      var s=c.t*1000,e2=c.e*1000;an(d,[{opacity:0,offset:0},{opacity:1,offset:Math.min(.3,120/(e2-s))},{opacity:1,offset:1-Math.min(.3,120/(e2-s))},{opacity:0,offset:1}],{delay:s,duration:Math.max(1,e2-s),easing:'linear'})});
+  });
+  if(cur)cur.anim.effect.updateTiming({duration:Math.max(1,T-cur.t0)});
+  an(document.getElementById('prog'),[{width:'0px'},{width:'1280px'}],{delay:0,duration:T,easing:'linear'});
+
+  /* ---- the presenter ---- */
+  var head=document.getElementById('head'),body=document.getElementById('body'),armR=document.getElementById('armR'),lids=document.getElementById('lids').children,M=['m0','m1','m2','m3'].map(function(i){return document.getElementById(i)}),m3t=document.getElementById('m3t'),browL=document.getElementById('browL'),browR=document.getElementById('browR'),pupils=document.getElementById('pupils');
+  var blinks=[];for(var bt=1.4;bt<D.total;bt+=2.6+((bt*7.3)%2.9))blinks.push(bt);
+  function env(sec){var i=Math.floor(sec*FPS);var a=ENV[i]||0,b=ENV[i+1]||a,c=ENV[i-1]||a;return Math.max(a,(a+b+c)/3)}
+  function avatar(ms){var s=ms/1000,v=env(s);
+    // mouth by loudness, with a little hysteresis from the neighbour frames
+    var sh=v<.06?0:v<.22?1:v<.5?2:3;M.forEach(function(m,i){m.style.display=i===sh?'':'none'});m3t.style.display=sh===3?'':'none';
+    // gesture: point at the board for a moment after a card or a line appears
+    var g=0;for(var i=0;i<gest.length;i++){var d=s-gest[i][0];if(d>=0&&d<gest[i][1]){var L=gest[i][1];g=Math.max(g,d<.35?d/.35:d>L-.4?(L-d)/.4:1)}}
+    armR.setAttribute('transform','rotate('+(-96*g)+' 298 372) translate('+(-4*g)+','+(-6*g)+')');document.getElementById('finger').style.display=g>.6?'':'none';
+    // head: breathes with speech, nods slightly on strong syllables, turns a little toward the board when pointing
+    var nod=2.2*v+0.6*Math.sin(s*1.7),turn=g*3;
+    head.setAttribute('transform','translate('+(turn*1.2)+','+(-nod)+') rotate('+(0.9*Math.sin(s*0.8)+turn*0.4)+' 190 200)');
+    body.setAttribute('transform','translate(0,'+(0.8*Math.sin(s*0.8))+')');
+    pupils.setAttribute('transform','translate('+(g*3)+',0)');
+    var raise=g*4+(v>.45?2:0);browL.setAttribute('transform','translate(0,'+(-raise)+')');browR.setAttribute('transform','translate(0,'+(-raise)+')');
+    // blink
+    var open=1;for(var i=0;i<blinks.length;i++){var d=s-blinks[i];if(d>=0&&d<.16){open=d<.08?1-d/.08:(d-.08)/.08;break}}
+    for(var i=0;i<lids.length;i++)lids[i].setAttribute('transform','translate(0,'+(-20*open)+')');
+  }
+  function seek(t){A.forEach(function(a){a.currentTime=t});avatar(t)}
+  window.__spot={seek:seek,duration:T,ready:document.fonts?document.fonts.ready:Promise.resolve()};
+  seek(0);
+  if(!q.has('render')){var s0=performance.now();(function tick(){var t=Math.min(T,performance.now()-s0);seek(t);if(t<T)requestAnimationFrame(tick)})()}
+})();
+</script>
+</body>
+</html>

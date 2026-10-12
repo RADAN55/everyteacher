@@ -78,7 +78,22 @@ def main():
   </video>
   <figcaption><b>{n} · {e(title)}</b> <span>{int(tot//60)}:{int(tot%60):02d}</span><p>{e(one)}</p><a class="dl" href="video/moves-{n}.mp4" download>Download MP4</a></figcaption>
 </figure>'''
-    videos_html = ("" if not vids else f'''
+    sess = (ROOT / "video" / "session.mp4").exists()
+    sdur = json.loads((ROOT / "video" / "session.json").read_text())["total"] if sess and (ROOT / "video" / "session.json").exists() else 0
+    session_html = ("" if not sess else f'''
+  <section class="session" id="session">
+    <div class="s-vid"><video controls preload="none" playsinline width="1280" height="720" poster="video/session-poster.jpg" crossorigin="anonymous">
+      <source src="video/session.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="video/session.vtt" default>
+      Your browser can't play this video. <a href="video/session.mp4">Download it</a>.</video></div>
+    <div class="s-txt">
+      <p class="k">The session · {int(sdur//60)} minutes</p>
+      <h2>Emerging and Progressing: what to do differently for each</h2>
+      <p>Elena — the EL specialist from the podcast, here as an animated presenter — teaches the whole session: what a student at each level can already do in your class, the five things you change for an Emerging student, the five you change for a Progressing one, and one cell-parts lesson taught in two sizes. Captioned. Ends with a ten-minute planning routine you can use tomorrow.</p>
+      <p class="n">Elena is an illustrated, synthesized presenter, not a recording of a person. The script is by Richard A. Daniel, M.Ed.</p>
+      <p><a class="dl" href="video/session.mp4" download>Download MP4</a> <a class="dl" href="#it-session">Mark it done below</a></p>
+    </div>
+  </section>''')
+    videos_html = session_html + ("" if not vids else f'''
   <section class="videos" id="videos">
     <h2 class="sec">Watch: Six Moves</h2>
     <p class="sub">One classroom move per video, under three minutes, captioned. The same guide as the podcast. Watch one at the start of a department meeting and try it that week.</p>
@@ -156,6 +171,14 @@ def main():
   .act{{font:inherit;font-size:13.5px;font-weight:700;border:0;background:var(--gold);color:var(--navy-dk);padding:8px 14px;border-radius:999px;cursor:pointer}}
   .act.q{{background:var(--paper);border:1px solid var(--rule);color:var(--navy)}}
   .note{{font-size:13px;color:var(--muted);margin:0}}
+  .session{{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;align-items:center;background:var(--navy-dk-bg);color:#fff;border-radius:14px;padding:22px;margin:0 0 26px}}
+  .session video{{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px;background:#1E2761}}
+  .session .k{{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 8px}}
+  .session h2{{font-family:Fraunces,Georgia,serif;font-size:26px;line-height:1.1;margin:0 0 10px;color:#fff}}
+  .session p{{font-size:15px;color:#DFE2F2;margin:0 0 10px}}
+  .session .n{{font-size:13px;color:#AEB5DA}}
+  .session .dl{{display:inline-block;font-size:13px;font-weight:700;color:var(--navy-dk);background:var(--gold);text-decoration:none;padding:6px 12px;border-radius:999px;margin-right:6px}}
+  @media(max-width:860px){{.session{{grid-template-columns:1fr}}}}
   .videos{{margin:0 0 30px}}
   .vgrid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}}
   .vid{{margin:0;background:var(--paper);border:1px solid var(--rule);border-radius:12px;overflow:hidden}}

@@ -34,6 +34,9 @@ ALL = "k2 g35 g68 g912"
 EPM = "e p m"
 
 ITEMS = [
+ ("session", "The session · Emerging and Progressing", "pd-library.html#session", "EL Publishing · video, with Elena", "Watch", 10, ALL, "e p", "start",
+  "A ten-minute PD session taught by an animated presenter: what each level can do, the five things you change for each, one lesson in two sizes.",
+  "Run the ten-minute planning routine from the end of the session on tomorrow's lesson."),
  # ── the video series (players at the top of the page) ────────────────
  ("v1", "Six Moves 1 · Five Words First", "pd-library.html#v1", "EL Publishing · video", "Watch", 3, ALL, "e p", "input",
   "Pick the five words the lesson falls apart without. Say them, show them, use them ten times.",
@@ -236,11 +239,11 @@ ITEMS = [
 # Curated sequences. (title, who it is for, total minutes label, [item ids])
 PATHS = [
  ("Six moves in twenty minutes", "The video series, start to finish. Watch one a day for a week, or all six at a department meeting.", ["v1", "v2", "v3", "v4", "v5", "v6"]),
- ("Your first ninety minutes", "You have an English learner for the first time and no training.", ["sheltered", "v1", "pod1", "v2", "bysubject", "frames", "accom"]),
+ ("Your first ninety minutes", "You have an English learner for the first time and no training.", ["session", "sheltered", "v1", "v2", "bysubject", "frames", "accom"]),
  ("A six-week department PLC", "One podcast episode and one tool a week; discuss with the two questions under each transcript.", ["pod1", "pod2", "pod3", "pod4", "pod5", "pod6"]),
  ("A newcomer arrives Monday", "Level one, this week.", ["k5kit", "week1", "first100", "nguide", "stormlens", "cognate", "subpara"]),
  ("Elementary, K–5", "Routines, read-alouds, frames and the family.", ["pod1", "k5kit", "rrockets", "pz", "frames", "cando", "nguide"]),
  ("Secondary, 6–12", "The textbook, the lab, the essay and the state test.", ["sheltered", "pod4", "sample", "mlr", "sentencelab", "eoyo", "roadmap"]),
- ("They sound fluent and still stall", "Progressing students, levels 3–4: academic language, not social language.", ["pod1", "pod4", "pod5", "mlr", "wordgen", "frames", "eoyo"]),
+ ("They sound fluent and still stall", "Progressing students, levels 3–4: academic language, not social language.", ["session", "pod1", "pod4", "pod5", "mlr", "wordgen", "frames", "eoyo"]),
  ("Exited, monitored — and slipping", "Former English learners in the four-year window.", ["pod6", "accom", "cando", "profile", "letters"]),
 ]
