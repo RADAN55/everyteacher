@@ -60,6 +60,8 @@ R = [
   "Practice written in the exact format of the test, all four domains.", False),
  ("picture-dictionary.html", "The Picture Dictionary · Issue 1", "students", "Picture dictionary", "12 spreads · 144 words",
   "Point at the thing, hear the word, say it, spell it, use it. Twelve places, drawn as spreads.", True),
+ ("picture-dictionary-2.html", "The Picture Dictionary · Issue 2", "students", "Picture dictionary", "12 spreads · 144 words",
+  "Food, the living room, the road, the bank, the clock, the family, the gym, the screen, the farm: twelve new spreads.", False),
  ("grammar-map.html", "The Grammar Map", "students", "Lessons + practice", "14 stations · 112 items",
   "Grammar you can see: a sentence X-ray, four lines, fourteen taught stations, a stamp at each.", True),
  ("writing-studio.html", "The Writing Studio", "students", "Lessons", "8 lessons at the board",
@@ -182,7 +184,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}

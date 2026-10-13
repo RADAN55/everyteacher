@@ -158,6 +158,44 @@ html[data-theme="dark"] .pg h2{background:linear-gradient(90deg,#E8EBF5,var(--ac
 .toc button.on{background:var(--navy-bg)}
 .folio{color:var(--acc,var(--muted))}
 .pg.right::after{content:"";position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,rgba(0,0,0,.07),rgba(0,0,0,0));pointer-events:none;z-index:0}
+
+/* ── spectacular pass ── */
+.cover{background:radial-gradient(1200px 600px at 80% -10%,#3A2E7A 0%,rgba(58,46,122,0) 60%),linear-gradient(160deg,#1E2761 0%,#141A44 55%,#0E1230 100%)}
+.cover::before{background:repeating-linear-gradient(112deg,rgba(235,217,160,.06) 0 2px,transparent 2px 26px),radial-gradient(2px 2px at 20% 30%,rgba(255,255,255,.35),transparent 60%),radial-gradient(2px 2px at 70% 70%,rgba(255,255,255,.25),transparent 60%),radial-gradient(1.5px 1.5px at 40% 80%,rgba(255,255,255,.3),transparent 60%)}
+.mast{background:linear-gradient(100deg,#fff 0%,#fff 45%,#F6E27A 50%,#fff 55%,#fff 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 6s ease-in-out infinite;text-shadow:none;filter:drop-shadow(0 12px 30px rgba(0,0,0,.45))}
+.mast em{background:linear-gradient(100deg,#C9A227,#F6E27A 50%,#C9A227);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 6s ease-in-out infinite}
+@keyframes foil{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.chips{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.chips span{position:absolute;font-family:Fraunces,Georgia,serif;font-style:italic;font-size:15px;color:rgba(235,217,160,.42);border:1px solid rgba(235,217,160,.25);border-radius:999px;padding:4px 12px;animation:float 14s ease-in-out infinite;white-space:nowrap}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+.coverart{perspective:1200px}
+.coverart .frame{transform:rotate(-2deg) translateY(10px) rotateY(-6deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.coverart:hover .frame{transform:rotate(0deg) translateY(4px) rotateY(0deg) scale(1.02)}
+.spread{perspective:1600px;transform-style:preserve-3d}
+.spread.flip .pg{animation:flip .7s cubic-bezier(.2,.8,.2,1) both}
+.spread.flip .pg.right{animation-delay:.08s}
+@keyframes flip{from{transform:rotateY(-22deg) translateX(30px);opacity:0}to{transform:none;opacity:1}}
+.pg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");pointer-events:none;z-index:0;border-radius:inherit}
+.scene{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.scene:hover{transform:scale(1.01)}
+.scene .spot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .45s;background:radial-gradient(circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.0) 0,rgba(255,255,255,.0) 60px,rgba(20,26,68,.42) 150px);mix-blend-mode:multiply}
+.scene.spot-on .spot{opacity:1}
+.scene .ring{position:absolute;width:140px;height:140px;margin:-70px 0 0 -70px;border-radius:50%;border:3px solid var(--gold);left:var(--sx,50%);top:var(--sy,50%);pointer-events:none;opacity:0;transform:scale(.4)}
+.scene.spot-on .ring{animation:ring .9s ease-out forwards}
+@keyframes ring{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(1.15)}}
+.hot::after{content:attr(aria-label);position:absolute;left:50%;top:-40px;transform:translate(-50%,6px);background:var(--navy-dk);color:#fff;font-family:Fraunces,Georgia,serif;font-size:14px;font-weight:600;padding:5px 11px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.hot:hover::after,.hot.lit::after{opacity:1;transform:translate(-50%,0)}
+.hot.lit{box-shadow:0 0 0 6px rgba(201,162,39,.35),0 6px 18px rgba(0,0,0,.35)}
+.words li.lit{background:linear-gradient(90deg,rgba(201,162,39,.28),rgba(201,162,39,.06));transform:translateX(4px)}
+.words li{transition:transform .25s,background .25s}
+.words li .es{transition:color .3s}
+.words li.lit .es{color:var(--acc,var(--teal))}
+.exline{animation:fadein .4s ease both}
+.acts{background:linear-gradient(180deg,var(--paper),var(--mist))}
+.stamp{filter:drop-shadow(0 4px 0 rgba(46,125,79,.25))}
+.toc{background:linear-gradient(90deg,var(--page2),var(--mist));backdrop-filter:blur(6px);position:sticky;top:var(--hubbar-h,50px);z-index:30;box-shadow:0 8px 24px rgba(20,26,68,.08)}
+html[data-theme="dark"] .toc{background:linear-gradient(90deg,#161A2A,#0C1120)}
+@media (prefers-reduced-motion:reduce){.mast,.mast em,.chips span,.spread.flip .pg,.scene.spot-on .ring{animation:none}.scene{transition:none}}
 @media (max-width:860px){.cover .wrap{grid-template-columns:1fr}.coverart{margin-top:10px}.spread{grid-template-columns:1fr}.spread::before{display:none}.words{columns:2}}
 @media (max-width:560px){.words{columns:1}.pg{padding:16px}}
 @media print{body{background:#fff}.cover,.toc,.acts,.pgnav,details.teacher,footer,.exline{display:none!important}.spread{box-shadow:none;grid-template-columns:1fr 1fr;break-inside:avoid}.hot{box-shadow:none}}
@@ -173,7 +211,7 @@ html[data-theme="dark"] .pg h2{background:linear-gradient(90deg,#E8EBF5,var(--ac
     <div class="issue"><span>Issue 1 · Fall 2026</span><span>12 spreads</span><span>144 words</span><span>English · Español</span><span>Sound on</span></div>
     <p class="deck">Point at the thing. Hear the word. Say it, spell it, use it. Twelve places a student walks through every week, drawn as spreads you can read on a phone or print for the wall.</p>
     <ul class="coverlines" id="coverlines"></ul>
-    <p class="note">Every word and sentence is read by a <b>synthesized voice</b>; the scenes are original flat-vector illustrations drawn for this issue. Progress stays on your device.</p>
+    <p class="note">Every word and sentence is read by a <b>synthesized voice</b>; the scenes are original flat-vector illustrations drawn for this issue. Progress stays on your device. Finished? <a href="picture-dictionary-2.html" style="color:var(--gold-lt)">Issue 2</a> is out.</p>
   </div>
   <div class="coverart"><div class="frame"><div id="coverScene"></div></div><div class="tag">Spread 1 · The classroom</div></div>
 </div></header>
@@ -202,6 +240,9 @@ html[data-theme="dark"] .pg h2{background:linear-gradient(90deg,#E8EBF5,var(--ac
 </main>
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a><br><span style="font-size:12.5px;color:#A9B2DC">Illustrations drawn in code for this issue. Voices synthesized with an open-source text-to-speech model. Student recordings stay in the browser session.</span></div></footer>
 
+<script>
+(function(){var words=['desk · el escritorio','la cocina','bread · el pan','the clinic','la familia','rain · la lluvia','¿Qué ves?','teacher · la maestra','soup · la sopa','el tren','happy · feliz','the farm'];var box=document.createElement('div');box.className='chips';words.forEach(function(w,i){var s=document.createElement('span');s.textContent=w;s.style.left=(52+(i*9.1)%44)+'%';s.style.top=(6+(i*31)%46)+'%';s.style.animationDelay=(-i*1.7)+'s';s.style.animationDuration=(12+(i%5)*2)+'s';box.appendChild(s)});document.querySelector('.cover').insertBefore(box,document.querySelector('.cover .wrap'))})();
+</script>
 <script src="pictdict-scenes.js"></script>
 <script>
 (function(){
@@ -229,11 +270,11 @@ function list(){$('#spreadList').innerHTML=D.spreads.map(function(sp){return '<l
 
 function open(sp){
   stop();CUR=sp;location.hash='p'+sp.n;toc();
-  var v=$('#spread');v.innerHTML='';v.style.setProperty('--acc',ACC[sp.id]||'#1E2761');
+  var v=$('#spread');v.innerHTML='';v.classList.remove('flip');void v.offsetWidth;v.classList.add('flip');v.style.setProperty('--acc',ACC[sp.id]||'#1E2761');
   var L=el('div','pg left');L.innerHTML='<div class="numeral">'+(sp.n<10?'0':'')+sp.n+'</div><div class="folio"><span>The Picture Dictionary · Issue 1</span><span>Spread '+sp.n+' of 12</span></div><h2>'+esc(sp.title)+'<small>'+esc(sp.es)+'</small></h2><p class="deck">'+esc(sp.deck)+'</p>';
   var sc=el('div','scene');sc.innerHTML=scene(sp.scene)+(sp.leaders?'<svg viewBox="0 0 1000 560" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">'+sp.leaders.map(function(l){return '<line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+l[2]+'" y2="'+l[3]+'" stroke="#1E2761" stroke-width="2.5"/><circle cx="'+l[2]+'" cy="'+l[3]+'" r="5" fill="#C9A227" stroke="#1E2761" stroke-width="2"/>'}).join('')+'</svg>':'');
   sp.words.forEach(function(w,i){var h=el('button','hot',i+1);h.type='button';h.style.left=(w[2]/10)+'%';h.style.top=((sp.leaders?w[3]:Math.max(18,w[3]-30))/5.6)+'%';h.dataset.i=i;h.style.setProperty('--d',i);h.setAttribute('aria-label',w[0]);h.onclick=function(){lit(i);say(i)};sc.appendChild(h)});
-  L.appendChild(sc);v.appendChild(L);
+  sc.appendChild(el('div','spot'));sc.appendChild(el('div','ring'));L.appendChild(sc);v.appendChild(L);
   var R=el('div','pg right');R.innerHTML='<div class="folio"><span>'+esc(sp.title)+'</span><span>p. '+(sp.n*2)+'</span></div>';
   var ul=el('ul','words');R.innerHTML+='';sp.words.forEach(function(w,i){var li=el('li');li.dataset.i=i;li.style.setProperty('--d',i);li.innerHTML='<span class="n">'+(i+1)+'</span><span><span class="w">'+esc(w[0])+'</span><span class="es">'+esc(w[1])+'</span></span><button type="button" class="sp" aria-label="Hear '+esc(w[0])+'">🔊</button>';li.onclick=function(){lit(i);say(i)};ul.appendChild(li)});
   R.appendChild(ul);
@@ -245,7 +286,7 @@ function open(sp){
   nav.appendChild(pb);nav.appendChild(pr);nav.appendChild(nb);R.appendChild(nav);v.appendChild(R);
   acts();
 }
-function lit(i){[].forEach.call(document.querySelectorAll('.hot,.words li'),function(x){x.classList.toggle('lit',+x.dataset.i===i)})}
+var SPOT=null;function lit(i){[].forEach.call(document.querySelectorAll('.hot,.words li'),function(x){x.classList.toggle('lit',+x.dataset.i===i)});var sc=$('.scene'),h=document.querySelector('.hot[data-i="'+i+'"]');if(sc&&h){sc.style.setProperty('--sx',h.style.left);sc.style.setProperty('--sy',h.style.top);sc.classList.remove('spot-on');void sc.offsetWidth;sc.classList.add('spot-on');clearTimeout(SPOT);SPOT=setTimeout(function(){sc.classList.remove('spot-on')},2600)}}
 function say(i){var w=CUR.words[i];$('#exline').innerHTML='<span><b>'+esc(w[0])+'</b> · '+esc(w[4])+'</span><button type="button">🔊 Sentence</button>';$('#exline button').onclick=function(e){e.stopPropagation();play(CUR.id+'-'+pad(i)+'s')};play(CUR.id+'-'+pad(i))}
 function pad(i){return (i<10?'0':'')+i}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
