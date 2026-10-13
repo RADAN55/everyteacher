@@ -81,6 +81,8 @@ R = [
 
  ("content-teachers.html", "For Content Teachers", "classroom", "Start here", "3 questions",
   "Three questions every content teacher asks, each answered with a free tool.", True),
+ ("book-study-50-strategies.html", "Fifty Strategies, One Semester", "classroom", "Book study", "8 sessions · 45 min",
+  "A PLC book study of Herrell & Jordan's 50 Strategies, built for the teacher who teaches biology, not English.", True),
  ("session.html", "The Session: Emerging and Progressing", "classroom", "Video PD", "8 minutes · taught",
   "Elena, an animated presenter, teaches what to change for each level.", False),
  ("pd-library.html", "The PD Library", "classroom", "PD library", "7 videos · 61 pieces",
@@ -184,7 +186,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
