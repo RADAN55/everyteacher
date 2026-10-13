@@ -125,6 +125,39 @@ details.teacher h3{font-size:17px;color:var(--navy);margin:16px 0 6px}
 footer{background:var(--navy-dk-bg);color:#C9CEEA;padding:26px 0 40px;font-size:14px;margin-top:20px}
 footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:17px;margin-bottom:4px}
 footer a{color:var(--gold-lt)}
+
+/* ── stunning pass ── */
+.cover{padding-top:34px}
+.cover::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.28),rgba(201,162,39,0) 65%);pointer-events:none}
+.mast{text-shadow:0 10px 40px rgba(0,0,0,.35)}
+.mastrule{height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,162,39,0));margin:16px 0 0;max-width:420px}
+.coverlines{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;max-width:520px}
+.coverlines li{font-family:Fraunces,Georgia,serif;font-size:15px;color:#E8EBF5;display:flex;gap:8px;align-items:baseline;cursor:pointer}
+.coverlines li b{font-size:11px;letter-spacing:.14em;color:var(--gold);font-family:Inter,sans-serif}
+.coverlines li:hover{color:var(--gold-lt)}
+.coverart .frame{box-shadow:0 -14px 40px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);transform:rotate(-2deg) translateY(10px)}
+.coverart::before{content:"";position:absolute;inset:-6px -6px 0 -6px;background:linear-gradient(135deg,rgba(201,162,39,.35),rgba(201,162,39,0) 50%);border-radius:18px 18px 0 0;transform:rotate(-2deg) translateY(10px);filter:blur(1px);pointer-events:none}
+.spread{box-shadow:0 30px 70px rgba(20,26,68,.22),0 2px 0 rgba(255,255,255,.6) inset;background:linear-gradient(180deg,var(--page),var(--page2))}
+.pg{isolation:isolate}
+.pg .numeral{position:absolute;right:14px;top:-14px;font-family:Fraunces,Georgia,serif;font-weight:900;font-size:150px;line-height:1;color:var(--acc,var(--gold));opacity:.10;letter-spacing:-.06em;pointer-events:none;z-index:0}
+.pg>*{position:relative;z-index:1}
+.pg h2{font-size:clamp(32px,4.4vw,48px);background:linear-gradient(90deg,var(--navy),var(--acc,var(--navy)));-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme="dark"] .pg h2{background:linear-gradient(90deg,#E8EBF5,var(--acc,#E8EBF5));-webkit-background-clip:text;background-clip:text}
+.pg p.deck{border-left-color:var(--acc,var(--gold));font-size:18px}
+.scene{box-shadow:0 14px 34px rgba(20,26,68,.18),inset 0 0 0 1px rgba(0,0,0,.08);border-radius:14px;animation:fadein .6s ease both}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hot{background:var(--acc,var(--navy));box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 4px rgba(255,255,255,.35);animation:pop .45s cubic-bezier(.2,1.5,.4,1) both;animation-delay:calc(var(--d,0)*55ms)}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.hot:hover,.hot.lit{background:var(--gold);transform:scale(1.3)}
+.words li .n{background:var(--acc,var(--navy));box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.words li .w{font-size:20px}
+.words li{animation:fadein .5s ease both;animation-delay:calc(var(--d,0)*40ms)}
+.exline{box-shadow:0 6px 18px rgba(20,26,68,.08);border-color:transparent;background:linear-gradient(90deg,var(--paper),var(--paper)) padding-box,linear-gradient(90deg,var(--acc,var(--gold)),var(--gold)) border-box;border:2px solid transparent}
+.acts{box-shadow:0 14px 40px rgba(20,26,68,.10)}
+.tabs button.on{background:var(--acc,var(--navy-bg));border-color:var(--acc,var(--navy-bg))}
+.toc button.on{background:var(--navy-bg)}
+.folio{color:var(--acc,var(--muted))}
+.pg.right::after{content:"";position:absolute;left:0;top:0;bottom:0;width:60px;background:linear-gradient(90deg,rgba(0,0,0,.07),rgba(0,0,0,0));pointer-events:none;z-index:0}
 @media (max-width:860px){.cover .wrap{grid-template-columns:1fr}.coverart{margin-top:10px}.spread{grid-template-columns:1fr}.spread::before{display:none}.words{columns:2}}
 @media (max-width:560px){.words{columns:1}.pg{padding:16px}}
 @media print{body{background:#fff}.cover,.toc,.acts,.pgnav,details.teacher,footer,.exline{display:none!important}.spread{box-shadow:none;grid-template-columns:1fr 1fr;break-inside:avoid}.hot{box-shadow:none}}
@@ -136,8 +169,10 @@ footer a{color:var(--gold-lt)}
   <div>
     <p class="k" style="color:var(--gold-lt)"><a href="index.html" style="color:inherit;text-decoration:none">EL Publishing</a> · For students · Grades 6–12 · Newcomer → Emerging</p>
     <h1 class="mast">The Picture<br>Dictionary<em>.</em></h1>
-    <div class="issue"><span>Issue 1</span><span>12 spreads</span><span>144 words</span><span>English · Español</span><span>Sound on</span></div>
+    <div class="mastrule"></div>
+    <div class="issue"><span>Issue 1 · Fall 2026</span><span>12 spreads</span><span>144 words</span><span>English · Español</span><span>Sound on</span></div>
     <p class="deck">Point at the thing. Hear the word. Say it, spell it, use it. Twelve places a student walks through every week, drawn as spreads you can read on a phone or print for the wall.</p>
+    <ul class="coverlines" id="coverlines"></ul>
     <p class="note">Every word and sentence is read by a <b>synthesized voice</b>; the scenes are original flat-vector illustrations drawn for this issue. Progress stays on your device.</p>
   </div>
   <div class="coverart"><div class="frame"><div id="coverScene"></div></div><div class="tag">Spread 1 · The classroom</div></div>
@@ -176,30 +211,31 @@ var el=function(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var S=load();function load(){try{return JSON.parse(localStorage.getItem('elhub.pd.v1'))||{done:{}}}catch(e){return {done:{}}}}
 function save(){try{localStorage.setItem('elhub.pd.v1',JSON.stringify(S))}catch(e){}}
-var D=null,CUR=null,AUD=null,TAB='find';
+var D=null,CUR=null,AUD=null,TAB='find';var ACC={classroom:'#1E2761',school:'#B5213F',kitchen:'#E07A3F',home:'#0B6670',grocery:'#4C9A6A',clinic:'#17A2B8',body:'#7C4DFF',clothes:'#C9A227',street:'#3B6FD1',weather:'#2EBF7E',jobs:'#8B5A2B',feelings:'#E63E6D'};
 function scene(id){return '<svg viewBox="0 0 1000 560" role="img">'+window.PDScenes[id]()+'</svg>'}
 $('#coverScene').innerHTML=scene('classroom');
 
-fetch('pd/data.json').then(function(r){return r.json()}).then(function(d){D=d;toc();list();var h=location.hash.match(/p(\d+)/);open(D.spreads[h?Math.max(0,Math.min(11,+h[1]-1)):0])})
+fetch('pd/data.json').then(function(r){return r.json()}).then(function(d){D=d;toc();list();coverlines();var h=location.hash.match(/p(\d+)/);open(D.spreads[h?Math.max(0,Math.min(11,+h[1]-1)):0])})
  .catch(function(){$('#spread').innerHTML='<div class="pg"><p>The dictionary needs its files. Open it from radan55.github.io/everyteacher.</p></div>'});
 
 function stop(){if(AUD){AUD.onended=null;AUD.pause();AUD=null}}
 function play(stem,done){stop();var a=new Audio('pd/'+stem+'.mp3');AUD=a;a.onended=function(){AUD=null;done&&done()};a.onerror=function(){AUD=null;var syn=window.speechSynthesis;if(syn){var w=stem2text(stem);if(w){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';u.onend=function(){done&&done()};syn.speak(u);return}}done&&done()};a.play().catch(function(){done&&done()})}
 function stem2text(stem){var m=stem.match(/^(\w+)-(\d+)(s?)$/);if(!m||!D)return '';var sp=D.spreads.filter(function(x){return x.id===m[1]})[0];if(!sp)return '';var w=sp.words[+m[2]];return m[3]?w[4]:w[0]}
 
+function coverlines(){$('#coverlines').innerHTML=D.spreads.map(function(sp){return '<li data-n="'+sp.n+'"><b>'+(sp.n<10?'0':'')+sp.n+'</b>'+esc(sp.title)+' <span class="muted" style="font-size:12px">p. '+(sp.n*2)+'</span></li>'}).join('');[].forEach.call($('#coverlines').children,function(li){li.onclick=function(){open(D.spreads[+li.dataset.n-1]);window.scrollTo({top:$('#spread').offsetTop-70,behavior:'smooth'})}})}
 function toc(){var t=$('#tocList');t.innerHTML='';D.spreads.forEach(function(sp){var b=el('button',(S.done[sp.id]?'done':'')+(CUR&&CUR.id===sp.id?' on':''));b.type='button';b.innerHTML='<b>'+sp.n+'</b>'+esc(sp.title);b.onclick=function(){open(sp);window.scrollTo({top:$('#spread').offsetTop-70,behavior:'smooth'})};t.appendChild(b)});
   var d=Object.keys(S.done).length;$('#progB').style.width=(100*d/12)+'%';$('#progT').textContent=d+' / 12 stamped'}
 function list(){$('#spreadList').innerHTML=D.spreads.map(function(sp){return '<li><b>'+esc(sp.title)+'</b> <span class="muted">· '+esc(sp.es)+' · '+sp.words.map(function(w){return w[0]}).join(', ')+'</span></li>'}).join('')}
 
 function open(sp){
   stop();CUR=sp;location.hash='p'+sp.n;toc();
-  var v=$('#spread');v.innerHTML='';
-  var L=el('div','pg left');L.innerHTML='<div class="folio"><span>The Picture Dictionary · Issue 1</span><span>Spread '+sp.n+' of 12</span></div><h2>'+esc(sp.title)+'<small>'+esc(sp.es)+'</small></h2><p class="deck">'+esc(sp.deck)+'</p>';
+  var v=$('#spread');v.innerHTML='';v.style.setProperty('--acc',ACC[sp.id]||'#1E2761');
+  var L=el('div','pg left');L.innerHTML='<div class="numeral">'+(sp.n<10?'0':'')+sp.n+'</div><div class="folio"><span>The Picture Dictionary · Issue 1</span><span>Spread '+sp.n+' of 12</span></div><h2>'+esc(sp.title)+'<small>'+esc(sp.es)+'</small></h2><p class="deck">'+esc(sp.deck)+'</p>';
   var sc=el('div','scene');sc.innerHTML=scene(sp.scene)+(sp.leaders?'<svg viewBox="0 0 1000 560" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">'+sp.leaders.map(function(l){return '<line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+l[2]+'" y2="'+l[3]+'" stroke="#1E2761" stroke-width="2.5"/><circle cx="'+l[2]+'" cy="'+l[3]+'" r="5" fill="#C9A227" stroke="#1E2761" stroke-width="2"/>'}).join('')+'</svg>':'');
-  sp.words.forEach(function(w,i){var h=el('button','hot',i+1);h.type='button';h.style.left=(w[2]/10)+'%';h.style.top=((sp.leaders?w[3]:Math.max(18,w[3]-30))/5.6)+'%';h.dataset.i=i;h.setAttribute('aria-label',w[0]);h.onclick=function(){lit(i);say(i)};sc.appendChild(h)});
+  sp.words.forEach(function(w,i){var h=el('button','hot',i+1);h.type='button';h.style.left=(w[2]/10)+'%';h.style.top=((sp.leaders?w[3]:Math.max(18,w[3]-30))/5.6)+'%';h.dataset.i=i;h.style.setProperty('--d',i);h.setAttribute('aria-label',w[0]);h.onclick=function(){lit(i);say(i)};sc.appendChild(h)});
   L.appendChild(sc);v.appendChild(L);
   var R=el('div','pg right');R.innerHTML='<div class="folio"><span>'+esc(sp.title)+'</span><span>p. '+(sp.n*2)+'</span></div>';
-  var ul=el('ul','words');sp.words.forEach(function(w,i){var li=el('li');li.dataset.i=i;li.innerHTML='<span class="n">'+(i+1)+'</span><span><span class="w">'+esc(w[0])+'</span><span class="es">'+esc(w[1])+'</span></span><button type="button" class="sp" aria-label="Hear '+esc(w[0])+'">🔊</button>';li.onclick=function(){lit(i);say(i)};ul.appendChild(li)});
+  var ul=el('ul','words');R.innerHTML+='';sp.words.forEach(function(w,i){var li=el('li');li.dataset.i=i;li.style.setProperty('--d',i);li.innerHTML='<span class="n">'+(i+1)+'</span><span><span class="w">'+esc(w[0])+'</span><span class="es">'+esc(w[1])+'</span></span><button type="button" class="sp" aria-label="Hear '+esc(w[0])+'">🔊</button>';li.onclick=function(){lit(i);say(i)};ul.appendChild(li)});
   R.appendChild(ul);
   var ex=el('div','exline');ex.id='exline';ex.innerHTML='<span class="muted">Tap a number to hear the word and a sentence.</span>';R.appendChild(ex);
   var nav=el('div','pgnav');var prev=D.spreads[sp.n-2],next=D.spreads[sp.n];
