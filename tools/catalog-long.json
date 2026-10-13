@@ -333,5 +333,10 @@
   "long": "Eight writing lessons taught at a chalkboard by Mr. Castillo, an animated teacher with a synthesized voice, for English learners in grades 6–12 aiming at a 4 or 5 on the ELPA21 writing test. Each lesson is an I-do, we-do, you-do: he writes on the board while thinking aloud, asks the class to choose, asks each student for one line in a notebook and checks it against the features a scorer looks for, and in lesson 8 runs a full timed response with a plan box, a clock, a self-score and a level-5 model with the reasons it scores. The claim; reasons and evidence; transitions and their commas; compare and contrast; the formal email; editing like a scorer; the timed response. Projector mode and a mute switch let a teacher be the voice and teach from the board; the full script is printable. Writing stays on the device; a copy button sends it to a document for the teacher.",
   "thumb": "thumbs/writing-studio.jpg",
   "who": "Students (Progressing → 4–5); EL teachers at the board"
+ },
+ "grammar-map.html": {
+  "long": "Basic English grammar as a map a student travels: fourteen stations on four lines, from the capital letter and the eight parts of speech through determiners, verb tenses, agreement, adverbs, prepositions, conjunctions, interjections, the sentence and punctuation. A Sentence X-ray on the cover colors every word by its job, with the Spanish term a tap away. At each station Ms. Reyes, an animated teacher with a synthesized voice, teaches the lesson at a chalkboard; then a short Know it in plain English, examples with the target underlined, and eight self-checking items (tap the word, choose, or type). Seven of eight stamps the station. Written for Newcomer and Emerging students in grades 6–12 with the Spanish-speaker traps called out; Progressing students clear the map and move to the Writing Studio. Original lessons and items; progress stays on the device.",
+  "thumb": "thumbs/grammar-map.jpg",
+  "who": "Students (Newcomer → Progressing); EL teachers as an intervention menu"
  }
 }
