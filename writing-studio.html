@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Writing Studio · write for a 4 or a 5 · EL Publishing</title>
+<meta name="description" content="Eight writing lessons taught at the chalkboard by an animated teacher, for English learners in grades 6–12 who want to score a 4 or 5 on the ELPA21 writing test: the claim, reasons and evidence, transitions, compare and contrast, the email, editing like a scorer, and the timed response. He writes on the board, asks you to write a line, checks it, and reads you a model. Nothing to log into.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<meta property="og:title" content="The Writing Studio · write for a 4 or a 5">
+<meta property="og:description" content="Eight lessons at the board with Mr. Castillo: the claim, reasons and evidence, transitions, compare and contrast, the email, editing, and the timed response.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/thumbs/writing-studio.jpg">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/writing-studio.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+<style>
+:root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--ok:#2E7D4F;--ok-lt:#E8F5ED;--bad:#B3261E;--bad-lt:#FDECEA;--teal:#0B6670;--teal-lt:#E6F2F3;--tint:#F2F4FF;
+ --board:#2E4A3F;--board2:#27403a;--chalk:#F1EDE2;--chalk-y:#F6E27A;--chalk-p:#F3A6B8;--wood:#8B5A2B;--wood2:#6E4520}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+button{font-family:inherit;font-size:inherit;cursor:pointer;color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.01em;line-height:1.12;margin:0}
+a{color:var(--teal)}
+.hide{display:none!important}
+.k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-ink);margin:0}
+.muted{color:var(--muted)} .tiny{font-size:13.5px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;border:0;border-radius:999px;padding:11px 22px;font-size:15.5px;text-align:center;text-decoration:none}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.btn.go{background:var(--navy-bg);color:#fff}
+.btn.sm{padding:7px 14px;font-size:13.5px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;margin:0 0 14px}
+
+header.hero{background:var(--navy-bg);color:#fff;padding:30px 0 26px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.07) 0 2px,transparent 2px 26px);pointer-events:none}
+header.hero .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.brand{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin:0 0 10px}
+.brand a{color:inherit;text-decoration:none}
+header.hero h1{font-size:clamp(32px,5.5vw,48px);color:#fff}
+header.hero h1 em{font-style:italic;color:var(--gold)}
+header.hero p.sub{color:#C9CEEA;font-size:17px;max-width:640px;margin:10px 0 0}
+.voice-note{font-size:12.5px;color:#A9B2DC;margin:12px 0 0;max-width:620px}
+.lessons{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0;position:relative}
+.lessons button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+.lessons button b{font-family:Fraunces,Georgia,serif;color:var(--gold)}
+.lessons button.on{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)} .lessons button.on b{color:var(--navy-dk)}
+.lessons button.done::after{content:"✓";color:#9FE2B5;font-weight:800} .lessons button.on.done::after{color:var(--navy-dk)}
+
+/* ── the room ── */
+.room{display:grid;grid-template-columns:250px 1fr;gap:18px;margin:22px 0 14px;align-items:start}
+.teacher{position:sticky;top:64px}
+.teacher svg{width:100%;display:block;border-radius:18px;box-shadow:0 10px 30px rgba(20,26,68,.18)}
+.caption{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.45;margin-top:10px;min-height:58px;color:var(--ink)}
+.caption.off{display:none}
+.tbtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.tbtns button{background:var(--paper);border:1.5px solid var(--rule);border-radius:10px;padding:8px 6px;font-size:13px;font-weight:600}
+.tbtns button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy-bg)}
+.stat{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+
+.frame{background:linear-gradient(180deg,var(--wood),var(--wood2));border-radius:14px;padding:14px 14px 22px;box-shadow:0 14px 40px rgba(20,26,68,.22);position:relative}
+.frame::after{content:"";position:absolute;left:30px;right:30px;bottom:6px;height:9px;border-radius:4px;background:linear-gradient(180deg,#a9733a,#5a3617)}
+.board{background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.06),transparent 40%),radial-gradient(ellipse at 80% 90%,rgba(255,255,255,.05),transparent 45%),linear-gradient(160deg,var(--board),var(--board2));border-radius:6px;min-height:430px;padding:22px 26px 28px;color:var(--chalk);font-family:Caveat,"Comic Sans MS",cursive;font-size:27px;line-height:1.3;box-shadow:inset 0 0 60px rgba(0,0,0,.28);position:relative;overflow:hidden}
+.board .ln{margin:0 0 9px;white-space:pre-wrap;word-wrap:break-word;text-shadow:0 0 1px rgba(255,255,255,.35)}
+.board .ln.hd{font-size:33px;font-weight:700;color:var(--chalk-y);margin-bottom:12px;padding-bottom:4px;background:linear-gradient(90deg,var(--chalk-y) 0 0) bottom left/70% 2px no-repeat;opacity:.95}
+.board .y{color:var(--chalk-y);font-weight:700}
+.board .u{text-decoration:underline;text-decoration-color:var(--chalk-p);text-decoration-thickness:2px;text-underline-offset:4px}
+.board .s{text-decoration:line-through;text-decoration-color:var(--chalk-p);text-decoration-thickness:3px;opacity:.85}
+.board .cur{display:inline-block;width:10px;height:26px;background:var(--chalk);vertical-align:-4px;margin-left:2px;animation:blink 1s steps(1) infinite;opacity:.9}
+@keyframes blink{50%{opacity:0}}
+.board .model{color:var(--chalk-y);font-style:italic}
+.board .picks{margin:6px 0 0}
+.board .picks button{display:block;width:100%;text-align:left;background:rgba(255,255,255,.05);border:1.5px dashed rgba(241,237,226,.35);color:var(--chalk);font-family:inherit;font-size:25px;line-height:1.25;border-radius:8px;padding:8px 12px;margin:0 0 8px}
+.board .picks button:hover{background:rgba(255,255,255,.1)}
+.board .picks button.right{border-style:solid;border-color:var(--chalk-y);color:var(--chalk-y)}
+.board .picks button.wrong{opacity:.5;text-decoration:line-through;text-decoration-color:var(--chalk-p)}
+.board .picks button i{font-style:normal;color:var(--chalk-y);margin-right:8px;font-weight:700}
+.board .note{font-family:Inter,sans-serif;font-size:13px;color:#C8D6CF;opacity:.85;margin-top:10px}
+.board.big{font-size:34px;min-height:520px} .board.big .ln.hd{font-size:42px} .board.big .picks button{font-size:31px}
+.board .wipe{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:translateX(-120%);pointer-events:none}
+.board.wiping .wipe{animation:wipe .9s ease forwards}
+@keyframes wipe{to{transform:translateX(120%)}}
+
+.deck{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 0}
+.deck .btn.main{min-width:150px}
+.deck .sp{flex:1}
+.deck .tg{background:var(--paper);border:1.5px solid var(--rule);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600}
+.deck .tg[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy-bg)}
+.prog{height:6px;background:var(--rule);border-radius:999px;overflow:hidden;margin:10px 0 0}
+.prog i{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
+
+/* ── notebook ── */
+.notebook{background:#FFFDF5;border:1px solid #E9DFB8;border-radius:16px;padding:16px 18px;margin:14px 0;background-image:repeating-linear-gradient(transparent 0 31px,#E9DFB8 31px 32px);background-position:0 48px}
+html[data-theme="dark"] .notebook{background:#1C1A12;border-color:#4A3C18;background-image:repeating-linear-gradient(transparent 0 31px,#3B3014 31px 32px)}
+.notebook .k{color:#8A6A14}
+.notebook textarea,.notebook input{width:100%;border:0;background:transparent;font-family:Fraunces,Georgia,serif;font-size:19px;line-height:32px;color:var(--ink);resize:vertical;outline:none;padding:0}
+.notebook textarea{min-height:64px}
+.notebook textarea.long{min-height:288px}
+.notes{list-style:none;padding:0;margin:8px 0 0;font-family:Inter,sans-serif;font-size:14px;background:var(--paper);border-radius:10px;padding:8px 12px}
+.notes li{padding:3px 0}
+.notes li.ok::before{content:"✓ ";color:var(--ok);font-weight:800}
+.notes li.no::before{content:"✗ ";color:var(--bad);font-weight:800}
+.plan{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:8px 0 12px}
+.plan label{display:block;font-family:Inter,sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#8A6A14;margin-bottom:2px}
+.plan input{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:6px 8px;font-size:15px;line-height:1.3}
+.clock{display:flex;gap:14px;align-items:center;font-family:Inter,sans-serif;margin:0 0 8px;flex-wrap:wrap}
+.clock b{font-variant-numeric:tabular-nums;font-size:30px;font-family:Fraunces,Georgia,serif;color:var(--navy)}
+.clock .ph{display:flex;gap:6px}
+.clock .ph span{border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700;background:var(--mist);color:var(--muted)}
+.clock .ph span.on{background:var(--gold);color:var(--navy-dk)}
+.rubric{list-style:none;padding:0;margin:8px 0 0;font-family:Inter,sans-serif}
+.rubric li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-top:1px solid var(--rule);font-size:15px}
+.rubric li:first-child{border-top:0}
+.rubric input{width:20px;height:20px;accent-color:var(--ok);margin-top:2px}
+.signals{font-family:Inter,sans-serif;font-size:14px;background:var(--paper);border-radius:10px;padding:10px 12px;margin-top:10px}
+.signals b{color:var(--navy)}
+
+/* ── teacher corner & footer ── */
+details.teacher{background:var(--paper);border:1px solid var(--rule);border-radius:16px;padding:0 20px;margin:26px 0 20px}
+details.teacher summary{cursor:pointer;padding:16px 0;font-family:Fraunces,Georgia,serif;font-size:21px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.teacher summary::-webkit-details-marker{display:none}
+details.teacher summary::after{content:"+";font-size:26px;color:var(--gold-ink)} details.teacher[open] summary::after{content:"−"}
+details.teacher .in{padding:0 0 18px;font-size:15.5px}
+details.teacher h3{font-size:17px;color:var(--navy);margin:16px 0 6px}
+details.teacher table{width:100%;border-collapse:collapse;font-size:14px}
+details.teacher td,details.teacher th{border-top:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top}
+details.teacher th{color:var(--muted);font-weight:600;width:26%}
+.script{font-size:14px;line-height:1.55}
+.script h4{font-family:Fraunces,Georgia,serif;font-size:16px;color:var(--navy);margin:14px 0 4px}
+.script p{margin:0 0 6px}
+.script .b{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--teal);min-width:52px}
+footer{background:var(--navy-dk-bg);color:#C9CEEA;padding:26px 0 40px;font-size:14px;margin-top:20px}
+footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:17px;margin-bottom:4px}
+footer a{color:var(--gold-lt)}
+
+/* avatar life */
+.eye{animation:eblink 4.6s infinite}
+@keyframes eblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.mouth-open{display:none}
+.talk .mouth-open{display:block;animation:jaw .22s steps(2) infinite}
+.talk .mouth-closed{display:none}
+@keyframes jaw{50%{transform:scaleY(.55);transform-origin:150px 176px}}
+.bob{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-1.5px)}}
+.arm{transition:transform .5s ease;transform-origin:206px 236px}
+.writing .arm{transform:rotate(-38deg) translate(6px,-4px)}
+.chalkdust{opacity:0} .writing .chalkdust{opacity:1}
+
+@media (max-width:860px){.room{grid-template-columns:1fr}.teacher{position:static;display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start}.teacher svg{border-radius:14px}.teacher .side{display:contents}.caption{margin-top:0;grid-column:2}.tbtns{grid-column:1 / -1}.stat{grid-column:1/-1}.board{font-size:22px;min-height:300px;padding:16px 16px 22px}.board .ln.hd{font-size:27px}.board .picks button{font-size:21px}.plan{grid-template-columns:1fr 1fr}header.hero .wrap{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.bob,.eye,.talk .mouth-open{animation:none}.board .cur{animation:none}}
+@media print{header.hero,.room,.deck,.prog,footer{display:none!important}details.teacher{border:0}details.teacher summary::after{content:""}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div>
+    <p class="brand"><a href="index.html">EL Publishing</a> · For students · Writing · ELPA21 levels 4–5 · Grades 6–12</p>
+    <h1>The Writing Studio: <em>write for a 4 or a 5.</em></h1>
+    <p class="sub">Eight lessons at the chalkboard with Mr. Castillo. He writes, he explains, he asks you for one line and checks it, and at the end he reads you a model answer and tells you why it scores. Use it alone on a phone, or project it and teach from it.</p>
+    <p class="voice-note">Mr. Castillo is an animated teacher with a <b>synthesized voice</b>; the lessons were written and edited by Richard A. Daniel, M.Ed. What you write stays on your device.</p>
+    <div class="lessons" id="lessonNav"></div>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="room">
+    <aside class="teacher" id="teacher">
+      <svg viewBox="0 0 300 330" id="avatar" aria-label="Mr. Castillo, writing teacher">
+        <defs>
+          <linearGradient id="bgT" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1E2761"/><stop offset="1" stop-color="#141a44"/></linearGradient>
+          <radialGradient id="glowT" cx=".5" cy=".4" r=".55"><stop offset="0" stop-color="#C9A227" stop-opacity=".2"/><stop offset="1" stop-color="#C9A227" stop-opacity="0"/></radialGradient>
+          <linearGradient id="sweater" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3B4A8C"/><stop offset="1" stop-color="#26306B"/></linearGradient>
+          <clipPath id="frameT"><rect width="300" height="330" rx="22"/></clipPath>
+        </defs>
+        <g clip-path="url(#frameT)">
+          <rect width="300" height="330" fill="url(#bgT)"/><rect width="300" height="330" fill="url(#glowT)"/>
+          <path d="M-20 300 L320 120" stroke="#C9A227" stroke-opacity=".12"/><path d="M-20 330 L320 150" stroke="#C9A227" stroke-opacity=".08"/>
+          <g class="bob">
+            <!-- shoulders / sweater -->
+            <path d="M56 330 C56 256 98 234 128 230 L150 244 L172 230 C202 234 244 256 244 330 Z" fill="url(#sweater)"/>
+            <!-- collar -->
+            <path d="M128 230 L150 256 L172 230 L162 224 L150 232 L138 224 Z" fill="#f4f1e8"/>
+            <path d="M150 256 L146 300 L154 300 Z" fill="#1b2256" opacity=".5"/>
+            <!-- arm with chalk (right side of picture) -->
+            <g class="arm"><path d="M206 236 C230 250 246 270 252 296 L236 300 C230 280 218 266 200 256 Z" fill="#2F3C7E"/><path d="M248 296 L262 288 L268 296 L254 306 Z" fill="#c9915f"/><rect x="262" y="283" width="16" height="6" rx="2" transform="rotate(-30 262 283)" fill="#F1EDE2"/>
+              <g class="chalkdust"><circle cx="276" cy="276" r="1.5" fill="#F1EDE2" opacity=".7"/><circle cx="282" cy="270" r="1" fill="#F1EDE2" opacity=".5"/></g></g>
+            <!-- neck -->
+            <path d="M136 192 L136 224 C140 234 160 234 164 224 L164 184 Z" fill="#b57c52"/>
+            <path d="M136 204 C144 214 156 214 164 204 L164 192 L136 192 Z" fill="#9f6a44"/>
+            <g transform="translate(0,6)">
+              <!-- face -->
+              <path d="M98 126 C98 84 120 60 150 60 C180 60 202 84 202 126 C202 164 180 198 150 198 C120 198 98 164 98 126 Z" fill="#c38a60"/>
+              <!-- ears -->
+              <ellipse cx="99" cy="134" rx="7" ry="10" fill="#b57c52"/><ellipse cx="201" cy="134" rx="7" ry="10" fill="#b57c52"/>
+              <!-- beard -->
+              <path d="M104 146 C108 178 126 198 150 198 C174 198 192 178 196 146 C190 170 172 184 150 184 C128 184 110 170 104 146 Z" fill="#2a1d14" opacity=".9"/>
+              <!-- hair: short, side part -->
+              <path d="M98 126 C96 90 114 58 150 56 C186 56 204 86 202 122 C196 100 182 92 164 96 C150 84 126 86 110 102 C104 110 100 118 98 126 Z" fill="#2a1d14"/>
+              <path d="M110 102 C124 90 148 86 164 96 C150 92 130 94 116 106 Z" fill="#3b2a1e" opacity=".4"/>
+              <!-- brows -->
+              <path d="M116 116 C124 110 138 110 144 114" stroke="#2a1d14" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M156 114 C162 110 176 110 184 116" stroke="#2a1d14" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <!-- eyes -->
+              <g class="eye" style="transform-origin:131px 130px"><path d="M119 130 C123 124 139 124 143 130 C139 135 123 135 119 130 Z" fill="#fbf7f0"/><circle cx="131" cy="130" r="4.2" fill="#2a1d14"/><circle cx="132.4" cy="128.6" r="1.1" fill="#fff"/></g>
+              <g class="eye" style="transform-origin:169px 130px"><path d="M157 130 C161 124 177 124 181 130 C177 135 161 135 157 130 Z" fill="#fbf7f0"/><circle cx="169" cy="130" r="4.2" fill="#2a1d14"/><circle cx="170.4" cy="128.6" r="1.1" fill="#fff"/></g>
+              <!-- nose -->
+              <path d="M150 134 L146 156 C148 159 153 159 155 156" stroke="#9a6440" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- mouth -->
+              <path class="mouth mouth-closed" d="M137 172 C143 177 157 177 163 172" stroke="#7a3a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <g class="mouth-open"><path d="M137 170 C143 184 157 184 163 170 C157 168 143 168 137 170 Z" fill="#5e2525"/><path d="M141 171 C146 173 154 173 159 171 Z" fill="#fff"/></g>
+            </g>
+          </g>
+          <rect x="0" y="282" width="300" height="48" fill="#0f1437" fill-opacity=".74"/>
+          <text x="150" y="303" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="15" font-weight="700" fill="#fff">Mr. Castillo</text>
+          <text x="150" y="319" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="600" letter-spacing="2" fill="#C9A227">WRITING TEACHER · SYNTHESIZED VOICE</text>
+        </g>
+      </svg>
+      <div class="side">
+        <div class="caption" id="caption">Pick a lesson above, then press <b>Start the lesson</b>.</div>
+        <div class="tbtns">
+          <button type="button" id="bCap" aria-pressed="true">Captions</button>
+          <button type="button" id="bSlow" aria-pressed="false">Slower</button>
+          <button type="button" id="bMute" aria-pressed="false">Mute (I'll teach)</button>
+          <button type="button" id="bProj" aria-pressed="false">Projector</button>
+        </div>
+        <div class="stat" id="stat"></div>
+      </div>
+    </aside>
+
+    <section>
+      <div class="frame"><div class="board" id="board"><div class="wipe"></div></div></div>
+      <div class="deck">
+        <button type="button" class="btn main" id="bPlay">Start the lesson ▶</button>
+        <button type="button" class="btn ghost sm" id="bAgain">↺ Say it again</button>
+        <button type="button" class="btn ghost sm" id="bNext">Next ⏭</button>
+        <span class="sp"></span>
+        <span class="tiny muted" id="where"></span>
+      </div>
+      <div class="prog"><i id="progB"></i></div>
+      <div id="notebook"></div>
+    </section>
+  </div>
+
+  <details class="teacher" id="teacherCorner">
+    <summary>For the teacher: how to use it, the eight lessons, and the full script</summary>
+    <div class="in">
+      <p>Each lesson is an I-do / we-do / you-do at the board. Mr. Castillo models the move on the chalkboard while thinking aloud, asks the class to choose (the <b>pick</b> items), asks each student for one line in the notebook and checks it against a short list of features (the <b>ask</b> items), and in lesson 8 runs a full timed response with a plan box, a clock, a self-score and a level-5 model with the reasons it scores. Progress and the student's writing stay in the browser; a <b>Copy my writing</b> button lets students paste a response into a document for you.</p>
+      <h3>Two ways to run it</h3>
+      <p><b>Projector, you teach.</b> Press <b>Projector</b> for larger chalk, and <b>Mute (I'll teach)</b> if you want to be the voice: the board still writes each line when you press Next, the caption shows you his words, and the script below is yours to read or ignore. Students write their lines on paper; press <b>Show a model</b> when you want his line on the board. <b>Alone, on a phone.</b> He speaks, writes and checks; a student can replay any line and slow him down.</p>
+      <h3>What the lessons teach, in order</h3>
+      <table id="lessonTable"></table>
+      <h3>Alignment</h3>
+      <table>
+        <tr><th>Target</th><td>The features a top-level ELPA21 writing response shows: a claim that answers the prompt in the prompt's words; two reasons, each with an example or a result; organizing transitions with correct punctuation; the other side acknowledged; a conclusion; a formal register when the task is an email; controlled sentences and clean mechanics. The lessons teach those features; they do not reproduce any scoring document.</td></tr>
+        <tr><th>MS ELP Standards</th><td>ELP 3 (speak and write about topics), ELP 4 (construct claims and support them with reasoning and evidence), ELP 7 (adapt language choices to purpose and audience), ELP 9 (clear and coherent writing), ELP 10 (accuracy with standard English)</td></tr>
+        <tr><th>Lanes</th><td>Written for Progressing students (ELPT 3–4) reaching for 4–5. Emerging students can follow with the captions on and the Slower setting; Challenge students should write the lesson-8 response to a second prompt and edit a partner's.</td></tr>
+      </table>
+      <h3>Full script <button type="button" class="btn ghost sm" onclick="window.print()">🖨 Print</button></h3>
+      <div id="scriptBox" class="script"></div>
+    </div>
+  </details>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a><br><span style="font-size:12.5px;color:#A9B2DC">Mr. Castillo is an animated character; his voice is synthesized with an open-source text-to-speech model. Lessons written and edited by the author. Student writing is stored only in the browser.</span></div></footer>
+
+<script>
+(function(){
+'use strict';
+var D=null, L=null, I=0, PLAYING=false, AUD=null, TYPE=null, WAIT=false, SETTLE=null;
+var S=load(); var $=function(s,r){return (r||document).querySelector(s)};
+var el=function(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+function load(){try{return JSON.parse(localStorage.getItem('elhub.writing.v1'))||{done:{},cap:true,slow:false,mute:false,proj:false,work:{}}}catch(e){return {done:{},cap:true,slow:false,mute:false,proj:false,work:{}}}}
+function save(){try{localStorage.setItem('elhub.writing.v1',JSON.stringify(S))}catch(e){}}
+
+var board=$('#board'), cap=$('#caption'), nb=$('#notebook'), av=$('#avatar');
+fetch('writing/data.json').then(function(r){return r.json()}).then(function(d){D=d;nav();scripts();apply();var h=location.hash.match(/w(\d)/);pick(D.lessons[h?+h[1]-1:0])})
+ .catch(function(){board.innerHTML='<div class="ln">The Studio needs its files. Open it from radan55.github.io/everyteacher.</div>'});
+
+function apply(){$('#bCap').setAttribute('aria-pressed',S.cap);cap.classList.toggle('off',!S.cap);$('#bSlow').setAttribute('aria-pressed',S.slow);$('#bMute').setAttribute('aria-pressed',S.mute);$('#bProj').setAttribute('aria-pressed',S.proj);board.classList.toggle('big',S.proj)}
+$('#bCap').onclick=function(){S.cap=!S.cap;save();apply()};
+$('#bSlow').onclick=function(){S.slow=!S.slow;save();apply();if(AUD)AUD.playbackRate=S.slow?0.85:1};
+$('#bMute').onclick=function(){S.mute=!S.mute;save();apply();if(S.mute)stopAudio()};
+$('#bProj').onclick=function(){S.proj=!S.proj;save();apply()};
+
+function nav(){var n=$('#lessonNav');n.innerHTML='';D.lessons.forEach(function(x){var b=el('button',(S.done[x.id]?'done':'')+(L&&L.id===x.id?' on':''));b.type='button';b.innerHTML='<b>'+x.n+'</b>'+esc(x.title);b.onclick=function(){pick(x);window.scrollTo({top:$('.room').offsetTop-60,behavior:'smooth'})};n.appendChild(b)});
+  var t=$('#lessonTable');t.innerHTML=D.lessons.map(function(x){return '<tr><th>'+x.n+' · '+esc(x.title)+' <span class="muted">('+x.mins+' min)</span></th><td>'+esc(x.goal)+'</td></tr>'}).join('')}
+function pick(x){stopAll();L=x;I=0;PLAYING=false;wipe(true);nb.innerHTML='';location.hash='w'+x.n;nav();$('#bPlay').textContent='Start lesson '+x.n+' ▶';$('#where').textContent='Lesson '+x.n+' · '+x.title+' · about '+x.mins+' min';cap.innerHTML='<b>Lesson '+x.n+' · '+esc(x.title)+'.</b> '+esc(x.goal);$('#progB').style.width='0'}
+
+/* ── controls ── */
+$('#bPlay').onclick=function(){if(WAIT){$('#bNext').click();return}if(PLAYING){pause()}else{if(I>=L.beats.length){I=0;wipe(true);nb.innerHTML=''}PLAYING=true;$('#bPlay').textContent='Pause ❚❚';if(!WAIT)run()}};
+$('#bNext').onclick=function(){if(!L)return;stopBeat();WAIT=false;I++;PLAYING=true;$('#bPlay').textContent='Pause ❚❚';run()};
+$('#bAgain').onclick=function(){if(!L)return;stopBeat();WAIT=false;PLAYING=true;$('#bPlay').textContent='Pause ❚❚';run(true)};
+function pause(){PLAYING=false;$('#bPlay').textContent='Continue ▶';stopAudio();if(TYPE){clearInterval(TYPE);TYPE=null;finishType()}}
+function stopBeat(){stopAudio();if(TYPE){clearInterval(TYPE);TYPE=null;finishType()}if(SETTLE){clearTimeout(SETTLE);SETTLE=null}}
+function stopAll(){stopBeat();WAIT=false;PLAYING=false;$('#bPlay').textContent='Start the lesson ▶'}
+function stopAudio(){if(AUD){AUD.onended=null;AUD.pause();AUD=null}try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){}av.classList.remove('talk')}
+
+/* ── speech: pre-rendered clips, with the browser's own voice as a fallback ── */
+function speak(stem,text,done){
+  stopAudio();cap.innerHTML=esc(text);
+  var est=Math.max(1.5,text.split(/\s+/).length/2.6);
+  if(S.mute){$('#stat').textContent='Muted \u00b7 you are the voice \u00b7 press Next when ready';SETTLE=setTimeout(function(){SETTLE=null;waitHere()},300);return est}
+  var a=new Audio('writing/'+stem+'.mp3');AUD=a;a.playbackRate=S.slow?0.85:1;
+  a.onended=function(){av.classList.remove('talk');AUD=null;done&&done()};
+  a.onerror=function(){AUD=null;fallback(text,done)};
+  a.play().then(function(){av.classList.add('talk');$('#stat').textContent=''}).catch(function(){fallback(text,done)});
+  return (D.dur[stem]||est)/(S.slow?0.85:1);
+}
+function fallback(text,done){
+  var syn=window.speechSynthesis;if(!syn){$('#stat').textContent='Audio unavailable here · read the caption';cap.classList.remove('off');SETTLE=setTimeout(function(){SETTLE=null;done&&done()},text.split(/\s+/).length*300);return}
+  $('#stat').textContent='Using this device’s voice';
+  var parts=text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[text],n=0;av.classList.add('talk');
+  parts.forEach(function(p){var u=new SpeechSynthesisUtterance(p.trim());u.lang='en-US';u.rate=S.slow?0.85:0.97;u.onend=function(){if(++n===parts.length){av.classList.remove('talk');done&&done()}};syn.speak(u)});
+}
+
+/* ── the board ── */
+function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<span class="y">$1</span>').replace(/~~(.+?)~~/g,'<span class="s">$1</span>').replace(/_(.+?)_/g,'<span class="u">$1</span>').replace(/\n/g,'<br>')}
+function wipe(instant){if(TYPE){clearInterval(TYPE);TYPE=null;finishType()}var w=$('.wipe',board);board.innerHTML='';board.appendChild(w);if(!instant){board.classList.add('wiping');setTimeout(function(){board.classList.remove('wiping')},900)}}
+var typing=null;
+function chalk(text,cls,secs){
+  // writes the line letter by letter over `secs` seconds (the teacher writes while he talks)
+  if(TYPE){clearInterval(TYPE);TYPE=null;finishType()}
+  var ln=el('div','ln '+(cls||''));board.appendChild(ln);var html=fmt(text);
+  // type on the plain text, then swap in the formatted html at the end
+  var plain=text.replace(/\*\*|~~|_/g,'');var i=0,n=plain.length,per=Math.max(18,Math.min(70,(secs*1000*0.8)/Math.max(1,n)));
+  av.classList.add('writing');ln.innerHTML='<span class="cur"></span>';
+  typing={ln:ln,html:html};
+  TYPE=setInterval(function(){i+=1;ln.innerHTML=esc(plain.slice(0,i)).replace(/\n/g,'<br>')+'<span class="cur"></span>';if(i>=n){clearInterval(TYPE);TYPE=null;finishType()}},per);
+  board.scrollTop=board.scrollHeight;return ln;
+}
+function finishType(){if(typing){typing.ln.innerHTML=typing.html;typing=null}av.classList.remove('writing')}
+
+/* ── the beat machine ── */
+function run(again){
+  if(!L||!PLAYING)return;
+  if(I>=L.beats.length){return finishLesson()}
+  var b=L.beats[I],k=b[0],stem=L.id+'-'+(I<10?'0':'')+I;
+  $('#progB').style.width=(100*I/L.beats.length)+'%';
+  $('#where').textContent='Lesson '+L.n+' · '+L.title+' · '+(I+1)+' / '+L.beats.length;
+  var next=function(){SETTLE=setTimeout(function(){SETTLE=null;if(PLAYING){I++;run()}},700)};
+  if(k==='say'){speak(stem,b[1],next)}
+  else if(k==='head'){if(!again){chalk(b[1],'hd',2)}speak(stem,b[2],next)}
+  else if(k==='write'){var secs=speak(stem,b[2],next);if(!again)chalk(b[1],'',secs)}
+  else if(k==='clear'){wipe();speak(stem,b[1],next)}
+  else if(k==='pick'){doPick(b,stem,again)}
+  else if(k==='ask'){doAsk(b,stem,again)}
+  else if(k==='task'){doTask(b,stem,again)}
+}
+function waitHere(){WAIT=true;$('#bPlay').textContent=S.mute?'Press Next ⏭':'Your turn ✎'}
+function resume(){WAIT=false;PLAYING=true;$('#bPlay').textContent='Pause ❚❚';I++;run()}
+
+function doPick(b,stem,again){
+  var say=b[1],opts=b[2],ans=b[3],why=b[4];
+  if(!again){var q=chalk(say.replace(/~~/g,''),'',2);q.innerHTML=fmt(say);var box=el('div','picks');opts.forEach(function(o,i){var bt=el('button',null,'<i>'+'ABC'[i]+'</i>'+fmt(o));bt.type='button';bt.onclick=function(){if(bt.disabled)return;[].forEach.call(box.children,function(x,j){x.disabled=true;if(j===ans)x.classList.add('right');else if(j===i)x.classList.add('wrong')});speak(stem+'w',why,function(){resume()})};box.appendChild(bt)});board.appendChild(box);board.appendChild(el('div','note',S.proj?'Class answers out loud, then tap the answer.':'Tap your answer.'))}
+  speak(stem,say,function(){waitHere()});
+}
+function doAsk(b,stem,again){
+  var say=b[1],prompt=b[2],checks=b[3],model=b[4],okSay=b[5],fixSay=b[6],tries=0;
+  if(!again){chalk(prompt,'',2)}
+  speak(stem,say,function(){waitHere()});
+  nb.innerHTML='';
+  var n=el('div','notebook');n.innerHTML='<p class="k">Your notebook · one line</p>';
+  var ta=el('textarea');ta.placeholder=S.proj?'(Students write on paper. Press “Show a model” when ready.)':'Write your line here…';ta.value=(S.work[stem]||'');n.appendChild(ta);
+  var row=el('div','deck');var chk=el('button','btn','Check my line');chk.type='button';var show=el('button','btn ghost sm','Show a model');show.type='button';row.appendChild(chk);row.appendChild(show);n.appendChild(row);
+  var notes=el('ul','notes hide');n.appendChild(notes);nb.appendChild(n);
+  if(!S.proj)ta.focus({preventScroll:true});
+  chk.onclick=function(){var t=ta.value.trim();if(!t)return;S.work[stem]=t;save();tries++;var res=runChecks(t,checks);notes.classList.remove('hide');notes.innerHTML=res.map(function(r){return '<li class="'+(r.ok?'ok':'no')+'">'+esc(r.note)+'</li>'}).join('');
+    var all=res.every(function(r){return r.ok});
+    if(all){chk.disabled=true;var m=chalk('✓ '+t,'model',1);speak(stem+'o',okSay,function(){var g=D.fb.ok[Math.floor(Math.random()*D.fb.ok.length)];speak('fb-ok-'+D.fb.ok.indexOf(g),g,function(){resume()})})}
+    else{speak(stem+'f',fixSay,function(){waitHere()});if(tries>=2)show.classList.add('pulse')}};
+  show.onclick=function(){show.disabled=true;chalk('Model: '+model,'model',3);speak(stem+'o',okSay,function(){resume()})};
+}
+function runChecks(t,checks){
+  var low=t.toLowerCase();
+  return checks.map(function(c){var k=c[0],a=c[1],note=c[2],ok=false;
+    if(k==='min_words')ok=t.split(/\s+/).filter(Boolean).length>=a;
+    else if(k==='has_any')ok=a.some(function(w){return low.indexOf(w.toLowerCase())>=0});
+    else if(k==='has_regex')ok=new RegExp(a,'i').test(t);
+    else if(k==='not_regex')ok=!new RegExp(a,'i').test(t);
+    else if(k==='starts_upper')ok=/^[A-Z]/.test(t);
+    else if(k==='ends_punct')ok=/[.!?]["”]?\s*$/.test(t);
+    return {ok:ok,note:note}});
+}
+
+/* ── lesson 8: the timed response ── */
+function doTask(b,stem,again){
+  var say=b[1],prompt=b[2],mins=b[3],rubric=b[4],model=b[5],modelSay=b[6];
+  var cur=prompt;
+  if(!again)chalk(prompt,'',3);
+  speak(stem,say,function(){waitHere()});
+  nb.innerHTML='';
+  var n=el('div','notebook');
+  n.innerHTML='<p class="k">Your notebook · plan 2 · write 10 · check 2</p>';
+  var pr=el('div','deck');pr.innerHTML='<span class="tiny muted">Different prompt?</span>';var sel=el('select');sel.innerHTML='<option value="">'+esc(prompt)+'</option>'+D.prompts.map(function(p){return '<option>'+esc(p)+'</option>'}).join('');sel.style.maxWidth='100%';pr.appendChild(sel);n.appendChild(pr);
+  sel.onchange=function(){cur=sel.value||prompt;wipe(true);chalk(cur,'',2)};
+  var clock=el('div','clock');clock.innerHTML='<b id="ck">'+mins+':00</b><div class="ph"><span class="on">Plan</span><span>Write</span><span>Check</span></div>';var st=el('button','btn sm','Start the clock');st.type='button';clock.appendChild(st);n.appendChild(clock);
+  var plan=el('div','plan');[['Claim',''],['Reason 1 + example',''],['Reason 2 + result',''],['Other side',''],['Conclusion','']].forEach(function(p,i){var w=el('div');w.innerHTML='<label>'+p[0]+'</label>';var inp=el('input');inp.value=(S.work[stem+'p'+i]||'');inp.oninput=function(){S.work[stem+'p'+i]=inp.value;save()};w.appendChild(inp);plan.appendChild(w)});n.appendChild(plan);
+  var ta=el('textarea','long');ta.placeholder='Write here. Claim first. A transition at the start of each part.';ta.value=(S.work[stem]||'');ta.oninput=function(){S.work[stem]=ta.value;save()};n.appendChild(ta);
+  var row=el('div','deck');var done=el('button','btn',"I'm done · score it");done.type='button';var cp=el('button','btn ghost sm','Copy my writing');cp.type='button';row.appendChild(done);row.appendChild(cp);n.appendChild(row);
+  var out=el('div','hide');n.appendChild(out);nb.appendChild(n);
+  var left=mins*60,tk=null,ph=[2,mins-4,2];
+  st.onclick=function(){if(tk){clearInterval(tk);tk=null;st.textContent='Start the clock';return}st.textContent='Pause';tk=setInterval(function(){left--;var m=Math.floor(Math.max(0,left)/60),s=Math.max(0,left)%60;$('#ck').textContent=m+':'+(s<10?'0':'')+s;var used=mins*60-left;var p=used<ph[0]*60?0:used<(ph[0]+ph[1])*60?1:2;[].forEach.call(clock.querySelectorAll('.ph span'),function(x,i){x.classList.toggle('on',i===p)});if(left<=0){clearInterval(tk);tk=null;$('#ck').textContent='Time';}},1000)};
+  cp.onclick=function(){var txt=cur+'\n\n'+ta.value;(navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(function(){cp.textContent='Copied ✓'},function(){ta.select();document.execCommand('copy');cp.textContent='Copied ✓'})};
+  done.onclick=function(){if(tk){clearInterval(tk);tk=null}var t=ta.value.trim();if(t.split(/\s+/).length<20){alert('Write at least a few sentences first.');return}
+    out.classList.remove('hide');var sig=signals(t);
+    out.innerHTML='<div class="signals"><b>What the board sees:</b> '+sig.join(' · ')+'</div><p class="k" style="margin-top:12px">Score yourself</p><ul class="rubric">'+rubric.map(function(r,i){return '<li><input type="checkbox" id="rb'+i+'"><label for="rb'+i+'">'+esc(r)+'</label></li>'}).join('')+'</ul>';
+    var hb=el('button','btn go','Hear a 5, and why it is a 5');hb.type='button';hb.style.marginTop='10px';out.appendChild(hb);
+    hb.onclick=function(){hb.disabled=true;wipe(true);chalk('A 5:','hd',1);var secs=speak(stem+'m',modelSay,function(){S.done[L.id]=true;save();nav();resume()});chalk(model,'model',Math.min(secs*0.5,40))};
+    out.scrollIntoView({behavior:'smooth',block:'start'})};
+}
+function signals(t){
+  var sents=t.split(/[.!?]+["”]?\s+|\n+/).filter(function(s){return s.trim().length>2});var words=t.split(/\s+/).filter(Boolean).length;
+  var low=' '+t.toLowerCase()+' ';var tr=TRANS.filter(function(w){return low.indexOf(' '+w+' ')>=0||low.indexOf(' '+w+',')>=0});
+  var other=/\b(however|although|on the other hand|some people)\b/i.test(t);var concl=/\b(in conclusion|to sum up|for these reasons)\b/i.test(t);
+  var lowerStarts=sents.filter(function(s){return /^[a-z]/.test(s.trim())}).length;var longs=sents.filter(function(s){return s.split(/\s+/).length>28}).length;
+  var missComma=(t.match(/\b(First|Second|Third|Finally|However|In addition|As a result|For example|In conclusion|Therefore)\s+[a-z]/g)||[]).length;
+  return [words+' words',sents.length+' sentences',tr.length+' transitions'+(tr.length?' ('+tr.slice(0,5).join(', ')+')':''),other?'the other side: yes':'the other side: not found',concl?'conclusion: yes':'conclusion: not found',
+          lowerStarts?lowerStarts+' sentence(s) start with a small letter':'capitals: fine',longs?longs+' very long sentence(s): check for run-ons':'sentence length: fine',missComma?missComma+' transition(s) missing the comma':'commas after transitions: fine'];
+}
+var TRANS=["first","second","third","finally","however","in addition","also","for example","for instance","as a result","therefore","in contrast","on the other hand","unlike","while","whereas","both","in conclusion","because","although","even though"];
+
+function finishLesson(){PLAYING=false;WAIT=false;S.done[L.id]=true;save();nav();$('#progB').style.width='100%';$('#bPlay').textContent='Play it again ↺';var k=D.lessons.indexOf(L);cap.innerHTML='<b>Lesson '+L.n+' done.</b> '+(k+1<D.lessons.length?'Next: lesson '+(k+2)+', '+esc(D.lessons[k+1].title)+'.':'That is the whole Studio.');
+  if(k+1<D.lessons.length){var b=el('button','btn go','Next: lesson '+(k+2)+' · '+esc(D.lessons[k+1].title)+' →');b.type='button';b.style.marginTop='12px';b.onclick=function(){pick(D.lessons[k+1]);$('#bPlay').click()};nb.innerHTML='';nb.appendChild(b)}}
+
+/* ── script for the human teacher ── */
+function scripts(){var o=[];D.lessons.forEach(function(x){o.push('<h4>Lesson '+x.n+' · '+esc(x.title)+' · '+esc(x.goal)+'</h4>');x.beats.forEach(function(b){var k=b[0];
+  if(k==='say')o.push('<p><span class="b">say</span>'+esc(b[1])+'</p>');else if(k==='head'||k==='write')o.push('<p><span class="b">board</span><i>'+esc(b[1].replace(/\*\*|~~/g,''))+'</i><br><span class="b">say</span>'+esc(b[2])+'</p>');
+  else if(k==='clear')o.push('<p><span class="b">wipe</span>'+esc(b[1])+'</p>');else if(k==='pick')o.push('<p><span class="b">ask</span>'+esc(b[1])+' <i>'+b[2].map(function(z,i){return 'ABC'[i]+') '+esc(z.replace(/~~/g,''))}).join(' ')+'</i> <b>→ '+'ABC'[b[3]]+'</b><br><span class="b">then</span>'+esc(b[4])+'</p>');
+  else if(k==='ask')o.push('<p><span class="b">write</span>'+esc(b[1])+'<br><span class="b">model</span><i>'+esc(b[4])+'</i></p>');else if(k==='task')o.push('<p><span class="b">task</span>'+esc(b[1])+' ('+b[3]+' min)<br><span class="b">a 5</span><i>'+esc(b[5])+'</i></p>')})});$('#scriptBox').innerHTML=o.join('')}
+})();
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

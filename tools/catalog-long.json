@@ -328,5 +328,10 @@
   "long": "ELPA21-style listening and speaking practice a student can do alone on a phone. Four units (six Southern pies, first week at a new school, storms over the Gulf, three branches of government), each with the three listening formats of the test, Listen and Match, Short Conversation and Academic Lecture, heard at most twice at a natural pace, with the transcript and the reason for the answer after every item; and two speaking tasks in the Observe and Report, Give the Steps, Classroom Chat and Opinion formats, recorded on the student's own device, self-checked against three lines, then compared with a model answer. Frames in four lanes under every prompt; a Support switch for unlimited listens, slower speed and early transcripts. All voices synthesized and labeled as such; recordings never leave the device. Teacher section with transcripts, key and alignment. 48 listening items, 8 speaking tasks. Grades 6–12.",
   "thumb": "thumbs/listening-speaking-studio.jpg",
   "who": "Students; EL teachers for class or homework"
+ },
+ "writing-studio.html": {
+  "long": "Eight writing lessons taught at a chalkboard by Mr. Castillo, an animated teacher with a synthesized voice, for English learners in grades 6–12 aiming at a 4 or 5 on the ELPA21 writing test. Each lesson is an I-do, we-do, you-do: he writes on the board while thinking aloud, asks the class to choose, asks each student for one line in a notebook and checks it against the features a scorer looks for, and in lesson 8 runs a full timed response with a plan box, a clock, a self-score and a level-5 model with the reasons it scores. The claim; reasons and evidence; transitions and their commas; compare and contrast; the formal email; editing like a scorer; the timed response. Projector mode and a mute switch let a teacher be the voice and teach from the board; the full script is printable. Writing stays on the device; a copy button sends it to a document for the teacher.",
+  "thumb": "thumbs/writing-studio.jpg",
+  "who": "Students (Progressing → 4–5); EL teachers at the board"
  }
 }
