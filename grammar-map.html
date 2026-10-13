@@ -375,13 +375,13 @@ function lessonPanel(s,body){
   var side=el('div','side');side.innerHTML=AVATAR+'<div class="cap"></div><div class="tb"><button type="button" data-k="cap" aria-pressed="'+GS.cap+'">Captions</button><button type="button" data-k="slow" aria-pressed="'+GS.slow+'">Slower</button><button type="button" data-k="mute" aria-pressed="'+GS.mute+'">Mute (I’ll teach)</button><button type="button" data-k="es">Español ↑</button></div><div class="stat"></div>';
   var right=el('div');right.innerHTML='<div class="lframe"><div class="lboard"></div></div><div class="ldeck"><button type="button" class="btn main">Start the lesson ▶</button><button type="button" class="btn ghost sm again">↺ Again</button><button type="button" class="btn ghost sm next">Next ⏭</button><div class="prog"><i></i></div></div>';
   wrap.appendChild(side);wrap.appendChild(right);body.appendChild(wrap);
-  GL.av=$('svg',side);GL.cap=$('.cap',side);GL.board=$('.lboard',right);GL.st=$('.stat',side);GL.i=0;GL.sid=String(s.id);GL.right=right;
+  GL.av=$('svg',side);GL.cap=$('.cap',side);GL.board=$('.lboard',right);GL.st=$('.stat',side);GL.i=0;GL.sid=String(s.id);GL.right=right;GL.beats=GD?(GD.beats[GL.sid]||[]):null;GL.typing=null;
   GL.cap.classList.toggle('hide',!GS.cap);
   GL.cap.innerHTML=s.id===0?'Hi, I’m Ms. Reyes. Press <b>Start the lesson</b> and I’ll teach this station at the board.':'<b>Station '+s.n+' · '+esc(s.title)+'.</b> Press Start and I’ll teach it at the board.';
   [].forEach.call(side.querySelectorAll('.tb button'),function(b){b.onclick=function(){var k=b.dataset.k;if(k==='es'){$('#xEs').click();window.scrollTo({top:0,behavior:'smooth'});return}GS[k]=!GS[k];gsave();b.setAttribute('aria-pressed',GS[k]);if(k==='cap')GL.cap.classList.toggle('hide',!GS.cap);if(k==='slow'&&GL.aud)GL.aud.playbackRate=GS.slow?0.85:1;if(k==='mute')stopLesson()}});
   var main=$('.main',right);
   main.onclick=function(){if(GL.wait){$('.next',right).click();return}if(GL.playing){stopLesson();main.textContent='Continue ▶';return}if(!GD){main.textContent='Loading…';loadGD(function(){main.textContent='Pause ❚❚';start()});return}if(GL.i>=GL.beats.length){GL.i=0;GL.board.innerHTML=''}main.textContent='Pause ❚❚';start()};
-  $('.next',right).onclick=function(){if(!GD){loadGD(function(){$('.next',right).click()});return}stopLesson();GL.i++;GL.playing=true;main.textContent='Pause ❚❚';beat()};
+  $('.next',right).onclick=function(){if(!GD){main.click();return}stopLesson();GL.i++;GL.playing=true;main.textContent='Pause ❚❚';beat()};
   $('.again',right).onclick=function(){if(!GD)return;stopLesson();GL.playing=true;main.textContent='Pause ❚❚';beat(true)};
   function start(){GL.playing=true;if(!GL.beats){GL.beats=GD.beats[GL.sid]||[]}beat()}
 }
