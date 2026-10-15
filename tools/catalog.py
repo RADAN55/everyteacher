@@ -68,6 +68,8 @@ R = [
   "Grammar you can see: a sentence X-ray, four lines, fourteen taught stations, a stamp at each.", True),
  ("writing-studio.html", "The Writing Studio", "students", "Lessons", "8 lessons at the board",
   "Mr. Castillo teaches the shape of a 4 or 5: claim, reasons, transitions, the email, the edit, the clock.", True),
+ ("elpa-question-types-guide.html", "ELPA Question Types: Test Prep Guide", "students", "Guide", "18 question types · PDF",
+  "What each question is really asking, the words that signal it, three moves, and a worked example with every choice explained.", True),
  ("write-about-it.html", "Write About It", "students", "Lessons", "5 lessons at the board",
   "Ms. Bell teaches the six-step routine on four given topics (describe, explain how, tell a time, opinion) and then any topic you bring.", True),
  ("listening-speaking-studio.html", "ELPA21 Listening & Speaking Studio", "students", "Practice", "48 items · 8 speaking tasks",
@@ -190,7 +192,7 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+NEW = {"elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
