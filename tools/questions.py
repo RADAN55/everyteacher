@@ -29,6 +29,17 @@ Q = [
    ("The EL Field Guide", "https://radan55.github.io/el-field-guide/")]),
 
  ("teachers",
+  "I don't speak Spanish. How do I use my students' Spanish without translating my whole class?",
+  "You don't translate; you let students think and talk in any language and write in English. "
+  "Using Spanish in the Content Classroom is a 40-page guide for teachers who speak no Spanish: "
+  "the cognates already in your textbook (and the false friends), Talk → Plan → Write, "
+  "Preview-View-Review, a phrase bank, fair assessment, and a sample lesson for Algebra I, "
+  "Biology, U.S. History and English II. Cognate Hunt lights up the words your Spanish "
+  "speakers already know in any reading you paste.",
+  [("Using Spanish in the Content Classroom", "using-spanish-content-classroom.html"),
+   ("Cognate Hunt", "cognate-hunt.html")]),
+
+ ("teachers",
   "My ELs read the passage twice and still miss the question. What is the simplest fix?",
   "Have them read the question first. Read the Question First is a three-step move — spot "
   "the key words, say what you need to find, read and prove it — on one bilingual poster, "

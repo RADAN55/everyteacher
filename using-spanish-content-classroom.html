@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Spanish to Teach Spanish-Speaking English Learners in the Content Classroom · EL Publishing</title>
+<meta name="description" content="A 40-page guide for math, science, social studies and ELA teachers in grades 9–12 who do not speak Spanish: why the home language belongs in the room (Cummins, Moll, García), long-term ELs vs. newcomers, subject cognate lists and false friends, bilingual word walls, Talk → Plan → Write, Preview-View-Review, translation tools, fair assessment, a teacher phrase bank, family partnership, four lesson snapshots and a one-page quick reference. Free PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--wash-grey-5:#FAFBFD;--ink-red-6:#8A6A0E;--navy-dk-bg:var(--navy-dk);--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;--teal:#0B6670;--teal-lt:#E6F2F3;--cream:#FFF5D6;--red:#C8373E}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:960px;margin:0 auto;padding:40px 22px 34px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center}
+  @media (max-width:720px){.head-in{grid-template-columns:1fr}.head-in .cover{display:none}}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(34px,7vw,58px);line-height:1;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:17px;color:#C9CEEA;max-width:62ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chips span{border:1px solid rgba(235,217,160,.5);color:var(--gold-lt);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:4px 11px;border-radius:999px;font-weight:600}
+  .hbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:9px 18px;border-radius:999px;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;border:1.5px solid var(--gold-lt);color:var(--gold-lt)}
+  main .btn.ghost{border-color:var(--navy);color:var(--navy)}
+  .cover img{width:100%;height:auto;display:block;border:1px solid rgba(255,255,255,.25);box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(1.5deg)}
+
+  .toc{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);box-shadow:0 2px 10px rgba(30,39,97,.06)}
+  .toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
+  .toc .wrap::-webkit-scrollbar{display:none}
+  .toc a{flex:0 0 auto;font-size:13px;font-weight:600;text-decoration:none;color:var(--navy);padding:6px 12px;border-radius:999px;white-space:nowrap}
+  .toc a:hover{background:var(--mist)}
+  .toc a.on{background:var(--navy-bg);color:#fff}
+
+  main{padding:28px 0 40px}
+  .part{margin:40px 0 0;scroll-margin-top:60px}
+  .part .pk{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin:0 0 4px}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:30px;color:var(--navy);margin:0 0 6px;letter-spacing:-.01em;line-height:1.12}
+  .deck{margin:0 0 16px;color:var(--muted);font-size:16px}
+  h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:22px;color:var(--navy);margin:28px 0 6px;letter-spacing:-.01em;line-height:1.15}
+
+  .callout{background:var(--teal-lt);border:1px solid #CBE2E4;border-left:6px solid var(--teal);padding:14px 18px;margin:14px 0 0;border-radius:4px}
+  .callout b{display:block;color:var(--teal);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+  .callout p{margin:0}
+  .callout.gold{background:var(--cream);border-color:#EBD9A0;border-left-color:var(--gold)}
+  .callout.gold b{color:var(--ink-red-6)}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0 0}
+  .stats div{background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
+  .stats b{display:block;font-family:Fraunces,Georgia,serif;font-size:32px;color:var(--navy);line-height:1}
+  .stats span{font-size:13px;color:var(--muted)}
+
+  ol.routine{list-style:none;padding:0;margin:14px 0 0;counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+  ol.routine li{counter-increment:s;background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--teal);padding:12px 14px;font-size:15px}
+  ol.routine li::before{content:counter(s);display:block;font-family:Fraunces,Georgia,serif;font-weight:700;font-size:26px;color:var(--gold-ink);line-height:1;margin-bottom:4px}
+  ol.routine li b{display:block;color:var(--navy)}
+  ol.routine li small{color:var(--muted)}
+
+  .lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 0}
+  @media (max-width:640px){.lanes{grid-template-columns:1fr}}
+  .lane{background:var(--paper);border:1px solid var(--rule)}
+  .lane h4{margin:0;padding:10px 16px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal)}
+  .lane.pro h4{background:var(--navy-bg)}
+  .lane ul{margin:0;padding:12px 16px 14px 34px;font-size:15px}
+  .lane li+li{margin-top:4px}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 0;background:var(--paper);font-size:15px;border:1px solid var(--rule)}
+  th{background:var(--teal);color:#fff;text-align:left;padding:10px 12px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+  td{padding:10px 12px;border-top:1px solid var(--rule);vertical-align:top}
+  tr:nth-child(even) td{background:var(--wash-grey-5)}
+  td.n{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--gold-ink);font-size:19px;width:52px;white-space:nowrap}
+  td b{color:var(--navy)}
+  td i{color:var(--muted)}
+  @media (max-width:640px){
+    table,thead,tbody,tr,th,td{display:block}
+    thead{display:none}
+    tr{border-top:3px solid var(--teal);margin-top:10px}
+    td{border-top:1px solid var(--rule);padding:8px 12px}
+    td.n{width:auto;border-top:0;padding-bottom:0}
+    td::before{content:attr(data-h);display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:2px}
+    td.n::before{display:none}
+  }
+
+  .pages{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:16px 0 0;align-items:start}
+  @media (max-width:640px){.pages{grid-template-columns:1fr}}
+  .pages figure{margin:0;background:var(--paper);border:1px solid var(--rule);padding:10px}
+  .pages img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+  .pages figcaption{font-size:13.5px;color:var(--muted);padding:8px 2px 0}
+  .pages figcaption b{color:var(--navy)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0 0}
+  .cardx{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:16px 18px}
+  .cardx b.t{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:18px;line-height:1.2;margin-bottom:6px}
+  .cardx p{margin:0;font-size:15px}
+  .cardx p+p{margin-top:6px}
+
+  .rubric{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:14px 0 0}
+  .rubric div{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;font-size:14.5px}
+  .rubric b{display:block;color:var(--navy);margin-bottom:4px}
+  .rubric i{color:var(--muted);font-style:normal}
+
+  .pdfbox{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:var(--paper);border:1px solid var(--rule);border-left:6px solid var(--navy);padding:16px 20px;margin:26px 0 0}
+  .pdfbox p{margin:0;font-size:15px}
+  .pdfbox b{color:var(--navy)}
+  .related{margin:34px 0 0;border-top:1px solid var(--rule);padding-top:18px}
+  .related h4{margin:0 0 8px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .related a{display:inline-block;margin:4px 8px 4px 0;font-size:14.5px}
+  .fine{font-size:13.5px;color:var(--muted);margin:14px 0 0}
+  footer{background:var(--navy-dk-bg);color:#C9CEEA;font-size:14px;padding:26px 0}
+  footer a{color:var(--gold-lt)}
+  footer b{color:#fff;display:block;font-size:15px}
+  @media print{
+    body{background:var(--paper);font-size:12.5px}
+    header{background:var(--navy-bg)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toc,.hbtns,.pdfbox,.related,footer,#elp-guide-btn,.elp-guide{display:none!important}
+    th{background:var(--teal)!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    table,.callout,.cardx,.lane{break-inside:avoid}
+  }
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0 0}
+  .step{background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--gold);padding:16px 18px}
+  .step .num{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:40px;line-height:1;color:var(--navy);display:block}
+  .step b.t{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.15;margin:6px 0 2px}
+  .step .es{display:block;color:var(--teal);font-size:14px;font-style:italic;margin-bottom:8px}
+  .step p{margin:0;font-size:15px}
+  .step p+p{margin-top:6px}
+  .frames{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;margin:14px 0 0}
+  .frames li{margin:6px 0}
+  .frames i{color:var(--teal);font-style:italic}
+  mark{padding:0 3px;border-radius:2px}
+  mark.y{background:#FFF27A}mark.p{background:#F4B6E3}mark.g{background:#B9F0C4}
+  .demo{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin:16px 0 0}
+  @media (max-width:760px){.demo{grid-template-columns:1fr}.demo .arr{transform:rotate(90deg);text-align:center}}
+  .demo .box{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;font-size:15px}
+  .demo .box h4{margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--red);display:inline-block;padding:3px 10px;border-radius:999px}
+  .demo .box.ev h4{background:var(--navy)}.demo .box.ans h4{background:#2E7D32}
+  .demo .arr{font-size:34px;color:var(--gold);align-self:center;font-weight:700}
+  .demo p{margin:0}.demo p+p{margin-top:6px}
+  .poster{margin:16px 0 0;background:var(--paper);border:1px solid var(--rule);padding:10px}
+  .poster img{width:100%;height:auto;display:block}
+  .poster figcaption{font-size:13.5px;color:var(--muted);padding:8px 2px 0}
+  .sor{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 0}
+  .sor div{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;font-size:15px}
+  .sor div:nth-child(1){border-top:6px solid #6A3FA0}.sor div:nth-child(2){border-top:6px solid #2E7D32}.sor div:nth-child(3){border-top:6px solid #D2691E}
+  .sor b{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:19px}
+  .sor i{display:block;color:var(--teal);font-size:13.5px;margin-bottom:6px}
+</style>
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/using-spanish-content-classroom.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Using Spanish to Teach Spanish-Speaking English Learners in the Content Classroom", "url": "https://radan55.github.io/everyteacher/using-spanish-content-classroom.html", "description": "A 40-page guide for math, science, social studies and ELA teachers in grades 9–12 who do not speak Spanish: why the home language belongs in the room (Cummins, Moll, García), long-term ELs vs. newcomers, subject cognate lists and false friends, bilingual word walls, Talk → Plan → Write, Preview-View-Review, translation tools, fair assessment, a teacher phrase bank, family partnership, four lesson snapshots and a one-page quick reference. Free PDF.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "PDF guide"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/using-spanish-content-classroom.html">
+<meta property="og:title" content="Using Spanish to Teach Spanish-Speaking English Learners in the Content Classroom · EL Publishing">
+<meta property="og:description" content="A 40-page guide for math, science, social studies and ELA teachers in grades 9–12 who do not speak Spanish: why the home language belongs in the room (Cummins, Moll, García), long-term ELs vs. newcomers, subject cognate lists and false friends, bilingual word walls, Talk → Plan → Write, Preview-View-Review, translation tools, fair assessment, a teacher phrase bank, family partnership, four lesson snapshots and a one-page quick reference. Free PDF.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/using-spanish-content-classroom.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <div>
+      <p class="brand"><a href="index.html">EL PUBLISHING</a> · A PRACTICAL GUIDE FOR CONTENT TEACHERS</p>
+      <h1>Using Spanish to teach Spanish-speaking ELs — <em>in your subject.</em></h1>
+      <p class="tag">Research-based strategies for math, science, social studies and ELA teachers in grades 9–12 — <b>no fluency required</b>. Why the home language belongs in your room, how to tell a long-term EL from a newcomer, the cognates already hiding in your textbook, and the one move that changes what students can write: talk in Spanish, write in English.</p>
+      <div class="chips"><span>40 pages</span><span>12 chapters</span><span>4 subject cognate lists</span><span>4 lesson snapshots</span><span>Teacher phrase bank</span><span>One-page quick reference</span><span>Free PDF</span></div>
+      <div class="hbtns"><a class="btn" href="using-spanish-content-classroom.pdf" download>Download the guide (PDF)</a><a class="btn ghost" href="#moves">See the ten moves</a></div>
+    </div>
+    <div class="cover"><img src="img/using-spanish-cover.jpg" alt="Cover of Using Spanish to Teach Spanish-Speaking English Learners in the Content Classroom" width="935" height="1210"></div>
+  </div>
+</header>
+<nav class="toc" aria-label="Sections"><div class="wrap">
+  <a href="#start">Start here</a><a href="#why">Why it works</a><a href="#learners">Know your learners</a><a href="#cognates">Cognates</a><a href="#moves">Ten moves</a><a href="#phrases">Phrase bank</a><a href="#snapshots">Lesson snapshots</a><a href="#plan">30-day plan</a><a href="#inside">Inside the guide</a>
+</div></nav>
+<main class="wrap">
+<section class="part" id="start">
+  <p class="pk">Start here</p>
+  <h2 class="sec">A resource your students carry into every class</h2>
+  <p class="deck">About one in three students at Laurel High School is Hispanic. Many are English learners — and every one of them brings a strong, living home language into your room each day.</p>
+  <p>This guide was written for teachers who do not speak Spanish. You do not need to translate your lessons or become a language teacher. You need a handful of research-backed routines, a few dozen words and phrases, and a willingness to let students use everything they know to learn your content. Every strategy here can be tried next week; every chapter ends with reflection questions for a PLC.</p>
+  <div class="stats">
+    <div><b>12</b><span>chapters, each with PLC reflection questions</span></div>
+    <div><b>4</b><span>cognate lists: math, science, social studies, ELA</span></div>
+    <div><b>16</b><span>false cognates that cause real confusion</span></div>
+    <div><b>18</b><span>bilingual sentence frames</span></div>
+    <div><b>50+</b><span>classroom phrases in Spanish</span></div>
+    <div><b>4</b><span>sample lessons, one per core subject</span></div>
+  </div>
+  <div class="callout gold"><b>The one idea</b><p><b>Think and talk in any language; write in English.</b> Spanish in your classroom is a tool for learning, not a distraction from it. English remains the goal for the final product — and Spanish is one of the fastest routes to get there.</p></div>
+  <div class="callout"><b>Short on time?</b><p>Read Chapter 1, skim Chapter 3 for your subject's cognate list, and print the one-page quick reference (page 38). Planning a unit? Start with your subject's lesson snapshot in Chapter 11 and borrow its structure.</p></div>
+</section>
+
+<section class="part" id="why">
+  <p class="pk">Chapter 1</p>
+  <h2 class="sec">Why Spanish belongs in your classroom</h2>
+  <p class="deck">Three bodies of research, one conclusion: a student's first language is one of the best tools available for learning English and learning content.</p>
+  <div class="sor">
+    <div><b>Transfer</b><i>Cummins · common underlying proficiency</i>Concepts and literacy skills built in one language become a shared foundation for the other. A student who understands <i>fracción</i> or <i>fotosíntesis</i> does not relearn the concept — they need the English words and structures to express it. Transfer is not automatic; it happens when teachers make the connection visible.</div>
+    <div><b>Funds of knowledge</b><i>Moll, Amanti, Neff &amp; González · 1992</i>Families hold rich, historically developed knowledge — construction, agriculture, cooking, business, care — and much of it lives in Spanish. When lessons connect to it, students see their families' expertise reflected in academic work.</div>
+    <div><b>Translanguaging</b><i>García &amp; colleagues</i>Bilingual people use one connected repertoire, not two boxes. A translanguaging <i>stance</i> treats the full repertoire as a resource and does not lower the bar for English. You can take that stance without speaking a word of Spanish.</div>
+  </div>
+  <div class="callout"><b>The cognate advantage</b><p>Lubliner and Hiebert (2011) identified 426 English–Spanish cognates among the 570 headwords of the Academic Word List — roughly three out of four. The bridge exists. Nagy and colleagues (1993) found students do not always notice it on their own, so we have to point it out.</p></div>
+  <p class="fine">The legal floor is also in the guide: <i>Lau v. Nichols</i> (1974), <i>Plyler v. Doe</i> (1982), and the 2015 joint Dear Colleague letter from the U.S. Departments of Justice and Education on English learner students and limited English proficient parents.</p>
+</section>
+
+<section class="part" id="learners">
+  <p class="pk">Chapter 2</p>
+  <h2 class="sec">Long-term ELs and newcomers need different things</h2>
+  <p class="deck">Most ELs in content classes are Emerging or Progressing on ELPA21. Some have been in U.S. schools since kindergarten; a few arrived this year. Spanish helps both — differently.</p>
+  <div class="lanes">
+    <div class="lane pro"><h4>Long-term English learner · 5+ years in U.S. schools</h4><ul>
+      <li>Often sounds fluent in social English, so teachers miss that they are an EL</li>
+      <li>Academic reading and writing in English lag behind oral English</li>
+      <li>Strong oral Spanish; academic Spanish literacy varies, often limited — <b>don't hand them a Spanish textbook and assume it helps</b></li>
+      <li><b>Best uses of Spanish:</b> talk before writing, cognates, checking understanding with a partner</li>
+      <li><b>Watch for:</b> letting Spanish replace English writing; assuming no support is needed because they "sound fluent"</li>
+    </ul></div>
+    <div class="lane"><h4>Newcomer · recently arrived</h4><ul>
+      <li>Beginning English; oral Spanish often strong; literacy depends on prior schooling (some have interrupted education)</li>
+      <li>Some speak an Indigenous language — K'iche', Mam, Q'anjob'al — so Spanish may be their <i>second</i> language. Ask; never assume</li>
+      <li><b>Best uses of Spanish:</b> previews, bilingual glossaries, Spanish texts or videos on the topic, a bilingual partner, responding in Spanish to show content knowledge</li>
+      <li><b>Watch for:</b> isolating them, leaving them silent in the back, translated worksheets with no English exposure</li>
+      <li><b>Motivation keys:</b> belonging, safety, visible small wins, a buddy, a name pronounced correctly</li>
+    </ul></div>
+  </div>
+  <div class="frames">
+    <b>The five-question language survey · <i>Encuesta de idioma</i></b>
+    <ul>
+      <li>What language(s) do you speak at home? <i>¿Qué idioma(s) hablas en casa?</i></li>
+      <li>Can you read and write in Spanish? A little, some, or a lot? <i>¿Puedes leer y escribir en español? ¿Un poco, algo o mucho?</i></li>
+      <li>Where did you go to school before Laurel High? <i>¿Dónde estudiaste antes de Laurel High?</i></li>
+      <li>What helps you learn best in class? <i>¿Qué te ayuda a aprender mejor en clase?</i></li>
+      <li>What do you want me to know about you? <i>¿Qué quieres que yo sepa de ti?</i></li>
+    </ul>
+  </div>
+</section>
+
+<section class="part" id="cognates">
+  <p class="pk">Chapter 3</p>
+  <h2 class="sec">Cognates: your built-in bridge</h2>
+  <p class="deck">The "hard" words in your textbook are often the easy words for a Spanish speaker. Teach the patterns, then the exceptions.</p>
+  <table>
+    <thead><tr><th>English pattern</th><th>Spanish pattern</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td data-h="English"><b>-tion</b></td><td data-h="Spanish">-ción</td><td data-h="Examples">nation / nación · solution / solución · revolution / revolución</td></tr>
+      <tr><td data-h="English"><b>-ty</b></td><td data-h="Spanish">-dad / -tad</td><td data-h="Examples">gravity / gravedad · density / densidad · liberty / libertad</td></tr>
+      <tr><td data-h="English"><b>-ous</b></td><td data-h="Spanish">-oso / -osa</td><td data-h="Examples">famous / famoso · numerous / numeroso</td></tr>
+      <tr><td data-h="English"><b>-ic, -ical</b></td><td data-h="Spanish">-ico / -ica</td><td data-h="Examples">scientific / científico · historic / histórico</td></tr>
+      <tr><td data-h="English"><b>-ly</b></td><td data-h="Spanish">-mente</td><td data-h="Examples">rapidly / rápidamente · finally / finalmente</td></tr>
+      <tr><td data-h="English"><b>-ize</b></td><td data-h="Spanish">-izar</td><td data-h="Examples">analyze / analizar · organize / organizar</td></tr>
+      <tr><td data-h="English"><b>s + consonant</b></td><td data-h="Spanish">es + consonant</td><td data-h="Examples">structure / estructura · species / especie · state / estado</td></tr>
+      <tr><td data-h="English"><b>ph, th</b></td><td data-h="Spanish">f, t</td><td data-h="Examples">photosynthesis / fotosíntesis · theory / teoría</td></tr>
+    </tbody>
+  </table>
+  <ol class="routine">
+    <li><b>Spot</b><small>Before a reading, partners skim and highlight words that look like Spanish.</small></li>
+    <li><b>Say</b><small>Students say the Spanish word aloud — let them teach you.</small></li>
+    <li><b>Check</b><small>Same meaning, or a false cognate? Use context.</small></li>
+    <li><b>Sort</b><small>True cognates go on the word wall in two colors.</small></li>
+    <li><b>Use</b><small>Two new academic words in the exit ticket.</small></li>
+  </ol>
+  <h3>The guide's subject lists</h3>
+  <div class="cards">
+    <div class="cardx"><b class="t">Mathematics</b><p>34 cognates — <i>ecuación, coeficiente, hipotenusa, polinomio, probabilidad</i> — plus the words that are <b>not</b>: slope = <i>pendiente</i>, average = <i>promedio</i>, integer = <i>número entero</i>, square root = <i>raíz cuadrada</i>.</p></div>
+    <div class="cardx"><b class="t">Science</b><p>32 cognates — <i>fotosíntesis, cromosoma, hipótesis, densidad, molécula</i> — and the false friend every biology teacher meets: a living cell is <i>célula</i>, not <i>celda</i>.</p></div>
+    <div class="cardx"><b class="t">Social studies</b><p>28 cognates — <i>democracia, constitución, inmigración, imperialismo</i> — plus pre-teach terms: civil rights = <i>derechos civiles</i>, amendment = <i>enmienda</i>, slavery = <i>esclavitud</i>, treaty = <i>tratado</i>.</p></div>
+    <div class="cardx"><b class="t">English language arts</b><p>28 cognates — <i>metáfora, inferencia, protagonista, ironía, símil</i> — and the ELA false cognate that matters most: <i>argumento</i> often means the <b>plot</b>, and <i>discusión</i> is usually a <b>quarrel</b>.</p></div>
+  </div>
+  <div class="callout gold"><b>Math alert</b><p>In Spain, Colombia and Argentina, a comma marks the decimal and a period separates thousands: <b>3,5</b> means 3.5 and <b>1.000</b> means one thousand. Mexico and most of Central America use the U.S. convention. If a student writes 3,5 they may not be making an error — ask, and teach the U.S. convention explicitly.</p></div>
+  <figure class="poster"><img src="img/using-spanish-cognates.jpg" alt="Page 12 of the guide: the five-minute cognate routine and the mathematics cognate list" loading="lazy"><figcaption><b>Page 12.</b> The five-minute cognate routine and the mathematics list. Science, social studies and ELA lists follow on pages 12–14; false cognates on pages 14–15.</figcaption></figure>
+</section>
+
+<section class="part" id="moves">
+  <p class="pk">Chapters 4–10</p>
+  <h2 class="sec">Ten moves that work</h2>
+  <p class="deck">From the one-page quick reference. Each one has its own chapter, with a how-to for teachers who speak no Spanish.</p>
+  <table>
+    <thead><tr><th></th><th>The move</th><th>In practice</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td data-h="Move"><b>Say it out loud</b></td><td data-h="In practice">"Think and talk in any language; write in English." Many students were told in past classrooms that Spanish was not allowed — the sentence matters.</td></tr>
+      <tr><td class="n">2</td><td data-h="Move"><b>Teach cognates</b></td><td data-h="In practice">-tion/-ción, -ty/-dad, -ous/-oso, -ly/-mente, s → es. Patterns are clues, not rules.</td></tr>
+      <tr><td class="n">3</td><td data-h="Move"><b>Flag false cognates</b></td><td data-h="In practice"><i>argumento, carácter, realizar, actual, éxito, celda, billón, embarazada, molestar.</i> Students love catching them.</td></tr>
+      <tr><td class="n">4</td><td data-h="Move"><b>Bilingual word wall</b></td><td data-h="In practice">10–20 unit words, two colors, a star for cognates, a visual beside each. Students build it; you point to it while you teach.</td></tr>
+      <tr><td class="n">5</td><td data-h="Move"><b>Student glossaries</b></td><td data-h="In practice">Term · Spanish · own explanation in any language · picture. Allowed as a reference on classwork and, where appropriate, quizzes.</td></tr>
+      <tr><td class="n">6</td><td data-h="Move"><b>Talk → Plan → Write</b></td><td data-h="In practice">Partners talk 2–3 minutes in any language, jot a plan in any language, write in English with a frame, share in English. The most powerful move in the guide.</td></tr>
+      <tr><td class="n">7</td><td data-h="Move"><b>Preview–View–Review</b></td><td data-h="In practice">A short Spanish video or summary before the English lesson; Spanish partner review after; English exit ticket. (Freeman &amp; Freeman)</td></tr>
+      <tr><td class="n">8</td><td data-h="Move"><b>Strategic pairs &amp; bilingual frames</b></td><td data-h="In practice">Pair by English level, Spanish level, content knowledge and personality; rotate so no one becomes the class translator. Post 3–4 frames per task; fade them.</td></tr>
+      <tr><td class="n">9</td><td data-h="Move"><b>Translation tools, used well</b></td><td data-h="In practice">Words and short phrases, not whole texts. English beside Spanish, never Spanish-only. No student names or grades in a public tool.</td></tr>
+      <tr><td class="n">10</td><td data-h="Move"><b>Assess content fairly</b></td><td data-h="In practice">Ask what the test measures. Bilingual directions, a "plan in any language" box, credit for correct concepts in mixed-language answers, separate rubric rows for content and language.</td></tr>
+    </tbody>
+  </table>
+  <div class="frames">
+    <b>Power frames · <i>Frases útiles</i></b>
+    <ul>
+      <li>I think ___ because ___. <i>Creo que ___ porque ___.</i></li>
+      <li>The evidence shows that ___. <i>La evidencia muestra que ___.</i></li>
+      <li>According to the text, ___. <i>Según el texto, ___.</i></li>
+      <li>One cause of ___ was ___. <i>Una causa de ___ fue ___.</i></li>
+      <li>My hypothesis is that if ___, then ___. <i>Mi hipótesis es que si ___, entonces ___.</i></li>
+      <li>The slope is ___, which means ___. <i>La pendiente es ___, lo que significa que ___.</i></li>
+    </ul>
+  </div>
+  <div class="callout gold"><b>The two-question test</b><p>When you are not sure whether a use of Spanish is helping, ask: <b>Is it helping the student understand the content? Is it moving the student toward stronger English?</b> If either is yes, it is probably a good use. If both are no, adjust.</p></div>
+  <h3>Common pitfalls the guide names</h3>
+  <div class="cards">
+    <div class="cardx"><b class="t">The permanent translator</b><p>Making the same bilingual student the class interpreter interrupts their own learning and can feel like an unpaid job. Rotate, use bilingual materials, and ask privately whether they are comfortable helping.</p></div>
+    <div class="cardx"><b class="t">Translating everything</b><p>Spanish-only handouts remove the English input students need to grow. Keep English and Spanish side by side; translate directions and key ideas, not entire texts.</p></div>
+    <div class="cardx"><b class="t">Spanish only for discipline</b><p>If the only Spanish a student hears from you is a correction, that is the message they receive. Make most of it welcoming, instructional and encouraging.</p></div>
+    <div class="cardx"><b class="t">Students as interpreters for families</b><p>Request a qualified interpreter through the front office or the ENL program. And never ask students or families about immigration status — <i>Plyler v. Doe</i> (1982).</p></div>
+  </div>
+</section>
+
+<section class="part" id="phrases">
+  <p class="pk">Chapter 8</p>
+  <h2 class="sec">A teacher's Spanish phrase bank</h2>
+  <p class="deck">Pick three phrases this week — a greeting, a direction, an encouragement — and use them every day. Let students correct your pronunciation; it turns them into experts.</p>
+  <table>
+    <thead><tr><th>English</th><th>To one student (tú)</th><th>To the class (ustedes)</th></tr></thead>
+    <tbody>
+      <tr><td data-h="English"><b>Listen, please.</b></td><td data-h="To one">Escucha, por favor.</td><td data-h="To the class">Escuchen, por favor.</td></tr>
+      <tr><td data-h="English"><b>Take out your notebook.</b></td><td data-h="To one">Saca tu cuaderno.</td><td data-h="To the class">Saquen sus cuadernos.</td></tr>
+      <tr><td data-h="English"><b>Work with a partner.</b></td><td data-h="To one">Trabaja con un compañero.</td><td data-h="To the class">Trabajen en parejas.</td></tr>
+      <tr><td data-h="English"><b>Read the directions.</b></td><td data-h="To one">Lee las instrucciones.</td><td data-h="To the class">Lean las instrucciones.</td></tr>
+      <tr><td data-h="English"><b>You have five minutes.</b></td><td data-h="To one">Tienes cinco minutos.</td><td data-h="To the class">Tienen cinco minutos.</td></tr>
+      <tr><td data-h="English"><b>Show me.</b></td><td data-h="To one">Muéstrame.</td><td data-h="To the class">Muéstrenme.</td></tr>
+    </tbody>
+  </table>
+  <div class="cards">
+    <div class="cardx"><b class="t">Supporting language use</b><p>You can talk in Spanish with your partner, then write in English. <i>Puedes hablar en español con tu compañero y luego escribir en inglés.</i></p><p>Now say it in English, please. <i>Ahora dilo en inglés, por favor.</i></p><p>Is this word similar in Spanish? <i>¿Esta palabra se parece a una palabra en español?</i></p></div>
+    <div class="cardx"><b class="t">Checking in</b><p>Welcome! <i>¡Bienvenido! / ¡Bienvenida!</i></p><p>How do you pronounce your name? <i>¿Cómo se pronuncia tu nombre?</i></p><p>Show me the part you don't understand. <i>Muéstrame la parte que no entiendes.</i></p></div>
+    <div class="cardx"><b class="t">Encouragement</b><p>Almost! Try again. <i>¡Casi! Inténtalo otra vez.</i></p><p>Mistakes help us learn. <i>Los errores nos ayudan a aprender.</i></p><p>Your Spanish is a strength. <i>Tu español es una fortaleza.</i></p></div>
+    <div class="cardx"><b class="t">For families (usted)</b><p>One moment, please. I'll get an interpreter. <i>Un momento, por favor. Voy a buscar un intérprete.</i></p><p>Your son / daughter is doing well in class. <i>A su hijo / hija le va bien en la clase.</i></p><p>Thank you for your support. <i>Gracias por su apoyo.</i></p></div>
+  </div>
+  <p class="fine">The guide includes a one-minute pronunciation key and a note on <i>tú</i>, <i>ustedes</i> and the respectful <i>usted</i> for parents. <i>Pizarrón</i> is common in Mexico and Central America; <i>pizarra</i> is also widely understood.</p>
+</section>
+
+<section class="part" id="snapshots">
+  <p class="pk">Chapter 11</p>
+  <h2 class="sec">Four lesson snapshots</h2>
+  <p class="deck">One sample lesson per core subject, each in an ordinary 50–55 minute period, each with a content objective, a language objective, cognates to point out, words to pre-teach, and notes for newcomers and long-term ELs.</p>
+  <div class="cards">
+    <div class="cardx"><b class="t">Algebra I · Slope as a rate of change</b><p>A landscaping business charges $40 plus $25 per hour, previewed in English and Spanish. Frame: <i>The slope is ___, which means ___.</i> Pre-teach <i>pendiente</i>, <i>tasa de cambio</i>, <i>por</i>. Watch for 3,5 written for 3.5.</p></div>
+    <div class="cardx"><b class="t">Biology · Photosynthesis</b><p>Spanish video preview, cognate hunt on the lab handout, a leaf-disk demonstration, then Talk → Plan → Write: <i>Because ___, the plant ___. As a result, ___.</i> False cognate: cell = <i>célula</i>.</p></div>
+    <div class="cardx"><b class="t">U.S. History · Freedom Summer, 1964</b><p>Groups discuss why voting matters, then analyze an excerpt of Fannie Lou Hamer's 1964 testimony with a bilingual glossary. Frame: <i>This primary source shows that ___ because ___.</i> Keep the focus on the history; never ask about status.</p></div>
+    <div class="cardx"><b class="t">English II · Writing an argument</b><p>Should all students learn a second language? Debate in any language, a false-cognate moment on <i>argumento</i> and <i>discusión</i>, a color-coded model paragraph, planning in any language, writing in English with fading frames.</p></div>
+  </div>
+  <figure class="poster"><img src="img/using-spanish-snapshot-algebra.jpg" alt="Page 32 of the guide: the Algebra I lesson snapshot on slope as a rate of change" loading="lazy"><figcaption><b>Page 32.</b> The Algebra I snapshot. Biology, U.S. History and English II follow on pages 33–35.</figcaption></figure>
+</section>
+
+<section class="part" id="plan">
+  <p class="pk">Chapter 12</p>
+  <h2 class="sec">A 30-day plan</h2>
+  <p class="deck">You do not need to do everything at once. One move, used consistently, then another.</p>
+  <ol class="routine">
+    <li><b>Week 1</b><small>Learn every name and how to pronounce it. Three Spanish phrases daily. Give the language survey.</small></li>
+    <li><b>Week 2</b><small>Bilingual word wall for the current unit. One cognate pattern. Introduce "Talk in any language, write in English."</small></li>
+    <li><b>Week 3</b><small>One Preview-View-Review lesson. Three bilingual frames posted. Strategic pairs planned.</small></li>
+    <li><b>Week 4</b><small>A "plan in any language" box on an assessment. One positive message home in Spanish. Meet with the ENL teacher to reflect.</small></li>
+  </ol>
+  <div class="callout"><b>Planning tools in the appendix</b><p>A unit planning checklist, a strategic pairing planner (ELPA21 level · Spanish strength · LTEL or newcomer · good partners), and a bilingual glossary template — page 40.</p></div>
+</section>
+
+<section class="part" id="inside">
+  <p class="pk">The guide</p>
+  <h2 class="sec">Inside the guide</h2>
+  <p class="deck">Forty pages, fully referenced. The one-page quick reference on page 38 is built to print and keep on a desk.</p>
+  <table>
+    <thead><tr><th></th><th>Chapter</th><th>What's in it</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td data-h="Chapter"><b>Why Spanish belongs in your classroom</b></td><td data-h="What's in it">Cummins, Moll, García, the cognate research, the National Literacy Panel, and the legal floor</td></tr>
+      <tr><td class="n">2</td><td data-h="Chapter"><b>Knowing your learners</b></td><td data-h="What's in it">ELPA21 levels at a glance, long-term ELs, newcomers, SIFE, Indigenous-language speakers, a language survey</td></tr>
+      <tr><td class="n">3</td><td data-h="Chapter"><b>Cognates: your built-in bridge</b></td><td data-h="What's in it">Spelling patterns, a five-minute routine, four subject lists, false friends, number formatting</td></tr>
+      <tr><td class="n">4</td><td data-h="Chapter"><b>Making Spanish visible</b></td><td data-h="What's in it">Bilingual word walls and student-made glossaries</td></tr>
+      <tr><td class="n">5</td><td data-h="Chapter"><b>Talk in Spanish, write in English</b></td><td data-h="What's in it">Talk → Plan → Write, Preview-View-Review, strategic pairing, 18 bilingual sentence frames</td></tr>
+      <tr><td class="n">6</td><td data-h="Chapter"><b>Translation tools, used well</b></td><td data-h="What's in it">What they are good for, where they fail, privacy, teaching students to use them to learn</td></tr>
+      <tr><td class="n">7</td><td data-h="Chapter"><b>Honoring Spanish in assessment</b></td><td data-h="What's in it">What am I measuring? Seven ways to honor Spanish; LTELs, newcomers, and state testing rules</td></tr>
+      <tr><td class="n">8</td><td data-h="Chapter"><b>A teacher's Spanish phrase bank</b></td><td data-h="What's in it">Pronunciation, tú/ustedes/usted, directions, support, check-ins, encouragement</td></tr>
+      <tr><td class="n">9</td><td data-h="Chapter"><b>Partnering with families</b></td><td data-h="What's in it">Responsibilities under the 2015 guidance, interpreters, Plyler, practical steps, a positive-postcard routine</td></tr>
+      <tr><td class="n">10</td><td data-h="Chapter"><b>Common pitfalls</b></td><td data-h="What's in it">Eleven habits that undercut learning or dignity, and what to do instead</td></tr>
+      <tr><td class="n">11</td><td data-h="Chapter"><b>Lesson snapshots</b></td><td data-h="What's in it">Algebra I, Biology, U.S. History, English II</td></tr>
+      <tr><td class="n">12</td><td data-h="Chapter"><b>Putting it into practice</b></td><td data-h="What's in it">A 30-day plan and reflection questions; quick reference, references, planning tools</td></tr>
+    </tbody>
+  </table>
+  <figure class="poster"><img src="img/using-spanish-quick-reference.jpg" alt="Page 38 of the guide: the one-page quick reference, Spanish in the Content Classroom" loading="lazy"><figcaption><b>Page 38.</b> The one-page quick reference: ten moves, know your learners, avoid, directions, check-ins, encouragement, power frames, and the two-question test.</figcaption></figure>
+</section>
+
+<div class="pdfbox">
+  <p><b>The guide.</b> Forty pages as a PDF — read it, print the quick reference, or share it with a department.</p>
+  <div><a class="btn" href="using-spanish-content-classroom.pdf" download>Download the PDF</a> <button class="btn ghost" onclick="window.print()">Print this page</button></div>
+</div>
+<div class="related">
+  <h4>Goes with</h4>
+  <a href="cognate-hunt.html">Cognate Hunt →</a>
+  <a href="spoken-spanish-english.html">Spoken Spanish &amp; Spoken English →</a>
+  <a href="sentence-frames.html">Sentence-Frame Bank →</a>
+  <a href="by-subject.html">By Subject &amp; Grade →</a>
+  <a href="sheltered.html">Sheltered: 12 minutes as an EL →</a>
+  <a href="el-bridge.html">EL Bridge Mississippi →</a>
+  <a href="parent-letters.html">Parent letters →</a>
+</div>
+<p class="fine">Spanish phrases reflect widely understood Latin American usage; vocabulary varies by country, so welcome your students' versions. Written for the content faculty of Laurel High School; free to copy and share for professional learning.</p>
+</main>
+<footer>
+  <div class="wrap">
+    <b>Richard A. Daniel, M.Ed.</b>
+    ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var parts=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  function upd(){
+    var y=window.scrollY+90, cur=parts[0];
+    parts.forEach(function(p){ if(p.offsetTop<=y) cur=p; });
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur.id); });
+  }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
