@@ -29,6 +29,15 @@ Q = [
    ("The EL Field Guide", "https://radan55.github.io/el-field-guide/")]),
 
  ("teachers",
+  "My ELs read the passage twice and still miss the question. What is the simplest fix?",
+  "Have them read the question first. Read the Question First is a three-step move — spot "
+  "the key words, say what you need to find, read and prove it — on one bilingual poster, "
+  "with a question-word key and a worked example. The ELPA21 Question Types Guide shows "
+  "the item shapes they will meet on the test.",
+  [("Read the Question First", "read-the-question-first.html"),
+   ("ELPA21 Question Types Guide", "elpa-question-types-guide.html")]),
+
+ ("teachers",
   "What do ELPA21 levels 1–5 actually mean for my classroom?",
   "Levels 1–2 need visuals, frames and the home language as a bridge. Levels 3–4 can "
   "handle grade-level text once the vocabulary is pre-taught. A student at Level 4 in "
