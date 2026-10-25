@@ -40,6 +40,15 @@ Q = [
    ("Cognate Hunt", "cognate-hunt.html")]),
 
  ("teachers",
+  "Is there a one-page version of the Using Spanish guide I can print for my department?",
+  "Yes — a folder of ten. The Teacher Handout Folder has a cognate list for each subject "
+  "with the false friends, a Spanish phrase bank with how to say each line, sentence frames "
+  "by ELPA21 level, a newcomer first-week checklist, a good-news family call script, and "
+  "a do's-and-don'ts page. Print the one you need or hand the whole PDF to a PLC.",
+  [("Teacher Handout Folder: Using Spanish", "using-spanish-handouts.html"),
+   ("Using Spanish in the Content Classroom", "using-spanish-content-classroom.html")]),
+
+ ("teachers",
   "My ELs read the passage twice and still miss the question. What is the simplest fix?",
   "Have them read the question first. Read the Question First is a three-step move — spot "
   "the key words, say what you need to find, read and prove it — on one bilingual poster, "
