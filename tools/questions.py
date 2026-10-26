@@ -48,7 +48,18 @@ Q = [
   "round has a timer and a projector mode, and the packet prints. It is survival Spanish for the "
   "classroom, not fluency, and it says so.",
   [("Spanish for Teachers: a 90-Minute Workshop", "spanish-for-teachers.html"),
+   ("Spanish for Teachers: the 6-Module Course", "spanish-course/"),
    ("Teacher Handout Folder: Using Spanish", "using-spanish-handouts.html")]),
+
+ ("teachers",
+  "Is there a full Spanish course for teachers, not just a one-time workshop?",
+  "Yes — six modules, self-paced, about an hour each. Spanish for Teachers: the Course goes from "
+  "names and greetings through classroom directions, praise and check-ins, academic language "
+  "and the family call. Every phrase plays in a Spanish voice, the practice checks itself, each "
+  "module ends with a quiz and a desk cheat sheet, and the whole thing ends with role-play "
+  "stations and a certificate. A 64-page workbook with the answer key prints as PDF or Word.",
+  [("Spanish for Teachers: the 6-Module Course", "spanish-course/"),
+   ("Spanish for Teachers: a 90-Minute Workshop", "spanish-for-teachers.html")]),
 
  ("teachers",
   "Is there a one-page version of the Using Spanish guide I can print for my department?",
