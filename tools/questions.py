@@ -19,13 +19,6 @@ WHO = [
 ]
 
 Q = [
- ("students",
-  "Is there a reading I can listen to while I follow along, with the hard words explained?",
-  "Yes. Caffeine and the Teen Brain reads itself aloud a paragraph at a time, and every "
-  "purple word speaks and shows its meaning in English and Spanish when you tap it. "
-  "It ends with a ten-question quiz that gives you your score right away.",
-  [("Caffeine and the Teen Brain", "caffeine-teen-brain.html"),
-   ("English On Your Own", "english-on-your-own.html")]),
  ("teachers",
   "I have an English learner in my class and I don't teach English. Where do I start?",
   "Post a language goal next to your content objective, give one sentence frame, and "
