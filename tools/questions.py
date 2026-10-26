@@ -40,6 +40,17 @@ Q = [
    ("Cognate Hunt", "cognate-hunt.html")]),
 
  ("teachers",
+  "Can our faculty learn enough Spanish to greet students and call home, without hiring a trainer?",
+  "Yes — in ninety minutes, led by whoever is willing. Spanish for Teachers is a workshop any "
+  "teacher can run from the page: five pronunciation rules, students' names said right, the "
+  "directions a class hears every day, encouragement, the fifteen things students say to a "
+  "teacher, and a two-minute good-news call home. Every phrase plays in a Spanish voice, each "
+  "round has a timer and a projector mode, and the packet prints. It is survival Spanish for the "
+  "classroom, not fluency, and it says so.",
+  [("Spanish for Teachers: a 90-Minute Workshop", "spanish-for-teachers.html"),
+   ("Teacher Handout Folder: Using Spanish", "using-spanish-handouts.html")]),
+
+ ("teachers",
   "Is there a one-page version of the Using Spanish guide I can print for my department?",
   "Yes — a folder of ten. The Teacher Handout Folder has a cognate list for each subject "
   "with the false friends, a Spanish phrase bank with how to say each line, sentence frames "

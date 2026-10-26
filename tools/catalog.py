@@ -85,6 +85,8 @@ R = [
  ("https://radan55.github.io/elstudentmagazine01/", "Many Voices", "students", "Magazine", "Issue 1",
   "A magazine written for multilingual high-school students.", False),
 
+ ("spanish-for-teachers.html", "Spanish for Teachers: a 90-Minute Workshop", "classroom", "Workshop", "90 min · 72 phrases",
+  "A teacher-led workshop for colleagues who speak no Spanish: names, directions, encouragement, the call home.", True),
  ("using-spanish-content-classroom.html", "Using Spanish in the Content Classroom", "classroom", "PDF guide", "40 pages",
   "Research-based moves for math, science, social studies and ELA teachers who speak no Spanish: cognates, talk-then-write, fair assessment.", True),
  ("using-spanish-handouts.html", "Teacher Handout Folder: Using Spanish", "classroom", "PDF handouts", "10 pages",
@@ -198,8 +200,8 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
-PIN = {"using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
+NEW = {"spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+PIN = {"spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 
