@@ -168,6 +168,15 @@ Q = [
     "https://radan55.github.io/RichardDaniel/language-functions/")]),
 
  ("students",
+  "Why can't I stop scrolling, and what can I do about it?",
+  "Because the app is built to hold you: a feed with no end, a red badge that pulls you "
+  "back, and a reward you can never predict. Your Attention Is for Sale lets you feel all "
+  "three for sixty seconds, then read why they work and practice the test questions that "
+  "go with the text. English with Spanish under every line; it reads aloud.",
+  [("Your Attention Is for Sale", "https://radan55.github.io/Stormattention/"),
+   ("English On Your Own", "english-on-your-own.html")]),
+
+ ("students",
   "How can I practice for the English test on my own?",
   "English On Your Own is built to the real ELPA21 blueprint for grades 9–12 — all "
   "twenty-two task types plus a sixty-item practice form that gives you a level for "
