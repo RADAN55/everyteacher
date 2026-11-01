@@ -89,3 +89,8 @@ preview sees the right number too.
 Mark a resource `core=True` to star it in the index and put it on the home
 page. Add its release date to `NEW` to make it the Now Showing hero for three
 weeks, and a date in `PIN` to make it the resource of the week until then.
+
+
+## The app
+
+The hub installs as an app (a PWA). `manifest.webmanifest` names it, `hub-sw.js` is the one service worker for the whole site (network-first for pages, cache-first for PDFs/fonts/images, `offline.html` when a page was never opened), and `hub-chrome.js` wires both into every page and shows **Get the app** in the top bar. Sub-apps with their own worker (`storm-lens/`) keep it. Bump `VERSION` in `hub-sw.js` when the shell list changes; `tools/build.py` adds the manifest link to any new page.
