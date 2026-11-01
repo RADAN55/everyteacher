@@ -391,6 +391,18 @@
     padding:8px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:14.5px}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  /* ===== the app strip ===== */
+  .app-card{display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:var(--paper);border:1px solid var(--rule);border-left:5px solid var(--gold);padding:18px 20px;box-shadow:0 10px 30px rgba(30,39,97,.08)}
+  .app-icon img{display:block;border-radius:14px;box-shadow:0 6px 16px rgba(30,39,97,.25)}
+  .app-txt{flex:1 1 320px;min-width:0;font-size:15px;line-height:1.5}
+  .app-txt b{display:block;font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:600;color:var(--navy);margin-bottom:4px}
+  .app-txt span{display:block;color:var(--muted)}
+  .app-txt .es{font-style:italic;margin-top:4px}
+  .app-act{flex:0 1 260px;display:flex;flex-direction:column;gap:8px}
+  .app-btn{font:inherit;font-weight:700;font-size:15px;cursor:pointer;border:0;border-radius:999px;background:var(--navy);color:#fff;padding:12px 20px}
+  .app-btn:hover{background:var(--gold);color:var(--navy-dk)}
+  .app-act small{font-size:12.5px;color:var(--muted);line-height:1.45}
+  html[data-app="standalone"] .app-strip{display:none}
 </style>
 <link rel="stylesheet" href="theme.css">
 <!--B:og-->
@@ -406,6 +418,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <!--/B:og-->
+<link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
 
@@ -499,6 +512,21 @@
   <!--B:doors-->
 <div class="doors"><div class="door"><div class="door-h"><span class="door-n">1</span><div><b>New EL teacher</b><small>Your first month, in order</small></div></div><ol><li><a href="https://radan55.github.io/RichardDaniel/language-functions/" target="_blank" rel="noopener">36-Week Language Functions</a><span>Twelve language functions across four grade bands and four proficiency tiers.</span></li><li><a href="https://radan55.github.io/RichardDaniel/curriculum-36/" target="_blank" rel="noopener">36-Week EL Curriculum: Emerging + Progressing</a><span>The year week by week in two lanes, built back from the ELPT window.</span></li><li><a href="sample-lesson.html">One Text. Four Lanes. Five Ways to Prove It.</a><span>One 90-minute block taken apart, decision by decision.</span></li><li><a href="newcomer-week1.html">Newcomer Week 1 Kit</a><span>The week a student arrives, hour by hour, ending in an exit ticket.</span></li><li><a href="lsp-builder.html">LSP Builder</a><span>Drafts itself from the levels; a checklist shows what a Mississippi LSP still needs.</span></li></ol><a class="rest" href="all.html?g=elteacher">The EL teacher&#x27;s desk · 10 more →</a></div><div class="door"><div class="door-h"><span class="door-n">2</span><div><b>Content teacher with ELs</b><small>You teach biology, not English — this is enough</small></div></div><ol><li><a href="spanish-course/">Spanish for Teachers: the 6-Module Course</a><span>Self-paced from names and greetings to the family call: audio phrases, self-checking practice, quizzes, cheat sheets, a printable workbook and a certificate.</span></li><li><a href="spanish-for-teachers.html">Spanish for Teachers: a 90-Minute Workshop</a><span>A teacher-led workshop for colleagues who speak no Spanish: names, directions, encouragement, the call home.</span></li><li><a href="using-spanish-content-classroom.html">Using Spanish in the Content Classroom</a><span>Research-based moves for math, science, social studies and ELA teachers who speak no Spanish: cognates, talk-then-write, fair assessment.</span></li><li><a href="using-spanish-handouts.html">Teacher Handout Folder: Using Spanish</a><span>Ten one-page handouts from the guide: cognate lists by subject, the phrase bank, frames by level, newcomer week one, a family call script.</span></li><li><a href="read-the-question-first.html">Read the Question First</a><span>Spot the key words, say what you need to find, read and prove it — in two languages.</span></li><li><a href="content-teachers.html">For Content Teachers</a><span>Three questions every content teacher asks, each answered with a free tool.</span></li><li><a href="book-study-50-strategies.html">Fifty Strategies, One Semester</a><span>A PLC book study of Herrell &amp; Jordan&#x27;s 50 Strategies, built for the teacher who teaches biology, not English.</span></li><li><a href="sheltered.html">Sheltered: 12 Minutes as an English Learner</a><span>Sit a real lesson in a language you don&#x27;t speak. Then sit it again with supports.</span></li><li><a href="el-assistants.html">EL Assistants for Content Teachers</a><span>Four prompts to paste: scaffold a lesson, level a text, fix a quiz, write home.</span></li><li><a href="el-bridge.html">EL Bridge Mississippi</a><span>A Mississippi standard in; a four-lane lesson, leveled text or MAAP items out.</span></li><li><a href="https://radan55.github.io/el-field-guide/" target="_blank" rel="noopener">The EL Field Guide</a><span>The whole obligation in plain language, for staff who never trained for it.</span></li></ol><a class="rest" href="all.html?g=classroom">Every classroom teacher · 16 more →</a></div><div class="door"><div class="door-h"><span class="door-n">3</span><div><b>Family or student</b><small>Nuevo en la escuela — empieza aquí</small></div></div><ol><li><a href="https://radan55.github.io/Stormattention/" target="_blank" rel="noopener">Your Attention Is for Sale</a><span>A read-aloud lesson where students feel the tricks apps use on them, then take their attention back.</span></li><li><a href="newcomer-guide.html">Your Guide to School in the U.S.</a><span>How an American school works, for a family that arrived this week.</span></li><li><a href="first-100-words.html">My First 100 Words at School</a><span>The hundred words of a first month, tap to hear, printable as flashcards.</span></li><li><a href="storm-lens/">Storm Lens: Point. Name. Say.</a><span>Point a Chromebook at the room and the room becomes the vocabulary list.</span></li><li><a href="grammar-calisthenics/">Storm Grammar Calisthenics</a><span>Verb jumps, error hunts, rapid fire, dictation sprints — a bilingual coach, fifteen minutes a day.</span></li><li><a href="english-on-your-own.html">English On Your Own</a><span>ELPA21 practice a student can do alone — speaking checked by the browser.</span></li><li><a href="graduation-roadmap.html">Graduation Roadmap for Newcomers</a><span>Credits, state tests and a four-year plan, filled in with a counselor.</span></li><li><a href="picture-dictionary.html">The Picture Dictionary · Issue 1</a><span>Point at the thing, hear the word, say it, spell it, use it. Twelve places, drawn as spreads.</span></li><li><a href="grammar-map.html">The Grammar Map</a><span>Grammar you can see: a sentence X-ray, four lines, fourteen taught stations, a stamp at each.</span></li><li><a href="writing-studio.html">The Writing Studio</a><span>Mr. Castillo teaches the shape of a 4 or 5: claim, reasons, transitions, the email, the edit, the clock.</span></li><li><a href="elpa-question-types-guide.html">ELPA Question Types: Test Prep Guide</a><span>What each question is really asking, the words that signal it, three moves, and a worked example with every choice explained.</span></li><li><a href="write-about-it.html">Write About It</a><span>Ms. Bell teaches the six-step routine on four given topics (describe, explain how, tell a time, opinion) and then any topic you bring.</span></li><li><a href="listening-speaking-studio.html">ELPA21 Listening &amp; Speaking Studio</a><span>Hear it twice, choose, check; then record your answer and compare it with a model.</span></li></ol><a class="rest" href="all.html?g=students">Students &amp; families · 11 more →</a></div><div class="door"><div class="door-h"><span class="door-n">4</span><div><b>District leader</b><small>Superintendent, federal programs, EL coordinator</small></div></div><ol><li><a href="leaders.html">For District Leaders</a><span>Are we compliant, are they growing, what does it cost — and the tools for each.</span></li><li><a href="el-evaluate.html">Evaluate Your Own EL Program</a><span>The consulting firm&#x27;s method, written out so your own team can run it.</span></li><li><a href="el-audit.html">EL Program Self-Audit</a><span>Thirty-three legal items scored live, with a corrective-action plan.</span></li><li><a href="el-outcomes.html">EL Outcomes Dashboard</a><span>Counts in; the annual program evaluation Castañeda asks for out.</span></li><li><a href="el-compliance-calendar.html">EL Program Compliance Calendar</a><span>Forty-five obligations placed in the month they actually come due.</span></li></ol><a class="rest" href="all.html?g=district">District &amp; compliance · 9 more →</a></div></div>
 <!--/B:doors-->
+</section>
+
+<section class="wrap app-strip" id="app" aria-label="Get the app" style="padding-top:0">
+  <div class="app-card">
+    <div class="app-icon" aria-hidden="true"><img src="icons/el-192.png" alt="" width="56" height="56"></div>
+    <div class="app-txt">
+      <b>Put the hub on your home screen.</b>
+      <span>Its own icon on a phone or a Chromebook, its own window, and every page you've opened kept on the device for when the Wi-Fi drops. Free, no account — same as always.</span>
+      <span class="es">Ponlo en tu pantalla de inicio: el mismo sitio, también sin internet.</span>
+    </div>
+    <div class="app-act">
+      <button type="button" class="app-btn" id="appInstall">Get the app</button>
+      <small id="appHow">On a phone, tap your browser's menu and choose <b>Add to Home Screen</b>. On a Chromebook or laptop, Chrome and Edge show <b>Install</b> in the address bar.</small>
+    </div>
+  </div>
 </section>
 
 <section class="wrap" id="week" style="padding-top:0">
@@ -973,5 +1001,21 @@ window.HUB_CATALOG=[{"u": "https://radan55.github.io/Stormattention/", "t": "You
 <script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="guide.js" defer></script>
 <script src="hub-chrome.js" defer></script>
+<script>
+  /* the Get-the-app button on the home page uses the same prompt the top bar does */
+  (function(){
+    var b=document.getElementById("appInstall"), how=document.getElementById("appHow");
+    if(!b) return;
+    var standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+    if(standalone){ var sec=document.getElementById("app"); if(sec) sec.hidden=true; return; }
+    b.addEventListener("click",function(){
+      var hb=document.getElementById("hbInstall");
+      if(hb && !hb.hidden){ hb.click(); return; }
+      how.style.color="var(--navy)"; how.style.fontWeight="600";
+      how.scrollIntoView({block:"nearest",behavior:"smooth"});
+    });
+    document.addEventListener("elhub:installed",function(){ b.textContent="Installed ✓"; b.disabled=true; });
+  })();
+</script>
 </body>
 </html>

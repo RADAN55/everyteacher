@@ -7,7 +7,7 @@ import re, json, html, glob, os
 
 # index.html and all.html are the catalog itself — the typeahead already searches
 # the catalog, so indexing them would bury page text under 57 duplicate blurbs.
-SKIP = {"search.html", "index.html", "all.html"}
+SKIP = {"offline.html", "search.html", "index.html", "all.html"}
 out = []
 def clean(s):
     s = re.sub(r"<script.*?</script>|<style.*?</style>", " ", s, flags=re.S)

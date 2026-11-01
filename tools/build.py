@@ -592,6 +592,7 @@ HEAD_SNIPPET = (
     'catch(e){}</script>'
 )
 THEME_LINK = '<link rel="stylesheet" href="theme.css">'
+MANIFEST_LINK = '<link rel="manifest" href="manifest.webmanifest">'  # the hub installs as an app; hub-chrome.js adds the rest
 CHROME_TAG = '<script src="hub-chrome.js" defer></script>'
 
 def insert_at(s, tag, payload, last):
@@ -621,6 +622,8 @@ for page in sorted(ROOT.glob("*.html")):
             s = s[:m.end()] + "\n" + HEAD_SNIPPET + s[m.end():]
     if 'href="theme.css"' not in s:
         s = insert_at(s, "</head>", THEME_LINK, last=False)
+    if 'rel="manifest"' not in s:
+        s = insert_at(s, "</head>", MANIFEST_LINK, last=False)
     if "hub-chrome.js" not in s:
         s = insert_at(s, "</body>", CHROME_TAG, last=True)
     if s != before:
@@ -633,7 +636,7 @@ if wired:
 # 57 titles for a crawler to follow. all.html is listed first after the root.
 SITE = "https://radan55.github.io/everyteacher/"
 pages = ["", "all.html"] + sorted(
-    f.name for f in ROOT.glob("*.html") if f.name not in {"index.html", "all.html", "video-stage.html", "avatar-stage.html", "timer.html"}
+    f.name for f in ROOT.glob("*.html") if f.name not in {"index.html", "all.html", "video-stage.html", "avatar-stage.html", "timer.html", "offline.html"}
 )
 pages += sorted({r["href"] for r in C
                  if not r["ext"] and r["href"].endswith("/")})

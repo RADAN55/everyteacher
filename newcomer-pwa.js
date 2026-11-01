@@ -3,11 +3,9 @@
 "use strict";
 if(!("serviceWorker" in navigator)) return;
 var base=document.querySelector('script[src$="newcomer-pwa.js"]'); base=base?base.getAttribute("src").replace(/newcomer-pwa\.js$/,""):"";
-// manifest + theme
-var l=document.createElement("link"); l.rel="manifest"; l.href=base+"newcomer-manifest.webmanifest"; document.head.appendChild(l);
-var m=document.createElement("meta"); m.name="theme-color"; m.content="#1E2761"; document.head.appendChild(m);
-var a=document.createElement("link"); a.rel="apple-touch-icon"; a.href=base+"icons/el-192.png"; document.head.appendChild(a);
-var ac=document.createElement("meta"); ac.name="apple-mobile-web-app-capable"; ac.content="yes"; document.head.appendChild(ac);
+// The manifest, theme and install prompt come from hub-chrome.js (the whole
+// hub is one installable app since Oct 2026); this file keeps the Newcomer
+// "Save for offline" control, which talks to the shared worker, hub-sw.js.
 
 var css=".nc-off{position:fixed;left:14px;bottom:14px;z-index:9997;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font:14px Inter,-apple-system,'Segoe UI',sans-serif}"+
 ".nc-off button{background:#fff;color:#1E2761;border:1.5px solid #1E2761;border-radius:999px;padding:8px 13px;font:600 13px Inter,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(30,39,97,.15)}"+
@@ -31,6 +29,7 @@ window.addEventListener("appinstalled",function(){ installBtn.hidden=true; say("
 var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
 var standalone=window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
 if(isIOS && !standalone){ installBtn.hidden=false; }
+if(document.querySelector(".hubbar")){ installBtn.hidden=true; }
 function iosHelp(){
   if(document.querySelector(".nc-ios")) return;
   var d=document.createElement("div"); d.className="nc-ios";
@@ -40,7 +39,7 @@ function iosHelp(){
 
 function say(t){ status.textContent=t; status.hidden=false; clearTimeout(say.h); say.h=setTimeout(function(){ status.hidden=true; },3500); }
 
-navigator.serviceWorker.register(base+"newcomer-sw.js",{scope:base||"./"}).then(function(reg){
+navigator.serviceWorker.register(base+"hub-sw.js",{scope:base||"./"}).then(function(reg){
   saveBtn.onclick=function(){
     saveBtn.disabled=true; saveBtn.textContent="Saving… · Guardando…";
     var sw=reg.active||reg.waiting||reg.installing;

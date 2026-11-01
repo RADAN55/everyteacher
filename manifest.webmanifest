@@ -1,0 +1,32 @@
+{
+  "id": "./",
+  "name": "EL Publishing Hub",
+  "short_name": "EL Hub",
+  "description": "Free English learner resources from EL Publishing: curriculum, interactive practice, guides, magazines, PD and district tools. No login, no account.",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#F4F5FA",
+  "theme_color": "#141A44",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {"src": "icons/el-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/el-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/el-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "All resources", "short_name": "All", "url": "./all.html?source=pwa", "icons": [{"src": "icons/el-192.png", "sizes": "192x192"}]},
+    {"name": "What's new", "short_name": "New", "url": "./whats-new.html?source=pwa", "icons": [{"src": "icons/el-192.png", "sizes": "192x192"}]},
+    {"name": "By subject", "short_name": "Subjects", "url": "./by-subject.html?source=pwa", "icons": [{"src": "icons/el-192.png", "sizes": "192x192"}]},
+    {"name": "Newcomer Guide", "short_name": "Newcomer", "url": "./newcomer-guide.html?source=pwa", "icons": [{"src": "icons/el-192.png", "sizes": "192x192"}]}
+  ],
+  "share_target": {
+    "action": "./all.html",
+    "method": "GET",
+    "params": {"title": "q", "text": "q"}
+  }
+}

@@ -9,6 +9,66 @@
   if (window.__elHubBar) return;
   window.__elHubBar = true;
 
+  /* ---- the app ----------------------------------------------------------
+     The hub installs as an app (a PWA): a home-screen icon on a phone or a
+     Chromebook, its own window, and the pages you have opened kept on the
+     device for when the Wi-Fi drops. Everything the app needs lives in
+     manifest.webmanifest and hub-sw.js; this block only wires them in, on
+     every page, including the full-screen stages that skip the bar below. */
+  var APP = { prompt: null, standalone: false, ios: false, base: "" };
+  (function app() {
+    try {
+      var me = document.querySelector('script[src$="hub-chrome.js"]');
+      APP.base = me ? me.getAttribute("src").replace(/hub-chrome\.js$/, "") : "";
+      var head = document.head;
+      function add(tag, attrs) {
+        var el = document.createElement(tag);
+        for (var k in attrs) el.setAttribute(k, attrs[k]);
+        head.appendChild(el); return el;
+      }
+      if (!document.querySelector('link[rel="manifest"]'))
+        add("link", { rel: "manifest", href: APP.base + "manifest.webmanifest" });
+      if (!document.querySelector('meta[name="theme-color"]'))
+        add("meta", { name: "theme-color", content: "#141A44" });
+      if (!document.querySelector('meta[name="apple-mobile-web-app-capable"]'))
+        add("meta", { name: "apple-mobile-web-app-capable", content: "yes" });
+      if (!document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]'))
+        add("meta", { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" });
+      if (!document.querySelector('meta[name="apple-mobile-web-app-title"]'))
+        add("meta", { name: "apple-mobile-web-app-title", content: "EL Hub" });
+      if (!document.querySelector('link[rel="apple-touch-icon"]'))
+        add("link", { rel: "apple-touch-icon", href: APP.base + "icons/el-180.png" });
+
+      APP.ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+      APP.standalone = (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true;
+      if (APP.standalone) document.documentElement.setAttribute("data-app", "standalone");
+
+      window.addEventListener("beforeinstallprompt", function (e) {
+        e.preventDefault(); APP.prompt = e;
+        document.dispatchEvent(new CustomEvent("elhub:installable"));
+      });
+      window.addEventListener("appinstalled", function () {
+        APP.prompt = null;
+        document.dispatchEvent(new CustomEvent("elhub:installed"));
+      });
+
+      if (!("serviceWorker" in navigator)) return;
+      /* A sub-app with its own worker (storm-lens/) keeps it: its scope is
+         more specific. Pages served from file:// or a preview have no scope. */
+      if (location.protocol !== "https:" && location.hostname !== "localhost") return;
+      navigator.serviceWorker.register(APP.base + "hub-sw.js", { scope: APP.base || "./" })
+        .then(function (reg) {
+          reg.addEventListener("updatefound", function () {
+            var nw = reg.installing; if (!nw) return;
+            nw.addEventListener("statechange", function () {
+              if (nw.state === "installed" && navigator.serviceWorker.controller)
+                document.dispatchEvent(new CustomEvent("elhub:update"));
+            });
+          });
+        }).catch(function () {});
+    } catch (e) {}
+  })();
+
   /* Some pages take the whole screen on purpose — a simulation, a practice
      session. A bar across the top of those is in the way, so they opt out
      with data-no-hubbar on <html> and keep only the theme. */
@@ -45,6 +105,13 @@
     '<svg class="moon" viewBox="0 0 24 24">' +
     '<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" ' +
     'stroke-linejoin="round"/></svg>';
+  var DOWN =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5' +
+    'M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17" ' +
+    'stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  var BACK =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" ' +
+    'stroke-linejoin="round" stroke-linecap="round"/></svg>';
   var PLANE =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10.5 13.5M21 3l-6.5 18' +
     '-4-8-8-4Z" stroke-linejoin="round" stroke-linecap="round"/></svg>';
@@ -67,11 +134,15 @@
       ">" + l[0] + "</a>";
   }).join("");
 
+  var canBack = APP.standalone && history.length > 1 && here !== HOME;
   bar.innerHTML =
     '<div class="hubbar-in">' +
+      (canBack ? '<button type="button" class="hb-back" id="hbBack" aria-label="Back">' + BACK + "</button>" : "") +
       '<a class="hb-home" href="' + HOME + '" aria-label="EL Publishing, home">' +
         MARK + "<b>EL Publishing</b></a>" +
       '<nav aria-label="Hub">' + nav + "</nav>" +
+      '<button type="button" class="hb-install" id="hbInstall" hidden>' + DOWN +
+        "<span>Get the app</span></button>" +
       '<button type="button" class="hb-send" id="hbSend">' + PLANE +
         "<span>Send to a teacher</span></button>" +
       '<button type="button" class="hb-theme" id="hbTheme" aria-live="polite">' +
@@ -188,8 +259,68 @@
     });
   }
 
+  /* ---- install it ------------------------------------------------------ */
+  /* Chrome and Edge (Chromebooks, Android, Windows) hand us a prompt; we show
+     the button once it arrives. iOS has no prompt, so the button opens the
+     two-tap instructions instead. Once installed, the button goes away. */
+  function wireInstall() {
+    var btn = document.getElementById("hbInstall"), sheet = document.getElementById("hbSheet");
+    if (!btn || !sheet || APP.standalone) return;
+    function show() { btn.hidden = false; }
+    function hide() { btn.hidden = true; }
+    if (APP.prompt || APP.ios) show();
+    document.addEventListener("elhub:installable", show);
+    document.addEventListener("elhub:installed", hide);
+    btn.addEventListener("click", function () {
+      if (APP.prompt) {
+        APP.prompt.prompt();
+        APP.prompt.userChoice.then(function (r) {
+          if (r && r.outcome === "accepted") hide();
+          APP.prompt = null;
+        }).catch(function () {});
+        return;
+      }
+      /* no prompt: say how, for this device */
+      var how = APP.ios
+        ? "Tap the <b>Share</b> button <span aria-hidden=\"true\">&#x2BAD;</span> at the bottom of Safari, then <b>Add to Home Screen</b>."
+        : "Open the browser menu <b>&#8942;</b> and choose <b>Install app</b> or <b>Add to Home screen</b>.";
+      sheet.innerHTML =
+        '<div class="hb-sheet-in">' +
+          "<p><b>EL Hub</b> on your home screen: its own icon, its own window, and the pages you've opened kept for when the Wi-Fi drops.</p>" +
+          '<p class="hb-how">' + how + "</p>" +
+          '<p class="hb-how"><i>En tu pantalla de inicio: el mismo sitio, sin internet si hace falta.</i></p>' +
+          '<button type="button" id="hbSheetClose">Got it</button>' +
+        "</div>";
+      sheet.hidden = false;
+      document.getElementById("hbSheetClose").addEventListener("click", function () { sheet.hidden = true; });
+    });
+  }
+
+  /* a newer build of the hub is waiting: one line, one tap */
+  function wireUpdate() {
+    document.addEventListener("elhub:update", function () {
+      if (document.getElementById("hbToast")) return;
+      var t = document.createElement("div");
+      t.className = "hb-toast"; t.id = "hbToast"; t.setAttribute("role", "status");
+      t.innerHTML = "<span>A newer version of the hub is ready.</span><button type=\"button\">Refresh</button>";
+      t.querySelector("button").addEventListener("click", function () {
+        try {
+          navigator.serviceWorker.getRegistration().then(function (reg) {
+            if (reg && reg.waiting) reg.waiting.postMessage({ type: "SKIP_WAITING" });
+            setTimeout(function () { location.reload(); }, 250);
+          });
+        } catch (e) { location.reload(); }
+      });
+      document.body.appendChild(t);
+    });
+  }
+
   function wire() {
     wireSend();
+    wireInstall();
+    wireUpdate();
+    var back = document.getElementById("hbBack");
+    if (back) back.addEventListener("click", function () { history.back(); });
     var btn = document.getElementById("hbTheme");
     if (!btn) return;
     label(btn);

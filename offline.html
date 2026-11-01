@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline · EL Publishing</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/el-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/el-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="theme.css">
+<style>
+  :root{--navy:#1E2761;--navy-dk:#141A44;--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:16.5px;line-height:1.6}
+  main{max-width:640px;margin:0 auto;padding:56px 22px 80px}
+  .card{background:var(--paper);border:1px solid var(--rule);border-top:5px solid var(--gold);padding:28px 26px;box-shadow:0 14px 40px rgba(30,39,97,.10)}
+  .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 10px}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:32px;line-height:1.1;margin:0 0 12px;color:var(--navy)}
+  p{margin:0 0 14px}
+  .es{color:var(--muted);font-style:italic}
+  ul{padding-left:20px;margin:16px 0}
+  li{margin:6px 0}
+  a{color:var(--navy)}
+  .btn{display:inline-block;margin-top:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;padding:11px 18px;border-radius:999px;border:0;font:inherit;cursor:pointer}
+  .btn.gold{background:var(--gold);color:var(--navy-dk);margin-left:8px}
+  .st{margin-top:18px;font-size:13.5px;color:var(--muted)}
+  html[data-theme="dark"] body{background:#0D1130;color:#E6E8F2}
+  html[data-theme="dark"] .card{background:#141A44;border-color:rgba(255,255,255,.12)}
+  html[data-theme="dark"] h1,html[data-theme="dark"] a{color:#fff}
+  html[data-theme="dark"] .es,html[data-theme="dark"] .st{color:#C3C9E6}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <p class="k">EL Publishing · offline</p>
+    <h1>No internet right now.</h1>
+    <p>This page hasn't been saved on this device yet. Anything you've opened before in the app is still here — try the home page or one of the saved resources.</p>
+    <p class="es">Sin internet. Las páginas que ya abriste siguen disponibles.</p>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="all.html">All resources</a></li>
+      <li><a href="newcomer-guide.html">Your Guide to School in the U.S.</a></li>
+      <li><a href="first-100-words.html">My First 100 Words at School</a></li>
+    </ul>
+    <button class="btn" type="button" onclick="location.reload()">Try again</button>
+    <a class="btn gold" href="index.html">Go home</a>
+    <p class="st" id="st">Waiting for a connection…</p>
+  </div>
+</main>
+<script>
+  (function(){
+    var st=document.getElementById("st");
+    function upd(){ st.textContent = navigator.onLine ? "You're back online — reloading…" : "Waiting for a connection…"; if(navigator.onLine){ setTimeout(function(){ history.length>1 ? history.back() : location.replace("index.html"); }, 600); } }
+    window.addEventListener("online",upd); upd();
+  })();
+</script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
