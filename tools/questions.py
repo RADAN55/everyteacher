@@ -194,6 +194,16 @@ Q = [
   [("Your Guide to School in the U.S.", "newcomer-guide.html"),
    ("Storm Lens", "storm-lens/")]),
 
+ ("classroom",
+  "Is there a new issue of the EL Publishing magazine?",
+  "Yes: The Language of Belonging, the November 2026 issue, is out. Twenty-six pages for "
+  "grades 9–12 built around belonging through contribution: a teaching feature with three "
+  "lanes of support, a reading lab, voice studio, language workshop and literary lens, "
+  "community pages, a 15-lesson November plan, an original check and the teacher keys. "
+  "Free PDF, every page previewed on the hub.",
+  [("The Language of Belonging · November 2026", "el-magazine-2026-11.html"),
+   ("The Field Atlas · October 2026", "https://radan55.github.io/elpa21speaking01/october/")]),
+
  ("students",
   "How can I practice English grammar a little every day?",
   "Storm Grammar Calisthenics is a daily fifteen-minute workout led by a bilingual coach: "

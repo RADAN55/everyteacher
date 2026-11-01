@@ -137,6 +137,8 @@ R = [
   "What is new and free this month, with a classroom use for each lane.", False),
  ("language-bridge-2026-09.html", "The Language Bridge", "classroom", "Bulletin", "Sept 2026",
   "The monthly one-page bulletin for content teachers: five findings, five moves.", False),
+ ("el-magazine-2026-11.html", "The Language of Belonging · November 2026", "classroom", "Magazine", "Nov 2026 · 26 pages",
+  "The November issue: belonging through contribution, 15 lessons, teacher keys.", True),
  ("https://radan55.github.io/elpa21speaking01/october/", "The Field Atlas", "classroom", "Magazine", "Oct 2026",
   "Sixteen plates for the teacher who never planned to teach language.", False),
  ("https://radan55.github.io/everyteacherisalanguageteacher/", "Every Teacher Is a Language Teacher", "classroom", "PD module", "45–60 min",
@@ -204,8 +206,8 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
-PIN = {"https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
+NEW = {"el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+PIN = {"el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 
