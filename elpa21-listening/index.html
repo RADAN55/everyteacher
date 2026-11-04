@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Interactive ELPA21 Unit 1 listening practice: Listen and Match the Word, Listen and Match the Sentence, and Listen for Information. EL Publishing.">
+<meta name="description" content="Interactive ELPA21 Unit 1 listening practice: Match the Word, Match the Sentence, Listen for Information, Listen to a Conversation. EL Publishing.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235d8f2e'/%3E%3Cpath d='M16 36a16 16 0 0 1 32 0' stroke='white' stroke-width='5' fill='none'/%3E%3Crect x='12' y='34' width='10' height='16' rx='4' fill='white'/%3E%3Crect x='42' y='34' width='10' height='16' rx='4' fill='white'/%3E%3C/svg%3E">
 <title>ELPA21 Listening Practice · Unit 1</title>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -101,6 +101,24 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
 .vrow .tl{font-size:.85rem;color:var(--bad);font-weight:700}
 .target .got{color:var(--good)}
 [hidden]{display:none!important}
+.cwrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:720px){.cwrap{grid-template-columns:1fr}}
+.cscene{border:3px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.cscene svg{display:block;width:100%;height:auto}
+.cscript{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.cscript p{margin:4px 0;padding:2px 6px;border-radius:6px}
+.cscript p.on{background:var(--good-soft)}
+.cintro{font-style:italic;margin:0 0 4px}
+.ctag{font-weight:700;margin:0 0 8px}
+.cq{font-weight:700;font-size:1.12rem;margin:10px 0;display:flex;gap:8px;align-items:baseline}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;background:var(--surface);border:2px solid var(--line);color:var(--fg);padding:10px 14px}
+.opt .lt{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-weight:700}
+.opt:hover:not(:disabled){border-color:var(--rule)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.right .lt{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);animation:shake .35s}
+.opt:disabled:not(.right):not(.wrong){opacity:.55}
 .note{color:var(--muted);font-size:.85rem;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.card,.card.wrong{transition:none;animation:none}}
 </style>
@@ -111,6 +129,7 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
     <button type="button" class="lesson" data-lesson="0" role="tab">Lesson 1 · Words</button>
     <button type="button" class="lesson" data-lesson="1" role="tab">Lesson 2 · Sentences</button>
     <button type="button" class="lesson" data-lesson="2" role="tab">Lesson 3 · Information</button>
+    <button type="button" class="lesson" data-lesson="3" role="tab">Lesson 4 · Conversations</button>
   </div>
   <header>
     <span class="num" id="lnum">1</span>
@@ -134,6 +153,28 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
   </div>
 
   <div class="grid nolabels" id="grid"></div>
+
+  <div id="convo" hidden>
+    <div class="cwrap">
+      <div class="cleft">
+        <div class="cscene" id="cScene"></div>
+        <div class="infobar">
+          <button class="speak" id="cPlay" type="button" aria-label="Play the conversation"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Conversation</span></button>
+          <button class="small" id="cSlowB" type="button" aria-pressed="false">Slow</button>
+          <button class="small" id="cText" type="button" aria-pressed="false">Show text</button>
+          <button class="small" id="cRestart" type="button">Start over</button>
+        </div>
+        <div class="cscript" id="cScript" hidden></div>
+      </div>
+      <div class="cright">
+        <p class="cintro" id="cIntro"></p>
+        <p class="ctag">Now answer the questions.</p>
+        <div class="qrow"><button class="speak q" id="cqPlay" type="button" aria-label="Play the question"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Question</span></button></div>
+        <p class="cq"><span class="item" id="cNum">1.</span> <span id="cQ"></span></p>
+        <div class="opts" id="cOpts"></div>
+      </div>
+    </div>
+  </div>
 
   <div id="info" hidden>
     <div class="infobar">
@@ -278,6 +319,109 @@ const SOIL=`<svg viewBox="0 0 160 240" preserveAspectRatio="none" aria-hidden="t
 const VENN=`<svg viewBox="0 0 480 250" aria-hidden="true"><path d="M240 19.7a110 110 0 0 1 0 190.6a110 110 0 0 1 0-190.6z" fill="var(--line)"/><circle cx="185" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><circle cx="295" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><g font-size="11.5" fill="var(--fg)" font-family="Atkinson Hyperlegible,system-ui,sans-serif"><text x="86" y="84">• north of the rest</text><text x="94" y="99">of the United</text><text x="94" y="114">States</text><text x="86" y="136">• coldest state</text><text x="192" y="84">• US states</text><text x="192" y="106">• not connected</text><text x="200" y="121">to the main part</text><text x="200" y="136">of the country</text><text x="302" y="84">• in the Pacific</text><text x="310" y="99">Ocean</text><text x="302" y="121">• warmest state</text></g><g font-size="15" font-weight="700" fill="var(--bad)" text-anchor="middle" font-family="Atkinson Hyperlegible,system-ui,sans-serif"><text x="125" y="244">Alaska</text><text x="240" y="244">Both</text><text x="355" y="244">Hawaii</text></g></svg>`;
 let Q=0,picked=null,qTries=0,qResults=[],iSlow=false;
 const $=id=>document.getElementById(id);
+LESSONS.push({title:"Listen to a Conversation",type:"convo",items:[
+ {name:"Conversation 1",intro:"Listen to two students talking about a class assignment.",scene:"hall",
+  speakers:{Maya:0,Luis:1},
+  lines:[["Luis","Hey, Maya. Did you start the math assignment yet?"],
+   ["Maya","I did! Ms. Ortiz wants us to find geometry in real life. We have to take photos of five shapes around the school."],
+   ["Luis","Five shapes? Like what?"],
+   ["Maya","The clock in the library is a circle. The windows in the gym are rectangles. And the roof of the bus stop is a triangle."],
+   ["Luis","Oh, that's smart. When is it due?"],
+   ["Maya","Friday. We need five photos and one sentence about each shape."],
+   ["Luis","I have my phone, but I have to go to the art room right now. Mr. Hale wants to talk to me about my painting."],
+   ["Maya","OK. I'm going to the library at lunch to take a picture of the clock. Do you want to meet me there?"],
+   ["Luis","Sure. See you at lunch!"]],
+  qs:[{q:"What are the students mainly talking about?",o:["a math assignment","a painting for art class","lunch in the library","a new bus stop"],a:0},
+      {q:"Why does Maya talk about the clock in the library?",o:["It is broken.","It shows the time for lunch.","It is an example of a circle.","It is in her painting."],a:2},
+      {q:"What must the students turn in on Friday?",o:["five shapes they drew","five photos with one sentence each","a painting of the school","a list of rooms in the school"],a:1},
+      {q:"Where will Luis go now?",o:["to the library","to the gym","to the art room","to the bus stop"],a:2},
+      {q:"What will Maya probably do at lunch?",o:["take a photo of the clock","finish her painting","talk to Mr. Hale","go to the gym"],a:0}]},
+ {name:"Conversation 2",intro:"Listen to two students talking after school.",scene:"walk",
+  speakers:{Sofia:0,Nadia:2},
+  lines:[["Sofia","Nadia, guess what? Our garden club is finally building the school garden!"],
+   ["Nadia","That's great! What are you going to plant?"],
+   ["Sofia","We voted. Some students wanted flowers, and some wanted fruit trees. But most students voted for vegetables, so we're planting tomatoes, peppers, and beans."],
+   ["Nadia","Yum. How do you start a garden?"],
+   ["Sofia","First, we pulled out all the weeds. Then we added new soil. Last Saturday, we planted the seeds. Now we have to water them every morning."],
+   ["Nadia","My school doesn't have a garden. We only have a small yard with grass."],
+   ["Sofia","You could start one! Ask your principal. I can give you our club's plan."],
+   ["Nadia","Really? That would help a lot."],
+   ["Sofia","Sure. I'll bring it to the library tomorrow, and I'll show you how we planned the garden."]],
+  qs:[{q:"Which kind of plant received the most votes from the students?",o:["flowers","fruit trees","vegetables","grass"],a:2},
+      {q:"Which step came right after adding new soil?",o:["pulling out the weeds","planting the seeds","voting on the plants","watering every morning"],a:1},
+      {q:"What do the club members have to do every morning?",o:["pull weeds","water the seeds","buy new soil","pick tomatoes"],a:1},
+      {q:"What can you infer from the conversation?",o:["Nadia and Sofia go to different schools.","Nadia is in the garden club.","Sofia does not like vegetables.","The garden is finished."],a:0},
+      {q:"What will Sofia probably do next?",o:["ask her principal for a garden","give Nadia the club's plan","plant flowers at Nadia's school","vote for fruit trees"],a:1}]}
+]});
+{let n=1;LESSONS[3].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+const CSCENE={
+ hall:WD(`<rect width="240" height="170" fill="#f3ead6"/><polygon points="0,0 70,30 70,130 0,170" fill="#e6d8bb"/><polygon points="240,0 170,30 170,130 240,170" fill="#e6d8bb"/><rect x="70" y="30" width="100" height="100" fill="#efe4cb"/><polygon points="0,170 70,130 170,130 240,170" fill="#d9b9a0"/>${R(4,i=>`<polygon points="${8+i*15},${6+i*6} ${20+i*15},${11+i*6} ${20+i*15},${150-i*5} ${8+i*15},${156-i*5}" fill="#9db7c9" stroke="${K}" stroke-width="1"/>`)}${R(4,i=>`<polygon points="${232-i*15},${6+i*6} ${220-i*15},${11+i*6} ${220-i*15},${150-i*5} ${232-i*15},${156-i*5}" fill="#c9a07a" stroke="${K}" stroke-width="1"/>`)}<rect x="108" y="56" width="24" height="74" fill="#e8e8e8" stroke="${K}"/>${bust(112,72,.55,"#5f9a4f",{back:true})}${bust(134,74,.5,"#e3a33a",{back:true,hair:"#2a1d16"})}${full(82,58,1.3,"#d33d33","#8a9ac4",{hair:"#e8c766"})}<rect x="60" y="88" width="16" height="20" fill="#3a7bd5" stroke="${K}"/>${full(160,52,1.4,"#f2c84b","#8a9ac4",{hair:"#a0602a"})}<path d="M144 66l8 40" stroke="#5a3a22" stroke-width="4"/>`),
+ walk:WD(`<rect width="240" height="170" fill="#cfe9f5"/>${R(5,i=>`<rect x="${120+i*24}" y="${50-(i%2)*6}" width="18" height="16" fill="${["#d9573f","#7b4fc4","#e3a33a","#3a7bd5","#c9563c"][i]}"/><polygon points="${118+i*24},${50-(i%2)*6} ${129+i*24},${40-(i%2)*6} ${140+i*24},${50-(i%2)*6}" fill="#7a2a22"/>`)}<path d="M0 60q60-16 120 0t120 0V170H0Z" fill="#cde59a"/><circle cx="36" cy="40" r="26" fill="#d98a3a" stroke="${K}" stroke-width="1.5"/><rect x="33" y="60" width="7" height="50" fill="#7a5530"/><circle cx="200" cy="66" r="14" fill="#d07ab0"/><circle cx="216" cy="70" r="12" fill="#e08ac0"/><polygon points="0,140 240,116 240,150 0,170" fill="#d7d3cc" stroke="${K}" stroke-width="1"/>${full(98,58,1.25,"#d9573f","#e3a33a",{hair:"#e8c766"})}${full(140,54,1.3,"#2f8a7a","#6b5a4a",{hair:"#3b2a20"})}<rect x="80" y="70" width="10" height="26" rx="4" fill="#556" stroke="${K}"/><rect x="156" y="68" width="10" height="26" rx="4" fill="#9b6fe4" stroke="${K}"/>`)
+};
+let CQ=0,cTries=0,cResults=[],cSlow=false,cAnswered=false;
+function buildConvo(){
+  const it=item();
+  $("cIntro").textContent=it.intro;
+  $("cScene").innerHTML=CSCENE[it.scene];
+  $("cScript").innerHTML=it.lines.map((l,i)=>`<p data-i="${i}"><b>${l[0]}:</b> ${l[1]}</p>`).join("");
+  CQ=0;cResults=it.qs.map(()=>null);loadCQ();
+}
+function loadCQ(){
+  const it=item(),q=it.qs[CQ];cTries=0;cAnswered=false;
+  $("cNum").textContent=(it.firstQ+CQ)+".";
+  $("cQ").textContent=q.q;
+  $("cOpts").innerHTML=q.o.map((o,i)=>`<button type="button" class="opt" data-i="${i}"><span class="lt">${"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  setFb("",CQ===0?`Play the conversation first. Then play question ${it.firstQ}.`:"Play the question, then choose the best answer.");
+  $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
+}
+function pickVoices(){
+  let v=[];try{v=speechSynthesis.getVoices().filter(x=>/^en[-_]US/i.test(x.lang))}catch(e){}
+  if(!v.length)try{v=speechSynthesis.getVoices().filter(x=>/^en/i.test(x.lang))}catch(e){}
+  return v;
+}
+function playConvo(){
+  const it=item();
+  if(!("speechSynthesis" in window)){$("cScript").hidden=false;$("cText").setAttribute("aria-pressed","true");return}
+  try{speechSynthesis.cancel()}catch(e){}
+  const vs=pickVoices(),pitch=[1.15,0.8,1.35];
+  it.lines.forEach((l,i)=>{
+    const u=new SpeechSynthesisUtterance(l[1]);u.lang="en-US";u.rate=cSlow?.65:.92;
+    const s=it.speakers[l[0]];
+    if(vs.length>1)u.voice=vs[s%vs.length];else if(vs[0])u.voice=vs[0];
+    u.pitch=pitch[s];
+    u.onstart=()=>{document.querySelectorAll("#cScript p").forEach(p=>p.classList.toggle("on",+p.dataset.i===i));$("cPlay").classList.add("playing")};
+    if(i===it.lines.length-1)u.onend=u.onerror=()=>{$("cPlay").classList.remove("playing");document.querySelectorAll("#cScript p").forEach(p=>p.classList.remove("on"))};
+    speechSynthesis.speak(u);
+  });
+}
+function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.q+" "+q.o.map((o,i)=>"ABCD"[i]+". "+o).join(" "))}
+$("cOpts").addEventListener("click",e=>{
+  const b=e.target.closest(".opt");if(!b||cAnswered)return;
+  const it=item(),q=it.qs[CQ],i=+b.dataset.i;cTries++;
+  if(i===q.a){
+    cAnswered=true;b.classList.add("right");cResults[CQ]=cTries===1?"ok":"miss";
+    document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b);
+    const last=CQ===it.qs.length-1;
+    setFb("good",`Yes! ${"ABCD"[i]} is correct.`,last?"See score":"Next question",nextCQ);
+    slow=cSlow;say("Yes!");
+    $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+  }else{
+    b.classList.add("wrong");b.disabled=true;
+    setFb("bad","Not quite. Listen to the conversation again, then try another answer.");
+  }
+});
+function nextCQ(){
+  const it=item();
+  if(CQ<it.qs.length-1){CQ++;loadCQ();playCQ();return}
+  const first=cResults.filter(r=>r==="ok").length,more=I<LESSONS[L].items.length-1;
+  setFb("good",`All done! Correct on the first try: ${first} of ${it.qs.length}.`,more?"Go to Conversation 2":"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
+}
+$("cPlay").addEventListener("click",playConvo);
+$("cqPlay").addEventListener("click",playCQ);
+$("cSlowB").addEventListener("click",function(){cSlow=!cSlow;this.setAttribute("aria-pressed",cSlow)});
+$("cText").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("cScript").hidden=!on});
+$("cRestart").addEventListener("click",()=>buildConvo());
+
 function buildInfo(){
   const it=item();
   $("passage").textContent=it.passage;
@@ -365,10 +509,11 @@ function chooseLesson(l){
 function chooseItem(i){
   I=i;
   $("sets").querySelectorAll(".set").forEach(b=>b.setAttribute("aria-selected",+b.dataset.set===i));
-  const info=LESSONS[L].type==="info";
-  $("info").hidden=!info;$("grid").hidden=info;$("wordControls").hidden=info;
+  const info=LESSONS[L].type==="info",cv=LESSONS[L].type==="convo";
+  $("info").hidden=!info;$("convo").hidden=!cv;$("grid").hidden=info||cv;$("wordControls").hidden=info||cv;
   $("dir").textContent=info?"Listen to the information. Follow the directions you hear.":"Listen to the audio. Follow the direction you hear.";
   try{speechSynthesis.cancel()}catch(e){}
+  if(cv){$("dir").textContent="Listen to the conversation. Then answer the questions.";buildConvo();return}
   if(info){$("chips").classList.toggle("nowords",$("iWords").getAttribute("aria-pressed")!=="true");buildInfo();return}
   grid.classList.toggle("wide",LESSONS[L].type==="sentence");
   grid.innerHTML="";
