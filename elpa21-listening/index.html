@@ -143,6 +143,10 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
 .lchip{background:var(--surface);border:2px solid var(--line);color:var(--fg);padding:8px 14px;font-weight:700}
 .lchip[aria-pressed="true"]{border-color:var(--rule);box-shadow:0 0 0 3px var(--good-soft)}
 .lchip.used{opacity:.4}
+.opts.pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt.pic{flex-direction:column;align-items:stretch;padding:6px;gap:6px}
+.opt.pic svg{width:100%;height:auto;border-radius:6px;display:block}
+.opt.pic .lt{align-self:flex-start}
 .slidecap{font-size:.8rem;color:var(--muted);margin:-6px 0 10px}
 .note{color:var(--muted);font-size:.85rem;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.card,.card.wrong{transition:none;animation:none}}
@@ -157,6 +161,7 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
     <button type="button" class="lesson" data-lesson="3" role="tab">Lesson 4 · Conversations</button>
     <button type="button" class="lesson" data-lesson="4" role="tab">Lesson 5 · Debates</button>
     <button type="button" class="lesson" data-lesson="5" role="tab">Lesson 6 · Presentation</button>
+    <button type="button" class="lesson" data-lesson="6" role="tab">Lesson 7 · Teacher</button>
   </div>
   <header>
     <span class="num" id="lnum">1</span>
@@ -403,6 +408,8 @@ function loadCQ(){
   if(t==="org")h=`<table class="org">${q.org.map(r=>`<tr><th>${r[0]}:</th>${r[1]===null?`<td class="blank" id="orgBlank">Tap the reason that belongs here.</td>`:`<td>${r[1]}</td>`}</tr>`).join("")}</table>`;
   h+=q.o.map((o,i)=>t==="multi"?`<button type="button" class="opt chk" data-i="${i}" aria-pressed="false"><span class="lt">✓</span><span>${o}</span></button>`:`<button type="button" class="opt" data-i="${i}"><span class="lt">${t==="org"?"":"ABCD"[i]}</span><span>${o}</span></button>`).join("");
   if(t==="multi")h+=`<button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+  if(t==="pic")h=q.pics.map((k,i)=>`<button type="button" class="opt pic" data-i="${i}" aria-label="Picture ${"ABCD"[i]}"><span class="lt">${"ABCD"[i]}</span>${BUG[k]}</button>`).join("");
+  $("cOpts").classList.toggle("pics",t==="pic");
   if(t==="label"){
     h=`<div class="lbl3">${q.targets.map(([k,cap])=>`<div class="lt3">${WD(IC[k](120,90,2.2))}<small>${cap}</small><button type="button" class="slot3" data-t="${k}">&nbsp;</button></div>`).join("")}</div>
       <div class="lchips">${q.o.map((o,i)=>`<button type="button" class="lchip" data-i="${i}" aria-pressed="false">${o}</button>`).join("")}</div>
@@ -410,7 +417,7 @@ function loadCQ(){
     lblPick=null;lblMap={};
   }
   $("cOpts").innerHTML=h;
-  setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
+  setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":LESSONS[L].title.includes("Teacher")?"lesson":LESSONS[L].title.includes("Student")?"presentation":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
   $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
 }
 function pickVoices(){
@@ -433,7 +440,7 @@ function playConvo(){
     speechSynthesis.speak(u);
   });
 }
-function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.q+" "+q.o.map((o,i)=>(q.type?"":"ABCD"[i]+". ")+o).join(" "))}
+function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.type==="pic"||q.type==="label"?q.q:q.q+" "+q.o.map((o,i)=>(q.type?"":"ABCD"[i]+". ")+o).join(" "))}
 function cDone(b){
   const it=item();cAnswered=true;cResults[CQ]=cTries===1?"ok":"miss";
   const last=CQ===it.qs.length-1;
@@ -494,7 +501,7 @@ $("cOpts").addEventListener("click",e=>{
     const c=document.querySelector(`.opt[data-i="${q.a}"]`);if(c)c.classList.add("right");
     document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b&&x!==c);
     if(q.type==="org"){const bl=$("orgBlank");bl.textContent=q.o[q.a];bl.className="filled";}
-    cMiss(q.type==="org"?"Not quite. The correct reason is shown in green.":`Not quite. The correct answer is ${"ABCD"[q.a]}.`);
+    cMiss(q.type==="org"?"Not quite. The correct reason is shown in green.":`Not quite. The correct answer is ${"ABCD"[q.a]}${q.type==="pic"?" (the "+q.o[q.a]+")":""}.`);
   }
 });
 function cMiss(msg){
@@ -591,6 +598,42 @@ LESSONS.push({title:"Listen to the Student",type:"convo",items:[
 {let n=1;LESSONS[5].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
 CSCENE.room=HISTROOM;
 
+const BUG={
+ firefly:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#1f2a44"/>${R(14,i=>`<circle cx="${(i*53)%155+3}" cy="${(i*37)%100+5}" r="1.2" fill="#fff" opacity=".6"/>`)}<circle cx="112" cy="58" r="22" fill="#f4e04d" opacity=".35"/><ellipse cx="62" cy="34" rx="22" ry="9" fill="#cfe3ef" opacity=".7" transform="rotate(-20 62 34)"/><ellipse cx="86" cy="32" rx="22" ry="9" fill="#cfe3ef" opacity=".7" transform="rotate(20 86 32)"/><ellipse cx="80" cy="58" rx="30" ry="12" fill="#3b2f2a" stroke="#000"/><ellipse cx="106" cy="58" rx="10" ry="10" fill="#f4e04d" stroke="#000"/><circle cx="48" cy="56" r="9" fill="#d9573f" stroke="#000"/><path d="M42 50l-10-12M44 49l-4-14" stroke="#000" stroke-width="1.5"/>${R(3,i=>`<path d="M${66+i*12} 68l-4 12" stroke="#000" stroke-width="1.5"/>`)}</svg>`,
+ bee:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#d8ecb0"/><circle cx="30" cy="90" r="12" fill="#f2c84b"/><circle cx="30" cy="90" r="5" fill="#a0602a"/><ellipse cx="72" cy="34" rx="18" ry="11" fill="#fff" opacity=".8" stroke="#888"/><ellipse cx="92" cy="34" rx="18" ry="11" fill="#fff" opacity=".8" stroke="#888"/><ellipse cx="84" cy="60" rx="32" ry="17" fill="#f2c84b" stroke="#000"/>${R(3,i=>`<rect x="${72+i*12}" y="44" width="6" height="32" fill="#2b2622"/>`)}<circle cx="50" cy="58" r="12" fill="#2b2622"/><polygon points="116,60 126,56 116,66" fill="#2b2622"/></svg>`,
+ ladybug:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#8cc45f"/><ellipse cx="80" cy="60" rx="34" ry="28" fill="#d9302c" stroke="#000" stroke-width="2"/><path d="M80 32v56" stroke="#000" stroke-width="2"/>${[[64,48],[96,48],[60,70],[100,70],[80,80]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="6" fill="#000"/>`).join("")}<ellipse cx="80" cy="30" rx="16" ry="10" fill="#111"/><circle cx="74" cy="28" r="2.5" fill="#fff"/><circle cx="86" cy="28" r="2.5" fill="#fff"/></svg>`,
+ dragonfly:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#bfe3f2"/><rect y="84" width="160" height="26" fill="#6aa8d0"/><ellipse cx="60" cy="40" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(-12 60 40)"/><ellipse cx="60" cy="58" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(12 60 58)"/><ellipse cx="104" cy="40" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(12 104 40)"/><ellipse cx="104" cy="58" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(-12 104 58)"/><rect x="80" y="44" width="8" height="58" rx="4" fill="#2f8a7a" stroke="#000"/><circle cx="84" cy="40" r="7" fill="#2f8a7a" stroke="#000"/></svg>`
+};
+const SCI=(teacher,board)=>WD(`<rect width="240" height="170" fill="#eef2f4"/><rect x="40" y="12" width="150" height="70" fill="#fff" stroke="${K}" stroke-width="1.5"/>${board}<rect x="196" y="20" width="34" height="42" fill="#e3a33a" stroke="${K}"/><rect y="110" width="240" height="60" fill="#d9d3c4"/>${teacher}${R(5,i=>`<rect x="${10+i*48}" y="${152+(i%2)*4}" width="36" height="6" fill="#f2f2f2" stroke="${K}"/>`+bust(28+i*48,140+(i%2)*4,.9,["#d9573f","#f2d24b","#5b7fb8","#8ac43f","#e88aa8"][i%5],{back:true,hair:["#2a1d16","#c4572a","#3b2a20","#e8c766","#a0602a"][i%5]}))}`);
+CSCENE.hurr=SCI(full(206,58,1.15,"#3a5a8a","#3a3a4a",{hair:"#a0602a"}),`<circle cx="115" cy="47" r="26" fill="none" stroke="#5b8fa8" stroke-width="5" stroke-dasharray="30 8"/><circle cx="115" cy="47" r="6" fill="#fff" stroke="#5b8fa8" stroke-width="2"/><text x="115" y="78" text-anchor="middle" font-size="8" fill="${K}" font-family="system-ui">HURRICANE</text>`);
+CSCENE.fire=SCI(full(206,56,1.2,"#e3e3e3","#555",{hair:"#2a1d16",skin:"#a8734a"}),`<rect x="48" y="18" width="134" height="58" fill="#1f2a44"/>${R(9,i=>`<circle cx="${60+(i*37)%112}" cy="${26+(i*19)%42}" r="${2.5+i%3}" fill="#f4e04d"/><circle cx="${60+(i*37)%112}" cy="${26+(i*19)%42}" r="${7+i%3*2}" fill="#f4e04d" opacity=".25"/>`)}<text x="115" y="72" text-anchor="middle" font-size="8" fill="#fff" font-family="system-ui">LIGHTS IN THE NIGHT</text>`);
+
+LESSONS.push({title:"Listen to the Teacher",type:"convo",items:[
+ {name:"Hurricanes",intro:"Listen to the teacher.",scene:"hurr",speakers:{"Ms. Harper":2},
+  lines:[["Ms. Harper","Good morning, class. Today we are going to learn how hurricanes form and why they become weaker. This is important for us, because Mississippi has a coast on the Gulf of Mexico, and hurricanes can reach our state."],
+   ["Ms. Harper","A hurricane is a very large storm that spins. Every hurricane begins over warm ocean water. The water must be about eighty degrees Fahrenheit or warmer. The warm water heats the air above it and fills it with moisture. This warm, wet air rises quickly, and cooler air rushes in to take its place."],
+   ["Ms. Harper","Because the Earth is turning, the moving air begins to spin around a center. In the Northern Hemisphere, hurricanes spin counterclockwise. As long as the storm stays over warm water, it keeps getting energy and grows stronger. When the winds reach seventy-four miles per hour, the storm is officially called a hurricane."],
+   ["Ms. Harper","The center of a hurricane is called the eye. Surprisingly, the eye is calm. The sky can even be clear there. Around the eye is a ring of tall clouds called the eyewall. The eyewall has the strongest winds and the heaviest rain."],
+   ["Ms. Harper","When a hurricane moves over land, it begins to lose strength. Why? Because there is no warm ocean water under it to give it energy. But even a weaker storm can still bring flooding and dangerous winds, so we always listen to weather warnings."]],
+  qs:[{q:"What is the teacher mainly discussing?",o:["why hurricanes are dangerous for ships","how hurricanes form and why they become weaker","how scientists measure rain","the history of the Mississippi coast"],a:1},
+      {q:"Which statement best summarizes how hurricanes form?",o:["Hurricanes form when cold air moves over land.","A storm with winds of seventy-four miles per hour is called a hurricane.","Warm ocean water heats moist air that rises and begins to spin.","Hurricanes form when the eye of a storm gets bigger."],a:2},
+      {type:"multi",q:"Which are characteristics of hurricanes? Check all that apply.",o:["They begin over warm ocean water.","They spin counterclockwise in the Northern Hemisphere.","They grow stronger over land.","Their winds reach at least seventy-four miles per hour.","Their strongest winds are in the eye.","They form only in the Southern Hemisphere."],a:[0,1,3]},
+      {q:"What does the teacher say about the eye of a hurricane?",o:["It is the calm center of the storm.","It has the strongest winds.","It has the heaviest rain.","It forms over land."],a:0},
+      {q:"Why does a hurricane become weaker over land?",o:["Land is colder than the sky.","There is no warm ocean water to give it energy.","The eye closes over land.","The storm stops spinning in the daytime."],a:1}]},
+ {name:"Fireflies",intro:"Listen to the teacher.",scene:"fire",speakers:{"Mr. Okafor":1},
+  lines:[["Mr. Okafor","On summer nights in Mississippi, you can see small lights blinking in the grass and trees. These lights come from fireflies. Today we will learn how fireflies make light and why they use it."],
+   ["Mr. Okafor","First, a surprising fact: a firefly is not really a fly. It is a beetle. It has a hard shell over its wings, like other beetles. The light comes from the lower part of its body, near the end of its tail."],
+   ["Mr. Okafor","Inside that part of the body is a chemical called luciferin. When luciferin mixes with oxygen and a helper chemical, it makes light. Scientists call this cold light, because it makes almost no heat. A light bulb gets hot, but a firefly's light does not."],
+   ["Mr. Okafor","Why do fireflies flash? The main reason is to find a mate. Each kind of firefly has its own pattern of flashes, like a secret code. The males flash while they fly. A female waits on a plant and answers with her own flash. The light also warns birds and frogs that fireflies taste bad."],
+   ["Mr. Okafor","Most of the fireflies we see here glow at night. However, some kinds of fireflies are active during the day. They do not use light at all. Instead, they find each other by smell."]],
+  qs:[{type:"pic",q:"Which of these is a firefly? Choose the correct picture.",pics:["bee","firefly","ladybug","dragonfly"],o:["bee","firefly","ladybug","dragonfly"],a:1},
+      {q:"Which chemical in a firefly's body makes light when it mixes with oxygen?",o:["luciferin","chlorophyll","melanin","salt"],a:0},
+      {q:"Why is a firefly's light called cold light?",o:["It happens only on cold nights.","It makes almost no heat.","It is always blue.","It comes from the moon."],a:1},
+      {q:"Which can you infer from the lesson?",o:["All fireflies are flies.","Fireflies flash only to warn birds.","Not every kind of firefly uses light to communicate.","Fireflies can glow only in winter."],a:2},
+      {type:"multi",q:"What are some reasons a firefly flashes its light? Check all that apply.",o:["to find a mate","to stay warm","to answer a male's flash","to warn birds that it tastes bad","to see in the dark","to cool its body"],a:[0,2,3]}]}
+]});
+{let n=1;LESSONS[6].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+
 function buildInfo(){
   const it=item();
   $("passage").textContent=it.passage;
@@ -682,7 +725,9 @@ function chooseItem(i){
   $("info").hidden=!info;$("convo").hidden=!cv;$("grid").hidden=info||cv;$("wordControls").hidden=info||cv;
   $("dir").textContent=info?"Listen to the information. Follow the directions you hear.":"Listen to the audio. Follow the direction you hear.";
   try{speechSynthesis.cancel()}catch(e){}
-  if(cv){$("dir").textContent=LESSONS[L].title.includes("Debate")?"Listen to the debate. Then answer the questions.":"Listen to the conversation. Then answer the questions.";$("cPlay").querySelector("span").textContent=LESSONS[L].title.includes("Debate")?"Debate":"Conversation";buildConvo();return}
+  if(cv){const T=LESSONS[L].title,kind=T.includes("Debate")?"debate":T.includes("Teacher")?"teacher":T.includes("Student")?"presentation":"conversation";
+    $("dir").textContent=kind==="teacher"?"Listen to the teacher. Think about what you heard. Then answer the questions.":`Listen to the ${kind}. Then answer the questions.`;
+    $("cPlay").querySelector("span").textContent=kind==="teacher"?"Lesson":kind[0].toUpperCase()+kind.slice(1);buildConvo();return}
   if(info){$("chips").classList.toggle("nowords",$("iWords").getAttribute("aria-pressed")!=="true");buildInfo();return}
   grid.classList.toggle("wide",LESSONS[L].type==="sentence");
   grid.innerHTML="";

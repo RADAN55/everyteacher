@@ -38,8 +38,8 @@ GROUPS = [
 
 # href, title, group, fmt, size, one-liner, core
 R = [
- ("elpa21-listening/", "ELPA21 Listening Practice · Unit 1", "students", "Interactive", "41 items",
-  "Students hear a direction, conversation, debate or presentation, then tap the picture, card or answer that matches.", True),
+ ("elpa21-listening/", "ELPA21 Listening Practice · Unit 1", "students", "Interactive", "51 items",
+  "Students hear a direction, conversation, debate, presentation or lesson, then tap the picture, card or answer that matches.", True),
  ("https://radan55.github.io/Stormattention/", "Your Attention Is for Sale", "students", "Lesson", "90 min · EN/ES",
   "A read-aloud lesson where students feel the tricks apps use on them, then take their attention back.", True),
  ("newcomer-guide.html", "Your Guide to School in the U.S.", "students", "PDF guide", "5 languages",
