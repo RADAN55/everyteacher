@@ -387,7 +387,7 @@ function loadCQ(){
   h+=q.o.map((o,i)=>t==="multi"?`<button type="button" class="opt chk" data-i="${i}" aria-pressed="false"><span class="lt">✓</span><span>${o}</span></button>`:`<button type="button" class="opt" data-i="${i}"><span class="lt">${t==="org"?"":"ABCD"[i]}</span><span>${o}</span></button>`).join("");
   if(t==="multi")h+=`<button type="button" class="submit" id="cSubmit">Check my answers</button>`;
   $("cOpts").innerHTML=h;
-  setFb("",CQ===0?`Play the conversation first. Then play question ${it.firstQ}.`:"Play the question, then choose the best answer.");
+  setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
   $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
 }
 function pickVoices(){
@@ -429,9 +429,11 @@ $("cOpts").addEventListener("click",e=>{
     if(!chosen.length){setFb("bad","Check at least one statement, then press Check my answers.");return}
     cTries++;
     const ok=chosen.length===q.a.length&&q.a.every(i=>chosen.includes(i));
-    if(ok){document.querySelectorAll(".opt.chk").forEach(x=>{x.disabled=true;if(q.a.includes(+x.dataset.i))x.classList.add("right")});$("cSubmit").remove();cDone();}
-    else{chosen.filter(i=>!q.a.includes(i)).forEach(i=>document.querySelector(`.opt.chk[data-i="${i}"]`).classList.add("miss"));
-      setFb("bad",`Not quite. ${q.a.length} statements are correct. Red ones do not support the position. Listen again and try.`)}
+    document.querySelectorAll(".opt.chk").forEach(x=>{const k=+x.dataset.i;x.disabled=true;
+      if(q.a.includes(k))x.classList.add("right");else if(chosen.includes(k))x.classList.add("miss")});
+    $("cSubmit").remove();
+    if(ok)cDone();
+    else cMiss(`Not quite. The ${q.a.length} correct statements are marked in green. Red ones do not support the position.`);
     return;
   }
   const b=e.target.closest(".opt");if(!b)return;
@@ -445,15 +447,24 @@ $("cOpts").addEventListener("click",e=>{
     slow=cSlow;say("Yes!");
     $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
   }else{
-    b.classList.add("wrong");b.disabled=true;
-    setFb("bad","Not quite. Listen to the conversation again, then try another answer.");
+    b.classList.add("wrong");
+    const c=document.querySelector(`.opt[data-i="${q.a}"]`);if(c)c.classList.add("right");
+    document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b&&x!==c);
+    if(q.type==="org"){const bl=$("orgBlank");bl.textContent=q.o[q.a];bl.className="filled";}
+    cMiss(q.type==="org"?"Not quite. The correct reason is shown in green.":`Not quite. The correct answer is ${"ABCD"[q.a]}.`);
   }
 });
+function cMiss(msg){
+  const it=item();cAnswered=true;cResults[CQ]="miss";
+  const last=CQ===it.qs.length-1;
+  setFb("bad",msg,last?"See score":"Next question",nextCQ);
+  $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+}
 function nextCQ(){
   const it=item();
   if(CQ<it.qs.length-1){CQ++;loadCQ();playCQ();return}
   const first=cResults.filter(r=>r==="ok").length,more=I<LESSONS[L].items.length-1;
-  setFb("good",`All done! Correct on the first try: ${first} of ${it.qs.length}.`,more?`Go to ${LESSONS[L].items[I+1].name}`:"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
+  setFb("good",`All done! You got ${first} of ${it.qs.length} correct.`,more?`Go to ${LESSONS[L].items[I+1].name}`:"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
 }
 $("cPlay").addEventListener("click",playConvo);
 $("cqPlay").addEventListener("click",playCQ);
