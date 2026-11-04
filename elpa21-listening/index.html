@@ -129,6 +129,21 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
 .org th{color:var(--bad);font-weight:700;width:7.5em}
 .org td.blank{border:2px dashed var(--rule);color:var(--muted);font-style:italic}
 .org td.filled{color:var(--good);font-weight:700}
+.lbl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:4px 0 12px}
+.lt3{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 6px}
+.lt3 svg{width:100%;max-width:130px;height:auto}
+.lt3 small{color:var(--muted);font-size:.78rem}
+.slot3{width:100%;min-height:42px;border:2px dashed var(--line);background:var(--surface);color:var(--fg);font-weight:700;padding:6px}
+.slot3.armed{border-color:var(--rule)}
+.slot3.filled{border-style:solid;border-color:var(--rule)}
+.slot3.right{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+.slot3.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.slot3 em{display:block;font-style:normal;font-weight:400;font-size:.82rem;color:var(--good)}
+.lchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.lchip{background:var(--surface);border:2px solid var(--line);color:var(--fg);padding:8px 14px;font-weight:700}
+.lchip[aria-pressed="true"]{border-color:var(--rule);box-shadow:0 0 0 3px var(--good-soft)}
+.lchip.used{opacity:.4}
+.slidecap{font-size:.8rem;color:var(--muted);margin:-6px 0 10px}
 .note{color:var(--muted);font-size:.85rem;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.card,.card.wrong{transition:none;animation:none}}
 </style>
@@ -141,6 +156,7 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
     <button type="button" class="lesson" data-lesson="2" role="tab">Lesson 3 · Information</button>
     <button type="button" class="lesson" data-lesson="3" role="tab">Lesson 4 · Conversations</button>
     <button type="button" class="lesson" data-lesson="4" role="tab">Lesson 5 · Debates</button>
+    <button type="button" class="lesson" data-lesson="5" role="tab">Lesson 6 · Presentation</button>
   </div>
   <header>
     <span class="num" id="lnum">1</span>
@@ -369,11 +385,12 @@ const CSCENE={
  hall:WD(`<rect width="240" height="170" fill="#f3ead6"/><polygon points="0,0 70,30 70,130 0,170" fill="#e6d8bb"/><polygon points="240,0 170,30 170,130 240,170" fill="#e6d8bb"/><rect x="70" y="30" width="100" height="100" fill="#efe4cb"/><polygon points="0,170 70,130 170,130 240,170" fill="#d9b9a0"/>${R(4,i=>`<polygon points="${8+i*15},${6+i*6} ${20+i*15},${11+i*6} ${20+i*15},${150-i*5} ${8+i*15},${156-i*5}" fill="#9db7c9" stroke="${K}" stroke-width="1"/>`)}${R(4,i=>`<polygon points="${232-i*15},${6+i*6} ${220-i*15},${11+i*6} ${220-i*15},${150-i*5} ${232-i*15},${156-i*5}" fill="#c9a07a" stroke="${K}" stroke-width="1"/>`)}<rect x="108" y="56" width="24" height="74" fill="#e8e8e8" stroke="${K}"/>${bust(112,72,.55,"#5f9a4f",{back:true})}${bust(134,74,.5,"#e3a33a",{back:true,hair:"#2a1d16"})}${full(82,58,1.3,"#d33d33","#8a9ac4",{hair:"#e8c766"})}<rect x="60" y="88" width="16" height="20" fill="#3a7bd5" stroke="${K}"/>${full(160,52,1.4,"#f2c84b","#8a9ac4",{hair:"#a0602a"})}<path d="M144 66l8 40" stroke="#5a3a22" stroke-width="4"/>`),
  walk:WD(`<rect width="240" height="170" fill="#cfe9f5"/>${R(5,i=>`<rect x="${120+i*24}" y="${50-(i%2)*6}" width="18" height="16" fill="${["#d9573f","#7b4fc4","#e3a33a","#3a7bd5","#c9563c"][i]}"/><polygon points="${118+i*24},${50-(i%2)*6} ${129+i*24},${40-(i%2)*6} ${140+i*24},${50-(i%2)*6}" fill="#7a2a22"/>`)}<path d="M0 60q60-16 120 0t120 0V170H0Z" fill="#cde59a"/><circle cx="36" cy="40" r="26" fill="#d98a3a" stroke="${K}" stroke-width="1.5"/><rect x="33" y="60" width="7" height="50" fill="#7a5530"/><circle cx="200" cy="66" r="14" fill="#d07ab0"/><circle cx="216" cy="70" r="12" fill="#e08ac0"/><polygon points="0,140 240,116 240,150 0,170" fill="#d7d3cc" stroke="${K}" stroke-width="1"/>${full(98,58,1.25,"#d9573f","#e3a33a",{hair:"#e8c766"})}${full(140,54,1.3,"#2f8a7a","#6b5a4a",{hair:"#3b2a20"})}<rect x="80" y="70" width="10" height="26" rx="4" fill="#556" stroke="${K}"/><rect x="156" y="68" width="10" height="26" rx="4" fill="#9b6fe4" stroke="${K}"/>`)
 };
-let CQ=0,cTries=0,cResults=[],cSlow=false,cAnswered=false;
+let CQ=0,cTries=0,cResults=[],cSlow=false,cAnswered=false,lblPick=null,lblMap={};
 function buildConvo(){
   const it=item();
   $("cIntro").textContent=it.intro;
   $("cScene").innerHTML=CSCENE[it.scene];
+  $("cScene").setAttribute("aria-label",it.slides?"Classroom and presentation slides":"Scene");
   $("cScript").innerHTML=it.lines.map((l,i)=>`<p data-i="${i}"><b>${l[0]}:</b> ${l[1]}</p>`).join("");
   CQ=0;cResults=it.qs.map(()=>null);loadCQ();
 }
@@ -386,6 +403,12 @@ function loadCQ(){
   if(t==="org")h=`<table class="org">${q.org.map(r=>`<tr><th>${r[0]}:</th>${r[1]===null?`<td class="blank" id="orgBlank">Tap the reason that belongs here.</td>`:`<td>${r[1]}</td>`}</tr>`).join("")}</table>`;
   h+=q.o.map((o,i)=>t==="multi"?`<button type="button" class="opt chk" data-i="${i}" aria-pressed="false"><span class="lt">✓</span><span>${o}</span></button>`:`<button type="button" class="opt" data-i="${i}"><span class="lt">${t==="org"?"":"ABCD"[i]}</span><span>${o}</span></button>`).join("");
   if(t==="multi")h+=`<button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+  if(t==="label"){
+    h=`<div class="lbl3">${q.targets.map(([k,cap])=>`<div class="lt3">${WD(IC[k](120,90,2.2))}<small>${cap}</small><button type="button" class="slot3" data-t="${k}">&nbsp;</button></div>`).join("")}</div>
+      <div class="lchips">${q.o.map((o,i)=>`<button type="button" class="lchip" data-i="${i}" aria-pressed="false">${o}</button>`).join("")}</div>
+      <button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+    lblPick=null;lblMap={};
+  }
   $("cOpts").innerHTML=h;
   setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
   $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
@@ -399,13 +422,13 @@ function playConvo(){
   const it=item();
   if(!("speechSynthesis" in window)){$("cScript").hidden=false;$("cText").setAttribute("aria-pressed","true");return}
   try{speechSynthesis.cancel()}catch(e){}
-  const vs=pickVoices(),pitch=[1.15,0.8,1.35];
+  const vs=pickVoices(),pitch=[1.15,0.8,1.35,0.95];
   it.lines.forEach((l,i)=>{
     const u=new SpeechSynthesisUtterance(l[1]);u.lang="en-US";u.rate=cSlow?.65:.92;
     const s=it.speakers[l[0]];
     if(vs.length>1)u.voice=vs[s%vs.length];else if(vs[0])u.voice=vs[0];
     u.pitch=pitch[s];
-    u.onstart=()=>{document.querySelectorAll("#cScript p").forEach(p=>p.classList.toggle("on",+p.dataset.i===i));$("cPlay").classList.add("playing")};
+    u.onstart=()=>{if(it.slides&&l[2]!==undefined)$("cScene").innerHTML=SL[l[2]];document.querySelectorAll("#cScript p").forEach(p=>p.classList.toggle("on",+p.dataset.i===i));$("cPlay").classList.add("playing")};
     if(i===it.lines.length-1)u.onend=u.onerror=()=>{$("cPlay").classList.remove("playing");document.querySelectorAll("#cScript p").forEach(p=>p.classList.remove("on"))};
     speechSynthesis.speak(u);
   });
@@ -421,6 +444,26 @@ function cDone(b){
 $("cOpts").addEventListener("click",e=>{
   if(cAnswered)return;
   const it=item(),q=it.qs[CQ];
+  if(q.type==="label"){
+    const ch=e.target.closest(".lchip"),sl=e.target.closest(".slot3");
+    if(ch){const on=ch.getAttribute("aria-pressed")!=="true";document.querySelectorAll(".lchip").forEach(x=>x.setAttribute("aria-pressed","false"));ch.setAttribute("aria-pressed",on);lblPick=on?+ch.dataset.i:null;document.querySelectorAll(".slot3").forEach(x=>x.classList.toggle("armed",lblPick!==null));if(lblPick!==null)setFb("","Now tap the box under a building.");return}
+    if(sl){
+      const k=sl.dataset.t;
+      if(lblPick===null){if(lblMap[k]!==undefined){delete lblMap[k]}else{setFb("bad","First tap a label. Then tap the box where it goes.");return}}
+      else{for(const t in lblMap)if(lblMap[t]===lblPick)delete lblMap[t];lblMap[k]=lblPick;lblPick=null;}
+      document.querySelectorAll(".slot3").forEach(x=>{const v=lblMap[x.dataset.t];x.innerHTML=v===undefined?"&nbsp;":q.o[v];x.classList.toggle("filled",v!==undefined);x.classList.remove("armed")});
+      const used=Object.values(lblMap);document.querySelectorAll(".lchip").forEach(x=>{x.setAttribute("aria-pressed","false");x.classList.toggle("used",used.includes(+x.dataset.i))});
+      setFb("",Object.keys(lblMap).length===3?"All three boxes are filled. Press Check my answers when you are ready.":"Tap a label, then tap a box. Tap a filled box to empty it.");
+      return;
+    }
+    if(!e.target.closest("#cSubmit"))return;
+    if(Object.keys(lblMap).length<3){setFb("bad","Fill all three boxes first, then press Check my answers.");return}
+    cTries++;let right=0;
+    document.querySelectorAll(".slot3").forEach(x=>{const k=x.dataset.t,ok=lblMap[k]===q.a[k];if(ok)right++;x.classList.add(ok?"right":"wrong");x.disabled=true;if(!ok)x.innerHTML=`${q.o[lblMap[k]]}<em>Correct: ${q.o[q.a[k]]}</em>`});
+    document.querySelectorAll(".lchip").forEach(x=>x.disabled=true);$("cSubmit").remove();
+    if(right===3)cDone();else cMiss(`Not quite. You matched ${right} of 3. The correct labels are shown.`);
+    return;
+  }
   if(q.type==="multi"){
     const c=e.target.closest(".opt");
     if(c){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")!=="true");c.classList.remove("miss");return}
@@ -501,6 +544,52 @@ LESSONS.push({title:"Listen to a Debate",type:"convo",items:[
 {let n=1;LESSONS[4].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
 CSCENE.stage=WD(`<rect width="240" height="170" fill="#e3a33a"/>${R(16,i=>`<path d="M${i*15+7} 0V110" stroke="#c9822a" stroke-width="4"/>`)}<path d="M0 110q30 8 60 0t60 0t60 0t60 0V124H0Z" fill="#c9822a"/><rect y="118" width="240" height="20" fill="#b9a088"/>${bust(58,44,1.1,"#c9563c",{hair:"#2a1d16"})}<rect x="40" y="70" width="38" height="50" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="48" y="80" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${bust(180,40,1.15,"#4a5a8a",{hair:"#a0602a"})}<rect x="160" y="68" width="40" height="52" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="169" y="78" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${R(8,i=>bust(14+i*31,150+(i%2)*4,.9,["#3a7bd5","#d9573f","#5f9a4f","#e3a33a"][i%4],{back:true,hair:["#2a1d16","#e8c766","#a0602a","#c4572a"][i%4]}))}`);
 CSCENE.room=WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="70" y="10" width="110" height="60" fill="#3d4a42" stroke="${K}" stroke-width="2"/><rect y="96" width="240" height="74" fill="#e8e1d2"/>${bust(124,56,1,"#5b8fa8",{hair:"#bbb"})}<rect x="90" y="84" width="70" height="30" fill="#e3e3e3" stroke="${K}" stroke-width="1.5"/>${full(48,34,1.15,"#e3a33a","#7a8a4a",{hair:"#e8c766"})}${full(200,28,1.2,"#e05a9a","#9aa3c4",{hair:"#6b4a2b"})}${R(6,i=>`<rect x="${10+i*40}" y="${150+(i%2)*4}" width="30" height="6" fill="#d9d2c0" stroke="${K}"/>`+bust(25+i*40,140+(i%2)*4,.85,["#f2d24b","#5f9a4f","#c9563c","#3a7bd5"][i%4],{back:true,hair:["#c4572a","#2a1d16","#a0602a","#3b2a20"][i%4]}))}`);
+
+const IC={
+ exec:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-30" y="-6" width="60" height="22" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><polygon points="-14,-6 14,-6 0,-18" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/>${R(4,i=>`<rect x="${-11+i*7}" y="-5" width="2.5" height="20" fill="#d8d2c4"/>`)}${R(4,i=>`<rect x="${-27+i*5}" y="0" width="3" height="5" fill="#9db7c9"/><rect x="${13+i*4}" y="0" width="3" height="5" fill="#9db7c9"/>`)}<rect x="-34" y="16" width="68" height="4" fill="#7fb06a"/></g>`,
+ leg:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-34" y="0" width="68" height="18" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><rect x="-12" y="-10" width="24" height="10" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><path d="M-11 -10a11 11 0 0 1 22 0z" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><path d="M0 -21v-6" stroke="${K}" stroke-width="1.5"/>${R(8,i=>`<rect x="${-31+i*8}" y="4" width="3" height="9" fill="#d8d2c4"/>`)}<circle cx="-40" cy="14" r="7" fill="#6aae42"/><circle cx="40" cy="14" r="7" fill="#6aae42"/><rect x="-46" y="18" width="92" height="4" fill="#7fb06a"/></g>`,
+ jud:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><polygon points="-26,-4 26,-4 0,-16" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><rect x="-26" y="-4" width="52" height="4" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/>${R(6,i=>`<rect x="${-22+i*8.4}" y="0" width="4" height="16" fill="#f6f2ea" stroke="${K}" stroke-width=".8"/>`)}<rect x="-30" y="16" width="60" height="4" fill="#e6e0d2" stroke="${K}" stroke-width="1"/><rect x="-36" y="20" width="72" height="3" fill="#7fb06a"/></g>`
+};
+const TXT=(x,y,t,o="")=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="9.5" font-style="italic" fill="#2b2622" font-family="Atkinson Hyperlegible,system-ui,sans-serif" ${o}>${t}</text>`;
+function govSlide(step){
+  // step: 1 icons, 2 +executive, 3 +legislative, 5 +bill arrow, 6 +judicial, 7 +triangle
+  let g=`<rect width="240" height="170" fill="#ffffff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/>`;
+  if(step>=7)g+=`<polygon points="120,78 96,114 144,114" fill="none" stroke="${K}" stroke-width="1.5"/>`;
+  g+=IC.exec(120,42)+IC.leg(62,128)+IC.jud(178,128);
+  if(step>=2)g+=TXT(120,12,"Executive Branch")+TXT(120,72,"Governor");
+  if(step>=3)g+=TXT(50,100,"Legislative Branch")+TXT(62,162,"Legislature");
+  if(step>=5&&step<7)g+=`<path d="M100 112Q104 96 112 82" stroke="#3a7bd5" stroke-width="2" fill="none" marker-end="url(#ar)"/><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3a7bd5"/></marker></defs>`+TXT(122,104,"bill",`fill="#3a7bd5" font-style="normal" font-weight="700"`)+TXT(184,72,"sign or veto?",`fill="#c9302c" font-style="normal" font-weight="700"`);
+  if(step>=6)g+=TXT(190,100,"Judicial Branch")+TXT(178,162,"Supreme Court");
+  return WD(g);
+}
+const CHART=WD(`<rect width="240" height="170" fill="#fff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/><text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="${K}" font-family="Atkinson Hyperlegible,system-ui,sans-serif">MISSISSIPPI LEGISLATURE · MEMBERS</text><path d="M40 140H220" stroke="${K}"/>${[0,40,80,120].map(v=>`<path d="M40 ${140-v*0.8}H220" stroke="#e3e3e3"/><text x="34" y="${143-v*0.8}" text-anchor="end" font-size="8" fill="#555" font-family="system-ui">${v}</text>`).join("")}<rect x="70" y="${140-52*0.8}" width="40" height="${52*0.8}" fill="#5b8fa8"/><rect x="150" y="${140-122*0.8}" width="40" height="${122*0.8}" fill="#c9824a"/><g font-family="Atkinson Hyperlegible,system-ui,sans-serif" text-anchor="middle" fill="${K}"><text x="90" y="${134-52*0.8}" font-size="10" font-weight="700">52</text><text x="170" y="${134-122*0.8}" font-size="10" font-weight="700">122</text><text x="90" y="154" font-size="9.5">Senate</text><text x="170" y="154" font-size="9.5">House of Representatives</text></g>`);
+const HISTROOM=WD(`<rect width="240" height="170" fill="#f3ead6"/><rect x="60" y="14" width="120" height="66" fill="#fff" stroke="${K}" stroke-width="1.5"/><g transform="translate(120 47) scale(.38) translate(-120 -85)">${govSlide(1).replace(/^<svg[^>]*>|<\/svg>$/g,"")}</g><rect x="14" y="20" width="34" height="44" fill="#e3a33a" stroke="${K}"/><rect y="104" width="240" height="66" fill="#e3dccb"/>${full(120,66,1.05,"#e3822a","#8a9ac4",{hair:"#8a5a2b"})}<rect x="128" y="86" width="12" height="9" fill="#fff" stroke="${K}"/>${R(6,i=>`<rect x="${6+i*40}" y="${150+(i%2)*4}" width="32" height="6" fill="#f2f2f2" stroke="${K}"/>`+bust(22+i*40,140+(i%2)*4,.85,["#c9b08a","#7b4fc4","#5b7fb8","#d9573f"][i%4],{back:true,hair:["#3b2a20","#a0602a","#e8c766","#2a1d16"][i%4]}))}`);
+const HAND=(name,shirt,hair,skin)=>WD(`<rect width="240" height="170" fill="#fff"/>${bust(120,64,2.1,shirt,{hair,skin})}<path d="M150 98L172 40" stroke="${shirt}" stroke-width="13" stroke-linecap="round"/><circle cx="174" cy="34" r="8" fill="${skin||"#e8b98f"}" stroke="${K}" stroke-width="1.5"/><polygon points="70,150 200,140 214,170 60,170" fill="#e8dcc0" stroke="${K}"/><text x="120" y="20" text-anchor="middle" font-size="11" fill="#555" font-family="system-ui">${name} asks a question</text>`);
+const SL={room:HISTROOM,1:govSlide(1),2:govSlide(2),3:govSlide(3),4:CHART,5:govSlide(5),6:govSlide(6),7:govSlide(7),ana:HAND("Ana","#d9e14a","#3b2a20","#8a5a3a"),kevin:HAND("Kevin","#e3a33a","#2a1d16")};
+
+LESSONS.push({title:"Listen to the Student",type:"convo",items:[
+ {name:"Presentation",intro:"Listen to a student giving a presentation in a history class. Watch his slides change as he speaks.",scene:"room",slides:true,
+  speakers:{"Ms. Rivera":2,Marcus:1,Ana:0,Kevin:3},
+  lines:[["Ms. Rivera","Marcus, you may begin your presentation.","room"],
+   ["Marcus","Good morning. My presentation is about how Mississippi's state government is organized. Like the United States government, our state government has three branches. Each branch has a different job, and each branch can check the power of the others.",1],
+   ["Marcus","The first branch is the executive branch. The leader of the executive branch is the governor. The governor works in Jackson, our state capital, and is elected every four years. The governor's job is to carry out the laws.",2],
+   ["Marcus","The second branch is the legislative branch, called the Legislature. The Legislature makes the laws. It has two parts: the Senate and the House of Representatives.",3],
+   ["Marcus","This chart shows how many members are in each part. The Senate has fifty-two senators, and the House has one hundred twenty-two representatives. So the House is more than twice as large as the Senate.",4],
+   ["Ana","Excuse me, Marcus. Who decides if a new bill becomes a law?","ana"],
+   ["Marcus","Good question. First, both parts of the Legislature must pass the bill. Then it goes to the governor. The governor can sign the bill, or the governor can veto it. A veto stops the bill from becoming a law. But if two-thirds of both parts of the Legislature vote for it again, the bill can still become a law.",5],
+   ["Marcus","The third branch is the judicial branch. The highest court in our state is the Mississippi Supreme Court. It decides what the laws mean and whether they follow the state constitution.",6],
+   ["Kevin","How many judges are on the Supreme Court?","kevin"],
+   ["Marcus","There are nine justices. A justice is a judge on the Supreme Court. Together, the governor, the Legislature, and the Supreme Court share power, so no one branch has too much. Thank you.",7]],
+  qs:[{q:"What is the main topic of the student's presentation?",o:["how a bill becomes a law","how Mississippi's state government is organized","how judges are chosen for the Supreme Court","the history of the state capital"],a:1},
+      {q:"Why does the student include a chart in his presentation?",o:["to show that the governor leads the executive branch","to compare the number of members in the two parts of the Legislature","to show how justices join the Supreme Court","to show how many people live in Mississippi"],a:1},
+      {type:"label",q:"Match the correct labels to the three branches of Mississippi's state government.",
+       targets:[["exec","Executive branch"],["leg","Legislative branch"],["jud","Judicial branch"]],
+       o:["Supreme Court","Governor","Mayor","Legislature","School Board"],a:{exec:1,leg:3,jud:0}},
+      {q:"Who can veto a bill so that it does not become a law?",o:["the governor","the Senate","a justice","the House of Representatives"],a:0},
+      {q:"How many justices are on the Mississippi Supreme Court?",o:["three","five","seven","nine"],a:3}]}
+]});
+{let n=1;LESSONS[5].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+CSCENE.room=HISTROOM;
 
 function buildInfo(){
   const it=item();
