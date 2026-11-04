@@ -172,7 +172,8 @@ Q = [
   "ELPA21 Listening Practice works like the real listening items: you hear a direction, a "
   "sentence or a short talk, then tap the picture or move the card that matches. Slow the "
   "voice down, turn on the words, and try again until you get it.",
-  [("ELPA21 Listening Practice · Unit 1", "elpa21-listening/"),
+  [("ELPA21 Listening Practice · Set 1", "elpa21-listening/"),
+   ("ELPA21 Listening Practice · Set 2", "elpa21-listening-2/"),
    ("English On Your Own", "english-on-your-own.html")]),
 
  ("students",

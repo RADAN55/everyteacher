@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Interactive ELPA21 listening practice, Set 2: seven new lessons from Match the Word to Listen to the Teacher. EL Publishing.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235d8f2e'/%3E%3Cpath d='M16 36a16 16 0 0 1 32 0' stroke='white' stroke-width='5' fill='none'/%3E%3Crect x='12' y='34' width='10' height='16' rx='4' fill='white'/%3E%3Crect x='42' y='34' width='10' height='16' rx='4' fill='white'/%3E%3C/svg%3E">
+<title>ELPA21 Listening Practice · Set 2</title>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: workbook-style header, lesson + item tabs, speaker controls, picture grid (4-up words / 2x2 sentences), feedback strip */
+:root{
+  --bg:#f4f7f8; --surface:#ffffff; --fg:#1f2d33; --muted:#5c6c72; --line:#d4dfe3;
+  --title:#5d8f2e; --rule:#4fa3b5; --good:#2e8a4f; --good-soft:#e1f3e7; --bad:#c4492f; --bad-soft:#fbe7e2;
+  --display:"Fredoka","Trebuchet MS",sans-serif; --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141b1e; --surface:#1d272b; --fg:#e7eef0; --muted:#9db0b6; --line:#2f3d42;
+  --title:#9ccc65; --rule:#5fb7c9; --good:#5fcf88; --good-soft:#1c3626; --bad:#f08467; --bad-soft:#3b221c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141b1e; --surface:#1d272b; --fg:#e7eef0; --muted:#9db0b6; --line:#2f3d42;
+  --title:#9ccc65; --rule:#5fb7c9; --good:#5fcf88; --good-soft:#1c3626; --bad:#f08467; --bad-soft:#3b221c; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.45}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.lessons{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.lesson{background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:4px 2px;font-family:var(--display);font-size:1rem;margin-right:12px}
+.lesson[aria-selected="true"]{color:var(--fg);border-color:var(--title)}
+header{display:flex;align-items:flex-end;gap:12px;border-bottom:4px solid var(--rule);padding-bottom:6px}
+header .num{font-family:var(--display);font-size:1.8rem;color:var(--title)}
+header h1{font-family:var(--display);font-weight:600;color:var(--title);font-size:1.8rem;margin:0;flex:1;text-wrap:balance;line-height:1.15}
+header .tag{font-family:var(--display);color:var(--title);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-align:center}
+.dir{font-weight:700;margin:16px 0 8px}
+.sets{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px}
+button{font:inherit;cursor:pointer;border-radius:10px}
+button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
+.set{background:var(--surface);border:2px solid var(--line);color:var(--muted);padding:8px 14px;font-family:var(--display);font-size:1rem}
+.set[aria-selected="true"]{border-color:var(--title);color:var(--fg);background:var(--good-soft)}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:16px}
+.item{font-family:var(--display);font-size:1.3rem;font-variant-numeric:tabular-nums;min-width:1.6em}
+.speak{display:flex;align-items:center;gap:10px;background:var(--surface);border:2px solid var(--rule);color:var(--fg);padding:8px 16px 8px 10px;font-weight:700}
+.speak svg{width:40px;height:40px}
+.speak.playing{background:var(--good-soft)}
+.small{background:none;border:1px solid var(--line);color:var(--muted);padding:6px 12px;font-size:.9rem}
+.small[aria-pressed="true"]{border-color:var(--rule);color:var(--fg)}
+.textline{width:100%;font-size:1.15rem;font-weight:700;min-height:1.5em}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid.wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:620px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.wide{grid-template-columns:1fr}}
+.card{position:relative;padding:0;border:3px solid var(--line);background:var(--surface);overflow:hidden;display:flex;flex-direction:column;transition:transform .12s;text-align:center}
+.card:hover{transform:translateY(-2px)}
+.card svg{display:block;width:100%;height:auto;max-width:100%}
+.card .lbl{font-family:var(--display);font-size:1.15rem;padding:6px 8px;color:var(--fg);border-top:1px solid var(--line);min-height:2.1em}
+.grid.wide .lbl{font-family:var(--body);font-size:1rem;font-weight:700}
+.grid.nolabels .lbl{visibility:hidden}
+.card.right{border-color:var(--good);box-shadow:0 0 0 4px var(--good-soft)}
+.card.right .lbl{visibility:visible;color:var(--good)}
+.card.wrong{border-color:var(--bad);animation:shake .35s}
+.card .mark{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:1.4rem;color:#fff}
+.card.right .mark{background:var(--good)}
+.card.wrong .mark{background:var(--bad)}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.feedback{margin-top:16px;padding:12px 16px;border-radius:10px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;min-height:52px;background:var(--surface);border:1px solid var(--line)}
+.feedback.good{background:var(--good-soft);border-color:var(--good)}
+.feedback.bad{background:var(--bad-soft);border-color:var(--bad)}
+.feedback p{margin:0;font-weight:700}
+.next{background:var(--good);color:var(--surface);border:0;padding:10px 20px;font-weight:700}
+.dots{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.dot.ok{background:var(--good)}.dot.miss{background:var(--bad)}.dot.now{outline:2px solid var(--rule);outline-offset:2px}
+.infobar,.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:12px}
+.qrow{margin-top:6px}
+.speak.q{border-color:var(--title)}
+.qtext{font-weight:700;font-size:1.1rem;flex:1 1 260px;min-width:0}
+.passage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:0 0 12px;max-width:65ch}
+.board{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:start}
+.chips{display:flex;flex-direction:column;gap:10px}
+@media (max-width:620px){.board{grid-template-columns:1fr}.chips{flex-direction:row;flex-wrap:wrap}}
+.chip{background:var(--surface);border:3px solid var(--line);color:var(--fg);padding:6px;display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;min-width:110px}
+.chip svg{width:96px;height:auto;max-width:100%}
+.chip.word{padding:14px 12px;font-size:1.05rem}
+.chip[aria-pressed="true"]{border-color:var(--rule);box-shadow:0 0 0 4px var(--good-soft);transform:translateY(-2px)}
+.chip .cl{font-size:.9rem}
+.chips.nowords .chip:not(.word) .cl{display:none}
+.target{position:relative;display:block;width:100%;padding:0;border:3px dashed var(--line);background:var(--surface);color:var(--fg)}
+.target.armed{border-color:var(--rule)}
+.target.hit{border-style:solid;border-color:var(--good)}
+.target.miss{border-color:var(--bad);animation:shake .35s}
+.target svg{display:block;width:100%;height:auto}
+.lab .placed{position:absolute;left:8px;bottom:42px;display:flex;gap:6px}
+.lab .placed svg{width:60px;border:2px solid var(--good);border-radius:8px}
+.tlabel{display:block;padding:6px;font-weight:700;border-top:1px solid var(--line)}
+.soil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto repeat(3,minmax(80px,1fr));gap:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.soil h3{margin:0;font-family:var(--display);font-weight:500;color:var(--rule);font-size:1.05rem;grid-column:1/3}
+.soil svg{grid-row:2/5;width:100%;height:100%}
+.soil .target,.vrow .target{min-height:64px;display:grid;place-items:center;font-weight:700;font-size:1.05rem;padding:6px}
+.venn{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:12px}
+.venn svg{width:100%;height:auto}
+.vrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.vrow .target{grid-template-rows:auto 1fr}
+.vrow .tl{font-size:.85rem;color:var(--bad);font-weight:700}
+.target .got{color:var(--good)}
+[hidden]{display:none!important}
+.cwrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:720px){.cwrap{grid-template-columns:1fr}}
+.cscene{border:3px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.cscene svg{display:block;width:100%;height:auto}
+.cscript{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.cscript p{margin:4px 0;padding:2px 6px;border-radius:6px}
+.cscript p.on{background:var(--good-soft)}
+.cintro{font-style:italic;margin:0 0 4px}
+.ctag{font-weight:700;margin:0 0 8px}
+.cq{font-weight:700;font-size:1.12rem;margin:10px 0;display:flex;gap:8px;align-items:baseline}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;background:var(--surface);border:2px solid var(--line);color:var(--fg);padding:10px 14px}
+.opt .lt{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-weight:700}
+.opt:hover:not(:disabled){border-color:var(--rule)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.right .lt{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);animation:shake .35s}
+.opt:disabled:not(.right):not(.wrong){opacity:.55}
+.opt.chk .lt{border-radius:4px;color:transparent}
+.opt.chk[aria-pressed="true"]{border-color:var(--rule)}
+.opt.chk[aria-pressed="true"] .lt{background:var(--rule);border-color:var(--rule);color:var(--surface)}
+.opt.chk.miss{border-color:var(--bad);background:var(--bad-soft)}
+.submit{align-self:flex-start;background:var(--rule);color:var(--surface);border:0;padding:10px 20px;font-weight:700}
+.org{width:100%;border-collapse:collapse;margin:4px 0 14px;background:var(--surface)}
+.org th,.org td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.org th{color:var(--bad);font-weight:700;width:7.5em}
+.org td.blank{border:2px dashed var(--rule);color:var(--muted);font-style:italic}
+.org td.filled{color:var(--good);font-weight:700}
+.lbl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:4px 0 12px}
+.lt3{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 6px}
+.lt3 svg{width:100%;max-width:130px;height:auto}
+.lt3 small{color:var(--muted);font-size:.78rem}
+.slot3{width:100%;min-height:42px;border:2px dashed var(--line);background:var(--surface);color:var(--fg);font-weight:700;padding:6px}
+.slot3.armed{border-color:var(--rule)}
+.slot3.filled{border-style:solid;border-color:var(--rule)}
+.slot3.right{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+.slot3.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.slot3 em{display:block;font-style:normal;font-weight:400;font-size:.82rem;color:var(--good)}
+.lchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.lchip{background:var(--surface);border:2px solid var(--line);color:var(--fg);padding:8px 14px;font-weight:700}
+.lchip[aria-pressed="true"]{border-color:var(--rule);box-shadow:0 0 0 3px var(--good-soft)}
+.lchip.used{opacity:.4}
+.opts.pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt.pic{flex-direction:column;align-items:stretch;padding:6px;gap:6px}
+.opt.pic svg{width:100%;height:auto;border-radius:6px;display:block}
+.opt.pic .lt{align-self:flex-start}
+.slidecap{font-size:.8rem;color:var(--muted);margin:-6px 0 10px}
+.note{color:var(--muted);font-size:.85rem;margin-top:18px}
+@media (prefers-reduced-motion:reduce){.card,.card.wrong{transition:none;animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lessons" role="tablist" aria-label="Choose a lesson">
+    <button type="button" class="lesson" data-lesson="0" role="tab">Lesson 1 · Words</button>
+    <button type="button" class="lesson" data-lesson="1" role="tab">Lesson 2 · Sentences</button>
+    <button type="button" class="lesson" data-lesson="2" role="tab">Lesson 3 · Information</button>
+    <button type="button" class="lesson" data-lesson="3" role="tab">Lesson 4 · Conversations</button>
+    <button type="button" class="lesson" data-lesson="4" role="tab">Lesson 5 · Debates</button>
+    <button type="button" class="lesson" data-lesson="5" role="tab">Lesson 6 · Presentation</button>
+    <button type="button" class="lesson" data-lesson="6" role="tab">Lesson 7 · Teacher</button>
+  </div>
+  <header>
+    <span class="num" id="lnum">1</span>
+    <h1 id="ltitle">Listen and Match the Word</h1>
+    <span class="tag" aria-hidden="true">🎧<br>Listening</span>
+  </header>
+  <p class="dir" id="dir">Listen to the audio. Follow the direction you hear.</p>
+  <div class="sets" id="sets" role="tablist" aria-label="Choose an item"></div>
+
+  <div class="controls" id="wordControls">
+    <span class="item" id="itemNum">1.</span>
+    <button class="speak" id="speak" type="button" aria-label="Play the direction">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      <span>Play</span>
+    </button>
+    <button class="small" id="slow" type="button" aria-pressed="false">Slow</button>
+    <button class="small" id="showText" type="button" aria-pressed="false">Show text</button>
+    <button class="small" id="showWords" type="button" aria-pressed="false">Show words</button>
+    <button class="small" id="restart" type="button">Start over</button>
+    <div class="textline" id="textline" hidden></div>
+  </div>
+
+  <div class="grid nolabels" id="grid"></div>
+
+  <div id="convo" hidden>
+    <div class="cwrap">
+      <div class="cleft">
+        <div class="cscene" id="cScene"></div>
+        <div class="infobar">
+          <button class="speak" id="cPlay" type="button" aria-label="Play the conversation"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Conversation</span></button>
+          <button class="small" id="cSlowB" type="button" aria-pressed="false">Slow</button>
+          <button class="small" id="cText" type="button" aria-pressed="false">Show text</button>
+          <button class="small" id="cRestart" type="button">Start over</button>
+        </div>
+        <div class="cscript" id="cScript" hidden></div>
+      </div>
+      <div class="cright">
+        <p class="cintro" id="cIntro"></p>
+        <p class="ctag">Now answer the questions.</p>
+        <div class="qrow"><button class="speak q" id="cqPlay" type="button" aria-label="Play the question"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Question</span></button></div>
+        <p class="cq"><span class="item" id="cNum">1.</span> <span id="cQ"></span></p>
+        <div class="opts" id="cOpts"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="info" hidden>
+    <div class="infobar">
+      <button class="speak" id="pSpeak" type="button" aria-label="Play the information"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Information</span></button>
+      <button class="small" id="iSlow" type="button" aria-pressed="false">Slow</button>
+      <button class="small" id="iText" type="button" aria-pressed="false">Show text</button>
+      <button class="small" id="iWords" type="button" aria-pressed="false">Show words</button>
+      <button class="small" id="iRestart" type="button">Start over</button>
+    </div>
+    <p class="passage" id="passage" hidden></p>
+    <div class="qrow">
+      <span class="item" id="qNum">1.</span>
+      <button class="speak q" id="qSpeak" type="button" aria-label="Play the question"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="9" height="14" fill="var(--rule)"/><polygon points="15,17 26,8 26,40 15,31" fill="var(--rule)"/><path d="M31 18a8 8 0 0 1 0 12M35 13a15 15 0 0 1 0 22" stroke="var(--fg)" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><span>Question</span></button>
+      <span class="qtext" id="qText" hidden></span>
+    </div>
+    <div class="board" id="board">
+      <div class="scene" id="scene"></div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+
+  <div class="feedback" id="feedback"><p>Press Play, then touch the picture.</p></div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <p class="note">Audio uses your device's built-in voice. If you hear nothing, check the volume or use Show text.</p>
+</div>
+
+<script>
+const K="#2b2622";
+const R=(n,f)=>Array.from({length:n},(_,i)=>f(i)).join("");
+const SQ=b=>`<svg viewBox="0 0 200 224" aria-hidden="true">${b}</svg>`;
+const WD=b=>`<svg viewBox="0 0 240 170" aria-hidden="true">${b}</svg>`;
+function bust(x,y,s,shirt,o={}){
+  const skin=o.skin||"#e8b98f",hair=o.hair||"#3b2a20";
+  let g=`<g stroke="${K}" stroke-width="1.5"><rect x="${x-15*s}" y="${y+9*s}" width="${30*s}" height="${30*s}" rx="${10*s}" fill="${shirt}"/><circle cx="${x}" cy="${y-1.5*s}" r="${10.5*s}" fill="${hair}"/>`;
+  if(o.back){return g+`</g>`}
+  g+=`<circle cx="${x}" cy="${y+1*s}" r="${9*s}" fill="${skin}"/></g><circle cx="${x-3*s}" cy="${y}" r="${1.2*s}" fill="${K}"/><circle cx="${x+3*s}" cy="${y}" r="${1.2*s}" fill="${K}"/>`;
+  g+=o.worry?`<path d="M${x-3*s} ${y+6*s}h${6*s}" stroke="${K}" stroke-width="1.3"/>`
+   :o.sing?`<ellipse cx="${x}" cy="${y+5.5*s}" rx="${2.2*s}" ry="${2.6*s}" fill="#7a2a22"/>`
+   :`<path d="M${x-3.5*s} ${y+4*s}q${3.5*s} ${3.5*s} ${7*s} 0" stroke="${K}" stroke-width="1.3" fill="none"/>`;
+  if(o.phones)g+=`<path d="M${x-11*s} ${y}a${11*s} ${12*s} 0 0 1 ${22*s} 0" stroke="#7b4fc4" stroke-width="${2.5*s}" fill="none"/><circle cx="${x-11*s}" cy="${y+1*s}" r="${4*s}" fill="#9b6fe4" stroke="${K}"/><circle cx="${x+11*s}" cy="${y+1*s}" r="${4*s}" fill="#9b6fe4" stroke="${K}"/>`;
+  if(o.helmet)g+=`<path d="M${x-11*s} ${y-1*s}a${11*s} ${10*s} 0 0 1 ${22*s} 0z" fill="${o.helmet}" stroke="${K}" stroke-width="1.5"/>`;
+  return g;
+}
+function full(x,y,s,shirt,pants,o={}){
+  return `<g stroke="${K}" stroke-width="1.5" fill="${pants}"><rect x="${x-11*s}" y="${y+34*s}" width="${9*s}" height="${28*s}"/><rect x="${x+2*s}" y="${y+34*s}" width="${9*s}" height="${28*s}"/></g>`+bust(x,y,s,shirt,o);
+}
+function bike(x,y,s,frame,shirt,helmet){
+  return `<g stroke="${K}" stroke-width="${2*s}" fill="none"><circle cx="${x-16*s}" cy="${y}" r="${10*s}"/><circle cx="${x+16*s}" cy="${y}" r="${10*s}"/></g><path d="M${x-16*s} ${y}L${x-4*s} ${y-16*s}H${x+12*s}L${x+16*s} ${y}M${x-4*s} ${y-16*s}L${x} ${y}L${x+12*s} ${y-16*s}" stroke="${frame}" stroke-width="${2.4*s}" fill="none"/>`+bust(x,y-38*s,.75*s,shirt,{helmet});
+}
+function horse(x,y,s,coat,rider){
+  return `<g stroke="${K}" stroke-width="1.5" fill="${coat}"><path d="M${x-30*s} ${y-6*s}q-14 ${10*s} -6 ${26*s}" fill="none" stroke-width="${4*s}"/>
+  ${R(4,i=>`<rect x="${x+[-26,-16,14,24][i]*s}" y="${y}" width="${6*s}" height="${30*s}"/>`)}
+  <ellipse cx="${x}" cy="${y}" rx="${32*s}" ry="${14*s}"/><polygon points="${x+22*s},${y-6*s} ${x+30*s},${y-30*s} ${x+40*s},${y-26*s} ${x+34*s},${y}"/>
+  <ellipse cx="${x+42*s}" cy="${y-30*s}" rx="${11*s}" ry="${6*s}"/></g>`+(rider?bust(x-2*s,y-38*s,.8*s,rider,{helmet:"#c9a46a"}):"");
+}
+const carInside=(sky,extra="")=>`<rect width="240" height="170" fill="#c9cdd3"/><rect x="14" y="8" width="212" height="52" rx="8" fill="${sky}" stroke="${K}" stroke-width="1.5"/>${extra}`;
+const sunRays=()=>{const p=[];for(let i=0;i<24;i++){const a=i*Math.PI/12-Math.PI/2,r=i%2?50:88;p.push((100+r*Math.cos(a)).toFixed(1)+","+(112+r*Math.sin(a)).toFixed(1))}return p.join(" ")};
+
+const PICS={
+ desert:SQ(`<rect width="200" height="224" fill="#bfe0ee"/><polygon points="90,70 100,52 170,52 182,70" fill="#c9683d" stroke="${K}" stroke-width="2"/><rect y="70" width="200" height="154" fill="#e9c98f"/><path d="M0 150 Q60 130 120 150 T200 145 V224 H0Z" fill="#d9a865"/><g fill="#5d9a4a" stroke="#2e4a26" stroke-width="2"><rect x="38" y="80" width="12" height="60" rx="6"/><rect x="24" y="96" width="10" height="24" rx="5"/><rect x="54" y="90" width="10" height="22" rx="5"/></g><ellipse cx="140" cy="182" rx="18" ry="11" fill="#8c6b3d" stroke="${K}" stroke-width="2"/><circle cx="160" cy="180" r="6" fill="#a78a55" stroke="${K}" stroke-width="2"/><circle cx="130" cy="110" r="10" fill="none" stroke="#7a6a4a" stroke-width="2"/>`),
+ rainforest:SQ(`<rect width="200" height="224" fill="#3f8a4a"/><rect x="120" y="40" width="34" height="150" fill="#bfe3f2"/><path d="M126 40v150M138 40v150M148 40v150" stroke="#fff" stroke-width="2"/><ellipse cx="137" cy="196" rx="44" ry="12" fill="#7cc3dc"/>${R(6,i=>`<circle cx="${10+i*36}" cy="${20+(i%2)*14}" r="26" fill="#2c6b37" stroke="#173d1e" stroke-width="2"/>`)}<rect x="20" y="90" width="90" height="8" rx="4" fill="#6b4a2b"/><ellipse cx="62" cy="122" rx="14" ry="26" fill="#d8352a" stroke="${K}" stroke-width="2"/><circle cx="62" cy="92" r="11" fill="#d8352a" stroke="${K}" stroke-width="2"/><polygon points="70,90 80,94 70,98" fill="#f2d14b"/><path d="M50 118q-12 14-4 30" stroke="#2f6fc4" stroke-width="8" fill="none" stroke-linecap="round"/><polygon points="56,146 68,146 66,186 58,186" fill="#2f6fc4"/>${R(5,i=>`<ellipse cx="${10+i*22}" cy="210" rx="16" ry="8" fill="#4ea65a"/>`)}`),
+ farm:SQ(`<rect width="200" height="224" fill="#cfe9f5"/><rect y="40" width="200" height="184" fill="#d7ecae"/><rect x="112" y="14" width="56" height="34" fill="#c8362c" stroke="${K}" stroke-width="2"/><polygon points="108,16 140,2 172,16" fill="#7a2a22" stroke="${K}" stroke-width="2"/><rect x="132" y="28" width="16" height="20" fill="#fff" stroke="${K}" stroke-width="1.5"/>${R(4,r=>R(5,c=>`<circle cx="${22+c*39}" cy="${70+r*42}" r="16" fill="#4f9a3f" stroke="#245020" stroke-width="2"/><circle cx="${18+c*39}" cy="${66+r*42}" r="2.5" fill="#d9382d"/><circle cx="${27+c*39}" cy="${74+r*42}" r="2.5" fill="#d9382d"/>`))}`),
+ ocean:SQ(`<rect width="200" height="224" fill="#8b9fd6"/><rect width="200" height="40" fill="#b7c6ec"/>${R(4,r=>R(4,c=>{const x=60+c*32+(r%2)*14,y=60+r*26;return `<ellipse cx="${x}" cy="${y}" rx="12" ry="6" fill="#d6dbf3" stroke="#3a3f6a" stroke-width="1.5"/><polygon points="${x+11},${y} ${x+19},${y-6} ${x+19},${y+6}" fill="#d6dbf3" stroke="#3a3f6a" stroke-width="1.5"/>`}))}<path d="M0 224 V186 Q20 170 40 186 T80 190 T120 184 T160 192 T200 182 V224Z" fill="#e8a6a0"/>${R(5,i=>`<rect x="${12+i*40}" y="${150+(i%2)*10}" width="8" height="50" rx="4" fill="#f08a5d" stroke="#7a3a2a" stroke-width="1.5"/><circle cx="${16+i*40}" cy="${148+(i%2)*10}" r="8" fill="#f6b04a"/>`)}`),
+ lake:SQ(`<rect width="200" height="224" fill="#cfe3ef"/><polygon points="0,120 45,40 80,95 115,30 160,90 200,55 200,130 0,130" fill="#a07f63" stroke="${K}" stroke-width="2"/><polygon points="115,30 100,55 112,50 122,58 130,47" fill="#fff" stroke="${K}" stroke-width="1.5"/><polygon points="45,40 35,58 47,54 55,62" fill="#fff" stroke="${K}" stroke-width="1.5"/><rect y="112" width="200" height="30" fill="#2f6b3b"/><rect y="138" width="200" height="86" fill="#cfe6b4"/><ellipse cx="100" cy="182" rx="82" ry="30" fill="#a9d3e6" stroke="${K}" stroke-width="2"/><path d="M60 176h30M110 186h35M75 194h28" stroke="${K}" stroke-width="1.5" stroke-dasharray="5 4"/>`),
+ moon:SQ(`<rect width="200" height="224" fill="#7f86ad"/><defs><mask id="cres"><rect width="200" height="224" fill="#fff"/><circle cx="130" cy="98" r="72" fill="#000"/></mask></defs><circle cx="92" cy="112" r="80" fill="#f4e26b" stroke="#1d1d1d" stroke-width="5" mask="url(#cres)"/>`),
+ planet:SQ(`<rect width="200" height="224" fill="#7f86ad"/><ellipse cx="100" cy="114" rx="92" ry="20" fill="none" stroke="#3a3a4a" stroke-width="2"/><ellipse cx="100" cy="114" rx="80" ry="15" fill="none" stroke="#3a3a4a" stroke-width="1.5"/><circle cx="100" cy="108" r="40" fill="#c98c6c" stroke="${K}" stroke-width="2"/><path d="M68 124a40 40 0 0 0 64 0" fill="#9c5f45"/><path d="M8 114a92 20 0 0 0 184 0" fill="none" stroke="#3a3a4a" stroke-width="2"/>`),
+ sun:SQ(`<rect width="200" height="224" fill="#b9dcef"/><polygon points="${sunRays()}" fill="#f2c84b" stroke="${K}" stroke-width="2"/><defs><radialGradient id="sg" cx=".45" cy=".45"><stop offset="0" stop-color="#fffbe6"/><stop offset="1" stop-color="#f5cf3c"/></radialGradient></defs><circle cx="100" cy="112" r="42" fill="url(#sg)" stroke="${K}" stroke-width="2"/>`),
+ bike:SQ(`<rect width="200" height="224" fill="#fff"/><g stroke="${K}" stroke-width="5" fill="none"><circle cx="52" cy="140" r="32"/><circle cx="148" cy="140" r="32"/></g><g stroke="#ccc" stroke-width="1.5">${R(3,i=>{const a=i*Math.PI/3,c=30*Math.cos(a),d=30*Math.sin(a);return `<path d="M${52+c} ${140+d}L${52-c} ${140-d}M${148+c} ${140+d}L${148-c} ${140-d}"/>`})}</g><path d="M52 140L88 140L128 98L148 140M88 140L76 96L128 98M128 98L122 80L138 76" stroke="#3a8a3a" stroke-width="6" fill="none" stroke-linejoin="round"/><rect x="64" y="88" width="24" height="7" rx="3" fill="${K}"/>`),
+ horse:SQ(`<rect width="200" height="224" fill="#fff"/>${horse(90,130,1.4,"#b88a63")}<circle cx="155" cy="86" r="2" fill="${K}"/>`),
+ car:SQ(`<rect width="200" height="224" fill="#fff"/><polygon points="52,112 74,80 134,80 160,112" fill="#5b9be0" stroke="${K}" stroke-width="2"/><polygon points="64,110 80,86 100,86 100,110" fill="#d8ecfa" stroke="${K}" stroke-width="1.5"/><polygon points="106,110 106,86 130,86 148,110" fill="#d8ecfa" stroke="${K}" stroke-width="1.5"/><rect x="20" y="108" width="162" height="40" rx="14" fill="#5b9be0" stroke="${K}" stroke-width="2"/><g stroke="${K}" stroke-width="2"><circle cx="58" cy="148" r="17" fill="#333"/><circle cx="144" cy="148" r="17" fill="#333"/></g><circle cx="58" cy="148" r="7" fill="#bbb"/><circle cx="144" cy="148" r="7" fill="#bbb"/><rect x="170" y="118" width="10" height="8" rx="2" fill="#ffe680"/>`),
+ boat:SQ(`<rect width="200" height="224" fill="#fff"/><rect y="138" width="200" height="86" fill="#d5ebf6"/><path d="M10 170q15-8 30 0t30 0t30 0M90 196q15-8 30 0t30 0t30 0" stroke="#7fb4d0" stroke-width="2" fill="none"/>${bust(110,98,1,"#c9563c",{helmet:"#f2f2f2"})}<polygon points="96,118 120,100 132,124" fill="#cfe8f5" stroke="${K}" stroke-width="1.5" opacity=".9"/><polygon points="18,124 176,120 190,140 44,162" fill="#fff" stroke="${K}" stroke-width="2"/><path d="M30 136L182 132" stroke="#3a7bd5" stroke-width="5"/>`),
+ dog:SQ(`<rect width="200" height="224" fill="#fff"/><path d="M135 185q30-5 30-30" stroke="#9a5f36" stroke-width="9" fill="none" stroke-linecap="round"/><ellipse cx="100" cy="150" rx="40" ry="48" fill="#b9774a" stroke="${K}" stroke-width="2"/><rect x="78" y="170" width="14" height="34" rx="6" fill="#b9774a" stroke="${K}" stroke-width="2"/><rect x="108" y="170" width="14" height="34" rx="6" fill="#b9774a" stroke="${K}" stroke-width="2"/><ellipse cx="72" cy="90" rx="11" ry="24" fill="#8a5330" stroke="${K}" stroke-width="2"/><ellipse cx="128" cy="90" rx="11" ry="24" fill="#8a5330" stroke="${K}" stroke-width="2"/><circle cx="100" cy="80" r="28" fill="#c58656" stroke="${K}" stroke-width="2"/><ellipse cx="100" cy="96" rx="14" ry="10" fill="#e0b085" stroke="${K}" stroke-width="1.5"/><ellipse cx="100" cy="90" rx="5" ry="4" fill="${K}"/><ellipse cx="102" cy="108" rx="5" ry="7" fill="#e86a7a" stroke="${K}" stroke-width="1"/><circle cx="90" cy="74" r="3" fill="${K}"/><circle cx="110" cy="74" r="3" fill="${K}"/>`),
+ caterpillar:SQ(`<rect width="200" height="224" fill="#fff"/>${R(8,i=>`<circle cx="${30+i*18}" cy="${118+Math.sin(i*.9)*8}" r="15" fill="${i%2?"#3f8a3f":"#7cc36b"}" stroke="${K}" stroke-width="1.5"/>`)}<circle cx="172" cy="108" r="17" fill="#2f6f2f" stroke="${K}" stroke-width="1.5"/><circle cx="178" cy="104" r="3" fill="#fff"/><path d="M168 92l-6-14M178 92l4-14" stroke="${K}" stroke-width="2"/>`),
+ cat:SQ(`<rect width="200" height="224" fill="#fff"/><path d="M130 190q40 0 30-50" stroke="#7d7d84" stroke-width="10" fill="none" stroke-linecap="round"/><ellipse cx="100" cy="158" rx="36" ry="44" fill="#9a9aa2" stroke="${K}" stroke-width="2"/><polygon points="74,80 70,46 92,66" fill="#9a9aa2" stroke="${K}" stroke-width="2"/><polygon points="126,80 130,46 108,66" fill="#9a9aa2" stroke="${K}" stroke-width="2"/><circle cx="100" cy="92" r="30" fill="#a8a8b0" stroke="${K}" stroke-width="2"/><ellipse cx="89" cy="88" rx="6" ry="7" fill="#b9d84a" stroke="${K}" stroke-width="1"/><ellipse cx="111" cy="88" rx="6" ry="7" fill="#b9d84a" stroke="${K}" stroke-width="1"/><ellipse cx="89" cy="88" rx="2" ry="5" fill="${K}"/><ellipse cx="111" cy="88" rx="2" ry="5" fill="${K}"/><polygon points="96,100 104,100 100,105" fill="#e88a9a"/><path d="M92 104l-22-3M92 107l-22 4M108 104l22-3M108 107l22 4" stroke="${K}" stroke-width="1"/>`),
+ frog:SQ(`<rect width="200" height="224" fill="#fff"/><ellipse cx="150" cy="168" rx="32" ry="14" fill="#6aae42" stroke="${K}" stroke-width="2"/><ellipse cx="100" cy="140" rx="58" ry="38" fill="#7bbf4f" stroke="${K}" stroke-width="2"/>${R(4,i=>`<circle cx="${[85,110,130,96][i]}" cy="${[125,118,140,152][i]}" r="${[7,5,6,4][i]}" fill="#4f8a2f"/>`)}<circle cx="68" cy="104" r="14" fill="#7bbf4f" stroke="${K}" stroke-width="2"/><circle cx="68" cy="102" r="6" fill="#fff"/><circle cx="68" cy="102" r="3" fill="${K}"/><path d="M50 128q14 8 32 2" stroke="${K}" stroke-width="2" fill="none"/><rect x="56" y="160" width="12" height="20" rx="5" fill="#6aae42" stroke="${K}" stroke-width="2"/>`),
+ eat:WD(`<rect width="240" height="170" fill="#f0d9a8"/><rect x="170" y="14" width="56" height="50" fill="#dff0f8" stroke="${K}" stroke-width="1.5"/>${bust(68,62,1.3,"#5b7fb8")}${bust(120,58,1.3,"#c9563c",{hair:"#8a5a2b"})}${bust(172,62,1.3,"#6a9a5a",{hair:"#d9b14a"})}<rect x="20" y="112" width="200" height="58" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/>${R(3,i=>`<ellipse cx="${68+i*52}" cy="128" rx="18" ry="7" fill="#fff" stroke="${K}"/><circle cx="${64+i*52}" cy="126" r="4" fill="#d9573f"/><circle cx="${72+i*52}" cy="127" r="4" fill="#6a9a3a"/>`)}`),
+ order:WD(`<rect width="240" height="170" fill="#e8d3b0"/><rect x="20" y="14" width="70" height="44" fill="#dff0f8" stroke="${K}" stroke-width="1.5"/>${bust(55,82,1.2,"#3f6fa8")}${bust(110,82,1.2,"#d98a3a",{hair:"#8a5a2b"})}<rect x="10" y="122" width="150" height="48" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/>${full(190,40,1.4,"#2d2d2d","#2d2d2d",{hair:"#c4572a"})}<rect x="176" y="70" width="28" height="40" fill="#fff" stroke="${K}"/><rect x="160" y="70" width="16" height="20" fill="#fff" stroke="${K}" transform="rotate(-10 168 80)"/><path d="M178 66l10 14" stroke="#c9a03a" stroke-width="2.5"/>`),
+ pay:WD(`<rect width="240" height="170" fill="#e9ddc6"/><rect x="180" y="10" width="50" height="60" fill="#7ea36a"/>${bust(160,52,1.6,"#2f5f6f")}<rect x="104" y="100" width="44" height="13" rx="6" fill="#2f5f6f" stroke="${K}" stroke-width="1.5"/><rect x="0" y="96" width="82" height="15" rx="6" fill="#4a4a6a" stroke="${K}" stroke-width="1.5"/><rect x="84" y="90" width="26" height="17" rx="2" fill="#3a7bd5" stroke="${K}" stroke-width="1.5"/><rect x="0" y="126" width="240" height="44" fill="#8a5a3a" stroke="${K}" stroke-width="1.5"/><ellipse cx="190" cy="132" rx="14" ry="5" fill="#fff" stroke="${K}"/><rect x="182" y="120" width="16" height="12" fill="#fff" stroke="${K}"/><polygon points="120,134 150,134 138,124" fill="#e9c27a" stroke="${K}"/>`),
+ menu:WD(`<rect width="240" height="170" fill="#d9b77a"/>${R(5,i=>`<circle cx="${30+i*45}" cy="14" r="6" fill="#fff4c2"/>`)}${bust(38,66,1.15,"#3f6fa8",{skin:"#8a5a3a",hair:"#2a1d16"})}${bust(92,64,1.15,"#c9563c")}${bust(150,64,1.15,"#e3a33a",{hair:"#c99a4a"})}${bust(204,66,1.15,"#7fa3c4",{hair:"#ddd"})}<rect x="0" y="112" width="240" height="58" fill="#8a5a3a" stroke="${K}" stroke-width="1.5"/><polygon points="78,104 120,108 120,146 72,142" fill="#f3e6c4" stroke="${K}" stroke-width="1.5"/><polygon points="120,108 162,104 168,142 120,146" fill="#f3e6c4" stroke="${K}" stroke-width="1.5"/>${R(4,i=>`<path d="M84 ${116+i*7}h28M128 ${116+i*7}h30" stroke="#8a7a5a" stroke-width="2"/>`)}`),
+ rain:WD(`<rect width="240" height="170" fill="#555b63"/><polygon points="20,10 220,10 232,118 8,118" fill="#b8c4cc" stroke="${K}" stroke-width="2"/><path d="M14 104 Q60 80 110 98 T232 92 V118 H8Z" fill="#5f9a4f"/>${R(28,i=>`<path d="M${24+(i*37)%200} ${14+(i*23)%90}l-4 10" stroke="#fff" stroke-width="1.5"/>`)}<path d="M120 116L60 40" stroke="${K}" stroke-width="3"/><rect x="0" y="118" width="240" height="52" fill="#7a8088"/>${bust(40,118,2.2,"#e3e3e3",{back:true,hair:"#2a1d16"})}`),
+ sing:WD(carInside("#bfe3f2")+`${bust(52,84,1.25,"#f2d24b")}${bust(98,70,1.05,"#f2d24b",{sing:true})}${bust(136,72,1,"#e88aa8",{sing:true})}<circle cx="118" cy="108" r="11" fill="#bbb" stroke="${K}" stroke-width="1.5"/><ellipse cx="108" cy="104" rx="4" ry="8" fill="#888"/><ellipse cx="128" cy="104" rx="4" ry="8" fill="#888"/>${bust(188,78,1.35,"#d33d33",{sing:true})}<circle cx="198" cy="150" r="26" fill="none" stroke="${K}" stroke-width="5"/><text x="150" y="36" font-size="22" fill="${K}">♪ ♫</text>`),
+ map:WD(carInside("#bfe3f2")+`${bust(46,80,1.3,"#8ac43f",{worry:true})}${bust(92,74,1,"#e88aa8",{worry:true})}${bust(130,72,1,"#3a7bd5",{worry:true})}${bust(186,76,1.35,"#bbb",{worry:true})}<polygon points="100,104 158,98 216,104 210,162 158,156 104,162" fill="#f3e3b0" stroke="${K}" stroke-width="1.5"/><path d="M158 98v58" stroke="${K}"/><path d="M110 120q20 10 40-4M166 130q16-14 40 6" stroke="#c9563c" stroke-width="2" fill="none" stroke-dasharray="4 3"/><text x="170" y="118" font-size="12" font-weight="700" fill="${K}">MAP</text>`),
+ music:WD(carInside("#f2c4a8",`<rect x="120" y="8" width="10" height="52" fill="#a8304a"/>`)+`${bust(168,62,1.7,"#4f8a4f",{hair:"#8a5a2b"})}${bust(84,92,1.35,"#5a7fb0",{hair:"#c4782a",phones:true})}<text x="30" y="80" font-size="22" fill="#7b4fc4">♪</text><text x="116" y="96" font-size="18" fill="#7b4fc4">♫</text>`),
+ shop:WD(`<rect width="240" height="170" fill="#e6ddd0"/>${R(3,i=>`<rect x="0" y="${18+i*28}" width="240" height="5" fill="#b9a88f"/>${R(10,j=>`<rect x="${6+j*24}" y="${4+i*28}" width="14" height="14" fill="${["#e07a5f","#81b29a","#f2cc8f","#3d85c6"][(i+j)%4]}"/>`)}`)}${bust(72,62,1.45,"#d9573f")}${bust(158,58,1.5,"#f2d24b")}<path d="M60 102q-8 10 4 18M66 100q-6 12 6 18M72 100q-4 12 8 16" stroke="#e8c33a" stroke-width="5" fill="none" stroke-linecap="round"/><g stroke="#666" stroke-width="2" fill="none"><path d="M36 114H214L204 156H48Z" fill="#eeeeee"/>${R(8,i=>`<path d="M${58+i*20} 114V156"/>`)}<path d="M40 128H210M44 142H206"/></g>`),
+ clean:WD(`<rect width="240" height="170" fill="#f1e7d6"/><rect x="0" y="0" width="240" height="22" fill="#c9a37a"/>${R(4,i=>`<rect x="${60+i*30}" y="22" width="4" height="60" fill="#c9a37a"/>`)}${full(46,34,1.25,"#d9573f","#333")}<rect x="28" y="56" width="36" height="40" fill="#8ac43f" stroke="${K}"/><path d="M70 64L84 150" stroke="#8a5a2b" stroke-width="3"/><path d="M76 146l16 8l-10 4z" fill="#d9b14a" stroke="${K}"/>${full(196,36,1.25,"#f2d24b","#555b8a")}<ellipse cx="128" cy="118" rx="48" ry="14" fill="#2f7a3f" stroke="${K}" stroke-width="1.5"/><rect x="124" y="128" width="8" height="38" fill="#2f7a3f"/><rect x="146" y="96" width="34" height="10" rx="5" fill="#f2d24b" stroke="${K}" stroke-width="1.5"/><rect x="132" y="108" width="18" height="8" fill="#fff" stroke="${K}"/>`),
+ movies:WD(`<rect width="240" height="170" fill="#b5764a"/><rect x="40" y="10" width="160" height="26" fill="#f7e7c4" stroke="${K}" stroke-width="2"/><text x="120" y="29" font-size="15" font-weight="700" text-anchor="middle" fill="#a8304a" letter-spacing="3">MOVIES</text>${R(8,i=>`<circle cx="${48+i*20.5}" cy="42" r="3" fill="#ffe680"/>`)}<rect x="70" y="50" width="100" height="120" fill="#5a3a2a" stroke="${K}" stroke-width="2"/><rect x="118" y="50" width="4" height="120" fill="${K}"/>${full(100,78,1.45,"#d9573f","#333",{back:true})}${full(146,74,1.5,"#f2d24b","#333",{back:true})}`),
+ sofa:WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="186" y="20" width="36" height="46" fill="#cfe3ef" stroke="${K}" stroke-width="1.5"/><rect x="20" y="56" width="200" height="66" rx="14" fill="#e9dfcc" stroke="${K}" stroke-width="2"/>${bust(82,62,1.35,"#d9573f")}${bust(160,56,1.45,"#f2d24b")}<rect x="30" y="104" width="180" height="30" rx="8" fill="#efe7d8" stroke="${K}" stroke-width="2"/><rect x="8" y="80" width="28" height="64" rx="10" fill="#e3d6be" stroke="${K}" stroke-width="2"/><rect x="204" y="80" width="28" height="64" rx="10" fill="#e3d6be" stroke="${K}" stroke-width="2"/><rect x="64" y="132" width="34" height="38" fill="#c9b08a" stroke="${K}"/><rect x="142" y="132" width="34" height="38" fill="#6a78a8" stroke="${K}"/>`),
+ beach:WD(`<rect width="240" height="170" fill="#bfe3f2"/><rect y="40" width="240" height="34" fill="#5fa8d3"/><path d="M0 74q30-8 60 0t60 0t60 0t60 0V170H0Z" fill="#ecd9a8"/>${bust(40,86,1.25,"#e88a3a")}${bust(206,84,1.3,"#d33d33")}${bust(84,104,.95,"#f2d24b")}${bust(160,104,.95,"#e88aa8",{hair:"#2a1d16"})}<g fill="#d8b977" stroke="${K}" stroke-width="1.5"><rect x="98" y="128" width="46" height="28"/><rect x="96" y="114" width="14" height="16"/><rect x="132" y="114" width="14" height="16"/><rect x="113" y="108" width="16" height="22"/></g><polygon points="50,134 72,134 68,160 54,160" fill="#d9382d" stroke="${K}" stroke-width="1.5"/><polygon points="176,134 196,134 192,158 180,158" fill="#7b4fc4" stroke="${K}" stroke-width="1.5"/>`),
+ photo:WD(`<rect width="240" height="170" fill="#f7e0b0"/><rect y="88" width="240" height="36" fill="#8cc4dc"/><ellipse cx="150" cy="90" rx="34" ry="6" fill="#7aa56a"/><rect x="140" y="58" width="20" height="30" fill="#9c9c8a" stroke="${K}"/><rect x="144" y="26" width="12" height="32" rx="4" fill="#7fb8a4" stroke="${K}"/><circle cx="150" cy="22" r="5" fill="#7fb8a4" stroke="${K}"/><path d="M156 30l8-20" stroke="#7fb8a4" stroke-width="4"/><circle cx="164" cy="8" r="3" fill="#f2c84b"/><rect y="124" width="240" height="46" fill="#d9cdb4"/><path d="M0 126H240" stroke="${K}" stroke-width="3"/>${bust(46,96,1.8,"#f2d24b",{back:true,hair:"#888"})}<rect x="64" y="58" width="22" height="16" rx="2" fill="#333" stroke="${K}"/><rect x="68" y="72" width="6" height="22" fill="#e8b98f"/>${bust(150,122,.95,"#fff")}${bust(180,120,.95,"#e88aa8",{hair:"#d9b14a"})}${bust(214,100,1.3,"#8ac43f",{hair:"#c4572a"})}`),
+ bikes:WD(`<rect width="240" height="170" fill="#cfe9f5"/><path d="M0 70q60-40 120-10t120-20V170H0Z" fill="#8cc45f"/><path d="M60 170L110 70H140L230 170Z" fill="#d9c49a"/><path d="M150 96h80M150 110h86" stroke="#8a5a2b" stroke-width="3"/>${bike(120,96,.85,"#3a7bd5","#e88a3a","#e3e3e3")}${bike(170,104,.85,"#d33d33","#8ac43f","#e3e3e3")}${bike(110,146,1,"#555","#d33d33","#d33d33")}${bike(182,150,1,"#7b4fc4","#e88aa8","#7b4fc4")}`),
+ horses:WD(`<rect width="240" height="170" fill="#e9a36a"/><polygon points="0,0 70,0 50,60 0,90" fill="#b5532f"/><polygon points="170,0 240,0 240,100 200,70" fill="#b5532f"/><path d="M0 120q40-10 70 10V170H0Z" fill="#6aa8d0"/><path d="M60 170Q100 100 150 60H190Q150 110 140 170Z" fill="#c9824a"/>${horse(110,112,.7,"#6b4a2b","#3a7bd5")}${horse(170,118,1.05,"#8a5330","#d07ab0")}`)
+};
+
+const VERBS=["Touch the","Point to the","Find the","Click on the","Show me the","Where is the"];
+const LESSONS=[
+ {title:"Listen and Match the Word",type:"word",items:[
+  {name:"Places",pics:["desert","rainforest","farm","ocean"]},
+  {name:"Sky",pics:["lake","moon","planet","sun"]},
+  {name:"Ways to go",pics:["bike","horse","car","boat"]},
+  {name:"Animals",pics:["dog","caterpillar","cat","frog"]}]},
+ {title:"Listen and Match the Sentence",type:"sentence",items:[
+  {name:"Restaurant",pics:["eat","order","pay","menu"],say:{eat:"The friends are eating lunch.",order:"The waitress is taking their order.",pay:"The man is paying for his food.",menu:"The friends are looking at the menu."}},
+  {name:"In the car",pics:["rain","sing","map","music"],say:{rain:"It is raining outside the car.",sing:"The family is singing in the car.",map:"The family is looking at a map.",music:"The boy is listening to music."}},
+  {name:"Home and town",pics:["shop","clean","movies","sofa"],say:{shop:"They are shopping for food.",clean:"They are cleaning the house.",movies:"They are going to the movies.",sofa:"They are sitting on the sofa."}},
+  {name:"Trips",pics:["beach","photo","bikes","horses"],say:{beach:"The family is building a sandcastle.",photo:"The dad is taking a picture.",bikes:"The family is riding bikes.",horses:"They are riding horses."}}]}
+];
+LESSONS.push({title:"Listen for Information",type:"info",items:[
+ {name:"Lab tools",scene:"lab",
+  passage:"This is a science lab. Students use tools in the lab. A thermometer tells how hot or cold something is. A microscope makes very small things look bigger. A burner makes a flame to heat things.",
+  choices:[{id:"thermo",label:"thermometer"},{id:"scope",label:"microscope"},{id:"burner",label:"burner"}],
+  qs:[{say:"Find the tool that tells how hot or cold something is. Put it on the lab table.",c:"thermo",t:"table"},
+      {say:"Find the tool that makes small things look bigger. Put it on the lab table.",c:"scope",t:"table"}]},
+ {name:"Liquids",scene:"lab",
+  passage:"Scientists work with liquids in the lab. Test tubes hold small amounts of liquid. A funnel helps you pour liquid into a small opening without spilling. A beaker holds and measures a large amount of liquid.",
+  choices:[{id:"tubes",label:"test tubes"},{id:"funnel",label:"funnel"},{id:"beaker",label:"beaker"}],
+  qs:[{say:"Find the tool that helps you pour liquid without spilling. Put it on the lab table.",c:"funnel",t:"table"},
+      {say:"Find the tool that holds and measures a large amount of liquid. Put it on the lab table.",c:"beaker",t:"table"}]},
+ {name:"Soil layers",scene:"soil",
+  passage:"Soil has layers. Topsoil is the top layer. It is dark, and plants grow their roots in it. Subsoil is the middle layer. It has clay and small rocks. Bedrock is the bottom layer. It is solid rock.",
+  choices:[{id:"Subsoil",label:"Subsoil"},{id:"Bedrock",label:"Bedrock"},{id:"Topsoil",label:"Topsoil"}],
+  qs:[{say:"Topsoil is the top layer. Put the word topsoil next to the top layer.",c:"Topsoil",t:"top"},
+      {say:"Bedrock is solid rock at the bottom. Put the word bedrock next to the bottom layer.",c:"Bedrock",t:"bottom"},
+      {say:"Subsoil is the middle layer. Put the word subsoil next to the middle layer.",c:"Subsoil",t:"middle"}]},
+ {name:"Alaska and Hawaii",scene:"venn",
+  passage:"Alaska and Hawaii are both United States. They are not connected to the main part of the country. Alaska is north of the rest of the United States. It is the coldest state, and it is the largest state. Hawaii is in the Pacific Ocean. It is the warmest state. Hawaii is an island chain. Alaska and Hawaii both became states in 1959. They are the newest states.",
+  choices:[{id:"newest",label:"newest states"},{id:"island",label:"island chain"},{id:"largest",label:"largest state"}],
+  qs:[{say:"Which words tell about Alaska only? Put them in the Alaska part of the chart.",c:"largest",t:"alaska"},
+      {say:"Which words tell about Hawaii only? Put them in the Hawaii part of the chart.",c:"island",t:"hawaii"},
+      {say:"Which words tell about both states? Put them in the middle part of the chart.",c:"newest",t:"both"}]}
+]});
+{let n=1;LESSONS[2].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+const TOOLS={
+ thermo:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><circle cx="50" cy="48" r="36" fill="#f4f4f4" stroke="${K}" stroke-width="3"/>${R(12,i=>{const a=i*Math.PI/6;return `<path d="M${50+30*Math.cos(a)} ${48+30*Math.sin(a)}L${50+34*Math.cos(a)} ${48+34*Math.sin(a)}" stroke="${K}" stroke-width="2"/>`})}<path d="M50 48L68 30" stroke="#d33d33" stroke-width="3"/><circle cx="50" cy="48" r="4" fill="${K}"/><rect x="47" y="84" width="6" height="22" fill="#aaa" stroke="${K}"/></svg>`,
+ scope:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><rect x="20" y="94" width="60" height="10" rx="3" fill="#333"/><path d="M62 94V60q0-20-18-30" stroke="#333" stroke-width="8" fill="none"/><rect x="26" y="66" width="34" height="5" fill="#333"/><rect x="36" y="14" width="12" height="40" rx="3" fill="#ddd" stroke="${K}" stroke-width="2" transform="rotate(-25 42 34)"/><rect x="36" y="50" width="8" height="12" fill="#888"/></svg>`,
+ burner:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M50 30q6-12 0-22q-6 10 0 22" fill="#4f8fe0"/><rect x="44" y="30" width="12" height="54" fill="#bbb" stroke="${K}" stroke-width="2"/><rect x="30" y="84" width="40" height="12" rx="4" fill="#888" stroke="${K}" stroke-width="2"/><path d="M44 74q-34 0-30-40" stroke="#2f7a52" stroke-width="7" fill="none" stroke-linecap="round"/></svg>`,
+ tubes:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/>${R(3,i=>`<rect x="${22+i*22}" y="12" width="12" height="80" rx="6" fill="#eef6fa" stroke="${K}" stroke-width="2"/><rect x="${24+i*22}" y="60" width="8" height="30" rx="4" fill="${["#7fc3e0","#a7d99a","#f2c84b"][i]}"/>`)}</svg>`,
+ funnel:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><polygon points="14,20 86,20 56,62 44,62" fill="#e0402f" stroke="${K}" stroke-width="2"/><rect x="44" y="62" width="12" height="38" fill="#e0402f" stroke="${K}" stroke-width="2"/><ellipse cx="50" cy="20" rx="36" ry="5" fill="#b8301f" stroke="${K}" stroke-width="2"/></svg>`,
+ beaker:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M24 18H76V96Q76 102 70 102H30Q24 102 24 96Z" fill="#f1f8fb" stroke="${K}" stroke-width="2"/><path d="M24 62H76V96Q76 102 70 102H30Q24 102 24 96Z" fill="#bfe1ef"/><path d="M24 18l-6-4" stroke="${K}" stroke-width="2"/>${R(4,i=>`<path d="M62 ${34+i*16}h14" stroke="${K}" stroke-width="1.5"/>`)}</svg>`
+};
+const LAB=`<svg viewBox="0 0 480 240" aria-hidden="true"><rect width="480" height="240" fill="#eef2f4"/><polygon points="0,0 480,0 360,90 120,90" fill="#f8fafb"/><rect x="120" y="40" width="240" height="50" fill="#e3e9ec"/><rect x="300" y="44" width="56" height="34" fill="#c9824a"/><rect x="290" y="44" width="8" height="34" fill="#3f8a4a"/>${R(6,i=>`<rect x="${128+i*28}" y="52" width="20" height="26" fill="#cfe3ef"/>`)}<polygon points="0,240 480,240 360,90 120,90" fill="#9aa3a8"/>${R(3,r=>R(2,c=>{const y=100+r*44,w=60+r*26,x=c?250+r*16:230-w-r*16;return `<rect x="${x}" y="${y}" width="${w}" height="${10+r*3}" fill="#bcd6e2" stroke="${K}"/><rect x="${x+w/2-6-r*2}" y="${y+10+r*3}" width="${12+r*4}" height="${20+r*8}" fill="#f5f5f5" stroke="${K}"/>`}))}<rect x="0" y="96" width="60" height="80" fill="#f2f2f2" stroke="${K}"/><path d="M36 96v-26h14" stroke="${K}" stroke-width="3" fill="none"/></svg>`;
+const SOIL=`<svg viewBox="0 0 160 240" preserveAspectRatio="none" aria-hidden="true"><rect y="18" width="160" height="66" fill="#6b4a2b"/><rect y="84" width="160" height="70" fill="#c98f55"/>${R(14,i=>`<circle cx="${(i*47)%150+6}" cy="${96+(i*29)%54}" r="${2+i%3}" fill="#a87545"/>`)}<rect y="154" width="160" height="86" fill="#8f8f92"/>${R(10,i=>`<ellipse cx="${(i*37)%140+12}" cy="${168+(i*23)%64}" rx="${14+i%3*4}" ry="9" fill="#b3b3b6" stroke="#5a5a5e"/>`)}${R(30,i=>`<path d="M${i*5.5+2} 20l${(i%3)-1} -${10+i%4*3}" stroke="#4f9a3f" stroke-width="2.5"/>`)}${R(8,i=>`<path d="M${12+i*19} 22q4 18-2 40" stroke="#d9b98a" stroke-width="1.2" fill="none"/>`)}</svg>`;
+const VENN=`<svg viewBox="0 0 480 250" aria-hidden="true"><path d="M240 19.7a110 110 0 0 1 0 190.6a110 110 0 0 1 0-190.6z" fill="var(--line)"/><circle cx="185" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><circle cx="295" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><g font-size="11.5" fill="var(--fg)" font-family="Atkinson Hyperlegible,system-ui,sans-serif"><text x="86" y="84">• north of the rest</text><text x="94" y="99">of the United</text><text x="94" y="114">States</text><text x="86" y="136">• coldest state</text><text x="192" y="84">• US states</text><text x="192" y="106">• not connected</text><text x="200" y="121">to the main part</text><text x="200" y="136">of the country</text><text x="302" y="84">• in the Pacific</text><text x="310" y="99">Ocean</text><text x="302" y="121">• warmest state</text></g><g font-size="15" font-weight="700" fill="var(--bad)" text-anchor="middle" font-family="Atkinson Hyperlegible,system-ui,sans-serif"><text x="125" y="244">Alaska</text><text x="240" y="244">Both</text><text x="355" y="244">Hawaii</text></g></svg>`;
+let Q=0,picked=null,qTries=0,qResults=[],iSlow=false;
+const $=id=>document.getElementById(id);
+LESSONS.push({title:"Listen to a Conversation",type:"convo",items:[
+ {name:"Conversation 1",intro:"Listen to two students talking about a class assignment.",scene:"hall",
+  speakers:{Maya:0,Luis:1},
+  lines:[["Luis","Hey, Maya. Did you start the math assignment yet?"],
+   ["Maya","I did! Ms. Ortiz wants us to find geometry in real life. We have to take photos of five shapes around the school."],
+   ["Luis","Five shapes? Like what?"],
+   ["Maya","The clock in the library is a circle. The windows in the gym are rectangles. And the roof of the bus stop is a triangle."],
+   ["Luis","Oh, that's smart. When is it due?"],
+   ["Maya","Friday. We need five photos and one sentence about each shape."],
+   ["Luis","I have my phone, but I have to go to the art room right now. Mr. Hale wants to talk to me about my painting."],
+   ["Maya","OK. I'm going to the library at lunch to take a picture of the clock. Do you want to meet me there?"],
+   ["Luis","Sure. See you at lunch!"]],
+  qs:[{q:"What are the students mainly talking about?",o:["a math assignment","a painting for art class","lunch in the library","a new bus stop"],a:0},
+      {q:"Why does Maya talk about the clock in the library?",o:["It is broken.","It shows the time for lunch.","It is an example of a circle.","It is in her painting."],a:2},
+      {q:"What must the students turn in on Friday?",o:["five shapes they drew","five photos with one sentence each","a painting of the school","a list of rooms in the school"],a:1},
+      {q:"Where will Luis go now?",o:["to the library","to the gym","to the art room","to the bus stop"],a:2},
+      {q:"What will Maya probably do at lunch?",o:["take a photo of the clock","finish her painting","talk to Mr. Hale","go to the gym"],a:0}]},
+ {name:"Conversation 2",intro:"Listen to two students talking after school.",scene:"walk",
+  speakers:{Sofia:0,Nadia:2},
+  lines:[["Sofia","Nadia, guess what? Our garden club is finally building the school garden!"],
+   ["Nadia","That's great! What are you going to plant?"],
+   ["Sofia","We voted. Some students wanted flowers, and some wanted fruit trees. But most students voted for vegetables, so we're planting tomatoes, peppers, and beans."],
+   ["Nadia","Yum. How do you start a garden?"],
+   ["Sofia","First, we pulled out all the weeds. Then we added new soil. Last Saturday, we planted the seeds. Now we have to water them every morning."],
+   ["Nadia","My school doesn't have a garden. We only have a small yard with grass."],
+   ["Sofia","You could start one! Ask your principal. I can give you our club's plan."],
+   ["Nadia","Really? That would help a lot."],
+   ["Sofia","Sure. I'll bring it to the library tomorrow, and I'll show you how we planned the garden."]],
+  qs:[{q:"Which kind of plant received the most votes from the students?",o:["flowers","fruit trees","vegetables","grass"],a:2},
+      {q:"Which step came right after adding new soil?",o:["pulling out the weeds","planting the seeds","voting on the plants","watering every morning"],a:1},
+      {q:"What do the club members have to do every morning?",o:["pull weeds","water the seeds","buy new soil","pick tomatoes"],a:1},
+      {q:"What can you infer from the conversation?",o:["Nadia and Sofia go to different schools.","Nadia is in the garden club.","Sofia does not like vegetables.","The garden is finished."],a:0},
+      {q:"What will Sofia probably do next?",o:["ask her principal for a garden","give Nadia the club's plan","plant flowers at Nadia's school","vote for fruit trees"],a:1}]}
+]});
+{let n=1;LESSONS[3].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+const CSCENE={
+ hall:WD(`<rect width="240" height="170" fill="#f3ead6"/><polygon points="0,0 70,30 70,130 0,170" fill="#e6d8bb"/><polygon points="240,0 170,30 170,130 240,170" fill="#e6d8bb"/><rect x="70" y="30" width="100" height="100" fill="#efe4cb"/><polygon points="0,170 70,130 170,130 240,170" fill="#d9b9a0"/>${R(4,i=>`<polygon points="${8+i*15},${6+i*6} ${20+i*15},${11+i*6} ${20+i*15},${150-i*5} ${8+i*15},${156-i*5}" fill="#9db7c9" stroke="${K}" stroke-width="1"/>`)}${R(4,i=>`<polygon points="${232-i*15},${6+i*6} ${220-i*15},${11+i*6} ${220-i*15},${150-i*5} ${232-i*15},${156-i*5}" fill="#c9a07a" stroke="${K}" stroke-width="1"/>`)}<rect x="108" y="56" width="24" height="74" fill="#e8e8e8" stroke="${K}"/>${bust(112,72,.55,"#5f9a4f",{back:true})}${bust(134,74,.5,"#e3a33a",{back:true,hair:"#2a1d16"})}${full(82,58,1.3,"#d33d33","#8a9ac4",{hair:"#e8c766"})}<rect x="60" y="88" width="16" height="20" fill="#3a7bd5" stroke="${K}"/>${full(160,52,1.4,"#f2c84b","#8a9ac4",{hair:"#a0602a"})}<path d="M144 66l8 40" stroke="#5a3a22" stroke-width="4"/>`),
+ walk:WD(`<rect width="240" height="170" fill="#cfe9f5"/>${R(5,i=>`<rect x="${120+i*24}" y="${50-(i%2)*6}" width="18" height="16" fill="${["#d9573f","#7b4fc4","#e3a33a","#3a7bd5","#c9563c"][i]}"/><polygon points="${118+i*24},${50-(i%2)*6} ${129+i*24},${40-(i%2)*6} ${140+i*24},${50-(i%2)*6}" fill="#7a2a22"/>`)}<path d="M0 60q60-16 120 0t120 0V170H0Z" fill="#cde59a"/><circle cx="36" cy="40" r="26" fill="#d98a3a" stroke="${K}" stroke-width="1.5"/><rect x="33" y="60" width="7" height="50" fill="#7a5530"/><circle cx="200" cy="66" r="14" fill="#d07ab0"/><circle cx="216" cy="70" r="12" fill="#e08ac0"/><polygon points="0,140 240,116 240,150 0,170" fill="#d7d3cc" stroke="${K}" stroke-width="1"/>${full(98,58,1.25,"#d9573f","#e3a33a",{hair:"#e8c766"})}${full(140,54,1.3,"#2f8a7a","#6b5a4a",{hair:"#3b2a20"})}<rect x="80" y="70" width="10" height="26" rx="4" fill="#556" stroke="${K}"/><rect x="156" y="68" width="10" height="26" rx="4" fill="#9b6fe4" stroke="${K}"/>`)
+};
+let CQ=0,cTries=0,cResults=[],cSlow=false,cAnswered=false,lblPick=null,lblMap={};
+function buildConvo(){
+  const it=item();
+  $("cIntro").textContent=it.intro;
+  $("cScene").innerHTML=CSCENE[it.scene];
+  $("cScene").setAttribute("aria-label",it.slides?"Classroom and presentation slides":"Scene");
+  $("cScript").innerHTML=it.lines.map((l,i)=>`<p data-i="${i}"><b>${l[0]}:</b> ${l[1]}</p>`).join("");
+  CQ=0;cResults=it.qs.map(()=>null);loadCQ();
+}
+function loadCQ(){
+  const it=item(),q=it.qs[CQ];cTries=0;cAnswered=false;
+  $("cNum").textContent=(it.firstQ+CQ)+".";
+  $("cQ").textContent=q.q;
+  const t=q.type||"mc";
+  let h="";
+  if(t==="org")h=`<table class="org">${q.org.map(r=>`<tr><th>${r[0]}:</th>${r[1]===null?`<td class="blank" id="orgBlank">Tap the reason that belongs here.</td>`:`<td>${r[1]}</td>`}</tr>`).join("")}</table>`;
+  h+=q.o.map((o,i)=>t==="multi"?`<button type="button" class="opt chk" data-i="${i}" aria-pressed="false"><span class="lt">✓</span><span>${o}</span></button>`:`<button type="button" class="opt" data-i="${i}"><span class="lt">${t==="org"?"":"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  if(t==="multi")h+=`<button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+  if(t==="pic")h=q.pics.map((k,i)=>`<button type="button" class="opt pic" data-i="${i}" aria-label="Picture ${"ABCD"[i]}"><span class="lt">${"ABCD"[i]}</span>${BUG[k]}</button>`).join("");
+  $("cOpts").classList.toggle("pics",t==="pic");
+  if(t==="label"){
+    h=`<div class="lbl3">${q.targets.map(([k,cap])=>`<div class="lt3">${WD(IC[k](120,90,2.2))}<small>${cap}</small><button type="button" class="slot3" data-t="${k}">&nbsp;</button></div>`).join("")}</div>
+      <div class="lchips">${q.o.map((o,i)=>`<button type="button" class="lchip" data-i="${i}" aria-pressed="false">${o}</button>`).join("")}</div>
+      <button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+    lblPick=null;lblMap={};
+  }
+  $("cOpts").innerHTML=h;
+  setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":LESSONS[L].title.includes("Teacher")?"lesson":LESSONS[L].title.includes("Student")?"presentation":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
+  $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
+}
+function pickVoices(){
+  let v=[];try{v=speechSynthesis.getVoices().filter(x=>/^en[-_]US/i.test(x.lang))}catch(e){}
+  if(!v.length)try{v=speechSynthesis.getVoices().filter(x=>/^en/i.test(x.lang))}catch(e){}
+  return v;
+}
+function playConvo(){
+  const it=item();
+  if(!("speechSynthesis" in window)){$("cScript").hidden=false;$("cText").setAttribute("aria-pressed","true");return}
+  try{speechSynthesis.cancel()}catch(e){}
+  const vs=pickVoices(),pitch=[1.15,0.8,1.35,0.95];
+  it.lines.forEach((l,i)=>{
+    const u=new SpeechSynthesisUtterance(l[1]);u.lang="en-US";u.rate=cSlow?.65:.92;
+    const s=it.speakers[l[0]];
+    if(vs.length>1)u.voice=vs[s%vs.length];else if(vs[0])u.voice=vs[0];
+    u.pitch=pitch[s];
+    u.onstart=()=>{if(it.slides&&l[2]!==undefined)$("cScene").innerHTML=SL[l[2]];document.querySelectorAll("#cScript p").forEach(p=>p.classList.toggle("on",+p.dataset.i===i));$("cPlay").classList.add("playing")};
+    if(i===it.lines.length-1)u.onend=u.onerror=()=>{$("cPlay").classList.remove("playing");document.querySelectorAll("#cScript p").forEach(p=>p.classList.remove("on"))};
+    speechSynthesis.speak(u);
+  });
+}
+function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.type==="pic"||q.type==="label"?q.q:q.q+" "+q.o.map((o,i)=>(q.type?"":"ABCD"[i]+". ")+o).join(" "))}
+function cDone(b){
+  const it=item();cAnswered=true;cResults[CQ]=cTries===1?"ok":"miss";
+  const last=CQ===it.qs.length-1;
+  setFb("good","Yes! That is correct.",last?"See score":"Next question",nextCQ);
+  slow=cSlow;say("Yes!");
+  $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+}
+$("cOpts").addEventListener("click",e=>{
+  if(cAnswered)return;
+  const it=item(),q=it.qs[CQ];
+  if(q.type==="label"){
+    const ch=e.target.closest(".lchip"),sl=e.target.closest(".slot3");
+    if(ch){const on=ch.getAttribute("aria-pressed")!=="true";document.querySelectorAll(".lchip").forEach(x=>x.setAttribute("aria-pressed","false"));ch.setAttribute("aria-pressed",on);lblPick=on?+ch.dataset.i:null;document.querySelectorAll(".slot3").forEach(x=>x.classList.toggle("armed",lblPick!==null));if(lblPick!==null)setFb("","Now tap the box under a building.");return}
+    if(sl){
+      const k=sl.dataset.t;
+      if(lblPick===null){if(lblMap[k]!==undefined){delete lblMap[k]}else{setFb("bad","First tap a label. Then tap the box where it goes.");return}}
+      else{for(const t in lblMap)if(lblMap[t]===lblPick)delete lblMap[t];lblMap[k]=lblPick;lblPick=null;}
+      document.querySelectorAll(".slot3").forEach(x=>{const v=lblMap[x.dataset.t];x.innerHTML=v===undefined?"&nbsp;":q.o[v];x.classList.toggle("filled",v!==undefined);x.classList.remove("armed")});
+      const used=Object.values(lblMap);document.querySelectorAll(".lchip").forEach(x=>{x.setAttribute("aria-pressed","false");x.classList.toggle("used",used.includes(+x.dataset.i))});
+      setFb("",Object.keys(lblMap).length===3?"All three boxes are filled. Press Check my answers when you are ready.":"Tap a label, then tap a box. Tap a filled box to empty it.");
+      return;
+    }
+    if(!e.target.closest("#cSubmit"))return;
+    if(Object.keys(lblMap).length<3){setFb("bad","Fill all three boxes first, then press Check my answers.");return}
+    cTries++;let right=0;
+    document.querySelectorAll(".slot3").forEach(x=>{const k=x.dataset.t,ok=lblMap[k]===q.a[k];if(ok)right++;x.classList.add(ok?"right":"wrong");x.disabled=true;if(!ok)x.innerHTML=`${q.o[lblMap[k]]}<em>Correct: ${q.o[q.a[k]]}</em>`});
+    document.querySelectorAll(".lchip").forEach(x=>x.disabled=true);$("cSubmit").remove();
+    if(right===3)cDone();else cMiss(`Not quite. You matched ${right} of 3. The correct labels are shown.`);
+    return;
+  }
+  if(q.type==="multi"){
+    const c=e.target.closest(".opt");
+    if(c){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")!=="true");c.classList.remove("miss");return}
+    if(!e.target.closest("#cSubmit"))return;
+    const chosen=[...document.querySelectorAll(".opt.chk")].filter(x=>x.getAttribute("aria-pressed")==="true").map(x=>+x.dataset.i);
+    if(!chosen.length){setFb("bad","Check at least one statement, then press Check my answers.");return}
+    cTries++;
+    const ok=chosen.length===q.a.length&&q.a.every(i=>chosen.includes(i));
+    document.querySelectorAll(".opt.chk").forEach(x=>{const k=+x.dataset.i;x.disabled=true;
+      if(q.a.includes(k))x.classList.add("right");else if(chosen.includes(k))x.classList.add("miss")});
+    $("cSubmit").remove();
+    if(ok)cDone();
+    else cMiss(`Not quite. The ${q.a.length} correct statements are marked in green. Red ones do not support the position.`);
+    return;
+  }
+  const b=e.target.closest(".opt");if(!b)return;
+  const i=+b.dataset.i;cTries++;
+  if(q.type==="org"&&i===q.a){const bl=$("orgBlank");bl.textContent=q.o[i];bl.className="filled";}
+  if(i===q.a){
+    cAnswered=true;b.classList.add("right");cResults[CQ]=cTries===1?"ok":"miss";
+    document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b);
+    const last=CQ===it.qs.length-1;
+    setFb("good",`Yes! ${"ABCD"[i]} is correct.`,last?"See score":"Next question",nextCQ);
+    slow=cSlow;say("Yes!");
+    $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+  }else{
+    b.classList.add("wrong");
+    const c=document.querySelector(`.opt[data-i="${q.a}"]`);if(c)c.classList.add("right");
+    document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b&&x!==c);
+    if(q.type==="org"){const bl=$("orgBlank");bl.textContent=q.o[q.a];bl.className="filled";}
+    cMiss(q.type==="org"?"Not quite. The correct reason is shown in green.":`Not quite. The correct answer is ${"ABCD"[q.a]}${q.type==="pic"?" (the "+q.o[q.a]+")":""}.`);
+  }
+});
+function cMiss(msg){
+  const it=item();cAnswered=true;cResults[CQ]="miss";
+  const last=CQ===it.qs.length-1;
+  setFb("bad",msg,last?"See score":"Next question",nextCQ);
+  $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+}
+function nextCQ(){
+  const it=item();
+  if(CQ<it.qs.length-1){CQ++;loadCQ();playCQ();return}
+  const first=cResults.filter(r=>r==="ok").length,more=I<LESSONS[L].items.length-1;
+  setFb("good",`All done! You got ${first} of ${it.qs.length} correct.`,more?`Go to ${LESSONS[L].items[I+1].name}`:"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
+}
+$("cPlay").addEventListener("click",playConvo);
+$("cqPlay").addEventListener("click",playCQ);
+$("cSlowB").addEventListener("click",function(){cSlow=!cSlow;this.setAttribute("aria-pressed",cSlow)});
+$("cText").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("cScript").hidden=!on});
+$("cRestart").addEventListener("click",()=>buildConvo());
+
+LESSONS.push({title:"Listen to a Debate",type:"convo",items:[
+ {name:"Debate 1",intro:"Listen to two students debate a school schedule.",scene:"stage",
+  speakers:{"Mr. Grant":1,Amir:3,Elena:0},
+  lines:[["Mr. Grant","Good morning, everyone. Today's debate question is: Should our school start one hour later, at nine o'clock? Amir will argue yes. Elena will argue no. Amir, please begin."],
+   ["Amir","Thank you. I believe our school should start at nine. Scientists say that teenagers' bodies are ready to sleep later at night, so getting up at six is very hard for us. When students sleep more, they pay better attention in class and get better grades. Also, a later start means fewer students would be late or absent in the morning."],
+   ["Mr. Grant","Thank you, Amir. Elena?"],
+   ["Elena","Thank you. I understand that students are tired, but I think we should keep our start time at eight. If school starts later, it also ends later. Then sports practice and after-school jobs would move into the evening, and students would have less time for homework. Many parents also need to drop their children off before they go to work. A later start could make mornings harder for families, not easier."],
+   ["Mr. Grant","Thank you both. Now the audience will vote."]],
+  qs:[{q:"Who speaks first?",o:["the teacher","Amir","a parent","Elena"],a:0},
+      {q:"What are the speakers debating?",o:["whether school should start later","how much homework students should have","which bus routes the school should use","when sports teams should play games"],a:0},
+      {q:"What is Elena's position?",o:["School should start one hour later.","School should keep its current start time.","The school day should be shorter.","Students should not have after-school jobs."],a:1},
+      {type:"multi",q:"Which of these statements support Amir's position? Check all that apply.",o:["Teenagers' bodies are ready to sleep later at night.","Sports practice would move into the evening.","Students who sleep more pay better attention in class.","Many parents drop their children off before work.","Fewer students would be late or absent in the morning.","The start time should stay at eight."],a:[0,2,4]}]},
+ {name:"Debate 2",intro:"Listen to two students debate a school policy.",scene:"room",
+  speakers:{"Ms. Kim":2,Jordan:1,Priya:0},
+  lines:[["Ms. Kim","Welcome to our second debate. The question is: Should our school ban phones during the school day? Jordan will speak for the ban, and Priya will speak against it. Jordan, you may start."],
+   ["Jordan","Thank you. I think our school should ban phones from the first bell to the last bell. First, students pay more attention in class when their phones are put away. Second, students talk to each other more at lunch instead of looking at screens. Third, there would be less online bullying during the school day, because students could not post or send messages."],
+   ["Ms. Kim","Thank you, Jordan. Priya?"],
+   ["Priya","Thank you. I disagree. Students should be allowed to keep their phones, with clear rules about when to use them. Phones help many students learn. For example, English learners use translation apps to understand new words, and everyone can look up information quickly. Phones also keep students safe, because families can reach them in an emergency. Instead of a ban, teachers can decide when phones are put away."],
+   ["Ms. Kim","Thank you both. Those were strong arguments."]],
+  qs:[{q:"What are the students debating?",o:["whether phones should be banned during the school day","which apps teachers should use in class","where students can charge their phones","whether the school should buy new laptops"],a:0},
+      {q:"What is Priya's argument?",o:["Students should be allowed to keep their phones during the day.","Phones should be banned from the first bell to the last bell.","Only teachers should have phones at school.","Students should use phones only in the library."],a:0},
+      {type:"org",q:"Which of these reasons supports Jordan's argument? Choose the answer that completes the graphic organizer.",
+       org:[["Argument","Our school should ban phones during the school day."],["Reason","Students pay more attention in class."],["Reason","Students talk to each other more at lunch."],["Reason",null]],
+       o:["Families can reach students in an emergency.","There is less online bullying during the school day.","Students use translation apps to learn new words."],a:1},
+      {q:"Which statement supports Priya's argument?",o:["Phones distract students during class.","Phones help students translate words and look up information.","Phones make online bullying worse.","Students talk to each other more without phones."],a:1}]}
+]});
+{let n=1;LESSONS[4].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+CSCENE.stage=WD(`<rect width="240" height="170" fill="#e3a33a"/>${R(16,i=>`<path d="M${i*15+7} 0V110" stroke="#c9822a" stroke-width="4"/>`)}<path d="M0 110q30 8 60 0t60 0t60 0t60 0V124H0Z" fill="#c9822a"/><rect y="118" width="240" height="20" fill="#b9a088"/>${bust(58,44,1.1,"#c9563c",{hair:"#2a1d16"})}<rect x="40" y="70" width="38" height="50" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="48" y="80" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${bust(180,40,1.15,"#4a5a8a",{hair:"#a0602a"})}<rect x="160" y="68" width="40" height="52" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="169" y="78" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${R(8,i=>bust(14+i*31,150+(i%2)*4,.9,["#3a7bd5","#d9573f","#5f9a4f","#e3a33a"][i%4],{back:true,hair:["#2a1d16","#e8c766","#a0602a","#c4572a"][i%4]}))}`);
+CSCENE.room=WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="70" y="10" width="110" height="60" fill="#3d4a42" stroke="${K}" stroke-width="2"/><rect y="96" width="240" height="74" fill="#e8e1d2"/>${bust(124,56,1,"#5b8fa8",{hair:"#bbb"})}<rect x="90" y="84" width="70" height="30" fill="#e3e3e3" stroke="${K}" stroke-width="1.5"/>${full(48,34,1.15,"#e3a33a","#7a8a4a",{hair:"#e8c766"})}${full(200,28,1.2,"#e05a9a","#9aa3c4",{hair:"#6b4a2b"})}${R(6,i=>`<rect x="${10+i*40}" y="${150+(i%2)*4}" width="30" height="6" fill="#d9d2c0" stroke="${K}"/>`+bust(25+i*40,140+(i%2)*4,.85,["#f2d24b","#5f9a4f","#c9563c","#3a7bd5"][i%4],{back:true,hair:["#c4572a","#2a1d16","#a0602a","#3b2a20"][i%4]}))}`);
+
+const IC={
+ exec:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-30" y="-6" width="60" height="22" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><polygon points="-14,-6 14,-6 0,-18" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/>${R(4,i=>`<rect x="${-11+i*7}" y="-5" width="2.5" height="20" fill="#d8d2c4"/>`)}${R(4,i=>`<rect x="${-27+i*5}" y="0" width="3" height="5" fill="#9db7c9"/><rect x="${13+i*4}" y="0" width="3" height="5" fill="#9db7c9"/>`)}<rect x="-34" y="16" width="68" height="4" fill="#7fb06a"/></g>`,
+ leg:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-34" y="0" width="68" height="18" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><rect x="-12" y="-10" width="24" height="10" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><path d="M-11 -10a11 11 0 0 1 22 0z" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><path d="M0 -21v-6" stroke="${K}" stroke-width="1.5"/>${R(8,i=>`<rect x="${-31+i*8}" y="4" width="3" height="9" fill="#d8d2c4"/>`)}<circle cx="-40" cy="14" r="7" fill="#6aae42"/><circle cx="40" cy="14" r="7" fill="#6aae42"/><rect x="-46" y="18" width="92" height="4" fill="#7fb06a"/></g>`,
+ jud:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><polygon points="-26,-4 26,-4 0,-16" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/><rect x="-26" y="-4" width="52" height="4" fill="#f6f2ea" stroke="${K}" stroke-width="1.2"/>${R(6,i=>`<rect x="${-22+i*8.4}" y="0" width="4" height="16" fill="#f6f2ea" stroke="${K}" stroke-width=".8"/>`)}<rect x="-30" y="16" width="60" height="4" fill="#e6e0d2" stroke="${K}" stroke-width="1"/><rect x="-36" y="20" width="72" height="3" fill="#7fb06a"/></g>`
+};
+const TXT=(x,y,t,o="")=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="9.5" font-style="italic" fill="#2b2622" font-family="Atkinson Hyperlegible,system-ui,sans-serif" ${o}>${t}</text>`;
+function govSlide(step){
+  // step: 1 icons, 2 +executive, 3 +legislative, 5 +bill arrow, 6 +judicial, 7 +triangle
+  let g=`<rect width="240" height="170" fill="#ffffff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/>`;
+  if(step>=7)g+=`<polygon points="120,78 96,114 144,114" fill="none" stroke="${K}" stroke-width="1.5"/>`;
+  g+=IC.exec(120,42)+IC.leg(62,128)+IC.jud(178,128);
+  if(step>=2)g+=TXT(120,12,"Executive Branch")+TXT(120,72,"Governor");
+  if(step>=3)g+=TXT(50,100,"Legislative Branch")+TXT(62,162,"Legislature");
+  if(step>=5&&step<7)g+=`<path d="M100 112Q104 96 112 82" stroke="#3a7bd5" stroke-width="2" fill="none" marker-end="url(#ar)"/><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3a7bd5"/></marker></defs>`+TXT(122,104,"bill",`fill="#3a7bd5" font-style="normal" font-weight="700"`)+TXT(184,72,"sign or veto?",`fill="#c9302c" font-style="normal" font-weight="700"`);
+  if(step>=6)g+=TXT(190,100,"Judicial Branch")+TXT(178,162,"Supreme Court");
+  return WD(g);
+}
+const CHART=WD(`<rect width="240" height="170" fill="#fff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/><text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="${K}" font-family="Atkinson Hyperlegible,system-ui,sans-serif">MISSISSIPPI LEGISLATURE · MEMBERS</text><path d="M40 140H220" stroke="${K}"/>${[0,40,80,120].map(v=>`<path d="M40 ${140-v*0.8}H220" stroke="#e3e3e3"/><text x="34" y="${143-v*0.8}" text-anchor="end" font-size="8" fill="#555" font-family="system-ui">${v}</text>`).join("")}<rect x="70" y="${140-52*0.8}" width="40" height="${52*0.8}" fill="#5b8fa8"/><rect x="150" y="${140-122*0.8}" width="40" height="${122*0.8}" fill="#c9824a"/><g font-family="Atkinson Hyperlegible,system-ui,sans-serif" text-anchor="middle" fill="${K}"><text x="90" y="${134-52*0.8}" font-size="10" font-weight="700">52</text><text x="170" y="${134-122*0.8}" font-size="10" font-weight="700">122</text><text x="90" y="154" font-size="9.5">Senate</text><text x="170" y="154" font-size="9.5">House of Representatives</text></g>`);
+const HISTROOM=WD(`<rect width="240" height="170" fill="#f3ead6"/><rect x="60" y="14" width="120" height="66" fill="#fff" stroke="${K}" stroke-width="1.5"/><g transform="translate(120 47) scale(.38) translate(-120 -85)">${govSlide(1).replace(/^<svg[^>]*>|<\/svg>$/g,"")}</g><rect x="14" y="20" width="34" height="44" fill="#e3a33a" stroke="${K}"/><rect y="104" width="240" height="66" fill="#e3dccb"/>${full(120,66,1.05,"#e3822a","#8a9ac4",{hair:"#8a5a2b"})}<rect x="128" y="86" width="12" height="9" fill="#fff" stroke="${K}"/>${R(6,i=>`<rect x="${6+i*40}" y="${150+(i%2)*4}" width="32" height="6" fill="#f2f2f2" stroke="${K}"/>`+bust(22+i*40,140+(i%2)*4,.85,["#c9b08a","#7b4fc4","#5b7fb8","#d9573f"][i%4],{back:true,hair:["#3b2a20","#a0602a","#e8c766","#2a1d16"][i%4]}))}`);
+const HAND=(name,shirt,hair,skin)=>WD(`<rect width="240" height="170" fill="#fff"/>${bust(120,64,2.1,shirt,{hair,skin})}<path d="M150 98L172 40" stroke="${shirt}" stroke-width="13" stroke-linecap="round"/><circle cx="174" cy="34" r="8" fill="${skin||"#e8b98f"}" stroke="${K}" stroke-width="1.5"/><polygon points="70,150 200,140 214,170 60,170" fill="#e8dcc0" stroke="${K}"/><text x="120" y="20" text-anchor="middle" font-size="11" fill="#555" font-family="system-ui">${name} asks a question</text>`);
+const SL={room:HISTROOM,1:govSlide(1),2:govSlide(2),3:govSlide(3),4:CHART,5:govSlide(5),6:govSlide(6),7:govSlide(7),ana:HAND("Ana","#d9e14a","#3b2a20","#8a5a3a"),kevin:HAND("Kevin","#e3a33a","#2a1d16")};
+
+LESSONS.push({title:"Listen to the Student",type:"convo",items:[
+ {name:"Presentation",intro:"Listen to a student giving a presentation in a history class. Watch his slides change as he speaks.",scene:"room",slides:true,
+  speakers:{"Ms. Rivera":2,Marcus:1,Ana:0,Kevin:3},
+  lines:[["Ms. Rivera","Marcus, you may begin your presentation.","room"],
+   ["Marcus","Good morning. My presentation is about how Mississippi's state government is organized. Like the United States government, our state government has three branches. Each branch has a different job, and each branch can check the power of the others.",1],
+   ["Marcus","The first branch is the executive branch. The leader of the executive branch is the governor. The governor works in Jackson, our state capital, and is elected every four years. The governor's job is to carry out the laws.",2],
+   ["Marcus","The second branch is the legislative branch, called the Legislature. The Legislature makes the laws. It has two parts: the Senate and the House of Representatives.",3],
+   ["Marcus","This chart shows how many members are in each part. The Senate has fifty-two senators, and the House has one hundred twenty-two representatives. So the House is more than twice as large as the Senate.",4],
+   ["Ana","Excuse me, Marcus. Who decides if a new bill becomes a law?","ana"],
+   ["Marcus","Good question. First, both parts of the Legislature must pass the bill. Then it goes to the governor. The governor can sign the bill, or the governor can veto it. A veto stops the bill from becoming a law. But if two-thirds of both parts of the Legislature vote for it again, the bill can still become a law.",5],
+   ["Marcus","The third branch is the judicial branch. The highest court in our state is the Mississippi Supreme Court. It decides what the laws mean and whether they follow the state constitution.",6],
+   ["Kevin","How many judges are on the Supreme Court?","kevin"],
+   ["Marcus","There are nine justices. A justice is a judge on the Supreme Court. Together, the governor, the Legislature, and the Supreme Court share power, so no one branch has too much. Thank you.",7]],
+  qs:[{q:"What is the main topic of the student's presentation?",o:["how a bill becomes a law","how Mississippi's state government is organized","how judges are chosen for the Supreme Court","the history of the state capital"],a:1},
+      {q:"Why does the student include a chart in his presentation?",o:["to show that the governor leads the executive branch","to compare the number of members in the two parts of the Legislature","to show how justices join the Supreme Court","to show how many people live in Mississippi"],a:1},
+      {type:"label",q:"Match the correct labels to the three branches of Mississippi's state government.",
+       targets:[["exec","Executive branch"],["leg","Legislative branch"],["jud","Judicial branch"]],
+       o:["Supreme Court","Governor","Mayor","Legislature","School Board"],a:{exec:1,leg:3,jud:0}},
+      {q:"Who can veto a bill so that it does not become a law?",o:["the governor","the Senate","a justice","the House of Representatives"],a:0},
+      {q:"How many justices are on the Mississippi Supreme Court?",o:["three","five","seven","nine"],a:3}]}
+]});
+{let n=1;LESSONS[5].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+CSCENE.room=HISTROOM;
+
+const BUG={
+ firefly:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#1f2a44"/>${R(14,i=>`<circle cx="${(i*53)%155+3}" cy="${(i*37)%100+5}" r="1.2" fill="#fff" opacity=".6"/>`)}<circle cx="112" cy="58" r="22" fill="#f4e04d" opacity=".35"/><ellipse cx="62" cy="34" rx="22" ry="9" fill="#cfe3ef" opacity=".7" transform="rotate(-20 62 34)"/><ellipse cx="86" cy="32" rx="22" ry="9" fill="#cfe3ef" opacity=".7" transform="rotate(20 86 32)"/><ellipse cx="80" cy="58" rx="30" ry="12" fill="#3b2f2a" stroke="#000"/><ellipse cx="106" cy="58" rx="10" ry="10" fill="#f4e04d" stroke="#000"/><circle cx="48" cy="56" r="9" fill="#d9573f" stroke="#000"/><path d="M42 50l-10-12M44 49l-4-14" stroke="#000" stroke-width="1.5"/>${R(3,i=>`<path d="M${66+i*12} 68l-4 12" stroke="#000" stroke-width="1.5"/>`)}</svg>`,
+ bee:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#d8ecb0"/><circle cx="30" cy="90" r="12" fill="#f2c84b"/><circle cx="30" cy="90" r="5" fill="#a0602a"/><ellipse cx="72" cy="34" rx="18" ry="11" fill="#fff" opacity=".8" stroke="#888"/><ellipse cx="92" cy="34" rx="18" ry="11" fill="#fff" opacity=".8" stroke="#888"/><ellipse cx="84" cy="60" rx="32" ry="17" fill="#f2c84b" stroke="#000"/>${R(3,i=>`<rect x="${72+i*12}" y="44" width="6" height="32" fill="#2b2622"/>`)}<circle cx="50" cy="58" r="12" fill="#2b2622"/><polygon points="116,60 126,56 116,66" fill="#2b2622"/></svg>`,
+ ladybug:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#8cc45f"/><ellipse cx="80" cy="60" rx="34" ry="28" fill="#d9302c" stroke="#000" stroke-width="2"/><path d="M80 32v56" stroke="#000" stroke-width="2"/>${[[64,48],[96,48],[60,70],[100,70],[80,80]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="6" fill="#000"/>`).join("")}<ellipse cx="80" cy="30" rx="16" ry="10" fill="#111"/><circle cx="74" cy="28" r="2.5" fill="#fff"/><circle cx="86" cy="28" r="2.5" fill="#fff"/></svg>`,
+ dragonfly:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#bfe3f2"/><rect y="84" width="160" height="26" fill="#6aa8d0"/><ellipse cx="60" cy="40" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(-12 60 40)"/><ellipse cx="60" cy="58" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(12 60 58)"/><ellipse cx="104" cy="40" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(12 104 40)"/><ellipse cx="104" cy="58" rx="30" ry="8" fill="#fff" opacity=".85" stroke="#7aa" transform="rotate(-12 104 58)"/><rect x="80" y="44" width="8" height="58" rx="4" fill="#2f8a7a" stroke="#000"/><circle cx="84" cy="40" r="7" fill="#2f8a7a" stroke="#000"/></svg>`
+};
+const SCI=(teacher,board)=>WD(`<rect width="240" height="170" fill="#eef2f4"/><rect x="40" y="12" width="150" height="70" fill="#fff" stroke="${K}" stroke-width="1.5"/>${board}<rect x="196" y="20" width="34" height="42" fill="#e3a33a" stroke="${K}"/><rect y="110" width="240" height="60" fill="#d9d3c4"/>${teacher}${R(5,i=>`<rect x="${10+i*48}" y="${152+(i%2)*4}" width="36" height="6" fill="#f2f2f2" stroke="${K}"/>`+bust(28+i*48,140+(i%2)*4,.9,["#d9573f","#f2d24b","#5b7fb8","#8ac43f","#e88aa8"][i%5],{back:true,hair:["#2a1d16","#c4572a","#3b2a20","#e8c766","#a0602a"][i%5]}))}`);
+CSCENE.hurr=SCI(full(206,58,1.15,"#3a5a8a","#3a3a4a",{hair:"#a0602a"}),`<circle cx="115" cy="47" r="26" fill="none" stroke="#5b8fa8" stroke-width="5" stroke-dasharray="30 8"/><circle cx="115" cy="47" r="6" fill="#fff" stroke="#5b8fa8" stroke-width="2"/><text x="115" y="78" text-anchor="middle" font-size="8" fill="${K}" font-family="system-ui">HURRICANE</text>`);
+CSCENE.fire=SCI(full(206,56,1.2,"#e3e3e3","#555",{hair:"#2a1d16",skin:"#a8734a"}),`<rect x="48" y="18" width="134" height="58" fill="#1f2a44"/>${R(9,i=>`<circle cx="${60+(i*37)%112}" cy="${26+(i*19)%42}" r="${2.5+i%3}" fill="#f4e04d"/><circle cx="${60+(i*37)%112}" cy="${26+(i*19)%42}" r="${7+i%3*2}" fill="#f4e04d" opacity=".25"/>`)}<text x="115" y="72" text-anchor="middle" font-size="8" fill="#fff" font-family="system-ui">LIGHTS IN THE NIGHT</text>`);
+
+LESSONS.push({title:"Listen to the Teacher",type:"convo",items:[
+ {name:"Hurricanes",intro:"Listen to the teacher.",scene:"hurr",speakers:{"Ms. Harper":2},
+  lines:[["Ms. Harper","Good morning, class. Today we are going to learn how hurricanes form and why they become weaker. This is important for us, because Mississippi has a coast on the Gulf of Mexico, and hurricanes can reach our state."],
+   ["Ms. Harper","A hurricane is a very large storm that spins. Every hurricane begins over warm ocean water. The water must be about eighty degrees Fahrenheit or warmer. The warm water heats the air above it and fills it with moisture. This warm, wet air rises quickly, and cooler air rushes in to take its place."],
+   ["Ms. Harper","Because the Earth is turning, the moving air begins to spin around a center. In the Northern Hemisphere, hurricanes spin counterclockwise. As long as the storm stays over warm water, it keeps getting energy and grows stronger. When the winds reach seventy-four miles per hour, the storm is officially called a hurricane."],
+   ["Ms. Harper","The center of a hurricane is called the eye. Surprisingly, the eye is calm. The sky can even be clear there. Around the eye is a ring of tall clouds called the eyewall. The eyewall has the strongest winds and the heaviest rain."],
+   ["Ms. Harper","When a hurricane moves over land, it begins to lose strength. Why? Because there is no warm ocean water under it to give it energy. But even a weaker storm can still bring flooding and dangerous winds, so we always listen to weather warnings."]],
+  qs:[{q:"What is the teacher mainly discussing?",o:["why hurricanes are dangerous for ships","how hurricanes form and why they become weaker","how scientists measure rain","the history of the Mississippi coast"],a:1},
+      {q:"Which statement best summarizes how hurricanes form?",o:["Hurricanes form when cold air moves over land.","A storm with winds of seventy-four miles per hour is called a hurricane.","Warm ocean water heats moist air that rises and begins to spin.","Hurricanes form when the eye of a storm gets bigger."],a:2},
+      {type:"multi",q:"Which are characteristics of hurricanes? Check all that apply.",o:["They begin over warm ocean water.","They spin counterclockwise in the Northern Hemisphere.","They grow stronger over land.","Their winds reach at least seventy-four miles per hour.","Their strongest winds are in the eye.","They form only in the Southern Hemisphere."],a:[0,1,3]},
+      {q:"What does the teacher say about the eye of a hurricane?",o:["It is the calm center of the storm.","It has the strongest winds.","It has the heaviest rain.","It forms over land."],a:0},
+      {q:"Why does a hurricane become weaker over land?",o:["Land is colder than the sky.","There is no warm ocean water to give it energy.","The eye closes over land.","The storm stops spinning in the daytime."],a:1}]},
+ {name:"Fireflies",intro:"Listen to the teacher.",scene:"fire",speakers:{"Mr. Okafor":1},
+  lines:[["Mr. Okafor","On summer nights in Mississippi, you can see small lights blinking in the grass and trees. These lights come from fireflies. Today we will learn how fireflies make light and why they use it."],
+   ["Mr. Okafor","First, a surprising fact: a firefly is not really a fly. It is a beetle. It has a hard shell over its wings, like other beetles. The light comes from the lower part of its body, near the end of its tail."],
+   ["Mr. Okafor","Inside that part of the body is a chemical called luciferin. When luciferin mixes with oxygen and a helper chemical, it makes light. Scientists call this cold light, because it makes almost no heat. A light bulb gets hot, but a firefly's light does not."],
+   ["Mr. Okafor","Why do fireflies flash? The main reason is to find a mate. Each kind of firefly has its own pattern of flashes, like a secret code. The males flash while they fly. A female waits on a plant and answers with her own flash. The light also warns birds and frogs that fireflies taste bad."],
+   ["Mr. Okafor","Most of the fireflies we see here glow at night. However, some kinds of fireflies are active during the day. They do not use light at all. Instead, they find each other by smell."]],
+  qs:[{type:"pic",q:"Which of these is a firefly? Choose the correct picture.",pics:["bee","firefly","ladybug","dragonfly"],o:["bee","firefly","ladybug","dragonfly"],a:1},
+      {q:"Which chemical in a firefly's body makes light when it mixes with oxygen?",o:["luciferin","chlorophyll","melanin","salt"],a:0},
+      {q:"Why is a firefly's light called cold light?",o:["It happens only on cold nights.","It makes almost no heat.","It is always blue.","It comes from the moon."],a:1},
+      {q:"Which can you infer from the lesson?",o:["All fireflies are flies.","Fireflies flash only to warn birds.","Not every kind of firefly uses light to communicate.","Fireflies can glow only in winter."],a:2},
+      {type:"multi",q:"What are some reasons a firefly flashes its light? Check all that apply.",o:["to find a mate","to stay warm","to answer a male's flash","to warn birds that it tastes bad","to see in the dark","to cool its body"],a:[0,2,3]}]}
+]});
+{let n=1;LESSONS[6].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+
+function buildInfo(){
+  const it=item();
+  $("passage").textContent=it.passage;
+  const sc=$("scene");
+  if(it.scene==="lab")sc.innerHTML=`<button type="button" class="target lab" data-t="table">${LAB}<div class="placed"></div><span class="tlabel">Lab table</span></button>`;
+  if(it.scene==="soil")sc.innerHTML=`<div class="soil"><h3>Soil Layers</h3>${SOIL}<button type="button" class="target" data-t="top"></button><button type="button" class="target" data-t="middle"></button><button type="button" class="target" data-t="bottom"></button></div>`;
+  if(it.scene==="venn")sc.innerHTML=`<div class="venn">${VENN}<div class="vrow"><button type="button" class="target" data-t="alaska"><span class="tl">Alaska only</span><span class="slot"></span></button><button type="button" class="target" data-t="both"><span class="tl">Both</span><span class="slot"></span></button><button type="button" class="target" data-t="hawaii"><span class="tl">Hawaii only</span><span class="slot"></span></button></div></div>`;
+  const words=it.scene!=="lab";
+  $("chips").innerHTML=it.choices.map(c=>`<button type="button" class="chip${words?" word":""}" data-c="${c.id}" aria-pressed="false">${words?"":TOOLS[c.id]}<span class="cl">${c.label}</span></button>`).join("");
+  Q=0;qResults=it.qs.map(()=>null);loadQ();
+}
+function loadQ(){
+  const it=item(),q=it.qs[Q];qTries=0;picked=null;done=false;
+  $("qNum").textContent=(it.firstQ+Q)+".";
+  $("qText").textContent=q.say;
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed","false"));
+  document.querySelectorAll(".target").forEach(t=>t.classList.remove("armed","miss"));
+  setFb("",Q===0?`Play the information first. Then play question ${it.firstQ}.`:"Play the question. Tap a card, then tap where it goes.");
+  infoDots();
+}
+function infoDots(){$("dots").innerHTML=qResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===Q&&!done?" now":""}"></span>`).join("")}
+function iSay(t){slow=iSlow;say(t)}
+$("chips").addEventListener("click",e=>{
+  const c=e.target.closest(".chip");if(!c||done)return;
+  const on=c.getAttribute("aria-pressed")!=="true";
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+  c.setAttribute("aria-pressed",on);picked=on?c.dataset.c:null;
+  document.querySelectorAll(".target:not(.hit)").forEach(t=>t.classList.toggle("armed",!!picked));
+  if(item().scene==="lab")document.querySelector(".target.lab").classList.toggle("armed",!!picked);
+  if(picked)setFb("","Now tap where it goes.");
+});
+$("scene").addEventListener("click",e=>{
+  const t=e.target.closest(".target");if(!t||done)return;
+  if(t.classList.contains("hit")&&t.dataset.t!=="table")return;
+  if(!picked){setFb("bad","First tap a card. Then tap where it goes.");return}
+  const it=item(),q=it.qs[Q];qTries++;
+  if(picked===q.c&&t.dataset.t===q.t){
+    done=true;qResults[Q]=qTries===1?"ok":"miss";
+    const label=it.choices.find(c=>c.id===picked).label;
+    if(it.scene==="lab")t.querySelector(".placed").insertAdjacentHTML("beforeend",TOOLS[picked]);
+    else if(it.scene==="soil")t.innerHTML=`<span class="got">${label}</span>`;
+    else t.querySelector(".slot").innerHTML=`<span class="got">${label}</span>`;
+    t.classList.remove("miss");t.classList.add("hit");
+    document.querySelector(`.chip[data-c="${picked}"]`).remove();
+    document.querySelectorAll(".target").forEach(x=>x.classList.remove("armed"));
+    const last=Q===it.qs.length-1;
+    setFb("good",`Yes! ${label[0].toUpperCase()+label.slice(1)} goes there.`,last?"See score":"Next question",nextQ);
+    iSay("Yes!");infoDots();
+  }else{
+    t.classList.remove("miss");void t.offsetWidth;t.classList.add("miss");
+    setFb("bad","Not quite. Listen to the question again and try again.");
+    setTimeout(()=>iSay(q.say),500);
+  }
+});
+function nextQ(){
+  const it=item();
+  if(Q<it.qs.length-1){Q++;loadQ();iSay(it.qs[Q].say);return}
+  const first=qResults.filter(r=>r==="ok").length;
+  const more=I<LESSONS[L].items.length-1;
+  setFb("good",`All done! Correct on the first try: ${first} of ${it.qs.length}.`,more?`Go to the next page`:"Play again",more?()=>chooseItem(I+1):()=>buildInfo());
+  infoDots();
+}
+$("pSpeak").addEventListener("click",()=>iSay(item().passage));
+$("qSpeak").addEventListener("click",()=>iSay(item().qs[Q].say));
+$("iSlow").addEventListener("click",function(){iSlow=!iSlow;this.setAttribute("aria-pressed",iSlow)});
+$("iText").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("passage").hidden=!on;$("qText").hidden=!on});
+$("iWords").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("chips").classList.toggle("nowords",!on)});
+$("iRestart").addEventListener("click",()=>buildInfo());
+
+const grid=$("grid");
+let L=0,I=0,rounds=[],idx=0,tries=0,done=false,slow=false;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const item=()=>LESSONS[L].items[I];
+const labelOf=id=>LESSONS[L].type==="word"?id:item().say[id];
+
+function chooseLesson(l){
+  L=l;
+  document.querySelectorAll(".lesson").forEach(b=>b.setAttribute("aria-selected",+b.dataset.lesson===l));
+  $("lnum").textContent=l+1;$("ltitle").textContent=LESSONS[l].title;
+  $("showWords").textContent=LESSONS[l].type==="word"?"Show words":"Show sentences";
+  $("sets").innerHTML=LESSONS[l].items.map((it,i)=>`<button type="button" class="set" data-set="${i}" role="tab">${i+1} · ${it.name}</button>`).join("");
+  $("sets").querySelectorAll(".set").forEach(b=>b.addEventListener("click",()=>chooseItem(+b.dataset.set)));
+  chooseItem(0);
+}
+function chooseItem(i){
+  I=i;
+  $("sets").querySelectorAll(".set").forEach(b=>b.setAttribute("aria-selected",+b.dataset.set===i));
+  const info=LESSONS[L].type==="info",cv=LESSONS[L].type==="convo";
+  $("info").hidden=!info;$("convo").hidden=!cv;$("grid").hidden=info||cv;$("wordControls").hidden=info||cv;
+  $("dir").textContent=info?"Listen to the information. Follow the directions you hear.":"Listen to the audio. Follow the direction you hear.";
+  try{speechSynthesis.cancel()}catch(e){}
+  if(cv){const T=LESSONS[L].title,kind=T.includes("Debate")?"debate":T.includes("Teacher")?"teacher":T.includes("Student")?"presentation":"conversation";
+    $("dir").textContent=kind==="teacher"?"Listen to the teacher. Think about what you heard. Then answer the questions.":`Listen to the ${kind}. Then answer the questions.`;
+    $("cPlay").querySelector("span").textContent=kind==="teacher"?"Lesson":kind[0].toUpperCase()+kind.slice(1);buildConvo();return}
+  if(info){$("chips").classList.toggle("nowords",$("iWords").getAttribute("aria-pressed")!=="true");buildInfo();return}
+  grid.classList.toggle("wide",LESSONS[L].type==="sentence");
+  grid.innerHTML="";
+  item().pics.forEach((id,n)=>{
+    const b=document.createElement("button");b.type="button";b.className="card";b.dataset.word=id;
+    b.setAttribute("aria-label","Picture "+(n+1));
+    b.innerHTML=PICS[id]+`<span class="mark" hidden></span><span class="lbl">${labelOf(id)}</span>`;
+    grid.appendChild(b);
+  });
+  start();
+}
+function makeRounds(){
+  const pics=item().pics;
+  if(LESSONS[L].type==="sentence")return shuffle([...pics]).map(id=>({word:id,text:item().say[id],result:null}));
+  const t=shuffle([...pics,...pics]),v=shuffle([...VERBS,...VERBS]);
+  for(let i=1;i<t.length;i++)if(t[i]===t[i-1]){const j=(i+1)%t.length;[t[i],t[j]]=[t[j],t[i]]}
+  return t.map((w,i)=>({word:w,text:`${v[i]} ${w}${v[i].startsWith("Where")?"?":"."}`,result:null}));
+}
+function start(){rounds=makeRounds();idx=0;load()}
+function load(){
+  tries=0;done=false;const r=rounds[idx];
+  $("itemNum").textContent=(I+1)+".";
+  $("textline").textContent=r.text;
+  grid.querySelectorAll(".card").forEach(c=>{c.classList.remove("right","wrong");c.querySelector(".mark").hidden=true;c.disabled=false});
+  setFb("","Press Play, then touch the picture.");
+  drawDots();
+}
+function drawDots(){$("dots").innerHTML=rounds.map((r,i)=>`<span class="dot${r.result==="ok"?" ok":r.result==="miss"?" miss":""}${i===idx&&!done?" now":""}"></span>`).join("")}
+function setFb(kind,msg,btn,fn){
+  const f=$("feedback");f.className="feedback"+(kind?" "+kind:"");
+  f.innerHTML=`<p>${msg}</p>`+(btn?`<button class="next" id="nextBtn" type="button">${btn}</button>`:"");
+  if(btn)$("nextBtn").addEventListener("click",fn||next);
+}
+function say(text){
+  if(!("speechSynthesis" in window)){showText(true);return}
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=slow?.6:.9;
+    const v=speechSynthesis.getVoices().find(v=>v.lang==="en-US");if(v)u.voice=v;
+    u.onstart=()=>$("speak").classList.add("playing");
+    u.onend=u.onerror=()=>$("speak").classList.remove("playing");
+    speechSynthesis.speak(u);
+  }catch(e){showText(true)}
+}
+const speak=()=>{if(rounds[idx])say(rounds[idx].text)};
+function showText(on){$("showText").setAttribute("aria-pressed",on);$("textline").hidden=!on}
+grid.addEventListener("click",e=>{
+  const c=e.target.closest(".card");if(!c||done)return;
+  const r=rounds[idx];tries++;
+  const m=c.querySelector(".mark");m.hidden=false;
+  if(c.dataset.word===r.word){
+    done=true;c.classList.add("right");m.textContent="✓";
+    r.result=tries===1?"ok":"miss";drawDots();
+    grid.querySelectorAll(".card").forEach(x=>x.disabled=x!==c);
+    const last=idx===rounds.length-1;
+    const msg=LESSONS[L].type==="word"?`Yes! That is the <u>${r.word}</u>.`:`Yes! ${r.text}`;
+    setFb("good",msg,last?"See score":"Next");
+    say(LESSONS[L].type==="word"?`Yes! The ${r.word}.`:"Yes!");
+  }else{
+    c.classList.remove("wrong");void c.offsetWidth;c.classList.add("wrong");m.textContent="✗";c.disabled=true;
+    setFb("bad","Not that one. Listen again and try again.");
+    setTimeout(speak,500);
+  }
+});
+function next(){
+  if(idx<rounds.length-1){idx++;load();speak();return}
+  const first=rounds.filter(r=>r.result==="ok").length;
+  $("textline").textContent="";
+  const more=I<LESSONS[L].items.length-1;
+  setFb("good",`All done! Correct on the first try: ${first} of ${rounds.length}.`,more?`Go to item ${I+2}`:"Play again",
+    more?()=>{chooseItem(I+1);speak()}:()=>{start();speak()});
+  drawDots();
+}
+$("speak").addEventListener("click",speak);
+$("slow").addEventListener("click",function(){slow=!slow;this.setAttribute("aria-pressed",slow)});
+$("showText").addEventListener("click",function(){showText(this.getAttribute("aria-pressed")!=="true")});
+$("showWords").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);grid.classList.toggle("nolabels",!on)});
+$("restart").addEventListener("click",start);
+document.querySelectorAll(".lesson").forEach(b=>b.addEventListener("click",()=>chooseLesson(+b.dataset.lesson)));
+if("speechSynthesis" in window)speechSynthesis.getVoices();
+/* ===== ELPA21 Listening Practice · Set 2 — data ===== */
+LESSONS.length=0;
+const W="#fff";
+/* ---------- Lesson 1 pictures ---------- */
+Object.assign(PICS,{
+ rain:SQ(`<rect width="200" height="224" fill="#9fb3c2"/><g fill="#7d8b96" stroke="${K}" stroke-width="2"><circle cx="70" cy="70" r="30"/><circle cx="110" cy="56" r="36"/><circle cx="145" cy="76" r="26"/><rect x="60" y="74" width="100" height="26"/></g>${R(18,i=>`<path d="M${44+(i*29)%120} ${118+(i*17)%80}l-6 16" stroke="#2f6fc4" stroke-width="4" stroke-linecap="round"/>`)}`),
+ snow:SQ(`<rect width="200" height="224" fill="#4a5f8a"/><path d="M0 170q50-20 100 0t100 0V224H0Z" fill="#fff"/>${R(16,i=>{const x=20+(i*41)%165,y=20+(i*31)%135,r=6+i%3*2;return `<g stroke="#fff" stroke-width="2"><path d="M${x-r} ${y}h${2*r}M${x} ${y-r}v${2*r}M${x-r*.7} ${y-r*.7}l${1.4*r} ${1.4*r}M${x+r*.7} ${y-r*.7}l${-1.4*r} ${1.4*r}"/></g>`})}`),
+ wind:SQ(`<rect width="200" height="224" fill="#d5ebf6"/><rect y="180" width="200" height="44" fill="#8cc45f"/><path d="M60 182q10-60 40-100" stroke="#6b4a2b" stroke-width="10" fill="none"/>${R(5,i=>`<ellipse cx="${110+i*14}" cy="${70+i*6}" rx="20" ry="11" fill="#4f9a3f" stroke="#245020" stroke-width="1.5" transform="rotate(30 ${110+i*14} ${70+i*6})"/>`)}${R(4,i=>`<path d="M10 ${40+i*34}q40-14 80 0t60-6" stroke="#5b8fa8" stroke-width="3" fill="none" stroke-linecap="round"/>`)}`),
+ rainbow:SQ(`<rect width="200" height="224" fill="#bfe3f2"/>${["#e0402f","#f08a3a","#f2d24b","#5fae4f","#3a7bd5","#7b4fc4"].map((c,i)=>`<path d="M${20+i*10} 170a${80-i*10} ${80-i*10} 0 0 1 ${160-i*20} 0" stroke="${c}" stroke-width="10" fill="none"/>`).join("")}<g fill="#fff" stroke="#bbb"><circle cx="30" cy="170" r="18"/><circle cx="170" cy="170" r="18"/></g>`),
+ apple:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M100 70c-20-14-60-10-60 40c0 50 34 76 60 66c26 10 60-16 60-66c0-50-40-54-60-40z" fill="#d9302c" stroke="${K}" stroke-width="2.5"/><path d="M100 70q2-24 12-34" stroke="#6b4a2b" stroke-width="5" fill="none"/><ellipse cx="124" cy="46" rx="16" ry="8" fill="#5fae4f" stroke="${K}" transform="rotate(-25 124 46)"/><ellipse cx="70" cy="100" rx="8" ry="14" fill="#fff" opacity=".4"/>`),
+ bread:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M30 150V100q0-40 70-40t70 40v50z" fill="#d9a865" stroke="${K}" stroke-width="2.5"/><path d="M30 150h140v16H30z" fill="#c48a4a" stroke="${K}" stroke-width="2"/>${R(4,i=>`<path d="M${62+i*26} 76q8 20 0 40" stroke="#a87545" stroke-width="3" fill="none"/>`)}`),
+ egg:SQ(`<rect width="200" height="224" fill="${W}"/><ellipse cx="100" cy="176" rx="70" ry="14" fill="#e3e3e3" stroke="${K}"/><path d="M100 60c-30 0-46 46-46 70c0 26 20 44 46 44s46-18 46-44c0-24-16-70-46-70z" fill="#f6efe2" stroke="${K}" stroke-width="2.5"/><ellipse cx="84" cy="110" rx="8" ry="14" fill="#fff"/>`),
+ fish:SQ(`<rect width="200" height="224" fill="#bfe1ef"/><ellipse cx="90" cy="112" rx="56" ry="30" fill="#f08a3a" stroke="${K}" stroke-width="2.5"/><polygon points="140,112 180,84 180,140" fill="#f08a3a" stroke="${K}" stroke-width="2.5"/><circle cx="58" cy="104" r="6" fill="#fff" stroke="${K}"/><circle cx="58" cy="104" r="2.5" fill="${K}"/><path d="M84 90q10 22 0 44M100 88q10 24 0 48" stroke="#c9602a" stroke-width="2" fill="none"/>${R(3,i=>`<circle cx="${30+i*10}" cy="${70-i*14}" r="${4+i}" fill="none" stroke="#fff" stroke-width="2"/>`)}`),
+ book:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M100 70q-34-14-74-6v100q40-8 74 6z" fill="#f6f2ea" stroke="${K}" stroke-width="2.5"/><path d="M100 70q34-14 74-6v100q-40-8-74 6z" fill="#f6f2ea" stroke="${K}" stroke-width="2.5"/>${R(5,i=>`<path d="M40 ${84+i*14}q26-4 50 2M110 ${86+i*14}q26-6 50-2" stroke="#9a9a9a" stroke-width="2" fill="none"/>`)}<path d="M26 164q40-8 74 6q34-14 74-6v8q-40-6-74 8q-34-14-74-8z" fill="#3a7bd5" stroke="${K}" stroke-width="2"/>`),
+ pencil:SQ(`<rect width="200" height="224" fill="${W}"/><g transform="rotate(-40 100 112)"><rect x="40" y="98" width="110" height="28" fill="#f2c84b" stroke="${K}" stroke-width="2.5"/><rect x="150" y="98" width="20" height="28" fill="#e88aa8" stroke="${K}" stroke-width="2.5"/><rect x="144" y="98" width="8" height="28" fill="#bbb" stroke="${K}" stroke-width="2"/><polygon points="40,98 14,112 40,126" fill="#e9c98f" stroke="${K}" stroke-width="2.5"/><polygon points="22,108 14,112 22,116" fill="${K}"/></g>`),
+ backpack:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M76 62q24-30 48 0" stroke="${K}" stroke-width="6" fill="none"/><rect x="50" y="60" width="100" height="124" rx="26" fill="#3a7bd5" stroke="${K}" stroke-width="2.5"/><rect x="66" y="120" width="68" height="46" rx="10" fill="#2f5fa8" stroke="${K}" stroke-width="2"/><path d="M66 132h68" stroke="#f2c84b" stroke-width="3"/>`),
+ clock:SQ(`<rect width="200" height="224" fill="${W}"/><circle cx="100" cy="112" r="70" fill="#fff" stroke="${K}" stroke-width="6"/>${R(12,i=>{const a=i*Math.PI/6;return `<path d="M${100+58*Math.cos(a)} ${112+58*Math.sin(a)}L${100+66*Math.cos(a)} ${112+66*Math.sin(a)}" stroke="${K}" stroke-width="3"/>`})}<path d="M100 112V68M100 112l30 18" stroke="${K}" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="112" r="5" fill="#d9302c"/>`),
+ shirt:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M70 50l-44 30 18 30 22-12v90h68v-90l22 12 18-30-44-30q-14 16-30 16t-30-16z" fill="#5fae4f" stroke="${K}" stroke-width="2.5"/>`),
+ hat:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M40 130q0-70 60-70t60 70z" fill="#d9302c" stroke="${K}" stroke-width="2.5"/><path d="M110 130q60 0 70 16q-40 6-80-2z" fill="#a8241f" stroke="${K}" stroke-width="2.5"/><circle cx="100" cy="62" r="6" fill="#a8241f" stroke="${K}"/>`),
+ shoe:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M30 150v-40q0-16 20-16h30q10 20 40 24l40 8q14 4 14 24z" fill="#f2f2f2" stroke="${K}" stroke-width="2.5"/><rect x="28" y="150" width="148" height="14" rx="6" fill="#3a7bd5" stroke="${K}" stroke-width="2"/>${R(4,i=>`<path d="M${70+i*8} ${104+i*4}l10 -6" stroke="${K}" stroke-width="2"/>`)}`),
+ jacket:SQ(`<rect width="200" height="224" fill="${W}"/><path d="M70 46l-40 30v104h28v-90M130 46l40 30v104h-28v-90" fill="#e3a33a" stroke="${K}" stroke-width="2.5"/><path d="M70 46q30 20 60 0l12 10v130H58V56z" fill="#e3a33a" stroke="${K}" stroke-width="2.5"/><path d="M100 60V186" stroke="${K}" stroke-width="2" stroke-dasharray="4 3"/><rect x="66" y="130" width="22" height="16" fill="#c9822a" stroke="${K}"/><rect x="112" y="130" width="22" height="16" fill="#c9822a" stroke="${K}"/>`)
+});
+/* ---------- Lesson 2 scenes ---------- */
+const DOG=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cx="0" cy="0" rx="22" ry="12" fill="#b9774a" stroke="${K}" stroke-width="1.5"/>${R(4,i=>`<rect x="${[-16,-8,8,14][i]}" y="6" width="5" height="16" fill="#b9774a" stroke="${K}"/>`)}<circle cx="24" cy="-10" r="11" fill="#c58656" stroke="${K}" stroke-width="1.5"/><ellipse cx="18" cy="-8" rx="4" ry="9" fill="#8a5330"/><circle cx="28" cy="-12" r="1.6" fill="${K}"/><path d="M-22 -4q-10-10-6-18" stroke="#9a5f36" stroke-width="4" fill="none"/></g>`;
+Object.assign(PICS,{
+ brush:WD(`<rect width="240" height="170" fill="#dfeef2"/><rect x="60" y="10" width="120" height="80" rx="8" fill="#cfe7f0" stroke="${K}" stroke-width="2"/>${bust(120,64,1.6,"#e88aa8",{hair:"#3b2a20"})}<rect x="128" y="70" width="34" height="5" rx="2" fill="#3a7bd5" stroke="${K}" transform="rotate(-10 128 72)"/>${R(4,i=>`<circle cx="${122+i*5}" cy="${76+(i%2)*3}" r="3" fill="#fff" stroke="#aaa"/>`)}<rect x="30" y="120" width="180" height="50" fill="#f2f2f2" stroke="${K}" stroke-width="2"/><ellipse cx="120" cy="124" rx="40" ry="8" fill="#cfe7f0" stroke="${K}"/>`),
+ breakfast:WD(`<rect width="240" height="170" fill="#f6e7c8"/><rect x="170" y="14" width="50" height="40" fill="#cfe7f0" stroke="${K}"/>${bust(60,62,1.25,"#3a7bd5")}${bust(120,58,1.3,"#d9573f",{hair:"#a0602a"})}${bust(180,64,1.2,"#f2d24b",{hair:"#2a1d16"})}<rect x="10" y="112" width="220" height="58" fill="#a87545" stroke="${K}" stroke-width="1.5"/>${R(3,i=>`<path d="M${44+i*60} 122h32l-4 14h-24z" fill="#fff" stroke="${K}"/><circle cx="${54+i*60}" cy="122" r="3" fill="#e3a33a"/><circle cx="${64+i*60}" cy="121" r="3" fill="#e3a33a"/>`)}<rect x="196" y="90" width="22" height="34" fill="#d9302c" stroke="${K}"/><rect x="18" y="104" width="14" height="22" rx="3" fill="#fff" stroke="${K}"/>`),
+ busstop:WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect y="126" width="240" height="44" fill="#9aa3a8"/><rect y="118" width="240" height="10" fill="#c9c3b6"/><rect x="24" y="30" width="4" height="96" fill="#555"/><rect x="12" y="24" width="28" height="22" rx="3" fill="#2f7a52" stroke="${K}"/><text x="26" y="39" text-anchor="middle" font-size="8" fill="#fff" font-family="system-ui">BUS</text>${full(70,48,1.05,"#d9573f","#3a3a4a")}${full(110,46,1.1,"#5b7fb8","#6b5a4a",{hair:"#a0602a"})}${full(150,50,1,"#8ac43f","#3a3a4a",{hair:"#e8c766"})}<rect x="186" y="70" width="80" height="54" rx="6" fill="#f2c84b" stroke="${K}" stroke-width="2"/>${R(2,i=>`<rect x="${194+i*20}" y="78" width="14" height="14" fill="#cfe7f0" stroke="${K}"/>`)}<circle cx="206" cy="126" r="8" fill="#333"/>`),
+ bikeschool:WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect x="140" y="24" width="90" height="70" fill="#c9824a" stroke="${K}" stroke-width="1.5"/><polygon points="136,26 185,6 234,26" fill="#7a2a22"/>${R(3,i=>`<rect x="${150+i*26}" y="40" width="16" height="14" fill="#cfe7f0" stroke="${K}"/>`)}<rect x="176" y="68" width="18" height="26" fill="#5a3a2a"/><text x="185" y="20" text-anchor="middle" font-size="8" fill="#fff" font-family="system-ui">SCHOOL</text><rect y="110" width="240" height="60" fill="#9aa3a8"/><path d="M0 140h240" stroke="#fff" stroke-width="3" stroke-dasharray="16 12"/>${bike(80,132,1.6,"#d9302c","#3a7bd5","#f2d24b")}`),
+ soccer:WD(`<rect width="240" height="170" fill="#8cc45f"/><rect width="240" height="40" fill="#cfe9f5"/><path d="M150 40h80v60" stroke="#fff" stroke-width="4" fill="none"/>${R(4,i=>`<path d="M${158+i*18} 40v60M150 ${56+i*12}h80" stroke="#fff" stroke-width="1" opacity=".7"/>`)}${full(70,60,1.15,"#d9302c","#222")}${full(130,64,1.1,"#3a7bd5","#222",{hair:"#a0602a"})}<circle cx="102" cy="150" r="10" fill="#fff" stroke="${K}" stroke-width="1.5"/><polygon points="98,146 106,146 108,152 102,156 96,152" fill="${K}"/>`),
+ park:WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect y="110" width="240" height="60" fill="#8cc45f"/><rect x="40" y="40" width="10" height="80" fill="#6b4a2b"/><circle cx="45" cy="36" r="34" fill="#4f9a3f" stroke="#245020" stroke-width="1.5"/><rect x="80" y="104" width="120" height="10" fill="#a87545" stroke="${K}"/><rect x="84" y="114" width="6" height="26" fill="#6b4a2b"/><rect x="190" y="114" width="6" height="26" fill="#6b4a2b"/><rect x="80" y="74" width="120" height="8" fill="#a87545" stroke="${K}"/>${bust(140,68,1.3,"#7b4fc4",{hair:"#c4572a"})}<polygon points="120,104 140,96 160,104 160,116 140,110 120,116" fill="#fff" stroke="${K}" stroke-width="1.5"/>`),
+ cook:WD(`<rect width="240" height="170" fill="#f1e7d6"/><rect x="0" y="0" width="240" height="40" fill="#e0d3bb"/>${R(4,i=>`<rect x="${10+i*58}" y="4" width="50" height="32" fill="#c9a37a" stroke="${K}"/>`)}<rect x="30" y="110" width="120" height="60" fill="#555" stroke="${K}"/><rect x="30" y="104" width="120" height="8" fill="#333"/><path d="M60 104h50v-24h-50z" fill="#9a9a9a" stroke="${K}" stroke-width="1.5"/><path d="M70 74q-6-10 0-20M86 74q-6-10 0-20M100 74q-6-10 0-20" stroke="#bbb" stroke-width="2" fill="none"/>${full(180,48,1.25,"#fff","#3a3a4a",{hair:"#2a1d16",skin:"#a8734a"})}<path d="M164 90L110 78" stroke="#6b4a2b" stroke-width="4"/>`),
+ swim:WD(`<rect width="240" height="170" fill="#e8e1d2"/><rect x="10" y="40" width="220" height="120" fill="#5fb7d9" stroke="#2f6f8a" stroke-width="3"/>${R(3,i=>`<path d="M10 ${70+i*30}h220" stroke="#fff" stroke-width="2" stroke-dasharray="6 6"/>`)}${bust(70,78,1,"#5fb7d9",{hair:"#2a1d16"})}${bust(150,104,1,"#5fb7d9",{hair:"#e8c766"})}<rect x="50" y="88" width="40" height="14" fill="#5fb7d9"/><rect x="130" y="114" width="40" height="14" fill="#5fb7d9"/>${R(6,i=>`<path d="M${40+i*30} ${92+(i%2)*26}q6-6 12 0" stroke="#fff" stroke-width="2" fill="none"/>`)}`),
+ hand:WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="20" y="10" width="200" height="50" fill="#3d4a42" stroke="${K}"/>${bust(100,80,1.5,"#f2d24b",{hair:"#3b2a20",skin:"#8a5a3a"})}<path d="M122 100L140 50" stroke="#f2d24b" stroke-width="11" stroke-linecap="round"/><circle cx="142" cy="44" r="7" fill="#8a5a3a" stroke="${K}" stroke-width="1.5"/><polygon points="40,140 200,130 214,170 30,170" fill="#e8dcc0" stroke="${K}"/>${bust(30,120,.9,"#5b7fb8",{back:true})}${bust(205,118,.9,"#d9573f",{back:true,hair:"#c4572a"})}`),
+ board:WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="20" y="14" width="160" height="80" fill="#2f4a3a" stroke="${K}" stroke-width="2"/><text x="100" y="52" text-anchor="middle" font-size="18" fill="#fff" font-family="system-ui">3 + 4 = 7</text>${full(196,40,1.25,"#5b8fa8","#3a3a4a",{hair:"#bbb"})}<path d="M180 76L162 60" stroke="#5b8fa8" stroke-width="7" stroke-linecap="round"/><rect x="156" y="54" width="8" height="4" fill="#fff"/>${R(4,i=>bust(30+i*50,150,.9,["#d9573f","#f2d24b","#8ac43f","#e88aa8"][i],{back:true,hair:["#2a1d16","#c4572a","#a0602a","#3b2a20"][i]}))}`),
+ cafeteria:WD(`<rect width="240" height="170" fill="#eef0e6"/><rect x="10" y="10" width="220" height="40" fill="#d9e6ea" stroke="${K}"/><text x="120" y="36" text-anchor="middle" font-size="12" fill="${K}" font-family="system-ui" letter-spacing="2">CAFETERIA</text>${bust(50,80,1.15,"#d9573f")}${bust(100,78,1.15,"#3a7bd5",{hair:"#a0602a"})}${bust(150,80,1.15,"#f2d24b",{hair:"#2a1d16",skin:"#8a5a3a"})}${bust(200,78,1.15,"#8ac43f",{hair:"#e8c766"})}<rect x="0" y="118" width="240" height="52" fill="#b9c3c8" stroke="${K}"/>${R(4,i=>`<rect x="${30+i*50}" y="124" width="40" height="22" rx="3" fill="#f2f2f2" stroke="${K}"/><circle cx="${42+i*50}" cy="134" r="5" fill="#d9a865"/><rect x="${52+i*50}" y="130" width="10" height="10" fill="#5fae4f"/>`)}`),
+ gym:WD(`<rect width="240" height="170" fill="#e8e1d2"/><rect y="110" width="240" height="60" fill="#d9a865"/>${R(6,i=>`<path d="M${i*40} 110v60" stroke="#c48a4a"/>`)}<rect x="196" y="20" width="36" height="26" fill="#fff" stroke="${K}" stroke-width="2"/><path d="M204 46h20l-3 14h-14z" fill="none" stroke="#e0402f" stroke-width="2.5"/>${full(70,50,1.15,"#e0402f","#222")}${full(130,54,1.1,"#3a7bd5","#222",{hair:"#a0602a"})}${R(3,i=>`<path d="M${30+i*4} ${70+i*12}h-20M${110+i*3} ${74+i*12}h-14" stroke="#888" stroke-width="2"/>`)}`),
+ dishes:WD(`<rect width="240" height="170" fill="#dfeef2"/><rect x="150" y="14" width="70" height="56" fill="#cfe7f0" stroke="${K}"/>${bust(100,60,1.5,"#5fae4f",{hair:"#2a1d16"})}<rect x="20" y="112" width="200" height="58" fill="#e3e3e3" stroke="${K}" stroke-width="2"/><rect x="50" y="112" width="110" height="18" fill="#9ccfe0" stroke="${K}"/>${R(7,i=>`<circle cx="${58+i*14}" cy="${112-(i%2)*4}" r="${5+i%2*2}" fill="#fff" stroke="#aaa"/>`)}<ellipse cx="128" cy="104" rx="16" ry="6" fill="#fff" stroke="${K}" stroke-width="1.5"/>`),
+ trash:WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect y="120" width="240" height="50" fill="#9aa3a8"/><rect x="0" y="60" width="90" height="62" fill="#e3c9a0" stroke="${K}"/><rect x="30" y="82" width="22" height="40" fill="#7a5530"/><rect x="160" y="84" width="44" height="56" rx="4" fill="#3f6e4a" stroke="${K}" stroke-width="2"/><rect x="156" y="78" width="52" height="8" rx="3" fill="#2f5a3a" stroke="${K}"/>${full(120,52,1.2,"#e88aa8","#3a3a4a",{hair:"#c4572a"})}<path d="M138 98q16 0 14 20q-4 18-18 14q-10-6-6-24z" fill="#222" stroke="${K}"/>`),
+ carwash:WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect y="120" width="240" height="50" fill="#b9b3a6"/><path d="M70 120v-26q0-10 14-12l20-18h50l24 18q20 2 20 14v24z" fill="#d9302c" stroke="${K}" stroke-width="2"/><path d="M110 70h40l18 14h-62z" fill="#cfe7f0" stroke="${K}"/><circle cx="96" cy="122" r="12" fill="#333"/><circle cx="170" cy="122" r="12" fill="#333"/>${R(8,i=>`<circle cx="${90+i*12}" cy="${92+(i%3)*6}" r="5" fill="#fff" stroke="#aaa"/>`)}${full(40,48,1.15,"#f2d24b","#3a3a4a")}<rect x="56" y="86" width="16" height="10" rx="3" fill="#f2c84b" stroke="${K}"/>${full(214,52,1.05,"#3a7bd5","#3a3a4a",{hair:"#a0602a"})}<path d="M202 140h20l-2 22h-16z" fill="#5b8fa8" stroke="${K}"/>`),
+ feeddog:WD(`<rect width="240" height="170" fill="#f1e7d6"/><rect y="120" width="240" height="50" fill="#d9c49a"/>${bust(60,70,1.3,"#8ac43f",{hair:"#2a1d16"})}${bust(110,74,1.2,"#e88aa8",{hair:"#e8c766"})}${DOG(176,120,1.5)}<path d="M124 150h40l-6 12h-28z" fill="#3a7bd5" stroke="${K}"/>${R(4,i=>`<circle cx="${132+i*8}" cy="149" r="3" fill="#a0602a"/>`)}<path d="M124 112l10 26" stroke="#e8b98f" stroke-width="7" stroke-linecap="round"/>`)
+});
+LESSONS.push({title:"Listen and Match the Word",type:"word",items:[
+ {name:"Weather",pics:["rain","snow","wind","rainbow"]},
+ {name:"Food",pics:["apple","bread","egg","fish"]},
+ {name:"School things",pics:["book","pencil","backpack","clock"]},
+ {name:"Clothes",pics:["shirt","hat","shoe","jacket"]}]});
+LESSONS.push({title:"Listen and Match the Sentence",type:"sentence",items:[
+ {name:"Morning",pics:["brush","breakfast","busstop","bikeschool"],say:{brush:"The girl is brushing her teeth.",breakfast:"The family is eating breakfast.",busstop:"The students are waiting for the bus.",bikeschool:"The boy is riding his bike to school."}},
+ {name:"Weekend",pics:["soccer","park","cook","swim"],say:{soccer:"The friends are playing soccer.",park:"The girl is reading in the park.",cook:"The dad is cooking dinner.",swim:"The kids are swimming in the pool."}},
+ {name:"At school",pics:["hand","board","cafeteria","gym"],say:{hand:"The student is raising her hand.",board:"The teacher is writing on the board.",cafeteria:"The students are eating in the cafeteria.",gym:"The boys are running in the gym."}},
+ {name:"Helping at home",pics:["dishes","trash","carwash","feeddog"],say:{dishes:"The boy is washing the dishes.",trash:"The girl is taking out the trash.",carwash:"The family is washing the car.",feeddog:"The kids are feeding the dog."}}]});
+
+/* ---------- Lesson 3 ---------- */
+Object.assign(TOOLS,{
+ cup:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M22 24H70L66 96H26Z" fill="#eaf5fa" stroke="${K}" stroke-width="2"/><path d="M24 60H68L66 96H26Z" fill="#f6f2ea"/><path d="M70 36q20 4 16 30q-4 10-18 10" stroke="${K}" stroke-width="4" fill="none"/>${R(4,i=>`<path d="M28 ${40+i*14}h14" stroke="#d9302c" stroke-width="2"/>`)}<path d="M22 24l-6-4" stroke="${K}" stroke-width="2"/></svg>`,
+ mitt:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M30 96V48q0-26 22-26t22 26v20l10-14q8-4 10 4l-16 30V96z" fill="#d9302c" stroke="${K}" stroke-width="2"/><rect x="28" y="88" width="50" height="12" rx="3" fill="#fff" stroke="${K}" stroke-width="2"/>${R(3,i=>`<path d="M36 ${42+i*14}h30" stroke="#a8241f" stroke-width="2" stroke-dasharray="4 3"/>`)}</svg>`,
+ timer:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><rect x="44" y="14" width="12" height="10" fill="#555"/><circle cx="50" cy="62" r="36" fill="#f2c84b" stroke="${K}" stroke-width="3"/><circle cx="50" cy="62" r="26" fill="#fff" stroke="${K}" stroke-width="1.5"/>${R(12,i=>{const a=i*Math.PI/6;return `<path d="M${50+22*Math.cos(a)} ${62+22*Math.sin(a)}L${50+26*Math.cos(a)} ${62+26*Math.sin(a)}" stroke="${K}" stroke-width="1.5"/>`})}<path d="M50 62L64 48" stroke="#d9302c" stroke-width="3"/><circle cx="50" cy="62" r="3" fill="${K}"/></svg>`,
+ gauge:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M36 10H64L60 22V96H40V22Z" fill="#eaf5fa" stroke="${K}" stroke-width="2"/><rect x="41" y="66" width="18" height="30" fill="#7fc3e0"/>${R(6,i=>`<path d="M40 ${32+i*12}h8" stroke="${K}" stroke-width="1.5"/><text x="54" y="${35+i*12}" font-size="7" fill="${K}" font-family="system-ui">${6-i}</text>`)}<rect x="30" y="96" width="40" height="8" fill="#888" stroke="${K}"/></svg>`,
+ vane:`<svg viewBox="0 0 100 110" aria-hidden="true"><rect width="100" height="110" fill="#fff"/><path d="M50 40V104" stroke="${K}" stroke-width="3"/><path d="M14 40H80" stroke="${K}" stroke-width="3"/><polygon points="80,32 94,40 80,48" fill="#d9302c" stroke="${K}"/><polygon points="14,40 4,30 22,30 26,40 22,50 4,50" fill="#d9302c" stroke="${K}"/><path d="M32 70H68M50 56V84" stroke="#888" stroke-width="2"/>${[["N",50,54],["S",50,94],["E",74,74],["W",26,74]].map(([t,x,y])=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="10" font-weight="700" fill="${K}" font-family="system-ui">${t}</text>`).join("")}</svg>`
+});
+const KITCHEN=`<svg viewBox="0 0 480 240" aria-hidden="true"><rect width="480" height="240" fill="#f6efe2"/><rect y="0" width="480" height="70" fill="#e0d3bb"/>${R(6,i=>`<rect x="${14+i*78}" y="8" width="66" height="54" fill="#c9a37a" stroke="${K}"/><circle cx="${74+i*78}" cy="36" r="3" fill="${K}"/>`)}<rect x="300" y="90" width="110" height="60" fill="#dfeef2" stroke="${K}" stroke-width="2"/><path d="M355 90v60M300 120h110" stroke="${K}"/><rect x="0" y="160" width="480" height="18" fill="#9a6b43" stroke="${K}"/><rect x="0" y="178" width="480" height="62" fill="#c9a37a" stroke="${K}"/>${R(5,i=>`<rect x="${14+i*96}" y="186" width="84" height="46" fill="#b98f5f" stroke="${K}"/>`)}<rect x="40" y="110" width="70" height="50" fill="#555" stroke="${K}"/><rect x="30" y="104" width="90" height="8" fill="#333"/></svg>`;
+const YARD=`<svg viewBox="0 0 480 240" aria-hidden="true"><rect width="480" height="240" fill="#cfe9f5"/><g fill="#fff" stroke="#ccc"><circle cx="90" cy="50" r="20"/><circle cx="115" cy="44" r="26"/><circle cx="142" cy="52" r="18"/></g><rect y="150" width="480" height="90" fill="#8cc45f"/>${R(16,i=>`<rect x="${i*30+4}" y="118" width="10" height="44" fill="#f2f2f2" stroke="${K}"/>`)}<rect x="0" y="126" width="480" height="6" fill="#f2f2f2" stroke="${K}"/><rect x="190" y="150" width="120" height="14" fill="#a87545" stroke="${K}"/><rect x="200" y="164" width="10" height="50" fill="#6b4a2b"/><rect x="290" y="164" width="10" height="50" fill="#6b4a2b"/><rect x="380" y="60" width="70" height="56" fill="#f6f2ea" stroke="${K}"/><polygon points="372,62 415,34 458,62" fill="#7a2a22"/></svg>`;
+const PLANT=`<svg viewBox="0 0 160 240" preserveAspectRatio="none" aria-hidden="true"><rect width="160" height="154" fill="#dff0f8"/><rect y="154" width="160" height="86" fill="#7a5530"/>${R(10,i=>`<circle cx="${(i*41)%150+6}" cy="${170+(i*23)%64}" r="${2+i%3}" fill="#9a7550"/>`)}<path d="M80 154V40" stroke="#4f9a3f" stroke-width="6"/>${R(4,i=>`<ellipse cx="${i%2?104:56}" cy="${52+i*10}" rx="22" ry="9" fill="#5fae4f" stroke="#245020" transform="rotate(${i%2?-25:25} ${i%2?104:56} ${52+i*10})"/>`)}<circle cx="80" cy="30" r="10" fill="#f2c84b" stroke="${K}"/>${R(6,i=>{const a=i*Math.PI/3;return `<ellipse cx="${80+14*Math.cos(a)}" cy="${30+14*Math.sin(a)}" rx="7" ry="5" fill="#e88aa8" stroke="${K}" stroke-width=".8" transform="rotate(${i*60} ${80+14*Math.cos(a)} ${30+14*Math.sin(a)})"/>`})}<path d="M80 154q-20 30-46 44M80 154q4 40-6 70M80 154q24 26 50 40M60 186q-10 10-22 12M94 196q16 6 24 22" stroke="#e8d3b0" stroke-width="3" fill="none"/></svg>`;
+function vennSvg(v){
+  const tx=(arr,x)=>arr.map((t,i)=>`<text x="${x}" y="${84+i*16}">${t}</text>`).join("");
+  return `<svg viewBox="0 0 480 250" aria-hidden="true"><path d="M240 19.7a110 110 0 0 1 0 190.6a110 110 0 0 1 0-190.6z" fill="var(--line)"/><circle cx="185" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><circle cx="295" cy="115" r="110" fill="none" stroke="var(--rule)" stroke-width="2"/><g font-size="11.5" fill="var(--fg)" font-family="Atkinson Hyperlegible,system-ui,sans-serif">${tx(v.lf,86)}${tx(v.bf,192)}${tx(v.rf,302)}</g><g font-size="15" font-weight="700" fill="var(--bad)" text-anchor="middle" font-family="Atkinson Hyperlegible,system-ui,sans-serif"><text x="125" y="244">${v.l}</text><text x="240" y="244">Both</text><text x="355" y="244">${v.r}</text></g></svg>`;
+}
+LESSONS.push({title:"Listen for Information",type:"info",items:[
+ {name:"Kitchen tools",scene:"lab",svg:KITCHEN,tableLabel:"Kitchen counter",
+  passage:"This is a kitchen. Cooks use different tools to make food. A measuring cup shows how much milk or water to use. An oven mitt is a thick glove. It keeps your hand safe from a hot pan. A timer rings to tell you when the food is ready.",
+  choices:[{id:"cup",label:"measuring cup"},{id:"mitt",label:"oven mitt"},{id:"timer",label:"timer"}],
+  qs:[{say:"Find the tool that tells you when the food is ready. Put it on the kitchen counter.",c:"timer",t:"table"},
+      {say:"Find the tool that keeps your hand safe from a hot pan. Put it on the kitchen counter.",c:"mitt",t:"table"}]},
+ {name:"Weather tools",scene:"lab",svg:YARD,tableLabel:"Weather station",
+  passage:"Scientists measure the weather every day. A thermometer measures how hot or cold the air is. A rain gauge is a tall tube. It collects rain and shows how much rain fell. A wind vane turns in the wind. Its arrow points to the direction the wind is coming from.",
+  choices:[{id:"thermo",label:"thermometer"},{id:"gauge",label:"rain gauge"},{id:"vane",label:"wind vane"}],
+  qs:[{say:"Find the tool that shows how much rain fell. Put it on the weather station.",c:"gauge",t:"table"},
+      {say:"Find the tool that shows the direction of the wind. Put it on the weather station.",c:"vane",t:"table"}]},
+ {name:"Plant parts",scene:"soil",svg:PLANT,title3:"Parts of a Plant",
+  passage:"A plant has three main parts. The leaves are at the top. They use sunlight to make food for the plant. The stem is in the middle. It holds the plant up and carries water to the leaves. The roots are at the bottom, under the soil. They take in water from the ground.",
+  choices:[{id:"Stem",label:"Stem"},{id:"Roots",label:"Roots"},{id:"Leaves",label:"Leaves"}],
+  qs:[{say:"The roots are under the soil. Put the word roots next to the bottom part.",c:"Roots",t:"bottom"},
+      {say:"The leaves use sunlight to make food. Put the word leaves next to the top part.",c:"Leaves",t:"top"},
+      {say:"The stem holds the plant up. Put the word stem next to the middle part.",c:"Stem",t:"middle"}]},
+ {name:"Frogs and toads",scene:"venn",venn:{l:"Frogs",r:"Toads",lf:["• long back legs","• long jumps","• live near","  water"],bf:["• amphibians","• begin life","  as tadpoles"],rf:["• short back legs","• small hops","• can live far","  from water"]},
+  passage:"Frogs and toads are both amphibians. They both begin life as tadpoles. Frogs have long back legs, so they can make long jumps. Frogs have smooth, wet skin, and they usually live near water. Toads have short back legs, so they make small hops. Toads have dry, bumpy skin, and they can live far from water. Both frogs and toads lay their eggs in water.",
+  choices:[{id:"both",label:"lay eggs in water"},{id:"toad",label:"dry, bumpy skin"},{id:"frog",label:"smooth, wet skin"}],
+  qs:[{say:"Which words tell about frogs only? Put them in the frogs part of the chart.",c:"frog",t:"alaska"},
+      {say:"Which words tell about toads only? Put them in the toads part of the chart.",c:"toad",t:"hawaii"},
+      {say:"Which words tell about both frogs and toads? Put them in the middle part of the chart.",c:"both",t:"both"}]}]});
+buildInfo=function(){
+  const it=item();
+  $("passage").textContent=it.passage;
+  const sc=$("scene");
+  if(it.scene==="lab")sc.innerHTML=`<button type="button" class="target lab" data-t="table">${it.svg}<div class="placed"></div><span class="tlabel">${it.tableLabel}</span></button>`;
+  if(it.scene==="soil")sc.innerHTML=`<div class="soil"><h3>${it.title3}</h3>${it.svg}<button type="button" class="target" data-t="top"></button><button type="button" class="target" data-t="middle"></button><button type="button" class="target" data-t="bottom"></button></div>`;
+  if(it.scene==="venn")sc.innerHTML=`<div class="venn">${vennSvg(it.venn)}<div class="vrow"><button type="button" class="target" data-t="alaska"><span class="tl">${it.venn.l} only</span><span class="slot"></span></button><button type="button" class="target" data-t="both"><span class="tl">Both</span><span class="slot"></span></button><button type="button" class="target" data-t="hawaii"><span class="tl">${it.venn.r} only</span><span class="slot"></span></button></div></div>`;
+  const words=it.scene!=="lab";
+  $("chips").innerHTML=it.choices.map(c=>`<button type="button" class="chip${words?" word":""}" data-c="${c.id}" aria-pressed="false">${words?"":TOOLS[c.id]}<span class="cl">${c.label}</span></button>`).join("");
+  Q=0;qResults=it.qs.map(()=>null);loadQ();
+};
+
+/* ---------- Lesson 4 ---------- */
+CSCENE.library=WD(`<rect width="240" height="170" fill="#efe4cb"/>${R(3,r=>`<rect x="0" y="${8+r*30}" width="240" height="4" fill="#8a5a3a"/>`+R(20,i=>`<rect x="${4+i*12}" y="${12+r*30-0}" width="9" height="${20+(i%3)*2}" fill="${["#d9573f","#3a7bd5","#5fae4f","#e3a33a","#7b4fc4"][(i+r)%5]}"/>`))}${bust(70,98,1.3,"#e88aa8",{hair:"#2a1d16"})}${bust(170,96,1.35,"#5b8fa8",{hair:"#3b2a20",skin:"#a8734a"})}<rect x="10" y="132" width="220" height="38" fill="#a87545" stroke="${K}" stroke-width="1.5"/><rect x="100" y="122" width="40" height="14" fill="#fff" stroke="${K}" transform="rotate(-6 120 129)"/><rect x="150" y="124" width="36" height="12" fill="#555" stroke="${K}"/>`);
+CSCENE.store=WD(`<rect width="240" height="170" fill="#cfe9f5"/><rect x="20" y="18" width="200" height="96" fill="#e3e0d6" stroke="${K}" stroke-width="1.5"/><rect x="40" y="26" width="160" height="22" fill="#2f7a52" stroke="${K}"/><text x="120" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="system-ui" letter-spacing="2">FRESH MARKET</text><rect x="40" y="56" width="60" height="50" fill="#cfe7f0" stroke="${K}"/><rect x="140" y="56" width="60" height="50" fill="#cfe7f0" stroke="${K}"/><rect x="104" y="60" width="32" height="54" fill="#9db7c9" stroke="${K}"/><rect y="114" width="240" height="56" fill="#c9c3b6"/>${full(92,58,1.2,"#3a7bd5","#3a3a4a",{hair:"#2a1d16",skin:"#8a5a3a"})}${full(146,56,1.2,"#2f7a52","#6b5a4a",{hair:"#a0602a"})}<rect x="160" y="96" width="14" height="22" fill="#f2d24b" stroke="${K}"/>`);
+LESSONS.push({title:"Listen to a Conversation",type:"convo",items:[
+ {name:"Conversation 1",intro:"Listen to two students talking about a class project.",scene:"library",speakers:{Grace:0,Tomas:1},
+  lines:[["Grace","Tomas, did you see the new assignment from Mr. Bell? We have to make a poster about recycling."],
+   ["Tomas","I saw it. It's due on Monday, right?"],
+   ["Grace","Yes. I want to start with our own school. Every day in the cafeteria, students throw away hundreds of plastic bottles. That's a good example for the poster."],
+   ["Tomas","Good idea. I can find the facts, like how long a plastic bottle takes to break down."],
+   ["Grace","Perfect. I'm good at drawing, so I'll make the poster. Can we meet this weekend to put it together?"],
+   ["Tomas","Saturday morning is good. In the afternoon, I work at my uncle's store."],
+   ["Grace","Then let's meet at the public library at ten o'clock."],
+   ["Tomas","OK. I'll bring my laptop and the facts."]],
+  qs:[{q:"What are the students mainly talking about?",o:["a class project about recycling","a book from the library","a sale at a store","lunch in the cafeteria"],a:0},
+      {q:"Why does Grace talk about the cafeteria?",o:["She wants to eat lunch there.","Students throw away many plastic bottles there.","The poster will hang there.","Mr. Bell works there."],a:1},
+      {q:"What will Tomas do for the project?",o:["draw the poster","find the facts","buy plastic bottles","talk to Mr. Bell"],a:1},
+      {q:"When will the students meet?",o:["Saturday at ten in the morning","Saturday afternoon","Monday after school","Sunday at ten in the morning"],a:0},
+      {q:"What can you infer about Tomas?",o:["He does not like drawing posters.","He is busy on Saturday afternoons.","He has already finished the poster.","He goes to a different school than Grace."],a:1}]},
+ {name:"Conversation 2",intro:"Listen to two students talking after school.",scene:"store",speakers:{Rosa:0,Jamal:1},
+  lines:[["Jamal","Hey, Rosa! Why are you wearing that green shirt?"],
+   ["Rosa","It's my uniform! I got a job at Fresh Market. I bag groceries for customers."],
+   ["Jamal","Cool! How did you get the job?"],
+   ["Rosa","First, I filled out an application online. Then the manager called me for an interview. After that, I watched a training video about safety. I started work last week."],
+   ["Jamal","When do you work?"],
+   ["Rosa","Tuesday and Thursday after school, and Saturday morning. I'm saving my money to buy a laptop for school."],
+   ["Jamal","That's smart. I really want a job too, but I don't know where to start."],
+   ["Rosa","I can ask my manager tomorrow if the store is hiring. Then I'll text you."]],
+  qs:[{q:"What kind of job does Rosa have?",o:["She bags groceries at a store.","She cooks food at a restaurant.","She works at the school library.","She drives a delivery truck."],a:0},
+      {q:"What did Rosa do right before she started work?",o:["She filled out an application.","She had an interview.","She watched a training video.","She bought a laptop."],a:2},
+      {q:"Why is Rosa saving her money?",o:["to buy a new uniform","to buy a laptop for school","to pay for a trip","to buy groceries"],a:1},
+      {q:"What can you infer from the conversation?",o:["Jamal does not have a job right now.","Jamal works at Fresh Market.","Rosa does not like her job.","Rosa works every day of the week."],a:0},
+      {q:"What will Rosa probably do next?",o:["quit her job","ask her manager if the store is hiring","help Jamal buy a laptop","fill out another application"],a:1}]}]});
+
+/* ---------- Lesson 5 ---------- */
+LESSONS.push({title:"Listen to a Debate",type:"convo",items:[
+ {name:"Debate 1",intro:"Listen to two students debate a school rule.",scene:"stage",speakers:{"Mrs. Lane":2,Diego:3,Mia:0},
+  lines:[["Mrs. Lane","Welcome, everyone. Today's question is: Should students at our school wear uniforms? Diego will argue yes, and Mia will argue no. Diego, please begin."],
+   ["Diego","Thank you. I believe our school should require uniforms. First, uniforms save families money, because parents do not have to buy many different outfits during the year. Second, students feel less pressure to wear expensive clothes, so there is less teasing. Third, uniforms make it easy for teachers to see who belongs on campus, which keeps everyone safer."],
+   ["Mrs. Lane","Thank you, Diego. Mia?"],
+   ["Mia","Thank you. I think students should be able to choose their own clothes. Clothes are one way students show who they are. Also, uniforms can cost a lot at the beginning of the year, and many families cannot pay for several sets at once. Instead of uniforms, the school can keep a simple dress code."],
+   ["Mrs. Lane","Thank you both. Now it is time for questions from the audience."]],
+  qs:[{q:"Who speaks first?",o:["the teacher","Diego","a parent","Mia"],a:0},
+      {q:"What are the speakers debating?",o:["whether students should wear uniforms","which colors the school should use","how much new clothes cost","when the school year should begin"],a:0},
+      {q:"What is Mia's position?",o:["Students should wear uniforms.","Students should be able to choose their own clothes.","The school should have no dress code at all.","Families should buy more clothes."],a:1},
+      {type:"multi",q:"Which of these statements support Diego's position? Check all that apply.",o:["Uniforms save families money during the year.","Clothes help students show who they are.","Students feel less pressure to wear expensive clothes.","Uniforms can cost a lot at the beginning of the year.","Uniforms make it easy to see who belongs on campus.","The school can keep a simple dress code instead."],a:[0,2,4]}]},
+ {name:"Debate 2",intro:"Listen to two students debate a school schedule.",scene:"room",speakers:{"Mr. Price":1,Noah:3,Ava:0},
+  lines:[["Mr. Price","Our second debate question is: Should our school change to a four-day school week? The school days would be longer, from Monday to Thursday. Noah will speak for the change, and Ava will speak against it. Noah, go ahead."],
+   ["Noah","Thank you. I think a four-day week is a good idea. First, students would be more rested after a three-day weekend. Second, the school would save money on buses, because the buses would run one less day. Third, students would have Fridays for doctor appointments and other important things, so they would miss less class."],
+   ["Mr. Price","Thank you, Noah. Ava?"],
+   ["Ava","Thank you. I believe we should keep our five-day week. Longer school days make it hard for students to focus at the end of the day. Also, many families would need someone to watch younger children on Fridays, and that can be expensive. Finally, with a long weekend, students may forget more of what they learned."],
+   ["Mr. Price","Thank you both. Excellent work."]],
+  qs:[{q:"What are the students debating?",o:["whether the school should have a four-day week","when school buses should arrive","how long lunch should be","whether students should have homework on Fridays"],a:0},
+      {q:"What is Ava's argument?",o:["The school should keep a five-day week.","The school should change to a four-day week.","School days should be longer.","The school should buy more buses."],a:0},
+      {type:"org",q:"Which of these reasons supports Noah's argument? Choose the answer that completes the graphic organizer.",
+       org:[["Argument","Our school should have a four-day week."],["Reason","Students would be more rested."],["Reason","The school would save money on buses."],["Reason",null]],
+       o:["Families would need someone to watch children on Fridays.","Students would have Fridays for appointments and miss less class.","Longer school days make it hard to focus."],a:1},
+      {q:"Which statement supports Ava's argument?",o:["Students would be more rested after a long weekend.","Longer days make it hard for students to focus.","Buses would run one less day.","Students would miss less class."],a:1}]}]});
+
+/* ---------- Lesson 6 ---------- */
+Object.assign(IC,{
+ evap:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><circle cx="-18" cy="-14" r="9" fill="#f2c84b" stroke="${K}"/><path d="M-34 10q8-6 16 0t16 0t16 0t16 0V22H-34Z" fill="#5fa8d3" stroke="${K}"/>${R(3,i=>`<path d="M${-10+i*12} 4q-4-6 0-12t0-12" stroke="#5b8fa8" stroke-width="2" fill="none"/>`)}<polygon points="${-10},-24 -14,-18 -6,-18" fill="#5b8fa8"/><polygon points="${2},-24 -2,-18 6,-18" fill="#5b8fa8"/><polygon points="${14},-24 10,-18 18,-18" fill="#5b8fa8"/></g>`,
+ cond:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><g fill="#f2f2f2" stroke="${K}" stroke-width="1.2"><circle cx="-14" cy="0" r="12"/><circle cx="4" cy="-8" r="15"/><circle cx="20" cy="2" r="10"/><rect x="-14" y="2" width="34" height="10"/></g><path d="M-14 12h34" stroke="#f2f2f2" stroke-width="2"/>${R(4,i=>`<circle cx="${-12+i*9}" cy="${-2+(i%2)*4}" r="1.6" fill="#5b8fa8"/>`)}</g>`,
+ prec:(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><g fill="#9aa8b4" stroke="${K}" stroke-width="1.2"><circle cx="-14" cy="-12" r="12"/><circle cx="4" cy="-18" r="14"/><circle cx="20" cy="-10" r="10"/><rect x="-14" y="-10" width="34" height="10"/></g>${R(6,i=>`<path d="M${-14+i*7} ${4+(i%2)*4}l-3 8" stroke="#2f6fc4" stroke-width="2.4" stroke-linecap="round"/>`)}</g>`
+});
+function waterSlide(step){
+  let g=`<rect width="240" height="170" fill="#ffffff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/><circle cx="34" cy="30" r="14" fill="#f2c84b" stroke="${K}"/><path d="M8 150q20-10 40 0t40 0t40 0V166H8Z" fill="#5fa8d3"/><path d="M128 150L170 96L232 96V166H128Z" fill="#9ac46a"/><polygon points="170,96 196,60 222,96" fill="#8a9a6a" stroke="${K}" stroke-width="1"/>`;
+  g+=IC.cond(110,36,1.1);
+  if(step>=4)g+=`<g transform="translate(196 52) scale(.9)">${R(6,i=>`<path d="M${-14+i*7} ${4+(i%2)*4}l-3 8" stroke="#2f6fc4" stroke-width="2.4" stroke-linecap="round"/>`)}</g><g fill="#9aa8b4" stroke="${K}" stroke-width="1"><circle cx="186" cy="40" r="10"/><circle cx="200" cy="34" r="12"/><circle cx="212" cy="42" r="8"/></g>`;
+  const T=(x,y,t,c="#2b2622")=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="9.5" font-weight="700" fill="${c}" font-family="Atkinson Hyperlegible,system-ui,sans-serif">${t}</text>`;
+  if(step>=2)g+=`<path d="M58 144Q64 106 78 72" stroke="#c9302c" stroke-width="2.2" fill="none" stroke-dasharray="5 3"/>`+T(36,122,"Evaporation","#c9302c");
+  if(step>=3)g+=T(120,70,"Condensation","#3a7bd5");
+  if(step>=4)g+=T(198,16,"Precipitation","#2f6fc4");
+  if(step>=6)g+=`<path d="M176 120Q150 140 112 148" stroke="#2f7a52" stroke-width="2.2" fill="none"/>`+T(150,160,"Collection","#2f7a52");
+  return WD(g);
+}
+const WCHART=WD(`<rect width="240" height="170" fill="#fff"/><rect x="4" y="4" width="232" height="162" fill="none" stroke="#c9cdd3"/><text x="120" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="${K}" font-family="Atkinson Hyperlegible,system-ui,sans-serif">WHERE EARTH'S WATER IS</text>${[["Oceans (salt water)",97,"#3a7bd5"],["Ice and glaciers",2,"#9ccfe0"],["Rivers, lakes, underground",1,"#5fae4f"]].map(([n,v,c],i)=>`<text x="12" y="${54+i*40}" font-size="9.5" fill="${K}" font-family="Atkinson Hyperlegible,system-ui,sans-serif">${n}</text><rect x="12" y="${60+i*40}" width="${Math.max(3,v*1.8)}" height="14" fill="${c}"/><text x="${18+Math.max(3,v*1.8)}" y="${71+i*40}" font-size="10" font-weight="700" fill="${K}" font-family="system-ui">${v}%</text>`).join("")}`);
+const SCIROOM=WD(`<rect width="240" height="170" fill="#eef2f4"/><rect x="60" y="14" width="120" height="66" fill="#fff" stroke="${K}" stroke-width="1.5"/><g transform="translate(120 47) scale(.38) translate(-120 -85)">${waterSlide(1).replace(/^<svg[^>]*>|<\/svg>$/g,"")}</g><rect x="14" y="20" width="34" height="44" fill="#5fae4f" stroke="${K}"/><rect y="104" width="240" height="66" fill="#d9d3c4"/>${full(120,66,1.05,"#7b4fc4","#3a3a4a",{hair:"#2a1d16",skin:"#a8734a"})}<rect x="128" y="86" width="12" height="9" fill="#fff" stroke="${K}"/>${R(6,i=>`<rect x="${6+i*40}" y="${150+(i%2)*4}" width="32" height="6" fill="#f2f2f2" stroke="${K}"/>`+bust(22+i*40,140+(i%2)*4,.85,["#e3a33a","#5b7fb8","#d9573f","#8ac43f"][i%4],{back:true,hair:["#3b2a20","#e8c766","#a0602a","#2a1d16"][i%4]}))}`);
+Object.assign(SL,{sroom:SCIROOM,w1:waterSlide(1),w2:waterSlide(2),w3:waterSlide(3),wchart:WCHART,w4:waterSlide(4),w6:waterSlide(6),ben:HAND("Ben","#5b7fb8","#e8c766"),kiara:HAND("Kiara","#e88aa8","#2a1d16","#8a5a3a")});
+CSCENE.sroom=SCIROOM;
+LESSONS.push({title:"Listen to the Student",type:"convo",items:[
+ {name:"Presentation",intro:"Listen to a student giving a presentation in a science class. Watch her slides change as she speaks.",scene:"sroom",slides:true,speakers:{"Mr. Reed":1,Lucia:0,Ben:3,Kiara:2},
+  lines:[["Mr. Reed","Lucia, you may start your presentation.","sroom"],
+   ["Lucia","Thank you. My presentation is about the water cycle. The water cycle is the way water moves around the Earth again and again. It has four main steps, and the sun gives it the energy to keep going.","w1"],
+   ["Lucia","The first step is evaporation. The sun heats water in oceans, lakes, and rivers. The water turns into a gas called water vapor, and it rises into the air.","w2"],
+   ["Lucia","The second step is condensation. High in the sky, the air is cold. The water vapor cools and turns back into tiny drops of water. Millions of these drops together make a cloud.","w3"],
+   ["Lucia","This chart shows where Earth's water is. About ninety-seven percent is salt water in the oceans. About two percent is frozen in ice and glaciers. Only about one percent is in rivers, lakes, and under the ground.","wchart"],
+   ["Lucia","The third step is precipitation. When the drops in a cloud get too heavy, they fall to the ground as rain, snow, sleet, or hail.","w4"],
+   ["Ben","Excuse me, Lucia. What happens to the rain after it falls?","ben"],
+   ["Lucia","Good question. That is the fourth step, collection. The water collects in oceans, lakes, and rivers. Some of it also soaks into the ground.","w6"],
+   ["Kiara","Does the water cycle ever stop?","kiara"],
+   ["Lucia","No, it never stops. As long as the sun shines, water keeps evaporating, and the cycle starts again. Thank you for listening.","w6"]],
+  qs:[{q:"What is the main topic of the student's presentation?",o:["how oceans became salty","how water moves around the Earth","how to measure rain","how glaciers melt"],a:1},
+      {q:"Why does the student include a chart in her presentation?",o:["to show where Earth's water is found","to show how clouds form","to compare rain and snow","to show how hot the sun is"],a:0},
+      {type:"label",q:"Match the correct labels to three steps of the water cycle.",targets:[["evap","Water rises"],["cond","Clouds form"],["prec","Water falls"]],
+       o:["Precipitation","Evaporation","Erosion","Condensation","Pollution"],a:{evap:1,cond:3,prec:0}},
+      {q:"What gives the water cycle the energy to keep going?",o:["the sun","the wind","the moon","the oceans"],a:0},
+      {q:"About how much of Earth's water is salt water in the oceans?",o:["three percent","fifty percent","seventy-five percent","ninety-seven percent"],a:3}]}]});
+
+/* ---------- Lesson 7 ---------- */
+Object.assign(BUG,{
+ tortoise:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#cde59a"/><path d="M40 78q0-44 40-44t40 44z" fill="#8a6a3a" stroke="${K}" stroke-width="2"/>${R(3,i=>`<path d="M${56+i*16} 50l8 12-8 12-8-12z" fill="#a8844a" stroke="${K}"/>`)}<rect x="44" y="76" width="12" height="16" rx="4" fill="#9a8a5a" stroke="${K}"/><rect x="104" y="76" width="12" height="16" rx="4" fill="#9a8a5a" stroke="${K}"/><ellipse cx="128" cy="70" rx="12" ry="9" fill="#9a8a5a" stroke="${K}"/><circle cx="132" cy="67" r="1.6" fill="${K}"/></svg>`,
+ seaturtle:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#3f9ac9"/>${R(5,i=>`<path d="M${i*36} ${20+i*6}q10-6 20 0" stroke="#bfe3f2" stroke-width="2" fill="none"/>`)}<ellipse cx="80" cy="58" rx="36" ry="24" fill="#5f8a4a" stroke="${K}" stroke-width="2"/>${R(4,i=>`<path d="M${58+i*14} 46l7 10-7 10-7-10z" fill="#7aa45a" stroke="${K}"/>`)}<path d="M56 44q-24-20-36-12q10 14 34 22z" fill="#7a9a6a" stroke="${K}"/><path d="M104 44q24-20 36-12q-10 14-34 22z" fill="#7a9a6a" stroke="${K}"/><path d="M60 76q-14 12-24 10q8-10 22-16z" fill="#7a9a6a" stroke="${K}"/><path d="M100 76q14 12 24 10q-8-10-22-16z" fill="#7a9a6a" stroke="${K}"/><ellipse cx="80" cy="28" rx="10" ry="9" fill="#7a9a6a" stroke="${K}"/></svg>`,
+ crab:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#ecd9a8"/><ellipse cx="80" cy="66" rx="34" ry="20" fill="#d9302c" stroke="${K}" stroke-width="2"/>${R(3,i=>`<path d="M${52-i*4} ${70+i*6}l-20 ${8+i*2}M${108+i*4} ${70+i*6}l20 ${8+i*2}" stroke="#a8241f" stroke-width="4"/>`)}<circle cx="38" cy="38" r="12" fill="#d9302c" stroke="${K}" stroke-width="2"/><circle cx="122" cy="38" r="12" fill="#d9302c" stroke="${K}" stroke-width="2"/><path d="M52 56l-10-10M108 56l10-10" stroke="#a8241f" stroke-width="5"/><circle cx="70" cy="44" r="4" fill="${K}"/><circle cx="90" cy="44" r="4" fill="${K}"/></svg>`,
+ dolphin:`<svg viewBox="0 0 160 110" aria-hidden="true"><rect width="160" height="110" fill="#5fb7d9"/><path d="M20 70q40-40 100-20q14 4 26-2q-6 12-22 14q-10 22-50 22q-30 0-54-14z" fill="#8a9aa8" stroke="${K}" stroke-width="2"/><path d="M70 50l10-20 8 22z" fill="#8a9aa8" stroke="${K}"/><path d="M28 72l-14-16 6 20z" fill="#8a9aa8" stroke="${K}"/><circle cx="118" cy="56" r="2" fill="${K}"/><rect y="90" width="160" height="20" fill="#3f9ac9"/></svg>`
+});
+CSCENE.river=SCI(full(206,58,1.15,"#c9563c","#3a3a4a",{hair:"#2a1d16",skin:"#8a5a3a"}),`<path d="M110 16q-10 12 4 22t-6 22t8 22" stroke="#3a7bd5" stroke-width="4" fill="none"/><text x="150" y="30" font-size="7" fill="${K}" font-family="system-ui">MINNESOTA</text><text x="140" y="76" font-size="7" fill="${K}" font-family="system-ui">GULF</text>`);
+CSCENE.turtle=SCI(full(206,56,1.2,"#2f7a52","#555",{hair:"#a0602a"}),`<rect x="44" y="16" width="142" height="62" fill="#1f2a44"/><circle cx="160" cy="30" r="9" fill="#f6f2ea"/><path d="M44 54h142" stroke="#3f6f9a" stroke-width="2"/><path d="M44 56h142v22H44z" fill="#e3d3a8"/><path d="M120 54l40-22" stroke="#f6f2ea" stroke-width="1" opacity=".5"/>`);
+LESSONS.push({title:"Listen to the Teacher",type:"convo",items:[
+ {name:"The Mississippi River",intro:"Listen to the teacher.",scene:"river",speakers:{"Ms. Brooks":2},
+  lines:[["Ms. Brooks","Good morning, everyone. Today we are going to learn about the river that gave our state its name: the Mississippi River. We will follow its path and learn why it is so important."],
+   ["Ms. Brooks","The Mississippi River begins as a small stream at Lake Itasca, in the state of Minnesota. The water there is so shallow that people can walk across it. From there, the river flows south for about two thousand three hundred forty miles until it reaches the Gulf of Mexico."],
+   ["Ms. Brooks","Along the way, other rivers join it, and it becomes wide and powerful. The Mississippi River forms the western border of our state. As it flows, it carries mud and sand. When the river reaches the Gulf, it drops this mud and sand, and over many years, new land called a delta forms."],
+   ["Ms. Brooks","Sometimes, after heavy rain, the river floods. To protect towns and farms, people built levees. A levee is a long, high wall of earth along the side of the river. It helps keep floodwater out of towns."],
+   ["Ms. Brooks","The river is also an important highway. Large, flat boats called barges travel on it every day. Barges carry heavy goods, like grain and coal, which would be very expensive to move by truck."]],
+  qs:[{q:"What is the teacher mainly discussing?",o:["the path of the Mississippi River and why it matters","how to build a boat","the weather in Minnesota","how farmers grow grain"],a:0},
+      {q:"Which statement best summarizes the river's path?",o:["It begins in the Gulf of Mexico and flows north.","It begins as a small stream in Minnesota and flows south to the Gulf of Mexico.","It begins in Mississippi and ends in Minnesota.","It flows east across the whole country."],a:1},
+      {type:"multi",q:"Which are characteristics of the Mississippi River? Check all that apply.",o:["It begins at Lake Itasca in Minnesota.","It flows north to Canada.","It is about two thousand three hundred forty miles long.","It carries mud and sand to the Gulf.","It forms the eastern border of Mississippi.","It begins in the Gulf of Mexico."],a:[0,2,3]},
+      {q:"What does the teacher say about levees?",o:["They are walls of earth that help keep floodwater out of towns.","They are boats that carry grain.","They are lakes where the river begins.","They are new land at the end of the river."],a:0},
+      {q:"Why are barges important?",o:["They carry heavy goods like grain and coal.","They stop the river from flooding.","They take people to Minnesota.","They make new land in the Gulf."],a:0}]},
+ {name:"Sea Turtles",intro:"Listen to the teacher.",scene:"turtle",speakers:{"Mr. Diaz":1},
+  lines:[["Mr. Diaz","Today we are going to learn about sea turtles. Sea turtles live in warm oceans around the world, including the Gulf of Mexico, near our coast."],
+   ["Mr. Diaz","Sea turtles are reptiles. They breathe air, so they must swim to the surface to breathe. Instead of feet, they have flippers, which help them swim long distances. Unlike some other turtles, a sea turtle cannot pull its head into its shell."],
+   ["Mr. Diaz","Sea turtles spend almost their whole lives in the ocean. But a female comes back to land to lay her eggs. Amazingly, she often returns to the same beach where she hatched many years before. At night, she digs a nest in the sand, lays about one hundred eggs, covers them with sand, and then goes back to the sea. She does not stay to protect them."],
+   ["Mr. Diaz","Here is another surprising fact: the temperature of the sand decides whether the babies will be male or female. Warmer sand makes more females, and cooler sand makes more males."],
+   ["Mr. Diaz","After about two months, the baby turtles, called hatchlings, climb out of the nest. They find the ocean by following the light of the moon shining on the water. Bright lights from houses and hotels can confuse them, so many beach towns ask people to turn off their outside lights at night."]],
+  qs:[{type:"pic",q:"Which of these is a sea turtle? Choose the correct picture.",pics:["tortoise","crab","seaturtle","dolphin"],o:["tortoise","crab","sea turtle","dolphin"],a:2},
+      {q:"What decides whether the baby turtles will be male or female?",o:["the size of the egg","the temperature of the sand","the time of day","the color of the mother"],a:1},
+      {q:"How do hatchlings find the ocean?",o:["They follow their mother.","They follow the light of the moon on the water.","They follow the sound of the waves.","They follow other animals."],a:1},
+      {q:"Which can you infer from the lesson?",o:["Bright beach lights at night can be dangerous for hatchlings.","Sea turtles live mostly on land.","All hatchlings are female.","Sea turtles lay their eggs in the water."],a:0},
+      {type:"multi",q:"What does a mother sea turtle do when she lays her eggs? Check all that apply.",o:["She returns to the beach where she hatched.","She digs a nest in the sand.","She stays to protect her babies.","She lays about one hundred eggs.","She lays her eggs in the water.","She covers the eggs with sand."],a:[0,1,3,5]}]}]});
+
+/* number questions inside multi-page lessons */
+[2,3,4,5,6].forEach(li=>{let n=1;LESSONS[li].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})});
+
+chooseLesson(0);
+</script>
+<footer style="text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 24px">EL Publishing · ELPA21 Practice · Original practice items and artwork · <a href="../elpa21-listening/" style="color:var(--rule);font-weight:700">← Back to Set 1</a></footer>
+</body>
+</html>
