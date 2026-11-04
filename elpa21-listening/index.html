@@ -119,6 +119,16 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
 .opt.right .lt{background:var(--good);border-color:var(--good);color:var(--surface)}
 .opt.wrong{border-color:var(--bad);background:var(--bad-soft);animation:shake .35s}
 .opt:disabled:not(.right):not(.wrong){opacity:.55}
+.opt.chk .lt{border-radius:4px;color:transparent}
+.opt.chk[aria-pressed="true"]{border-color:var(--rule)}
+.opt.chk[aria-pressed="true"] .lt{background:var(--rule);border-color:var(--rule);color:var(--surface)}
+.opt.chk.miss{border-color:var(--bad);background:var(--bad-soft)}
+.submit{align-self:flex-start;background:var(--rule);color:var(--surface);border:0;padding:10px 20px;font-weight:700}
+.org{width:100%;border-collapse:collapse;margin:4px 0 14px;background:var(--surface)}
+.org th,.org td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.org th{color:var(--bad);font-weight:700;width:7.5em}
+.org td.blank{border:2px dashed var(--rule);color:var(--muted);font-style:italic}
+.org td.filled{color:var(--good);font-weight:700}
 .note{color:var(--muted);font-size:.85rem;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.card,.card.wrong{transition:none;animation:none}}
 </style>
@@ -130,6 +140,7 @@ button:focus-visible{outline:3px solid var(--rule);outline-offset:3px}
     <button type="button" class="lesson" data-lesson="1" role="tab">Lesson 2 · Sentences</button>
     <button type="button" class="lesson" data-lesson="2" role="tab">Lesson 3 · Information</button>
     <button type="button" class="lesson" data-lesson="3" role="tab">Lesson 4 · Conversations</button>
+    <button type="button" class="lesson" data-lesson="4" role="tab">Lesson 5 · Debates</button>
   </div>
   <header>
     <span class="num" id="lnum">1</span>
@@ -370,7 +381,12 @@ function loadCQ(){
   const it=item(),q=it.qs[CQ];cTries=0;cAnswered=false;
   $("cNum").textContent=(it.firstQ+CQ)+".";
   $("cQ").textContent=q.q;
-  $("cOpts").innerHTML=q.o.map((o,i)=>`<button type="button" class="opt" data-i="${i}"><span class="lt">${"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  const t=q.type||"mc";
+  let h="";
+  if(t==="org")h=`<table class="org">${q.org.map(r=>`<tr><th>${r[0]}:</th>${r[1]===null?`<td class="blank" id="orgBlank">Tap the reason that belongs here.</td>`:`<td>${r[1]}</td>`}</tr>`).join("")}</table>`;
+  h+=q.o.map((o,i)=>t==="multi"?`<button type="button" class="opt chk" data-i="${i}" aria-pressed="false"><span class="lt">✓</span><span>${o}</span></button>`:`<button type="button" class="opt" data-i="${i}"><span class="lt">${t==="org"?"":"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  if(t==="multi")h+=`<button type="button" class="submit" id="cSubmit">Check my answers</button>`;
+  $("cOpts").innerHTML=h;
   setFb("",CQ===0?`Play the conversation first. Then play question ${it.firstQ}.`:"Play the question, then choose the best answer.");
   $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
 }
@@ -394,10 +410,33 @@ function playConvo(){
     speechSynthesis.speak(u);
   });
 }
-function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.q+" "+q.o.map((o,i)=>"ABCD"[i]+". "+o).join(" "))}
+function playCQ(){const q=item().qs[CQ];slow=cSlow;say(q.q+" "+q.o.map((o,i)=>(q.type?"":"ABCD"[i]+". ")+o).join(" "))}
+function cDone(b){
+  const it=item();cAnswered=true;cResults[CQ]=cTries===1?"ok":"miss";
+  const last=CQ===it.qs.length-1;
+  setFb("good","Yes! That is correct.",last?"See score":"Next question",nextCQ);
+  slow=cSlow;say("Yes!");
+  $("dots").innerHTML=cResults.map(r=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}"></span>`).join("");
+}
 $("cOpts").addEventListener("click",e=>{
-  const b=e.target.closest(".opt");if(!b||cAnswered)return;
-  const it=item(),q=it.qs[CQ],i=+b.dataset.i;cTries++;
+  if(cAnswered)return;
+  const it=item(),q=it.qs[CQ];
+  if(q.type==="multi"){
+    const c=e.target.closest(".opt");
+    if(c){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")!=="true");c.classList.remove("miss");return}
+    if(!e.target.closest("#cSubmit"))return;
+    const chosen=[...document.querySelectorAll(".opt.chk")].filter(x=>x.getAttribute("aria-pressed")==="true").map(x=>+x.dataset.i);
+    if(!chosen.length){setFb("bad","Check at least one statement, then press Check my answers.");return}
+    cTries++;
+    const ok=chosen.length===q.a.length&&q.a.every(i=>chosen.includes(i));
+    if(ok){document.querySelectorAll(".opt.chk").forEach(x=>{x.disabled=true;if(q.a.includes(+x.dataset.i))x.classList.add("right")});$("cSubmit").remove();cDone();}
+    else{chosen.filter(i=>!q.a.includes(i)).forEach(i=>document.querySelector(`.opt.chk[data-i="${i}"]`).classList.add("miss"));
+      setFb("bad",`Not quite. ${q.a.length} statements are correct. Red ones do not support the position. Listen again and try.`)}
+    return;
+  }
+  const b=e.target.closest(".opt");if(!b)return;
+  const i=+b.dataset.i;cTries++;
+  if(q.type==="org"&&i===q.a){const bl=$("orgBlank");bl.textContent=q.o[i];bl.className="filled";}
   if(i===q.a){
     cAnswered=true;b.classList.add("right");cResults[CQ]=cTries===1?"ok":"miss";
     document.querySelectorAll(".opt").forEach(x=>x.disabled=x!==b);
@@ -414,13 +453,43 @@ function nextCQ(){
   const it=item();
   if(CQ<it.qs.length-1){CQ++;loadCQ();playCQ();return}
   const first=cResults.filter(r=>r==="ok").length,more=I<LESSONS[L].items.length-1;
-  setFb("good",`All done! Correct on the first try: ${first} of ${it.qs.length}.`,more?"Go to Conversation 2":"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
+  setFb("good",`All done! Correct on the first try: ${first} of ${it.qs.length}.`,more?`Go to ${LESSONS[L].items[I+1].name}`:"Play again",more?()=>chooseItem(I+1):()=>buildConvo());
 }
 $("cPlay").addEventListener("click",playConvo);
 $("cqPlay").addEventListener("click",playCQ);
 $("cSlowB").addEventListener("click",function(){cSlow=!cSlow;this.setAttribute("aria-pressed",cSlow)});
 $("cText").addEventListener("click",function(){const on=this.getAttribute("aria-pressed")!=="true";this.setAttribute("aria-pressed",on);$("cScript").hidden=!on});
 $("cRestart").addEventListener("click",()=>buildConvo());
+
+LESSONS.push({title:"Listen to a Debate",type:"convo",items:[
+ {name:"Debate 1",intro:"Listen to two students debate a school schedule.",scene:"stage",
+  speakers:{"Mr. Grant":1,Amir:3,Elena:0},
+  lines:[["Mr. Grant","Good morning, everyone. Today's debate question is: Should our school start one hour later, at nine o'clock? Amir will argue yes. Elena will argue no. Amir, please begin."],
+   ["Amir","Thank you. I believe our school should start at nine. Scientists say that teenagers' bodies are ready to sleep later at night, so getting up at six is very hard for us. When students sleep more, they pay better attention in class and get better grades. Also, a later start means fewer students would be late or absent in the morning."],
+   ["Mr. Grant","Thank you, Amir. Elena?"],
+   ["Elena","Thank you. I understand that students are tired, but I think we should keep our start time at eight. If school starts later, it also ends later. Then sports practice and after-school jobs would move into the evening, and students would have less time for homework. Many parents also need to drop their children off before they go to work. A later start could make mornings harder for families, not easier."],
+   ["Mr. Grant","Thank you both. Now the audience will vote."]],
+  qs:[{q:"Who speaks first?",o:["the teacher","Amir","a parent","Elena"],a:0},
+      {q:"What are the speakers debating?",o:["whether school should start later","how much homework students should have","which bus routes the school should use","when sports teams should play games"],a:0},
+      {q:"What is Elena's position?",o:["School should start one hour later.","School should keep its current start time.","The school day should be shorter.","Students should not have after-school jobs."],a:1},
+      {type:"multi",q:"Which of these statements support Amir's position? Check all that apply.",o:["Teenagers' bodies are ready to sleep later at night.","Sports practice would move into the evening.","Students who sleep more pay better attention in class.","Many parents drop their children off before work.","Fewer students would be late or absent in the morning.","The start time should stay at eight."],a:[0,2,4]}]},
+ {name:"Debate 2",intro:"Listen to two students debate a school policy.",scene:"room",
+  speakers:{"Ms. Kim":2,Jordan:1,Priya:0},
+  lines:[["Ms. Kim","Welcome to our second debate. The question is: Should our school ban phones during the school day? Jordan will speak for the ban, and Priya will speak against it. Jordan, you may start."],
+   ["Jordan","Thank you. I think our school should ban phones from the first bell to the last bell. First, students pay more attention in class when their phones are put away. Second, students talk to each other more at lunch instead of looking at screens. Third, there would be less online bullying during the school day, because students could not post or send messages."],
+   ["Ms. Kim","Thank you, Jordan. Priya?"],
+   ["Priya","Thank you. I disagree. Students should be allowed to keep their phones, with clear rules about when to use them. Phones help many students learn. For example, English learners use translation apps to understand new words, and everyone can look up information quickly. Phones also keep students safe, because families can reach them in an emergency. Instead of a ban, teachers can decide when phones are put away."],
+   ["Ms. Kim","Thank you both. Those were strong arguments."]],
+  qs:[{q:"What are the students debating?",o:["whether phones should be banned during the school day","which apps teachers should use in class","where students can charge their phones","whether the school should buy new laptops"],a:0},
+      {q:"What is Priya's argument?",o:["Students should be allowed to keep their phones during the day.","Phones should be banned from the first bell to the last bell.","Only teachers should have phones at school.","Students should use phones only in the library."],a:0},
+      {type:"org",q:"Which of these reasons supports Jordan's argument? Choose the answer that completes the graphic organizer.",
+       org:[["Argument","Our school should ban phones during the school day."],["Reason","Students pay more attention in class."],["Reason","Students talk to each other more at lunch."],["Reason",null]],
+       o:["Families can reach students in an emergency.","There is less online bullying during the school day.","Students use translation apps to learn new words."],a:1},
+      {q:"Which statement supports Priya's argument?",o:["Phones distract students during class.","Phones help students translate words and look up information.","Phones make online bullying worse.","Students talk to each other more without phones."],a:1}]}
+]});
+{let n=1;LESSONS[4].items.forEach(it=>{it.firstQ=n;n+=it.qs.length})}
+CSCENE.stage=WD(`<rect width="240" height="170" fill="#e3a33a"/>${R(16,i=>`<path d="M${i*15+7} 0V110" stroke="#c9822a" stroke-width="4"/>`)}<path d="M0 110q30 8 60 0t60 0t60 0t60 0V124H0Z" fill="#c9822a"/><rect y="118" width="240" height="20" fill="#b9a088"/>${bust(58,44,1.1,"#c9563c",{hair:"#2a1d16"})}<rect x="40" y="70" width="38" height="50" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="48" y="80" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${bust(180,40,1.15,"#4a5a8a",{hair:"#a0602a"})}<rect x="160" y="68" width="40" height="52" fill="#9a6b43" stroke="${K}" stroke-width="1.5"/><rect x="169" y="78" width="22" height="14" fill="#fff8e0" stroke="${K}"/>${R(8,i=>bust(14+i*31,150+(i%2)*4,.9,["#3a7bd5","#d9573f","#5f9a4f","#e3a33a"][i%4],{back:true,hair:["#2a1d16","#e8c766","#a0602a","#c4572a"][i%4]}))}`);
+CSCENE.room=WD(`<rect width="240" height="170" fill="#f4efe6"/><rect x="70" y="10" width="110" height="60" fill="#3d4a42" stroke="${K}" stroke-width="2"/><rect y="96" width="240" height="74" fill="#e8e1d2"/>${bust(124,56,1,"#5b8fa8",{hair:"#bbb"})}<rect x="90" y="84" width="70" height="30" fill="#e3e3e3" stroke="${K}" stroke-width="1.5"/>${full(48,34,1.15,"#e3a33a","#7a8a4a",{hair:"#e8c766"})}${full(200,28,1.2,"#e05a9a","#9aa3c4",{hair:"#6b4a2b"})}${R(6,i=>`<rect x="${10+i*40}" y="${150+(i%2)*4}" width="30" height="6" fill="#d9d2c0" stroke="${K}"/>`+bust(25+i*40,140+(i%2)*4,.85,["#f2d24b","#5f9a4f","#c9563c","#3a7bd5"][i%4],{back:true,hair:["#c4572a","#2a1d16","#a0602a","#3b2a20"][i%4]}))}`);
 
 function buildInfo(){
   const it=item();
@@ -513,7 +582,7 @@ function chooseItem(i){
   $("info").hidden=!info;$("convo").hidden=!cv;$("grid").hidden=info||cv;$("wordControls").hidden=info||cv;
   $("dir").textContent=info?"Listen to the information. Follow the directions you hear.":"Listen to the audio. Follow the direction you hear.";
   try{speechSynthesis.cancel()}catch(e){}
-  if(cv){$("dir").textContent="Listen to the conversation. Then answer the questions.";buildConvo();return}
+  if(cv){$("dir").textContent=LESSONS[L].title.includes("Debate")?"Listen to the debate. Then answer the questions.":"Listen to the conversation. Then answer the questions.";$("cPlay").querySelector("span").textContent=LESSONS[L].title.includes("Debate")?"Debate":"Conversation";buildConvo();return}
   if(info){$("chips").classList.toggle("nowords",$("iWords").getAttribute("aria-pressed")!=="true");buildInfo();return}
   grid.classList.toggle("wide",LESSONS[L].type==="sentence");
   grid.innerHTML="";
