@@ -168,6 +168,14 @@ Q = [
     "https://radan55.github.io/RichardDaniel/language-functions/")]),
 
  ("students",
+  "Where can I practice the ELPA21 listening test?",
+  "ELPA21 Listening Practice works like the real listening items: you hear a direction, a "
+  "sentence or a short talk, then tap the picture or move the card that matches. Slow the "
+  "voice down, turn on the words, and try again until you get it.",
+  [("ELPA21 Listening Practice · Unit 1", "https://radan55.github.io/elpa21practice01/"),
+   ("English On Your Own", "english-on-your-own.html")]),
+
+ ("students",
   "Why can't I stop scrolling, and what can I do about it?",
   "Because the app is built to hold you: a feed with no end, a red badge that pulls you "
   "back, and a reward you can never predict. Your Attention Is for Sale lets you feel all "
