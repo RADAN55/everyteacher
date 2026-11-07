@@ -203,6 +203,16 @@ Q = [
   [("Your Guide to School in the U.S.", "newcomer-guide.html"),
    ("Storm Lens", "storm-lens/")]),
 
+ ("elteacher",
+  "How do I prepare my students for the ELPT this spring?",
+  "Teaching the ELPT is a page-turning special issue with one feature per domain: what the "
+  "Reading, Writing, Listening and Speaking items actually ask, a daily routine you can run "
+  "with a live timer, six skills taught explicitly, four lanes of support, and the four test "
+  "moves students need before the window. A coach reads each page aloud, and the toolkit page "
+  "puts all sixteen test moves on the wall.",
+  [("Teaching the ELPT · Special Issue", "teaching-the-elpt.html"),
+   ("ELPA21 Reading Studio", "https://radan55.github.io/elpa21-reading-studio/")]),
+
  ("classroom",
   "Is there a new issue of the EL Publishing magazine?",
   "Yes: The Language of Belonging, the November 2026 issue, is out. Twenty-six pages for "

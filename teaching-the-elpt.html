@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teaching the ELPT — EL Publishing Special Issue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2761; --navy-dk:#121735; --gold:#C9A227; --gold-lt:#E8D28A; --gold-dk:#7A6210;
+  --stone:#F4F1E8; --line:#E2DED5; --ink:#1A1A1A; --paper:#FFFDF8; --rule:#1E2761;
+  --bg:#E6E2D8; --surface:#FFFFFF; --text:#1A1A1A; --muted:#4A4A4A; --chrome:#1E2761;
+  --pw:560px; --ph:760px;
+}
+[data-theme="dark"]{--bg:#0E1230; --surface:#171C44; --text:#EDEBE4; --muted:#B9B8C9; --chrome:#C9A227; --line:#2A3060}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;-webkit-text-size-adjust:100%;transition:background .5s,color .5s}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+button{font-family:Inter,system-ui,sans-serif}
+.app{max-width:1180px;margin:0 auto;padding:0 12px 60px}
+
+/* ---------- chrome ---------- */
+.brand{display:flex;align-items:center;gap:12px;padding:12px 0 10px;border-bottom:1px solid var(--line);margin-bottom:10px;flex-wrap:wrap}
+.brand .mark{width:42px;height:42px;flex:none}
+.brand .mark svg{width:100%;height:100%;animation:spinmark 14s linear infinite}
+@keyframes spinmark{to{transform:rotate(360deg)}}
+.brand .word{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--chrome);line-height:1;font-weight:700}
+.brand .word i{font-style:italic;font-weight:600}
+.brand .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.brand .issue{font-size:12px;color:var(--muted);margin-left:14px;border-left:1px solid var(--line);padding-left:14px}
+.brand .issue b{color:var(--chrome)}
+.brand .right{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.ic{border:1.5px solid var(--chrome);background:transparent;color:var(--chrome);font:600 12px Inter;padding:8px 11px;border-radius:999px;cursor:pointer;min-height:40px;display:inline-flex;align-items:center;gap:6px}
+.ic:hover,.ic[aria-pressed="true"]{background:var(--chrome);color:var(--surface)}
+.ic:focus-visible,.tab:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--chrome);background:var(--surface);color:var(--chrome);font:600 12.5px Inter;padding:8px 12px 8px 10px;border-radius:999px;cursor:pointer;min-height:42px;display:inline-flex;align-items:center;gap:7px;transition:transform .2s,background .2s}
+.tab[aria-selected="true"]{background:var(--chrome);color:var(--surface);transform:scale(1.05)}
+.tab .ring{width:16px;height:16px}.tab .ring circle{fill:none;stroke-width:3}.tab .ring .bg{stroke:rgba(128,128,128,.25)}
+.tab .ring .fg{stroke:var(--gold);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .6s}
+.btn{border:1.5px solid var(--chrome);background:var(--surface);color:var(--chrome);font:600 13px Inter;padding:9px 14px;border-radius:6px;cursor:pointer;min-height:44px}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--navy-dk)}
+.btn[disabled]{opacity:.4;cursor:default}
+.hint{font-size:12.5px;color:var(--muted);margin-left:auto}
+.lanebar{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.lanebar .lb{border:1.5px solid var(--gold-dk);background:var(--surface);color:var(--gold-dk);font:600 12px Inter;padding:7px 11px;border-radius:999px;cursor:pointer;min-height:40px}
+[data-theme="dark"] .lanebar .lb{border-color:var(--gold);color:var(--gold)}
+.lanebar .lb[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+.lanebar .lab{font-size:12px;color:var(--muted);margin-right:4px}
+.pager{display:flex;align-items:center;gap:8px;margin-left:auto;font-size:12.5px;color:var(--muted)}
+.pager input[type=range]{width:160px;accent-color:var(--gold)}
+
+/* ---------- stage + book ---------- */
+.stage{position:relative;width:100%;overflow:hidden;padding:14px 0 18px;touch-action:pan-y}
+.scaler{width:calc(var(--pw)*2);height:var(--ph);transform-origin:top left;margin:0 auto;position:relative}
+.book{position:absolute;inset:0;perspective:2600px;transition:transform .9s cubic-bezier(.4,0,.2,1)}
+.app[data-spread="first"] .book{transform:translateX(calc(var(--pw) * -0.5))}
+.app[data-spread="last"] .book{transform:translateX(calc(var(--pw) * 0.5))}
+.slot{position:absolute;top:0;width:var(--pw);height:var(--ph)}
+.slot.L{left:0}.slot.R{left:var(--pw)}
+.sheet{position:absolute;top:0;width:var(--pw);height:var(--ph);transform-style:preserve-3d;transition:transform 1.05s cubic-bezier(.45,0,.2,1);z-index:5}
+.sheet .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.sheet .face.back{transform:rotateY(180deg)}
+.sheet .face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(255,255,255,.25));opacity:0;transition:opacity .5s}
+.sheet.turning .face::after{opacity:1}
+.sheet.turning .face{box-shadow:-18px 10px 30px rgba(10,14,40,.35)}
+.spine{position:absolute;left:calc(var(--pw) - 1px);top:0;bottom:0;width:2px;background:linear-gradient(to right,rgba(0,0,0,.18),rgba(0,0,0,.05));pointer-events:none;z-index:4}
+.app[data-spread="first"] .spine,.app[data-spread="last"] .spine{display:none}
+.slot.L .page{box-shadow:inset -14px 0 22px -16px rgba(0,0,0,.25)}
+.slot.R .page{box-shadow:inset 14px 0 22px -16px rgba(0,0,0,.25)}
+.edges{position:absolute;top:6px;bottom:6px;width:10px;background:repeating-linear-gradient(to right,#fff 0 1px,#d9d4c7 1px 2px);pointer-events:none;z-index:1}
+.edges.r{left:calc(var(--pw)*2);border-radius:0 3px 3px 0}
+.edges.l{left:-10px;border-radius:3px 0 0 3px}
+.app[data-spread="first"] .edges.l,.app[data-spread="last"] .edges.r{display:none}
+
+/* ---------- page ---------- */
+.page,.sheet .face{--navy:#1E2761;--navy-dk:#121735;--gold:#C9A227;--gold-lt:#E8D28A;--gold-dk:#7A6210;--stone:#F4F1E8;--line:#E2DED5;--ink:#1A1A1A;--paper:#FFFDF8;--muted:#4A4A4A}
+.page{width:var(--pw);height:var(--ph);background:var(--paper);color:var(--ink);overflow:hidden;position:relative;font-size:11.1px;line-height:1.4}
+.page .pad{position:absolute;inset:0;padding:36px 42px 44px}
+.pg-head{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dk);font-weight:700;margin-bottom:14px;align-items:center}
+.pg-foot{position:absolute;left:44px;right:44px;bottom:18px;display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A8A8A}
+.pg-foot b{color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:12px;letter-spacing:0;text-transform:none}
+.kick{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dk);font-weight:700;margin:0 0 8px}
+.display{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--navy);line-height:1.02;font-size:40px;margin:0 0 10px;letter-spacing:-.01em}
+.deck{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:15px;color:#3A3F66;line-height:1.35;margin:0 0 14px}
+.byline{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.byline:before{content:"";width:28px;height:2px;background:var(--gold)}
+.dropcap:first-letter{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:46px;line-height:.8;float:left;margin:6px 7px 0 0;color:var(--navy)}
+.cols2{columns:2;column-gap:22px;column-rule:1px solid var(--line)}
+.cols2>*{break-inside:avoid}
+.pull{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:16px;line-height:1.3;color:var(--navy);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:8px 0;margin:8px 0 10px}
+.pull:before{content:"\201C";color:var(--gold);font-size:30px;line-height:0;vertical-align:-10px;margin-right:4px;font-style:normal}
+.sidebar{background:var(--stone);padding:12px 14px;border-top:3px solid var(--navy);margin:10px 0 0}
+.sidebar .kick{margin-bottom:4px}
+.page h3.sec{font-family:Fraunces,Georgia,serif;font-size:16px;color:var(--navy);margin:0 0 6px;font-weight:700}
+/* content primitives (from the tri-fold data) */
+.k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dk);font-weight:700;margin:10px 0 4px}
+.t{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.1;color:var(--navy);margin:0 0 4px;font-weight:700}
+.rule{height:2px;width:40px;background:var(--gold);margin:6px 0 10px}
+.page p{margin:0 0 7px}
+.page ul{margin:0 0 7px;padding-left:14px}
+.page li{margin:0 0 3px}
+.step{display:flex;gap:9px;margin:0 0 7px;cursor:pointer;border-radius:4px;padding:3px;margin-left:-3px;transition:background .25s}
+.step:hover{background:#F3EEDD}
+.step.active{background:#FBF3DA;outline:2px solid var(--gold)}
+.step.done .num{background:#5B7A52}
+.num{flex:none;width:19px;height:19px;border-radius:10px;background:var(--navy);color:#fff;font-weight:700;font-size:10.5px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.step b{display:block;color:var(--navy);font-size:11.8px;font-family:Fraunces,Georgia,serif;font-size:13px}
+.skill{border-bottom:1px solid #D9D4C9;padding:0 0 5px;margin:0 0 5px}
+.skill b{display:block;color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:13px}
+.skill:last-of-type{border-bottom:none}
+.frame{font-family:Fraunces,Georgia,serif;font-style:italic;color:var(--navy)}
+.lane{display:flex;gap:7px;margin:0 0 4px;font-size:11px}
+.lane b{flex:none;width:70px;color:var(--gold-dk)}
+.app[data-lane]:not([data-lane="all"]) .lane:not(.on){opacity:.3}
+.app[data-lane]:not([data-lane="all"]) .lane.on{background:#FBF3DA;outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+table{border-collapse:collapse;width:100%;font-size:11px;margin:0 0 8px}
+th,td{border-bottom:1px solid var(--navy);padding:4px 3px;text-align:left;vertical-align:top}
+th{color:var(--navy);border-bottom-width:2px;font-family:Fraunces,Georgia,serif;font-size:12px}
+.box{border:1px solid var(--navy);border-left:4px solid var(--gold);padding:8px 10px;margin:8px 0 0;background:#fff}
+.startbtn{display:inline-flex;gap:6px;align-items:center;margin:2px 0 8px;background:var(--gold);color:var(--navy-dk);border:none;font:700 11px Inter;padding:8px 12px;border-radius:5px;cursor:pointer;min-height:36px}
+.listen{display:inline-flex;gap:5px;align-items:center;border:1.5px solid var(--navy);background:#fff;color:var(--navy);font:700 9.5px Inter;letter-spacing:0;text-transform:none;padding:4px 9px;border-radius:999px;cursor:pointer;min-height:26px}
+.listen[aria-pressed="true"]{background:var(--navy);color:#fff}
+.listen svg{width:11px;height:11px}
+.coachcard{display:flex;gap:12px;align-items:center;background:var(--navy);color:#fff;padding:10px 12px;border-radius:8px;margin:0 0 12px}
+.coachcard svg{width:52px;height:52px;flex:none}
+.coachcard .cn{font-size:11.5px;line-height:1.35}
+.coachcard .cn b{display:block;color:var(--gold);font-family:Fraunces,Georgia,serif;font-size:14px}
+.coachcard.talking .mouth{animation:talk .28s ease-in-out infinite alternate}
+@keyframes talk{from{transform:scaleY(.3)}to{transform:scaleY(1.3)}}
+.blink{animation:blink 4.5s infinite}
+@keyframes blink{0%,96%,100%{transform:scaleY(1)}98%{transform:scaleY(.1)}}
+.spot{position:absolute;right:42px;top:70px;width:76px;height:76px}
+.check{list-style:none;padding:0;margin:0 0 8px}
+.check li{margin:0 0 5px}
+.check label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.check input{width:15px;height:15px;margin:1px 0 0;accent-color:var(--navy);flex:none}
+.check input:checked+span{text-decoration:line-through;color:#6B6B6B}
+.cprog{height:6px;background:#E2DED5;border-radius:3px;overflow:hidden;margin:0 0 8px}
+.cprog i{display:block;height:100%;background:var(--gold);width:0;transition:width .4s}
+.contact{margin-top:10px;border-top:2px solid var(--navy);padding-top:8px;font-size:11px}
+
+/* cover + back */
+.page.cover{background:var(--navy);color:#fff}
+.page.cover .pad{padding:36px 40px}
+.cover .masth{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.cover .masth .w{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:0;text-transform:none;color:#fff;font-weight:700}
+.cover .masth .w i{font-style:italic;font-weight:600;color:var(--gold)}
+.cover .title{font-family:Fraunces,Georgia,serif;font-size:72px;line-height:.95;font-weight:900;margin:34px 0 14px;letter-spacing:-.02em;position:relative}
+.cover .title::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.3) 50%,transparent 60%);background-size:250% 100%;animation:shine 6s linear infinite;mix-blend-mode:screen;pointer-events:none}
+@keyframes shine{from{background-position:120% 0}to{background-position:-120% 0}}
+.cover .sub{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:17px;color:var(--gold-lt);line-height:1.3;max-width:380px}
+.cover .lines{margin-top:26px;display:grid;gap:9px;font-size:12.5px;max-width:300px}
+.cover .lines div{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--gold);padding-left:10px}
+.cover .lines b{font-family:Fraunces,Georgia,serif;font-size:14px}
+.cover .lines span{color:#C9CBE0;font-size:11px}
+.cover .storm{position:absolute;right:-60px;bottom:40px;width:340px;height:340px;opacity:.95}
+.cover .storm svg{width:100%;height:100%;animation:spinmark 60s linear infinite}
+.cover .strip{position:absolute;left:40px;right:40px;bottom:30px;display:flex;justify-content:space-between;align-items:flex-end;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#C9CBE0}
+.cover .strip b{color:var(--gold)}
+.cover .openbtn{background:var(--gold);color:var(--navy-dk);border:none;font:700 12px Inter;padding:10px 16px;border-radius:6px;cursor:pointer;min-height:42px;animation:pulse 2.4s ease-in-out infinite;margin-top:20px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.6)}50%{box-shadow:0 0 0 10px rgba(201,162,39,0)}}
+.page.back{background:var(--navy);color:#fff}
+.page.back .pad{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center}
+.page.back .bigmark{width:180px;height:180px}
+.page.back .bigmark svg{width:100%;height:100%;animation:spinmark 30s linear infinite}
+.page.back .w{font-family:Fraunces,Georgia,serif;font-size:40px;font-weight:700;margin-top:16px}
+.page.back .w i{font-style:italic;font-weight:600;color:var(--gold)}
+.page.back .s{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.page.back .more{margin-top:28px;font-size:12px;color:#E8EAF4;line-height:1.6;max-width:380px}
+.page.back .more b{color:var(--gold);font-family:Fraunces,Georgia,serif;font-size:13px;display:block;margin-bottom:4px}
+.page.back a{color:#fff}
+/* masthead / contents */
+.mast .w{font-family:Fraunces,Georgia,serif;font-size:34px;color:var(--navy);font-weight:700;line-height:1}
+.mast .w i{font-style:italic;font-weight:600}
+.mast .iss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dk);margin:6px 0 16px}
+.toc{list-style:none;padding:0;margin:0}
+.toc li{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dotted #C9C4B6;cursor:pointer}
+.toc li:hover{background:#F3EEDD}
+.toc .pn{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--gold-dk);width:22px;flex:none;font-size:14px}
+.toc .ti{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--navy);font-size:13.5px}
+.toc .d{color:#5A5A5A;font-size:11px;flex:1;text-align:right}
+.staff{font-size:10.5px;line-height:1.6;color:#4A4A4A;margin-top:14px;columns:2;column-gap:18px}
+.staff b{display:block;color:var(--navy);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:10.5px;margin-top:12px}
+.legend div{display:flex;gap:7px;align-items:center}
+.legend i{width:16px;height:16px;border-radius:8px;background:var(--gold);flex:none;display:inline-block}
+/* letter */
+.sig{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:18px;color:var(--navy);margin-top:12px}
+.sig small{display:block;font-family:Inter;font-style:normal;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B;margin-top:3px}
+/* at a glance */
+.glance{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 10px}
+.gcard{border:1px solid var(--line);border-top:3px solid var(--navy);padding:10px 11px;background:#fff;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.gcard:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(10,14,40,.12)}
+.gcard svg{width:30px;height:30px;position:absolute;right:10px;top:10px}
+.gcard b{font-family:Fraunces,Georgia,serif;font-size:15px;color:var(--navy);display:block;margin-bottom:3px}
+.gcard span{font-size:10.5px;color:#4A4A4A;display:block;line-height:1.4}
+.levels{display:flex;gap:4px;margin:8px 0 6px}
+.levels div{flex:1;text-align:center;padding:7px 4px;font-size:10px;font-weight:700;color:#fff;border-radius:3px}
+.levels .l1{background:#8A8A8A}.levels .l2{background:#6B6B6B}.levels .l3{background:#3B4A8C}.levels .l4{background:var(--navy)}.levels .l5{background:var(--gold);color:var(--navy-dk)}
+.detlabels{display:flex;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dk);font-weight:700}
+.detlabels div{text-align:center}
+/* timeline */
+.timeline{position:relative;margin:10px 0 14px;padding-left:22px;border-left:3px solid var(--gold)}
+.tl{position:relative;margin:0 0 11px}
+.tl:before{content:"";position:absolute;left:-28px;top:3px;width:11px;height:11px;border-radius:6px;background:var(--navy);border:2px solid var(--gold)}
+.tl b{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:13px;display:block}
+.count{display:flex;align-items:center;gap:10px;margin:8px 0 0;flex-wrap:wrap}
+.count input{border:1.5px solid var(--navy);border-radius:5px;padding:6px 8px;font:500 12px Inter;background:#fff;color:var(--ink);min-height:36px}
+.count .big{font-family:Fraunces,Georgia,serif;font-size:30px;color:var(--navy);font-weight:900;line-height:1}
+.count .big small{font:600 9.5px Inter;color:#6B6B6B;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
+/* toolkit */
+.moves{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.move{border:1px solid var(--navy);padding:8px 10px;background:#fff;font-size:10px;line-height:1.35}
+.move b{font-family:Fraunces,Georgia,serif;color:var(--navy);font-size:12px;display:block}
+.move .dom{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dk);font-weight:700}
+
+/* ---------- reader (mobile) ---------- */
+.reader{display:none}
+.app[data-mode="reader"] .stage,.app[data-mode="reader"] .pager,.app[data-mode="reader"] .bookonly{display:none}
+.app[data-mode="reader"] .reader{display:block}
+.reader .page{width:100%;height:auto;min-height:0;margin:0 0 14px;border-radius:8px;box-shadow:0 6px 18px rgba(10,14,40,.12);font-size:14px;line-height:1.5}
+.reader .page .pad{position:static;padding:22px 18px 26px}
+.reader .pg-foot{position:static;margin-top:16px}
+.reader .display{font-size:32px}.reader .cover .title{font-size:46px}
+.reader .cols2{columns:1}
+.reader .spot{position:static;margin:0 0 10px}
+.reader .cover .storm{display:none}
+.reader .cover .strip{position:static;margin-top:20px;flex-direction:column;gap:6px;align-items:flex-start}
+.reader .t{font-size:22px}.reader table,.reader .lane{font-size:13px}.reader .lane b{width:92px}
+.reader .step b,.reader .skill b{font-size:15px}.reader .num{width:24px;height:24px;font-size:12px}
+
+/* ---------- timer, toast, confetti, intro, ambient ---------- */
+.timerbar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%) translateY(120%);width:min(96vw,620px);background:var(--navy-dk);color:#fff;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 14px 30px rgba(0,0,0,.35);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:50;flex-wrap:wrap;border:1px solid rgba(201,162,39,.4)}
+.timerbar.show{transform:translateX(-50%) translateY(0)}
+.timerbar .tname{font-weight:700;font-size:14px;flex:1 1 160px}
+.timerbar .tname small{display:block;font-weight:500;font-size:11.5px;color:var(--gold)}
+.timerbar .clock{font:700 30px/1 Fraunces,Georgia,serif;min-width:92px;text-align:center}
+.timerbar.flash{animation:flash .5s 3}
+@keyframes flash{50%{background:var(--gold-dk)}}
+.timerbar .tb{background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;font:600 12px Inter;padding:8px 10px;border-radius:6px;cursor:pointer;min-height:40px}
+.timerbar .tb.go{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+.tprog{position:absolute;left:14px;right:14px;bottom:6px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden}
+.tprog i{display:block;height:100%;background:var(--gold);width:0;transition:width 1s linear}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.28;animation:drift 26s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:520px;height:520px;background:#9FA9D9;left:-140px;top:-120px}
+.bg i:nth-child(2){width:460px;height:460px;background:#E8D28A;right:-120px;top:20%;animation-duration:32s;animation-delay:-8s}
+.bg i:nth-child(3){width:380px;height:380px;background:#C7D2E8;left:30%;bottom:-160px;animation-duration:38s;animation-delay:-16s}
+[data-theme="dark"] .bg i{opacity:.16}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(90px,60px) scale(1.15)}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+.toast:empty{display:none}
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-140%);background:var(--navy-dk);color:#fff;padding:10px 16px;border-radius:999px;font:600 13px Inter;box-shadow:0 10px 24px rgba(0,0,0,.3);transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:70;border:1px solid rgba(201,162,39,.5)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.intro{position:fixed;inset:0;background:var(--navy-dk);z-index:90;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;transition:opacity .7s,visibility .7s;cursor:pointer;text-align:center;padding:20px}
+.intro.gone{opacity:0;visibility:hidden}
+.intro .mark{width:120px;height:120px;animation:markin 1.6s cubic-bezier(.2,.7,.2,1) both}
+.intro .mark svg{width:100%;height:100%;animation:spinmark 9s linear infinite}
+@keyframes markin{from{transform:scale(.3) rotate(-90deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.intro .w{font-family:Fraunces,Georgia,serif;font-size:44px;font-weight:700;margin-top:18px;animation:rise .9s .5s both}
+.intro .w i{font-style:italic;font-weight:600}
+.intro .s{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:10px;animation:rise .9s .8s both}
+.intro .p{font-size:13px;color:#C9CBE0;margin-top:36px;animation:rise .9s 1.3s both}
+.intro .p b{display:block;font-family:Fraunces,Georgia,serif;font-size:22px;color:#fff;margin-bottom:6px}
+.intro .curtain{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 48%,rgba(201,162,39,.25) 50%,transparent 52% 100%);background-size:300% 100%;animation:shine 2.6s linear infinite;pointer-events:none}
+.reveal>.pad>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.reveal>.pad>*:nth-child(2){animation-delay:.06s}.reveal>.pad>*:nth-child(3){animation-delay:.12s}.reveal>.pad>*:nth-child(4){animation-delay:.18s}.reveal>.pad>*:nth-child(5){animation-delay:.24s}.reveal>.pad>*:nth-child(6){animation-delay:.3s}.reveal>.pad>*:nth-child(n+7){animation-delay:.36s}
+.sitefoot{margin-top:24px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sitefoot a{color:var(--chrome)}
+.stage:fullscreen{background:var(--navy-dk);padding:0;display:flex;align-items:center;justify-content:center}
+@media (prefers-reduced-motion:reduce){.sheet,.book,.timerbar{transition:none}.reveal>.pad>*,.bg i,.cover .openbtn,.cover .title::after,.brand .mark svg,.intro .mark svg,.mouth,.blink,.cover .storm svg,.page.back .bigmark svg{animation:none}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status"></div>
+<div class="intro" id="intro" aria-label="EL Publishing">
+  <div class="curtain"></div>
+  <div class="mark" id="introMark"></div>
+  <div class="w">EL <i>Publishing</i></div>
+  <div class="s">Many Voices · One Storm</div>
+  <div class="p"><b>Teaching the ELPT</b>Special Issue · Winter 2026–27 · tap to open</div>
+</div>
+
+<div class="app" id="app" data-mode="book" data-spread="first" data-lane="all">
+  <div class="brand">
+    <div class="mark" id="brandMark"></div>
+    <div><div class="word">EL <i>Publishing</i></div><div class="tag">Many Voices · One Storm</div></div>
+    <div class="issue"><b>Teaching the ELPT</b> · Special Issue · Winter 2026–27</div>
+    <div class="right">
+      <button class="ic" id="btnTheme" aria-pressed="false">◐ Midnight</button>
+      <button class="ic bookonly" id="btnPresent">▣ Present</button>
+      <button class="ic" id="btnSound" aria-pressed="true">♪ Sound</button>
+      <button class="ic" id="btnMode">☰ Reader</button>
+      <button class="ic" id="btnShare">⤴ Copy link</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="tabs" role="tablist" aria-label="Jump to a feature">
+      <button class="tab" data-jump="toc">Contents</button>
+      <button class="tab" role="tab" data-domain="reading"><svg class="ring" viewBox="0 0 20 20"><circle class="bg" cx="10" cy="10" r="7.5"/><circle class="fg" cx="10" cy="10" r="7.5" stroke-dasharray="47.1" stroke-dashoffset="47.1"/></svg>Reading</button>
+      <button class="tab" role="tab" data-domain="writing"><svg class="ring" viewBox="0 0 20 20"><circle class="bg" cx="10" cy="10" r="7.5"/><circle class="fg" cx="10" cy="10" r="7.5" stroke-dasharray="47.1" stroke-dashoffset="47.1"/></svg>Writing</button>
+      <button class="tab" role="tab" data-domain="listening"><svg class="ring" viewBox="0 0 20 20"><circle class="bg" cx="10" cy="10" r="7.5"/><circle class="fg" cx="10" cy="10" r="7.5" stroke-dasharray="47.1" stroke-dashoffset="47.1"/></svg>Listening</button>
+      <button class="tab" role="tab" data-domain="speaking"><svg class="ring" viewBox="0 0 20 20"><circle class="bg" cx="10" cy="10" r="7.5"/><circle class="fg" cx="10" cy="10" r="7.5" stroke-dasharray="47.1" stroke-dashoffset="47.1"/></svg>Speaking</button>
+      <button class="tab" data-jump="toolkit">Toolkit</button>
+    </div>
+    <div class="pager bookonly">
+      <button class="btn" id="btnPrev" aria-label="Previous page">‹ Prev</button>
+      <input type="range" id="scrub" min="0" max="1" value="0" aria-label="Page">
+      <span id="pageLbl">Cover</span>
+      <button class="btn primary" id="btnNext" aria-label="Next page">Next ›</button>
+    </div>
+  </div>
+  <div class="nav" style="margin-top:0">
+    <div class="lanebar" role="group" aria-label="Spotlight a lane">
+      <span class="lab">Spotlight a lane:</span>
+      <button class="lb" data-lane="all" aria-pressed="true">All</button>
+      <button class="lb" data-lane="newcomer" aria-pressed="false">Newcomer</button>
+      <button class="lb" data-lane="emerging" aria-pressed="false">Emerging</button>
+      <button class="lb" data-lane="progressing" aria-pressed="false">Progressing</button>
+      <button class="lb" data-lane="challenge" aria-pressed="false">Challenge</button>
+    </div>
+    <span class="hint bookonly" id="hint">Tap the cover, swipe, or use ← → to turn pages</span>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="scaler" id="scaler">
+      <div class="book" id="book">
+        <div class="edges l"></div><div class="edges r"></div>
+        <div class="slot L" id="slotL"></div>
+        <div class="slot R" id="slotR"></div>
+        <div class="spine"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reader" id="reader"></div>
+
+  <div class="sitefoot"><span id="footMark" style="width:22px;height:22px;display:inline-block"></span><span>EL Publishing · Teaching the ELPT · Special Issue, Winter 2026–27 · <a href="https://radan55.github.io/everyteacher/">EL Publishing Hub</a></span></div>
+</div>
+
+<div class="timerbar" id="timerbar" role="region" aria-label="Routine timer" aria-live="polite">
+  <div class="tname"><span id="tStep">Routine</span><small id="tSub">Daily routine</small></div>
+  <div class="clock" id="tClock">0:00</div>
+  <button class="tb" id="tPrev" aria-label="Previous step">‹</button>
+  <button class="tb go" id="tPlay">Pause</button>
+  <button class="tb" id="tNext" aria-label="Next step">›</button>
+  <button class="tb" id="tStop" aria-label="Stop timer">✕</button>
+  <div class="tprog"><i id="tBar"></i></div>
+</div>
+
+<script>
+const D = {
+reading: {
+  name:'Reading', tagline:'Build the reading skills the test measures, from November routines to the spring window.',
+  bullets:['What the Reading domain actually tests','A 25-minute daily reading routine','Six skills, each taught explicitly','Test-format practice that lowers anxiety'],
+  flap:`<p class="k">Know the target</p><h2 class="t">What ELPT Reading asks</h2><div class="rule"></div>
+  <p>Students read short informational and literary passages on screen and answer selected-response items. No essays here, but every item depends on the text.</p>
+  <table><tr><th>Skill</th><th>What it looks like</th></tr>
+  <tr><td>Main idea</td><td>"What is this passage mostly about?"</td></tr>
+  <tr><td>Key details</td><td>Find a stated fact; who, what, where</td></tr>
+  <tr><td>Inference</td><td>"What can you tell about…?" with no direct answer</td></tr>
+  <tr><td>Vocabulary in context</td><td>Meaning of a word <em>as used</em> in the passage</td></tr>
+  <tr><td>Purpose &amp; structure</td><td>Why the author wrote it; how it is organized</td></tr>
+  <tr><td>Functional text</td><td>Schedules, signs, directions, labels, graphics</td></tr></table>
+  <p class="k">Levels</p><p>Scored on five levels: <b>Emerging</b> 1–2, <b>Progressing</b> 3–4, <b>Proficient</b> 5. Level 1–2 texts are brief with pictures; Level 4–5 texts are grade-level with academic vocabulary.</p>
+  <div class="box"><b>Why it matters:</b> Reading growth is the fastest lever for §15 EL Progress and for exiting students already Proficient in Listening and Speaking.</div>`,
+  p1:`<p class="k">Step 1 · November to January</p><h2 class="t">Run a daily 25-minute reading routine</h2><div class="rule"></div>
+  <p>Proficiency comes from volume plus explicit teaching, not packets. Students read a short text every single day.</p>
+  ${step(1,'Preview, 3 min','Title, picture, headings. One-sentence prediction: <span class="frame">"I think this is about ___ because ___."</span>')}
+  ${step(2,'Pre-teach 3 words, 4 min','The words the questions hinge on. Say it, show it, cognate it, use it, students repeat it.')}
+  ${step(3,'First read, 5 min','Teacher reads aloud; students track. One think-aloud: <span class="frame">"New word. I\'ll keep reading to see if the next sentence explains it."</span>')}
+  ${step(4,'Second read with a job, 6 min','Silent reread with one task tied to the week\'s skill: underline the main idea, circle three details, box an unknown word.')}
+  ${step(5,'Answer and defend, 5 min','3–4 selected-response items. Students point to the proving line: <span class="frame">"The text says ___ in paragraph ___."</span>')}
+  ${step(6,'Exit ticket, 2 min','One question, one piece of evidence. Sort: right / close / lost. That sort is tomorrow\'s grouping.')}
+  <p class="k">Texts that match the test</p><p>Newsela and ReadWorks at level, science and history excerpts, handbook pages, bus schedules, lab directions. Informational to literary, two to one.</p>`,
+  p2:`<p class="k">Step 2 · One skill per week, then mix</p><h2 class="t">Teach the six skills explicitly</h2><div class="rule"></div>
+  ${skill('Main idea','"Topic + what the author says about it." Topic in one word, main idea in one sentence. Name the trap: a detail that is true but too small.')}
+  ${skill('Key details','Stem first, then scan. Underline the key word in the question, find it or its synonym, read the whole sentence around it.')}
+  ${skill('Inference','<span class="frame">"The text says ___ + I know ___ = so ___."</span> Start with pictures and two-sentence texts. Always ask "What clue told you?"')}
+  ${skill('Vocabulary in context','Cover the word, read the sentence before and after, propose a substitute, test it. Weekly five minutes on prefixes, suffixes, Spanish cognates.')}
+  ${skill('Purpose and structure','Sort texts: inform / persuade / entertain / explain how. Teach signal words for sequence, compare, cause. Students label each paragraph\'s job.')}
+  ${skill('Functional text and graphics','Schedules, charts, labels, directions. "Find the row, find the column." One literal and one inferential question per graphic.')}
+  ${lanes('Picture-supported, 3–5 sentences, L1 glossary, oral answers first','One paragraph, two sentence frames, word bank for every question','Multi-paragraph, frames removed, students write the evidence line','Grade-level passage, two texts compared, students write their own items')}`,
+  p3:`<p class="k">Step 3 · February to the window</p><h2 class="t">Practice the format, not just the skill</h2><div class="rule"></div>
+  <p>Students who have the skill still lose points to screens, scrolling, and unfamiliar item types. Spend the last 4–6 weeks removing surprises.</p>
+  <p class="k">The four test moves</p>
+  ${step(1,'Question first','Read the stem before the passage so the read has a purpose.')}
+  ${step(2,'Go back every time','Reading is untimed. Never answer from memory; scroll back and find the line.')}
+  ${step(3,'Cross out two','Eliminate the too-small answer and the not-in-the-text answer, then choose.')}
+  ${step(4,'Never leave a blank','A guess can score; a skip cannot.')}
+  <p class="k">Rehearse on the device</p><ul><li>State practice test twice, on the device type students will use</li><li>Drag-and-drop, multi-select, clicking a sentence in the passage</li><li>Scrolling a long passage while keeping the question visible</li><li>One full Reading-length session per week in February</li></ul>
+  <p class="k">Lower the anxiety</p><p>This test shows growth; it does not pass or fail anyone. Learn the login screen together. A Level 1 is a starting point, not a verdict.</p>
+  <div class="box"><b>Use your data.</b> Group by last year\'s weakest Reading skill, not overall level. Students one level below Proficient get the Challenge lane and a weekly check-in.</div>`
+},
+writing: {
+  name:'Writing', tagline:'Turn daily sentence-level practice into organized, scorable paragraphs by the spring window.',
+  bullets:['What the Writing domain actually tests','A 20-minute daily write','Six skills, from sentences to paragraphs','Typing and prompt-reading rehearsal'],
+  flap:`<p class="k">Know the target</p><h2 class="t">What ELPT Writing asks</h2><div class="rule"></div>
+  <p>Students type responses on screen. Tasks range from one sentence about a picture to a multi-paragraph response, plus selected-response editing items. Rubrics score ideas, organization, vocabulary, and conventions.</p>
+  <table><tr><th>Task</th><th>What it looks like</th></tr>
+  <tr><td>Picture sentence</td><td>"Write a sentence about what is happening."</td></tr>
+  <tr><td>Short response</td><td>2–4 sentences answering a question</td></tr>
+  <tr><td>Extended response</td><td>Opinion or informational paragraph(s) with reasons</td></tr>
+  <tr><td>Respond to a source</td><td>Write using a short text, chart, or graphic</td></tr>
+  <tr><td>Edit &amp; revise</td><td>Choose the correct or best sentence</td></tr>
+  <tr><td>Sentence building</td><td>Order words; complete a sentence</td></tr></table>
+  <p class="k">Levels</p><p>Level 1–2: words, phrases, simple sentences with support. Level 3–4: connected sentences, basic organization. Level 5: a developed, organized paragraph with mostly correct conventions.</p>
+  <div class="box"><b>Why it matters:</b> Writing is usually the lowest domain and the one that blocks exit. Length and organization are scored; a longer, organized response outscores a short perfect one.</div>`,
+  p1:`<p class="k">Step 1 · November to January</p><h2 class="t">Run a daily 20-minute write</h2><div class="rule"></div>
+  <p>Students write every day, in English, about something they just read, heard, or saw. Short, daily, and always revised once.</p>
+  ${step(1,'Talk it first, 2 min','Partner answers the prompt out loud: <span class="frame">"I think ___ because ___."</span> If they can say it, they can write it.')}
+  ${step(2,'Model one sentence, 3 min','Write a sentence live, thinking aloud about capital, verb, period. Post the frame for the week.')}
+  ${step(3,'Draft, 8 min','Students write without stopping. Minimum line goal by lane. Spelling does not stop the pen.')}
+  ${step(4,'Partner check, 4 min','Trade papers with a four-item checklist: capitals, ending punctuation, verb matches subject, each sentence has a who and a do.')}
+  ${step(5,'Revise one line, 3 min','Add one detail, one transition, or fix one error. Highlight the change so growth is visible.')}
+  <p class="k">Prompts that match the test</p><p>Photos of school scenes, a short chart from science, "Should students…?" opinion questions, "Explain how to…" from a lab, and a 3-sentence text to respond to.</p>`,
+  p2:`<p class="k">Step 2 · One skill per week, then mix</p><h2 class="t">Teach the six skills explicitly</h2><div class="rule"></div>
+  ${skill('Complete sentences','Every sentence has a who and a do. Sort fragments vs sentences; students fix fragments by adding the missing part.')}
+  ${skill('Expand the sentence','"The boy runs." Ask where? when? why? how? Students grow it to 12+ words. Builds the detail rubrics reward.')}
+  ${skill('Paragraph shape','Topic sentence, two details, closing. Teach with a hamburger frame, then remove the frame by January.')}
+  ${skill('Opinion with reasons','<span class="frame">"I believe ___. First, ___. Also, ___. That is why ___."</span> Two reasons, one example each.')}
+  ${skill('Transitions and tense','Weekly word wall: first/next/finally, because/so, however/also. Daily 3-minute verb drill: today / yesterday / tomorrow.')}
+  ${skill('Edit like the test','Show two versions of a sentence; students choose the correct one and say why. Mirrors the selected-response editing items.')}
+  ${lanes('Label pictures, copy a model sentence, then change one word','Write 3 sentences with a frame and word bank','Write a 5-sentence paragraph with no frame; add one transition','Two paragraphs with a counter-argument; peer-edit another student\'s work')}`,
+  p3:`<p class="k">Step 3 · February to the window</p><h2 class="t">Practice the format, not just the skill</h2><div class="rule"></div>
+  <p>Writing on the test is typed, with no spell-check and no teacher to ask. Rehearse those conditions so nothing is new on test day.</p>
+  <p class="k">The four test moves</p>
+  ${step(1,'Underline the ask','Find the verb in the prompt: describe, explain, give your opinion. Answer that, not something nearby.')}
+  ${step(2,'Plan three bullets','Topic, reason 1, reason 2. Thirty seconds of planning doubles organization scores.')}
+  ${step(3,'Write more than you think','Longer, organized responses score higher. Finish the paragraph, then add one more sentence.')}
+  ${step(4,'Reread for the big three','Capitals, end punctuation, verb matches subject. Fix those before anything else.')}
+  <p class="k">Rehearse on the device</p><ul><li>Weekly 10-minute typed responses in a plain text box, no spell-check</li><li>Keyboard basics: shift, period, space after punctuation, deleting a word</li><li>State practice test twice so students see the response box and word-order items</li><li>One full-length timed write per week in February for stamina</li></ul>
+  <p class="k">Lower the anxiety</p><p>Tell students a half-finished paragraph still scores. Blank boxes score zero. Something is always better than nothing.</p>
+  <div class="box"><b>Use your data.</b> Keep one dated writing sample per month per student. The growth from November to February is your conference evidence and your NBCT evidence.</div>`
+},
+listening: {
+  name:'Listening', tagline:'Train purposeful listening so students catch the gist, the details, and the speaker\'s intent on the first play.',
+  bullets:['What the Listening domain actually tests','A 15-minute daily listen','Six skills, from gist to lecture notes','Headset and replay rehearsal'],
+  flap:`<p class="k">Know the target</p><h2 class="t">What ELPT Listening asks</h2><div class="rule"></div>
+  <p>Students wear headsets and hear short recordings: a conversation between students, an announcement, a teacher giving directions, or a short academic lecture. They answer selected-response items. Replays are limited.</p>
+  <table><tr><th>Skill</th><th>What it looks like</th></tr>
+  <tr><td>Main idea</td><td>"What is the speaker mostly talking about?"</td></tr>
+  <tr><td>Details</td><td>Times, names, places, numbers heard once</td></tr>
+  <tr><td>Follow directions</td><td>Choose the picture or step that matches</td></tr>
+  <tr><td>Speaker's purpose</td><td>Inform, ask, persuade, apologize</td></tr>
+  <tr><td>Inference</td><td>How the speaker feels; what happens next</td></tr>
+  <tr><td>Academic lecture</td><td>Short science or social studies talk with a visual</td></tr></table>
+  <p class="k">Levels</p><p>Level 1–2: short, slow, picture-supported. Level 3–4: conversations at natural pace. Level 5: multi-minute lectures with academic vocabulary.</p>
+  <div class="box"><b>Why it matters:</b> Listening is often a student\'s strongest domain. Protecting a Proficient score here keeps the overall determination within reach.</div>`,
+  p1:`<p class="k">Step 1 · November to January</p><h2 class="t">Run a daily 15-minute listen</h2><div class="rule"></div>
+  <p>Students hear a 1–3 minute recording every day with a task attached. Listening with a purpose is the whole skill.</p>
+  ${step(1,'Preview, 3 min','Topic, who is speaking, where. Pre-teach three words. Students predict two things they will hear.')}
+  ${step(2,'First listen for gist, 3 min','Play once, no notes. One question: <span class="frame">"What was it mostly about?"</span> Thumbs or whiteboards.')}
+  ${step(3,'Second listen with a job, 4 min','Play again with a task: write three details, number the steps, mark the speaker\'s feeling.')}
+  ${step(4,'Answer and justify, 3 min','3 selected-response items. <span class="frame">"I chose ___ because the speaker said ___."</span>')}
+  ${step(5,'Exit, 2 min','One detail they heard, in a full sentence. Sort responses for tomorrow\'s groups.')}
+  <p class="k">Audio that matches the test</p><p>Teacher-recorded directions, morning announcements, Khan Academy or CrashCourse clips at 0.75× speed, student-to-student conversations recorded in class, short podcasts.</p>`,
+  p2:`<p class="k">Step 2 · One skill per week, then mix</p><h2 class="t">Teach the six skills explicitly</h2><div class="rule"></div>
+  ${skill('Listen for gist','Train "topic first": after one play, students say the topic in one word, then the point in one sentence.')}
+  ${skill('Catch the details','Three-word notes: numbers, names, places. Teach that details are often restated; wait for the second mention.')}
+  ${skill('Follow multi-step directions','Total physical response first (stand, turn, point), then paper tasks: "Circle the second item and underline the date."')}
+  ${skill('Speaker\'s purpose and tone','Play the same sentence happy, annoyed, urgent. Students label the function: asking, offering, apologizing, warning.')}
+  ${skill('Inference from talk','<span class="frame">"The speaker said ___, so probably ___."</span> Teach that the answer is rarely a word they heard.')}
+  ${skill('Lecture note-taking','Two-column notes: big idea left, details right. Model with a 90-second science clip and a visual.')}
+  ${lanes('Picture choices, slow audio, L1 pre-teach, replay freely','Three-item responses with a word bank, two plays','Natural-pace audio, one play, notes required','Full lecture clips, inference-only questions, students write items for peers')}`,
+  p3:`<p class="k">Step 3 · February to the window</p><h2 class="t">Practice the format, not just the skill</h2><div class="rule"></div>
+  <p>Test listening happens through a headset, with a replay button and no pause. Make that normal before the window.</p>
+  <p class="k">The four test moves</p>
+  ${step(1,'Read before you play','Read the question and choices first so you know what to listen for.')}
+  ${step(2,'Three-word notes','Write only numbers, names, and key words while listening. Never full sentences.')}
+  ${step(3,'Replay with a purpose','Use the replay once, for one specific thing you missed, not to re-hear everything.')}
+  ${step(4,'Beware the echo','Wrong answers often repeat a word you heard. Choose meaning, not matching words.')}
+  <p class="k">Rehearse on the device</p><ul><li>Weekly listening on headsets at the exact volume and device students will use</li><li>Practice the replay button and the "next" button in the state practice test</li><li>Audio-only items with no picture support, at least once per week</li><li>One full Listening-length session in February</li></ul>
+  <p class="k">Lower the anxiety</p><p>Tell students they will not understand every word, and they do not need to. Catching the topic and two details is enough for most items.</p>
+  <div class="box"><b>Use your data.</b> Students strong in Listening but weak in Reading need vocabulary, not comprehension. Pair the two domains in instruction.</div>`
+},
+speaking: {
+  name:'Speaking', tagline:'Make talking to a microphone an everyday habit so students show everything they know on test day.',
+  bullets:['What the Speaking domain actually tests','A 10-minute daily talk','Six skills, from describing to defending','Mic and recording rehearsal'],
+  flap:`<p class="k">Know the target</p><h2 class="t">What ELPT Speaking asks</h2><div class="rule"></div>
+  <p>Students speak into a headset microphone and their answers are recorded and scored by rubric: ideas, vocabulary, grammar, and clarity. There is no live listener and no second chance after the recording stops.</p>
+  <table><tr><th>Task</th><th>What it looks like</th></tr>
+  <tr><td>Describe a picture</td><td>"Tell what you see" with details</td></tr>
+  <tr><td>Give an opinion</td><td>Take a side and give reasons</td></tr>
+  <tr><td>Explain a process</td><td>Sequence steps with transitions</td></tr>
+  <tr><td>Retell</td><td>Summarize a short story or clip</td></tr>
+  <tr><td>Classroom scenario</td><td>Ask for help, make a request, give advice</td></tr>
+  <tr><td>Compare</td><td>Two pictures or two options</td></tr></table>
+  <p class="k">Levels</p><p>Level 1–2: words and phrases. Level 3–4: full sentences with some errors, connected ideas. Level 5: extended, organized talk with academic vocabulary.</p>
+  <div class="box"><b>Why it matters:</b> Speaking is the domain students lose to nerves and silence, not ability. Thirty seconds of talk beats ten perfect words.</div>`,
+  p1:`<p class="k">Step 1 · November to January</p><h2 class="t">Run a daily 10-minute talk</h2><div class="rule"></div>
+  <p>Every student speaks English out loud every day, and records it at least once a week. Short, structured, and never optional.</p>
+  ${step(1,'Warm-up pair talk, 2 min','One question on the board. Partner A answers for 30 seconds, then B. <span class="frame">"I think ___ because ___."</span>')}
+  ${step(2,'Model with a frame, 2 min','Teacher answers the day\'s prompt aloud using the posted frame, then names what made it strong: a reason, an example, a detail.')}
+  ${step(3,'Record, 3 min','Students record a 45-second response on their device (Flip, Chromebook recorder, or a phone). Talk the whole time.')}
+  ${step(4,'Listen back and add one, 3 min','Students replay their recording and say one more sentence they could have added. Re-record on Fridays.')}
+  <p class="k">Prompts that match the test</p><p>School photos, "Which is better, ___ or ___?", "Explain how to ___", a 30-second clip to retell, and scenarios: "Ask your teacher for more time."</p>`,
+  p2:`<p class="k">Step 2 · One skill per week, then mix</p><h2 class="t">Teach the six skills explicitly</h2><div class="rule"></div>
+  ${skill('Describe with details','"I see a ___. It is ___. There are ___. They are ___ing." Push for color, number, place, action.')}
+  ${skill('Opinion plus two reasons','<span class="frame">"I prefer ___. One reason is ___. Another reason is ___. For example, ___."</span>')}
+  ${skill('Sequence with transitions','First, next, then, after that, finally. Students explain a lab or a recipe in five steps.')}
+  ${skill('Retell','Who, what, where, problem, ending. Five fingers, five sentences.')}
+  ${skill('Compare and contrast','"Both ___. However, ___ is ___ while ___ is ___." Two pictures, one minute.')}
+  ${skill('Say more','When a student stops, ask "Why?" or "Like what?" Teach them to ask it of themselves before they stop talking.')}
+  ${lanes('Word and phrase answers, picture prompts, choral practice before solo','Full sentences with a frame, 30-second recordings','Frames removed, 45–60 seconds, two reasons required','Academic prompts, counter-argument, peer rubric scoring')}`,
+  p3:`<p class="k">Step 3 · February to the window</p><h2 class="t">Practice the format, not just the skill</h2><div class="rule"></div>
+  <p>Talking to a screen with no face to read is the strangest part of the ELPT. Make it ordinary before the window.</p>
+  <p class="k">The four test moves</p>
+  ${step(1,'Use all the time','Keep talking until the recording stops. Silence scores nothing; a second reason scores.')}
+  ${step(2,'Full sentences','Start with "I think" or "I see" and keep going. One-word answers cap the score.')}
+  ${step(3,'Think, because, for example','The three-part frame works for every prompt. Make it automatic.')}
+  ${step(4,'Stuck? Describe','If the question is lost, describe what is on the screen. Something in English always beats nothing.')}
+  <p class="k">Rehearse on the device</p><ul><li>Weekly recordings with the test headset and mic, record and stop buttons</li><li>Mic check routine: speak, play back, adjust</li><li>State practice test twice so students see the timer and the prompt layout</li><li>Record in the actual testing room once so the space is familiar</li></ul>
+  <p class="k">Lower the anxiety</p><p>Tell students the scorer wants to hear them succeed, mistakes are expected, and accent is not scored. Practice makes the mic boring, and boring is the goal.</p>
+  <div class="box"><b>Use your data.</b> Save one recording per month per student. Play November beside February at conferences. Students hear their own growth.</div>`
+}
+};
+
+function step(n,t,b){const m=(t.match(/(\d+)\s*min/)||[])[1];return `<div class="step" data-step="${n}"${m?` data-min="${m}"`:''}><div class="num">${n}</div><div><b>${t}</b>${b}</div></div>`}
+function skill(t,b){return `<div class="skill"><b>${t}</b>${b}</div>`}
+function lanes(a,b,c,d){return `<p class="k" style="margin-top:6px">Differentiate by lane</p>
+<div class="lane" data-lane="newcomer"><b>Newcomer</b><span>${a}</span></div><div class="lane" data-lane="emerging"><b>Emerging</b><span>${b}</span></div>
+<div class="lane" data-lane="progressing"><b>Progressing</b><span>${c}</span></div><div class="lane" data-lane="challenge"><b>Challenge</b><span>${d}</span></div>`}
+
+const BACK = `<p class="k">Your calendar</p><h2 class="t">From now to the testing window</h2><div class="rule"></div>
+<table><tr><th>When</th><th>Focus</th></tr>
+<tr><td><b>Nov–Dec</b></td><td>Daily domain routines. One skill per week. Group students by last year\'s weakest skill.</td></tr>
+<tr><td><b>Jan</b></td><td>Longer texts, audio, and responses. Mix two skills per task. Begin weekly stamina sessions.</td></tr>
+<tr><td><b>Feb</b></td><td>State practice test on the device. Teach the four test moves per domain. Confirm MTAM accommodations.</td></tr>
+<tr><td><b>Window</b></td><td>Short warm-ups only. Headsets charged, quiet rooms, make-up list ready.</td></tr></table>
+<p class="k">Before the window: checklist <span class="cnt" data-cnt></span></p>
+<div class="cprog"><i data-cbar></i></div>
+<ul class="check">
+<li><label><input type="checkbox" data-ck="c1"><span>Every student has tried the practice test on the device type they will test on</span></label></li>
+<li><label><input type="checkbox" data-ck="c2"><span>Accommodations entered and matched to daily classroom use</span></label></li>
+<li><label><input type="checkbox" data-ck="c3"><span>Students know the date, room, and that the test is untimed</span></label></li>
+<li><label><input type="checkbox" data-ck="c4"><span>Newcomers coached: "Show what you can do. Guess, don\'t skip."</span></label></li>
+<li><label><input type="checkbox" data-ck="c5"><span>Domain exemptions and Alt-ELP eligibility settled with SPED</span></label></li></ul>
+<div class="contact"><b>Questions or coaching?</b><br>Richard A. Daniel, M.Ed. · ENL/EL Specialist<br>EL Publishing · Many Voices · One Storm<br>richard.spanishteacher@gmail.com</div>`;
+
+
+/* ================= brand + coaches ================= */
+function markSVG(fg1,fg2,bg){ return `<svg viewBox="0 0 100 100" role="img" aria-label="EL Publishing mark">
+  <circle cx="50" cy="50" r="48" fill="${bg}"/>
+  <path d="M30 62c-7 0-12-5-12-12 0-9 7-17 18-21l2 5c-6 2-10 6-11 10 1-1 2-1 3-1 6 0 10 4 10 9s-4 10-10 10z" fill="${fg1}"/>
+  <path d="M70 38c7 0 12 5 12 12 0 9-7 17-18 21l-2-5c6-2 10-6 11-10-1 1-2 1-3 1-6 0-10-4-10-9s4-10 10-10z" fill="${fg2}"/></svg>`; }
+function stormSVG(){ let r=''; for(let i=0;i<26;i++){ const a=i*137.5, s=.28+i*.03, rad=30+i*2.6; r+=`<g transform="rotate(${a} 100 100) translate(100 ${100-rad}) scale(${s})"><path d="M-10 12c-7 0-12-5-12-12 0-9 7-17 18-21l2 5c-6 2-10 6-11 10 1-1 2-1 3-1 6 0 10 4 10 9s-4 10-10 10z" fill="${i%2?'#C9A227':'#FFFFFF'}" opacity="${.3+i*.025}"/></g>`; }
+  return `<svg viewBox="0 0 200 200" aria-hidden="true">${r}<circle cx="100" cy="100" r="22" fill="none" stroke="#C9A227" stroke-width="2"/></svg>`; }
+document.getElementById('introMark').innerHTML=markSVG('#FFFFFF','#C9A227','#1E2761');
+document.getElementById('brandMark').innerHTML=markSVG('#1E2761','#C9A227','transparent');
+document.getElementById('footMark').innerHTML=markSVG('#1E2761','#C9A227','transparent');
+
+const COACH={
+  reading:{name:'Coach Okonjo',role:'Reading coach',skin:'#8D5524',shirt:'#C9A227',hair:'#1A1A1A'},
+  writing:{name:'Coach Delgado',role:'Writing coach',skin:'#C68642',shirt:'#3B4A8C',hair:'#2B1B0E'},
+  listening:{name:'Coach Tran',role:'Listening coach',skin:'#E0AC69',shirt:'#5B7A52',hair:'#1A1A1A'},
+  speaking:{name:'Coach Bell',role:'Speaking coach',skin:'#F1C27D',shirt:'#B3400E',hair:'#6B3E1E'}
+};
+function coachSVG(c){ return `<svg viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)"/>
+  <path d="M14 62c2-12 9-18 18-18s16 6 18 18z" fill="${c.shirt}"/>
+  <circle cx="32" cy="27" r="14" fill="${c.skin}"/>
+  <path d="M18 24c1-9 7-14 14-14s13 5 14 14c-3-4-8-6-14-6s-11 2-14 6z" fill="${c.hair}"/>
+  <g class="blink" style="transform-origin:32px 27px"><circle cx="26.5" cy="27" r="1.8" fill="#1A1A1A"/><circle cx="37.5" cy="27" r="1.8" fill="#1A1A1A"/></g>
+  <ellipse class="mouth" cx="32" cy="34.5" rx="3.6" ry="1.6" fill="#7A2E2E" style="transform-origin:32px 34.5px"/></svg>`; }
+const SPOT={
+  reading:`<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="41" fill="#1E2761"/><g fill="none" stroke="#C9A227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 28h18c3 0 4 1 4 4v28c0-2-1-3-4-3H20z"/><path d="M64 28H46c-3 0-4 1-4 4v28c0-2 1-3 4-3h18z"/><path d="M26 36h8M26 43h8M26 50h6M50 36h8M50 43h8M50 50h6"/></g></svg>`,
+  writing:`<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="41" fill="#1E2761"/><g fill="none" stroke="#C9A227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 58l3-10 24-24 7 7-24 24z"/><path d="M50 27l7 7"/><path d="M22 64h40"/></g></svg>`,
+  listening:`<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="41" fill="#1E2761"/><g fill="none" stroke="#C9A227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 50v-8a18 18 0 0136 0v8"/><rect x="20" y="46" width="10" height="16" rx="3"/><rect x="54" y="46" width="10" height="16" rx="3"/></g></svg>`,
+  speaking:`<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="41" fill="#1E2761"/><g fill="none" stroke="#C9A227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="35" y="20" width="14" height="26" rx="7"/><path d="M27 40a15 15 0 0030 0M42 55v9M34 64h16"/><path d="M60 30a12 12 0 010 20M24 30a12 12 0 000 20" opacity=".6"/></g></svg>`
+};
+const INTRO={
+  reading:'Reading is where the ELPT is won. It carries the most items, it gates the exit decision, and it is the domain where daily classroom practice turns most directly into score growth. This feature lays out what the Reading items actually ask, a 25-minute routine you can run every day from November, and the four moves that keep good readers from losing points to the screen.',
+  writing:'Writing is the domain that most often holds a student one level short of exit, and the one teachers feel least equipped to move. The fix is not more worksheets. It is a short daily write, a checklist students can run on each other, and a paragraph shape practiced until it is automatic. This feature gives you all three, with the typed-test conditions rehearsed before the window.',
+  listening:'Listening is often an English learner\'s strongest domain, which makes it the easiest to neglect and the most painful to lose. Headsets, replay limits, and distractor answers that echo a word the student heard can cost a Proficient score. This feature turns listening into a daily 15-minute purpose-driven routine and shows you how to make the test conditions ordinary.',
+  speaking:'Speaking is lost to silence, not to ability. Students who can talk for a minute with a partner freeze in front of a microphone with a timer. This feature builds the habit of recorded talk, teaches the six moves raters reward, and gives students a frame that works for every prompt so they never run out of things to say.'
+};
+const PULL={reading:'A guess can score; a skip cannot.',writing:'A longer, organized response outscores a short perfect one.',listening:'Catching the topic and two details is enough for most items.',speaking:'Thirty seconds of talk beats ten perfect words.'};
+const ROUTINE_NAME={reading:'25-minute reading routine',writing:'20-minute daily write',listening:'15-minute daily listen',speaking:'10-minute daily talk'};
+const DOMS=['reading','writing','listening','speaking'];
+
+/* ================= pages ================= */
+function listenBtn(){ return `<button class="listen" data-listen aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 8a4 4 0 010 8" stroke="currentColor" stroke-width="2" fill="none"/></svg>Listen</button>`; }
+function head(section,n){ return `<div class="pg-head"><span>${section}</span>${listenBtn()}</div>`; }
+function foot(n,label){ return `<div class="pg-foot"><span>${n%2?`<b>${n}</b> &nbsp;EL Publishing`:`${label}&nbsp; <b>${n}</b>`}</span><span>${n%2?label:'Teaching the ELPT · Winter 2026–27'}</span></div>`; }
+function stripRule(html){ return html.replace(/<p class="k">[^<]*<\/p>\s*<h2 class="t">[^<]*<\/h2>\s*<div class="rule"><\/div>/,''); }
+function firstKick(html){ const m=html.match(/<p class="k">([^<]*)<\/p>\s*<h2 class="t">([^<]*)<\/h2>/); return m?{k:m[1],t:m[2]}:{k:'',t:''}; }
+
+const PAGES=[]; // {html, label, domain?, key?}
+function addPage(o){ PAGES.push(o); return PAGES.length-1; }
+function build(){
+  PAGES.length=0;
+  // 0 cover
+  addPage({label:'Cover',cls:'cover',html:`<div class="pad">
+    <div class="masth"><span class="w">EL <i>Publishing</i></span><span>Special Issue · Winter 2026–27</span></div>
+    <div class="title">Teaching<br>the ELPT</div>
+    <div class="sub">The complete classroom playbook for all four domains — routines, skills, test moves, and the calendar from November to the window.</div>
+    <div class="lines">
+      <div><b>Reading</b><span>The 25-minute routine that moves scores · p. 5</span></div>
+      <div><b>Writing</b><span>From one sentence to a scorable paragraph · p. 9</span></div>
+      <div><b>Listening</b><span>Purpose-driven listening in 15 minutes a day · p. 13</span></div>
+      <div><b>Speaking</b><span>Make the microphone boring · p. 17</span></div>
+    </div>
+    <button class="openbtn" data-next>Open the issue →</button>
+    <div class="storm">${stormSVG()}</div>
+    <div class="strip"><span><b>Educator Edition</b> · Grades 9–12 · Mississippi</span><span>Free from EL Publishing</span></div>
+  </div>`});
+  // 1 masthead + contents
+  addPage({label:'Contents',key:'toc',html:`<div class="pad mast">
+    <div class="pg-head"><span>In this issue</span>${listenBtn()}</div>
+    <div class="w">EL <i>Publishing</i></div>
+    <div class="iss">Teaching the ELPT · Special Issue · Winter 2026–27 · Educator Edition</div>
+    <ul class="toc">
+      <li data-goto="2"><span class="pn">2</span><span class="ti">From the specialist's desk</span><span class="d">Why this issue, and how to use it</span></li>
+      <li data-goto="3"><span class="pn">3</span><span class="ti">The ELPT at a glance</span><span class="d">Four domains, five levels, one rule</span></li>
+      <li data-goto="4"><span class="pn">4</span><span class="ti">The calendar</span><span class="d">November to the window, with your countdown</span></li>
+      <li data-goto="5"><span class="pn">5</span><span class="ti">Feature · Reading</span><span class="d">with Coach Okonjo</span></li>
+      <li data-goto="9"><span class="pn">9</span><span class="ti">Feature · Writing</span><span class="d">with Coach Delgado</span></li>
+      <li data-goto="13"><span class="pn">13</span><span class="ti">Feature · Listening</span><span class="d">with Coach Tran</span></li>
+      <li data-goto="17"><span class="pn">17</span><span class="ti">Feature · Speaking</span><span class="d">with Coach Bell</span></li>
+      <li data-goto="21"><span class="pn">21</span><span class="ti">Toolkit · The sixteen test moves</span><span class="d">Pull-out page for the wall</span></li>
+      <li data-goto="22"><span class="pn">22</span><span class="ti">Before the window</span><span class="d">Checklist and logistics</span></li>
+    </ul>
+    <div class="staff">
+      <div><b>Editor &amp; author</b>Richard A. Daniel, M.Ed.<br>ENL/EL Specialist</div>
+      <div><b>Design</b>EL Publishing Studio</div>
+      <div><b>Domain coaches</b>Okonjo · Delgado · Tran · Bell</div>
+      <div><b>Edition</b>Grades 9–12 · Emerging &amp; Progressing tracks</div>
+    </div>
+    <div class="legend">
+      <div><i></i>Listen: a coach reads the page aloud</div>
+      <div><i></i>▶ Run a routine with the live timer</div>
+      <div><i></i>Spotlight a lane from the top bar</div>
+      <div><i></i>Checklist and countdown remember themselves</div>
+    </div>
+    ${foot(1,'Contents')}
+  </div>`});
+  // 2 editor's letter
+  addPage({label:"From the specialist's desk",html:`<div class="pad">
+    ${head('From the specialist\'s desk')}
+    <div class="kick">Editor's letter</div>
+    <h2 class="display" style="font-size:34px">Every point is a student who was heard.</h2>
+    <div class="byline">Richard A. Daniel, M.Ed. · ENL/EL Specialist</div>
+    <p class="dropcap">Dear colleague, every winter the same thing happens. A student who talks in the hallway, jokes in class, and reads the cafeteria menu without help sits down at a Chromebook, puts on a headset, and goes quiet. The score that comes back in May does not describe the student we know. It describes the test conditions we never rehearsed.</p>
+    <p>This issue is built to close that gap. It is not a test-prep packet. It is the daily instruction that makes proficiency real, plus the last six weeks that make the format ordinary. Each feature follows the same arc: what the domain actually asks, a daily routine you can run tomorrow, the skills taught explicitly one week at a time, and the test moves that stop good students from losing points to a screen.</p>
+    <p>Everything here is organized around the four lanes we use at Laurel: Newcomer, Emerging, Progressing, and Challenge. Spotlight a lane from the top bar and the pages adjust. Tap <em>Listen</em> and a coach reads the page to you while you set up the room. Press ▶ on any routine and the timer runs it with you.</p>
+    <p>Use what works. Change what doesn't. And send me the routine you invented that beats mine; the next issue is already open.</p>
+    <div class="sig">Richard<small>Laurel, Mississippi · Winter 2026–27</small></div>
+    ${foot(2,"From the specialist's desk")}
+  </div>`});
+  // 3 at a glance
+  addPage({label:'The ELPT at a glance',html:`<div class="pad">
+    ${head('The ELPT at a glance')}
+    <div class="kick">Briefing</div>
+    <h2 class="display" style="font-size:32px">Four domains. Five levels. One rule.</h2>
+    <p class="deck">Mississippi's English Language Proficiency Test is the ELPA21 assessment, taken on a device in the spring window. It is untimed. Every domain is scored on five levels.</p>
+    <div class="glance">
+      ${DOMS.map(d=>`<div class="gcard" data-domain-jump="${d}">${SPOT[d]}<b>${D[d].name}</b><span>${({reading:'Passages on screen, selected-response items. The largest share of items and the exit gate.',writing:'Typed responses from one sentence to paragraphs, plus editing items. Scored by rubric.',listening:'Conversations, announcements and short lectures through a headset. Limited replays.',speaking:'Recorded responses into a microphone, scored by rubric for ideas, language and clarity.'})[d]}</span></div>`).join('')}
+    </div>
+    <div class="kick">Proficiency levels</div>
+    <div class="levels"><div class="l1">Level 1</div><div class="l2">Level 2</div><div class="l3">Level 3</div><div class="l4">Level 4</div><div class="l5">Level 5</div></div>
+    <div class="detlabels"><div style="flex:2">Emerging</div><div style="flex:2">Progressing</div><div style="flex:1">Proficient</div></div>
+    <div class="sidebar"><div class="kick">The rule that matters</div>A student's overall determination comes from the pattern of the four domain levels, and the exit decision follows the state's current rule for that determination. Reading and Writing are where most students sit one level short. Confirm the current MDE guidance each spring; it is the rule, not this page.</div>
+    ${foot(3,'The ELPT at a glance')}
+  </div>`});
+  // 4 calendar + countdown
+  addPage({label:'The calendar',html:`<div class="pad">
+    ${head('The calendar')}
+    <div class="kick">Planner</div>
+    <h2 class="display" style="font-size:32px">November to the window</h2>
+    <div class="timeline">
+      <div class="tl"><b>November – December</b>Daily domain routines. One skill per week. Group students by last year's weakest skill, not by overall level.</div>
+      <div class="tl"><b>January</b>Longer texts, audio and responses. Mix two skills per task. Begin weekly stamina sessions on the device.</div>
+      <div class="tl"><b>February</b>State practice test, twice. Teach the four test moves in every domain. Confirm MTAM accommodations match daily use.</div>
+      <div class="tl"><b>The window</b>Short warm-ups only. Headsets charged, quiet rooms, make-up list ready. Tell students: this shows growth; it does not pass or fail you.</div>
+    </div>
+    <div class="sidebar"><div class="kick">Your countdown</div>
+      <div class="count"><label for="winDate">Testing window opens</label><input type="date" id="winDate"><span class="big" id="winDays">—<small>set a date</small></span></div>
+      <p style="margin-top:6px;font-size:10.5px;color:#5A5A5A">Set it once; this page remembers it on this device. Check the exact 2027 dates with your district test coordinator.</p></div>
+    ${foot(4,'The calendar')}
+  </div>`});
+  // domain features: 4 pages each
+  DOMS.forEach((d,di)=>{
+    const dd=D[d], c=COACH[d], base=5+di*4;
+    const flapAll=stripRule(dd.flap);
+    const flapBody=flapAll.replace(/<p class="k">Levels<\/p>[\s\S]*$/,'');
+    const whyBox=(flapAll.match(/<div class="box">[\s\S]*?<\/div>/)||[''])[0];
+    addPage({domain:d,key:'A',label:`Feature · ${dd.name}`,html:`<div class="pad">
+      ${head(`Feature · ${dd.name}`)}
+      <div class="spot">${SPOT[d]}</div>
+      <div class="kick">Feature</div>
+      <h2 class="display" style="font-size:36px">Teaching<br>ELPT ${dd.name}</h2>
+      <p class="deck" style="max-width:380px">${dd.tagline}</p>
+      <div class="byline">With ${c.name} · ${c.role}</div>
+      <p class="dropcap">${INTRO[d]}</p>
+      <div class="coachcard" data-coach="${d}">${coachSVG(c)}<div class="cn"><b>${c.name}</b>Tap <em>Listen</em> at the top of any page in this feature and I'll read it to you.</div></div>
+      <h3 class="sec">What the test asks</h3>
+      ${flapBody}
+      ${foot(base,`Feature · ${dd.name}`)}
+    </div>`});
+    const k1=firstKick(dd.p1);
+    addPage({domain:d,key:'B',label:`${dd.name} · The daily routine`,html:`<div class="pad">
+      ${head(`${dd.name} · The daily routine`)}
+      <div class="kick">${k1.k}</div>
+      <h2 class="display" style="font-size:30px">${k1.t}</h2>
+      <button class="startbtn" data-start aria-label="Start the routine timer">▶ Run this routine with the timer</button>
+      ${stripRule(dd.p1)}
+      ${foot(base+1,`${dd.name} · Routine`)}
+    </div>`});
+    const k2=firstKick(dd.p2);
+    addPage({domain:d,key:'C',label:`${dd.name} · Six skills`,html:`<div class="pad">
+      ${head(`${dd.name} · Six skills, taught explicitly`)}
+      <div class="kick">${k2.k}</div>
+      <h2 class="display" style="font-size:30px">${k2.t}</h2>
+      ${stripRule(dd.p2)}
+      ${whyBox}
+      ${foot(base+2,`${dd.name} · Skills`)}
+    </div>`});
+    const k3=firstKick(dd.p3);
+    addPage({domain:d,key:'D',label:`${dd.name} · Test-format practice`,html:`<div class="pad">
+      ${head(`${dd.name} · Test-format practice`)}
+      <div class="kick">${k3.k}</div>
+      <h2 class="display" style="font-size:30px">${k3.t}</h2>
+      <div class="pull">${PULL[d]}</div>
+      ${stripRule(dd.p3)}
+      ${foot(base+3,`${dd.name} · Test practice`)}
+    </div>`});
+  });
+  // 21 toolkit: sixteen test moves
+  const moves={};
+  DOMS.forEach(d=>{ const m=[...D[d].p3.matchAll(/<div class="step"[^>]*><div class="num">\d<\/div><div><b>([^<]*)<\/b>([^<]*(?:<[^>]+>[^<]*)*?)<\/div><\/div>/g)].map(x=>({t:x[1],b:x[2].replace(/<[^>]+>/g,'')})); moves[d]=m; });
+  addPage({key:'toolkit',label:'Toolkit · The sixteen test moves',html:`<div class="pad">
+    ${head('Toolkit · Pull-out')}
+    <div class="kick">For the wall</div>
+    <h2 class="display" style="font-size:30px">The sixteen test moves</h2>
+    <p class="byline">Four per domain · teach them in February · post them by the testing room</p>
+    <div class="moves">${DOMS.map(d=>`<div class="move"><div class="dom">${D[d].name}</div>${moves[d].map((m,i)=>`<b>${i+1}. ${m.t}</b><span style="display:block;margin:0 0 5px;font-size:10.5px">${m.b}</span>`).join('')}</div>`).join('')}</div>
+    ${foot(21,'Toolkit')}
+  </div>`});
+  // 22 before the window: checklist
+  const check=(BACK.match(/<ul class="check">[\s\S]*?<\/ul>/)||[''])[0];
+  addPage({key:'checklist',label:'Before the window',html:`<div class="pad">
+    ${head('Before the window')}
+    <div class="kick">Logistics</div>
+    <h2 class="display" style="font-size:30px">Before the window</h2>
+    <p class="deck" style="font-size:13px">Five things that have to be true before the first student puts on a headset. <span class="cnt" data-cnt></span></p>
+    <div class="cprog"><i data-cbar></i></div>
+    ${check}
+    <div class="sidebar"><div class="kick">Accommodations</div>Set each student's MTAM accommodations now and make sure they match what students use in class all year. Coordinate with SPED on domain exemptions and Alt-ELP eligibility before the window opens.</div>
+    <div class="sidebar"><div class="kick">Use your data</div>Pull last year's domain scores and group students by their weakest domain. Students one level below Proficient get the Challenge lane and a weekly check-in; their growth counts toward exit.</div>
+    <div class="contact"><b>Questions or coaching?</b><br>Richard A. Daniel, M.Ed. · ENL/EL Specialist<br>EL Publishing · Many Voices · One Storm<br>richard.spanishteacher@gmail.com</div>
+    ${foot(22,'Before the window')}
+  </div>`});
+  // 23 back cover
+  addPage({label:'Back cover',cls:'back',html:`<div class="pad">
+    <div class="bigmark">${markSVG('#FFFFFF','#C9A227','transparent')}</div>
+    <div class="w">EL <i>Publishing</i></div>
+    <div class="s">Many Voices · One Storm</div>
+    <div class="more"><b>More from EL Publishing</b>ELPA21 Reading Studio · The Level 4 Lab · English On Your Own · Monday Moves · The Blueprint / El Plano · Storm Grammar Calisthenics<br><br><b>The hub</b><a href="https://radan55.github.io/everyteacher/">radan55.github.io/everyteacher</a><br><br><b>Write to the editor</b>richard.spanishteacher@gmail.com</div>
+  </div>`});
+}
+
+/* ================= flip engine ================= */
+const app=document.getElementById('app'), book=document.getElementById('book'), slotL=document.getElementById('slotL'), slotR=document.getElementById('slotR'), stage=document.getElementById('stage'), scaler=document.getElementById('scaler');
+const scrub=document.getElementById('scrub'), pageLbl=document.getElementById('pageLbl'), btnPrev=document.getElementById('btnPrev'), btnNext=document.getElementById('btnNext'), hint=document.getElementById('hint');
+let spread=0, turning=false, laneSel='all';
+const N=()=>PAGES.length, maxSpread=()=>Math.ceil((N()-1)/2);
+function pageEl(i){ if(i==null||i<0||i>=N()) return ''; const p=PAGES[i]; return `<div class="page ${p.cls||''}" data-page="${i}" ${p.domain?`data-domain="${p.domain}"`:''}>${p.html}</div>`; }
+function slots(k){ return {L:k===0?null:2*k-1, R:2*k<N()?2*k:null}; }
+function renderSpread(){
+  const s=slots(spread); slotL.innerHTML=pageEl(s.L); slotR.innerHTML=pageEl(s.R);
+  wire(slotL); wire(slotR); slotL.querySelectorAll('.page').forEach(p=>p.classList.add('reveal')); slotR.querySelectorAll('.page').forEach(p=>p.classList.add('reveal'));
+  app.dataset.spread = spread===0?'first': (s.R==null?'last':'mid');
+  scrub.max=maxSpread(); scrub.value=spread;
+  const lbl = spread===0?'Cover': s.R==null?`Page ${s.L}`:`Pages ${s.L}–${s.R}`; pageLbl.textContent=lbl;
+  btnPrev.disabled=spread===0; btnNext.disabled=spread>=maxSpread();
+  [s.L,s.R].forEach(i=>{ if(i!=null&&PAGES[i].domain) markProg(PAGES[i].domain,PAGES[i].key); });
+  updateTabs(); applyLane(); initChecklist(); initCountdown();
+}
+function turn(dir){
+  if(turning) return; const k=spread, nk=k+dir; if(nk<0||nk>maxSpread()) return; turning=true; stopSpeak(); pageSound();
+  const sheet=document.createElement('div'); sheet.className='sheet';
+  if(dir>0){ const f=2*k, b=2*k+1; sheet.style.left='var(--pw)'; sheet.style.transformOrigin='left center';
+    sheet.innerHTML=`<div class="face front">${pageEl(f)}</div><div class="face back">${pageEl(b)}</div>`;
+    slotR.innerHTML=pageEl(2*k+2<N()?2*k+2:null); book.appendChild(sheet); void sheet.offsetWidth; sheet.classList.add('turning'); sheet.style.transform='rotateY(-180deg)';
+  } else { const f=2*k-2, b=2*k-1; sheet.style.left='0'; sheet.style.transformOrigin='right center'; sheet.style.transform='rotateY(180deg)';
+    sheet.innerHTML=`<div class="face front">${pageEl(f)}</div><div class="face back">${pageEl(b)}</div>`;
+    slotL.innerHTML=pageEl(2*k-3>0?2*k-3:null); book.appendChild(sheet); void sheet.offsetWidth; sheet.classList.add('turning'); sheet.style.transform='rotateY(0deg)';
+  }
+  spread=nk; app.dataset.spread = spread===0?'first': (slots(spread).R==null?'last':'mid');
+  setTimeout(()=>{ sheet.remove(); turning=false; renderSpread(); },1080);
+}
+function goPage(i){ const target=Math.ceil(i/2); if(app.dataset.mode==='reader'){ const el=document.querySelector(`#reader .page[data-page="${i}"]`); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); return; }
+  if(target===spread) return; if(Math.abs(target-spread)===1){ turn(target-spread); return; }
+  stopSpeak(); pageSound(); book.style.transition='transform .25s'; book.style.opacity='0'; book.style.transform+=' scale(.97)';
+  setTimeout(()=>{ spread=target; renderSpread(); book.style.opacity=''; book.style.transform=''; book.style.transition=''; },260); }
+btnNext.addEventListener('click',()=>turn(1)); btnPrev.addEventListener('click',()=>turn(-1));
+scrub.addEventListener('input',()=>{ const v=+scrub.value; if(v!==spread) goPage(v*2); });
+/* swipe + click halves */
+let sw={x:0,t:0,on:false};
+stage.addEventListener('pointerdown',e=>{ if(e.target.closest('button,input,a,label,[data-goto],.gcard')) return; sw={x:e.clientX,t:Date.now(),on:true}; });
+stage.addEventListener('pointerup',e=>{ if(!sw.on) return; sw.on=false; const dx=e.clientX-sw.x; if(Math.abs(dx)>60){ turn(dx<0?1:-1); return; }
+  if(Math.abs(dx)<8 && !e.target.closest('button,input,a,label,[data-goto],.gcard,.step,.listen')){ const r=scaler.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width; if(spread===0) turn(1); else if(x>0.5) turn(1); else turn(-1); } });
+document.addEventListener('keydown',e=>{ if(e.target.matches('input,textarea')) return;
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); if(app.dataset.mode==='book') turn(1); }
+  if(e.key==='ArrowLeft'){ if(app.dataset.mode==='book') turn(-1); }
+  if(e.key==='Escape') stopSpeak();
+  if(e.key==='Home') goPage(0); if(e.key==='End') goPage(N()-1);
+  const n=['1','2','3','4'].indexOf(e.key); if(n>-1) goPage(5+n*4); });
+
+/* ================= wiring inside pages ================= */
+function wire(root){
+  root.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>turn(1)));
+  root.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>goPage(+b.dataset.goto)));
+  root.querySelectorAll('[data-domain-jump]').forEach(b=>b.addEventListener('click',()=>goPage(5+DOMS.indexOf(b.dataset.domainJump)*4)));
+  root.querySelectorAll('[data-start]').forEach(b=>b.addEventListener('click',()=>startTimer(b.closest('.page'))));
+  root.querySelectorAll('.step[data-min]').forEach(s=>s.addEventListener('click',()=>startTimer(s.closest('.page'),+s.dataset.step-1)));
+  root.querySelectorAll('[data-listen]').forEach(b=>b.addEventListener('click',()=>{ if(b.getAttribute('aria-pressed')==='true'){stopSpeak();return;} stopSpeak(); b.setAttribute('aria-pressed','true');
+    const pg=b.closest('.page'); const d=pg.dataset.domain; const who=d?COACH[d].name+' here.':'EL Publishing.'; speakText(`${who} ${pageText(pg)}`, pg); }));
+}
+function pageText(el){ const c=el.cloneNode(true); c.querySelectorAll('button,input,.listen,.cnt,.cprog,.pg-foot,.pg-head,.spot,svg').forEach(x=>x.remove()); return c.textContent.replace(/\s+/g,' ').trim(); }
+
+/* ================= speech ================= */
+function speakText(text,pg){ if(!('speechSynthesis' in window)){ toast('Read-aloud is not available in this browser'); return; }
+  const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.95;
+  const vs=speechSynthesis.getVoices(); const v=vs.find(x=>/en-US/i.test(x.lang)&&/natural|premium|enhanced|google/i.test(x.name))||vs.find(x=>/en-US/i.test(x.lang))||vs.find(x=>/^en/i.test(x.lang)); if(v) u.voice=v;
+  u.onend=u.onerror=()=>stopSpeak(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.add('talking')); speechSynthesis.speak(u); }
+function stopSpeak(){ if('speechSynthesis' in window) speechSynthesis.cancel(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.remove('talking')); document.querySelectorAll('.listen').forEach(b=>b.setAttribute('aria-pressed','false')); }
+
+/* ================= sound ================= */
+let AC=null, soundOn=true;
+function pageSound(){ if(!soundOn) return; try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended') AC.resume();
+  const dur=0.42, n=AC.sampleRate*dur, buf=AC.createBuffer(1,n,AC.sampleRate), d=buf.getChannelData(0);
+  for(let i=0;i<n;i++){ const t=i/n; d[i]=(Math.random()*2-1)*Math.sin(Math.PI*t)*Math.pow(1-t,1.2); }
+  const src=AC.createBufferSource(); src.buffer=buf; const f=AC.createBiquadFilter(); f.type='bandpass'; f.frequency.setValueAtTime(900,AC.currentTime); f.frequency.exponentialRampToValueAtTime(2600,AC.currentTime+dur); f.Q.value=0.8;
+  const g=AC.createGain(); g.gain.value=0.16; src.connect(f); f.connect(g); g.connect(AC.destination); src.start(); }catch(e){} }
+function chime(){ if(!soundOn) return; try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)(); [523,659,784,1046].forEach((f,i)=>{ const o=AC.createOscillator(), g=AC.createGain(); o.frequency.value=f; o.type='triangle'; g.gain.setValueAtTime(0.0001,AC.currentTime+i*.12); g.gain.exponentialRampToValueAtTime(0.12,AC.currentTime+i*.12+.02); g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+i*.12+.5); o.connect(g); g.connect(AC.destination); o.start(AC.currentTime+i*.12); o.stop(AC.currentTime+i*.12+.55); }); }catch(e){} }
+
+/* ================= progress ================= */
+function loadJ(k){ try{return JSON.parse(localStorage.getItem(k)||'{}')}catch(e){return {}} } function saveJ(k,o){ try{localStorage.setItem(k,JSON.stringify(o))}catch(e){} }
+function markProg(d,key){ const p=loadJ('elpt-mag-prog'); p[d]=p[d]||{}; if(p[d][key]) return; p[d][key]=true; saveJ('elpt-mag-prog',p); drawProg();
+  if(['A','B','C','D','routine'].every(k=>p[d][k])){ confetti(200); chime(); toast(`${D[d].name} feature complete — ${COACH[d].name} is proud of you`); } }
+function drawProg(){ const p=loadJ('elpt-mag-prog'); document.querySelectorAll('.tab[data-domain]').forEach(t=>{ const d=p[t.dataset.domain]||{}; const n=['A','B','C','D','routine'].filter(k=>d[k]).length; t.querySelector('.fg').style.strokeDashoffset=47.1*(1-n/5); }); }
+function updateTabs(){ const s=slots(spread); const ds=[s.L,s.R].map(i=>i!=null&&PAGES[i].domain).filter(Boolean);
+  document.querySelectorAll('.tab[data-domain]').forEach(t=>t.setAttribute('aria-selected',ds.includes(t.dataset.domain)?'true':'false'));
+  document.querySelectorAll('.tab[data-jump]').forEach(t=>t.setAttribute('aria-selected',[s.L,s.R].some(i=>i!=null&&PAGES[i].key===t.dataset.jump)?'true':'false')); }
+document.querySelectorAll('.tab[data-domain]').forEach(t=>t.addEventListener('click',()=>goPage(5+DOMS.indexOf(t.dataset.domain)*4)));
+document.querySelectorAll('.tab[data-jump]').forEach(t=>t.addEventListener('click',()=>goPage(PAGES.findIndex(p=>p.key===t.dataset.jump))));
+
+/* ================= lane, checklist, countdown ================= */
+function applyLane(){ app.dataset.lane=laneSel; document.querySelectorAll('.lane').forEach(l=>l.classList.toggle('on',l.dataset.lane===laneSel)); }
+document.querySelectorAll('.lb').forEach(b=>b.addEventListener('click',()=>{ laneSel=b.dataset.lane; document.querySelectorAll('.lb').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false')); applyLane(); }));
+function initChecklist(){ const st=loadJ('elpt-check');
+  document.querySelectorAll('[data-ck]').forEach(cb=>{ cb.checked=!!st[cb.dataset.ck]; if(cb._w) return; cb._w=true;
+    cb.addEventListener('change',()=>{ const o=loadJ('elpt-check'); o[cb.dataset.ck]=cb.checked; saveJ('elpt-check',o); document.querySelectorAll(`[data-ck="${cb.dataset.ck}"]`).forEach(x=>x.checked=cb.checked); updateCk(); }); });
+  updateCk(); }
+function updateCk(){ const st=loadJ('elpt-check'), n=Object.values(st).filter(Boolean).length;
+  document.querySelectorAll('[data-cnt]').forEach(el=>el.textContent=`${n}/5 done.`); document.querySelectorAll('[data-cbar]').forEach(el=>el.style.width=`${n/5*100}%`);
+  if(n===5 && updateCk.last!==5 && updateCk.last!==undefined){ confetti(220); chime(); toast('Checklist complete — ready for the window'); } updateCk.last=n; }
+function initCountdown(){ document.querySelectorAll('#winDate, [data-win]').forEach(inp=>{ let v=''; try{v=localStorage.getItem('elpt-win')||''}catch(e){} inp.value=v; if(!inp._w){ inp._w=true; inp.addEventListener('change',()=>{ try{localStorage.setItem('elpt-win',inp.value)}catch(e){} drawDays(); if(inp.value) toast('Countdown set'); }); } }); drawDays(); }
+function drawDays(){ let v=''; try{v=localStorage.getItem('elpt-win')||''}catch(e){}
+  document.querySelectorAll('#winDays,[data-days]').forEach(el=>{ if(!v){ el.innerHTML='—<small>set a date</small>'; return; } const d=Math.ceil((new Date(v+'T00:00:00')-new Date().setHours(0,0,0,0))/86400000);
+    el.innerHTML = d>0 ? `${d}<small>days to go</small>` : d===0 ? `Today<small>window opens</small>` : `Open<small>${-d} days in</small>`; }); }
+
+/* ================= timer ================= */
+const tb=document.getElementById('timerbar'), tStep=document.getElementById('tStep'), tSub=document.getElementById('tSub'), tClock=document.getElementById('tClock'), tBar=document.getElementById('tBar'), tPlay=document.getElementById('tPlay');
+let T={steps:[],i:0,left:0,total:0,run:false,id:null,dom:null};
+function startTimer(pg,idx=0){ stopTimer(false); T.dom=pg.dataset.domain; T.steps=[...pg.querySelectorAll('.step[data-min]')].map(s=>({el:s,name:s.querySelector('b').textContent.replace(/,\s*\d+\s*min/,''),min:+s.dataset.min})); if(!T.steps.length) return;
+  T.i=idx; loadStep(); T.run=true; tPlay.textContent='Pause'; tb.classList.add('show'); tick(); markProg(T.dom,'routine'); }
+function loadStep(){ const s=T.steps[T.i]; T.total=s.min*60; T.left=T.total; T.steps.forEach((x,k)=>{x.el.classList.toggle('active',k===T.i); x.el.classList.toggle('done',k<T.i)});
+  tStep.textContent=`Step ${T.i+1} of ${T.steps.length}: ${s.name}`; tSub.textContent=ROUTINE_NAME[T.dom]; draw(); }
+function draw(){ const m=Math.floor(T.left/60), s=T.left%60; tClock.textContent=`${m}:${s<10?'0':''}${s}`; tBar.style.width=`${(1-T.left/T.total)*100}%`; }
+function tick(){ clearInterval(T.id); T.id=setInterval(()=>{ if(!T.run) return; T.left--; draw();
+  if(T.left<=0){ tb.classList.remove('flash'); void tb.offsetWidth; tb.classList.add('flash');
+    if(T.i<T.steps.length-1){ T.i++; loadStep(); toast(`Next: ${T.steps[T.i].name}`); chime(); }
+    else { T.run=false; tPlay.textContent='Done ✓'; T.steps.forEach(x=>{x.el.classList.add('done');x.el.classList.remove('active')}); clearInterval(T.id); confetti(); chime(); toast('Routine complete!'); } } },1000); }
+function stopTimer(hide=true){ clearInterval(T.id); T.run=false; document.querySelectorAll('.step').forEach(x=>x.classList.remove('active','done')); if(hide) tb.classList.remove('show'); }
+tPlay.addEventListener('click',()=>{ if(tPlay.textContent==='Done ✓'){ T.i=0; loadStep(); T.run=true; tPlay.textContent='Pause'; tick(); return; } T.run=!T.run; tPlay.textContent=T.run?'Pause':'Resume'; });
+document.getElementById('tNext').addEventListener('click',()=>{ if(T.i<T.steps.length-1){T.i++;loadStep();} });
+document.getElementById('tPrev').addEventListener('click',()=>{ if(T.i>0){T.i--;loadStep();} else loadStep(); });
+document.getElementById('tStop').addEventListener('click',()=>stopTimer());
+
+/* ================= toast + confetti ================= */
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2600); }
+const cv=document.getElementById('confetti'), cx=cv.getContext('2d'); let parts=[], raf=null;
+function confetti(n=160){ cv.width=innerWidth; cv.height=innerHeight; const cols=['#1E2761','#C9A227','#E8D28A','#5B7A52','#FFFFFF'];
+  for(let i=0;i<n;i++) parts.push({x:innerWidth/2+(Math.random()-.5)*200,y:innerHeight*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*6+3,c:cols[i%cols.length],a:Math.random()*6,va:(Math.random()-.5)*.3,life:1}); if(!raf) frame(); }
+function frame(){ cx.clearRect(0,0,cv.width,cv.height); parts=parts.filter(p=>p.life>0);
+  parts.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a+=p.va;p.life-=.008;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.globalAlpha=Math.max(0,p.life);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6);cx.restore();});
+  raf=parts.length?requestAnimationFrame(frame):null; if(!raf) cx.clearRect(0,0,cv.width,cv.height); }
+
+/* ================= chrome: theme, sound, mode, present, share ================= */
+const btnTheme=document.getElementById('btnTheme');
+function setTheme(t){ document.documentElement.dataset.theme=t; btnTheme.setAttribute('aria-pressed',t==='dark'?'true':'false'); btnTheme.textContent=t==='dark'?'☀ Daylight':'◐ Midnight'; try{localStorage.setItem('elhub.theme',t)}catch(e){} }
+btnTheme.addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
+try{ setTheme(localStorage.getItem('elhub.theme')||document.documentElement.dataset.theme||'light'); }catch(e){ setTheme('light'); }
+new MutationObserver(()=>{ const t=document.documentElement.dataset.theme; btnTheme.setAttribute('aria-pressed',t==='dark'?'true':'false'); btnTheme.textContent=t==='dark'?'☀ Daylight':'◐ Midnight'; }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+const btnSound=document.getElementById('btnSound');
+btnSound.addEventListener('click',()=>{ soundOn=!soundOn; btnSound.setAttribute('aria-pressed',soundOn?'true':'false'); btnSound.textContent=soundOn?'♪ Sound':'♪ Muted'; if(soundOn) pageSound(); else stopSpeak(); });
+document.getElementById('btnShare').addEventListener('click',()=>{ const u=location.href.split('#')[0]; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(u).then(()=>toast('Link copied — share the issue with your staff')).catch(()=>toast(u)); } else toast(u); });
+const btnMode=document.getElementById('btnMode'), reader=document.getElementById('reader');
+function setMode(m){ app.dataset.mode=m; btnMode.textContent=m==='book'?'☰ Reader':'📖 Magazine'; stopSpeak(); stopTimer();
+  if(m==='reader'){ reader.innerHTML=PAGES.map((p,i)=>pageEl(i)).join(''); wire(reader); applyLane(); initChecklist(); initCountdown(); DOMS.forEach(d=>['A','B','C','D'].forEach(k=>markProg(d,k))); } else { reader.innerHTML=''; renderSpread(); fit(); } }
+btnMode.addEventListener('click',()=>setMode(app.dataset.mode==='book'?'reader':'book'));
+document.getElementById('btnPresent').addEventListener('click',()=>{ if(document.fullscreenElement){ document.exitFullscreen().catch(()=>{}); return; } if(stage.requestFullscreen) stage.requestFullscreen().then(()=>setTimeout(fit,150)).catch(()=>toast('Full screen is not available here')); });
+document.addEventListener('fullscreenchange',()=>setTimeout(fit,100));
+
+/* ================= fit + intro + boot ================= */
+function fit(){ const fs=!!document.fullscreenElement; const w=fs?innerWidth:stage.clientWidth, h=fs?innerHeight-20:Infinity; const s=Math.min(1.08,w/1120,h/760);
+  scaler.style.transform=`scale(${s})`; scaler.style.marginLeft=`${Math.max(0,(w-1120*s)/2)}px`; if(!fs) stage.style.height=`${760*s+32}px`; else stage.style.height=''; }
+window.addEventListener('resize',()=>{fit(); if(parts.length){cv.width=innerWidth;cv.height=innerHeight;}});
+const intro=document.getElementById('intro');
+function endIntro(){ if(intro.classList.contains('gone')) return; intro.classList.add('gone'); pageSound(); }
+intro.addEventListener('click',endIntro); setTimeout(endIntro,3600);
+if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=()=>{}; speechSynthesis.getVoices(); }
+build(); updateCk.last=Object.values(loadJ('elpt-check')).filter(Boolean).length; drawProg();
+if(window.innerWidth<700){ setMode('reader'); } else { renderSpread(); fit(); }
+</script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
