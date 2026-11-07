@@ -38,4 +38,11 @@ V = [
   "Tireless Teacher",
   "School award", "Starkville High School",
   "A gold-painted tire award reading “Tireless Teacher” with a yellow jacket mascot"),
+
+ ("bmj-proficiency.jpg",
+  "18.8% of English learners reached English proficiency, ahead of the district and the state.",
+  "School result", "Bettye Mae Jack Middle School · MDE Report Card, 2025–26",
+  "Trophy graphic: 18.8% of English learners at Bettye Mae Jack Middle School reached English "
+  "proficiency in 2025–2026, compared with 16.6% for Mississippi and 12.3% for the Scott County "
+  "district (MDE Report Card)"),
 ]
