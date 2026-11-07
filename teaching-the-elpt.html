@@ -299,6 +299,7 @@ th{color:var(--navy);border-bottom-width:2px;font-family:Fraunces,Georgia,serif;
       <button class="ic" id="btnTheme" aria-pressed="false">◐ Midnight</button>
       <button class="ic bookonly" id="btnPresent">▣ Present</button>
       <button class="ic" id="btnSound" aria-pressed="true">♪ Sound</button>
+      <button class="ic" id="btnVoice">🔊 Test voice</button>
       <button class="ic" id="btnMode">☰ Reader</button>
       <button class="ic" id="btnShare">⤴ Copy link</button>
     </div>
@@ -830,12 +831,33 @@ function wire(root){
 }
 function pageText(el){ const c=el.cloneNode(true); c.querySelectorAll('button,input,.listen,.cnt,.cprog,.pg-foot,.pg-head,.spot,svg').forEach(x=>x.remove()); return c.textContent.replace(/\s+/g,' ').trim(); }
 
-/* ================= speech ================= */
-function speakText(text,pg){ if(!('speechSynthesis' in window)){ toast('Read-aloud is not available in this browser'); return; }
-  const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.95;
-  const vs=speechSynthesis.getVoices(); const v=vs.find(x=>/en-US/i.test(x.lang)&&/natural|premium|enhanced|google/i.test(x.name))||vs.find(x=>/en-US/i.test(x.lang))||vs.find(x=>/^en/i.test(x.lang)); if(v) u.voice=v;
-  u.onend=u.onerror=()=>stopSpeak(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.add('talking')); speechSynthesis.speak(u); }
-function stopSpeak(){ if('speechSynthesis' in window) speechSynthesis.cancel(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.remove('talking')); document.querySelectorAll('.listen').forEach(b=>b.setAttribute('aria-pressed','false')); }
+/* ================= speech (phone-safe) ================= */
+const SS=('speechSynthesis' in window)?window.speechSynthesis:null;
+let VOICES=[], speakQ=[], speakingNow=false, keepId=null; const utterRefs=[]; // refs keep iOS from garbage-collecting utterances mid-speech
+const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&/Mac/.test(navigator.platform));
+function loadVoices(){ if(!SS) return; VOICES=SS.getVoices()||[]; }
+if(SS){ loadVoices(); SS.onvoiceschanged=loadVoices; }
+function pickVoice(){ if(!VOICES.length) loadVoices(); const en=VOICES.filter(v=>/^en/i.test(v.lang));
+  return en.find(v=>v.localService&&/en-US/i.test(v.lang)&&/natural|enhanced|premium|samantha|google us/i.test(v.name))||en.find(v=>v.localService&&/en-US/i.test(v.lang))||en.find(v=>/en-US/i.test(v.lang))||en.find(v=>v.localService)||en[0]||null; }
+function chunks(text){ const out=[]; let cur=''; (text.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g)||[text]).forEach(s=>{ if((cur+s).length>170&&cur){ out.push(cur.trim()); cur=s; } else cur+=s; }); if(cur.trim()) out.push(cur.trim()); return out; }
+function speakText(text){
+  if(!SS){ toast('Read-aloud is not available in this browser — try Chrome or Safari'); return; }
+  cancelSpeech(); const parts=chunks(text); if(!parts.length) return; speakQ=parts.slice(); speakingNow=true;
+  document.querySelectorAll('.coachcard').forEach(c=>c.classList.add('talking'));
+  // Android Chrome drops an utterance queued in the same tick as cancel(); wait a beat.
+  setTimeout(speakNext, 140);
+  if(!isMobile){ clearInterval(keepId); keepId=setInterval(()=>{ if(SS.speaking&&!SS.paused){ SS.pause(); SS.resume(); } },9000); } // desktop Chrome stops after ~15 s without this
+  speakText._watch=setTimeout(()=>{ if(speakingNow && !SS.speaking){ stopSpeak(); toast('No voice played. Turn the phone off silent, raise the volume, or tap Test voice.'); } },1800);
+}
+function speakNext(){ if(!speakingNow) return; if(!speakQ.length){ stopSpeak(); return; }
+  const u=new SpeechSynthesisUtterance(speakQ.shift()); u.lang='en-US'; u.rate=isMobile?1:0.95; u.pitch=1; const v=pickVoice(); if(v) u.voice=v;
+  u.onend=()=>{ utterRefs.length=0; setTimeout(speakNext,40); }; u.onerror=(ev)=>{ if(ev.error==='interrupted'||ev.error==='canceled') return; setTimeout(speakNext,40); };
+  utterRefs.push(u); try{ SS.speak(u); }catch(e){ stopSpeak(); toast('Read-aloud failed to start on this device'); } }
+function cancelSpeech(){ speakingNow=false; speakQ=[]; clearInterval(keepId); clearTimeout(speakText._watch); if(SS){ try{ SS.cancel(); }catch(e){} } }
+function stopSpeak(){ cancelSpeech(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.remove('talking')); document.querySelectorAll('.listen').forEach(b=>b.setAttribute('aria-pressed','false')); }
+function testVoice(){ if(!SS){ toast('This browser has no read-aloud voice'); return; } loadVoices(); const v=pickVoice();
+  speakText('This is your EL Publishing coach. If you can hear me, read-aloud is working.'); toast(v?`Voice: ${v.name}`:'Loading voices… tap again if you hear nothing'); }
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) stopSpeak(); });
 
 /* ================= sound ================= */
 let AC=null, soundOn=true;
@@ -906,6 +928,7 @@ btnTheme.addEventListener('click',()=>setTheme(document.documentElement.dataset.
 try{ setTheme(localStorage.getItem('elhub.theme')||document.documentElement.dataset.theme||'light'); }catch(e){ setTheme('light'); }
 new MutationObserver(()=>{ const t=document.documentElement.dataset.theme; btnTheme.setAttribute('aria-pressed',t==='dark'?'true':'false'); btnTheme.textContent=t==='dark'?'☀ Daylight':'◐ Midnight'; }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 const btnSound=document.getElementById('btnSound');
+document.getElementById('btnVoice').addEventListener('click',testVoice);
 btnSound.addEventListener('click',()=>{ soundOn=!soundOn; btnSound.setAttribute('aria-pressed',soundOn?'true':'false'); btnSound.textContent=soundOn?'♪ Sound':'♪ Muted'; if(soundOn) pageSound(); else stopSpeak(); });
 document.getElementById('btnShare').addEventListener('click',()=>{ const u=location.href.split('#')[0]; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(u).then(()=>toast('Link copied — share the issue with your staff')).catch(()=>toast(u)); } else toast(u); });
 const btnMode=document.getElementById('btnMode'), reader=document.getElementById('reader');
