@@ -270,6 +270,14 @@ th{color:var(--navy);border-bottom-width:2px;font-family:Fraunces,Georgia,serif;
 .intro .curtain{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0 48%,rgba(201,162,39,.25) 50%,transparent 52% 100%);background-size:300% 100%;animation:shine 2.6s linear infinite;pointer-events:none}
 .reveal>.pad>*{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
 .reveal>.pad>*:nth-child(2){animation-delay:.06s}.reveal>.pad>*:nth-child(3){animation-delay:.12s}.reveal>.pad>*:nth-child(4){animation-delay:.18s}.reveal>.pad>*:nth-child(5){animation-delay:.24s}.reveal>.pad>*:nth-child(6){animation-delay:.3s}.reveal>.pad>*:nth-child(n+7){animation-delay:.36s}
+.vdlg{position:fixed;inset:0;background:rgba(10,14,40,.6);display:none;align-items:center;justify-content:center;z-index:85;padding:14px}
+.vdlg.on{display:flex}
+.vbox{background:var(--surface);color:var(--text);border-radius:14px;width:min(560px,96vw);max-height:86vh;overflow:auto;padding:16px 18px;border:1px solid rgba(201,162,39,.5)}
+.vh{display:flex;justify-content:space-between;align-items:center;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--chrome);margin-bottom:6px}
+.vn{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.vrow{display:flex;gap:10px;align-items:center;padding:9px 6px;border-bottom:1px solid var(--line);cursor:pointer;font-size:13.5px}
+.vrow span{flex:1}.vrow small{color:var(--muted)}.vrow input{accent-color:var(--gold);width:18px;height:18px}
+.vrow .vp{border:1.5px solid var(--chrome);background:transparent;color:var(--chrome);border-radius:999px;width:40px;height:40px;cursor:pointer;font-size:13px}
 .sitefoot{margin-top:24px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .sitefoot a{color:var(--chrome)}
 .stage:fullscreen{background:var(--navy-dk);padding:0;display:flex;align-items:center;justify-content:center}
@@ -300,6 +308,7 @@ th{color:var(--navy);border-bottom-width:2px;font-family:Fraunces,Georgia,serif;
       <button class="ic bookonly" id="btnPresent">▣ Present</button>
       <button class="ic" id="btnSound" aria-pressed="true">♪ Sound</button>
       <button class="ic" id="btnVoice">🔊 Test voice</button>
+      <button class="ic" id="btnPick">🎙 Voice</button>
       <button class="ic" id="btnMode">☰ Reader</button>
       <button class="ic" id="btnShare">⤴ Copy link</button>
     </div>
@@ -349,6 +358,7 @@ th{color:var(--navy);border-bottom-width:2px;font-family:Fraunces,Georgia,serif;
   <div class="sitefoot"><span id="footMark" style="width:22px;height:22px;display:inline-block"></span><span>EL Publishing · Teaching the ELPT · Special Issue, Winter 2026–27 · <a href="https://radan55.github.io/everyteacher/">EL Publishing Hub</a></span></div>
 </div>
 
+<div class="vdlg" id="voiceDlg" role="dialog" aria-label="Choose a reading voice"><div class="vbox"><div class="vh"><b>Choose a reading voice</b><button class="ic" id="voiceClose">Done</button></div><p class="vn">Voices come from your phone or computer. The ones marked <em>natural</em> sound best; on iPhone, Settings › Accessibility › Spoken Content › Voices lets you download enhanced voices.</p><div class="vlist"></div></div></div>
 <div class="timerbar" id="timerbar" role="region" aria-label="Routine timer" aria-live="polite">
   <div class="tname"><span id="tStep">Routine</span><small id="tSub">Daily routine</small></div>
   <div class="clock" id="tClock">0:00</div>
@@ -829,7 +839,7 @@ function wire(root){
   root.querySelectorAll('[data-listen]').forEach(b=>b.addEventListener('click',()=>{ if(b.getAttribute('aria-pressed')==='true'){stopSpeak();return;} stopSpeak(); b.setAttribute('aria-pressed','true');
     const pg=b.closest('.page'); const d=pg.dataset.domain; const who=d?COACH[d].name+' here.':'EL Publishing.'; speakText(`${who} ${pageText(pg)}`, pg); }));
 }
-function pageText(el){ const c=el.cloneNode(true); c.querySelectorAll('button,input,.listen,.cnt,.cprog,.pg-foot,.pg-head,.spot,svg').forEach(x=>x.remove()); return c.textContent.replace(/\s+/g,' ').trim(); }
+function pageText(el){ const c=el.cloneNode(true); c.querySelectorAll('button,input,.listen,.cnt,.cprog,.pg-foot,.pg-head,.spot,svg').forEach(x=>x.remove()); c.querySelectorAll('br').forEach(b=>b.replaceWith(' ')); c.querySelectorAll('h1,h2,h3,h4,p,li,div,td,th,tr').forEach(b=>{ b.append(document.createTextNode(/[.!?:]\s*$/.test(b.textContent.trim())?' ':'. ')); }); return c.textContent.replace(/\s+/g,' ').replace(/(\.\s*){2,}/g,'. ').replace(/\s+\./g,'.').trim(); }
 
 /* ================= speech (phone-safe) ================= */
 const SS=('speechSynthesis' in window)?window.speechSynthesis:null;
@@ -837,12 +847,24 @@ let VOICES=[], speakQ=[], speakingNow=false, keepId=null; const utterRefs=[]; //
 const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.maxTouchPoints>1&&/Mac/.test(navigator.platform));
 function loadVoices(){ if(!SS) return; VOICES=SS.getVoices()||[]; }
 if(SS){ loadVoices(); SS.onvoiceschanged=loadVoices; }
-function pickVoice(){ if(!VOICES.length) loadVoices(); const en=VOICES.filter(v=>/^en/i.test(v.lang));
-  return en.find(v=>v.localService&&/en-US/i.test(v.lang)&&/natural|enhanced|premium|samantha|google us/i.test(v.name))||en.find(v=>v.localService&&/en-US/i.test(v.lang))||en.find(v=>/en-US/i.test(v.lang))||en.find(v=>v.localService)||en[0]||null; }
+const NATURAL=/natural|neural|premium|enhanced|online|google|siri|samantha|ava|allison|zoe|aria|jenny|guy|davis|emma|andrew|brian|libby|sonia|ryan|karen|moira|daniel|fiona|nicky|evan|tom|aaron/i;
+function scoreVoice(v){ let s=0; if(/^en/i.test(v.lang)) s+=10; if(/en-US/i.test(v.lang)) s+=4; if(NATURAL.test(v.name)) s+=6; if(/natural|neural|premium|enhanced/i.test(v.name)) s+=6; if(/google/i.test(v.name)&&/US/i.test(v.name)) s+=5; if(/siri/i.test(v.name)) s+=5; if(/compact|espeak|robot|flo|bells|bubbles|cellos|zarvox|trinoids|whisper|wobble|bad news|good news|organ|boing|deranged|hysterical|jester|junior|ralph|kathy|fred|albert/i.test(v.name)) s-=15; if(v.localService) s+=1; return s; }
+function rankedVoices(){ if(!VOICES.length) loadVoices(); return VOICES.filter(v=>/^en/i.test(v.lang)).sort((a,b)=>scoreVoice(b)-scoreVoice(a)); }
+let currentCoach=null;
+function pickVoice(){ const r=rankedVoices(); if(!r.length) return null; let want=''; try{ want=localStorage.getItem('elpt-voice')||''; }catch(e){}
+  if(want){ const v=r.find(x=>x.name===want); if(v) return v; }
+  if(currentCoach){ const i=DOMS.indexOf(currentCoach); const top=r.filter(v=>scoreVoice(v)>=scoreVoice(r[0])-4); if(top.length>1) return top[i%top.length]; }
+  return r[0]; }
+function forEar(text){ return text
+  .replace(/\b([A-Z][A-Z ]{3,})\b/g,m=>/^(ELPT|ELPA21|MTAM|SPED|MDE|PLC)$/.test(m.trim())?m:m.charAt(0)+m.slice(1).toLowerCase())
+  .replace(/\bELPT\b/g,'E L P T').replace(/\bELPA21\b/g,'ELPA twenty-one').replace(/\bMTAM\b/g,'M T A M').replace(/\bSPED\b/g,'special education').replace(/\bMDE\b/g,'M D E').replace(/\bPLC\b/g,'P L C').replace(/\bL1\b/g,'first language')
+  .replace(/§\s?15/g,'section 15').replace(/\bp\.\s?(\d+)/g,'page $1').replace(/(\d+)\s*min\b/g,'$1 minutes').replace(/\b(\d+)[–-](\d+)\b/g,'$1 to $2')
+  .replace(/\b9\s*to\s*12\b/g,'nine to twelve').replace(/\bK\s*to\s*(\d+)\b/g,'K to $1').replace(/\s*·\s*/g,'. ').replace(/\s*[—–]\s*/g,', ').replace(/\s*→\s*/g,', then ').replace(/[✦▶•]/g,'')
+  .replace(/___/g,'blank').replace(/\s{2,}/g,' ').replace(/\.\s*\./g,'.').trim(); }
 function chunks(text){ const out=[]; let cur=''; (text.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g)||[text]).forEach(s=>{ if((cur+s).length>170&&cur){ out.push(cur.trim()); cur=s; } else cur+=s; }); if(cur.trim()) out.push(cur.trim()); return out; }
 function speakText(text){
   if(!SS){ toast('Read-aloud is not available in this browser — try Chrome or Safari'); return; }
-  cancelSpeech(); const parts=chunks(text); if(!parts.length) return; speakQ=parts.slice(); speakingNow=true;
+  cancelSpeech(); const parts=chunks(forEar(text)); if(!parts.length) return; speakQ=parts.slice(); speakingNow=true;
   document.querySelectorAll('.coachcard').forEach(c=>c.classList.add('talking'));
   // Android Chrome drops an utterance queued in the same tick as cancel(); wait a beat.
   setTimeout(speakNext, 140);
@@ -850,11 +872,17 @@ function speakText(text){
   speakText._watch=setTimeout(()=>{ if(speakingNow && !SS.speaking){ stopSpeak(); toast('No voice played. Turn the phone off silent, raise the volume, or tap Test voice.'); } },1800);
 }
 function speakNext(){ if(!speakingNow) return; if(!speakQ.length){ stopSpeak(); return; }
-  const u=new SpeechSynthesisUtterance(speakQ.shift()); u.lang='en-US'; u.rate=isMobile?1:0.95; u.pitch=1; const v=pickVoice(); if(v) u.voice=v;
-  u.onend=()=>{ utterRefs.length=0; setTimeout(speakNext,40); }; u.onerror=(ev)=>{ if(ev.error==='interrupted'||ev.error==='canceled') return; setTimeout(speakNext,40); };
+  const u=new SpeechSynthesisUtterance(speakQ.shift()); u.lang='en-US'; u.rate=isMobile?0.98:0.95; u.pitch=1.02; const v=pickVoice(); if(v) u.voice=v;
+  u.onend=()=>{ utterRefs.length=0; setTimeout(speakNext,/[.!?]$/.test(u.text)?260:90); }; u.onerror=(ev)=>{ if(ev.error==='interrupted'||ev.error==='canceled') return; setTimeout(speakNext,40); };
   utterRefs.push(u); try{ SS.speak(u); }catch(e){ stopSpeak(); toast('Read-aloud failed to start on this device'); } }
 function cancelSpeech(){ speakingNow=false; speakQ=[]; clearInterval(keepId); clearTimeout(speakText._watch); if(SS){ try{ SS.cancel(); }catch(e){} } }
 function stopSpeak(){ cancelSpeech(); document.querySelectorAll('.coachcard').forEach(c=>c.classList.remove('talking')); document.querySelectorAll('.listen').forEach(b=>b.setAttribute('aria-pressed','false')); }
+function voicePicker(){ const r=rankedVoices(); if(!r.length){ toast('No voices yet. Tap Test voice once, then try again.'); return; }
+  let cur=''; try{cur=localStorage.getItem('elpt-voice')||''}catch(e){}
+  const dlg=document.getElementById('voiceDlg'); dlg.querySelector('.vlist').innerHTML=`<label class="vrow"><input type="radio" name="v" value="" ${cur?'':'checked'}><span><b>Automatic</b> — best voice on this device, a different one per coach</span></label>`+
+    r.slice(0,14).map(v=>`<label class="vrow"><input type="radio" name="v" value="${v.name.replace(/"/g,'&quot;')}" ${cur===v.name?'checked':''}><span><b>${v.name}</b> <small>${v.lang}${v.localService?'':' · online'}${scoreVoice(v)>=20?' · natural':''}</small></span><button class="vp" data-prev="${v.name.replace(/"/g,'&quot;')}">▶</button></label>`).join('');
+  dlg.classList.add('on'); dlg.querySelectorAll('input[name=v]').forEach(i=>i.addEventListener('change',()=>{ try{ if(i.value) localStorage.setItem('elpt-voice',i.value); else localStorage.removeItem('elpt-voice'); }catch(e){} }));
+  dlg.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',e=>{ e.preventDefault(); cancelSpeech(); const v=r.find(x=>x.name===b.dataset.prev); setTimeout(()=>{ const u=new SpeechSynthesisUtterance('Hello. I am your coach, and this is how I sound reading the issue.'); u.voice=v; u.lang=v.lang; u.rate=0.97; utterRefs.push(u); SS.speak(u); },140); })); }
 function testVoice(){ if(!SS){ toast('This browser has no read-aloud voice'); return; } loadVoices(); const v=pickVoice();
   speakText('This is your EL Publishing coach. If you can hear me, read-aloud is working.'); toast(v?`Voice: ${v.name}`:'Loading voices… tap again if you hear nothing'); }
 document.addEventListener('visibilitychange',()=>{ if(document.hidden) stopSpeak(); });
@@ -929,6 +957,8 @@ try{ setTheme(localStorage.getItem('elhub.theme')||document.documentElement.data
 new MutationObserver(()=>{ const t=document.documentElement.dataset.theme; btnTheme.setAttribute('aria-pressed',t==='dark'?'true':'false'); btnTheme.textContent=t==='dark'?'☀ Daylight':'◐ Midnight'; }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 const btnSound=document.getElementById('btnSound');
 document.getElementById('btnVoice').addEventListener('click',testVoice);
+document.getElementById('btnPick').addEventListener('click',voicePicker);
+document.getElementById('voiceClose').addEventListener('click',()=>{ document.getElementById('voiceDlg').classList.remove('on'); cancelSpeech(); });
 btnSound.addEventListener('click',()=>{ soundOn=!soundOn; btnSound.setAttribute('aria-pressed',soundOn?'true':'false'); btnSound.textContent=soundOn?'♪ Sound':'♪ Muted'; if(soundOn) pageSound(); else stopSpeak(); });
 document.getElementById('btnShare').addEventListener('click',()=>{ const u=location.href.split('#')[0]; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(u).then(()=>toast('Link copied — share the issue with your staff')).catch(()=>toast(u)); } else toast(u); });
 const btnMode=document.getElementById('btnMode'), reader=document.getElementById('reader');
