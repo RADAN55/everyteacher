@@ -151,7 +151,7 @@ def week():
     index.html re-picks it at load, because the rotation is weekly."""
     pick = pinned[0] if pinned else C[0]
     return f'''<div class="week" aria-label="This week">
-  <a id="wk-move" href="https://radan55.github.io/mselablueprintinfo01/monday-moves.html" target="_blank" rel="noopener"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
+  <a id="wk-move" href="monday-moves.html"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
   <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
   <a id="wk-res" href="{e(pick["href"])}"{ext_attr(pick["href"])}><span class="wk">Resource of the week</span><b id="wk-rt">{e(pick["title"])}</b><small id="wk-rd">{e(pick["one"])}</small></a>
 </div>'''

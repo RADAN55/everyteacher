@@ -134,7 +134,7 @@ ALWAYS = [
     ]),
 ]
 
-MOVES_HOME = "https://radan55.github.io/mselablueprintinfo01/monday-moves.html"
+MOVES_HOME = "monday-moves.html"
 
 # The thirty-six Monday Moves, in order, as the page itself names them. Cells
 # cite these by number; build.py checks the name it was given against this list

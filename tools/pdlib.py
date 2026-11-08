@@ -82,7 +82,7 @@ ITEMS = [
  ("subpara", "Substitute Card & Para Guide", "sub-para.html", "EL Publishing", "Print", 5, ALL, "e p", "start",
   "What a substitute or paraprofessional needs to know about your English learners, on two pages.",
   "Fill it in and leave it in your sub folder."),
- ("moves", "Monday Moves", "https://radan55.github.io/mselablueprintinfo01/monday-moves.html", "EL Publishing", "Read", 5, ALL, EPM, "start",
+ ("moves", "Monday Moves", "monday-moves.html", "EL Publishing", "Read", 5, ALL, EPM, "start",
   "One EL move for every teacher, every Monday — 36 of them across the year.",
   "Try this week's move once before Friday."),
 
