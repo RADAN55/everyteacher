@@ -31,7 +31,8 @@ ELPT_OPENS = date(2027, 3, 1)  # el-compliance-calendar.html: 2027 window Mar 1 
 CSS = """
 .welcome{background:#1E2761;color:#fff;padding:52px 0;position:relative;overflow:hidden}
 .welcome::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(201,162,39,.28);box-shadow:0 0 0 60px rgba(201,162,39,.04),0 0 0 120px rgba(201,162,39,.03);pointer-events:none}
-.wl-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+.wl-h1{margin:6px 0 0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(30px,4vw,42px);line-height:1.12;color:#fff;letter-spacing:-.01em}
+.wl-h1 em{font-style:italic;color:#C9A227}
 .wl-in{max-width:1060px;margin:0 auto;padding:0 26px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;position:relative}
 .wl-say{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
 .wl-k{margin:0;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A227}
@@ -140,12 +141,12 @@ def build(seen, n_total, today, ext_attr):
     opens = ELPT_OPENS.strftime("%B %-d, %Y")
     return f"""<section class="welcome" id="welcome" aria-label="Welcome">
 <style>{CSS}</style>
-<h1 class="wl-h1">EL Publishing: free resources for teaching English learners in Mississippi</h1>
 <div class="wl-in">
   <div class="wl-say">
     <p class="wl-k">Many Voices · One Storm</p>
     <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
     <div class="wl-chips" role="group" aria-label="Languages">{chips}</div>
+    <h1 class="wl-h1">Every teacher is a <em><span class="swap" id="swapWord">language</span> teacher.</em></h1>
     <div class="wl-count"><b id="wl-days">{days}</b><span>days until the ELPT window opens<br>({opens}) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
     <div class="wl-me"><span class="ph"><img src="img/richard-daniel.jpg" alt="Richard A. Daniel" width="112" height="112" decoding="async"></span>
       <p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p></div>
