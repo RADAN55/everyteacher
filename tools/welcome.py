@@ -47,13 +47,12 @@ CSS = """
 .wl-count b{font-family:Fraunces,Georgia,serif;font-size:34px;color:#C9A227;line-height:1}
 .wl-count span{font-size:14px;color:#E4E7F5;line-height:1.4}
 .wl-count a{color:#F0DDA6}
-.wl-me{display:flex;align-items:center;gap:26px;margin-top:14px;padding-top:20px;border-top:1px solid rgba(235,217,160,.28)}
-.wl-me .ph{position:relative;flex:0 0 176px;height:220px}
-.wl-me .ph::before{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px solid #C9A227;border-radius:18px}
-.wl-me img{position:relative;display:block;width:176px;height:220px;object-fit:cover;object-position:50% 20%;border-radius:18px}
-@media(max-width:420px){.wl-me .ph{flex-basis:132px;height:165px}.wl-me img{width:132px;height:165px}}
-.wl-me p{margin:0;font-size:14px;line-height:1.55;color:#D5D9EE}
-.wl-me b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:#fff;margin-bottom:2px}
+.wl-me{display:flex;flex-direction:column;gap:22px;margin-top:14px;padding-top:26px;border-top:1px solid rgba(235,217,160,.28)}
+.wl-me .ph{position:relative;width:min(100%,340px)}
+.wl-me .ph::before{content:"";position:absolute;inset:16px -16px -16px 16px;border:2px solid #C9A227;border-radius:20px}
+.wl-me img{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:20px;box-shadow:0 24px 50px rgba(6,10,30,.45)}
+.wl-me p{margin:10px 0 0;font-size:15px;line-height:1.55;color:#D5D9EE;max-width:420px}
+.wl-me b{display:block;font-family:Fraunces,Georgia,serif;font-size:24px;color:#fff;margin-bottom:4px}
 .wl-card{flex:1 1 480px;min-width:0;background:#fff;color:#1E2761;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(8,12,36,.35)}
 .wl-card h2{margin:0;font-size:26px;color:#1E2761}
 .wl-card p{margin:0;font-size:15px;color:#4A5280}
