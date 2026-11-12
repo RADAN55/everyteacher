@@ -484,9 +484,61 @@ a.wl-play i::before{content:"";border-left:12px solid #C9A227;border-top:8px sol
 .wl-dlg video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#141A44}
 .wl-dlg .x{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(20,26,68,.85);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .wl-dlg .x:focus-visible{outline:3px solid #C9A227}
+/* ---- finishing touches ---- */
+/* paper grain: a whisper of texture so the navy reads as printed, not flat */
+.welcome::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* the brand's opening quotation mark, set huge and faint behind the welcome */
+.wl-glyph{position:absolute;left:-18px;top:-96px;font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:700;font-size:440px;line-height:1;color:#C9A227;opacity:.07;pointer-events:none;user-select:none}
+.wl-say,.wl-card{position:relative}
+/* kicker led in by a gold hairline */
+.wl-k{display:flex;align-items:center;gap:14px}
+.wl-k::before{content:"";width:40px;height:1px;background:#C9A227}
+/* each new welcome gets a gold rule that draws in beneath it */
+.wl-word b{display:inline-block;position:relative;align-self:flex-start;padding-bottom:10px}
+.wl-word b::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:72px;background:#C9A227;border-radius:2px;transform-origin:0 50%;animation:wl-draw .7s .25s cubic-bezier(.2,.7,.2,1) both}
+.wl-word[dir="rtl"] b::after{left:auto;right:0;transform-origin:100% 50%}
+@keyframes wl-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* figures that sit level and don't jitter as the count changes */
+.wl-count b{font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.02em}
+/* registration marks at two corners of the portrait frame, like a proof sheet */
+.wl-me .ph{position:relative}
+.wl-me .ph::before,.wl-me .ph::after{content:"";position:absolute;width:22px;height:22px;pointer-events:none}
+.wl-me .ph::before{left:-12px;top:-12px;border-left:1px solid #C9A227;border-top:1px solid #C9A227}
+.wl-me .ph::after{right:-12px;bottom:-12px;border-right:1px solid #C9A227;border-bottom:1px solid #C9A227}
+.wl-me .ph img{transition:filter .5s}
+.wl-me .ph:hover img{filter:saturate(1.08) contrast(1.03)}
+/* small-caps credit line under the name */
+.wl-me p b{letter-spacing:-.005em}
+/* the card: a fine inner rule and livelier picks */
+.wl-card{box-shadow:0 30px 60px rgba(8,12,36,.35),inset 0 0 0 1px rgba(30,39,97,.06)}
+.wl-role{transition:background .2s,color .2s,border-color .2s,transform .15s}
+.wl-role:hover{border-color:#1E2761}
+.wl-role:active{transform:scale(.98)}
+.wl-n{transition:background .25s,color .25s}
+.wl-picks a:hover .wl-n{background:#C9A227;color:#1E2761}
+.wl-ar{transition:transform .25s}
+.wl-picks a:hover .wl-ar{transform:translateX(4px)}
+.wl-picks a:focus-visible,.wl-role:focus-visible,.wl-chip:focus-visible,a.wl-play:focus-visible{outline:3px solid #C9A227;outline-offset:3px}
+/* the page opens in sequence instead of all at once */
+@keyframes wl-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.wl-say>*{animation:wl-in .8s cubic-bezier(.2,.7,.2,1) both}
+.wl-say>:nth-child(2){animation-delay:.06s}.wl-say>:nth-child(3){animation-delay:.12s}
+.wl-say>:nth-child(4){animation-delay:.18s}.wl-say>:nth-child(5){animation-delay:.24s}
+.wl-say>:nth-child(6){animation-delay:.30s}.wl-say>:nth-child(7){animation-delay:.36s}
+.wl-say>:nth-child(n+8){animation-delay:.42s}
+.wl-card{animation:wl-in .9s .2s cubic-bezier(.2,.7,.2,1) both}
+/* a fleuron rule closing the section */
+.wl-orn{position:relative;max-width:1060px;margin:44px auto 0;padding:0 26px;display:flex;align-items:center;gap:18px;color:#C9A227}
+.wl-orn::before,.wl-orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.55))}
+.wl-orn::after{background:linear-gradient(90deg,rgba(201,162,39,.55),transparent)}
+.wl-orn i{width:8px;height:8px;transform:rotate(45deg);border:1px solid #C9A227}
+.wl-orn b{font:600 12px Inter,system-ui,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#C9CEE8}
+@media(max-width:700px){.wl-glyph{font-size:300px;top:-70px}}
+@media(prefers-reduced-motion:reduce){.wl-say>*,.wl-card,.wl-word b::after{animation:none}}
 @media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
 </style>
 <div class="wl-in">
+  <span class="wl-glyph" aria-hidden="true">“</span>
   <div class="wl-say">
     <p class="wl-k">Many Voices · One Storm</p>
     <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
@@ -505,6 +557,7 @@ a.wl-play i::before{content:"";border-left:12px solid #C9A227;border-top:8px sol
     <a class="wl-all" href="all.html">Browse all 86 free resources</a>
   </div>
 </div>
+<div class="wl-orn" aria-hidden="true"><i></i><b>Free for every teacher</b><i></i></div>
 <dialog class="wl-dlg" id="wl-dlg" aria-label="One-minute tour of the EL Publishing Hub"><button type="button" class="x" id="wl-x" aria-label="Close the tour">×</button><video id="wl-vid" controls playsinline preload="none" poster="video/hub-tour-poster.jpg" width="1920" height="1080"><source src="video/hub-tour.mp4" type="video/mp4"></video></dialog>
 <script>
 (function(){try{
