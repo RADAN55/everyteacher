@@ -51,7 +51,7 @@ CSS = """
 .wl-me .ph{position:relative;width:min(100%,340px)}
 .wl-me .ph::before{content:"";position:absolute;inset:16px -16px -16px 16px;border:2px solid #C9A227;border-radius:20px}
 .wl-me img{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:20px;box-shadow:0 24px 50px rgba(6,10,30,.45)}
-.wl-me p{margin:10px 0 0;font-size:15px;line-height:1.55;color:#D5D9EE;max-width:420px}
+.wl-me p{margin:0;font-size:15px;line-height:1.55;color:#D5D9EE;max-width:420px}
 .wl-me b{display:block;font-family:Fraunces,Georgia,serif;font-size:24px;color:#fff;margin-bottom:4px}
 .wl-card{flex:1 1 480px;min-width:0;background:#fff;color:#1E2761;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(8,12,36,.35)}
 .wl-card h2{margin:0;font-size:26px;color:#1E2761}
@@ -70,6 +70,15 @@ CSS = """
 .wl-ar{color:#8A6D12;font-weight:700}
 a.wl-all{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:#1E2761;color:#fff;font-weight:600;text-decoration:none}
 @media(max-width:520px){.wl-roles{grid-template-columns:1fr}}
+/* the card runs the full height of the left column and ends with the photo
+   */
+.wl-in{align-items:stretch}
+.wl-picks:not([hidden]){flex:1 1 auto}
+.wl-picks li{flex:1 1 auto;display:flex}
+.wl-picks li a{flex:1 1 auto}
+.wl-picks a{flex-direction:column;align-items:stretch;gap:12px;padding:12px}
+.wl-th{display:block;width:100%;flex:1 1 110px;min-height:110px;height:0;object-fit:cover;object-position:50% 0;border-radius:10px;border:1px solid #E3E6F2;background:#E9ECF6}
+.wl-row{display:flex;gap:14px;align-items:center;padding:0 4px 2px}
 @media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
 """
 
@@ -126,9 +135,10 @@ def build(seen, n_total, today, ext_attr):
                 sys.exit(f"welcome.py: {h} is not in the catalog.")
             items.append(
                 f'<li><a href="{e(r["href"])}"{ext_attr(r["href"])}>'
-                f'<span class="wl-n">0{j}</span>'
+                + (f'<img class="wl-th" src="{e(r["thumb"])}" alt="" loading="lazy" decoding="async">' if r["thumb"] else "")
+                + f'<span class="wl-row"><span class="wl-n">0{j}</span>'
                 f'<span class="wl-tx"><b>{e(r["title"])}</b><small>{e(r["one"])}</small></span>'
-                f'<span class="wl-ar" aria-hidden="true">→</span></a></li>'
+                f'<span class="wl-ar" aria-hidden="true">→</span></span></a></li>'
             )
         panels.append(
             f'<ol class="wl-picks" data-r="{rid}"{"" if on else " hidden"}>{"".join(items)}</ol>'
@@ -148,8 +158,8 @@ def build(seen, n_total, today, ext_attr):
     <div class="wl-chips" role="group" aria-label="Languages">{chips}</div>
     <h1 class="wl-h1">Every teacher is a <em><span class="swap" id="swapWord">language</span> teacher.</em></h1>
     <div class="wl-count"><b id="wl-days">{days}</b><span>days until the ELPT window opens<br>({opens}) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
-    <div class="wl-me"><span class="ph"><img src="img/richard-daniel-portrait.jpg" alt="Richard A. Daniel" width="440" height="550" decoding="async"></span>
-      <p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p></div>
+    <div class="wl-me"><p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
+      <span class="ph"><img src="img/richard-daniel-portrait.jpg" alt="Richard A. Daniel" width="440" height="550" decoding="async"></span></div>
   </div>
   <div class="wl-card">
     <h2>Who’s visiting today?</h2>
