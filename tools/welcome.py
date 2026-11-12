@@ -78,13 +78,15 @@ a.wl-all{align-self:flex-start;display:inline-flex;align-items:center;min-height
 .wl-picks a{flex-direction:column;align-items:stretch;gap:12px;padding:12px}
 .wl-th{display:block;width:100%;flex:1 1 80px;min-height:80px;height:0;object-fit:cover;object-position:50% 0;border-radius:10px;border:1px solid #E3E6F2;background:#E9ECF6}
 .wl-row{display:flex;gap:14px;align-items:center;padding:0 4px 2px}
-.wl-tour{display:flex;flex-direction:column;gap:12px;margin-top:6px}
-.wl-tour-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.wl-tour-h b{font-family:Fraunces,Georgia,serif;font-size:24px;color:#fff;font-weight:600}
-.wl-tour-h b em{color:#C9A227}
-.wl-tour-h a{font-size:14px;font-weight:600;color:#F0DDA6}
-.wl-tour .fr{padding:8px;border:2px solid #C9A227;border-radius:20px}
-.wl-tour video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:#141A44}
+a.wl-play{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;min-height:52px;padding:0 24px 0 8px;border-radius:999px;background:#C9A227;color:#1E2761;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 10px 26px rgba(201,162,39,.25);transition:transform .2s,box-shadow .2s}
+a.wl-play:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(201,162,39,.35);color:#1E2761}
+a.wl-play i{width:38px;height:38px;border-radius:50%;background:#1E2761;display:flex;align-items:center;justify-content:center}
+a.wl-play i::before{content:"";border-left:12px solid #C9A227;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.wl-dlg{width:min(1100px,94vw);max-width:none;padding:0;border:2px solid #C9A227;border-radius:20px;background:#141A44;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.wl-dlg::backdrop{background:rgba(8,12,36,.82)}
+.wl-dlg video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#141A44}
+.wl-dlg .x{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(20,26,68,.85);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.wl-dlg .x:focus-visible{outline:3px solid #C9A227}
 @media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
 """
 
@@ -112,6 +114,13 @@ JS = """
     if(saved&&document.querySelector('.wl-picks[data-r="'+saved+'"]'))pick(saved)}catch(e){}
   var d=Math.ceil((new Date(__Y__,__M__,__D__)-new Date())/864e5),el=document.getElementById('wl-days');
   if(el)el.textContent=Math.max(0,d);
+  var pl=document.getElementById('wl-play'),dl=document.getElementById('wl-dlg'),vd=document.getElementById('wl-vid');
+  if(pl&&dl&&dl.showModal){
+    pl.addEventListener('click',function(ev){ev.preventDefault();dl.showModal();try{vd.currentTime=0;var pr=vd.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}});
+    document.getElementById('wl-x').addEventListener('click',function(){dl.close()});
+    dl.addEventListener('click',function(ev){if(ev.target===dl)dl.close()});
+    dl.addEventListener('close',function(){try{vd.pause()}catch(e){}});
+  }
 }catch(e){}})();
 """
 
@@ -163,9 +172,8 @@ def build(seen, n_total, today, ext_attr):
     <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
     <div class="wl-chips" role="group" aria-label="Languages">{chips}</div>
     <h1 class="wl-h1">Every teacher is a <em><span class="swap" id="swapWord">language</span> teacher.</em></h1>
+    <a class="wl-play" id="wl-play" href="video/hub-tour.mp4"><i aria-hidden="true"></i>Watch the 1-minute tour</a>
     <div class="wl-count"><b id="wl-days">{days}</b><span>days until the ELPT window opens<br>({opens}) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
-    <div class="wl-tour"><div class="wl-tour-h"><b>Take the <em>one-minute tour</em></b><a href="all.html">or browse all {n_total} →</a></div>
-      <div class="fr"><video controls playsinline preload="none" poster="video/hub-tour-poster.jpg" width="1920" height="1080" aria-label="A one-minute tour of the EL Publishing Hub. The video has no sound."><source src="video/hub-tour.mp4" type="video/mp4"></video></div></div>
     <div class="wl-me"><p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
       <span class="ph"><img src="img/richard-daniel-portrait.jpg" alt="Richard A. Daniel" width="440" height="550" decoding="async"></span></div>
   </div>
@@ -177,5 +185,6 @@ def build(seen, n_total, today, ext_attr):
     <a class="wl-all" href="all.html">Browse all {n_total} free resources</a>
   </div>
 </div>
+<dialog class="wl-dlg" id="wl-dlg" aria-label="One-minute tour of the EL Publishing Hub"><button type="button" class="x" id="wl-x" aria-label="Close the tour">×</button><video id="wl-vid" controls playsinline preload="none" poster="video/hub-tour-poster.jpg" width="1920" height="1080"><source src="video/hub-tour.mp4" type="video/mp4"></video></dialog>
 <script>{js}</script>
 </section>"""
