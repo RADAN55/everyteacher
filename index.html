@@ -451,6 +451,88 @@
   </div>
 </header>
 
+<!--B:welcome-->
+<section class="welcome" id="welcome" aria-label="Welcome">
+<style>
+.welcome{background:#1E2761;color:#fff;padding:52px 0;position:relative;overflow:hidden}
+.welcome::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(201,162,39,.28);box-shadow:0 0 0 60px rgba(201,162,39,.04),0 0 0 120px rgba(201,162,39,.03);pointer-events:none}
+.wl-in{max-width:1060px;margin:0 auto;padding:0 26px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;position:relative}
+.wl-say{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.wl-k{margin:0;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A227}
+.wl-word{min-height:128px;display:flex;flex-direction:column;justify-content:flex-end}
+.wl-word b{font-family:Fraunces,Georgia,serif;font-size:clamp(52px,8vw,88px);line-height:1.05;font-weight:700;color:#fff;animation:wl-rise .6s ease-out both}
+.wl-word span{font-size:15px;color:#C9CEE8;margin-top:6px}
+@keyframes wl-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.wl-chips{display:flex;flex-wrap:wrap;gap:8px}
+.wl-chip{min-width:44px;min-height:44px;padding:0 14px;border-radius:999px;font:600 14px Inter,system-ui,sans-serif;cursor:pointer;background:transparent;color:#E4E7F5;border:1px solid rgba(255,255,255,.35)}
+.wl-chip[aria-pressed="true"]{background:#C9A227;color:#1E2761;border-color:#C9A227}
+.wl-count{display:inline-flex;align-items:center;gap:14px;margin-top:6px;padding:12px 18px;border:1px solid rgba(201,162,39,.5);border-radius:14px;align-self:flex-start}
+.wl-count b{font-family:Fraunces,Georgia,serif;font-size:34px;color:#C9A227;line-height:1}
+.wl-count span{font-size:14px;color:#E4E7F5;line-height:1.4}
+.wl-count a{color:#F0DDA6}
+.wl-card{flex:1 1 480px;min-width:0;background:#fff;color:#1E2761;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(8,12,36,.35)}
+.wl-card h2{margin:0;font-size:26px;color:#1E2761}
+.wl-card p{margin:0;font-size:15px;color:#4A5280}
+.wl-roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wl-role{min-height:48px;padding:0 14px;border-radius:12px;font:600 15px Inter,system-ui,sans-serif;cursor:pointer;text-align:left;background:#fff;color:#1E2761;border:2px solid #D5D9EA}
+.wl-role[aria-pressed="true"]{background:#1E2761;color:#fff;border-color:#1E2761}
+.wl-picks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.wl-picks[hidden]{display:none}
+.wl-picks a{display:flex;gap:14px;align-items:center;text-decoration:none;color:#1E2761;padding:14px 16px;border:1px solid #E3E6F2;border-radius:14px;background:#F7F8FC;transition:transform .2s,box-shadow .2s}
+.wl-picks a:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(10,14,40,.18)}
+.wl-n{flex:0 0 44px;height:44px;border-radius:12px;background:#1E2761;color:#C9A227;font:700 17px Fraunces,Georgia,serif;display:flex;align-items:center;justify-content:center}
+.wl-tx{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.wl-tx b{font-size:16px}
+.wl-tx small{font-size:14px;color:#4A5280;line-height:1.45}
+.wl-ar{color:#8A6D12;font-weight:700}
+a.wl-all{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;background:#1E2761;color:#fff;font-weight:600;text-decoration:none}
+@media(max-width:520px){.wl-roles{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
+</style>
+<div class="wl-in">
+  <div class="wl-say">
+    <p class="wl-k">Many Voices · One Storm</p>
+    <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
+    <div class="wl-chips" role="group" aria-label="Languages"><button type="button" class="wl-chip" data-i="0" aria-pressed="true" aria-label="Show welcome in English">EN</button><button type="button" class="wl-chip" data-i="1" aria-pressed="false" aria-label="Show welcome in Spanish">ES</button><button type="button" class="wl-chip" data-i="2" aria-pressed="false" aria-label="Show welcome in Vietnamese">VI</button><button type="button" class="wl-chip" data-i="3" aria-pressed="false" aria-label="Show welcome in Arabic">AR</button><button type="button" class="wl-chip" data-i="4" aria-pressed="false" aria-label="Show welcome in Haitian Creole">HT</button><button type="button" class="wl-chip" data-i="5" aria-pressed="false" aria-label="Show welcome in Chinese">ZH</button><button type="button" class="wl-chip" data-i="6" aria-pressed="false" aria-label="Show welcome in Portuguese">PT</button></div>
+    <div class="wl-count"><b id="wl-days">110</b><span>days until the ELPT window opens<br>(March 1, 2027) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
+  </div>
+  <div class="wl-card">
+    <h2>Who’s visiting today?</h2>
+    <p>Pick one and the hub hands you the three tools to start with.</p>
+    <div class="wl-roles" role="group" aria-label="Choose your role"><button type="button" class="wl-role" data-r="content" aria-pressed="true">Content teacher</button><button type="button" class="wl-role" data-r="el" aria-pressed="false">EL teacher</button><button type="button" class="wl-role" data-r="leader" aria-pressed="false">District leader</button><button type="button" class="wl-role" data-r="student" aria-pressed="false">Student</button></div>
+    <ol class="wl-picks" data-r="content"><li><a href="using-spanish-content-classroom.html"><span class="wl-n">01</span><span class="wl-tx"><b>Using Spanish in the Content Classroom</b><small>Research-based moves for math, science, social studies and ELA teachers who speak no Spanish: cognates, talk-then-write, fair assessment.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="sheltered.html"><span class="wl-n">02</span><span class="wl-tx"><b>Sheltered: 12 Minutes as an English Learner</b><small>Sit a real lesson in a language you don&#x27;t speak. Then sit it again with supports.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="el-bridge.html"><span class="wl-n">03</span><span class="wl-tx"><b>EL Bridge Mississippi</b><small>A Mississippi standard in; a four-lane lesson, leveled text or MAAP items out.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li></ol><ol class="wl-picks" data-r="el" hidden><li><a href="teaching-the-elpt.html"><span class="wl-n">01</span><span class="wl-tx"><b>Teaching the ELPT · Special Issue</b><small>A page-turning issue: four domain features, daily routines with a live timer, sixteen test moves, coaches who read aloud.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="grammar-calisthenics/"><span class="wl-n">02</span><span class="wl-tx"><b>Storm Grammar Calisthenics</b><small>Verb jumps, error hunts, rapid fire, dictation sprints — a bilingual coach, fifteen minutes a day.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="elpa21-listening/"><span class="wl-n">03</span><span class="wl-tx"><b>ELPA21 Listening Practice · Set 1</b><small>Students hear a direction, conversation, debate, presentation or lesson, then tap the picture, card or answer that matches.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li></ol><ol class="wl-picks" data-r="leader" hidden><li><a href="el-evaluate.html"><span class="wl-n">01</span><span class="wl-tx"><b>Evaluate Your Own EL Program</b><small>The consulting firm&#x27;s method, written out so your own team can run it.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="el-audit.html"><span class="wl-n">02</span><span class="wl-tx"><b>EL Program Self-Audit</b><small>Thirty-three legal items scored live, with a corrective-action plan.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="title3-planner.html"><span class="wl-n">03</span><span class="wl-tx"><b>Title III Funding Planner</b><small>The split, the 2 percent cap, the supplanting test, the FY27 contingency.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li></ol><ol class="wl-picks" data-r="student" hidden><li><a href="storm-lens/"><span class="wl-n">01</span><span class="wl-tx"><b>Storm Lens: Point. Name. Say.</b><small>Point a Chromebook at the room and the room becomes the vocabulary list.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="english-on-your-own.html"><span class="wl-n">02</span><span class="wl-tx"><b>English On Your Own</b><small>ELPA21 practice a student can do alone — speaking checked by the browser.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li><li><a href="picture-dictionary.html"><span class="wl-n">03</span><span class="wl-tx"><b>The Picture Dictionary · Issue 1</b><small>Point at the thing, hear the word, say it, spell it, use it. Twelve places, drawn as spreads.</small></span><span class="wl-ar" aria-hidden="true">→</span></a></li></ol>
+    <a class="wl-all" href="all.html">Browse all 86 free resources</a>
+  </div>
+</div>
+<script>
+(function(){try{
+  var W=[["Welcome", "English", "en", "ltr"], ["Bienvenidos", "Spanish", "es", "ltr"], ["Chào mừng", "Vietnamese", "vi", "ltr"], ["أهلاً وسهلاً", "Arabic", "ar", "rtl"], ["Byenveni", "Haitian Creole", "ht", "ltr"], ["欢迎", "Chinese", "zh", "ltr"], ["Bem-vindos", "Portuguese", "pt", "ltr"]],i=0,t=null,box=document.getElementById('wl-word'),
+      chips=[].slice.call(document.querySelectorAll('.wl-chip')),
+      calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n){i=n;var w=W[n];box.innerHTML='';box.dir=w[3];
+    var b=document.createElement('b');b.lang=w[2];b.textContent=w[0];
+    var s=document.createElement('span');s.textContent='\u201cWelcome\u201d in '+w[1];
+    box.appendChild(b);box.appendChild(s);
+    chips.forEach(function(c,k){c.setAttribute('aria-pressed',k===n?'true':'false')})}
+  function go(){if(t)clearInterval(t);if(!calm)t=setInterval(function(){show((i+1)%W.length)},2600)}
+  chips.forEach(function(c){c.addEventListener('click',function(){show(+c.getAttribute('data-i'));go()})});
+  go();
+  var roles=[].slice.call(document.querySelectorAll('.wl-role')),
+      lists=[].slice.call(document.querySelectorAll('.wl-picks'));
+  function pick(r){
+    roles.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-r')===r?'true':'false')});
+    lists.forEach(function(l){l.hidden=l.getAttribute('data-r')!==r});
+    try{localStorage.setItem('elhub.role',r)}catch(e){}}
+  roles.forEach(function(b){b.addEventListener('click',function(){pick(b.getAttribute('data-r'))})});
+  try{var saved=localStorage.getItem('elhub.role');
+    if(saved&&document.querySelector('.wl-picks[data-r="'+saved+'"]'))pick(saved)}catch(e){}
+  var d=Math.ceil((new Date(2027,2,1)-new Date())/864e5),el=document.getElementById('wl-days');
+  if(el)el.textContent=Math.max(0,d);
+}catch(e){}})();
+</script>
+</section>
+<!--/B:welcome-->
+
 <!--B:now-->
 <section class="premiere" id="premiere" aria-label="Now showing">
   <div class="beam"></div>
@@ -534,7 +616,7 @@
   <!--B:week-->
 <div class="week" aria-label="This week">
   <a id="wk-move" href="monday-moves.html"><span class="wk">Monday Move · <span id="wk-n">this week</span></span><b id="wk-mt">Post and Say the Language Goal</b><span class="es" id="wk-mes"></span><small id="wk-mtag">One EL move for every teacher, every Monday.</small></a>
-  <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Snorkl · explain out loud, AI feedback in English or Spanish</b><small>From the EL Tech Radar: newest tool added Nov 10, 2026 — free, Chromebook-ready, a use for every lane.</small></a>
+  <a id="wk-tool" href="tech-radar.html"><span class="wk">Tech tool of the week</span><b id="wk-tt">Read Along in Google Classroom</b><small>From the EL Tech Radar: free, Chromebook-ready, a use for every lane.</small></a>
   <a id="wk-res" href="elpa21-listening-2/"><span class="wk">Resource of the week</span><b id="wk-rt">ELPA21 Listening Practice · Set 2</b><small id="wk-rd">Seven more listening lessons: new words, scenes, talks, debates and lectures.</small></a>
 </div>
 <!--/B:week-->

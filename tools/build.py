@@ -4,7 +4,7 @@
     python3 tools/build.py
 
 Writes, between the <!--B:name--> markers in each file:
-    index.html   the Now Showing hero, the four doors, this week, the index panel,
+    index.html   the welcome band (tools/welcome.py), the Now Showing hero, the four doors, this week, the index panel,
                  and the catalog the search box reads
     all.html     the group buttons and all 57 table rows
     guide.js     the Hub Guide's catalog
@@ -28,6 +28,7 @@ import voices  # noqa: E402
 import play  # noqa: E402
 import bysubject  # noqa: E402
 import featured  # noqa: E402
+import welcome  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FRESH_DAYS = 21
@@ -521,6 +522,7 @@ changed = []
 
 p = ROOT / "index.html"
 t = p.read_text(encoding="utf-8")
+t = region(t, "welcome", welcome.build(seen, N, TODAY, ext_attr), p)
 t = region(t, "now", now_showing(), p)
 t = region(t, "doors", doors(), p)
 t = region(t, "play", play_band(), p)
