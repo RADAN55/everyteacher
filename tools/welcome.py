@@ -273,7 +273,7 @@ def build(seen, n_total, today, ext_attr):
     <a class="wl-play" id="wl-play" href="video/hub-tour.mp4"><i aria-hidden="true"></i>Watch the 1-minute tour</a>
     <div class="wl-count"><b id="wl-days">{days}</b><span>days until the ELPT window opens<br>({opens}) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
     <div class="wl-me"><p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
-      <span class="ph"><img src="img/richard-daniel-portrait.jpg" alt="Richard A. Daniel" width="440" height="550" decoding="async"></span></div>
+      <span class="ph"><img src="img/richard-daniel-portrait-level.jpg" alt="Richard A. Daniel" width="880" height="1100" decoding="async"></span></div>
   </div>
   <div class="wl-card">
     <h2>Who’s visiting today?</h2>
