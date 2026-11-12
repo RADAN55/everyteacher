@@ -139,6 +139,40 @@ a.wl-play i::before{content:"";border-left:12px solid #C9A227;border-top:8px sol
 @media(max-width:700px){.wl-glyph{font-size:300px;top:-70px}}
 @media(prefers-reduced-motion:reduce){.wl-say>*,.wl-card,.wl-word b::after{animation:none}}
 @media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
+/* ==== luxe layer ==== */
+.welcome{--foil:linear-gradient(100deg,#8A6D12 0%,#C9A227 18%,#FFF1BF 34%,#E2B93B 46%,#9C7A15 62%,#F3D77A 80%,#C9A227 100%)}
+.welcome::before{display:none}
+/* gold foil lettering with a slow travelling sheen */
+@keyframes wl-sheen{from{background-position:0% 50%}to{background-position:250% 50%}}
+.wl-h1 em,.wl-count b,.wl-k{background:var(--foil);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:wl-sheen 7s linear infinite}
+.wl-k::before{background:#C9A227}
+.wl-glyph{color:transparent;-webkit-text-stroke:1.5px rgba(201,162,39,.35);opacity:1}
+/* gold-foil frame around the portrait */
+.wl-me .ph{border:2px solid transparent;background:linear-gradient(#1E2761,#1E2761) padding-box,var(--foil) border-box;background-size:100% 100%,250% 100%;animation:wl-sheen 9s linear infinite;box-shadow:0 0 0 1px rgba(201,162,39,.15),0 30px 70px rgba(4,8,28,.55),0 0 60px rgba(201,162,39,.12)}
+.wl-me .ph img{box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+/* foil play button with a light that sweeps across it */
+a.wl-play{position:relative;overflow:hidden;background:var(--foil);background-size:250% 100%;animation:wl-sheen 7s linear infinite;box-shadow:0 12px 30px rgba(201,162,39,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+a.wl-play::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:wl-sweep 3.6s 1.2s ease-in-out infinite}
+@keyframes wl-sweep{0%{left:-80px}45%,100%{left:110%}}
+/* a slow gold orbit behind the card */
+.wl-orbit{position:absolute;right:-260px;top:-240px;width:900px;height:900px;pointer-events:none;animation:wl-turn 140s linear infinite;opacity:.9}
+@keyframes wl-turn{to{transform:rotate(360deg)}}
+/* soft gold light that follows the cursor */
+.wl-spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(201,162,39,.13),transparent 62%);transition:background .08s}
+/* letters of each welcome cascade in */
+.wl-word b .ch{display:inline-block;animation:wl-ch .55s cubic-bezier(.2,.8,.2,1) both}
+.wl-word b .ch{font-size:inherit;color:inherit;margin:0;line-height:inherit}
+.wl-h1 em .swap{background:var(--foil);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:wl-sheen 7s linear infinite;padding-right:.08em}
+.wl-word b{white-space:nowrap;font-size:clamp(44px,7.4vw,84px)}
+@keyframes wl-ch{from{opacity:0;transform:translateY(.45em) rotate(4deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.wl-word b{animation:none}
+/* depth: the card and portrait lean toward the cursor */
+.wl-card,.wl-me .ph{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.wl-card{box-shadow:0 40px 90px rgba(4,8,28,.5),0 0 0 1px rgba(201,162,39,.25),inset 0 0 0 1px rgba(30,39,97,.06)}
+.wl-card::before{content:"";position:absolute;inset:-1px;border-radius:21px;padding:1px;background:var(--foil);background-size:250% 100%;animation:wl-sheen 9s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7}
+.wl-in>.wl-say,.wl-in>.wl-card{z-index:1}
+@media(prefers-reduced-motion:reduce){.wl-h1 em,.wl-h1 em .swap,.wl-count b,.wl-k,.wl-me .ph,a.wl-play,a.wl-play::after,.wl-orbit,.wl-card::before,.wl-word b .ch{animation:none}}
+
 """
 
 JS = """
@@ -147,8 +181,8 @@ JS = """
       chips=[].slice.call(document.querySelectorAll('.wl-chip')),
       calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(n){i=n;var w=W[n];box.innerHTML='';box.dir=w[3];
-    var b=document.createElement('b');b.lang=w[2];b.textContent=w[0];
-    var s=document.createElement('span');s.textContent='\\u201cWelcome\\u201d in '+w[1];
+    var b=document.createElement('b');b.lang=w[2];if(calm||w[3]==='rtl'){b.textContent=w[0]}else{Array.from(w[0]).forEach(function(c,k){var sp=document.createElement('span');sp.className='ch';sp.style.animationDelay=(k*0.045)+'s';sp.textContent=c===' '?'\u00a0':c;b.appendChild(sp)})}
+    var s=document.createElement('span');s.dir='ltr';s.textContent='\\u201cWelcome\\u201d in '+w[1];
     box.appendChild(b);box.appendChild(s);
     chips.forEach(function(c,k){c.setAttribute('aria-pressed',k===n?'true':'false')})}
   function go(){if(t)clearInterval(t);if(!calm)t=setInterval(function(){show((i+1)%W.length)},2600)}
@@ -165,6 +199,16 @@ JS = """
     if(saved&&document.querySelector('.wl-picks[data-r="'+saved+'"]'))pick(saved)}catch(e){}
   var d=Math.ceil((new Date(__Y__,__M__,__D__)-new Date())/864e5),el=document.getElementById('wl-days');
   if(el)el.textContent=Math.max(0,d);
+  if(!calm&&window.matchMedia('(pointer:fine)').matches){
+    var sec=document.getElementById('welcome');
+    sec.addEventListener('pointermove',function(ev){var r=sec.getBoundingClientRect();
+      sec.style.setProperty('--mx',(ev.clientX-r.left)+'px');sec.style.setProperty('--my',(ev.clientY-r.top)+'px')});
+    [].slice.call(document.querySelectorAll('.wl-card,.wl-me .ph')).forEach(function(el){
+      var max=el.classList.contains('wl-card')?3:6;
+      el.addEventListener('pointermove',function(ev){var r=el.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;
+        el.style.transform='perspective(1200px) rotateY('+(x*max)+'deg) rotateX('+(-y*max)+'deg)'});
+      el.addEventListener('pointerleave',function(){el.style.transform=''})});
+  }
   var pl=document.getElementById('wl-play'),dl=document.getElementById('wl-dlg'),vd=document.getElementById('wl-vid');
   if(pl&&dl&&dl.showModal){
     pl.addEventListener('click',function(ev){ev.preventDefault();dl.showModal();try{vd.currentTime=0;var pr=vd.play();if(pr&&pr.catch)pr.catch(function(){})}catch(e){}});
@@ -217,6 +261,8 @@ def build(seen, n_total, today, ext_attr):
     opens = ELPT_OPENS.strftime("%B %-d, %Y")
     return f"""<section class="welcome" id="welcome" aria-label="Welcome">
 <style>{CSS}</style>
+<div class="wl-spot" aria-hidden="true"></div>
+<svg class="wl-orbit" viewBox="0 0 900 900" aria-hidden="true"><g fill="none" stroke="#C9A227"><circle cx="450" cy="450" r="300" stroke-opacity=".28"/><circle cx="450" cy="450" r="360" stroke-opacity=".22" stroke-dasharray="1 9"/><circle cx="450" cy="450" r="430" stroke-opacity=".12"/></g><g fill="#C9A227"><circle cx="750" cy="450" r="4" fill-opacity=".8"/><circle cx="450" cy="90" r="3" fill-opacity=".55"/><circle cx="146" cy="560" r="2.5" fill-opacity=".5"/><circle cx="560" cy="858" r="3" fill-opacity=".4"/></g></svg>
 <div class="wl-in">
   <span class="wl-glyph" aria-hidden="true">“</span>
   <div class="wl-say">
