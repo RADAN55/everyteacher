@@ -31,6 +31,7 @@ ELPT_OPENS = date(2027, 3, 1)  # el-compliance-calendar.html: 2027 window Mar 1 
 CSS = """
 .welcome{background:#1E2761;color:#fff;padding:52px 0;position:relative;overflow:hidden}
 .welcome::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(201,162,39,.28);box-shadow:0 0 0 60px rgba(201,162,39,.04),0 0 0 120px rgba(201,162,39,.03);pointer-events:none}
+.wl-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 .wl-in{max-width:1060px;margin:0 auto;padding:0 26px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;position:relative}
 .wl-say{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
 .wl-k{margin:0;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A227}
@@ -45,6 +46,12 @@ CSS = """
 .wl-count b{font-family:Fraunces,Georgia,serif;font-size:34px;color:#C9A227;line-height:1}
 .wl-count span{font-size:14px;color:#E4E7F5;line-height:1.4}
 .wl-count a{color:#F0DDA6}
+.wl-me{display:flex;align-items:center;gap:18px;margin-top:14px;padding-top:20px;border-top:1px solid rgba(235,217,160,.28)}
+.wl-me .ph{position:relative;flex:0 0 112px;height:112px}
+.wl-me .ph::before{content:"";position:absolute;inset:8px -8px -8px 8px;border:2px solid #C9A227;border-radius:18px}
+.wl-me img{position:relative;display:block;width:112px;height:112px;object-fit:cover;border-radius:18px}
+.wl-me p{margin:0;font-size:14px;line-height:1.55;color:#D5D9EE}
+.wl-me b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:#fff;margin-bottom:2px}
 .wl-card{flex:1 1 480px;min-width:0;background:#fff;color:#1E2761;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(8,12,36,.35)}
 .wl-card h2{margin:0;font-size:26px;color:#1E2761}
 .wl-card p{margin:0;font-size:15px;color:#4A5280}
@@ -133,12 +140,15 @@ def build(seen, n_total, today, ext_attr):
     opens = ELPT_OPENS.strftime("%B %-d, %Y")
     return f"""<section class="welcome" id="welcome" aria-label="Welcome">
 <style>{CSS}</style>
+<h1 class="wl-h1">EL Publishing: free resources for teaching English learners in Mississippi</h1>
 <div class="wl-in">
   <div class="wl-say">
     <p class="wl-k">Many Voices · One Storm</p>
     <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
     <div class="wl-chips" role="group" aria-label="Languages">{chips}</div>
     <div class="wl-count"><b id="wl-days">{days}</b><span>days until the ELPT window opens<br>({opens}) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
+    <div class="wl-me"><span class="ph"><img src="img/richard-daniel.jpg" alt="Richard A. Daniel" width="112" height="112" decoding="async"></span>
+      <p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p></div>
   </div>
   <div class="wl-card">
     <h2>Who’s visiting today?</h2>

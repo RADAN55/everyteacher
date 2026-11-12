@@ -422,40 +422,13 @@
 </head>
 <body>
 
-<header>
-  <div class="head-in">
-    <div class="head-main">
-      <a class="colophon" href="index.html" aria-label="EL Publishing, home">
-        <svg class="cmark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <rect x="9" y="34" width="10" height="18" rx="1" fill="#6B74A8"/><rect x="11" y="39" width="6" height="2" fill="#1E2761"/><rect x="11" y="44" width="6" height="1" fill="#1E2761" opacity=".55"/>
-          <rect x="22" y="27" width="10" height="25" rx="1" fill="#C9A227"/><rect x="24" y="32" width="6" height="2" fill="#1E2761"/><rect x="24" y="37" width="6" height="1" fill="#1E2761" opacity=".55"/>
-          <rect x="35" y="20" width="10" height="32" rx="1" fill="#A9B1DA"/><rect x="37" y="25" width="6" height="2" fill="#1E2761"/><rect x="37" y="30" width="6" height="1" fill="#1E2761" opacity=".55"/>
-          <rect x="48" y="13" width="10" height="39" rx="1" fill="#FFFFFF"/><rect x="50" y="18" width="6" height="2" fill="#1E2761"/><rect x="50" y="23" width="6" height="1" fill="#1E2761" opacity=".55"/>
-          <rect x="6" y="52" width="55" height="3.4" rx="1.2" fill="#C9A227"/>
-        </svg>
-        <span class="cwords"><b>EL Publishing</b><i>Raleigh, Mississippi · est. 2026</i></span>
-      </a>
-      <h1>Every teacher is a<em><span class="swap" id="swapWord">language</span> teacher.</em></h1>
-      <p class="tag">Everything a teacher needs for English learners, built in a Mississippi
-        high school between class periods — and free to anyone who wants it.</p>
-      <div class="cred">
-        <img class="face" src="img/richard-daniel.jpg" alt="" width="640" height="640" decoding="async">
-        <p class="who"><b>Richard A. Daniel, M.Ed.</b> · ENL/EL Specialist, Laurel High School ·
-          31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p>
-      </div>
-    </div>
-    <figure class="head-photo">
-      <img src="img/richard-daniel-portrait.jpg" width="440" height="550" decoding="async"
-        alt="Richard A. Daniel at his desk, with EL Publishing titles on the shelf behind him">
-    </figure>
-  </div>
-</header>
 
 <!--B:welcome-->
 <section class="welcome" id="welcome" aria-label="Welcome">
 <style>
 .welcome{background:#1E2761;color:#fff;padding:52px 0;position:relative;overflow:hidden}
 .welcome::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(201,162,39,.28);box-shadow:0 0 0 60px rgba(201,162,39,.04),0 0 0 120px rgba(201,162,39,.03);pointer-events:none}
+.wl-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 .wl-in{max-width:1060px;margin:0 auto;padding:0 26px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;position:relative}
 .wl-say{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
 .wl-k{margin:0;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A227}
@@ -470,6 +443,12 @@
 .wl-count b{font-family:Fraunces,Georgia,serif;font-size:34px;color:#C9A227;line-height:1}
 .wl-count span{font-size:14px;color:#E4E7F5;line-height:1.4}
 .wl-count a{color:#F0DDA6}
+.wl-me{display:flex;align-items:center;gap:18px;margin-top:14px;padding-top:20px;border-top:1px solid rgba(235,217,160,.28)}
+.wl-me .ph{position:relative;flex:0 0 112px;height:112px}
+.wl-me .ph::before{content:"";position:absolute;inset:8px -8px -8px 8px;border:2px solid #C9A227;border-radius:18px}
+.wl-me img{position:relative;display:block;width:112px;height:112px;object-fit:cover;border-radius:18px}
+.wl-me p{margin:0;font-size:14px;line-height:1.55;color:#D5D9EE}
+.wl-me b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:#fff;margin-bottom:2px}
 .wl-card{flex:1 1 480px;min-width:0;background:#fff;color:#1E2761;border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 30px 60px rgba(8,12,36,.35)}
 .wl-card h2{margin:0;font-size:26px;color:#1E2761}
 .wl-card p{margin:0;font-size:15px;color:#4A5280}
@@ -489,12 +468,15 @@ a.wl-all{align-self:flex-start;display:inline-flex;align-items:center;min-height
 @media(max-width:520px){.wl-roles{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.wl-word b{animation:none}}
 </style>
+<h1 class="wl-h1">EL Publishing: free resources for teaching English learners in Mississippi</h1>
 <div class="wl-in">
   <div class="wl-say">
     <p class="wl-k">Many Voices · One Storm</p>
     <div class="wl-word" id="wl-word" aria-live="polite"><b lang="en">Welcome</b><span>“Welcome” in English</span></div>
     <div class="wl-chips" role="group" aria-label="Languages"><button type="button" class="wl-chip" data-i="0" aria-pressed="true" aria-label="Show welcome in English">EN</button><button type="button" class="wl-chip" data-i="1" aria-pressed="false" aria-label="Show welcome in Spanish">ES</button><button type="button" class="wl-chip" data-i="2" aria-pressed="false" aria-label="Show welcome in Vietnamese">VI</button><button type="button" class="wl-chip" data-i="3" aria-pressed="false" aria-label="Show welcome in Arabic">AR</button><button type="button" class="wl-chip" data-i="4" aria-pressed="false" aria-label="Show welcome in Haitian Creole">HT</button><button type="button" class="wl-chip" data-i="5" aria-pressed="false" aria-label="Show welcome in Chinese">ZH</button><button type="button" class="wl-chip" data-i="6" aria-pressed="false" aria-label="Show welcome in Portuguese">PT</button></div>
     <div class="wl-count"><b id="wl-days">110</b><span>days until the ELPT window opens<br>(March 1, 2027) · <a href="teaching-the-elpt.html">get your students ready</a></span></div>
+    <div class="wl-me"><span class="ph"><img src="img/richard-daniel.jpg" alt="Richard A. Daniel" width="112" height="112" decoding="async"></span>
+      <p><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist, Laurel High School · 31 years in Mississippi, Alabama and Georgia classrooms · NBCT ENL candidate</p></div>
   </div>
   <div class="wl-card">
     <h2>Who’s visiting today?</h2>
