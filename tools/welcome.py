@@ -169,4 +169,30 @@ def build(seen, n_total, today, ext_attr):
   </div>
 </div>
 <script>{js}</script>
+</section>
+<section class="tour" id="tour" aria-label="Take the one-minute tour">
+<style>
+.tour{{background:#141A44;color:#fff;padding:56px 0}}
+.tr-in{{max-width:1060px;margin:0 auto;padding:0 26px;display:flex;flex-wrap:wrap;gap:40px;align-items:center}}
+.tr-say{{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px}}
+.tr-say h2{{margin:0;font-family:Fraunces,Georgia,serif;font-size:clamp(30px,4vw,40px);line-height:1.1;color:#fff}}
+.tr-say h2 em{{color:#C9A227}}
+.tr-say p{{margin:0;font-size:17px;line-height:1.6;color:#D5D9EE}}
+.tr-go{{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}}
+.tr-go a{{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;text-decoration:none}}
+.tr-go a.pri{{background:#C9A227;color:#1E2761}}
+.tr-go a.sec{{border:1px solid rgba(255,255,255,.4);color:#fff}}
+.tr-go a:hover{{filter:brightness(1.08)}}
+.tr-vid{{flex:1 1 560px;min-width:0;padding:10px;border:2px solid #C9A227;border-radius:22px}}
+.tr-vid video{{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;background:#1E2761}}
+</style>
+<div class="tr-in">
+  <div class="tr-say">
+    <p class="wl-k">New here?</p>
+    <h2>Take the <em>one-minute tour.</em></h2>
+    <p>See what’s on the hub for content teachers, EL teachers, district leaders and students. Then come in and browse. Everything is free, with no account and no paywall.</p>
+    <div class="tr-go"><a class="pri" href="all.html">Browse all {n_total} resources</a><a class="sec" href="#welcome">Find my three tools</a></div>
+  </div>
+  <div class="tr-vid"><video controls playsinline preload="none" poster="video/hub-tour-poster.jpg" width="1920" height="1080" aria-label="A one-minute tour of the EL Publishing Hub. The video has no sound."><source src="video/hub-tour.mp4" type="video/mp4"></video></div>
+</div>
 </section>"""
