@@ -282,6 +282,9 @@ body.simple .qsent{display:block!important;font-size:19px}
 .rs.hard,#xr-out .s.hardest{background:#ffe9a3;color:#1b1f33;box-shadow:0 0 0 3px #ffe9a3;border-radius:3px;font-weight:600}
 #xr-out .s.hardest{font-weight:inherit}
 body.simple #q-reading:not(.hide)+.qsent{display:none!important}
+.ready{background:#e8f5ec;color:#1f5c34;border:1.5px solid #9fd3b0;border-radius:12px;padding:10px 14px;font-weight:600;margin:4px 0 10px;font-size:16px}
+[data-theme="dark"] .ready{background:#143524;color:#bdebcd;border-color:#2f6b47}
+body.simple .gs{display:none}
 /* sentence cutter */
 .cutbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
 .cutline{font-family:Georgia,serif;font-size:19px;line-height:2.5;margin:4px 0 2px}
@@ -457,13 +460,16 @@ footer b{color:var(--gold2)}
       <span class="muted small" data-i18n="q-or">No reading handy? Use this week’s sentence:</span>
       <span class="row" id="q-courses"></span>
     </div>
+    <div id="q-recent" class="hide" style="margin-top:12px;border-top:1px dashed var(--line);padding-top:10px"></div>
   </div>
   <div id="q-out" class="hide">
+    <div class="ready noprint" id="q-ready"></div>
     <div class="row between" style="margin-top:6px">
       <h3 style="margin:0" id="q-title"></h3>
       <div class="row noprint">
         <button class="btn gold" id="q-board" style="font-size:18px;padding:13px 22px" data-i18n="q-board">▶ Teach it</button>
         <button class="btn sm" id="q-print-btn" data-i18n="q-print">Print one page</button>
+        <button class="btn sm ghost" id="q-plan" data-i18n="q-plan">Copy for my lesson plan</button>
         <button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button>
       </div>
     </div>
@@ -475,9 +481,9 @@ footer b{color:var(--gold2)}
       <button class="chip em" data-sh="em">● Emerging</button><button class="chip pr" data-sh="pr">◆ Progressing</button>
     </div>
     <div class="qgrid">
-      <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><div id="q-reading"></div><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b1">Step 1 · 3 minutes</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b2">Step 2 · 5 minutes</div><h3 data-i18n="q-b2h">Ask these questions about one sentence</h3><div id="q-reading"></div><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b3">Step 3 · 2 minutes</div><h3 data-i18n="q-b3h">Students finish this sentence</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
     </div>
     <p class="noprint" style="margin:12px 0 0"><button class="btn sm ghost" id="q-simple"></button></p>
     <div class="lvkey">
@@ -1162,6 +1168,7 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
+"q-plan":"Copiar para mi plan de clase",
 "q-demo":"Ver un ejemplo","q-trust":"Gratis · Sin cuenta · Nada de lo que pegas sale de tu dispositivo · Puedes cambiar cada palabra, corte y oración",
 "m-note":"Una página para tu carpeta o la sala de copias.","m-h":"El método de oraciones jugosas, fácil","m-lede":"Una oración difícil. Diez minutos. Cuatro pasos. Hazlo varias veces por semana con una oración de lo que ya estás enseñando.","m-1s":"oración","m-10":"minutos","m-4":"pasos",
 m1h:"Completa",m1p:"Léela en voz alta dos veces. Pregunta:",m1q:"¿Qué crees que dice?",m1i:"Acepta cualquier respuesta. Todavía no corrijas.",
@@ -1174,8 +1181,8 @@ ml:"Dos niveles",mle:"da las partes ya cortadas; respuestas de una palabra está
 "m-try":"Pruébalo con la lectura de mañana →","m-lib":"Usar una oración lista","m-link":"¿Nuevo con las oraciones jugosas? Todo el método en una página: una oración, diez minutos, cuatro pasos →","s-mlink":"El método en una página →",
 t0:"Empieza aquí","q-k":"Cinco minutos, una página","q-h":"Haz más fácil la lectura de mañana","q-p":"Pega tu lectura. Presiona el botón dorado. Luego presiona Next y lee la pantalla en voz alta. Eso es todo.",
 "q-s1":"Pega tu lectura","q-s2":"Presiona el botón dorado","q-s3":"Presiona Next y lee la pantalla","q-ph":"Pega uno o dos párrafos de la lectura de mañana…","q-go":"Hacer mi página","q-or":"¿No tienes la lectura? Usa la oración de esta semana:",
-"q-print":"Imprimir una página","q-board":"▶ Enseñar","q-again":"Empezar de nuevo","q-b1":"Antes de leer · 3 min","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
-"q-b2":"Durante la lectura · 5 min","q-b2h":"Desmenuza esta oración","q-b2t":"Lee en voz alta las líneas “Say”, una por una. Espera las respuestas. La línea “Listen for” muestra cómo suena una buena respuesta.","q-b3":"Después de leer · 2 min","q-b3h":"Boleto de salida","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
+"q-print":"Imprimir una página","q-board":"▶ Enseñar","q-again":"Empezar de nuevo","q-b1":"Paso 1 · 3 minutos","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
+"q-b2":"Paso 2 · 5 minutos","q-b2h":"Haz estas preguntas sobre una oración","q-b2t":"Lee en voz alta las líneas “Say”, una por una. Espera las respuestas. La línea “Listen for” muestra cómo suena una buena respuesta.","q-b3":"Paso 3 · 2 minutos","q-b3h":"Los estudiantes terminan esta oración","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
 "q-ln":"Recién llegado","q-lnt":"Palabras con el español y una imagen. Copia la parte dorada.","q-le":"Emergente","q-let":"Da la oración ya cortada en partes. Marco con banco de palabras.","q-lp":"En progreso","q-lpt":"Responde la pregunta de cada parte y luego el marco.","q-lc":"Reto","q-lct":"Escribe el boleto de salida sin marco.",
 "q-kem":"Los recién llegados también van aquí. Mostrar, señalar, repetir, copiar. Palabras y partes antes que oraciones completas.","q-kpr":"Los estudiantes cortan y conversan. Oraciones completas con un compañero. ¿Listos para más? Quiten el marco.","q-show":"Mostrar qué hacer para:","q-both":"Ambos niveles","q-sheet":"Hoja del estudiante:",
 "q-more":"¿Quieres profundizar? (opcional)","q-mx":"Ver la radiografía completa","q-mh":"Hacer la hoja completa para el estudiante","q-ms":"Estudio de oraciones jugosas","q-mw":"Sesiones de PLC",
@@ -1800,7 +1807,7 @@ function unpackSteps(sent,chunks,coreText,es,given){
   return steps}
 function shortIdea(t){let x=t.replace(/[.,;:]$/,"");const m=x.search(/\s(that|which|who|whose|where|because|so that|while|when)\s/i);if(m>0&&x.slice(0,m).split(/\s+/).length>=3)x=x.slice(0,m);
   if(x.split(/\s+/).length>14){const a=x.lastIndexOf(" and ",90);if(a>20)x=x.slice(0,a)}let w=x.split(/\s+/).slice(0,14);while(w.length>3&&(/^(the|a|an|of|in|on|at|to|for|by|with|and|or|from|into)$/i.test(w[w.length-1])||/ly$/i.test(w[w.length-1])))w.pop();return w.join(" ")+"."}
-function scriptHTML(steps){return `<ol class="script">${steps.map(st=>`<li><b>Say:</b> “${esc(st.say)}”${st.show?`<div class="small muted">${esc(st.show)}</div>`:""}<div class="listen"><b>Listen for:</b> ${esc(st.listen)}</div></li>`).join("")}</ol>`}
+function scriptHTML(steps){return `<ol class="script">${steps.map(st=>`<li><b>Say:</b> “${esc(st.say)}”${st.show?`<div class="small muted">${esc(st.show)}</div>`:""}<div class="listen"><b>Good answer:</b> ${esc(st.listen)}</div></li>`).join("")}</ol>`}
 function stepSlides(steps,title){return steps.map((st,i)=>({k:`${title} · ${i+1} / ${steps.length}`,h:"“"+esc(st.say)+"”",
   b:(st.show?`<div class="m"><p>${esc(st.show)}</p></div>`:"")+(st.hint?`<p style="opacity:.75;font-size:.8em">${esc(st.hint)}</p>`:"")+`<p><button onclick="this.nextElementSibling.style.display='block';this.remove()" style="background:#C9A227;color:#1E2761;border:0;border-radius:10px;padding:10px 18px;font-size:.8em;cursor:pointer">${LANG==="es"?"Mostrar la respuesta":"Show the answer"}</button><span style="display:none;color:#E8C95A">${esc(st.listen)}</span></p>`,min:0}))}
 function walkThrough(steps,title){pr.slides=stepSlides(steps,title);pr.i=0;$("#present").classList.add("on");drawSlide()}
@@ -1866,7 +1873,7 @@ $$(".lvbar [data-sh]").forEach(c=>c.onclick=()=>{store.set("qsheet",c.dataset.sh
 
 function pickWords(r){const order={"false friend":0,"process noun":1,"academic word":2};
   return [...r.vocab.values()].sort((a,b)=>(order[a.kind]===0?-1:order[b.kind]===0?1:0)||b.n-a.n||b.w.length-a.w.length).slice(0,5)}
-function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`≈ ${esc(c.es)}`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
+function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`<span class="gs">≈ ${esc(c.es)}</span>`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
   return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"} <button class="wx noprint" data-x="${esc(w)}" aria-label="Remove ${esc(w)}">×</button></span></li>`}
 function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-input").focus();return}
   store.set("q",text);$("#xr-input").value=text;const r=analyze(text);lastAnalysis=r;
@@ -1879,6 +1886,25 @@ function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=ana
   let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
   words=[...new Set(words.concat(extra))].slice(0,5);
   Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es,core:E.coreText,split:E.split};drawQuick()}
+function savePage(){const keep={};["title","words","sent","chunks","frame","es","core","split","fromText","sents"].forEach(k=>{if(Q[k]!==undefined)keep[k]=Q[k]});
+  const pages=store.get("pages",[]).filter(p=>p.title!==Q.title);pages.unshift(keep);store.set("pages",pages.slice(0,6));drawRecent()}
+function drawRecent(){const pages=store.get("pages",[]);const el=$("#q-recent");el.classList.toggle("hide",!pages.length);
+  el.innerHTML=`<span class="small muted">${LANG==="es"?"Tus páginas recientes:":"Your recent pages:"}</span> `+pages.map((p,i)=>`<button class="chip" data-r="${i}" style="margin:3px 2px">${esc(p.title.replace(/^(My page for|Mi página para): /,""))}</button>`).join("");
+  $$("#q-recent [data-r]").forEach(b=>b.onclick=()=>{Q=JSON.parse(JSON.stringify(pages[+b.dataset.r]));drawQuick()})}
+function planText(){const st=Q.steps.slice(1);return `LESSON ADD-ON (10 minutes) — ${Q.title}
+
+Language objective: Students will explain what a complex sentence from today's reading means by answering who, what, when and why questions about its parts, and will write one sentence using the frame "${Q.frame}"
+Can-do: I can say what a hard sentence means in my own words. I can write a sentence with "${Q.frame}"
+ELP standards (MS ELP / ELPA21, grades 9–12): ELP 1 (construct meaning from text), ELP 8 (meaning of words and phrases), ELP 10 (accurate use of English).
+Content objective and standard: [add yours]
+
+Step 1 · Words (3 min): Say each word; students repeat. ${Q.words.map(w=>{const c=cognate(w);return w+(c&&c.type==="sure"?" ("+c.es+")":"")}).join(", ")}
+Step 2 · One sentence (5 min): "${Q.sent}"
+${st.map((x,i)=>`   ${i+1}. Ask: ${x.say}  →  ${x.listen}`).join("\n")}
+Step 3 · Exit ticket (2 min): ${Q.frame}
+
+Emerging (ELPA21 1–2): ${LV[2].em.join(" ")} ${LV[3].em.join(" ")}
+Progressing (ELPA21 3–4): ${LV[2].pr.join(" ")} ${LV[3].pr.join(" ")}`}
 function drawQuick(noScroll){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
 $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
   $("#q-words").innerHTML=(Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">${LANG==="es"?"No se encontraron palabras difíciles. Añade las tuyas.":"No hard words found. Add your own below."}</li>`)+`<li class="noprint" style="border:0"><input type="text" id="q-addw" placeholder="${LANG==="es"?"Añadir una palabra…":"Add a word…"}" style="padding:7px 10px"><button class="btn sm ghost" id="q-addb">+</button></li>`;
@@ -1891,6 +1917,7 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
   if(Q.fromText){$("#q-reading").innerHTML=`<span class="cap">${LANG==="es"?"Tu lectura · la oración más difícil está resaltada · toca otra para usarla":"Your reading · the hardest sentence is highlighted · tap another to use it"}</span>`+readHTML();
     $$("#q-reading .rs").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=null;drawQuick(true)});
     const hs=$("#q-reading .rs.hard");if(hs)$("#q-reading").scrollTop=Math.max(0,hs.offsetTop-$("#q-reading").offsetTop-30)}
+  $("#q-ready").textContent=LANG==="es"?"✅ Tu lección de 10 minutos está lista. Presiona ▶ Enseñar y lee la pantalla, o imprime la página.":"✅ Your 10-minute lesson is ready. Press ▶ Teach it and read the screen, or print the page.";
   $("#q-sent").classList.add("hide");$("#q-sent").textContent=Q.sent;
   const picker=Q.fromText&&Q.sents.length>1?`<details class="noprint" style="margin-bottom:8px"><summary>${LANG==="es"?"Usar otra oración de la lectura":"Use a different sentence from the reading"}</summary>${Q.sents.map((x,i)=>`<button class="pick ${x===Q.sent?"on":""}" data-i="${i}">${esc(x)}</button>`).join("")}</details>`:"";
   $("#q-chunks").innerHTML=picker+`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
@@ -1915,8 +1942,10 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
    <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i><ol style="margin:4px 0;padding-left:16px">${Q.steps.slice(1).map(st=>`<li><b>Say:</b> “${esc(st.say)}” <span style="color:#444">→ ${esc(st.listen)}</span></li>`).join("")}</ol></td><td style="font-size:15px">${esc(Q.frame)}</td></tr>
    <tr style="font-size:11.5px"><td>${lvP(1)}</td><td>${lvP(2)}</td><td>${lvP(3)}</td></tr></table>
    <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
+  savePage();
   if(!noScroll)$("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
 $("#q-go").onclick=quickFromText;
+$("#q-plan").onclick=e=>copyText(planText(),e.target);
 $("#q-demo").onclick=()=>{$("#q-input").value=SAMPLES["U.S. History"];quickFromText()};
 $("#q-clear").onclick=()=>{$("#q-input").value="";store.set("q","");$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
 $("#q-input").addEventListener("input",()=>store.set("q",$("#q-input").value));
@@ -1939,7 +1968,7 @@ $("#q-simple").onclick=()=>setSimple(!document.body.classList.contains("simple")
 function rerender(){setSimple(document.body.classList.contains("simple"));drawQCourses();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick();subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
 applyLang();paintTheme();
 const saved=store.get("xr","");if(saved)$("#xr-input").value=saved;
-setSimple(store.get("simple",true));setLvFilter(store.get("qlv","both"));drawQCourses();{const q=store.get("q","");if(q)$("#q-input").value=q}
+setSimple(store.get("simple",true));setLvFilter(store.get("qlv","both"));drawQCourses();drawRecent();{const q=store.get("q","");if(q)$("#q-input").value=q}
 sessList();subjChips();drawSteps();loadWeek(js.week);renderSess();route();
 
 </script>
