@@ -53,7 +53,7 @@ body.mini .mast h1{font-size:24px}
 .backbar{display:none;margin:0 0 14px}
 body.mini .backbar{display:flex}
 
-main{padding:24px 0 60px}
+main{padding:28px 0 60px}
 section.view{display:none}
 section.view.on{display:block}
 .intro{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:20px}
@@ -257,6 +257,20 @@ body.checked .model{display:block}
 .cert .sig{display:flex;justify-content:space-around;margin-top:40px;font-family:Inter,sans-serif;font-size:13px}
 .cert .sig div{border-top:1px solid #111;padding-top:4px;min-width:200px}
 
+.hero{background:linear-gradient(135deg,#1E2761 0%,#2B3680 55%,#3b2f6e 100%);color:#fff;border-radius:22px;padding:26px 24px 18px;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:0 14px 40px rgba(30,39,97,.22)}
+.hero:after{content:"✂";position:absolute;right:14px;bottom:-14px;font-size:90px;color:rgba(201,162,39,.16);transform:rotate(-20deg);pointer-events:none}
+.hero .kicker{color:var(--gold2)}
+.hero h2{color:#fff;font-size:clamp(28px,5vw,44px);margin:2px 0 8px}
+.hero p{color:#d9dcf0;font-size:17px;max-width:720px;margin:0 0 14px}
+.hero .qsteps{margin-bottom:10px}
+.hero .qsteps div{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22);color:#fff}
+.hero .qsteps b{color:var(--gold2)}
+.hero .trust{font-size:12.5px;color:#cfd3ee;letter-spacing:.02em}
+.wx{border:0;background:none;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:0 2px}
+.wx:hover{color:#c2410c}
+.pick{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:8px 10px;margin:6px 0;cursor:pointer;font-family:Georgia,serif;font-size:15px}
+.pick.on{border-color:var(--gold);background:var(--hl)}
+.gap.done[data-e]{cursor:pointer}
 /* sentence cutter */
 .cutbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
 .cutline{font-family:Georgia,serif;font-size:19px;line-height:2.5;margin:4px 0 2px}
@@ -415,15 +429,19 @@ footer b{color:var(--gold2)}
 
 <!-- ===================== START HERE ===================== -->
 <section class="view" id="v-start">
-  <div class="kicker" data-i18n="q-k">Five minutes, one page</div>
-  <h2 style="font-size:30px" data-i18n="q-h">Make tomorrow’s reading easier</h2>
-  <p style="font-size:17px;max-width:760px" data-i18n="q-p">Paste the reading you’ll use tomorrow. You get one page with three things: the words to say first, the one sentence to unpack together, and a frame for the exit ticket. That’s the whole process.</p>
-  <div class="qsteps"><div><b>1</b><span data-i18n="q-s1">Paste tomorrow’s reading</span></div><div><b>2</b><span data-i18n="q-s2">Tap “Make my page”</span></div><div><b>3</b><span data-i18n="q-s3">Print it or show it on the board</span></div></div>
+  <div class="hero">
+    <div class="kicker" data-i18n="q-k">Five minutes, one page</div>
+    <h2 data-i18n="q-h">Make tomorrow’s reading easier</h2>
+    <p data-i18n="q-p">Paste the reading you’ll use tomorrow. You get one page with three things: the words to say first, the one sentence to unpack together, and a frame for the exit ticket. That’s the whole process.</p>
+    <div class="qsteps"><div><b>1</b><span data-i18n="q-s1">Paste tomorrow’s reading</span></div><div><b>2</b><span data-i18n="q-s2">Tap “Make my page”</span></div><div><b>3</b><span data-i18n="q-s3">Print it or show it on the board</span></div></div>
+    <div class="trust" data-i18n="q-trust">Free · No account · Nothing you paste leaves your device · You can change every word, cut and sentence</div>
+  </div>
   <a class="mlink noprint" href="#method"><b>1·10·4</b><span data-i18n="m-link">New to juicy sentences? The whole method on one page: one sentence, ten minutes, four moves →</span></a>
   <div class="card noprint" id="q-form">
     <textarea id="q-input" data-i18n-ph="q-ph" placeholder="Paste a paragraph or two from tomorrow’s reading…"></textarea>
     <div class="row" style="margin-top:10px">
       <button class="btn gold" id="q-go" style="font-size:17px;padding:12px 20px" data-i18n="q-go">Make my page</button>
+      <button class="btn ghost" id="q-demo" style="font-size:17px;padding:11px 18px" data-i18n="q-demo">See an example</button>
       <button class="btn ghost" id="q-clear" style="font-size:17px;padding:11px 18px" data-i18n="clear">Clear</button>
       <span class="muted small" data-i18n="q-or">No reading handy? Use this week’s sentence:</span>
       <span class="row" id="q-courses"></span>
@@ -1132,6 +1150,7 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
+"q-demo":"Ver un ejemplo","q-trust":"Gratis · Sin cuenta · Nada de lo que pegas sale de tu dispositivo · Puedes cambiar cada palabra, corte y oración",
 "m-note":"Una página para tu carpeta o la sala de copias.","m-h":"El método de oraciones jugosas, fácil","m-lede":"Una oración difícil. Diez minutos. Cuatro pasos. Hazlo varias veces por semana con una oración de lo que ya estás enseñando.","m-1s":"oración","m-10":"minutos","m-4":"pasos",
 m1h:"Completa",m1p:"Léela en voz alta dos veces. Pregunta:",m1q:"¿Qué crees que dice?",m1i:"Acepta cualquier respuesta. Todavía no corrijas.",
 m2h:"Partes",m2p:"Córtala en partes. Busca quién o qué, y qué hace. Luego una pregunta por parte:",m2q:"¿Cuándo? ¿Por qué? ¿Cómo? ¿Cuál?",m2i:"Pregunta qué significa cada parte, no cómo se llama.",
@@ -1274,7 +1293,7 @@ function cogCell(w){const c=cognate(w);if(!c)return"<span class='muted'>—</spa
   return `≈ ${esc(c.es)} <span class="muted small">${LANG==="es"?"suposición":"guess"}</span>`}
 function cogPlain(w){const c=cognate(w);if(!c)return"";return c.type==="sure"?c.es:c.type==="false"?"FALSE FRIEND: "+c.es:"≈ "+c.es+" (guess)"}
 
-function splitSentences(t){return (t.replace(/\s+/g," ").trim().match(/[^.!?]+(?:[.!?]+(?=\s|$)["”’')\]]*|$)/g)||[]).map(s=>s.trim()).filter(Boolean)}
+function splitSentences(t){return t.replace(/\s+/g," ").trim().split(/(?<=(?<!\b[A-Z]|\b(?:Mr|Mrs|Ms|Dr|vs|St|Jr|No))[.!?]["”’)]?)\s+(?=[A-Z“"(])/).map(s=>s.trim()).filter(Boolean)}
 function analyze(text){
   const sents=splitSentences(text);const res={sents:[],counts:{long:0,pass:0,nom:0,conn:0,ref:0,acad:0},words:0,vocab:new Map(),connTypes:{},connList:[],refList:[],passList:[]};
   sents.forEach((s,si)=>{
@@ -1448,7 +1467,7 @@ function renderSentence(){const d=js.data;$("#js-card").classList.remove("hide")
   $("#js-coresent").innerHTML=d.chunks.map(c=>c.r==="c"?`<mark class="core">${esc(c.t)}</mark>`:`<span style="opacity:.28">${esc(c.t)}</span>`).join(" ");
   $("#js-core").innerHTML=d.core;$("#js-simple").textContent=d.simple;
   $("#js-simple-es").textContent=d.es||"";$("#js-simple-es").classList.toggle("hide",!d.es);$("#js-say-es").classList.toggle("hide",!d.es);
-  $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();mountCutter($("#js-cutter"),d.chunks,()=>{js.shown=d.chunks.length;drawChunks()});setStep(js.step||1)}
+  $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();mountCutter($("#js-cutter"),d.chunks,()=>{js.shown=d.chunks.length;drawChunks()},js.mode==="own"?nc=>{Object.assign(js.ownData,{chunks:nc,frame:nc.map(c=>c.r==="c"?c.t:"___").join(" "),core:`Core: <mark class="core">${esc(nc.find(c=>c.r==="c").t)}</mark>`});js.data=js.ownData;js.step=3;renderSentence();js.shown=nc.length;drawChunks()}:null);setStep(js.step||1)}
 function drawChunks(){const d=js.data;$("#js-chunks").innerHTML=d.chunks.map((c,i)=>`<div class="ch r-${c.r} ${i<js.shown?"":"hide"}"><div class="role">${rname(c.r)}</div><div>${esc(c.t)}<span class="q">${esc(c.q)}</span></div></div>`).join("");
   $("#js-more").disabled=js.shown>=d.chunks.length}
 $("#js-walk").onclick=()=>{const d=js.data;const E=js.mode==="lib"?entry(js.subj,js.week):null;walkThrough(unpackSteps(d.chunks.map(c=>c.t).join(" "),d.chunks,E?E.coreText:"",d.es,E?E.split:null),LANG==="es"?"Desmenuza la oración":"Unpack the sentence")};
@@ -1483,9 +1502,12 @@ function guessRole(tx){const l=tx.toLowerCase().replace(/^[\s,]+/,"").replace(/^
 function chunkSentence(s){s=s.trim().replace(/\s+/g," ");let parts=s.split(/(?<=,)\s+/);
   const re=new RegExp("\\s(?=(?:"+SPLIT_WORDS.map(w=>w.replace(/ /g,"\\s")).join("|")+")\\b)","i");
   parts=parts.flatMap(p=>{const out=[];let rest=p,g=0;while(g++<8){const m=rest.slice(12).search(re);if(m<0){out.push(rest);break}const cut=m+12;out.push(rest.slice(0,cut));rest=rest.slice(cut).trim()}return out}).map(x=>x.trim()).filter(Boolean);
+  for(let i=1;i<parts.length;i++){const p=parts[i],nx=parts[i+1]||"";const lead=/^(therefore|however|consequently|thus|finally|moreover|furthermore|meanwhile|instead|also),?$/i.test(parts[i-1].trim());
+    if(!lead&&(/^(and|or)\b/i.test(p)||(/,$/.test(parts[i-1])&&/,$/.test(p)&&/^(and|or)\b/i.test(nx)&&p.split(/\s+/).length<=4))){parts[i-1]+=" "+p;parts.splice(i,1);i--}}
   for(let i=0;i<parts.length-1;i++){if(parts[i].split(/\s+/).length<=2){parts[i+1]=parts[i]+" "+parts[i+1];parts.splice(i,1);i--}}
   const chunks=parts.map(tx=>{const[r,q]=guessRole(tx);return{r,t:tx,q}});
-  const cand=chunks.findIndex(c=>c.r==="a");if(cand>=0){chunks[cand].r="c";chunks[cand].q="Who or what? Does what? Is this the main idea?"}
+  chunks.forEach((c,i)=>{if(i>0&&c.r==="a"&&/^(a|an)\s/i.test(c.t)&&/,$/.test(chunks[i-1].t)){c.r="d";c.q="What is this? It renames the words right before it."}});
+  let cand=chunks.findIndex(c=>c.r==="a"&&splitCore(c.t));if(cand<0)cand=chunks.findIndex(c=>c.r==="a");if(cand>=0){chunks[cand].r="c";chunks[cand].q="Who or what? Does what? Is this the main idea?"}
   return chunks}
 function ownChunk(){const s=$("#js-own").value.trim();if(!s)return;const chunks=chunkSentence(s);
   js.ownData={tag:LANG==="es"?"Tu oración":"Your sentence",color:"#1E2761",focus:LANG==="es"?"Dividida automáticamente. Revisa y corrige las partes.":"Auto-chunked. Check the chunks and fix them if needed.",chunks,
@@ -1772,19 +1794,33 @@ function walkThrough(steps,title){pr.slides=steps.map((st,i)=>({k:`${title} · $
 
 /* ---- graphic sentence cutter ---- */
 function pieceLabel(c){return c.r==="c"?(LANG==="es"?"★ ¿Quién hace qué?":"★ Who does what?"):(PLAIN[c.r]||c.q)}
-function mountCutter(el,chunks,onDone){const cut=new Set(),nb=chunks.length-1;let timer=null;
-  function draw(msg){const left=nb-cut.size;
-    el.innerHTML=`<div class="cutbar noprint"><button class="btn sm gold" data-a="all">✂ ${LANG==="es"?"Córtala por mí":"Cut it for me"}</button><button class="btn sm ghost" data-a="reset">${LANG==="es"?"Volver a unir":"Put it back"}</button><button class="btn sm ghost" data-a="print">${LANG==="es"?"Imprimir tiras para cortar":"Print strips to cut"}</button></div>
-    <div class="small muted noprint">${nb<1?"":left?(LANG==="es"?`Toca entre dos palabras donde crees que se corta la oración. Faltan ${left} corte${left>1?"s":""}.`:`Tap between two words where you think the sentence should be cut. ${left} cut${left>1?"s":""} to find.`):(LANG==="es"?"¡Todas las partes están cortadas! Cada parte responde una pregunta.":"All cut! Each piece answers one question.")}</div>
+function mountCutter(el,chunks,onDone,onEdit){const cut=new Set(),nb=chunks.length-1;let timer=null,edit=false;const eb=new Set();
+  const words=chunks.flatMap(c=>c.t.split(/\s+/));
+  const T=(en,es)=>LANG==="es"?es:en;
+  function draw(msg){
+    if(edit){el.innerHTML=`<div class="cutbar noprint"><button class="btn sm gold" data-a="done">✓ ${T("Use these cuts","Usar estos cortes")}</button><button class="btn sm ghost" data-a="cancel">${T("Cancel","Cancelar")}</button></div>
+      <div class="small muted">${T("Tap between two words to add a cut. Tap a ✂ to remove it.","Toca entre dos palabras para añadir un corte. Toca un ✂ para quitarlo.")}</div>
+      <div class="cutline">${words.map((w,k)=>esc(w)+(k<words.length-1?`<i class="gap ${eb.has(k)?"done":""}" data-e="${k}">${eb.has(k)?"✂":""}</i>`:"")).join("")}</div>`;return}
+    const left=nb-cut.size;
+    el.innerHTML=`<div class="cutbar noprint"><button class="btn sm gold" data-a="all">✂ ${T("Cut it for me","Córtala por mí")}</button><button class="btn sm ghost" data-a="reset">${T("Put it back","Volver a unir")}</button>${onEdit?`<button class="btn sm ghost" data-a="fix">${T("Fix the cuts","Corregir los cortes")}</button>`:""}<button class="btn sm ghost" data-a="print">${T("Print strips to cut","Imprimir tiras para cortar")}</button></div>
+    <div class="small muted noprint">${nb<1?T("This sentence has one piece. Use “Fix the cuts” to add a cut.","Esta oración tiene una sola parte. Usa “Corregir los cortes”."):left?T(`Tap between two words where you think the sentence should be cut. ${left} cut${left>1?"s":""} to find.`,`Toca entre dos palabras donde crees que se corta la oración. Faltan ${left} corte${left>1?"s":""}.`):T("All cut! Each piece answers one question."+(onEdit?" Tap a piece to make it the ★ piece.":""),"¡Todas las partes están cortadas! Cada parte responde una pregunta."+(onEdit?" Toca una parte para marcarla con ★.":""))}</div>
     <div class="cutline">`+chunks.map((c,i)=>{const open=nb>0&&(i===0||cut.has(i-1))&&(i===nb||cut.has(i));
-      return `<span class="pc ${open?"open pc-"+c.r:""}">${c.t.split(/\s+/).map(esc).join('<i class="gap" data-b="-1"></i>')}${open?`<small>${esc(pieceLabel(c))}</small>`:""}</span>`+(i<nb?`<i class="gap ${cut.has(i)?"done":""}" data-b="${i}">${cut.has(i)?"✂":""}</i>`:"")}).join("")+`</div><div class="small warnc" aria-live="polite">${msg||""}</div>`}
+      return `<span class="pc ${open?"open pc-"+c.r:""}" data-p="${i}">${c.t.split(/\s+/).map(esc).join('<i class="gap" data-b="-1"></i>')}${open?`<small>${esc(pieceLabel(c))}</small>`:""}</span>`+(i<nb?`<i class="gap ${cut.has(i)?"done":""}" data-b="${i}">${cut.has(i)?"✂":""}</i>`:"")}).join("")+`</div><div class="small warnc" aria-live="polite">${msg||""}</div>`}
   el.onclick=e=>{const a=e.target.closest("[data-a]");
-    if(a){clearInterval(timer);if(a.dataset.a==="reset"){cut.clear();draw()}
-      else if(a.dataset.a==="print")printStrips(chunks);
+    if(a){clearInterval(timer);const k=a.dataset.a;
+      if(k==="reset"){cut.clear();draw()}
+      else if(k==="print")printStrips(chunks);
+      else if(k==="fix"){edit=true;eb.clear();let n=0;chunks.forEach((c,i)=>{n+=c.t.split(/\s+/).length;if(i<nb)eb.add(n-1)});draw()}
+      else if(k==="cancel"){edit=false;draw()}
+      else if(k==="done"){const parts=[];let cur=[];words.forEach((w,i)=>{cur.push(w);if(eb.has(i)){parts.push(cur.join(" "));cur=[]}});if(cur.length)parts.push(cur.join(" "));
+        const nc=parts.map(tx=>{const[r,q]=guessRole(tx);return{r,t:tx,q}});const oc=chunks.find(c=>c.r==="c");const key=oc?oc.t.split(/\s+/).slice(0,3).join(" "):"";
+        let ci=key?nc.findIndex(c=>c.t.includes(key)):-1;if(ci<0)ci=nc.findIndex(c=>c.r==="a");if(ci<0)ci=0;nc.forEach(c=>{if(c.r==="c")c.r="a"});nc[ci].r="c";nc[ci].q="Who or what? Does what?";onEdit(nc)}
       else{let i=0;timer=setInterval(()=>{while(cut.has(i))i++;if(i>=nb){clearInterval(timer);onDone&&onDone();return}cut.add(i);draw()},450)}return}
-    const g=e.target.closest(".gap");if(!g||g.classList.contains("done"))return;const b=+g.dataset.b;
-    if(b<0){g.classList.add("no");setTimeout(()=>draw(LANG==="es"?"Ahí no. Busca una coma o una palabra como because, when, which, that.":"Not there. Look for a comma or a word like because, when, which, that."),250)}
-    else{cut.add(b);draw();if(cut.size===nb&&onDone)onDone()}};
+    if(edit){const g=e.target.closest("[data-e]");if(g){const k=+g.dataset.e;eb.has(k)?eb.delete(k):eb.add(k);draw()}return}
+    const pc=e.target.closest(".pc.open");if(pc&&onEdit&&!e.target.closest(".gap")){const i=+pc.dataset.p;if(chunks[i].r!=="c"){const nc=chunks.map(c=>({...c}));nc.forEach(c=>{if(c.r==="c"){const[r,q]=guessRole(c.t);c.r=r==="c"?"a":r;c.q=q}});nc[i].r="c";nc[i].q="Who or what? Does what?";onEdit(nc)}return}
+    const g=e.target.closest(".gap");if(!g||g.classList.contains("done"))return;const b2=+g.dataset.b;
+    if(b2<0){g.classList.add("no");setTimeout(()=>draw(T("Not there. Look for a comma or a word like because, when, which, that.","Ahí no. Busca una coma o una palabra como because, when, which, that.")),250)}
+    else{cut.add(b2);draw();if(cut.size===nb&&onDone)onDone()}};
   draw()}
 function printStrips(chunks){const order=chunks.map((c,i)=>i);
   $("#strip-print").innerHTML=`<div class="strips"><h2>Sentence strips</h2><p style="font-size:13px;margin:0 0 14px">1. Cut on the dashed lines. 2. Mix up the pieces. 3. Match each piece to its question. 4. Put the sentence back in order.</p>
@@ -1818,26 +1854,30 @@ $$(".lvbar [data-sh]").forEach(c=>c.onclick=()=>{store.set("qsheet",c.dataset.sh
 function pickWords(r){const order={"false friend":0,"process noun":1,"academic word":2};
   return [...r.vocab.values()].sort((a,b)=>(order[a.kind]===0?-1:order[b.kind]===0?1:0)||b.n-a.n||b.w.length-a.w.length).slice(0,5)}
 function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`≈ ${esc(c.es)}`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
-  return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"}</span></li>`}
+  return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"} <button class="wx noprint" data-x="${esc(w)}" aria-label="Remove ${esc(w)}">×</button></span></li>`}
 function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-input").focus();return}
   store.set("q",text);$("#xr-input").value=text;const r=analyze(text);lastAnalysis=r;
   const H=[...r.sents].sort((a,b)=>b.nw-a.nw)[0];const chunks=chunkSentence(H.s);
   const W={cause:3,result:3,contrast:3,condition:2,example:1,time:.6,addition:.5};const top=Object.entries(r.connTypes).sort((a,b)=>b[1]*W[b[0]]-a[1]*W[a[0]])[0];
-  Q={title:(LANG==="es"?"Mi página para: ":"My page for: ")+text.split(/\s+/).slice(0,6).join(" ")+"…",words:pickWords(r).map(v=>v.w),sent:H.s,chunks,frame:top?FRAME_BY[top[0]]:"This reading explains that ___ because ___."};
+  Q={fromText:true,sents:r.sents.map(S=>S.s),title:(LANG==="es"?"Mi página para: ":"My page for: ")+text.split(/\s+/).slice(0,6).join(" ")+"…",words:pickWords(r).map(v=>v.w),sent:H.s,chunks,frame:top?FRAME_BY[top[0]]:"This reading explains that ___ because ___."};
   if(Q.words.length<3)Q.words=[...new Set(Q.words.concat((text.match(/[A-Za-z]{6,}/g)||[]).filter(w=>cognate(w)&&cognate(w).type==="sure").map(w=>w.toLowerCase())))].slice(0,5);
   drawQuick()}
 function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=analyze(E.chunks.map(c=>c.t).join(" "));
   let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
   words=[...new Set(words.concat(extra))].slice(0,5);
   Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es,core:E.coreText,split:E.split};drawQuick()}
-function drawQuick(){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
+function drawQuick(noScroll){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
 $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
-  $("#q-words").innerHTML=Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">No hard words found. Pick two from the reading yourself.</li>`;
+  $("#q-words").innerHTML=(Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">${LANG==="es"?"No se encontraron palabras difíciles. Añade las tuyas.":"No hard words found. Add your own below."}</li>`)+`<li class="noprint" style="border:0"><input type="text" id="q-addw" placeholder="${LANG==="es"?"Añadir una palabra…":"Add a word…"}" style="padding:7px 10px"><button class="btn sm ghost" id="q-addb">+</button></li>`;
+  $("#q-words").onclick=e=>{const x=e.target.closest("[data-x]");if(x){Q.words=Q.words.filter(w=>w!==x.dataset.x);drawQuick(true)}};
+  const addW=()=>{const v=$("#q-addw").value.trim().toLowerCase();if(v&&!Q.words.includes(v)){Q.words.push(v);drawQuick(true)}};$("#q-addb").onclick=addW;$("#q-addw").onkeydown=e=>{if(e.key==="Enter")addW()};
   $("#q-sent").textContent=Q.sent;
   Q.steps=unpackSteps(Q.sent,Q.chunks,Q.core,Q.es,Q.split);
   $("#q-sent").classList.add("hide");
-  $("#q-chunks").innerHTML=`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
-  mountCutter($("#q-cutter"),Q.chunks);
+  const picker=Q.fromText&&Q.sents.length>1?`<details class="noprint" style="margin-bottom:8px"><summary>${LANG==="es"?"Usar otra oración de la lectura":"Use a different sentence from the reading"}</summary>${Q.sents.map((x,i)=>`<button class="pick ${x===Q.sent?"on":""}" data-i="${i}">${esc(x)}</button>`).join("")}</details>`:"";
+  $("#q-chunks").innerHTML=picker+`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
+  mountCutter($("#q-cutter"),Q.chunks,null,Q.fromText?nc=>{Q.chunks=nc;Q.core="";Q.split=null;drawQuick(true)}:null);
+  $$("#q-chunks .pick").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=null;drawQuick(true)});
   $("#q-walk").onclick=()=>walkThrough(Q.steps,LANG==="es"?"Desmenuza la oración":"Unpack the sentence");
   $("#q-frame").textContent=Q.frame;
   const lvP=n=>`<div style="margin-top:6px;border-left:3px solid #111;padding-left:5px"><b>● Emerging:</b> ${LV[n].em.join(" ")}</div><div style="margin-top:4px;border-left:3px double #111;padding-left:5px"><b>◆ Progressing:</b> ${LV[n].pr.join(" ")}</div>`;
@@ -1857,8 +1897,9 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
    <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i><ol style="margin:4px 0;padding-left:16px">${Q.steps.slice(1).map(st=>`<li><b>Say:</b> “${esc(st.say)}” <span style="color:#444">→ ${esc(st.listen)}</span></li>`).join("")}</ol></td><td style="font-size:15px">${esc(Q.frame)}</td></tr>
    <tr style="font-size:11.5px"><td>${lvP(1)}</td><td>${lvP(2)}</td><td>${lvP(3)}</td></tr></table>
    <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
-  $("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
+  if(!noScroll)$("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
 $("#q-go").onclick=quickFromText;
+$("#q-demo").onclick=()=>{$("#q-input").value=SAMPLES["U.S. History"];quickFromText()};
 $("#q-clear").onclick=()=>{$("#q-input").value="";store.set("q","");$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
 $("#q-input").addEventListener("input",()=>store.set("q",$("#q-input").value));
 $("#q-again").onclick=()=>{$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
