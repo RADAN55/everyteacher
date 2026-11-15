@@ -12,7 +12,7 @@ import sys
 from datetime import date
 
 ROLES = [
-    ("content", "Content teacher", ["using-spanish-content-classroom.html", "sheltered.html", "el-bridge.html"]),
+    ("content", "Content teacher", ["literacy-lab/", "using-spanish-content-classroom.html", "sheltered.html"]),
     ("el", "EL teacher", ["teaching-the-elpt.html", "grammar-calisthenics/", "elpa21-listening/"]),
     ("leader", "District leader", ["el-evaluate.html", "el-audit.html", "title3-planner.html"]),
     ("student", "Student", ["storm-lens/", "english-on-your-own.html", "picture-dictionary.html"]),

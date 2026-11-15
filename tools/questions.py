@@ -203,6 +203,17 @@ Q = [
   [("Your Guide to School in the U.S.", "newcomer-guide.html"),
    ("Storm Lens", "storm-lens/")]),
 
+ ("classroom",
+  "How can my department get better at the reading and writing in our own subject?",
+  "The Teacher Literacy Lab has three tools that work together. Text X-Ray marks what makes "
+  "your own textbook hard for English learners and turns a passage into a student handout. "
+  "Juicy Sentence Studio gives every course (Biology I, U.S. History, Algebra I, English II) "
+  "one hard sentence a week for 36 weeks, unpacked in ten minutes, in English and Spanish. "
+  "The Teacher Writes Too is a 12-session PLC where teachers write under the conditions "
+  "their students face, with a facilitator kit and certificate.",
+  [("The Teacher Literacy Lab", "literacy-lab/"),
+   ("Monday Moves", "monday-moves.html")]),
+
  ("elteacher",
   "How do I prepare my students for the ELPT this spring?",
   "Teaching the ELPT is a page-turning special issue with one feature per domain: what the "
