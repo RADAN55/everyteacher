@@ -1438,7 +1438,7 @@ function renderXray(){
     cmp.classList.remove("hide")}else cmp.classList.add("hide");
   $("#xr-legend").innerHTML=Object.entries(FEAT).map(([k,f])=>`<label><input type="checkbox" data-h="${k}" ${document.body.classList.contains("h-"+k)?"":"checked"}><span class="sw ${f.sw}"></span>${f.name.replace(/ \(.*\)/,"")} <b>${r.counts[k]}</b></label>`).join("");
   $$("#xr-legend input").forEach(i=>i.onchange=()=>document.body.classList.toggle("h-"+i.dataset.h,!i.checked));
-  const HS=[...r.sents].sort((a,b)=>b.nw-a.nw)[0];
+  const HS=hardestOf(r);
   $("#xr-out").innerHTML=r.sents.map((S,si)=>`<span class="s ${S.long?"long":""} ${S===HS?"hardest":""}">`+S.toks.map((tk,i)=>{const f=[...S.feats[i]];if(!f.length)return esc(tk);
      return `<span class="t ${f.map(x=>"f-"+x).join(" ")}" data-f="${f.join(",")}" data-si="${si}" data-i="${i}">${esc(tk)}</span>`}).join("")+`</span> `).join("");
   $("#xr-pop").style.display="none";
@@ -1461,7 +1461,9 @@ $("#xr-out").addEventListener("click",e=>{const tk=e.target.closest(".t");if(!tk
     return `<p style="margin:.2em 0">${what}</p><p class="small" style="margin:.1em 0 .6em"><b>Ask students:</b> ${f.ask}</p>`}).join("");
   if(S.long)html+=`<p class="small muted" style="margin:0">This word sits in a long sentence (${S.nw} words). <a href="#" id="pop-send">Unpack it in the Studio →</a></p>`;
   const p=$("#xr-pop");p.innerHTML=html;p.style.display="block";const ps=$("#pop-send");if(ps)ps.onclick=ev=>{ev.preventDefault();sendToStudio(S.s)}});
-function hardest(){return [...lastAnalysis.sents].sort((a,b)=>b.nw-a.nw)[0]}
+function hardScore(S){let p=0,n=0,c=0,r=0;S.feats.forEach(f=>{if(f.has("pass"))p++;if(f.has("nom"))n++;if(f.has("conn"))c++;if(f.has("ref"))r++});return S.nw+2*p+3*n+1.5*c+2*r+(S.s.match(/,/g)||[]).length*1.5}
+function hardestOf(r){return [...r.sents].sort((a,b)=>hardScore(b)-hardScore(a))[0]}
+function hardest(){return hardestOf(lastAnalysis)}
 function sendToStudio(s){location.hash="sentence";setTimeout(()=>{setMode("own");$("#js-own").value=s;ownChunk()},30)}
 $("#xr-send").onclick=()=>{if(lastAnalysis)sendToStudio(hardest().s)};
 $("#xr-go").onclick=renderXray;
@@ -1541,7 +1543,7 @@ function renderSentence(){const d=js.data;$("#js-card").classList.remove("hide")
   $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();mountCutter($("#js-cutter"),d.chunks,()=>{js.shown=d.chunks.length;drawChunks()},js.mode==="own"?nc=>{Object.assign(js.ownData,{chunks:nc,frame:nc.map(c=>c.r==="c"?c.t:"___").join(" "),core:`Core: <mark class="core">${esc(nc.find(c=>c.r==="c").t)}</mark>`});js.data=js.ownData;js.step=3;renderSentence();js.shown=nc.length;drawChunks()}:null);setStep(js.step||1)}
 function drawChunks(){const d=js.data;$("#js-chunks").innerHTML=d.chunks.map((c,i)=>`<div class="ch r-${c.r} ${i<js.shown?"":"hide"}"><div class="role">${rname(c.r)}</div><div>${esc(c.t)}<span class="q">${esc(c.q)}</span></div></div>`).join("");
   $("#js-more").disabled=js.shown>=d.chunks.length}
-$("#js-walk").onclick=()=>{const d=js.data;const E=js.mode==="lib"?entry(js.subj,js.week):null;walkThrough(unpackSteps(d.chunks.map(c=>c.t).join(" "),d.chunks,E?E.coreText:"",d.es,E?E.split:null,E?E.en:"",E?WHO_FIX[js.subj+js.week]:""),LANG==="es"?"Desmenuza la oración":"Unpack the sentence")};
+$("#js-walk").onclick=()=>{const d=js.data;const E=js.mode==="lib"?entry(js.subj,js.week):null;walkThrough(unpackSteps(d.chunks.map(c=>c.t).join(" "),d.chunks,E?E.coreText:"",d.es,E?E.split:(d.chunks.split||null),E?E.en:"",E?WHO_FIX[js.subj+js.week]:""),LANG==="es"?"Desmenuza la oración":"Unpack the sentence")};
 $("#js-more").onclick=()=>{js.shown=Math.min(js.data.chunks.length,js.shown+1);drawChunks()};
 $("#js-all").onclick=()=>{js.shown=js.data.chunks.length;drawChunks()};
 $("#js-say").onclick=()=>speak($("#js-sent").textContent,"en");
@@ -1575,9 +1577,12 @@ function chunkSentence(s){s=s.trim().replace(/\s+/g," ");let parts=s.split(/(?<=
   parts=parts.flatMap(p=>{const out=[];let rest=p,g=0;while(g++<8){const m=rest.slice(12).search(re);if(m<0){out.push(rest);break}const cut=m+12;out.push(rest.slice(0,cut));rest=rest.slice(cut).trim()}return out}).map(x=>x.trim()).filter(Boolean);
   for(let i=1;i<parts.length;i++){const p=parts[i],nx=parts[i+1]||"";const lead=/^(therefore|however|consequently|thus|finally|moreover|furthermore|meanwhile|instead|also),?$/i.test(parts[i-1].trim());
     if(!lead&&(/^(and|or)\b/i.test(p)||(/,$/.test(parts[i-1])&&/,$/.test(p)&&/^(and|or)\b/i.test(nx)&&p.split(/\s+/).length<=4))){parts[i-1]+=" "+p;parts.splice(i,1);i--}}
-  for(let i=0;i<parts.length-1;i++){if(parts[i].split(/\s+/).length<=2){parts[i+1]=parts[i]+" "+parts[i+1];parts.splice(i,1);i--}}
+  for(let i=0;i<parts.length-1;i++){if(parts[i].split(/\s+/).length<=2&&!/^(who|which|whose|where)\b/i.test(parts[i+1])){parts[i+1]=parts[i]+" "+parts[i+1];parts.splice(i,1);i--}}
   const chunks=parts.map(tx=>{const[r,q]=guessRole(tx);return{r,t:tx,q}});
   chunks.forEach((c,i)=>{if(i>0&&c.r==="a"&&/^(a|an)\s/i.test(c.t)&&/,$/.test(chunks[i-1].t)){c.r="d";c.q="What is this? It renames the words right before it."}});
+  for(let i=0;i<chunks.length-2;i++){const c=chunks[i];if(c.r==="a"&&/,$/.test(c.t)&&chunks[i+1].r==="d"&&/^(who|which|whose)\b/i.test(chunks[i+1].t)){
+    const j=chunks.findIndex((x,k)=>k>i+1&&x.r==="a");if(j>0){c.r="c";chunks[j].r="c";c.q=chunks[j].q="Who or what? Does what?";
+      const a=c.t.replace(/,$/,""),b=chunks[j].t.replace(/[.,;:]$/,"");const sp=splitCore(a);chunks.split=sp?{who:sp.who,does:sp.does+" "+b}:{who:a,does:b};return chunks}}}
   let cand=chunks.findIndex(c=>c.r==="a"&&splitCore(c.t));if(cand<0)cand=chunks.findIndex(c=>c.r==="a");if(cand>=0){chunks[cand].r="c";chunks[cand].q="Who or what? Does what? Is this the main idea?"}
   return chunks}
 function ownChunk(){const s=$("#js-own").value.trim();if(!s)return;const chunks=chunkSentence(s);
@@ -1840,10 +1845,11 @@ const FRAME_BY={cause:"___ happens because ___.",result:"___. As a result, ___."
 /* ---- teacher script for unpacking a sentence ---- */
 const WHO_N={bio3:1,bio8:1,bio14:2,bio18:1,bio28:2,bio29:1,bio35:2,bio36:1,his14:4,his16:2,his21:3,his31:4,math7:0,math20:1,math21:1,eng2:1,eng4:3,eng8:1,eng16:6,eng21:2,eng22:3,eng33:7,his24:3,eng25:{who:"The author’s use of the word “stormed” instead of “walked”",does:"shows that the character is furious"}};
 const VERB_S=new Set("explains shows suggests reveals means depends represents remains becomes includes produces provides creates causes allows helps makes takes gives uses needs requires contains describes develops supports emphasizes reinforces establishes indicates increases decreases changes moves controls converts determines affects leads results occurs happens grows lives works acts seems appears tells says argues claims brought became began made gave took led left lost won grew rose fell built sent said saw found held kept meant paid ran sold spent stood told thought wrote went came got knew fought compares contrasts presents builds keeps holds stands brings sends goes comes runs carries forms follows begins ends opens divides connects measures equals".split(" "));
+const VERB_BASE=new Set("rely release use need produce provide create cause allow help make take give contain include show move become form grow live work depend require change carry begin pass lose gain share store break build turn start try want know think believe argue call come go see say tell find keep hold lead leave mean play run write read learn switch convert divide increase decrease compete survive reproduce travel vote support describe explain represent remain stay look seem appear face join enter fight serve suggest reveal develop stick prepare classify".split(" "));
 const AUX=new Set("is are was were be been has have had can could will would should must may might do does did".split(" "));
 function splitCore(core){const w=core.replace(/[.,;:]$/,"").split(/\s+/);let i=-1;
   for(let k=1;k<w.length&&k<14;k++){const x=w[k].toLowerCase().replace(/[^a-z’']/g,"");if(AUX.has(x)){i=k;break}
-    if(k<=7&&((/[a-z]{3,}ed$/.test(x)&&!/^[A-Z]/.test(w[k]))||(VERB_S.has(x)&&!/^[A-Z]/.test(w[k])))&&!/^(the|a|an|of|in|on|and|its|their|this|these)$/i.test(w[k-1])){i=k;break}}
+    if(k<=7&&((/[a-z]{3,}ed$/.test(x)&&!/^[A-Z]/.test(w[k]))||(VERB_S.has(x)&&!/^[A-Z]/.test(w[k]))||(VERB_BASE.has(x)&&/(s|people|they|we|you|children|men|women)$/i.test(w[k-1])&&!/(ss|us|is|'s|’s)$/i.test(w[k-1])))&&!/^(the|a|an|of|in|on|and|its|their|this|these)$/i.test(w[k-1])){i=k;break}}
   if(i>0&&/^(that|which|who)$/i.test(w[i-1])){let j=-1;for(let k=i+1;k<w.length;k++){if(AUX.has(w[k].toLowerCase())){j=k;break}}if(j>0)i=j}
   if(i<1)return null;return{who:w.slice(0,i).join(" ").replace(/^then\s+/i,"").replace(/\s*…$/,""),does:w.slice(i).join(" ").replace(/^…\s*/,"")}}
 const PLAIN={y:"Why?",w:"When?",k:"What has to be true first?",x:"What’s the surprise or the “but”?",d:"What does this part tell us about the words right before it?",h:"How?",r:"What happens because of it, or what is it for?",p:"Where? Or of what?",a:"What does this part add?"};
@@ -1860,7 +1866,7 @@ function unpackSteps(sent,chunks,coreText,es,given,en,fixWho){
   if(sp&&!lib)sp={who:sp.who.replace(/,\s*(who|which|that)$/i,""),does:sp.does};
   if(sp){const who=(fixWho||sp.who).replace(/[.,]$/,"");const whoL=/^(I|[A-Z][a-z]+ [A-Z]|The [A-Z])/.test(who)&&!fixWho?who:who[0].toLowerCase()+who.slice(1);
     steps.push({say:"Who or what is this sentence about?",listen:capS(who)+(fixWho&&fixWho.toLowerCase()!==sp.who.toLowerCase()&&!/^\(/.test(sp.who)?` In the sentence, “${sp.who}” means ${whoL}.`:"")});
-    steps.push({say:`What does the sentence say about ${whoL}?`,listen:capS(who+" "+sp.does.replace(/\s*…\s*/g," "))})}
+    steps.push({say:`What does the sentence say about ${whoL}?`,listen:capS(who+(who.includes(",")?", ":" ")+sp.does.replace(/\s*…\s*/g," "))})}
   else steps.push({say:"Who or what is this about, and what do they do?",listen:capS(core)});
   chunks.filter(c=>c.r!=="c").forEach(c=>{const piece=c.t.replace(/^[,\s]+|[,\s]+$/g,"");if(sp&&!fixWho&&piece.replace(/[.,]$/,"")===sp.who.replace(/[.,]$/,""))return;if(!lib&&c===nextA)return;
     steps.push({say:lib?c.q:(PLAIN[c.r]||c.q),listen:"“"+piece.replace(/[.,;:]$/,"")+"”",point:true})});
@@ -1940,9 +1946,9 @@ function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ $
   return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"} <button class="wx noprint" data-x="${esc(w)}" aria-label="Remove ${esc(w)}">×</button></span></li>`}
 function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-input").focus();return}
   store.set("q",text);$("#xr-input").value=text;const r=analyze(text);lastAnalysis=r;
-  const H=[...r.sents].sort((a,b)=>b.nw-a.nw)[0];const chunks=chunkSentence(H.s);
+  const H=hardestOf(r);const chunks=chunkSentence(H.s);
   const W={cause:3,result:3,contrast:3,condition:2,example:1,time:.6,addition:.5};const top=Object.entries(r.connTypes).sort((a,b)=>b[1]*W[b[0]]-a[1]*W[a[0]])[0];
-  Q={fromText:true,sents:r.sents.map(S=>S.s),title:(LANG==="es"?"Mi página para: ":"My page for: ")+text.split(/\s+/).slice(0,6).join(" ")+"…",words:pickWords(r).map(v=>v.w),sent:H.s,chunks,frame:top?FRAME_BY[top[0]]:"This reading explains that ___ because ___."};
+  Q={split:chunks.split||null,fromText:true,sents:r.sents.map(S=>S.s),title:(LANG==="es"?"Mi página para: ":"My page for: ")+text.split(/\s+/).slice(0,6).join(" ")+"…",words:pickWords(r).map(v=>v.w),sent:H.s,chunks,frame:top?FRAME_BY[top[0]]:"This reading explains that ___ because ___."};
   if(Q.words.length<3)Q.words=[...new Set(Q.words.concat((text.match(/[A-Za-z]{6,}/g)||[]).filter(w=>cognate(w)&&cognate(w).type==="sure").map(w=>w.toLowerCase())))].slice(0,5);
   drawQuick()}
 function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=analyze(E.chunks.map(c=>c.t).join(" "));
@@ -1978,14 +1984,14 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
   const readHTML=()=>Q.sents.map((x,i)=>`<span class="rs ${x===Q.sent?"hard":""}" data-i="${i}">${esc(x)}</span>`).join(" ");
   $("#q-reading").classList.toggle("hide",!Q.fromText);
   if(Q.fromText){$("#q-reading").innerHTML=`<span class="cap">${LANG==="es"?"Tu lectura · la oración más difícil está resaltada · toca otra para usarla":"Your reading · the hardest sentence is highlighted · tap another to use it"}</span>`+readHTML();
-    $$("#q-reading .rs").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=null;drawQuick(true)});
+    $$("#q-reading .rs").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=Q.chunks.split||null;drawQuick(true)});
     const hs=$("#q-reading .rs.hard");if(hs)$("#q-reading").scrollTop=Math.max(0,hs.offsetTop-$("#q-reading").offsetTop-30)}
   $("#q-ready").textContent=LANG==="es"?"✅ Tu lección de 10 minutos está lista. Presiona ▶ Enseñar y lee la pantalla, o imprime la página.":"✅ Your 10-minute lesson is ready. Press ▶ Teach it and read the screen, or print the page.";
   $("#q-sent").classList.add("hide");$("#q-sent").textContent=Q.sent;
   const picker=Q.fromText&&Q.sents.length>1?`<details class="noprint" style="margin-bottom:8px"><summary>${LANG==="es"?"Usar otra oración de la lectura":"Use a different sentence from the reading"}</summary>${Q.sents.map((x,i)=>`<button class="pick ${x===Q.sent?"on":""}" data-i="${i}">${esc(x)}</button>`).join("")}</details>`:"";
   $("#q-chunks").innerHTML=picker+`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
   mountCutter($("#q-cutter"),Q.chunks,null,Q.fromText?nc=>{Q.chunks=nc;Q.core="";Q.split=null;drawQuick(true)}:null);
-  $$("#q-chunks .pick").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=null;drawQuick(true)});
+  $$("#q-chunks .pick").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=Q.chunks.split||null;drawQuick(true)});
   $("#q-walk").onclick=()=>walkThrough(Q.steps,LANG==="es"?"Desmenuza la oración":"Unpack the sentence");
   $("#q-frame").textContent=Q.frame;
   const lvP=n=>`<div style="margin-top:6px;border-left:3px solid #111;padding-left:5px"><b>● Emerging:</b> ${LV[n].em.join(" ")}</div><div style="margin-top:4px;border-left:3px double #111;padding-left:5px"><b>◆ Progressing:</b> ${LV[n].pr.join(" ")}</div>`;
@@ -2036,7 +2042,13 @@ const PARTS=[["re","again"],["un","not"],["pre","before"],["inter","between"],["
 const SUFF=[["ology","the study of"],["tion","the act of"],["sion","the act of"],["ment","the result of"],["ity","the quality of"],["ness","the state of"],["ous","full of"],["able","can be"],["ible","can be"],["less","without"],["ize","to make"],["ism","a belief or system"]];
 const NOPRE=/^(represent|releas|research|requir|result|receiv|reveal|relat|remain|reduc|region|respon|regular|respir|react|demand|determin|describ|develop|design|detail|depend|defin|decid|degree|deliver|interest|interpret|internal|understand|univers|discuss|distan|distric|display|diseas|uniform|unit|union|decline|democra|depress|present|predict|prepar|press|precis|subject|substan|transit|transport$)/;
 let V=null;
-function tierOf(w){const L=lemmas(w);if(isAcad(w)&&!L.some(l=>COMMON.has(l)&&l.length<6))return 2;if(L.some(l=>COMMON.has(l)))return 1;if(NOM_RE.test(w)&&isAcad(w))return 2;return w.length>=4?3:1}
+const IRR={frozen:"freeze",withdrawn:"withdraw",spoken:"speak",written:"write",taken:"take",given:"give",known:"know",grown:"grow",broken:"break",chosen:"choose",driven:"drive",fallen:"fall",hidden:"hide",risen:"rise",stolen:"steal",worn:"wear",built:"build",held:"hold",kept:"keep",led:"lead",lost:"lose",meant:"mean",paid:"pay",sold:"sell",sent:"send",spent:"spend",taught:"teach",thought:"think",told:"tell",understood:"understand",won:"win",became:"become",began:"begin",brought:"bring",fought:"fight",found:"find",rebuilt:"rebuild"};
+function everyday(w){w=w.toLowerCase();if(COMMON.has(w))return true;if(IRR[w]&&COMMON.has(IRR[w]))return true;
+  for(const re of [/er$/,/est$/,/ly$/,/ful$/,/less$/,/r$/,/ier$/])if(re.test(w)){const b=w.replace(re,re.source==="ier$"?"y":"");if(b.length>2&&COMMON.has(b))return true}
+  if(/^(un|re)/.test(w)&&w.length>5){const b=w.slice(2);if(COMMON.has(b)||(IRR[b]&&COMMON.has(IRR[b]))||lemmas(b).some(l=>COMMON.has(l)))return true}
+  if(w.length>=8)for(let i=4;i<=w.length-4;i++)if(COMMON.has(w.slice(0,i))&&COMMON.has(w.slice(i))&&w.slice(0,i).length>2&&w.slice(i).length>2&&!/^(tion|ment|ness|able|ible|less|ship|ally|ical|ious|ated)$/.test(w.slice(i)))return true;
+  return false}
+function tierOf(w){const L=lemmas(w);if(!isAcad(w)&&!NOM_RE.test(w)&&everyday(w))return 1;if(isAcad(w)&&!L.some(l=>COMMON.has(l)&&l.length<6))return 2;if(L.some(l=>COMMON.has(l)))return 1;if(NOM_RE.test(w)&&isAcad(w))return 2;return w.length>=4?3:1}
 function analyzeVocab(text){const sents=splitSentences(text);const map=new Map();let total=0;
   sents.forEach(s=>{const toks=s.match(/[A-Za-z][A-Za-z'’-]*/g)||[];toks.forEach((tk,i)=>{total++;const lw=tk.toLowerCase().replace(/[’']s$/,"");
     const name=i>0&&/^[A-Z]/.test(tk);const cands=lemmas(lw).slice(1).filter(l=>l.length>2&&(COMMON.has(l)||COG.sure[l]||COG.false[l])).sort((a,b)=>b.length-a.length);
