@@ -15,7 +15,7 @@
 
    Bump VERSION on any change to the shell list; the activate step drops old
    caches, including the retired newcomer-v* ones. */
-const VERSION = "elhub-v1-20261031b";
+const VERSION = "elhub-v1-20261115a";
 
 const SHELL = [
   "./",
@@ -29,6 +29,7 @@ const SHELL = [
   "offline.html",
   "theme.css",
   "hub-chrome.js",
+  "home-button.js",
   "guide.js",
   "catalog.json",
   "search-index.json",

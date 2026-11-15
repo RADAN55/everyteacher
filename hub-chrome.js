@@ -72,7 +72,15 @@
   /* Some pages take the whole screen on purpose — a simulation, a practice
      session. A bar across the top of those is in the way, so they opt out
      with data-no-hubbar on <html> and keep only the theme. */
-  if (document.documentElement.hasAttribute("data-no-hubbar")) return;
+  if (document.documentElement.hasAttribute("data-no-hubbar")) {
+    /* no bar here, but still a way home: the small floating Home button */
+    try {
+      var hb = document.createElement("script");
+      hb.src = APP.base + "home-button.js"; hb.defer = true;
+      document.head.appendChild(hb);
+    } catch (e) {}
+    return;
+  }
 
   var KEY = "elhub.theme";
   var HOME = "index.html";
@@ -109,6 +117,9 @@
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5' +
     'M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17" ' +
     'stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  var HOUSE =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 3.5 20.5 11' +
+    'M5.5 9.5V20h4.8v-5.6h3.4V20h4.8V9.5" stroke-linejoin="round" stroke-linecap="round"/></svg>';
   var BACK =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" ' +
     'stroke-linejoin="round" stroke-linecap="round"/></svg>';
@@ -118,6 +129,9 @@
 
   /* ---- which page are we on? ---------------------------------------- */
   var here = location.pathname.split("/").pop() || HOME;
+  /* a page in a subfolder (literacy-lab/) reaches the hub through APP.base;
+     its own index.html is not the hub's home */
+  var atHome = here === HOME && !APP.base;
 
   /* ---- build ---------------------------------------------------------- */
   /* a div, not a <header>: most pages style their own masthead with
@@ -129,17 +143,18 @@
 
   var nav = LINKS.map(function (l) {
     var file = l[1].split("#")[0];
-    var cur = file === here || (here === HOME && file === HOME);
-    return '<a href="' + l[1] + '"' + (cur ? ' aria-current="page"' : "") +
+    var cur = !APP.base && (file === here || (here === HOME && file === HOME));
+    return '<a href="' + APP.base + l[1] + '"' + (cur ? ' aria-current="page"' : "") +
       ">" + l[0] + "</a>";
   }).join("");
 
-  var canBack = APP.standalone && history.length > 1 && here !== HOME;
+  var canBack = APP.standalone && history.length > 1 && !atHome;
   bar.innerHTML =
     '<div class="hubbar-in">' +
       (canBack ? '<button type="button" class="hb-back" id="hbBack" aria-label="Back">' + BACK + "</button>" : "") +
-      '<a class="hb-home" href="' + HOME + '" aria-label="EL Publishing, home">' +
+      '<a class="hb-home" href="' + APP.base + HOME + '" aria-label="EL Publishing, home">' +
         MARK + "<b>EL Publishing</b></a>" +
+      (atHome ? "" : '<a class="hb-homebtn" href="' + APP.base + HOME + '">' + HOUSE + "<span>Home</span></a>") +
       '<nav aria-label="Hub">' + nav + "</nav>" +
       '<button type="button" class="hb-install" id="hbInstall" hidden>' + DOWN +
         "<span>Get the app</span></button>" +

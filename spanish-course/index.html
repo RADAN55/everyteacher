@@ -239,4 +239,5 @@ function burst(n){cv.width=innerWidth;cv.height=innerHeight;const cols=['#F26B5B
 function tick(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.r+=p.vr;p.l++;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore()});
  parts=parts.filter(p=>p.y<cv.height+40&&p.l<400);if(parts.length)anim=requestAnimationFrame(tick);else{anim=0;cx.clearRect(0,0,cv.width,cv.height)}}
 updBar();route();
-</script></body></html>
+</script><script src="../home-button.js" defer></script>
+</body></html>

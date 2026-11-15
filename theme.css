@@ -170,6 +170,15 @@ html[data-theme="dark"] .hubbar .hb-theme .moon{display:block}
 .hubbar .hb-install:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
 .hubbar .hb-install svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
 .hubbar .hb-install[hidden]{display:none}
+/* the Home button: on every page but the home page, label kept on phones */
+.hubbar .hb-homebtn{
+  flex:none;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 13px 0 10px;
+  border-radius:999px;border:1px solid var(--gold,#C9A227);background:rgba(201,162,39,.16);
+  color:#fff;font-size:13.5px;font-weight:600;white-space:nowrap;
+}
+.hubbar .hb-homebtn:hover{background:var(--gold,#C9A227);color:#141A44}
+.hubbar .hb-homebtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.hubbar .hb-homebtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .hubbar .hb-back{
   flex:none;width:34px;height:34px;border-radius:50%;cursor:pointer;margin-right:-6px;
   border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);
