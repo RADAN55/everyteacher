@@ -258,6 +258,9 @@ body.checked .model{display:block}
 .cert .sig div{border-top:1px solid #111;padding-top:4px;min-width:200px}
 
 /* Start here */
+.script{margin:6px 0 0;padding-left:22px}
+.script li{margin:0 0 9px;font-size:15px}
+.script .listen{font-size:14px;color:var(--muted);border-left:3px solid var(--gold);padding-left:8px;margin-top:2px}
 .qsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
 .qsteps div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
 .qsteps b{display:block;font-family:Fraunces,serif;font-size:22px;color:var(--gold)}
@@ -389,7 +392,7 @@ footer b{color:var(--gold2)}
     </div>
     <div class="qgrid">
       <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read it together. Find the gold part first (who does what). Then ask the question under each piece.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
     </div>
     <div class="lvkey">
@@ -550,6 +553,7 @@ footer b{color:var(--gold2)}
       <div class="reveal" data-i18n-html="p3"><b>Chunk it.</b> Show one chunk at a time. Each chunk answers a question. Students can answer orally, on whiteboards or with a partner.</div>
       <div class="chunks" id="js-chunks"></div>
       <div class="row noprint" style="margin-top:10px">
+        <button class="btn sm gold" id="js-walk">▶ Walk me through it</button>
         <button class="btn sm" id="js-more" data-i18n="nextchunk">Show next chunk</button>
         <button class="btn sm ghost" id="js-all" data-i18n="showall">Show all</button>
         <button class="btn sm ghost hide" id="js-edit" data-i18n="editch">Edit chunks</button>
@@ -1050,7 +1054,7 @@ const ES={
 t0:"Empieza aquí","q-k":"Cinco minutos, una página","q-h":"Haz más fácil la lectura de mañana","q-p":"Pega la lectura que usarás mañana. Recibes una página con tres cosas: las palabras que dices primero, la oración que desmenuzan juntos y un marco para el boleto de salida. Ese es todo el proceso.",
 "q-s1":"Pega la lectura de mañana","q-s2":"Toca “Hacer mi página”","q-s3":"Imprímela o muéstrala en la pizarra","q-ph":"Pega uno o dos párrafos de la lectura de mañana…","q-go":"Hacer mi página","q-or":"¿No tienes la lectura? Usa la oración de esta semana:",
 "q-print":"Imprimir una página","q-board":"Mostrar en la pizarra","q-again":"Empezar de nuevo","q-b1":"Antes de leer · 3 min","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
-"q-b2":"Durante la lectura · 5 min","q-b2h":"Desmenuza esta oración","q-b2t":"Léanla juntos. Busquen primero la parte dorada (quién hace qué). Luego hagan la pregunta de cada parte.","q-b3":"Después de leer · 2 min","q-b3h":"Boleto de salida","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
+"q-b2":"Durante la lectura · 5 min","q-b2h":"Desmenuza esta oración","q-b2t":"Lee en voz alta las líneas “Say”, una por una. Espera las respuestas. La línea “Listen for” muestra cómo suena una buena respuesta.","q-b3":"Después de leer · 2 min","q-b3h":"Boleto de salida","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
 "q-ln":"Recién llegado","q-lnt":"Palabras con el español y una imagen. Copia la parte dorada.","q-le":"Emergente","q-let":"Da la oración ya cortada en partes. Marco con banco de palabras.","q-lp":"En progreso","q-lpt":"Responde la pregunta de cada parte y luego el marco.","q-lc":"Reto","q-lct":"Escribe el boleto de salida sin marco.",
 "q-kem":"Los recién llegados también van aquí. Mostrar, señalar, repetir, copiar. Palabras y partes antes que oraciones completas.","q-kpr":"Los estudiantes cortan y conversan. Oraciones completas con un compañero. ¿Listos para más? Quiten el marco.","q-show":"Mostrar qué hacer para:","q-both":"Ambos niveles","q-sheet":"Hoja del estudiante:",
 "q-more":"¿Quieres profundizar? (opcional)","q-mx":"Ver la radiografía completa","q-mh":"Hacer la hoja completa para el estudiante","q-ms":"Estudio de oraciones jugosas","q-mw":"Sesiones de PLC",
@@ -1325,9 +1329,12 @@ const rname=r=>LANG==="es"?ROLE_ES[r]:ROLE[r];
 function entry(subj,w){const E=LIB[subj][w-1];
   const chunks=E[2].map(c=>{const m=c.match(/^(\w):(.+)\|(.+)$/);return{r:m[1],t:m[2],q:m[3]}});
   const fi=chunks.findIndex(c=>c.r==="c");let sj="";
-  for(let j=fi-1;j>=0;j--){const c=chunks[j];if(c.r==="a"&&!/^(that|whether|what)\b/i.test(c.t)){sj=c.t.replace(/,$/,"")+(j===fi-1?" ":" … ");break}if(!["d","h"].includes(c.r))break}
+  for(let j=fi-1;j>=0;j--){const c=chunks[j];if(c.r==="a"&&!/^(that|whether|what)\b/i.test(c.t)){sj=c.t.replace(/,$/,"")+(j===fi-1?" ":" … ");break}if(!["d","h","p"].includes(c.r))break}
   const core=(sj+chunks.filter(c=>c.r==="c").map(c=>c.t.replace(/,$/,"")).join(" … ")).replace(/[,;:.]$/,"");
-  return{subj,week:w,topic:E[0],focus:E[1],chunks,en:E[3],es:E[4],frame:E[5],
+  const doesT=chunks.filter(c=>c.r==="c").map(c=>c.t.replace(/,$/,"")).join(" ").replace(/[,;:.]$/,"");
+  let split=sj?{who:sj.replace(/\s*…\s*$/,"").trim(),does:doesT}:null;
+  const ov=WHO_N[subj+w];if(ov&&typeof ov==="object")split=ov;else if(!split&&ov!==undefined){const ws=doesT.split(/\s+/);split=ov===0?{who:"(you)",does:doesT}:{who:ws.slice(0,ov).join(" "),does:ws.slice(ov).join(" ")}}
+  return{subj,week:w,topic:E[0],focus:E[1],chunks,en:E[3],es:E[4],frame:E[5],split,
     coreHtml:E[6]?`Core: <mark class="core">${esc(core)}</mark>. ${E[6]}`:`Core: <mark class="core">${esc(core)}</mark>`,coreText:core}}
 let js={mode:"lib",subj:store.get("subj","bio"),week:store.get("week",1),step:1,shown:0,data:null,timer:null,left:600};
 function setMode(m){js.mode=m;$$("#js-mode .chip[data-m]").forEach(c=>c.classList.toggle("on",c.dataset.m===m));
@@ -1353,6 +1360,7 @@ function renderSentence(){const d=js.data;$("#js-card").classList.remove("hide")
   $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();setStep(js.step||1)}
 function drawChunks(){const d=js.data;$("#js-chunks").innerHTML=d.chunks.map((c,i)=>`<div class="ch r-${c.r} ${i<js.shown?"":"hide"}"><div class="role">${rname(c.r)}</div><div>${esc(c.t)}<span class="q">${esc(c.q)}</span></div></div>`).join("");
   $("#js-more").disabled=js.shown>=d.chunks.length}
+$("#js-walk").onclick=()=>{const d=js.data;const E=js.mode==="lib"?entry(js.subj,js.week):null;walkThrough(unpackSteps(d.chunks.map(c=>c.t).join(" "),d.chunks,E?E.coreText:"",d.es,E?E.split:null),LANG==="es"?"Desmenuza la oración":"Unpack the sentence")};
 $("#js-more").onclick=()=>{js.shown=Math.min(js.data.chunks.length,js.shown+1);drawChunks()};
 $("#js-all").onclick=()=>{js.shown=js.data.chunks.length;drawChunks()};
 $("#js-say").onclick=()=>speak($("#js-sent").textContent,"en");
@@ -1371,7 +1379,7 @@ $("#js-start").onclick=()=>{if(js.timer){clearInterval(js.timer);js.timer=null;$
     if(js.left<=0){clearInterval(js.timer);js.timer=null;$("#js-start").textContent="Restart";$("#js-timer").textContent="Done!"}},1000)};
 /* own-sentence chunker (shared with the handout) */
 const SPLIT_WORDS=["because","although","even though","though","which","who","whose","when","while","if","unless","until","so that","whereas","after","before","since","by","in order to","despite","unlike","so","but","following","during","assuming","allowing","making","forcing","overturning","resulting"];
-function guessRole(tx){const l=tx.toLowerCase().replace(/^[\s,]+/,"");const test=arr=>arr.some(w=>l.startsWith(w+" ")||l===w);
+function guessRole(tx){const l=tx.toLowerCase().replace(/^[\s,]+/,"").replace(/^(therefore|however|consequently|thus|also|in addition|for example|for instance|moreover|furthermore|as a result|finally|in fact|in this model|in other words|meanwhile|instead),\s*/,"");const test=arr=>arr.some(w=>l.startsWith(w+" ")||l===w);
   if(test(["because","since","due to"]))return["y","Why?"];
   if(test(["although","even though","though","whereas","despite","unlike","but","however","yet"]))return["x","What is the contrast?"];
   if(test(["when","while","after","before","until","following","during","as","once","over"]))return["w","When?"];
@@ -1384,6 +1392,7 @@ function guessRole(tx){const l=tx.toLowerCase().replace(/^[\s,]+/,"");const test
 function chunkSentence(s){s=s.trim().replace(/\s+/g," ");let parts=s.split(/(?<=,)\s+/);
   const re=new RegExp("\\s(?=(?:"+SPLIT_WORDS.map(w=>w.replace(/ /g,"\\s")).join("|")+")\\b)","i");
   parts=parts.flatMap(p=>{const out=[];let rest=p,g=0;while(g++<8){const m=rest.slice(12).search(re);if(m<0){out.push(rest);break}const cut=m+12;out.push(rest.slice(0,cut));rest=rest.slice(cut).trim()}return out}).map(x=>x.trim()).filter(Boolean);
+  for(let i=0;i<parts.length-1;i++){if(parts[i].split(/\s+/).length<=2){parts[i+1]=parts[i]+" "+parts[i+1];parts.splice(i,1);i--}}
   const chunks=parts.map(tx=>{const[r,q]=guessRole(tx);return{r,t:tx,q}});
   const cand=chunks.findIndex(c=>c.r==="a");if(cand>=0){chunks[cand].r="c";chunks[cand].q="Who or what? Does what? Is this the main idea?"}
   return chunks}
@@ -1642,16 +1651,43 @@ $("#kit-print").onclick=()=>{try{window.print()}catch(e){}};
    START HERE — the simple process
    ===================================================== */
 const FRAME_BY={cause:"___ happens because ___.",result:"___. As a result, ___.",contrast:"Although ___, ___.",time:"First, ___. Then, ___.",condition:"If ___, then ___.",addition:"___. Also, ___.",example:"___. For example, ___."};
+
+/* ---- teacher script for unpacking a sentence ---- */
+const WHO_N={bio3:1,bio8:1,bio14:2,bio18:1,bio28:2,bio29:1,bio35:2,bio36:1,his14:4,his16:2,his21:3,his31:4,math7:0,math20:1,math21:1,eng2:1,eng4:3,eng8:1,eng16:6,eng21:2,eng22:3,eng33:7,his24:3,eng25:{who:"The author’s use of the word “stormed” instead of “walked”",does:"shows that the character is furious"}};
+const VERB_S=new Set("explains shows suggests reveals means depends represents remains becomes includes produces provides creates causes allows helps makes takes gives uses needs requires contains describes develops supports emphasizes reinforces establishes indicates increases decreases changes moves controls converts determines affects leads results occurs happens grows lives works acts seems appears tells says argues claims compares contrasts presents builds keeps holds stands brings sends goes comes runs carries forms follows begins ends opens divides connects measures equals".split(" "));
+const AUX=new Set("is are was were be been has have had can could will would should must may might do does did".split(" "));
+function splitCore(core){const w=core.replace(/[.,;:]$/,"").split(/\s+/);let i=-1;
+  for(let k=1;k<w.length&&k<14;k++){const x=w[k].toLowerCase().replace(/[^a-z’']/g,"");if(AUX.has(x)){i=k;break}
+    if(k<=7&&((/[a-z]{3,}ed$/.test(x)&&!/^[A-Z]/.test(w[k]))||(VERB_S.has(x)&&!/^[A-Z]/.test(w[k])))&&!/^(the|a|an|of|in|on|and|its|their|this|these)$/i.test(w[k-1])){i=k;break}}
+  if(i<1)return null;return{who:w.slice(0,i).join(" ").replace(/^then\s+/i,"").replace(/\s*…$/,""),does:w.slice(i).join(" ").replace(/^…\s*/,"")}}
+const PLAIN={y:"Why?",w:"When?",k:"What has to be true first?",x:"What’s the surprise or the “but”?",d:"What does this part tell us about the words right before it?",h:"How?",r:"What happens because of it, or what is it for?",p:"Where? Or of what?",a:"Who or what?"};
+function unpackSteps(sent,chunks,coreText,es,given){
+  const core=(coreText||chunks.filter(c=>c.r==="c").map(c=>c.t).join(" ")).replace(/\s*…\s*/g," ").replace(/[.,;:]$/,"");
+  const sp=given||splitCore(core);const steps=[];
+  steps.push({say:"Listen while I read it. Then read it with me.",listen:"Everyone reads it out loud together.",show:sent});
+  if(sp){steps.push({say:"Who or what is this sentence about?",listen:sp.who});
+    steps.push({say:`What does “${sp.who}” do, or what happens to it?`,listen:sp.does})}
+  else steps.push({say:"Who or what is this about, and what do they do?",listen:core});
+  chunks.filter(c=>c.r!=="c").forEach(c=>steps.push({say:PLAIN[c.r]||c.q,listen:c.t.replace(/^[,\s]+|[,\s]+$/g,""),hint:c.q!==PLAIN[c.r]?c.q:""}));
+  steps.push({say:"Now say the main idea in a short sentence.",listen:shortIdea(sp?sp.who+" "+sp.does:core)+(es?`  ·  ES: ${es}`:"")});
+  return steps}
+function shortIdea(t){let x=t.replace(/[.,;:]$/,"");const m=x.search(/\s(that|which|who|whose|where|because|so that|while|when)\s/i);if(m>0&&x.slice(0,m).split(/\s+/).length>=3)x=x.slice(0,m);
+  let w=x.split(/\s+/).slice(0,14);while(w.length>3&&(/^(the|a|an|of|in|on|at|to|for|by|with|and|or|from|into)$/i.test(w[w.length-1])||/ly$/i.test(w[w.length-1])))w.pop();return w.join(" ")+"."}
+function scriptHTML(steps){return `<ol class="script">${steps.map(st=>`<li><b>Say:</b> “${esc(st.say)}”${st.show?`<div class="small muted">${esc(st.show)}</div>`:""}<div class="listen"><b>Listen for:</b> ${esc(st.listen)}</div></li>`).join("")}</ol>`}
+function walkThrough(steps,title){pr.slides=steps.map((st,i)=>({k:`${title} · ${LANG==="es"?"Paso":"Step"} ${i+1} of ${steps.length}`,h:"“"+esc(st.say)+"”",
+  b:(st.show?`<div class="m"><p>${esc(st.show)}</p></div>`:"")+(st.hint?`<p style="opacity:.75;font-size:.8em">${esc(st.hint)}</p>`:"")+`<p><button onclick="this.nextElementSibling.style.display='block';this.remove()" style="background:#C9A227;color:#1E2761;border:0;border-radius:10px;padding:10px 18px;font-size:.8em;cursor:pointer">Show what to listen for</button><span style="display:none;color:#E8C95A">Listen for: ${esc(st.listen)}</span></p>`,min:0}));
+  pr.i=0;$("#present").classList.add("on");drawSlide()}
+
 let Q=null;
 const LV={
  1:{em:["Say each word. Students repeat it twice.","Show the Spanish and a picture or a gesture.","Students copy the words and the Spanish into their notebook."],
     pr:["Students say each word in a short sentence about the topic.","Ask: “Which words look like Spanish? Which one tricks you (⚠)?”"],
     emES:["Di cada palabra. Los estudiantes la repiten dos veces.","Muestra el español y una imagen o un gesto.","Los estudiantes copian las palabras y el español en su cuaderno."],
     prES:["Los estudiantes dicen cada palabra en una oración corta sobre el tema.","Pregunta: “¿Qué palabras se parecen al español? ¿Cuál engaña (⚠)?”"]},
- 2:{em:["Hand out the sentence already cut into pieces.","Read each piece aloud; students point and repeat.","Students find and copy the gold part (who does what). One-word answers are fine."],
-    pr:["Students draw slashes to cut the sentence themselves.","Partners answer the question under each piece in a full sentence.","Ask: “Say the whole sentence in your own words.”"],
-    emES:["Entrega la oración ya cortada en partes.","Lee cada parte en voz alta; los estudiantes señalan y repiten.","Los estudiantes buscan y copian la parte dorada (quién hace qué). Respuestas de una palabra están bien."],
-    prES:["Los estudiantes trazan rayas para cortar la oración ellos mismos.","En parejas, responden la pregunta de cada parte con una oración completa.","Pregunta: “Di toda la oración con tus palabras.”"]},
+ 2:{em:["Hand out the sentence already cut into pieces.","Read each piece aloud; students point and repeat.","Students copy the answers to the first two questions: who, and what they do. One-word answers are fine."],
+    pr:["Students draw slashes to cut the sentence themselves.","Partners answer each “Say” question in a full sentence before you show the answer.","Ask: “Say the whole sentence in your own words.”"],
+    emES:["Entrega la oración ya cortada en partes.","Lee cada parte en voz alta; los estudiantes señalan y repiten.","Los estudiantes copian las respuestas a las dos primeras preguntas: quién y qué hace. Respuestas de una palabra están bien."],
+    prES:["Los estudiantes trazan rayas para cortar la oración ellos mismos.","En parejas, responden cada pregunta “Say” con una oración completa antes de que muestres la respuesta.","Pregunta: “Di toda la oración con tus palabras.”"]},
  3:{em:["Give the frame plus a word bank (today’s five words).","Students may draw it or say it in Spanish first, then write it in English."],
     pr:["Students complete the frame, then add one more sentence with because or however.","Ready for more: write it with no frame."],
     emES:["Da el marco y un banco de palabras (las cinco palabras de hoy).","Pueden dibujarlo o decirlo en español primero y luego escribirlo en inglés."],
@@ -1678,12 +1714,14 @@ function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-i
 function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=analyze(E.chunks.map(c=>c.t).join(" "));
   let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
   words=[...new Set(words.concat(extra))].slice(0,5);
-  Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es};drawQuick()}
+  Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es,core:E.coreText,split:E.split};drawQuick()}
 function drawQuick(){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
 $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
   $("#q-words").innerHTML=Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">No hard words found. Pick two from the reading yourself.</li>`;
   $("#q-sent").textContent=Q.sent;
-  $("#q-chunks").innerHTML=Q.chunks.map(c=>`<div class="qch ${c.r==="c"?"c":""}">${esc(c.t)}<i>${c.r==="c"?(LANG==="es"?"★ ¿Quién hace qué?":"★ Who does what?"):esc(c.q)}</i></div>`).join("")+(Q.es?`<p class="small" lang="es" style="margin:8px 0 0"><b>ES:</b> ${esc(Q.es)}</p>`:"");
+  Q.steps=unpackSteps(Q.sent,Q.chunks,Q.core,Q.es,Q.split);
+  $("#q-chunks").innerHTML=`<button class="btn sm gold noprint" id="q-walk" style="margin-bottom:6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
+  $("#q-walk").onclick=()=>walkThrough(Q.steps,LANG==="es"?"Desmenuza la oración":"Unpack the sentence");
   $("#q-frame").textContent=Q.frame;
   const lvP=n=>`<div style="margin-top:6px;border-left:3px solid #111;padding-left:5px"><b>● Emerging:</b> ${LV[n].em.join(" ")}</div><div style="margin-top:4px;border-left:3px double #111;padding-left:5px"><b>◆ Progressing:</b> ${LV[n].pr.join(" ")}</div>`;
   const others=Q.chunks.filter(c=>c.r!=="c");
@@ -1699,7 +1737,7 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
    <p style="margin:10px 0 4px"><b>Exit ticket:</b> ${esc(Q.frame)} Then add one more sentence with <i>because</i> or <i>however</i>.</p><div class="ln"></div><div class="ln"></div>`;
   $("#q-print").innerHTML=`<div class="sheet"><h2>Teacher page · ${esc(Q.title)}</h2>
    <table><tr><th style="width:30%">1 · Before reading (3 min)<br>Say these words first</th><th>2 · During reading (5 min)<br>Unpack this sentence</th><th style="width:28%">3 · After reading (2 min)<br>Exit ticket</th></tr>
-   <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i>${Q.chunks.map(c=>`<div>${c.r==="c"?"★ ":"• "}${esc(c.t)} <span style="color:#555">(${c.r==="c"?"Who does what?":esc(c.q)})</span></div>`).join("")}</td><td style="font-size:15px">${esc(Q.frame)}</td></tr>
+   <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i><ol style="margin:4px 0;padding-left:16px">${Q.steps.slice(1).map(st=>`<li><b>Say:</b> “${esc(st.say)}” <span style="color:#444">→ ${esc(st.listen)}</span></li>`).join("")}</ol></td><td style="font-size:15px">${esc(Q.frame)}</td></tr>
    <tr style="font-size:11.5px"><td>${lvP(1)}</td><td>${lvP(2)}</td><td>${lvP(3)}</td></tr></table>
    <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
   $("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
@@ -1714,7 +1752,7 @@ function boardLv(n){const L=LV[n];return `<div style="display:grid;grid-template
 function drawQCourses(){$("#q-courses").innerHTML=Object.keys(SUBJ).map(k=>`<button class="chip" data-s="${k}">${sname(k)}</button>`).join("");$$("#q-courses .chip").forEach(c=>c.onclick=()=>quickFromLib(c.dataset.s))}
 $("#q-board").onclick=()=>{const sl=[
   {k:LANG==="es"?"Antes de leer · 3 min":"Before reading · 3 minutes",h:LANG==="es"?"Di estas palabras":"Say these words",b:`<ul>${Q.words.map(w=>{const c=cognate(w);return `<li><b>${esc(w)}</b>${c&&c.type!=="false"?` <span style="color:#E8C95A">· ${esc(c.es)}</span>`:""}</li>`}).join("")}</ul>${boardLv(1)}`,min:3},
-  {k:LANG==="es"?"Durante la lectura · 5 min":"During reading · 5 minutes",h:LANG==="es"?"Desmenuza esta oración":"Unpack this sentence",b:`<div class="m"><p>${esc(Q.sent)}</p></div><ul style="margin-top:14px">${Q.chunks.map(c=>`<li style="${c.r==="c"?"color:#E8C95A":""}">${esc(c.t)} <span style="opacity:.75;font-size:.75em">— ${c.r==="c"?"who does what?":esc(c.q)}</span></li>`).join("")}</ul>${boardLv(2)}`,min:5},
+  {k:LANG==="es"?"Durante la lectura · 5 min":"During reading · 5 minutes",h:LANG==="es"?"Desmenuza esta oración":"Unpack this sentence",b:`<div class="m"><p>${esc(Q.sent)}</p></div><ol style="margin-top:14px">${Q.steps.slice(1).map(st=>`<li>“${esc(st.say)}” <span style="opacity:.7;font-size:.75em">→ ${esc(st.listen)}</span></li>`).join("")}</ol>${boardLv(2)}`,min:5},
   {k:LANG==="es"?"Después de leer · 2 min":"After reading · 2 minutes",h:LANG==="es"?"Boleto de salida":"Exit ticket",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>${boardLv(3)}`,min:2}];
   pr.slides=sl;pr.i=0;$("#present").classList.add("on");drawSlide()};
 
