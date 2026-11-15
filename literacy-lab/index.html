@@ -275,6 +275,13 @@ body.simple #v-start :is(.lvbar,.lv,.lvkey,#q-cutter,#q-walk,.wx,.mlink,.trust,.
 body.simple #q-chunks>details,body.simple #q-out>details,body.simple #q-words li.noprint{display:none!important}
 body.simple .script li{font-size:16.5px;margin-bottom:12px}
 body.simple .qsent{display:block!important;font-size:19px}
+#q-reading{font-family:Georgia,serif;font-size:15.5px;line-height:1.75;background:var(--soft);border-radius:10px;padding:10px 12px;margin:0 0 10px;max-height:260px;overflow:auto}
+#q-reading .cap{display:block;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.rs{cursor:pointer;border-radius:4px}
+.rs:hover{background:rgba(201,162,39,.18)}
+.rs.hard,#xr-out .s.hardest{background:#ffe9a3;color:#1b1f33;box-shadow:0 0 0 3px #ffe9a3;border-radius:3px;font-weight:600}
+#xr-out .s.hardest{font-weight:inherit}
+body.simple #q-reading:not(.hide)+.qsent{display:none!important}
 /* sentence cutter */
 .cutbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
 .cutline{font-family:Georgia,serif;font-size:19px;line-height:2.5;margin:4px 0 2px}
@@ -469,7 +476,7 @@ footer b{color:var(--gold2)}
     </div>
     <div class="qgrid">
       <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><div id="q-reading"></div><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
     </div>
     <p class="noprint" style="margin:12px 0 0"><button class="btn sm ghost" id="q-simple"></button></p>
@@ -551,7 +558,7 @@ footer b{color:var(--gold2)}
       <div class="legend noprint" id="xr-legend"></div>
       <div id="xr-out"></div>
       <div id="xr-pop" class="card"></div>
-      <p class="note" data-i18n="x-tap">Tap any marked word to see what it is and the question to ask students.</p>
+      <p class="note" data-i18n="x-tap">The hardest sentence is highlighted in yellow. Tap any marked word to see what it is and the question to ask students.</p>
     </div>
 
     <h3 style="margin-top:26px" data-i18n="x-moves">Your top teacher moves for this text</h3>
@@ -1177,7 +1184,7 @@ f1:"Radiografía del texto",f2:"Desmenuza la oración",f3:"Escribe a la par",t1:
 "x-k":"Lee como lingüista","x-p":"Pega cualquier pasaje de tu libro de texto, un examen o un artículo. La radiografía marca los seis tipos de lenguaje que hacen difícil un texto académico para los estudiantes de inglés, ordena las estrategias más útiles, las vincula con los estándares y convierte el pasaje en una hoja para el estudiante.",
 "x-how":"Cómo funciona","x-howp":"Todo funciona en tu navegador: sin cuenta, sin IA y sin subir nada. La radiografía busca patrones, así que a veces se le escapa algo o marca algo de más. Toma cada marca como un lugar para mirar, no como un veredicto.",
 sample:"Prueba un ejemplo:","x-ph":"Pega aquí un pasaje (uno o dos párrafos funcionan mejor)…","x-cmp":"Comparar con una versión adaptada (opcional)","x-ph2":"Pega tu versión simplificada o adaptada del mismo pasaje…","x-go":"Hacer la radiografía",clear:"Borrar",
-"x-the":"La radiografía","x-hand":"Crear hoja para el estudiante","x-send":"Desmenuzar la oración más difícil →","x-tap":"Toca cualquier palabra marcada para ver qué es y qué preguntarles a los estudiantes.",
+"x-the":"La radiografía","x-hand":"Crear hoja para el estudiante","x-send":"Desmenuzar la oración más difícil →","x-tap":"La oración más difícil está resaltada en amarillo. Toca cualquier palabra marcada para ver qué es y qué preguntarles a los estudiantes.",
 "x-moves":"Tus estrategias principales para este texto","x-movesp":"Ordenadas según cuánto de cada rasgo tiene el pasaje por cada 100 palabras. Cada estrategia indica los estándares que apoya.",
 "x-words":"Palabras para enseñar antes","x-wordsp":"<b>Cognado</b> = par inglés–español comprobado. <b>≈ suposición</b> = creado con reglas de ortografía; dilo en voz alta antes de confiar en él. <b>⚠ falso amigo</b> = parece español pero significa otra cosa.",copy:"Copiar lista",
 "x-hand2":"Hoja para el estudiante",print:"Imprimir",copytext:"Copiar como texto","x-handnote":"Haz clic en cualquier texto de la hoja para editarlo antes de imprimir. La impresión funciona cuando el laboratorio se abre como página propia (en el hub); en algunas vistas previas, usa el comando de imprimir de tu navegador.",
@@ -1373,7 +1380,8 @@ function renderXray(){
     cmp.classList.remove("hide")}else cmp.classList.add("hide");
   $("#xr-legend").innerHTML=Object.entries(FEAT).map(([k,f])=>`<label><input type="checkbox" data-h="${k}" ${document.body.classList.contains("h-"+k)?"":"checked"}><span class="sw ${f.sw}"></span>${f.name.replace(/ \(.*\)/,"")} <b>${r.counts[k]}</b></label>`).join("");
   $$("#xr-legend input").forEach(i=>i.onchange=()=>document.body.classList.toggle("h-"+i.dataset.h,!i.checked));
-  $("#xr-out").innerHTML=r.sents.map((S,si)=>`<span class="s ${S.long?"long":""}">`+S.toks.map((tk,i)=>{const f=[...S.feats[i]];if(!f.length)return esc(tk);
+  const HS=[...r.sents].sort((a,b)=>b.nw-a.nw)[0];
+  $("#xr-out").innerHTML=r.sents.map((S,si)=>`<span class="s ${S.long?"long":""} ${S===HS?"hardest":""}">`+S.toks.map((tk,i)=>{const f=[...S.feats[i]];if(!f.length)return esc(tk);
      return `<span class="t ${f.map(x=>"f-"+x).join(" ")}" data-f="${f.join(",")}" data-si="${si}" data-i="${i}">${esc(tk)}</span>`}).join("")+`</span> `).join("");
   $("#xr-pop").style.display="none";
   const ranked=Object.keys(FEAT).map(k=>({k,score:r.counts[k]*WEIGHT[k]})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
@@ -1878,6 +1886,11 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
   const addW=()=>{const v=$("#q-addw").value.trim().toLowerCase();if(v&&!Q.words.includes(v)){Q.words.push(v);drawQuick(true)}};$("#q-addb").onclick=addW;$("#q-addw").onkeydown=e=>{if(e.key==="Enter")addW()};
   $("#q-sent").textContent=Q.sent;
   Q.steps=unpackSteps(Q.sent,Q.chunks,Q.core,Q.es,Q.split);
+  const readHTML=()=>Q.sents.map((x,i)=>`<span class="rs ${x===Q.sent?"hard":""}" data-i="${i}">${esc(x)}</span>`).join(" ");
+  $("#q-reading").classList.toggle("hide",!Q.fromText);
+  if(Q.fromText){$("#q-reading").innerHTML=`<span class="cap">${LANG==="es"?"Tu lectura · la oración más difícil está resaltada · toca otra para usarla":"Your reading · the hardest sentence is highlighted · tap another to use it"}</span>`+readHTML();
+    $$("#q-reading .rs").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=null;drawQuick(true)});
+    const hs=$("#q-reading .rs.hard");if(hs)$("#q-reading").scrollTop=Math.max(0,hs.offsetTop-$("#q-reading").offsetTop-30)}
   $("#q-sent").classList.add("hide");$("#q-sent").textContent=Q.sent;
   const picker=Q.fromText&&Q.sents.length>1?`<details class="noprint" style="margin-bottom:8px"><summary>${LANG==="es"?"Usar otra oración de la lectura":"Use a different sentence from the reading"}</summary>${Q.sents.map((x,i)=>`<button class="pick ${x===Q.sent?"on":""}" data-i="${i}">${esc(x)}</button>`).join("")}</details>`:"";
   $("#q-chunks").innerHTML=picker+`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
@@ -1915,6 +1928,7 @@ function boardLv(n){const L=LV[n];return `<div style="display:grid;grid-template
 function drawQCourses(){$("#q-courses").innerHTML=Object.keys(SUBJ).map(k=>`<button class="chip" data-s="${k}">${sname(k)}</button>`).join("");$$("#q-courses .chip").forEach(c=>c.onclick=()=>quickFromLib(c.dataset.s))}
 $("#q-board").onclick=()=>{const es=LANG==="es",simple=document.body.classList.contains("simple");const lv=n=>simple?"":boardLv(n);
   const sl=[{k:es?"Parte 1 · Palabras":"Part 1 · Words",h:es?"“Repitan después de mí.”":"“Repeat after me.”",b:`<ul>${Q.words.map(w=>{const c=cognate(w);return `<li><b>${esc(w)}</b>${c&&c.type!=="false"?` <span style="color:#E8C95A">· ${esc(c.es)}</span>`:""}</li>`}).join("")}</ul>${lv(1)}`,min:0},
+   ...(Q.fromText&&Q.sents.join(" ").length<1400?[{k:es?"Parte 2 · La lectura":"Part 2 · The reading",h:es?"“Busquen la oración resaltada.”":"“Find the highlighted sentence.”",b:`<p style="font-family:Georgia,serif;font-size:clamp(15px,1.7vw,22px);line-height:1.6">${Q.sents.map(x=>x===Q.sent?`<span style="background:#ffe9a3;color:#1b1f33;padding:2px 4px;border-radius:4px">${esc(x)}</span>`:`<span style="opacity:.8">${esc(x)}</span>`).join(" ")}</p>`,min:0}]:[]),
    ...stepSlides(Q.steps,es?"Parte 2 · La oración":"Part 2 · The sentence"),
    {k:es?"Parte 3 · Boleto de salida":"Part 3 · Exit ticket",h:es?"“Terminen esta oración sobre la lectura.”":"“Finish this sentence about the reading.”",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>${lv(3)}`,min:0}];
   pr.slides=sl;pr.i=0;$("#present").classList.add("on");drawSlide();try{$("#present").requestFullscreen&&$("#present").requestFullscreen().catch(()=>{})}catch(e){}};
