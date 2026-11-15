@@ -307,6 +307,19 @@ body.simple .gs{display:none}
 .blist td,.blist th{border:1px solid #444;padding:8px 10px;text-align:left}
 .blist th{font-size:12px;text-transform:uppercase;letter-spacing:.06em}
 @media print{body.p-rlist main>*:not(#list-print){display:none!important}body.p-rlist #list-print{display:block!important}}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:560px){.tiles{grid-template-columns:1fr}}
+.tile{display:flex;gap:14px;align-items:center;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;min-height:92px}
+.tile:hover{border-color:var(--gold)}
+.tile>b{flex:none;width:54px;height:54px;border-radius:14px;background:var(--navy);color:var(--gold2);display:grid;place-items:center;font-family:Fraunces,serif;font-size:24px}
+.tile strong{display:block;font-family:Fraunces,serif;font-size:22px}
+.tile em{display:block;font-style:normal;color:var(--muted);font-size:14.5px}
+.tabhide{display:none!important}
+body.simple .adv{display:none!important}
+body:not(.simple) .simp{display:none}
+body.simple #r-vocab tr>*:nth-child(1),body.simple #r-vocab tr>*:nth-child(3),body.simple #r-vocab tr>*:nth-child(6){display:none}
+body.simple #r-vocab td:nth-child(5){font-size:13px;color:var(--muted)}
+body.simple #r-vocab td{font-size:17px;padding:10px 8px}
 /* report */
 .rsec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
 .rsec h3,.rhead{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:21px}
@@ -512,45 +525,51 @@ footer b{color:var(--gold2)}
     <div class="ready noprint" id="q-ready"></div>
     <div class="row between" style="margin-top:6px">
       <h3 style="margin:0" id="q-title"></h3>
-      <div class="row noprint">
-        <button class="btn gold" id="q-board" style="font-size:18px;padding:13px 22px" data-i18n="q-board">▶ Teach it</button>
-        <button class="btn sm" id="q-print-btn" data-i18n="q-print">Print the lesson page</button>
-        <button class="btn sm" id="r-print" data-i18n="r-print">Print the report</button>
-        <button class="btn sm ghost" id="q-plan" data-i18n="q-plan">Copy for my lesson plan</button>
-        <button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button>
-      </div>
+      <div class="row noprint"><button class="btn sm ghost hide" id="q-back" data-i18n="q-back">← Back to the four buttons</button><button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button></div>
+    </div>
+    <div class="tiles noprint" id="q-menu">
+      <button class="tile" data-go="words"><b>Aa</b><span><strong data-i18n="t-w">Words</strong><em data-i18n="t-wp">The vocabulary with Spanish. Print the list.</em></span></button>
+      <button class="tile" data-go="sents"><b>✂</b><span><strong data-i18n="t-s">Hard sentences</strong><em data-i18n="t-sp">The hardest ones and how to teach each.</em></span></button>
+      <button class="tile" data-go="lesson"><b>▶</b><span><strong data-i18n="t-l">Teach it</strong><em data-i18n="t-lp">A 10-minute lesson. Press Next and read the screen.</em></span></button>
+      <button class="tile" data-go="hand"><b>✎</b><span><strong data-i18n="t-h">Student handout</strong><em data-i18n="t-hp">Ready to print.</em></span></button>
+    </div>
+    <p class="noprint small" id="q-allrow" style="margin:8px 0 0"><a href="#" id="r-print" data-i18n="r-print">Print everything</a></p>
+    <div class="row noprint" data-tab="lesson" style="margin-top:10px">
+      <button class="btn gold" id="q-board" style="font-size:18px;padding:13px 22px" data-i18n="q-board">▶ Teach it</button>
+      <button class="btn sm" id="q-print-btn" data-i18n="q-print">Print the lesson page</button>
+      <button class="btn sm ghost adv" id="q-plan" data-i18n="q-plan">Copy for my lesson plan</button>
     </div>
     <div id="r-report">
-      <div class="rsec"><h3><span class="rn">1</span><span data-i18n="r-h1">Academic vocabulary with Spanish</span></h3>
-        <p class="small muted" data-i18n="r-p1">★ = in your lesson (tap a star to change). ✓ = cognate. T = translation. ≈ = a guess to check. ⚠ = false friend. Tap a Spanish box to type your own.</p>
+      <div class="rsec" data-tab="words"><h3><span data-i18n="r-h1">Academic vocabulary with Spanish</span></h3>
+        <p class="small muted simp" data-i18n="r-p1s">✓ = looks like Spanish. Tap a Spanish word to change it.</p><p class="small muted adv" data-i18n="r-p1">★ = in your lesson (tap a star to change). ✓ = cognate. T = translation. ≈ = a guess to check. ⚠ = false friend. Tap a Spanish box to type your own.</p>
         <div style="overflow-x:auto"><table class="vocab" id="r-vocab"></table></div>
-        <div class="row noprint" style="margin-top:8px"><button class="btn sm ghost" id="r-copyv" data-i18n="copy">Copy list</button><button class="btn sm ghost" id="r-wall" data-i18n="v-wall">Print word wall</button><button class="btn sm gold" id="r-list" data-i18n="r-list">Print English–Spanish list</button><a class="btn sm ghost hide" id="r-gt" target="_blank" rel="noopener"></a></div></div>
-      <div class="rsec"><h3><span class="rn">2</span><span data-i18n="r-h2">Cognates: words Spanish speakers can already read</span></h3><div id="r-cog"></div></div>
-      <div class="rsec"><h3><span class="rn">3</span><span data-i18n="r-h3">Hard sentences and how to teach them</span></h3><div id="r-sents"></div></div>
-      <h3 class="rhead"><span class="rn">4</span><span data-i18n="r-h4">Your 10-minute lesson</span></h3>
+        <div class="row noprint" style="margin-top:8px"><button class="btn gold" id="r-list" data-i18n="r-list">Print the word list</button><button class="btn sm ghost adv" id="r-copyv" data-i18n="copy">Copy list</button><button class="btn sm ghost adv" id="r-wall" data-i18n="v-wall">Print word wall</button><a class="btn sm ghost hide" id="r-gt" target="_blank" rel="noopener"></a></div></div>
+      <div class="rsec" data-tab="words"><h3><span data-i18n="r-h2">Cognates: words Spanish speakers can already read</span></h3><div id="r-cog"></div></div>
+      <div class="rsec" data-tab="sents"><h3><span data-i18n="r-h3">Hard sentences and how to teach them</span></h3><div id="r-sents"></div></div>
+      <h3 class="rhead" data-tab="lesson"><span data-i18n="r-h4">Your 10-minute lesson</span></h3>
     </div>
-    <div class="lvbar noprint"><span class="small muted" data-i18n="q-show">Show what to do for:</span>
+    <div class="lvbar noprint" data-tab="lesson"><span class="small muted" data-i18n="q-show">Show what to do for:</span>
       <button class="chip on" data-lv="both" data-i18n="q-both">Both levels</button>
       <button class="chip em" data-lv="em">● Emerging (1–2)</button>
       <button class="chip pr" data-lv="pr">◆ Progressing (3–4)</button>
       <span class="small muted" style="margin-left:6px" data-i18n="q-sheet">Student half-sheet:</span>
       <button class="chip em" data-sh="em">● Emerging</button><button class="chip pr" data-sh="pr">◆ Progressing</button>
     </div>
-    <div class="qgrid">
+    <div class="qgrid" data-tab="lesson">
       <div class="qbox"><div class="when" data-i18n="q-b1">Step 1 · 3 minutes</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b2">Step 2 · 5 minutes</div><h3 data-i18n="q-b2h">Ask these questions about one sentence</h3><div id="q-reading"></div><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b3">Step 3 · 2 minutes</div><h3 data-i18n="q-b3h">Students finish this sentence</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
     </div>
-    <p class="noprint" style="margin:12px 0 0"><button class="btn sm ghost" id="q-simple"></button></p>
-    <div class="lvkey">
+    <p class="noprint" data-tab="lesson" style="margin:12px 0 0"><button class="btn sm ghost" id="q-simple"></button></p>
+    <div class="lvkey" data-tab="lesson">
       <div class="lv em"><b class="t">● Emerging · ELPA21 Levels 1–2</b><span data-i18n="q-kem">Newcomers belong here too. Show, point, repeat, copy. Words and pieces before whole sentences.</span></div>
       <div class="lv pr"><b class="t">◆ Progressing · ELPA21 Levels 3–4</b><span data-i18n="q-kpr">Students do the cutting and the talking. Full sentences with a partner. Ready for more? Drop the frame.</span></div>
     </div>
-    <div class="rsec" id="r-handwrap"><div class="row between"><h3 style="margin:0"><span class="rn">5</span><span data-i18n="r-h5">Student handout</span></h3>
+    <div class="rsec" id="r-handwrap" data-tab="hand"><div class="row between"><h3 style="margin:0"><span data-i18n="r-h5">Student handout</span></h3>
         <div class="row noprint"><button class="chip em" data-sh2="em">● Emerging</button><button class="chip pr" data-sh2="pr">◆ Progressing</button><button class="btn sm" id="r-hprint" data-i18n="r-hprint">Print handout</button></div></div>
       <p class="note noprint" data-i18n="x-handnote">Click any text on the handout to edit it before you print. Printing works when the lab is opened as its own page (on the hub); in some previews, use your browser’s print command instead.</p>
       <div class="handout" id="r-handout"></div></div>
-    <details class="card noprint" style="margin-top:14px"><summary data-i18n="q-more">Want to go deeper? (optional)</summary>
+    <details class="card noprint" data-tab="lesson" style="margin-top:14px"><summary data-i18n="q-more">Want to go deeper? (optional)</summary>
       <div class="row" style="margin-top:10px"><button class="btn sm ghost" id="q-to-xray" data-i18n="q-mx">See the full X-Ray</button><button class="btn sm ghost" id="q-to-hand" data-i18n="q-mh">Make the full student handout</button><a class="btn sm ghost" href="#sentence" data-i18n="q-ms">Juicy Sentence Studio</a><a class="btn sm ghost" href="#write" data-i18n="q-mw">PLC sessions</a></div>
     </details>
     <div id="q-print"></div>
@@ -1256,8 +1275,9 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
-"r-list":"Imprimir lista inglés–español",
-"q-upload":"Subir un PDF","r-print":"Imprimir el informe","r-h1":"Vocabulario académico con español","r-p1":"★ = en tu lección (toca una estrella para cambiar). ✓ = cognado. T = traducción. ≈ = suposición por revisar. ⚠ = falso amigo. Toca una casilla de español para escribir la tuya.","r-h2":"Cognados: palabras que los hispanohablantes ya pueden leer","r-h3":"Oraciones difíciles y cómo enseñarlas","r-h4":"Tu lección de 10 minutos","r-h5":"Hoja para el estudiante","r-hprint":"Imprimir la hoja",
+"q-back":"← Volver a los cuatro botones","t-w":"Palabras","t-wp":"El vocabulario con español. Imprime la lista.","t-s":"Oraciones difíciles","t-sp":"Las más difíciles y cómo enseñar cada una.","t-l":"Enseñar","t-lp":"Una lección de 10 minutos. Presiona Next y lee la pantalla.","t-h":"Hoja del estudiante","t-hp":"Lista para imprimir.","r-p1s":"✓ = se parece al español. Toca una palabra en español para cambiarla.",
+"r-list":"Imprimir la lista de palabras",
+"q-upload":"Subir un PDF","r-print":"Imprimir todo","r-h1":"Vocabulario académico con español","r-p1":"★ = en tu lección (toca una estrella para cambiar). ✓ = cognado. T = traducción. ≈ = suposición por revisar. ⚠ = falso amigo. Toca una casilla de español para escribir la tuya.","r-h2":"Cognados: palabras que los hispanohablantes ya pueden leer","r-h3":"Oraciones difíciles y cómo enseñarlas","r-h4":"Tu lección de 10 minutos","r-h5":"Hoja para el estudiante","r-hprint":"Imprimir la hoja",
 tw:"Palabras","v-k":"Analizador de vocabulario","v-h":"¿Qué palabras tengo que enseñar?","v-p":"Pega una lectura. El analizador clasifica cada palabra en palabras cotidianas, palabras escolares y palabras de la materia, encuentra las que los hispanohablantes ya pueden leer y escoge las pocas que hay que enseñar primero.",
 "v-go":"Revisar las palabras","v-teach":"Enseña estas primero","v-page":"Hacer mi página con estas palabras","v-wall":"Imprimir muro de palabras","v-teachp":"Escogidas porque son palabras escolares o de la materia que importan en esta lectura. Toca × para quitar una, o toca cualquier palabra de abajo para añadirla.",
 "v-read":"Tu lectura, clasificada","v-t2":"Palabras escolares (se usan en todas las materias)","v-t3":"Palabras de la materia y más difíciles","v-cg":"Se parece al español","v-sp":"Los hispanohablantes ya pueden leer estas","v-ff":"Cuidado: parecen español pero no lo son","v-poly":"Palabras con otro significado en clase","v-parts":"Partes de palabras que vale la pena señalar",
@@ -2018,6 +2038,13 @@ Step 3 · Exit ticket (2 min): ${Q.frame}
 
 Emerging (ELPA21 1–2): ${LV[2].em.join(" ")} ${LV[3].em.join(" ")}
 Progressing (ELPA21 3–4): ${LV[2].pr.join(" ")} ${LV[3].pr.join(" ")}`}
+let qTab="";
+function setTab(t){qTab=t;const lib=!Q.fromText;if(lib&&t==="")t=qTab="lesson";
+  $$("#q-out [data-tab]").forEach(el=>el.classList.toggle("tabhide",!(t==="all"||el.dataset.tab===t)));
+  $("#q-menu").classList.toggle("tabhide",t!==""&&t!=="all"||lib);$("#q-allrow").classList.toggle("tabhide",t!==""||lib);$("#q-back").classList.toggle("hide",t===""||lib);$("#q-ready").classList.toggle("tabhide",t!=="");
+  if(t&&t!=="all")window.scrollTo({top:$("#q-out").offsetTop-10,behavior:"smooth"})}
+$$("#q-menu [data-go]").forEach(b=>b.onclick=()=>setTab(b.dataset.go));
+$("#q-back").onclick=()=>setTab("");
 function drawQuick(noScroll){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
 $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
   $("#q-words").innerHTML=(Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">${LANG==="es"?"No se encontraron palabras difíciles. Añade las tuyas.":"No hard words found. Add your own below."}</li>`)+`<li class="noprint" style="border:0"><input type="text" id="q-addw" placeholder="${LANG==="es"?"Añadir una palabra…":"Add a word…"}" style="padding:7px 10px"><button class="btn sm ghost" id="q-addb">+</button></li>`;
@@ -2030,7 +2057,7 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
   if(Q.fromText){$("#q-reading").innerHTML=`<span class="cap">${LANG==="es"?"Tu lectura · la oración más difícil está resaltada · toca otra para usarla":"Your reading · the hardest sentence is highlighted · tap another to use it"}</span>`+readHTML();
     $$("#q-reading .rs").forEach(p=>p.onclick=()=>{Q.sent=Q.sents[+p.dataset.i];Q.chunks=chunkSentence(Q.sent);Q.core="";Q.split=Q.chunks.split||null;drawQuick(true)});
     const hs=$("#q-reading .rs.hard");if(hs)$("#q-reading").scrollTop=Math.max(0,hs.offsetTop-$("#q-reading").offsetTop-30)}
-  $("#q-ready").textContent=Q.fromText?(LANG==="es"?"✅ Tu informe está listo: vocabulario, cognados, oraciones difíciles, una lección de 10 minutos y la hoja del estudiante.":"✅ Your report is ready: vocabulary, cognates, hard sentences, a 10-minute lesson and the student handout."):LANG==="es"?"✅ Tu lección de 10 minutos está lista. Presiona ▶ Enseñar y lee la pantalla, o imprime la página.":"✅ Your 10-minute lesson is ready. Press ▶ Teach it and read the screen, or print the page.";
+  $("#q-ready").textContent=Q.fromText?(LANG==="es"?"✅ Listo. Escoge lo que necesitas.":"✅ Done. Pick what you need."):LANG==="es"?"✅ Tu lección de 10 minutos está lista. Presiona ▶ Enseñar y lee la pantalla, o imprime la página.":"✅ Your 10-minute lesson is ready. Press ▶ Teach it and read the screen, or print the page.";
   $("#q-sent").classList.add("hide");$("#q-sent").textContent=Q.sent;
   const picker=Q.fromText&&Q.sents.length>1?`<details class="noprint" style="margin-bottom:8px"><summary>${LANG==="es"?"Usar otra oración de la lectura":"Use a different sentence from the reading"}</summary>${Q.sents.map((x,i)=>`<button class="pick ${x===Q.sent?"on":""}" data-i="${i}">${esc(x)}</button>`).join("")}</details>`:"";
   $("#q-chunks").innerHTML=picker+`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
@@ -2057,6 +2084,7 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
    <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
   renderReport();
   savePage();
+  setTab(noScroll?qTab:"");
   if(!noScroll)$("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
 $("#q-go").onclick=quickFromText;
 $("#q-plan").onclick=e=>copyText(planText(),e.target);
@@ -2159,7 +2187,7 @@ function renderReport(){const rep=$("#r-report"),hw=$("#r-handwrap");rep.classLi
   const text=Q.sents.join(" ");const r=analyze(text),A=analyzeVocab(text);Q.esEdit=Q.esEdit||{};
   const vw=A.words.filter(e=>e.tier>=2).sort((a,b)=>vScore(b)-vScore(a)).slice(0,24);Q.words.forEach(w=>{if(!vw.some(e=>e.w===w))vw.unshift({w,n:1,tier:3})});
   $("#r-vocab").innerHTML=`<tr><th></th><th>Word</th><th>Kind</th><th>Spanish</th><th></th><th>×</th></tr>`+vw.map(e=>{const sp=spanishOf(e.w);
-    return `<tr><td><button class="star ${Q.words.includes(e.w)?"on":""}" data-star="${esc(e.w)}" aria-label="In my lesson">★</button></td><td><b>${esc(e.w)}</b></td><td>${e.tier===2?"school word":"subject word"}</td><td contenteditable="true" data-es="${esc(e.w)}">${esc(esFor(e.w))}</td><td class="small ${sp.kind==="false"?"warnc":sp.kind==="cognate"?"ok":"muted"}">${KIND_MARK[sp.kind]}${sp.kind==="false"?`<br><span class="small">${esc(sp.note)}</span>`:""}</td><td>${e.n}</td></tr>`}).join("");
+    return `<tr><td><button class="star ${Q.words.includes(e.w)?"on":""}" data-star="${esc(e.w)}" aria-label="In my lesson">★</button></td><td><b>${esc(e.w)}</b></td><td>${e.tier===2?"school word":"subject word"}</td><td contenteditable="true" data-es="${esc(e.w)}">${esc(esFor(e.w))}</td><td class="small ${sp.kind==="false"?"warnc":sp.kind==="cognate"?"ok":"muted"}"><span class="adv">${KIND_MARK[sp.kind]}</span><span class="simp">${sp.kind==="cognate"?"✓":sp.kind==="false"?"⚠":""}</span>${sp.kind==="false"?`<br><span class="small">${esc(sp.note)}</span>`:""}</td><td>${e.n}</td></tr>`}).join("");
   $$("#r-vocab [data-star]").forEach(b=>b.onclick=()=>{const w=b.dataset.star;Q.words=Q.words.includes(w)?Q.words.filter(x=>x!==w):Q.words.concat(w);drawQuick(true)});
   $$("#r-vocab [data-es]").forEach(td=>td.onblur=()=>{Q.esEdit[td.dataset.es]=td.textContent.trim();savePage();drawHandout()});
   Q._vw=vw.map(e=>e.w);
@@ -2196,7 +2224,7 @@ $("#r-hprint").onclick=()=>printAs("p-rhand");
 $("#r-list").onclick=()=>{$("#list-print").innerHTML=`<div class="blist"><h2>Vocabulary · Vocabulario</h2><p style="font-size:13px;margin:0 0 10px">${esc(Q.title.replace(/^(My page for|Mi página para): /,""))} &nbsp;·&nbsp; Name / Nombre: ____________________</p>
   <table><tr><th>English</th><th>Español</th><th>It means / Significa</th></tr>${(Q._vw||[]).map(w=>{const sp=spanishOf(w);return `<tr><td><b>${esc(w)}</b>${Q.words.includes(w)?" ★":""}</td><td>${esc(esFor(w))}${sp.kind==="cognate"?" ✓":""}</td><td style="width:40%"></td></tr>`}).join("")}</table>
   <p style="font-size:12px;margin-top:8px">★ = word in today’s lesson · palabra de la lección de hoy &nbsp; ✓ = cognate · cognado (looks like Spanish · se parece al español)</p></div>`;printAs("p-rlist")};
-$("#r-print").onclick=()=>{try{window.print()}catch(e){}};
+$("#r-print").onclick=e=>{e.preventDefault();const was=qTab;setTab("all");const back=()=>{setTab(was);window.removeEventListener("afterprint",back)};window.addEventListener("afterprint",back);try{window.print()}catch(err){}setTimeout(back,1500)};
 $("#r-copyv").onclick=e=>copyText("Word\tKind\tSpanish\tNote\n"+(Q._vw||[]).map(w=>{const sp=spanishOf(w);return `${w}\t${tierOf(w)===2?"school word":"subject word"}\t${esFor(w)}\t${KIND_MARK[sp.kind]}`}).join("\n"),e.target);
 $("#r-wall").onclick=()=>{$("#v-wallprint").innerHTML=`<div class="wall">${Q.words.map(w=>`<div><b>${esc(w)}</b><i>${esc(esFor(w))||"&nbsp;"}</i><span>It means:</span><span></span></div>`).join("")}</div>`;const vw=$("#v-words");vw.classList.add("on");$("#v-start").classList.remove("on");const back=()=>{vw.classList.remove("on");$("#v-start").classList.add("on");window.removeEventListener("afterprint",back)};window.addEventListener("afterprint",back);printAs("p-wall");setTimeout(back,1600)};
 
