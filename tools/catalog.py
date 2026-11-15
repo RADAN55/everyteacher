@@ -124,7 +124,7 @@ R = [
  ("https://radan55.github.io/el-field-guide/", "The EL Field Guide", "classroom", "Field guide", "Web guide",
   "The whole obligation in plain language, for staff who never trained for it.", True),
  ("literacy-lab/", "The Teacher Literacy Lab", "classroom", "Interactive lab", "144 sentences · 12 sessions",
-  "X-Ray any text, unpack one juicy sentence a week, and write alongside students.", True),
+  "Paste tomorrow’s reading; get one page: words, one sentence, an exit ticket.", True),
  ("monday-moves.html", "Monday Moves", "classroom", "Staff cards", "37 moves",
   "One move, every room, five minutes: a weekly language move for any content class.", True),
  ("adolescent-literacy-brochure.html", "Improving Adolescent Literacy, in Plain English", "classroom", "Brochure", "Trifold · PDF",

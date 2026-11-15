@@ -257,6 +257,36 @@ body.checked .model{display:block}
 .cert .sig{display:flex;justify-content:space-around;margin-top:40px;font-family:Inter,sans-serif;font-size:13px}
 .cert .sig div{border-top:1px solid #111;padding-top:4px;min-width:200px}
 
+/* Start here */
+.qsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
+.qsteps div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
+.qsteps b{display:block;font-family:Fraunces,serif;font-size:22px;color:var(--gold)}
+@media(max-width:560px){.qsteps{grid-template-columns:1fr}.qsteps div{display:flex;gap:10px;align-items:center}.qsteps b{font-size:18px}}
+#q-input{min-height:170px;font-size:17px}
+.qgrid{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:860px){.qgrid{grid-template-columns:1fr}}
+.qbox{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--gold);border-radius:14px;padding:14px 16px}
+.qbox .when{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.qbox h3{margin:2px 0 8px;font-size:21px}
+.qwords{list-style:none;padding:0;margin:0}
+.qwords li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding:7px 0;font-size:16px}
+.qwords li b{font-size:17px}
+.qsent{font-family:Georgia,serif;font-size:18px;line-height:1.55;margin:0 0 8px}
+.qch{font-size:15px;border-left:4px solid var(--line);padding:4px 10px;margin:5px 0}
+.qch.c{border-left-color:var(--gold);background:var(--hl)}
+.qch i{display:block;font-size:13px;color:var(--muted)}
+.qframe{font-family:Fraunces,Georgia,serif;font-size:22px;line-height:1.4;background:var(--soft2);border-radius:10px;padding:12px}
+.qlanes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;font-size:13.5px}
+@media(max-width:760px){.qlanes{grid-template-columns:1fr 1fr}}
+.qlanes div{background:var(--soft);border-radius:10px;padding:8px 10px;border-top:4px solid}
+.sheet{background:#fff;color:#111;font-family:Inter,sans-serif;font-size:13.5px}
+.sheet h2{font-family:Fraunces,serif;color:#111;font-size:20px;margin:0 0 6px}
+.sheet .cut{border-top:2px dashed #555;margin:14px 0;text-align:center;font-size:11px}
+.sheet table{width:100%;border-collapse:collapse}.sheet td,.sheet th{border:1px solid #444;padding:5px 7px;text-align:left;vertical-align:top}
+.sheet .ln{border-bottom:1px solid #444;height:24px}
+#q-print{display:none}
+@media print{body.p-quick main>*:not(#v-start),body.p-quick #v-start>*:not(#q-out),body.p-quick #q-out>*:not(#q-print){display:none!important}body.p-quick #v-start,body.p-quick #q-out,body.p-quick #q-print{display:block!important}}
+body.at-start .lede,body.at-start .flow{display:none}
 footer{background:var(--navy);color:#cfd3ee;padding:22px 0;font-size:13.5px}
 footer b{color:var(--gold2)}
 .hide{display:none!important}
@@ -304,6 +334,7 @@ footer b{color:var(--gold2)}
     <p class="lede" data-i18n="lede">For EL and content teachers who want to read their own texts like a language expert, unpack the hardest sentences with students, and write in their subject the way they ask students to.</p>
     <div class="flow"><span><b>1</b> <span data-i18n="f1">X-Ray the text</span></span><span><b>2</b> <span data-i18n="f2">Unpack the sentence</span></span><span><b>3</b> <span data-i18n="f3">Write alongside</span></span></div>
     <nav class="tabs" aria-label="Lab sections">
+      <a href="#start" data-v="start"><span class="n">★</span><span data-i18n="t0">Start here</span></a>
       <a href="#xray" data-v="xray"><span class="n">1</span><span data-i18n="t1">Text X-Ray</span></a>
       <a href="#sentence" data-v="sentence"><span class="n">2</span><span data-i18n="t2">Juicy Sentence Studio</span></a>
       <a href="#write" data-v="write"><span class="n">3</span><span data-i18n="t3">The Teacher Writes Too</span></a>
@@ -313,6 +344,47 @@ footer b{color:var(--gold2)}
 
 <main class="wrap">
 <div class="backbar noprint"><a class="btn ghost sm" id="backlink" href="#sentence" data-i18n="back">← Back to the lab</a></div>
+
+<!-- ===================== START HERE ===================== -->
+<section class="view" id="v-start">
+  <div class="kicker" data-i18n="q-k">Five minutes, one page</div>
+  <h2 style="font-size:30px" data-i18n="q-h">Make tomorrow’s reading easier</h2>
+  <p style="font-size:17px;max-width:760px" data-i18n="q-p">Paste the reading you’ll use tomorrow. You get one page with three things: the words to say first, the one sentence to unpack together, and a frame for the exit ticket. That’s the whole process.</p>
+  <div class="qsteps"><div><b>1</b><span data-i18n="q-s1">Paste tomorrow’s reading</span></div><div><b>2</b><span data-i18n="q-s2">Tap “Make my page”</span></div><div><b>3</b><span data-i18n="q-s3">Print it or show it on the board</span></div></div>
+  <div class="card noprint" id="q-form">
+    <textarea id="q-input" data-i18n-ph="q-ph" placeholder="Paste a paragraph or two from tomorrow’s reading…"></textarea>
+    <div class="row" style="margin-top:10px">
+      <button class="btn gold" id="q-go" style="font-size:17px;padding:12px 20px" data-i18n="q-go">Make my page</button>
+      <span class="muted small" data-i18n="q-or">No reading handy? Use this week’s sentence:</span>
+      <span class="row" id="q-courses"></span>
+    </div>
+  </div>
+  <div id="q-out" class="hide">
+    <div class="row between" style="margin-top:6px">
+      <h3 style="margin:0" id="q-title"></h3>
+      <div class="row noprint">
+        <button class="btn sm" id="q-print-btn" data-i18n="q-print">Print one page</button>
+        <button class="btn sm gold" id="q-board" data-i18n="q-board">Show on the board</button>
+        <button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button>
+      </div>
+    </div>
+    <div class="qgrid">
+      <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read it together. Find the gold part first (who does what). Then ask the question under each piece.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
+    </div>
+    <div class="qlanes">
+      <div style="border-color:#4f9d69"><b data-i18n="q-ln">Newcomer</b><br><span data-i18n="q-lnt">Words with the Spanish and a picture. Copy the gold part.</span></div>
+      <div style="border-color:#3b82f6"><b data-i18n="q-le">Emerging</b><br><span data-i18n="q-let">Give the sentence already cut into pieces. Frame with a word bank.</span></div>
+      <div style="border-color:#C9A227"><b data-i18n="q-lp">Progressing</b><br><span data-i18n="q-lpt">Answer the question under each piece, then the frame.</span></div>
+      <div style="border-color:#7c3aed"><b data-i18n="q-lc">Challenge</b><br><span data-i18n="q-lct">Write the exit ticket with no frame.</span></div>
+    </div>
+    <details class="card noprint" style="margin-top:14px"><summary data-i18n="q-more">Want to go deeper? (optional)</summary>
+      <div class="row" style="margin-top:10px"><button class="btn sm ghost" id="q-to-xray" data-i18n="q-mx">See the full X-Ray</button><button class="btn sm ghost" id="q-to-hand" data-i18n="q-mh">Make the full student handout</button><a class="btn sm ghost" href="#sentence" data-i18n="q-ms">Juicy Sentence Studio</a><a class="btn sm ghost" href="#write" data-i18n="q-mw">PLC sessions</a></div>
+    </details>
+    <div id="q-print"></div>
+  </div>
+</section>
 
 <!-- ===================== 1. TEXT X-RAY ===================== -->
 <section class="view" id="v-xray">
@@ -958,6 +1030,12 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
+t0:"Empieza aquí","q-k":"Cinco minutos, una página","q-h":"Haz más fácil la lectura de mañana","q-p":"Pega la lectura que usarás mañana. Recibes una página con tres cosas: las palabras que dices primero, la oración que desmenuzan juntos y un marco para el boleto de salida. Ese es todo el proceso.",
+"q-s1":"Pega la lectura de mañana","q-s2":"Toca “Hacer mi página”","q-s3":"Imprímela o muéstrala en la pizarra","q-ph":"Pega uno o dos párrafos de la lectura de mañana…","q-go":"Hacer mi página","q-or":"¿No tienes la lectura? Usa la oración de esta semana:",
+"q-print":"Imprimir una página","q-board":"Mostrar en la pizarra","q-again":"Empezar de nuevo","q-b1":"Antes de leer · 3 min","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
+"q-b2":"Durante la lectura · 5 min","q-b2h":"Desmenuza esta oración","q-b2t":"Léanla juntos. Busquen primero la parte dorada (quién hace qué). Luego hagan la pregunta de cada parte.","q-b3":"Después de leer · 2 min","q-b3h":"Boleto de salida","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
+"q-ln":"Recién llegado","q-lnt":"Palabras con el español y una imagen. Copia la parte dorada.","q-le":"Emergente","q-let":"Da la oración ya cortada en partes. Marco con banco de palabras.","q-lp":"En progreso","q-lpt":"Responde la pregunta de cada parte y luego el marco.","q-lc":"Reto","q-lct":"Escribe el boleto de salida sin marco.",
+"q-more":"¿Quieres profundizar? (opcional)","q-mx":"Ver la radiografía completa","q-mh":"Hacer la hoja completa para el estudiante","q-ms":"Estudio de oraciones jugosas","q-mw":"Sesiones de PLC",
 brand:"EL Publishing · Herramientas docentes",title:"El <em>Laboratorio</em> de Lectoescritura Docente",lede:"Para maestros de inglés como segundo idioma y de contenido que quieren leer sus textos como expertos en lenguaje, desmenuzar las oraciones más difíciles con sus estudiantes y escribir en su materia como les piden a sus estudiantes.",
 f1:"Radiografía del texto",f2:"Desmenuza la oración",f3:"Escribe a la par",t1:"Radiografía del texto",t2:"Estudio de oraciones jugosas",t3:"El maestro también escribe",back:"← Volver al laboratorio",
 "x-k":"Lee como lingüista","x-p":"Pega cualquier pasaje de tu libro de texto, un examen o un artículo. La radiografía marca los seis tipos de lenguaje que hacen difícil un texto académico para los estudiantes de inglés, ordena las estrategias más útiles, las vincula con los estándares y convierte el pasaje en una hoja para el estudiante.",
@@ -1020,15 +1098,15 @@ function speak(text,lang){const st=$("#audio-status");
 /* ================= routing ================= */
 const SUBJ={bio:{n:"Biology I",es:"Biología I",c:"#0f766e"},his:{n:"U.S. History",es:"Historia de EE. UU.",c:"#b45309"},math:{n:"Algebra I",es:"Álgebra I",c:"#1d4ed8"},eng:{n:"English II",es:"Inglés II",c:"#a21caf"}};
 const sname=k=>LANG==="es"?SUBJ[k].es:SUBJ[k].n;
-const MAIN=["xray","sentence","write"];
+const MAIN=["start","xray","sentence","write"];
 function route(){let h=(location.hash||"").slice(1);let m;
   $$("section.view").forEach(s=>s.classList.remove("on"));document.body.classList.remove("mini");
   if((m=h.match(/^student-(bio|his|math|eng)-(\d{1,2})$/))){showStudent(m[1],+m[2]);return show("student",true)}
   if((m=h.match(/^monday-(\d{1,2})$/))){renderMonday(Math.min(36,Math.max(1,+m[1])));return show("monday",true,"#sentence")}
   if((m=h.match(/^cards-(bio|his|math|eng)$/))){renderCards(m[1]);return show("cards",true,"#sentence")}
   if(h==="kit"){renderKit();return show("kit",true,"#write")}
-  if(!MAIN.includes(h))h=store.get("view","xray");store.set("view",h);show(h)}
-function show(v,mini,back){$("#v-"+v).classList.add("on");if(mini){document.body.classList.add("mini");$("#backlink").setAttribute("href",back||"#sentence");$("#backlink").classList.toggle("hide",v==="student")}
+  if(!MAIN.includes(h))h=store.get("view2","start");store.set("view2",h);show(h)}
+function show(v,mini,back){$("#v-"+v).classList.add("on");document.body.classList.toggle("at-start",v==="start");if(mini){document.body.classList.add("mini");$("#backlink").setAttribute("href",back||"#sentence");$("#backlink").classList.toggle("hide",v==="student")}
   $$("nav.tabs a").forEach(a=>a.classList.toggle("on",a.dataset.v===v));window.scrollTo(0,0)}
 window.addEventListener("hashchange",route);
 
@@ -1541,10 +1619,60 @@ function renderKit(){$("#kit-out").innerHTML=(window.HUB?`<p class="noprint"><a 
  <div class="kitpage"><div class="cert"><div style="font-family:Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:12px">EL Publishing · The Teacher Literacy Lab</div><div class="big">Certificate of Participation</div><div style="font-family:Inter,sans-serif">This certifies that</div><div class="nm">&nbsp;</div><p style="font-family:Inter,sans-serif;max-width:560px;margin:14px auto">completed ____ of 12 sessions of <i>The Teacher Writes Too</i>, a professional learning series on reading and writing across the content areas for English learners, totaling ____ hours.</p><div class="sig"><div>Facilitator</div><div>Date</div></div><p style="font-family:Inter,sans-serif;font-size:11px;margin-top:18px">Participation certificate. Credit hours are awarded by the district, not by this certificate.</p></div></div>`}
 $("#kit-print").onclick=()=>{try{window.print()}catch(e){}};
 
+
+/* =====================================================
+   START HERE — the simple process
+   ===================================================== */
+const FRAME_BY={cause:"___ happens because ___.",result:"___. As a result, ___.",contrast:"Although ___, ___.",time:"First, ___. Then, ___.",condition:"If ___, then ___.",addition:"___. Also, ___.",example:"___. For example, ___."};
+let Q=null;
+function pickWords(r){const order={"false friend":0,"process noun":1,"academic word":2};
+  return [...r.vocab.values()].sort((a,b)=>(order[a.kind]===0?-1:order[b.kind]===0?1:0)||b.n-a.n||b.w.length-a.w.length).slice(0,5)}
+function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`≈ ${esc(c.es)}`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
+  return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"}</span></li>`}
+function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-input").focus();return}
+  store.set("q",text);$("#xr-input").value=text;const r=analyze(text);lastAnalysis=r;
+  const H=[...r.sents].sort((a,b)=>b.nw-a.nw)[0];const chunks=chunkSentence(H.s);
+  const W={cause:3,result:3,contrast:3,condition:2,example:1,time:.6,addition:.5};const top=Object.entries(r.connTypes).sort((a,b)=>b[1]*W[b[0]]-a[1]*W[a[0]])[0];
+  Q={title:(LANG==="es"?"Mi página para: ":"My page for: ")+text.split(/\s+/).slice(0,6).join(" ")+"…",words:pickWords(r).map(v=>v.w),sent:H.s,chunks,frame:top?FRAME_BY[top[0]]:"This reading explains that ___ because ___."};
+  if(Q.words.length<3)Q.words=[...new Set(Q.words.concat((text.match(/[A-Za-z]{6,}/g)||[]).filter(w=>cognate(w)&&cognate(w).type==="sure").map(w=>w.toLowerCase())))].slice(0,5);
+  drawQuick()}
+function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=analyze(E.chunks.map(c=>c.t).join(" "));
+  let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
+  words=[...new Set(words.concat(extra))].slice(0,5);
+  Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es};drawQuick()}
+function drawQuick(){$("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
+  $("#q-words").innerHTML=Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">No hard words found. Pick two from the reading yourself.</li>`;
+  $("#q-sent").textContent=Q.sent;
+  $("#q-chunks").innerHTML=Q.chunks.map(c=>`<div class="qch ${c.r==="c"?"c":""}">${esc(c.t)}<i>${c.r==="c"?(LANG==="es"?"★ ¿Quién hace qué?":"★ Who does what?"):esc(c.q)}</i></div>`).join("")+(Q.es?`<p class="small" lang="es" style="margin:8px 0 0"><b>ES:</b> ${esc(Q.es)}</p>`:"");
+  $("#q-frame").textContent=Q.frame;
+  $("#q-print").innerHTML=`<div class="sheet"><h2>Teacher page · ${esc(Q.title)}</h2>
+   <table><tr><th style="width:30%">1 · Before reading (3 min)<br>Say these words first</th><th>2 · During reading (5 min)<br>Unpack this sentence</th><th style="width:26%">3 · After reading (2 min)<br>Exit ticket</th></tr>
+   <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i>${Q.chunks.map(c=>`<div>${c.r==="c"?"★ ":"• "}${esc(c.t)} <span style="color:#555">(${c.r==="c"?"Who does what?":esc(c.q)})</span></div>`).join("")}</td><td style="font-size:15px">${esc(Q.frame)}</td></tr></table>
+   <p style="font-size:12px;margin:6px 0 0"><b>Newcomer:</b> words + Spanish, copy the ★ part · <b>Emerging:</b> pieces pre-cut, frame with word bank · <b>Progressing:</b> answer each piece’s question · <b>Challenge:</b> exit ticket with no frame</p>
+   <div class="cut">✂ cut here · student half-sheet</div>
+   <p>Name: ____________________ Period: ____</p>
+   <table><tr><th>Word</th><th>Spanish</th><th>What it means</th></tr>${Q.words.map(w=>{const c=cognate(w);return `<tr><td><b>${esc(w)}</b></td><td>${c&&c.type!=="false"?esc(c.es):""}</td><td></td></tr>`}).join("")}</table>
+   <p style="margin:10px 0 4px"><b>Unpack this sentence.</b> Underline who does what.</p><p style="font-family:Georgia,serif;font-size:15px">${esc(Q.sent)}</p>
+   ${Q.chunks.filter(c=>c.r!=="c").map(c=>`<div>${esc(c.q)} <span style="display:inline-block;width:55%;border-bottom:1px solid #444">&nbsp;</span></div>`).join("")}
+   <p style="margin:10px 0 4px"><b>Exit ticket:</b> ${esc(Q.frame)}</p><div class="ln"></div><div class="ln"></div></div>`;
+  $("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
+$("#q-go").onclick=quickFromText;
+$("#q-again").onclick=()=>{$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
+$("#q-print-btn").onclick=()=>printAs("p-quick");
+$("#q-to-xray").onclick=()=>{location.hash="xray";setTimeout(renderXray,50)};
+$("#q-to-hand").onclick=()=>{location.hash="xray";setTimeout(()=>{renderXray();buildHandout()},50)};
+function drawQCourses(){$("#q-courses").innerHTML=Object.keys(SUBJ).map(k=>`<button class="chip" data-s="${k}">${sname(k)}</button>`).join("");$$("#q-courses .chip").forEach(c=>c.onclick=()=>quickFromLib(c.dataset.s))}
+$("#q-board").onclick=()=>{const sl=[
+  {k:LANG==="es"?"Antes de leer · 3 min":"Before reading · 3 minutes",h:LANG==="es"?"Di estas palabras":"Say these words",b:`<ul>${Q.words.map(w=>{const c=cognate(w);return `<li><b>${esc(w)}</b>${c&&c.type!=="false"?` <span style="color:#E8C95A">· ${esc(c.es)}</span>`:""}</li>`}).join("")}</ul>`,min:3},
+  {k:LANG==="es"?"Durante la lectura · 5 min":"During reading · 5 minutes",h:LANG==="es"?"Desmenuza esta oración":"Unpack this sentence",b:`<div class="m"><p>${esc(Q.sent)}</p></div><ul style="margin-top:14px">${Q.chunks.map(c=>`<li style="${c.r==="c"?"color:#E8C95A":""}">${esc(c.t)} <span style="opacity:.75;font-size:.75em">— ${c.r==="c"?"who does what?":esc(c.q)}</span></li>`).join("")}</ul>`,min:5},
+  {k:LANG==="es"?"Después de leer · 2 min":"After reading · 2 minutes",h:LANG==="es"?"Boleto de salida":"Exit ticket",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>`,min:2}];
+  pr.slides=sl;pr.i=0;$("#present").classList.add("on");drawSlide()};
+
 /* ================= init ================= */
-function rerender(){subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
+function rerender(){drawQCourses();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick();subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
 applyLang();paintTheme();
 const saved=store.get("xr","");if(saved)$("#xr-input").value=saved;
+drawQCourses();{const q=store.get("q","");if(q)$("#q-input").value=q}
 sessList();subjChips();drawSteps();loadWeek(js.week);renderSess();route();
 
 </script>
