@@ -215,6 +215,16 @@ Q = [
    ("Storm Grammar Calisthenics", "grammar-calisthenics/")]),
 
  ("classroom",
+  "Where can I find materials in my student's home language?",
+  "Bilingual Resources, K-12 is a searchable directory of 229 entries for English, math, "
+  "history and science at every school level. Each entry says what is actually in the "
+  "student's language, what it costs and one way to use it tomorrow. Spanish is covered "
+  "level by level, and a separate tab lists resources in Arabic, Vietnamese, Chinese and "
+  "Haitian Creole. For a family that arrived this week, start with the school guide.",
+  [("Bilingual Resources, K-12", 'https://radan55.github.io/stormelresourcelist-/'),
+   ("Your Guide to School in the U.S.", "newcomer-guide.html")]),
+
+ ("classroom",
   "How can my department get better at the reading and writing in our own subject?",
   "The Teacher Literacy Lab has three tools that work together. Text X-Ray marks what makes "
   "your own textbook hard for English learners and turns a passage into a student handout. "
