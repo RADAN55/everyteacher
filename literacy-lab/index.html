@@ -13,11 +13,11 @@
 :root{
   --navy:#1E2761; --navy2:#2B3680; --gold:#C9A227; --gold2:#E8C95A; --ink:#1b1f33; --muted:#5b6180;
   --paper:#FBF8F1; --card:#ffffff; --soft:#f6f4ee; --soft2:#fffdf6; --line:#e4dfd2; --btn:#1E2761; --btnink:#fff; --hl:#fff5cc;
-  --c-long:#6b5bd6; --c-pass:#c2410c; --c-nom:#0f766e; --c-conn:#1d4ed8; --c-ref:#a21caf; --c-acad:#7a5c00;
+  --em:#1f8a70; --pr:#b4542a; --c-long:#6b5bd6; --c-pass:#c2410c; --c-nom:#0f766e; --c-conn:#1d4ed8; --c-ref:#a21caf; --c-acad:#7a5c00;
 }
 [data-theme="dark"]{
   --ink:#EDEBE4; --muted:#B9B8C9; --paper:#0E1230; --card:#171C44; --soft:#1f2552; --soft2:#1b2150; --line:#2A3060; --btn:#C9A227; --btnink:#0E1230; --hl:#3a3410;
-  --c-long:#a99cff; --c-pass:#fb923c; --c-nom:#2dd4bf; --c-conn:#7aa2ff; --c-ref:#e879f9; --c-acad:#E8C95A;
+  --em:#4fd1a8; --pr:#f08a5d; --c-long:#a99cff; --c-pass:#fb923c; --c-nom:#2dd4bf; --c-conn:#7aa2ff; --c-ref:#e879f9; --c-acad:#E8C95A;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -285,6 +285,17 @@ body.checked .model{display:block}
 .sheet table{width:100%;border-collapse:collapse}.sheet td,.sheet th{border:1px solid #444;padding:5px 7px;text-align:left;vertical-align:top}
 .sheet .ln{border-bottom:1px solid #444;height:24px}
 #q-print{display:none}
+.lvbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 0}
+.lvbar .chip.em.on{background:var(--em);border-color:var(--em);color:#fff}
+.lvbar .chip.pr.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.lv{border-radius:10px;padding:8px 10px;margin-top:8px;font-size:14.5px;border-left:6px solid;line-height:1.45}
+.lv b.t{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.lv.em{border-color:var(--em);background:rgba(31,138,112,.10)}.lv.em b.t{color:var(--em)}
+.lv.pr{border-left:6px double var(--pr);background:rgba(180,84,42,.10)}.lv.pr b.t{color:var(--pr)}
+body.only-em .lv.pr,body.only-pr .lv.em{display:none}
+.lvkey{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+@media(max-width:600px){.lvkey{grid-template-columns:1fr}}
+@media print{body.p-quick .sheet{font-size:11.5px;line-height:1.3}body.p-quick .sheet h2{font-size:16px}body.p-quick .sheet td,body.p-quick .sheet th{padding:3px 6px}body.p-quick .sheet .ln{height:20px}body.p-quick .sheet p{margin:5px 0}body.p-quick .sheet .cut{margin:8px 0}}
 @media print{body.p-quick main>*:not(#v-start),body.p-quick #v-start>*:not(#q-out),body.p-quick #q-out>*:not(#q-print){display:none!important}body.p-quick #v-start,body.p-quick #q-out,body.p-quick #q-print{display:block!important}}
 body.at-start .lede,body.at-start .flow{display:none}
 footer{background:var(--navy);color:#cfd3ee;padding:22px 0;font-size:13.5px}
@@ -368,16 +379,21 @@ footer b{color:var(--gold2)}
         <button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button>
       </div>
     </div>
-    <div class="qgrid">
-      <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read it together. Find the gold part first (who does what). Then ask the question under each piece.</p></div>
-      <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
+    <div class="lvbar noprint"><span class="small muted" data-i18n="q-show">Show what to do for:</span>
+      <button class="chip on" data-lv="both" data-i18n="q-both">Both levels</button>
+      <button class="chip em" data-lv="em">● Emerging (1–2)</button>
+      <button class="chip pr" data-lv="pr">◆ Progressing (3–4)</button>
+      <span class="small muted" style="margin-left:6px" data-i18n="q-sheet">Student half-sheet:</span>
+      <button class="chip em" data-sh="em">● Emerging</button><button class="chip pr" data-sh="pr">◆ Progressing</button>
     </div>
-    <div class="qlanes">
-      <div style="border-color:#4f9d69"><b data-i18n="q-ln">Newcomer</b><br><span data-i18n="q-lnt">Words with the Spanish and a picture. Copy the gold part.</span></div>
-      <div style="border-color:#3b82f6"><b data-i18n="q-le">Emerging</b><br><span data-i18n="q-let">Give the sentence already cut into pieces. Frame with a word bank.</span></div>
-      <div style="border-color:#C9A227"><b data-i18n="q-lp">Progressing</b><br><span data-i18n="q-lpt">Answer the question under each piece, then the frame.</span></div>
-      <div style="border-color:#7c3aed"><b data-i18n="q-lc">Challenge</b><br><span data-i18n="q-lct">Write the exit ticket with no frame.</span></div>
+    <div class="qgrid">
+      <div class="qbox"><div class="when" data-i18n="q-b1">Before reading · 3 min</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b2">During reading · 5 min</div><h3 data-i18n="q-b2h">Unpack this one sentence</h3><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read it together. Find the gold part first (who does what). Then ask the question under each piece.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b3">After reading · 2 min</div><h3 data-i18n="q-b3h">Exit ticket</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
+    </div>
+    <div class="lvkey">
+      <div class="lv em"><b class="t">● Emerging · ELPA21 Levels 1–2</b><span data-i18n="q-kem">Newcomers belong here too. Show, point, repeat, copy. Words and pieces before whole sentences.</span></div>
+      <div class="lv pr"><b class="t">◆ Progressing · ELPA21 Levels 3–4</b><span data-i18n="q-kpr">Students do the cutting and the talking. Full sentences with a partner. Ready for more? Drop the frame.</span></div>
     </div>
     <details class="card noprint" style="margin-top:14px"><summary data-i18n="q-more">Want to go deeper? (optional)</summary>
       <div class="row" style="margin-top:10px"><button class="btn sm ghost" id="q-to-xray" data-i18n="q-mx">See the full X-Ray</button><button class="btn sm ghost" id="q-to-hand" data-i18n="q-mh">Make the full student handout</button><a class="btn sm ghost" href="#sentence" data-i18n="q-ms">Juicy Sentence Studio</a><a class="btn sm ghost" href="#write" data-i18n="q-mw">PLC sessions</a></div>
@@ -1035,6 +1051,7 @@ t0:"Empieza aquí","q-k":"Cinco minutos, una página","q-h":"Haz más fácil la 
 "q-print":"Imprimir una página","q-board":"Mostrar en la pizarra","q-again":"Empezar de nuevo","q-b1":"Antes de leer · 3 min","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
 "q-b2":"Durante la lectura · 5 min","q-b2h":"Desmenuza esta oración","q-b2t":"Léanla juntos. Busquen primero la parte dorada (quién hace qué). Luego hagan la pregunta de cada parte.","q-b3":"Después de leer · 2 min","q-b3h":"Boleto de salida","q-b3t":"Cada estudiante escribe una oración sobre la lectura con este marco.",
 "q-ln":"Recién llegado","q-lnt":"Palabras con el español y una imagen. Copia la parte dorada.","q-le":"Emergente","q-let":"Da la oración ya cortada en partes. Marco con banco de palabras.","q-lp":"En progreso","q-lpt":"Responde la pregunta de cada parte y luego el marco.","q-lc":"Reto","q-lct":"Escribe el boleto de salida sin marco.",
+"q-kem":"Los recién llegados también van aquí. Mostrar, señalar, repetir, copiar. Palabras y partes antes que oraciones completas.","q-kpr":"Los estudiantes cortan y conversan. Oraciones completas con un compañero. ¿Listos para más? Quiten el marco.","q-show":"Mostrar qué hacer para:","q-both":"Ambos niveles","q-sheet":"Hoja del estudiante:",
 "q-more":"¿Quieres profundizar? (opcional)","q-mx":"Ver la radiografía completa","q-mh":"Hacer la hoja completa para el estudiante","q-ms":"Estudio de oraciones jugosas","q-mw":"Sesiones de PLC",
 brand:"EL Publishing · Herramientas docentes",title:"El <em>Laboratorio</em> de Lectoescritura Docente",lede:"Para maestros de inglés como segundo idioma y de contenido que quieren leer sus textos como expertos en lenguaje, desmenuzar las oraciones más difíciles con sus estudiantes y escribir en su materia como les piden a sus estudiantes.",
 f1:"Radiografía del texto",f2:"Desmenuza la oración",f3:"Escribe a la par",t1:"Radiografía del texto",t2:"Estudio de oraciones jugosas",t3:"El maestro también escribe",back:"← Volver al laboratorio",
@@ -1625,6 +1642,27 @@ $("#kit-print").onclick=()=>{try{window.print()}catch(e){}};
    ===================================================== */
 const FRAME_BY={cause:"___ happens because ___.",result:"___. As a result, ___.",contrast:"Although ___, ___.",time:"First, ___. Then, ___.",condition:"If ___, then ___.",addition:"___. Also, ___.",example:"___. For example, ___."};
 let Q=null;
+const LV={
+ 1:{em:["Say each word. Students repeat it twice.","Show the Spanish and a picture or a gesture.","Students copy the words and the Spanish into their notebook."],
+    pr:["Students say each word in a short sentence about the topic.","Ask: “Which words look like Spanish? Which one tricks you (⚠)?”"],
+    emES:["Di cada palabra. Los estudiantes la repiten dos veces.","Muestra el español y una imagen o un gesto.","Los estudiantes copian las palabras y el español en su cuaderno."],
+    prES:["Los estudiantes dicen cada palabra en una oración corta sobre el tema.","Pregunta: “¿Qué palabras se parecen al español? ¿Cuál engaña (⚠)?”"]},
+ 2:{em:["Hand out the sentence already cut into pieces.","Read each piece aloud; students point and repeat.","Students find and copy the gold part (who does what). One-word answers are fine."],
+    pr:["Students draw slashes to cut the sentence themselves.","Partners answer the question under each piece in a full sentence.","Ask: “Say the whole sentence in your own words.”"],
+    emES:["Entrega la oración ya cortada en partes.","Lee cada parte en voz alta; los estudiantes señalan y repiten.","Los estudiantes buscan y copian la parte dorada (quién hace qué). Respuestas de una palabra están bien."],
+    prES:["Los estudiantes trazan rayas para cortar la oración ellos mismos.","En parejas, responden la pregunta de cada parte con una oración completa.","Pregunta: “Di toda la oración con tus palabras.”"]},
+ 3:{em:["Give the frame plus a word bank (today’s five words).","Students may draw it or say it in Spanish first, then write it in English."],
+    pr:["Students complete the frame, then add one more sentence with because or however.","Ready for more: write it with no frame."],
+    emES:["Da el marco y un banco de palabras (las cinco palabras de hoy).","Pueden dibujarlo o decirlo en español primero y luego escribirlo en inglés."],
+    prES:["Completan el marco y añaden otra oración con because o however.","¿Listos para más? Escríbanlo sin marco."]}
+};
+const EM_T="● Emerging · ELPA21 1–2",PR_T="◆ Progressing · ELPA21 3–4";
+function lvHTML(n){const L=LV[n];const em=LANG==="es"?L.emES:L.em,pr=LANG==="es"?L.prES:L.pr;
+  return `<div class="lv em"><b class="t">${EM_T}</b>${em.map(x=>"• "+esc(x)).join("<br>")}</div><div class="lv pr"><b class="t">${PR_T}</b>${pr.map(x=>"• "+esc(x)).join("<br>")}</div>`}
+function setLvFilter(v){document.body.classList.toggle("only-em",v==="em");document.body.classList.toggle("only-pr",v==="pr");store.set("qlv",v);$$(".lvbar [data-lv]").forEach(c=>c.classList.toggle("on",c.dataset.lv===v))}
+$$(".lvbar [data-lv]").forEach(c=>c.onclick=()=>setLvFilter(c.dataset.lv));
+$$(".lvbar [data-sh]").forEach(c=>c.onclick=()=>{store.set("qsheet",c.dataset.sh);if(Q)drawQuick()});
+
 function pickWords(r){const order={"false friend":0,"process noun":1,"academic word":2};
   return [...r.vocab.values()].sort((a,b)=>(order[a.kind]===0?-1:order[b.kind]===0?1:0)||b.n-a.n||b.w.length-a.w.length).slice(0,5)}
 function wordRow(w){const c=cognate(w);let sp="";if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`≈ ${esc(c.es)}`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
@@ -1640,39 +1678,48 @@ function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=ana
   let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
   words=[...new Set(words.concat(extra))].slice(0,5);
   Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es};drawQuick()}
-function drawQuick(){$("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
+function drawQuick(){["1","2","3"].forEach(n=>$("#q-lv"+n).innerHTML=lvHTML(n));const sheet=store.get("qsheet","em");$$(".lvbar [data-sh]").forEach(c=>c.classList.toggle("on",c.dataset.sh===sheet));
+$("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-title").textContent=Q.title;
   $("#q-words").innerHTML=Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">No hard words found. Pick two from the reading yourself.</li>`;
   $("#q-sent").textContent=Q.sent;
   $("#q-chunks").innerHTML=Q.chunks.map(c=>`<div class="qch ${c.r==="c"?"c":""}">${esc(c.t)}<i>${c.r==="c"?(LANG==="es"?"★ ¿Quién hace qué?":"★ Who does what?"):esc(c.q)}</i></div>`).join("")+(Q.es?`<p class="small" lang="es" style="margin:8px 0 0"><b>ES:</b> ${esc(Q.es)}</p>`:"");
   $("#q-frame").textContent=Q.frame;
+  const lvP=n=>`<div style="margin-top:6px;border-left:3px solid #111;padding-left:5px"><b>● Emerging:</b> ${LV[n].em.join(" ")}</div><div style="margin-top:4px;border-left:3px double #111;padding-left:5px"><b>◆ Progressing:</b> ${LV[n].pr.join(" ")}</div>`;
+  const others=Q.chunks.filter(c=>c.r!=="c");
+  const stuEm=`<p><b>● Emerging</b> · Name: ____________________ Period: ____</p>
+   <table><tr><th>Word</th><th>Spanish</th><th>Draw it or write it</th></tr>${Q.words.map(w=>{const c=cognate(w);return `<tr><td><b>${esc(w)}</b></td><td>${c&&c.type!=="false"?esc(c.es):""}</td><td style="height:22px"></td></tr>`}).join("")}</table>
+   <p style="margin:10px 0 4px"><b>Read each piece.</b> Circle the ★ piece: who does what?</p>
+   ${Q.chunks.map(c=>`<div style="border:1.5px solid #111;border-radius:5px;padding:4px 8px;margin:4px 0">${c.r==="c"?"★ ":""}${esc(c.t)}${c.r==="c"?"":`<div style="font-size:12px">${esc(c.q)} ____________________</div>`}</div>`).join("")}
+   <p style="margin:10px 0 4px"><b>Exit ticket:</b> ${esc(Q.frame)}</p><p style="font-size:12px">Word bank: ${Q.words.map(esc).join(" · ")}</p><div class="ln"></div>`;
+  const stuPr=`<p><b>◆ Progressing</b> · Name: ____________________ Period: ____</p>
+   <table><tr><th>Word</th><th>Use it in a sentence about the reading</th></tr>${Q.words.map(w=>`<tr><td><b>${esc(w)}</b></td><td style="height:22px"></td></tr>`).join("")}</table>
+   <p style="margin:10px 0 4px"><b>Draw / between the pieces of this sentence.</b> Underline who does what.</p><p style="font-family:Georgia,serif;font-size:15px">${esc(Q.sent)}</p>
+   <p style="margin:6px 0 2px">Answer in full sentences:</p>${others.map((c,i)=>`<div>${i+1}. ${esc(c.q)}</div><div class="ln"></div>`).join("")}
+   <p style="margin:10px 0 4px"><b>Exit ticket:</b> ${esc(Q.frame)} Then add one more sentence with <i>because</i> or <i>however</i>.</p><div class="ln"></div><div class="ln"></div>`;
   $("#q-print").innerHTML=`<div class="sheet"><h2>Teacher page · ${esc(Q.title)}</h2>
-   <table><tr><th style="width:30%">1 · Before reading (3 min)<br>Say these words first</th><th>2 · During reading (5 min)<br>Unpack this sentence</th><th style="width:26%">3 · After reading (2 min)<br>Exit ticket</th></tr>
-   <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i>${Q.chunks.map(c=>`<div>${c.r==="c"?"★ ":"• "}${esc(c.t)} <span style="color:#555">(${c.r==="c"?"Who does what?":esc(c.q)})</span></div>`).join("")}</td><td style="font-size:15px">${esc(Q.frame)}</td></tr></table>
-   <p style="font-size:12px;margin:6px 0 0"><b>Newcomer:</b> words + Spanish, copy the ★ part · <b>Emerging:</b> pieces pre-cut, frame with word bank · <b>Progressing:</b> answer each piece’s question · <b>Challenge:</b> exit ticket with no frame</p>
-   <div class="cut">✂ cut here · student half-sheet</div>
-   <p>Name: ____________________ Period: ____</p>
-   <table><tr><th>Word</th><th>Spanish</th><th>What it means</th></tr>${Q.words.map(w=>{const c=cognate(w);return `<tr><td><b>${esc(w)}</b></td><td>${c&&c.type!=="false"?esc(c.es):""}</td><td></td></tr>`}).join("")}</table>
-   <p style="margin:10px 0 4px"><b>Unpack this sentence.</b> Underline who does what.</p><p style="font-family:Georgia,serif;font-size:15px">${esc(Q.sent)}</p>
-   ${Q.chunks.filter(c=>c.r!=="c").map(c=>`<div>${esc(c.q)} <span style="display:inline-block;width:55%;border-bottom:1px solid #444">&nbsp;</span></div>`).join("")}
-   <p style="margin:10px 0 4px"><b>Exit ticket:</b> ${esc(Q.frame)}</p><div class="ln"></div><div class="ln"></div></div>`;
+   <table><tr><th style="width:30%">1 · Before reading (3 min)<br>Say these words first</th><th>2 · During reading (5 min)<br>Unpack this sentence</th><th style="width:28%">3 · After reading (2 min)<br>Exit ticket</th></tr>
+   <tr><td>${Q.words.map(w=>`<b>${esc(w)}</b> — ${esc(cogPlain(w))}`).join("<br>")}</td><td><i>${esc(Q.sent)}</i>${Q.chunks.map(c=>`<div>${c.r==="c"?"★ ":"• "}${esc(c.t)} <span style="color:#555">(${c.r==="c"?"Who does what?":esc(c.q)})</span></div>`).join("")}</td><td style="font-size:15px">${esc(Q.frame)}</td></tr>
+   <tr style="font-size:11.5px"><td>${lvP(1)}</td><td>${lvP(2)}</td><td>${lvP(3)}</td></tr></table>
+   <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
   $("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
 $("#q-go").onclick=quickFromText;
 $("#q-again").onclick=()=>{$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
 $("#q-print-btn").onclick=()=>printAs("p-quick");
 $("#q-to-xray").onclick=()=>{location.hash="xray";setTimeout(renderXray,50)};
 $("#q-to-hand").onclick=()=>{location.hash="xray";setTimeout(()=>{renderXray();buildHandout()},50)};
+function boardLv(n){const L=LV[n];return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;font-size:clamp(14px,1.5vw,20px)"><div style="border-left:8px solid #4fd1a8;padding-left:12px"><b style="color:#4fd1a8">${EM_T}</b><br>${(LANG==="es"?L.emES:L.em).map(esc).join("<br>")}</div><div style="border-left:8px double #f08a5d;padding-left:12px"><b style="color:#f08a5d">${PR_T}</b><br>${(LANG==="es"?L.prES:L.pr).map(esc).join("<br>")}</div></div>`}
 function drawQCourses(){$("#q-courses").innerHTML=Object.keys(SUBJ).map(k=>`<button class="chip" data-s="${k}">${sname(k)}</button>`).join("");$$("#q-courses .chip").forEach(c=>c.onclick=()=>quickFromLib(c.dataset.s))}
 $("#q-board").onclick=()=>{const sl=[
-  {k:LANG==="es"?"Antes de leer · 3 min":"Before reading · 3 minutes",h:LANG==="es"?"Di estas palabras":"Say these words",b:`<ul>${Q.words.map(w=>{const c=cognate(w);return `<li><b>${esc(w)}</b>${c&&c.type!=="false"?` <span style="color:#E8C95A">· ${esc(c.es)}</span>`:""}</li>`}).join("")}</ul>`,min:3},
-  {k:LANG==="es"?"Durante la lectura · 5 min":"During reading · 5 minutes",h:LANG==="es"?"Desmenuza esta oración":"Unpack this sentence",b:`<div class="m"><p>${esc(Q.sent)}</p></div><ul style="margin-top:14px">${Q.chunks.map(c=>`<li style="${c.r==="c"?"color:#E8C95A":""}">${esc(c.t)} <span style="opacity:.75;font-size:.75em">— ${c.r==="c"?"who does what?":esc(c.q)}</span></li>`).join("")}</ul>`,min:5},
-  {k:LANG==="es"?"Después de leer · 2 min":"After reading · 2 minutes",h:LANG==="es"?"Boleto de salida":"Exit ticket",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>`,min:2}];
+  {k:LANG==="es"?"Antes de leer · 3 min":"Before reading · 3 minutes",h:LANG==="es"?"Di estas palabras":"Say these words",b:`<ul>${Q.words.map(w=>{const c=cognate(w);return `<li><b>${esc(w)}</b>${c&&c.type!=="false"?` <span style="color:#E8C95A">· ${esc(c.es)}</span>`:""}</li>`}).join("")}</ul>${boardLv(1)}`,min:3},
+  {k:LANG==="es"?"Durante la lectura · 5 min":"During reading · 5 minutes",h:LANG==="es"?"Desmenuza esta oración":"Unpack this sentence",b:`<div class="m"><p>${esc(Q.sent)}</p></div><ul style="margin-top:14px">${Q.chunks.map(c=>`<li style="${c.r==="c"?"color:#E8C95A":""}">${esc(c.t)} <span style="opacity:.75;font-size:.75em">— ${c.r==="c"?"who does what?":esc(c.q)}</span></li>`).join("")}</ul>${boardLv(2)}`,min:5},
+  {k:LANG==="es"?"Después de leer · 2 min":"After reading · 2 minutes",h:LANG==="es"?"Boleto de salida":"Exit ticket",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>${boardLv(3)}`,min:2}];
   pr.slides=sl;pr.i=0;$("#present").classList.add("on");drawSlide()};
 
 /* ================= init ================= */
 function rerender(){drawQCourses();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick();subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
 applyLang();paintTheme();
 const saved=store.get("xr","");if(saved)$("#xr-input").value=saved;
-drawQCourses();{const q=store.get("q","");if(q)$("#q-input").value=q}
+setLvFilter(store.get("qlv","both"));drawQCourses();{const q=store.get("q","");if(q)$("#q-input").value=q}
 sessList();subjChips();drawSteps();loadWeek(js.week);renderSess();route();
 
 </script>
