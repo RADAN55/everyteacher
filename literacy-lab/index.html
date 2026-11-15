@@ -257,6 +257,38 @@ body.checked .model{display:block}
 .cert .sig{display:flex;justify-content:space-around;margin-top:40px;font-family:Inter,sans-serif;font-size:13px}
 .cert .sig div{border-top:1px solid #111;padding-top:4px;min-width:200px}
 
+/* sentence cutter */
+.cutbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 6px}
+.cutline{font-family:Georgia,serif;font-size:19px;line-height:2.5;margin:4px 0 2px}
+body.proj .cutline{font-size:28px}
+.pc{display:inline}
+.pc.open{display:inline-block;vertical-align:top;line-height:1.35;border:2px solid var(--line);border-radius:10px;padding:6px 10px 4px;margin:4px 0;background:var(--card);max-width:100%;animation:pop .25s ease}
+.pc.open small{display:block;font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+@keyframes pop{from{transform:scale(.92);opacity:.4}to{transform:none;opacity:1}}
+.pc-c{border-color:var(--gold)!important;background:var(--hl)!important}.pc-c small{color:var(--c-acad)}
+.pc-y{border-color:#c2410c!important}.pc-y small{color:var(--c-pass)}
+.pc-x{border-color:#a21caf!important}.pc-x small{color:var(--c-ref)}
+.pc-w{border-color:#1d4ed8!important}.pc-w small{color:var(--c-conn)}
+.pc-k{border-color:#0e7490!important}.pc-k small{color:#0ea5b7}
+.pc-h{border-color:#4f9d69!important}.pc-h small{color:#4f9d69}
+.pc-d{border-color:#6b5bd6!important}.pc-d small{color:var(--c-long)}
+.pc-r{border-color:#b45309!important}.pc-r small{color:#d97706}
+.pc-p{border-color:#0f766e!important}.pc-p small{color:var(--c-nom)}
+.pc-a{border-color:#64748b!important}.pc-a small{color:var(--muted)}
+.gap{display:inline-block;width:.5em;height:1.25em;vertical-align:middle;cursor:pointer;border-radius:3px;font-style:normal}
+.gap:hover{background:var(--gold);opacity:.55}
+.gap.no{background:#c2410c;opacity:.8}
+.gap.done{width:auto;height:auto;margin:0 5px;color:var(--gold);font-size:18px;border-left:2px dashed var(--gold);padding-left:4px;cursor:default;vertical-align:top;line-height:2.2}
+.gap.done:hover{background:none;opacity:1}
+#strip-print{display:none}
+.strips{font-family:Inter,sans-serif;color:#111;background:#fff}
+.strips h2{font-family:Fraunces,serif;color:#111;font-size:18px;margin:0 0 4px}
+.strips .st{border:2px dashed #111;padding:14px 16px;margin:0 0 -2px;font-family:Georgia,serif;font-size:24px;position:relative}
+.strips .st:before{content:"✂";position:absolute;left:-4px;top:-13px;font-size:16px;background:#fff}
+.strips .qs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:18px}
+.strips .qs div{border:2px dashed #111;margin:0 -2px -2px 0;padding:10px 12px;font-size:15px;font-weight:600}
+.strips .ln{border-bottom:1px solid #444;height:30px}
+@media print{body.p-strip main>*:not(#strip-print){display:none!important}body.p-strip #strip-print{display:block!important}}
 /* method card */
 .mcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
 .mtop{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--gold);padding-bottom:12px;margin-bottom:14px}
@@ -598,6 +630,7 @@ footer b{color:var(--gold2)}
     </div>
     <div class="panel-step" data-p="3">
       <div class="reveal" data-i18n-html="p3"><b>Chunk it.</b> Show one chunk at a time. Each chunk answers a question. Students can answer orally, on whiteboards or with a partner.</div>
+      <div id="js-cutter" style="margin-top:10px"></div>
       <div class="chunks" id="js-chunks"></div>
       <div class="row noprint" style="margin-top:10px">
         <button class="btn sm gold" id="js-walk">▶ Walk me through it</button>
@@ -755,6 +788,7 @@ footer b{color:var(--gold2)}
   </div>
   <div id="kit-out"></div>
 </section>
+<div id="strip-print"></div>
 </main>
 
 <div class="modal" id="stu-modal" role="dialog" aria-modal="true">
@@ -1414,7 +1448,7 @@ function renderSentence(){const d=js.data;$("#js-card").classList.remove("hide")
   $("#js-coresent").innerHTML=d.chunks.map(c=>c.r==="c"?`<mark class="core">${esc(c.t)}</mark>`:`<span style="opacity:.28">${esc(c.t)}</span>`).join(" ");
   $("#js-core").innerHTML=d.core;$("#js-simple").textContent=d.simple;
   $("#js-simple-es").textContent=d.es||"";$("#js-simple-es").classList.toggle("hide",!d.es);$("#js-say-es").classList.toggle("hide",!d.es);
-  $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();setStep(js.step||1)}
+  $("#js-frame").textContent=d.frame;$("#js-try").value="";js.shown=0;drawChunks();mountCutter($("#js-cutter"),d.chunks,()=>{js.shown=d.chunks.length;drawChunks()});setStep(js.step||1)}
 function drawChunks(){const d=js.data;$("#js-chunks").innerHTML=d.chunks.map((c,i)=>`<div class="ch r-${c.r} ${i<js.shown?"":"hide"}"><div class="role">${rname(c.r)}</div><div>${esc(c.t)}<span class="q">${esc(c.q)}</span></div></div>`).join("");
   $("#js-more").disabled=js.shown>=d.chunks.length}
 $("#js-walk").onclick=()=>{const d=js.data;const E=js.mode==="lib"?entry(js.subj,js.week):null;walkThrough(unpackSteps(d.chunks.map(c=>c.t).join(" "),d.chunks,E?E.coreText:"",d.es,E?E.split:null),LANG==="es"?"Desmenuza la oración":"Unpack the sentence")};
@@ -1736,16 +1770,39 @@ function walkThrough(steps,title){pr.slides=steps.map((st,i)=>({k:`${title} · $
   b:(st.show?`<div class="m"><p>${esc(st.show)}</p></div>`:"")+(st.hint?`<p style="opacity:.75;font-size:.8em">${esc(st.hint)}</p>`:"")+`<p><button onclick="this.nextElementSibling.style.display='block';this.remove()" style="background:#C9A227;color:#1E2761;border:0;border-radius:10px;padding:10px 18px;font-size:.8em;cursor:pointer">Show what to listen for</button><span style="display:none;color:#E8C95A">Listen for: ${esc(st.listen)}</span></p>`,min:0}));
   pr.i=0;$("#present").classList.add("on");drawSlide()}
 
+/* ---- graphic sentence cutter ---- */
+function pieceLabel(c){return c.r==="c"?(LANG==="es"?"★ ¿Quién hace qué?":"★ Who does what?"):(PLAIN[c.r]||c.q)}
+function mountCutter(el,chunks,onDone){const cut=new Set(),nb=chunks.length-1;let timer=null;
+  function draw(msg){const left=nb-cut.size;
+    el.innerHTML=`<div class="cutbar noprint"><button class="btn sm gold" data-a="all">✂ ${LANG==="es"?"Córtala por mí":"Cut it for me"}</button><button class="btn sm ghost" data-a="reset">${LANG==="es"?"Volver a unir":"Put it back"}</button><button class="btn sm ghost" data-a="print">${LANG==="es"?"Imprimir tiras para cortar":"Print strips to cut"}</button></div>
+    <div class="small muted noprint">${nb<1?"":left?(LANG==="es"?`Toca entre dos palabras donde crees que se corta la oración. Faltan ${left} corte${left>1?"s":""}.`:`Tap between two words where you think the sentence should be cut. ${left} cut${left>1?"s":""} to find.`):(LANG==="es"?"¡Todas las partes están cortadas! Cada parte responde una pregunta.":"All cut! Each piece answers one question.")}</div>
+    <div class="cutline">`+chunks.map((c,i)=>{const open=nb>0&&(i===0||cut.has(i-1))&&(i===nb||cut.has(i));
+      return `<span class="pc ${open?"open pc-"+c.r:""}">${c.t.split(/\s+/).map(esc).join('<i class="gap" data-b="-1"></i>')}${open?`<small>${esc(pieceLabel(c))}</small>`:""}</span>`+(i<nb?`<i class="gap ${cut.has(i)?"done":""}" data-b="${i}">${cut.has(i)?"✂":""}</i>`:"")}).join("")+`</div><div class="small warnc" aria-live="polite">${msg||""}</div>`}
+  el.onclick=e=>{const a=e.target.closest("[data-a]");
+    if(a){clearInterval(timer);if(a.dataset.a==="reset"){cut.clear();draw()}
+      else if(a.dataset.a==="print")printStrips(chunks);
+      else{let i=0;timer=setInterval(()=>{while(cut.has(i))i++;if(i>=nb){clearInterval(timer);onDone&&onDone();return}cut.add(i);draw()},450)}return}
+    const g=e.target.closest(".gap");if(!g||g.classList.contains("done"))return;const b=+g.dataset.b;
+    if(b<0){g.classList.add("no");setTimeout(()=>draw(LANG==="es"?"Ahí no. Busca una coma o una palabra como because, when, which, that.":"Not there. Look for a comma or a word like because, when, which, that."),250)}
+    else{cut.add(b);draw();if(cut.size===nb&&onDone)onDone()}};
+  draw()}
+function printStrips(chunks){const order=chunks.map((c,i)=>i);
+  $("#strip-print").innerHTML=`<div class="strips"><h2>Sentence strips</h2><p style="font-size:13px;margin:0 0 14px">1. Cut on the dashed lines. 2. Mix up the pieces. 3. Match each piece to its question. 4. Put the sentence back in order.</p>
+   ${chunks.map(c=>`<div class="st">${esc(c.t)}</div>`).join("")}
+   <div class="qs">${[...chunks].reverse().map(c=>`<div>${esc(pieceLabel(c).replace("★ ",""))}</div>`).join("")}</div>
+   <p style="font-size:14px;margin:18px 0 4px"><b>Write the whole sentence:</b></p><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+   <p style="font-size:11px;margin-top:10px">EL Publishing · The Teacher Literacy Lab</p></div>`;printAs("p-strip")}
+
 let Q=null;
 const LV={
  1:{em:["Say each word. Students repeat it twice.","Show the Spanish and a picture or a gesture.","Students copy the words and the Spanish into their notebook."],
     pr:["Students say each word in a short sentence about the topic.","Ask: “Which words look like Spanish? Which one tricks you (⚠)?”"],
     emES:["Di cada palabra. Los estudiantes la repiten dos veces.","Muestra el español y una imagen o un gesto.","Los estudiantes copian las palabras y el español en su cuaderno."],
     prES:["Los estudiantes dicen cada palabra en una oración corta sobre el tema.","Pregunta: “¿Qué palabras se parecen al español? ¿Cuál engaña (⚠)?”"]},
- 2:{em:["Hand out the sentence already cut into pieces.","Read each piece aloud; students point and repeat.","Students copy the answers to the first two questions: who, and what they do. One-word answers are fine."],
-    pr:["Students draw slashes to cut the sentence themselves.","Partners answer each “Say” question in a full sentence before you show the answer.","Ask: “Say the whole sentence in your own words.”"],
-    emES:["Entrega la oración ya cortada en partes.","Lee cada parte en voz alta; los estudiantes señalan y repiten.","Los estudiantes copian las respuestas a las dos primeras preguntas: quién y qué hace. Respuestas de una palabra están bien."],
-    prES:["Los estudiantes trazan rayas para cortar la oración ellos mismos.","En parejas, responden cada pregunta “Say” con una oración completa antes de que muestres la respuesta.","Pregunta: “Di toda la oración con tus palabras.”"]},
+ 2:{em:["Print the strips. Students cut on the dashed lines and match each piece to its question.","Read each piece aloud; students point and repeat.","Students copy the answers to the first two questions: who, and what they do. One-word answers are fine."],
+    pr:["Students come to the board and tap where to cut, or draw slashes on paper.","Partners answer each “Say” question in a full sentence before you show the answer.","Ask: “Say the whole sentence in your own words.”"],
+    emES:["Imprime las tiras. Los estudiantes cortan en las líneas punteadas y unen cada parte con su pregunta.","Lee cada parte en voz alta; los estudiantes señalan y repiten.","Los estudiantes copian las respuestas a las dos primeras preguntas: quién y qué hace. Respuestas de una palabra están bien."],
+    prES:["Los estudiantes pasan a la pizarra y tocan dónde cortar, o trazan rayas en papel.","En parejas, responden cada pregunta “Say” con una oración completa antes de que muestres la respuesta.","Pregunta: “Di toda la oración con tus palabras.”"]},
  3:{em:["Give the frame plus a word bank (today’s five words).","Students may draw it or say it in Spanish first, then write it in English."],
     pr:["Students complete the frame, then add one more sentence with because or however.","Ready for more: write it with no frame."],
     emES:["Da el marco y un banco de palabras (las cinco palabras de hoy).","Pueden dibujarlo o decirlo en español primero y luego escribirlo en inglés."],
@@ -1778,7 +1835,9 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
   $("#q-words").innerHTML=Q.words.length?Q.words.map(wordRow).join(""):`<li class="muted">No hard words found. Pick two from the reading yourself.</li>`;
   $("#q-sent").textContent=Q.sent;
   Q.steps=unpackSteps(Q.sent,Q.chunks,Q.core,Q.es,Q.split);
-  $("#q-chunks").innerHTML=`<button class="btn sm gold noprint" id="q-walk" style="margin-bottom:6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
+  $("#q-sent").classList.add("hide");
+  $("#q-chunks").innerHTML=`<div id="q-cutter"></div><button class="btn sm gold noprint" id="q-walk" style="margin:8px 0 6px">▶ Walk me through it</button>`+scriptHTML(Q.steps.slice(1));
+  mountCutter($("#q-cutter"),Q.chunks);
   $("#q-walk").onclick=()=>walkThrough(Q.steps,LANG==="es"?"Desmenuza la oración":"Unpack the sentence");
   $("#q-frame").textContent=Q.frame;
   const lvP=n=>`<div style="margin-top:6px;border-left:3px solid #111;padding-left:5px"><b>● Emerging:</b> ${LV[n].em.join(" ")}</div><div style="margin-top:4px;border-left:3px double #111;padding-left:5px"><b>◆ Progressing:</b> ${LV[n].pr.join(" ")}</div>`;
