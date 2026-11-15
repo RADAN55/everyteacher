@@ -203,6 +203,17 @@ Q = [
   [("Your Guide to School in the U.S.", "newcomer-guide.html"),
    ("Storm Lens", "storm-lens/")]),
 
+ ("students",
+  "How do I stop my students from writing run-on sentences?",
+  "Storm Sentence Lab is a run-on clinic for grades 9–12. Students tap the seam where the "
+  "second idea begins, choose one of four fixes (period, comma + FANBOYS, semicolon, "
+  "subordinator) and hear why it fits, then paste their own paragraph into a checker. Six "
+  "grammar stations, a 60-second Sentence Surgery game, a Daily Dose for 180 days and a "
+  "student-controlled English/Spanish toggle. The Coach Lab tab gives the teacher six "
+  "ten-minute mini-lessons, Level 3 to Level 4 model pairs and a printable anchor chart.",
+  [("Storm Sentence Lab", 'https://radan55.github.io/Stormsentencelab/'),
+   ("Storm Grammar Calisthenics", "grammar-calisthenics/")]),
+
  ("classroom",
   "How can my department get better at the reading and writing in our own subject?",
   "The Teacher Literacy Lab has three tools that work together. Text X-Ray marks what makes "
