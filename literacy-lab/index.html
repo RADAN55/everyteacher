@@ -366,6 +366,7 @@ footer b{color:var(--gold2)}
     <textarea id="q-input" data-i18n-ph="q-ph" placeholder="Paste a paragraph or two from tomorrow’s reading…"></textarea>
     <div class="row" style="margin-top:10px">
       <button class="btn gold" id="q-go" style="font-size:17px;padding:12px 20px" data-i18n="q-go">Make my page</button>
+      <button class="btn ghost" id="q-clear" style="font-size:17px;padding:11px 18px" data-i18n="clear">Clear</button>
       <span class="muted small" data-i18n="q-or">No reading handy? Use this week’s sentence:</span>
       <span class="row" id="q-courses"></span>
     </div>
@@ -1703,6 +1704,8 @@ $("#q-out").classList.remove("hide");$("#q-form").classList.add("hide");$("#q-ti
    <div class="cut">✂ cut here · student half-sheet</div>${store.get("qsheet","em")==="pr"?stuPr:stuEm}</div>`;
   $("#q-out").scrollIntoView({behavior:"smooth",block:"start"})}
 $("#q-go").onclick=quickFromText;
+$("#q-clear").onclick=()=>{$("#q-input").value="";store.set("q","");$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
+$("#q-input").addEventListener("input",()=>store.set("q",$("#q-input").value));
 $("#q-again").onclick=()=>{$("#q-out").classList.add("hide");$("#q-form").classList.remove("hide");$("#q-input").focus()};
 $("#q-print-btn").onclick=()=>printAs("p-quick");
 $("#q-to-xray").onclick=()=>{location.hash="xray";setTimeout(renderXray,50)};
