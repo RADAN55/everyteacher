@@ -236,6 +236,16 @@ Q = [
    ("Monday Moves", "monday-moves.html")]),
 
  ("elteacher",
+  "How do I teach phonics to a student who cannot read English yet?",
+  "Storm Phonics Lab puts three tools in one place. Start with the Easy Guide to Teaching "
+  "Phonics, a ten-minute read on what to teach in order and the 15-minute daily lesson. "
+  "Then open Phonics Coach, which teaches one lesson aloud for each of 187 school days. For "
+  "a teenager learning to read from the beginning, use Storm Readers: 120 lessons in eight "
+  "stages with a voice coach and 48 decodable readers written for grades 9-12.",
+  [("Storm Phonics Lab", 'https://radan55.github.io/stormphonicslab/'),
+   ("My First 100 Words at School", "first-100-words.html")]),
+
+ ("elteacher",
   "How do I prepare my students for the ELPT this spring?",
   "Teaching the ELPT is a page-turning special issue with one feature per domain: what the "
   "Reading, Writing, Listening and Speaking items actually ask, a daily routine you can run "
