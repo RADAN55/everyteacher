@@ -508,6 +508,7 @@ footer b{color:var(--gold2)}
   </div>
   <a class="mlink noprint" href="#method"><b>1·2·3</b><span data-i18n="m-link">The whole method in three moves: Read it. Break it. Make it. →</span></a>
   <div class="card noprint" id="q-form">
+    <div class="row" style="margin-bottom:8px"><label for="q-lang" class="small" style="font-weight:600" data-i18n="q-langl">Students’ home language:</label><select id="q-lang" style="width:auto;padding:8px 12px"></select><span class="small muted" id="q-langnote"></span></div>
     <textarea id="q-input" data-i18n-ph="q-ph" placeholder="Paste a paragraph or two from tomorrow’s reading…"></textarea>
     <div class="row" style="margin-top:10px">
       <button class="btn gold" id="q-go" style="font-size:17px;padding:12px 20px" data-i18n="q-go">Analyze my reading</button>
@@ -528,7 +529,7 @@ footer b{color:var(--gold2)}
       <div class="row noprint"><button class="btn sm ghost hide" id="q-back" data-i18n="q-back">← Back to the four buttons</button><button class="btn sm ghost" id="q-again" data-i18n="q-again">Start over</button></div>
     </div>
     <div class="tiles noprint" id="q-menu">
-      <button class="tile" data-go="words"><b>Aa</b><span><strong data-i18n="t-w">Words</strong><em data-i18n="t-wp">The vocabulary with Spanish. Print the list.</em></span></button>
+      <button class="tile" data-go="words"><b>Aa</b><span><strong data-i18n="t-w">Words</strong><em data-i18n="t-wp">The vocabulary with translations. Print the list.</em></span></button>
       <button class="tile" data-go="sents"><b>✂</b><span><strong data-i18n="t-s">Hard sentences</strong><em data-i18n="t-sp">The hardest ones and how to teach each.</em></span></button>
       <button class="tile" data-go="lesson"><b>▶</b><span><strong data-i18n="t-l">Teach it</strong><em data-i18n="t-lp">A 10-minute lesson. Press Next and read the screen.</em></span></button>
       <button class="tile" data-go="hand"><b>✎</b><span><strong data-i18n="t-h">Student handout</strong><em data-i18n="t-hp">Ready to print.</em></span></button>
@@ -540,8 +541,15 @@ footer b{color:var(--gold2)}
       <button class="btn sm ghost adv" id="q-plan" data-i18n="q-plan">Copy for my lesson plan</button>
     </div>
     <div id="r-report">
-      <div class="rsec" data-tab="words"><h3><span data-i18n="r-h1">Academic vocabulary with Spanish</span></h3>
+      <div class="rsec" data-tab="words"><h3><span data-i18n="r-h1">Academic vocabulary with translations</span></h3>
         <p class="small muted simp" data-i18n="r-p1s">✓ = looks like Spanish. Tap a Spanish word to change it.</p><p class="small muted adv" data-i18n="r-p1">★ = in your lesson (tap a star to change). ✓ = cognate. T = translation. ≈ = a guess to check. ⚠ = false friend. Tap a Spanish box to type your own.</p>
+        <div class="row noprint" style="margin:0 0 10px"><label for="r-lang" class="small" style="font-weight:600" data-i18n="q-langl">Students’ home language:</label><select id="r-lang" style="width:auto;padding:8px 12px"></select></div>
+        <div id="r-langbox" class="noprint hide" style="margin:0 0 10px;padding:12px;border:1.5px dashed var(--gold);border-radius:12px">
+          <p style="margin:0 0 6px"><b id="r-langh"></b></p>
+          <div class="row"><a class="btn sm gold" id="r-gt2" target="_blank" rel="noopener"></a><span class="small muted" data-i18n="r-gtnote">It opens in a new tab with the words already typed in. Copy the translations.</span></div>
+          <textarea id="r-paste" rows="3" style="margin-top:8px" data-i18n-ph="r-pasteph" placeholder="Then paste the translations here, one per line, in the same order…"></textarea>
+          <div class="row" style="margin-top:6px"><button class="btn sm" id="r-apply" data-i18n="r-apply">Fill in the table</button><span class="small" id="r-applymsg"></span></div>
+        </div>
         <div style="overflow-x:auto"><table class="vocab" id="r-vocab"></table></div>
         <div class="row noprint" style="margin-top:8px"><button class="btn gold" id="r-list" data-i18n="r-list">Print the word list</button><button class="btn sm ghost adv" id="r-copyv" data-i18n="copy">Copy list</button><button class="btn sm ghost adv" id="r-wall" data-i18n="v-wall">Print word wall</button><a class="btn sm ghost hide" id="r-gt" target="_blank" rel="noopener"></a></div></div>
       <div class="rsec" data-tab="words"><h3><span data-i18n="r-h2">Cognates: words Spanish speakers can already read</span></h3><div id="r-cog"></div></div>
@@ -556,7 +564,7 @@ footer b{color:var(--gold2)}
       <button class="chip em" data-sh="em">● Emerging</button><button class="chip pr" data-sh="pr">◆ Progressing</button>
     </div>
     <div class="qgrid" data-tab="lesson">
-      <div class="qbox"><div class="when" data-i18n="q-b1">Step 1 · 3 minutes</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the Spanish. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
+      <div class="qbox"><div class="when" data-i18n="q-b1">Step 1 · 3 minutes</div><h3 data-i18n="q-b1h">Say these words first</h3><ul class="qwords" id="q-words"></ul><div id="q-lv1"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b1t">Say each word, students repeat it, then show the home-language word. ✓ = cognate, ≈ = probably, ⚠ = looks Spanish but isn’t.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b2">Step 2 · 5 minutes</div><h3 data-i18n="q-b2h">Ask these questions about one sentence</h3><div id="q-reading"></div><p class="qsent" id="q-sent"></p><div id="q-chunks"></div><div id="q-lv2"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b2t">Read the “Say” lines out loud, one at a time. Wait for answers. The “Listen for” line is what a good answer sounds like.</p></div>
       <div class="qbox"><div class="when" data-i18n="q-b3">Step 3 · 2 minutes</div><h3 data-i18n="q-b3h">Students finish this sentence</h3><div class="qframe" id="q-frame"></div><div id="q-lv3"></div><p class="small muted" style="margin:8px 0 0" data-i18n="q-b3t">Every student writes one sentence about the reading with this frame.</p></div>
     </div>
@@ -1275,6 +1283,7 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
+"q-langl":"Idioma del hogar de los estudiantes:","r-gtnote":"Se abre en una pestaña nueva con las palabras ya escritas. Copia las traducciones.","r-pasteph":"Luego pega aquí las traducciones, una por línea, en el mismo orden…","r-apply":"Llenar la tabla",
 "q-back":"← Volver a los cuatro botones","t-w":"Palabras","t-wp":"El vocabulario con español. Imprime la lista.","t-s":"Oraciones difíciles","t-sp":"Las más difíciles y cómo enseñar cada una.","t-l":"Enseñar","t-lp":"Una lección de 10 minutos. Presiona Next y lee la pantalla.","t-h":"Hoja del estudiante","t-hp":"Lista para imprimir.","r-p1s":"✓ = se parece al español. Toca una palabra en español para cambiarla.",
 "r-list":"Imprimir la lista de palabras",
 "q-upload":"Subir un PDF","r-print":"Imprimir todo","r-h1":"Vocabulario académico con español","r-p1":"★ = en tu lección (toca una estrella para cambiar). ✓ = cognado. T = traducción. ≈ = suposición por revisar. ⚠ = falso amigo. Toca una casilla de español para escribir la tuya.","r-h2":"Cognados: palabras que los hispanohablantes ya pueden leer","r-h3":"Oraciones difíciles y cómo enseñarlas","r-h4":"Tu lección de 10 minutos","r-h5":"Hoja para el estudiante","r-hprint":"Imprimir la hoja",
@@ -1984,7 +1993,7 @@ function printStrips(chunks){const order=chunks.map((c,i)=>i);
 
 let Q=null;
 const LV={
- 1:{em:["Say each word. Students repeat it twice.","Show the Spanish and a picture or a gesture.","Students copy the words and the Spanish into their notebook."],
+ 1:{em:["Say each word. Students repeat it twice.","Show the home-language word and a picture or a gesture.","Students copy the words and the home-language word into their notebook."],
     pr:["Students say each word in a short sentence about the topic.","Ask: “Which words look like Spanish? Which one tricks you (⚠)?”"],
     emES:["Di cada palabra. Los estudiantes la repiten dos veces.","Muestra el español y una imagen o un gesto.","Los estudiantes copian las palabras y el español en su cuaderno."],
     prES:["Los estudiantes dicen cada palabra en una oración corta sobre el tema.","Pregunta: “¿Qué palabras se parecen al español? ¿Cuál engaña (⚠)?”"]},
@@ -2006,7 +2015,7 @@ $$(".lvbar [data-sh]").forEach(c=>c.onclick=()=>{store.set("qsheet",c.dataset.sh
 
 function pickWords(r){const order={"false friend":0,"process noun":1,"academic word":2};
   return [...r.vocab.values()].sort((a,b)=>(order[a.kind]===0?-1:order[b.kind]===0?1:0)||b.n-a.n||b.w.length-a.w.length).slice(0,5)}
-function wordRow(w){const c=cognate(w);let sp="";const ed=Q&&Q.fromText?esFor(w):"";if(ed&&!(c&&c.type==="sure")){sp=esc(ed)}else if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`<span class="gs">≈ ${esc(c.es)}</span>`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
+function wordRow(w){const c=HL==="es"?cognate(w):null;let sp="";const ed=Q&&Q.fromText?esFor(w):"";if(HL!=="es"){sp=ed?`<span${LANGS[HL].rtl?' dir="rtl"':""}>${esc(ed)}</span>`:""}else if(ed&&!(c&&c.type==="sure")){sp=esc(ed)}else if(c){sp=c.type==="sure"?`✓ ${esc(c.es)}`:c.type==="guess"?`<span class="gs">≈ ${esc(c.es)}</span>`:`⚠ <span class="small">${esc(c.es.split(" — ")[0])}</span>`}
   return `<li><b>${esc(w)}</b><span class="${c&&c.type==="false"?"warnc":""}">${sp||"<span class='muted'>—</span>"} <button class="wx noprint" data-x="${esc(w)}" aria-label="Remove ${esc(w)}">×</button></span></li>`}
 function quickFromText(){const text=$("#q-input").value.trim();if(!text){$("#q-input").focus();return}
   store.set("q",text);$("#xr-input").value=text;const r=analyze(text);lastAnalysis=r;
@@ -2019,7 +2028,7 @@ function quickFromLib(subj){const w=js.week||1;const E=entry(subj,w);const r=ana
   let words=pickWords(r).map(v=>v.w);const extra=(E.chunks.map(c=>c.t).join(" ").match(/[A-Za-z]{5,}/g)||[]).map(x=>x.toLowerCase()).filter(x=>{const c=cognate(x);return c&&c.type==="sure"});
   words=[...new Set(words.concat(extra))].slice(0,5);
   Q={title:`${LANG==="es"?"Semana":"Week"} ${w} · ${sname(subj)} · ${E.topic}`,words,sent:E.chunks.map(c=>c.t).join(" "),chunks:E.chunks,frame:E.frame,es:E.es,en:E.en,fix:WHO_FIX[subj+w],core:E.coreText,split:E.split};drawQuick()}
-function savePage(){const keep={};["title","words","sent","chunks","frame","es","en","fix","core","split","fromText","sents","esEdit"].forEach(k=>{if(Q[k]!==undefined)keep[k]=Q[k]});
+function savePage(){const keep={};["title","words","sent","chunks","frame","es","en","fix","core","split","fromText","sents","esEdit","tr"].forEach(k=>{if(Q[k]!==undefined)keep[k]=Q[k]});
   const pages=store.get("pages",[]).filter(p=>p.title!==Q.title);pages.unshift(keep);store.set("pages",pages.slice(0,6));drawRecent()}
 function drawRecent(){const pages=store.get("pages",[]);const el=$("#q-recent");el.classList.toggle("hide",!pages.length);
   el.innerHTML=`<span class="small muted">${LANG==="es"?"Tus páginas recientes:":"Your recent pages:"}</span> `+pages.map((p,i)=>`<button class="chip" data-r="${i}" style="margin:3px 2px">${esc(p.title.replace(/^(My page for|Mi página para): /,""))}</button>`).join("");
@@ -2098,7 +2107,7 @@ $("#q-to-hand").onclick=()=>{location.hash="xray";setTimeout(()=>{renderXray();b
 function boardLv(n){const L=LV[n];return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;font-size:clamp(14px,1.5vw,20px)"><div style="border-left:8px solid #4fd1a8;padding-left:12px"><b style="color:#4fd1a8">${EM_T}</b><br>${(LANG==="es"?L.emES:L.em).map(esc).join("<br>")}</div><div style="border-left:8px double #f08a5d;padding-left:12px"><b style="color:#f08a5d">${PR_T}</b><br>${(LANG==="es"?L.prES:L.pr).map(esc).join("<br>")}</div></div>`}
 function drawQCourses(){$("#q-courses").innerHTML=Object.keys(SUBJ).map(k=>`<button class="chip" data-s="${k}">${sname(k)}</button>`).join("");$$("#q-courses .chip").forEach(c=>c.onclick=()=>quickFromLib(c.dataset.s))}
 $("#q-board").onclick=()=>{const es=LANG==="es",simple=document.body.classList.contains("simple");const lv=n=>simple?"":boardLv(n);
-  const sl=[{k:es?"Parte 1 · Palabras":"Part 1 · Words",h:es?"“Repitan después de mí.”":"“Repeat after me.”",b:`<ul>${Q.words.map(w=>{const c=cognate(w);const e2=Q.fromText?esFor(w):(c&&c.type!=="false"?c.es:"");return `<li><b>${esc(w)}</b>${e2?` <span style="color:#E8C95A">· ${esc(e2)}</span>`:""}</li>`}).join("")}</ul>${lv(1)}`,min:0},
+  const sl=[{k:es?"Parte 1 · Palabras":"Part 1 · Words",h:es?"“Repitan después de mí.”":"“Repeat after me.”",b:`<ul>${Q.words.map(w=>{const c=cognate(w);const e2=Q.fromText?esFor(w):(HL==="es"&&c&&c.type!=="false"?c.es:"");return `<li><b>${esc(w)}</b>${e2?` <span style="color:#E8C95A">· ${esc(e2)}</span>`:""}</li>`}).join("")}</ul>${lv(1)}`,min:0},
    ...(Q.fromText&&Q.sents.join(" ").length<1400?[{k:es?"Parte 2 · La lectura":"Part 2 · The reading",h:es?"“Busquen la oración resaltada.”":"“Find the highlighted sentence.”",b:`<p style="font-family:Georgia,serif;font-size:clamp(15px,1.7vw,22px);line-height:1.6">${Q.sents.map(x=>x===Q.sent?`<span style="background:#ffe9a3;color:#1b1f33;padding:2px 4px;border-radius:4px">${esc(x)}</span>`:`<span style="opacity:.8">${esc(x)}</span>`).join(" ")}</p>`,min:0}]:[]),
    ...stepSlides(Q.steps,es?"Parte 2 · La oración":"Part 2 · The sentence"),
    {k:es?"Parte 3 · Boleto de salida":"Part 3 · Exit ticket",h:es?"“Terminen esta oración sobre la lectura.”":"“Finish this sentence about the reading.”",b:`<p class="m" style="font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,52px)">${esc(Q.frame)}</p>${lv(3)}`,min:0}];
@@ -2165,12 +2174,22 @@ $$("#v-samples .chip").forEach(b=>b.onclick=()=>{$("#v-input").value=SAMPLES[b.d
 /* =====================================================
    READING REPORT (vocabulary, cognates, hard sentences, handout)
    ===================================================== */
+
+/* ---- home language ---- */
+const LANGS={es:{n:"Spanish",nat:"Español",gt:"es"},vi:{n:"Vietnamese",nat:"Tiếng Việt",gt:"vi"},ar:{n:"Arabic",nat:"العربية",gt:"ar",rtl:true},zh:{n:"Chinese (Simplified)",nat:"中文",gt:"zh-CN"},ht:{n:"Haitian Creole",nat:"Kreyòl ayisyen",gt:"ht"},pt:{n:"Portuguese",nat:"Português",gt:"pt"},fr:{n:"French",nat:"Français",gt:"fr"},other:{n:"Other / none",nat:"",gt:""}};
+let HL=store.get("hl","es");
+function langName(){return LANGS[HL].n}
+function drawLangSel(){$("#r-lang").innerHTML=Object.entries(LANGS).map(([k,v])=>`<option value="${k}" ${k===HL?"selected":""}>${v.n}${v.nat?" · "+v.nat:""}</option>`).join("");$("#q-lang").innerHTML=Object.entries(LANGS).map(([k,v])=>`<option value="${k}" ${k===HL?"selected":""}>${v.n}${v.nat?" · "+v.nat:""}</option>`).join("");
+  $("#q-langnote").textContent=HL==="es"?(LANG==="es"?"Cognados y traducciones incluidos.":"Cognates and translations are built in."):HL==="other"?"":(LANG==="es"?"Las traducciones se piden a Google Translate con un clic.":"Translations come from Google Translate in one click.")}
+$("#q-lang").onchange=$("#r-lang").onchange=e=>{HL=e.target.value;store.set("hl",HL);drawLangSel();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick(true)};
+function trFor(w){const t=Q&&Q.tr&&Q.tr[HL]&&Q.tr[HL][w];if(t!==undefined)return t;if(HL==="es")return spanishOf(w).es;return ""}
+function trKind(w){if(HL!=="es")return trFor(w)?"translation":"";return spanishOf(w).kind}
 function spanishOf(w){const L=lemmas(w.toLowerCase());
   for(const l of L)if(COG.false[l])return{es:COG.gloss[l]||"",kind:"false",note:COG.false[l]};
   for(const l of L)if(COG.sure[l])return{es:COG.sure[l],kind:"cognate"};
   for(const l of L)if(COG.gloss[l])return{es:COG.gloss[l],kind:"translation"};
   const c=cognate(w);if(c&&c.type==="guess")return{es:c.es,kind:"guess"};return{es:"",kind:""}}
-function esFor(w){return (Q&&Q.esEdit&&Q.esEdit[w]!==undefined)?Q.esEdit[w]:spanishOf(w).es}
+function esFor(w){if(HL!=="es")return trFor(w);return (Q&&Q.esEdit&&Q.esEdit[w]!==undefined)?Q.esEdit[w]:spanishOf(w).es}
 const KIND_MARK={cognate:"✓ cognate",translation:"T translation",guess:"≈ check this",false:"⚠ false friend","":"—"};
 function sentReasons(S){const why=[],how=[];const f=k=>S.toks.filter((t,i)=>S.feats[i].has(k)&&/^[A-Za-z]/.test(t));
   if(S.nw>=20){why.push(`${S.nw} words long`);how.push("Break it into pieces. Ask one question about each piece (Read it. Break it. Make it.).")}
@@ -2186,12 +2205,17 @@ function sentReasons(S){const why=[],how=[];const f=k=>S.toks.filter((t,i)=>S.fe
 function renderReport(){const rep=$("#r-report"),hw=$("#r-handwrap");rep.classList.toggle("hide",!Q.fromText);hw.classList.toggle("hide",!Q.fromText);if(!Q.fromText)return;
   const text=Q.sents.join(" ");const r=analyze(text),A=analyzeVocab(text);Q.esEdit=Q.esEdit||{};
   const vw=A.words.filter(e=>e.tier>=2).sort((a,b)=>vScore(b)-vScore(a)).slice(0,24);Q.words.forEach(w=>{if(!vw.some(e=>e.w===w))vw.unshift({w,n:1,tier:3})});
-  $("#r-vocab").innerHTML=`<tr><th></th><th>Word</th><th>Kind</th><th>Spanish</th><th></th><th>×</th></tr>`+vw.map(e=>{const sp=spanishOf(e.w);
-    return `<tr><td><button class="star ${Q.words.includes(e.w)?"on":""}" data-star="${esc(e.w)}" aria-label="In my lesson">★</button></td><td><b>${esc(e.w)}</b></td><td>${e.tier===2?"school word":"subject word"}</td><td contenteditable="true" data-es="${esc(e.w)}">${esc(esFor(e.w))}</td><td class="small ${sp.kind==="false"?"warnc":sp.kind==="cognate"?"ok":"muted"}"><span class="adv">${KIND_MARK[sp.kind]}</span><span class="simp">${sp.kind==="cognate"?"✓":sp.kind==="false"?"⚠":""}</span>${sp.kind==="false"?`<br><span class="small">${esc(sp.note)}</span>`:""}</td><td>${e.n}</td></tr>`}).join("");
+  const rtl=LANGS[HL].rtl?' dir="rtl"':"";
+  $("#r-vocab").innerHTML=`<tr><th></th><th>Word</th><th>Kind</th><th>${HL==="other"?"Translation":esc(langName())}</th><th></th><th>×</th></tr>`+vw.map(e=>{const sp=HL==="es"?spanishOf(e.w):{kind:trKind(e.w),es:trFor(e.w),note:""};
+    return `<tr><td><button class="star ${Q.words.includes(e.w)?"on":""}" data-star="${esc(e.w)}" aria-label="In my lesson">★</button></td><td><b>${esc(e.w)}</b></td><td>${e.tier===2?"school word":"subject word"}</td><td contenteditable="true"${rtl} data-es="${esc(e.w)}">${esc(esFor(e.w))}</td><td class="small ${sp.kind==="false"?"warnc":sp.kind==="cognate"?"ok":"muted"}"><span class="adv">${KIND_MARK[sp.kind]}</span><span class="simp">${sp.kind==="cognate"?"✓":sp.kind==="false"?"⚠":""}</span>${sp.kind==="false"?`<br><span class="small">${esc(sp.note)}</span>`:""}</td><td>${e.n}</td></tr>`}).join("");
   $$("#r-vocab [data-star]").forEach(b=>b.onclick=()=>{const w=b.dataset.star;Q.words=Q.words.includes(w)?Q.words.filter(x=>x!==w):Q.words.concat(w);drawQuick(true)});
-  $$("#r-vocab [data-es]").forEach(td=>td.onblur=()=>{Q.esEdit[td.dataset.es]=td.textContent.trim();savePage();drawHandout()});
+  $$("#r-vocab [data-es]").forEach(td=>td.onblur=()=>{if(HL==="es")Q.esEdit[td.dataset.es]=td.textContent.trim();else{Q.tr=Q.tr||{};Q.tr[HL]=Q.tr[HL]||{};Q.tr[HL][td.dataset.es]=td.textContent.trim()}savePage();drawHandout()});
   Q._vw=vw.map(e=>e.w);
-  const blanks=Q._vw.filter(w=>{const k=spanishOf(w).kind;return !(Q.esEdit[w])&&(k===""||k==="guess")});const gt=$("#r-gt");gt.classList.toggle("hide",!blanks.length);
+  const lb=$("#r-langbox");lb.classList.toggle("hide",HL==="es"||HL==="other");
+  if(HL!=="es"&&HL!=="other"){const missing=Q._vw.filter(w=>!trFor(w));$("#r-langh").textContent=missing.length?(LANG==="es"?`Traducciones al ${langName()} en dos pasos`:`${langName()} translations in two steps`):(LANG==="es"?`Traducciones al ${langName()} listas. Toca cualquier casilla para corregirla.`:`${langName()} translations are in. Tap any box to fix one.`);
+    const g2=$("#r-gt2");g2.textContent=LANG==="es"?`1. Abrir Google Translate (${Q._vw.length} palabras)`:`1. Open Google Translate (${Q._vw.length} words)`;g2.href="https://translate.google.com/?sl=en&tl="+LANGS[HL].gt+"&op=translate&text="+encodeURIComponent(Q._vw.join("\n"));$("#r-paste").value="";$("#r-applymsg").textContent=""}
+  $$("#r-report .rsec")[1].classList.toggle("hide",HL!=="es");
+  const blanks=HL!=="es"?[]:Q._vw.filter(w=>{const k=spanishOf(w).kind;return !(Q.esEdit[w])&&(k===""||k==="guess")});const gt=$("#r-gt");gt.classList.toggle("hide",!blanks.length);
   if(blanks.length){gt.textContent=LANG==="es"?`Traducir ${blanks.length} palabra${blanks.length>1?"s":""} sin traducción (abre Google Translate)`:`Translate the ${blanks.length} unchecked word${blanks.length>1?"s":""} (opens Google Translate)`;gt.href="https://translate.google.com/?sl=en&tl=es&op=translate&text="+encodeURIComponent(blanks.join("\n"))}
   const cogs=A.words.filter(e=>e.tier&&e.w.length>3&&spanishOf(e.w).kind==="cognate"),ff=A.words.filter(e=>spanishOf(e.w).kind==="false");
   $("#r-cog").innerHTML=(cogs.length?`<p style="margin:0 0 6px">${cogs.map(e=>`<span class="vchip" style="cursor:default"><b>${esc(e.w)}</b> = ${esc(spanishOf(e.w).es)}</span>`).join("")}</p><p class="small muted" style="margin:6px 0 0">${cogs.length} of the ${A.words.filter(e=>e.tier).length} different words in this reading look like Spanish. Have students find them first.</p>`:`<p class="muted">No cognates found in this reading.</p>`)
@@ -2211,7 +2235,7 @@ function drawHandout(){if(!Q||!Q.fromText)return;const lvl=store.get("qsheet","e
   $("#r-handout").innerHTML=`<div class="hh"><span>Name: ______________________</span><span>Period: _____</span><span>Date: __________</span><span>${em?"● Emerging":"◆ Progressing"}</span></div>
    <h2 contenteditable="true">Reading Guide</h2>
    <h3>1. Words to know</h3>
-   <table><tr><th>Word</th><th>Spanish</th><th>${em?"Draw it or write what it means":"Use it in a sentence about the reading"}</th></tr>${words.map(w=>`<tr><td><b>${esc(w)}</b></td><td contenteditable="true">${em?esc(esFor(w)):""}</td><td contenteditable="true" style="height:30px"></td></tr>`).join("")}</table>
+   <table><tr><th>Word</th><th>${HL==="other"?"My language":esc(langName())}</th><th>${em?"Draw it or write what it means":"Use it in a sentence about the reading"}</th></tr>${words.map(w=>`<tr><td><b>${esc(w)}</b></td><td contenteditable="true"${LANGS[HL].rtl?' dir="rtl"':""}>${em?esc(esFor(w)):""}</td><td contenteditable="true" style="height:30px"></td></tr>`).join("")}</table>
    <h3 style="margin-top:14px">2. Read</h3><p style="font-family:Inter,sans-serif;font-size:12.5px;margin:0 0 4px">Read it two times. The words in <b>bold</b> are in your word box. The <u>underlined</u> sentence is the hard one.</p>
    <div class="passage" contenteditable="true">${passage}</div>
    <h3 style="margin-top:14px">3. Break the hard sentence</h3>
@@ -2220,10 +2244,14 @@ function drawHandout(){if(!Q||!Q.fromText)return;const lvl=store.get("qsheet","e
    <h3 style="margin-top:14px">4. Say it in your own words</h3><div class="line"></div><div class="line"></div>
    <h3 style="margin-top:14px">5. Finish this sentence about the reading</h3><p style="font-size:17px" contenteditable="true">${esc(Q.frame)}</p>${em?`<p style="font-family:Inter,sans-serif;font-size:12.5px">Word bank: ${words.slice(0,6).map(esc).join(" · ")}</p>`:`<p style="font-family:Inter,sans-serif;font-size:12.5px">Then add one more sentence with <i>because</i> or <i>however</i>.</p>`}<div class="line"></div><div class="line"></div>`}
 $$("[data-sh2]").forEach(c=>c.onclick=()=>{store.set("qsheet",c.dataset.sh2);if(Q)drawQuick(true)});
+$("#r-apply").onclick=()=>{const lines=$("#r-paste").value.split(/\n/).map(x=>x.trim()).filter(Boolean);const words=Q._vw||[];
+  if(!lines.length){$("#r-applymsg").textContent=LANG==="es"?"Pega las traducciones primero.":"Paste the translations first.";return}
+  Q.tr=Q.tr||{};Q.tr[HL]=Q.tr[HL]||{};const n=Math.min(lines.length,words.length);for(let i=0;i<n;i++)Q.tr[HL][words[i]]=lines[i];
+  $("#r-applymsg").textContent=n===words.length?"✓":(LANG==="es"?`Se llenaron ${n} de ${words.length}. ¿Falta alguna línea?`:`Filled ${n} of ${words.length}. Are some lines missing?`);drawQuick(true)};
 $("#r-hprint").onclick=()=>printAs("p-rhand");
-$("#r-list").onclick=()=>{$("#list-print").innerHTML=`<div class="blist"><h2>Vocabulary · Vocabulario</h2><p style="font-size:13px;margin:0 0 10px">${esc(Q.title.replace(/^(My page for|Mi página para): /,""))} &nbsp;·&nbsp; Name / Nombre: ____________________</p>
-  <table><tr><th>English</th><th>Español</th><th>It means / Significa</th></tr>${(Q._vw||[]).map(w=>{const sp=spanishOf(w);return `<tr><td><b>${esc(w)}</b>${Q.words.includes(w)?" ★":""}</td><td>${esc(esFor(w))}${sp.kind==="cognate"?" ✓":""}</td><td style="width:40%"></td></tr>`}).join("")}</table>
-  <p style="font-size:12px;margin-top:8px">★ = word in today’s lesson · palabra de la lección de hoy &nbsp; ✓ = cognate · cognado (looks like Spanish · se parece al español)</p></div>`;printAs("p-rlist")};
+$("#r-list").onclick=()=>{$("#list-print").innerHTML=`<div class="blist"><h2>Vocabulary${HL==="es"?" · Vocabulario":""}</h2><p style="font-size:13px;margin:0 0 10px">${esc(Q.title.replace(/^(My page for|Mi página para): /,""))} &nbsp;·&nbsp; Name / Nombre: ____________________</p>
+  <table><tr><th>English</th><th>${HL==="es"?"Español":esc(LANGS[HL].nat||"My language")}</th><th>It means${HL==="es"?" / Significa":""}</th></tr>${(Q._vw||[]).map(w=>{const sp=spanishOf(w);return `<tr><td><b>${esc(w)}</b>${Q.words.includes(w)?" ★":""}</td><td${LANGS[HL].rtl?' dir="rtl"':""}>${esc(esFor(w))}${HL==="es"&&sp.kind==="cognate"?" ✓":""}</td><td style="width:40%"></td></tr>`}).join("")}</table>
+  <p style="font-size:12px;margin-top:8px">★ = word in today’s lesson${HL==="es"?" · palabra de la lección de hoy &nbsp; ✓ = cognate · cognado (looks like Spanish · se parece al español)":""}</p></div>`;printAs("p-rlist")};
 $("#r-print").onclick=e=>{e.preventDefault();const was=qTab;setTab("all");const back=()=>{setTab(was);window.removeEventListener("afterprint",back)};window.addEventListener("afterprint",back);try{window.print()}catch(err){}setTimeout(back,1500)};
 $("#r-copyv").onclick=e=>copyText("Word\tKind\tSpanish\tNote\n"+(Q._vw||[]).map(w=>{const sp=spanishOf(w);return `${w}\t${tierOf(w)===2?"school word":"subject word"}\t${esFor(w)}\t${KIND_MARK[sp.kind]}`}).join("\n"),e.target);
 $("#r-wall").onclick=()=>{$("#v-wallprint").innerHTML=`<div class="wall">${Q.words.map(w=>`<div><b>${esc(w)}</b><i>${esc(esFor(w))||"&nbsp;"}</i><span>It means:</span><span></span></div>`).join("")}</div>`;const vw=$("#v-words");vw.classList.add("on");$("#v-start").classList.remove("on");const back=()=>{vw.classList.remove("on");$("#v-start").classList.add("on");window.removeEventListener("afterprint",back)};window.addEventListener("afterprint",back);printAs("p-wall");setTimeout(back,1600)};
@@ -2249,10 +2277,10 @@ $("#q-file").onchange=async e=>{const file=e.target.files[0];if(!file)return;fst
   e.target.value=""};
 
 /* ================= init ================= */
-function rerender(){setSimple(document.body.classList.contains("simple"));drawQCourses();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick();subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
+function rerender(){drawLangSel();setSimple(document.body.classList.contains("simple"));drawQCourses();if(Q&&!$("#q-out").classList.contains("hide"))drawQuick();subjChips();drawSteps();if(js.mode==="lib")loadWeek(js.week);else if(js.data)renderSentence();renderSess(true);route();if(lastAnalysis)renderXray()}
 applyLang();paintTheme();
 const saved=store.get("xr","");if(saved)$("#xr-input").value=saved;
-setSimple(store.get("simple",true));setLvFilter(store.get("qlv","both"));drawQCourses();drawRecent();{const q=store.get("q","");if(q){$("#q-input").value=q;$("#v-input").value=q}}
+setSimple(store.get("simple",true));setLvFilter(store.get("qlv","both"));drawLangSel();drawQCourses();drawRecent();{const q=store.get("q","");if(q){$("#q-input").value=q;$("#v-input").value=q}}
 sessList();subjChips();drawSteps();loadWeek(js.week);renderSess();route();
 
 </script>
