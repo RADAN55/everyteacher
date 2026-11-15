@@ -331,6 +331,9 @@ body.proj .cutline{font-size:28px}
 .mv h3{margin:0 0 4px;font-size:21px}.mv p{margin:4px 0;font-size:14.5px}
 .mv q{display:block;font-family:Fraunces,Georgia,serif;font-size:17px;margin:6px 0;quotes:"“" "”"}
 .mv .mi{font-size:13px;color:var(--muted);font-style:italic}
+.mmoves.m3{grid-template-columns:repeat(3,1fr)}@media(max-width:640px){.mmoves.m3{grid-template-columns:1fr}}
+.m3 .mv h3{font-size:28px}.m3 .mv p{font-size:17px}.m3 .mv q{font-size:19px}
+.mrule{font-size:18px;margin:14px 0 6px;border-left:5px solid var(--gold);padding-left:12px}.mlv{font-size:14.5px;margin:6px 0}
 .mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 @media(max-width:820px){.mrow{grid-template-columns:1fr}}
 .mbox{border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14.5px}
@@ -338,7 +341,7 @@ body.proj .cutline{font-size:28px}
 .msrc{font-size:12px;color:var(--muted);margin:12px 0 0}
 .mlink{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:15px;text-decoration:none;color:inherit;border:1px solid var(--line)}
 .mlink b{color:var(--gold);font-family:Fraunces,serif;font-size:20px}
-@media print{body.p-method main>*:not(#v-method){display:none!important}.mcard{border:0;padding:0}.mv{background:none;border:1.5px solid #111;padding:10px}.mv .mn{background:none;color:#111;border:2px solid #111;width:30px;height:30px}.mmoves{grid-template-columns:repeat(4,1fr)!important;gap:8px}.mrow{grid-template-columns:repeat(3,1fr)!important}.mbox{border-color:#111}.mbig b,.mcard .kicker{color:#111!important}.mtop{border-color:#111}.mv p,.mbox{font-size:12.5px}.mv q{font-size:14.5px}.mbox b{color:#111!important}}
+@media print{body.p-method main>*:not(#v-method){display:none!important}.mcard{border:0;padding:0}.mv{background:none;border:1.5px solid #111;padding:10px}.mv .mn{background:none;color:#111;border:2px solid #111;width:30px;height:30px}.mmoves{grid-template-columns:repeat(3,1fr)!important;gap:10px}.m3 .mv p{font-size:15px!important}.m3 .mv q{font-size:16px!important}.mlv b{color:#111!important}.mrow{grid-template-columns:repeat(3,1fr)!important}.mbox{border-color:#111}.mbig b,.mcard .kicker{color:#111!important}.mtop{border-color:#111}.mv p,.mbox{font-size:12.5px}.mv q{font-size:14.5px}.mbox b{color:#111!important}}
 /* Start here */
 .script{margin:6px 0 0;padding-left:22px}
 .script li{margin:0 0 9px;font-size:15px}
@@ -450,7 +453,7 @@ footer b{color:var(--gold2)}
     <div class="qsteps"><div><b>1</b><span data-i18n="q-s1">Paste your reading</span></div><div><b>2</b><span data-i18n="q-s2">Press the gold button</span></div><div><b>3</b><span data-i18n="q-s3">Press Next and read the screen</span></div></div>
     <div class="trust" data-i18n="q-trust">Free · No account · Nothing you paste leaves your device · You can change every word, cut and sentence</div>
   </div>
-  <a class="mlink noprint" href="#method"><b>1·10·4</b><span data-i18n="m-link">New to juicy sentences? The whole method on one page: one sentence, ten minutes, four moves →</span></a>
+  <a class="mlink noprint" href="#method"><b>1·2·3</b><span data-i18n="m-link">The whole method in three moves: Read it. Break it. Make it. →</span></a>
   <div class="card noprint" id="q-form">
     <textarea id="q-input" data-i18n-ph="q-ph" placeholder="Paste a paragraph or two from tomorrow’s reading…"></textarea>
     <div class="row" style="margin-top:10px">
@@ -501,21 +504,16 @@ footer b{color:var(--gold2)}
 <section class="view" id="v-method">
   <div class="row between noprint" style="margin-bottom:12px"><span class="muted small" data-i18n="m-note">One page for your binder or the copy room.</span><button class="btn sm" id="m-print" data-i18n="print">Print</button></div>
   <div class="mcard">
-    <div class="mtop"><div><div class="kicker" style="color:#8a6a00">EL Publishing · The Teacher Literacy Lab</div><h2 data-i18n="m-h">The Juicy Sentence Method, Made Simple</h2>
-      <p class="mlede" data-i18n="m-lede">One hard sentence. Ten minutes. Four moves. Do it a few times a week with a sentence from what you’re already teaching.</p></div>
-      <div class="mbig"><b>1</b><span data-i18n="m-1s">sentence</span><b>10</b><span data-i18n="m-10">minutes</span><b>4</b><span data-i18n="m-4">moves</span></div></div>
-    <div class="mmoves">
-      <div class="mv"><div class="mn">1</div><h3 data-i18n="m1h">Whole</h3><p data-i18n="m1p">Read it out loud twice. Ask:</p><q data-i18n="m1q">What do you think it’s saying?</q><p class="mi" data-i18n="m1i">Take any answer. Don’t correct yet.</p></div>
-      <div class="mv"><div class="mn">2</div><h3 data-i18n="m2h">Parts</h3><p data-i18n="m2p">Cut it into pieces. Find who or what, and what they do. Then one question per piece:</p><q data-i18n="m2q">When? Why? How? Which one?</q><p class="mi" data-i18n="m2i">Ask what each piece means, not what it’s called.</p></div>
-      <div class="mv"><div class="mn">3</div><h3 data-i18n="m3h">Whole again</h3><p data-i18n="m3p">Put it back together. Ask:</p><q data-i18n="m3q">Now what does it mean? Why does it matter to what we’re learning?</q><p class="mi" data-i18n="m3i">Students say it in their own words, in English or their home language.</p></div>
-      <div class="mv"><div class="mn">4</div><h3 data-i18n="m4h">Make one</h3><p data-i18n="m4p">Students write their own sentence with the same shape.</p><q data-i18n="m4q">Although ___, ___ because ___.</q><p class="mi" data-i18n="m4i">Same shape, new content. This is where they own it.</p></div>
+    <div class="mtop"><div><div class="kicker" style="color:#8a6a00">EL Publishing · The Teacher Literacy Lab</div><h2 data-i18n="m-h">Read it. Break it. Make it.</h2>
+      <p class="mlede" data-i18n="m-lede">The juicy sentence method in three moves. One hard sentence from today’s reading, ten minutes.</p></div></div>
+    <div class="mmoves m3">
+      <div class="mv"><div class="mn">1</div><h3 data-i18n="m1h">Read it</h3><p data-i18n="m1p">Read the sentence out loud together. Twice.</p></div>
+      <div class="mv"><div class="mn">2</div><h3 data-i18n="m2h">Break it</h3><p data-i18n="m2p">Ask about one piece at a time:</p><q data-i18n="m2q">Who or what? Does what? When? Why? How?</q></div>
+      <div class="mv"><div class="mn">3</div><h3 data-i18n="m3h">Make it</h3><p data-i18n="m3p">Students say it in their own words. Then they write one like it.</p></div>
     </div>
-    <div class="mrow">
-      <div class="mbox"><h4 data-i18n="mp">How to pick the sentence</h4><ul><li data-i18n="mp1">From the text you’re teaching this week</li><li data-i18n="mp2">Carries an idea students need for the lesson</li><li data-i18n="mp3">Hard enough to be worth it: two or more parts, a logic word (because, although, which)</li></ul></div>
-      <div class="mbox"><h4 data-i18n="md">Three don’ts</h4><ul><li data-i18n="md1">Don’t simplify it first. The point is the real sentence.</li><li data-i18n="md2">Don’t teach grammar names. Ask what each part does.</li><li data-i18n="md3">Don’t do more than one sentence. Go slow to go fast.</li></ul></div>
-      <div class="mbox"><h4 data-i18n="ml">Two levels</h4><p style="margin:0"><b style="color:var(--em)">● Emerging (1–2):</b> <span data-i18n="mle">give the pieces already cut; one-word answers are fine; frame + word bank.</span><br><b style="color:var(--pr)">◆ Progressing (3–4):</b> <span data-i18n="mlp">students cut it themselves and answer in full sentences.</span></p></div>
-    </div>
-    <p class="msrc" data-i18n-html="m-src">Based on the juicy sentence work of Lily Wong Fillmore and Charles Fillmore (“What does text complexity mean for English learners and language minority students?”, Stanford Understanding Language, 2012) and Student Achievement Partners’ <i>Juicy Sentence Guidance</i>. Simplified for content teachers by EL Publishing.</p>
+    <p class="mrule" data-i18n-html="m-rule"><b>One rule:</b> use the real sentence. Don’t make it easier first.</p>
+    <p class="mlv"><b style="color:var(--em)">● Emerging:</b> <span data-i18n="mle">give the pieces already cut. One-word answers are fine.</span> &nbsp; <b style="color:var(--pr)">◆ Progressing:</b> <span data-i18n="mlp">students find the pieces and answer in full sentences.</span></p>
+    <p class="msrc" data-i18n-html="m-src">A simplified version of the juicy sentence work of Lily Wong Fillmore and Charles Fillmore (Stanford, 2012). EL Publishing.</p>
     <div class="row noprint" style="margin-top:10px"><a class="btn sm gold" href="#start" data-i18n="m-try">Try it with tomorrow’s reading →</a><a class="btn sm ghost" href="#sentence" data-i18n="m-lib">Use a ready-made sentence</a></div>
   </div>
 </section>
@@ -1168,17 +1166,18 @@ const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 
 /* ================= language (UI) ================= */
 const ES={
+"m-rule":"<b>Una regla:</b> usa la oración real. No la hagas más fácil primero.","m-src":"Versión simplificada del trabajo de oraciones jugosas de Lily Wong Fillmore y Charles Fillmore (Stanford, 2012). EL Publishing.",
 "q-plan":"Copiar para mi plan de clase",
 "q-demo":"Ver un ejemplo","q-trust":"Gratis · Sin cuenta · Nada de lo que pegas sale de tu dispositivo · Puedes cambiar cada palabra, corte y oración",
-"m-note":"Una página para tu carpeta o la sala de copias.","m-h":"El método de oraciones jugosas, fácil","m-lede":"Una oración difícil. Diez minutos. Cuatro pasos. Hazlo varias veces por semana con una oración de lo que ya estás enseñando.","m-1s":"oración","m-10":"minutos","m-4":"pasos",
-m1h:"Completa",m1p:"Léela en voz alta dos veces. Pregunta:",m1q:"¿Qué crees que dice?",m1i:"Acepta cualquier respuesta. Todavía no corrijas.",
-m2h:"Partes",m2p:"Córtala en partes. Busca quién o qué, y qué hace. Luego una pregunta por parte:",m2q:"¿Cuándo? ¿Por qué? ¿Cómo? ¿Cuál?",m2i:"Pregunta qué significa cada parte, no cómo se llama.",
-m3h:"Completa otra vez",m3p:"Vuelve a armarla. Pregunta:",m3q:"¿Ahora qué significa? ¿Por qué importa para lo que estamos aprendiendo?",m3i:"Los estudiantes lo dicen con sus palabras, en inglés o en su idioma.",
+"m-note":"Una página para tu carpeta o la sala de copias.","m-h":"Léela. Córtala. Hazla tuya.","m-lede":"El método de oraciones jugosas en tres pasos. Una oración difícil de la lectura de hoy, diez minutos.","m-1s":"oración","m-10":"minutos","m-4":"pasos",
+"m1h":"Léela","m1p":"Lean la oración juntos en voz alta. Dos veces.",m1q:"¿Qué crees que dice?",m1i:"Acepta cualquier respuesta. Todavía no corrijas.",
+"m2h":"Córtala","m2p":"Pregunta sobre una parte a la vez:","m2q":"¿Quién o qué? ¿Hace qué? ¿Cuándo? ¿Por qué? ¿Cómo?",m2i:"Pregunta qué significa cada parte, no cómo se llama.",
+"m3h":"Hazla tuya","m3p":"Los estudiantes la dicen con sus palabras. Luego escriben una parecida.",m3q:"¿Ahora qué significa? ¿Por qué importa para lo que estamos aprendiendo?",m3i:"Los estudiantes lo dicen con sus palabras, en inglés o en su idioma.",
 m4h:"Haz una",m4p:"Los estudiantes escriben su propia oración con la misma forma.",m4q:"Although ___, ___ because ___.",m4i:"Misma forma, contenido nuevo. Aquí la hacen suya.",
 mp:"Cómo escoger la oración",mp1:"De un texto que estás enseñando esta semana",mp2:"Lleva una idea que los estudiantes necesitan para la lección",mp3:"Lo bastante difícil para valer la pena: dos o más partes y una palabra de enlace (because, although, which)",
 md:"Tres cosas que no hacer",md1:"No la simplifiques primero. Lo importante es la oración real.",md2:"No enseñes nombres gramaticales. Pregunta qué hace cada parte.",md3:"No hagas más de una oración. Despacio para llegar lejos.",
-ml:"Dos niveles",mle:"da las partes ya cortadas; respuestas de una palabra están bien; marco y banco de palabras.",mlp:"los estudiantes la cortan solos y responden con oraciones completas.",
-"m-try":"Pruébalo con la lectura de mañana →","m-lib":"Usar una oración lista","m-link":"¿Nuevo con las oraciones jugosas? Todo el método en una página: una oración, diez minutos, cuatro pasos →","s-mlink":"El método en una página →",
+ml:"Dos niveles","mle":"da las partes ya cortadas. Respuestas de una palabra están bien.","mlp":"los estudiantes encuentran las partes y responden con oraciones completas.",
+"m-try":"Pruébalo con la lectura de mañana →","m-lib":"Usar una oración lista","m-link":"Todo el método en tres pasos: Léela. Córtala. Hazla tuya. →","s-mlink":"El método en una página →",
 t0:"Empieza aquí","q-k":"Cinco minutos, una página","q-h":"Haz más fácil la lectura de mañana","q-p":"Pega tu lectura. Presiona el botón dorado. Luego presiona Next y lee la pantalla en voz alta. Eso es todo.",
 "q-s1":"Pega tu lectura","q-s2":"Presiona el botón dorado","q-s3":"Presiona Next y lee la pantalla","q-ph":"Pega uno o dos párrafos de la lectura de mañana…","q-go":"Hacer mi página","q-or":"¿No tienes la lectura? Usa la oración de esta semana:",
 "q-print":"Imprimir una página","q-board":"▶ Enseñar","q-again":"Empezar de nuevo","q-b1":"Paso 1 · 3 minutos","q-b1h":"Di estas palabras primero","q-b1t":"Di cada palabra, los estudiantes la repiten y luego muestras el español. ✓ = cognado, ≈ = probablemente, ⚠ = parece español pero no lo es.",
