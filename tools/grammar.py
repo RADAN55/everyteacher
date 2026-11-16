@@ -140,7 +140,10 @@ L = {
 ],
 }
 
-SAY = [(r"\*\*|~~|\*", ""), (r"[①②③④⑤]", ""), (r"→", ", becomes, "), (r"\s*/\s*", ", "), (r"·", ", "), (r"—", ", ")]
+_HOURS = "one two three four five six seven eight nine ten eleven twelve".split()
+# "3:00" was being read as "three hundred": say the hour and "o'clock"
+OCLOCK = (r"\b(1[0-2]|[1-9]):00\b", lambda m: _HOURS[int(m.group(1)) - 1] + " o'clock")
+SAY = [OCLOCK, (r"\blunes\b", "loo-nes"), (r"\benero\b", "eh-neh-ro"), (r"\*\*|~~|\*", ""), (r"[①②③④⑤]", ""), (r"→", ", becomes, "), (r"\s*/\s*", ", "), (r"·", ", "), (r"—", ", ")]
 
 
 def clips():

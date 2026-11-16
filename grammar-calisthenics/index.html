@@ -651,7 +651,7 @@ let audioState={unlocked:false,voices:0,lastErr:"",spoke:false};
 function allVoices(){try{return synth?synth.getVoices():[];}catch(e){return [];}}
 function pickVoices(){
   const v=allVoices();audioState.voices=v.length;
-  const en=v.filter(x=>/^en[-_]?/i.test(x.lang)),es=v.filter(x=>/^es[-_]?/i.test(x.lang));
+  const enAll=v.filter(x=>/^en[-_]?/i.test(x.lang)),enUS=enAll.filter(x=>/^en[-_]US/i.test(x.lang)),en=enUS.length?enUS:enAll,es=v.filter(x=>/^es[-_]?/i.test(x.lang)); // U.S. English first
   // Prefer voices that live on the device: network voices (Google's) are blocked by many school filters.
   const rank=(arr,re)=>arr.slice().sort((a,b)=>(b.localService?2:0)+(re.test(b.name)?1:0)-((a.localService?2:0)+(re.test(a.name)?1:0)))[0]||null;
   const savedEn=ls("sgc-voice-en"),savedEs=ls("sgc-voice-es");

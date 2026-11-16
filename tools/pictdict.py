@@ -216,4 +216,9 @@ def clips():
 if __name__ == "__main__":
     c = clips(); print(len(SPREADS), "spreads;", sum(len(s["words"]) for s in SPREADS), "words;", len(c), "clips")
 
-SAY = [(r"—", ", ")]
+_HOURS = "one two three four five six seven eight nine ten eleven twelve".split()
+# "3:00" was being read as "three hundred": say the hour and "o'clock"
+OCLOCK = (r"\b(1[0-2]|[1-9]):00\b", lambda m: _HOURS[int(m.group(1)) - 1] + " o'clock")
+SAY = [(r"—", ", "), (r"\bPE\b", "P E"), OCLOCK]
+# stem -> (text, speed): a clip re-recorded because the plain take was unclear
+FIX = {"home-01": ("pillow.", 0.8)}

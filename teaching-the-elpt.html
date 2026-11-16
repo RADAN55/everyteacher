@@ -849,7 +849,7 @@ function loadVoices(){ if(!SS) return; VOICES=SS.getVoices()||[]; }
 if(SS){ loadVoices(); SS.onvoiceschanged=loadVoices; }
 const NATURAL=/natural|neural|premium|enhanced|online|google|siri|samantha|ava|allison|zoe|aria|jenny|guy|davis|emma|andrew|brian|libby|sonia|ryan|karen|moira|daniel|fiona|nicky|evan|tom|aaron/i;
 function scoreVoice(v){ let s=0; if(/^en/i.test(v.lang)) s+=10; if(/en-US/i.test(v.lang)) s+=4; if(NATURAL.test(v.name)) s+=6; if(/natural|neural|premium|enhanced/i.test(v.name)) s+=6; if(/google/i.test(v.name)&&/US/i.test(v.name)) s+=5; if(/siri/i.test(v.name)) s+=5; if(/compact|espeak|robot|flo|bells|bubbles|cellos|zarvox|trinoids|whisper|wobble|bad news|good news|organ|boing|deranged|hysterical|jester|junior|ralph|kathy|fred|albert/i.test(v.name)) s-=15; if(v.localService) s+=1; return s; }
-function rankedVoices(){ if(!VOICES.length) loadVoices(); return VOICES.filter(v=>/^en/i.test(v.lang)).sort((a,b)=>scoreVoice(b)-scoreVoice(a)); }
+function rankedVoices(){ if(!VOICES.length) loadVoices(); const en=VOICES.filter(v=>/^en/i.test(v.lang)), us=en.filter(v=>/^en[-_]US/i.test(v.lang)); /* the test is in American English: other accents only when the device has no U.S. voice */ return (us.length?us:en).sort((a,b)=>scoreVoice(b)-scoreVoice(a)); }
 let currentCoach=null;
 function pickVoice(){ const r=rankedVoices(); if(!r.length) return null; let want=''; try{ want=localStorage.getItem('elpt-voice')||''; }catch(e){}
   if(want){ const v=r.find(x=>x.name===want); if(v) return v; }

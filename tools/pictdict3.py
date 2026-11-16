@@ -197,7 +197,13 @@ SPREADS = [
 ]
 
 VOICE = {"w": 1, "s": 6}
-SAY = [(r"—", ", "), (r"\b911\b", "nine one one"), (r"/", ", "), (r"\bPE\b", "P E")]
+_HOURS = "one two three four five six seven eight nine ten eleven twelve".split()
+# "3:00" was being read as "three hundred": say the hour and "o'clock"
+OCLOCK = (r"\b(1[0-2]|[1-9]):00\b", lambda m: _HOURS[int(m.group(1)) - 1] + " o'clock")
+SAY = [(r"—", ", "), (r"\b911\b", "nine one one"), (r"/", ", "), (r"\bPE\b", "P E"), OCLOCK,
+       (r"(?<= )quinceañera", "keensay-anyaira")]   # inside a sentence the voice said "kwin-"; the word clip alone is fine
+# stem -> (text, speed): a clip re-recorded because the plain take was unclear
+FIX = {"celebrations-00": ("cake", 0.9)}
 
 
 def clips():

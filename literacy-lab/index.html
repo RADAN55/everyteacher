@@ -1359,7 +1359,7 @@ new MutationObserver(paintTheme).observe(document.documentElement,{attributes:tr
 const SPEECH={ok:"speechSynthesis" in window,voices:[]};
 function loadVoices(){if(!SPEECH.ok)return;SPEECH.voices=speechSynthesis.getVoices()||[]}
 if(SPEECH.ok){loadVoices();try{speechSynthesis.addEventListener("voiceschanged",loadVoices)}catch(e){}}
-function pickVoice(lang){const vs=SPEECH.voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(lang));return vs.find(v=>v.localService)||vs[0]||null}
+function pickVoice(lang){const JOKE=/bells|bubbles|cellos|zarvox|trinoids|whisper|wobble|bad news|good news|organ|boing|deranged|hysterical|jester|junior|ralph|albert|fred|kathy|superstar|eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley/i;const all=SPEECH.voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(lang)&&!JOKE.test(v.name));const us=lang==="en"?all.filter(v=>/^en[-_]US$/i.test(v.lang)):[];const vs=us.length?us:all;/* English: a real U.S. voice first */return vs.find(v=>v.localService)||vs[0]||null}
 function speak(text,lang){const st=$("#audio-status");
   if(!SPEECH.ok){if(st)st.textContent="This device has no read-aloud voice.";return}
   loadVoices();try{speechSynthesis.cancel()}catch(e){}

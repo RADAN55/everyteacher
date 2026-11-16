@@ -255,7 +255,10 @@ PROMPTS = [
  "Compare living in a small town and living in a big city. Tell how they are alike and different.",
 ]
 
-SAY = [(r"—", ", "), (r"\bC U P S\b", "C, U, P, S"), (r"\bCUPS\b", "C, U, P, S"), (r"[①②③④⑤⑥]", ""), (r"\*\*|~~|_", ""), (r"\s*/\s*", ". "), (r"→", ", becomes, "), (r"\bELPA21\b", "ELPA twenty-one"), (r"\bEL\b", "E L"),
+_HOURS = "one two three four five six seven eight nine ten eleven twelve".split()
+# "3:00" was being read as "three hundred": say the hour and "o'clock"
+OCLOCK = (r"\b(1[0-2]|[1-9]):00\b", lambda m: _HOURS[int(m.group(1)) - 1] + " o'clock")
+SAY = [OCLOCK, (r"—", ", "), (r"\bC U P S\b", "C, U, P, S"), (r"\bCUPS\b", "C, U, P, S"), (r"[①②③④⑤⑥]", ""), (r"\*\*|~~|_", ""), (r"\s*/\s*", ". "), (r"→", ", becomes, "), (r"\bELPA21\b", "ELPA twenty-one"), (r"\bEL\b", "E L"),
        (r"\bsept\b", "September")]
 
 

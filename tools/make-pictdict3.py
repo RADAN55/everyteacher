@@ -55,7 +55,8 @@ def main(only):
             continue
         parts, last = [], None
         for who, text in turns:
-            a = engine.generate(say(text), sid=S.VOICE[who], speed=(0.9 if who=="w" else 0.96))
+            txt, spd = getattr(S, "FIX", {}).get(stem, (say(text), 0.9 if who == "w" else 0.96))
+            a = engine.generate(txt, sid=S.VOICE[who], speed=spd)
             x = np.array(a.samples, dtype=np.float32)
             idx = np.where(np.abs(x) > 0.01)[0]
             if len(idx):

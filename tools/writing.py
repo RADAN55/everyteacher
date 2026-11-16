@@ -261,7 +261,7 @@ LESSONS = [
  ("write", "1 · Subject–verb:  ~~Students needs~~ → Students **need**   /   ~~She go~~ → She **goes**", "Error one. Subject and verb. Students needs. Students is plural, so: students need. She go. She is one person, so: she goes. The S moves. One S per pair."),
  ("write", "2 · Run-on:  ~~Phones are useful they are distracting.~~ → Phones are useful**. However,** they are distracting.", "Error two. The run-on. Phones are useful they are distracting. Two sentences glued together. Fix: a period, then a transition. Phones are useful. However, they are distracting."),
  ("write", "3 · Capitals and periods:  ~~in my opinion students should rest~~ → **I**n my opinion, students should rest**.**", "Error three. Capitals and periods. In my opinion students should rest, with no capital and no period. Fix: capital I, comma after the transition, period at the end. Small, but a scorer sees it in every line."),
- ("write", "4 · Tense:  ~~Yesterday I go to the library and study.~~ → Yesterday I **went** to the library and **studied**.", "Error four. Tense. Yesterday I go to the library and study. Yesterday is the past. Went. Studied. When you write a time word, check every verb after it."),
+ ("write", "4 · Tense:  ~~Yesterday I go to the library and study.~~ → Yesterday I **went** to the library and **studied**.", "Error four, tense. Yesterday I go to the library and study. Yesterday is the past. Went. Studied. When you write a time word, check every verb after it."),
  ("write", "5 · Articles and plurals:  ~~I have idea.~~ → I have **an** idea.   ~~many student~~ → many student**s**", "Error five. Articles and plurals. I have idea. I have an idea. Many student. Many students. If there is a number or many, add the S."),
  ("say", "Now the method. Read your answer backwards, one sentence at a time, last sentence first. Backwards stops your brain from reading what you meant and makes it read what you wrote. For each sentence, ask the five questions: verb matches subject? one idea per sentence? capital and period? tense matches the time word? articles and S? Let's hunt."),
  ("pick", "Find the error: ~~The teachers gives homework every night.~~", ["Run-on", "Subject–verb", "Tense"], 1,
@@ -319,7 +319,10 @@ PROMPTS = [   # extra prompts for lesson 8 practice
  "Describe a skill everyone should learn before they finish high school, and explain why.",
 ]
 
-SAY = [(r"—", ", "), (r"\bPE\b", "P E"), (r"\bELPA21\b", "ELPA twenty-one"), (r"¶", "paragraph "), (r"[①②③④⑤]", ""), (r"\*\*|~~|_", ""),
+_HOURS = "one two three four five six seven eight nine ten eleven twelve".split()
+# "3:00" was being read as "three hundred": say the hour and "o'clock"
+OCLOCK = (r"\b(1[0-2]|[1-9]):00\b", lambda m: _HOURS[int(m.group(1)) - 1] + " o'clock")
+SAY = [OCLOCK, (r"—", ", "), (r"\bPE\b", "P E"), (r"\bELPA21\b", "ELPA twenty-one"), (r"¶", "paragraph "), (r"[①②③④⑤]", ""), (r"\*\*|~~|_", ""),
        (r"\s*/\s*", ". "), (r"→", ", becomes, ")]
 
 

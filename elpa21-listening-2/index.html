@@ -420,21 +420,24 @@ function loadCQ(){
   setFb("",CQ===0?`Play the ${LESSONS[L].title.includes("Debate")?"debate":LESSONS[L].title.includes("Teacher")?"lesson":LESSONS[L].title.includes("Student")?"presentation":"conversation"} first. Then play question ${it.firstQ}. You get one try on each question.`:"Play the question, then choose the best answer. You get one try.");
   $("dots").innerHTML=cResults.map((r,i)=>`<span class="dot${r==="ok"?" ok":r==="miss"?" miss":""}${i===CQ?" now":""}"></span>`).join("");
 }
+const NOVELTY=/compact|espeak|robot|bells|bubbles|cellos|zarvox|trinoids|whisper|wobble|bad news|good news|organ|boing|deranged|hysterical|jester|junior|ralph|albert|fred|kathy|superstar|eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley/i;
 function pickVoices(){
-  let v=[];try{v=speechSynthesis.getVoices().filter(x=>/^en[-_]US/i.test(x.lang))}catch(e){}
-  if(!v.length)try{v=speechSynthesis.getVoices().filter(x=>/^en/i.test(x.lang))}catch(e){}
+  /* real U.S. English voices only: some devices list joke voices (Bells, Zarvox) under en-US */
+  let all=[];try{all=speechSynthesis.getVoices().filter(x=>!NOVELTY.test(x.name))}catch(e){}
+  let v=all.filter(x=>/^en[-_]US/i.test(x.lang));
+  if(!v.length)v=all.filter(x=>/^en/i.test(x.lang));
   return v;
 }
 function playConvo(){
   const it=item();
   if(!("speechSynthesis" in window)){$("cScript").hidden=false;$("cText").setAttribute("aria-pressed","true");return}
   try{speechSynthesis.cancel()}catch(e){}
-  const vs=pickVoices(),pitch=[1.15,0.8,1.35,0.95];
+  const vs=pickVoices(),pitch=[1.06,0.9,1.12,0.96]; /* gentle: big pitch shifts made one voice sound unnatural */
   it.lines.forEach((l,i)=>{
     const u=new SpeechSynthesisUtterance(l[1]);u.lang="en-US";u.rate=cSlow?.65:.92;
     const s=it.speakers[l[0]];
     if(vs.length>1)u.voice=vs[s%vs.length];else if(vs[0])u.voice=vs[0];
-    u.pitch=pitch[s];
+    u.pitch=(vs.length>1&&s<vs.length)?1:pitch[s]; /* a speaker with a voice of their own keeps its natural pitch */
     u.onstart=()=>{if(it.slides&&l[2]!==undefined)$("cScene").innerHTML=SL[l[2]];document.querySelectorAll("#cScript p").forEach(p=>p.classList.toggle("on",+p.dataset.i===i));$("cPlay").classList.add("playing")};
     if(i===it.lines.length-1)u.onend=u.onerror=()=>{$("cPlay").classList.remove("playing");document.querySelectorAll("#cScript p").forEach(p=>p.classList.remove("on"))};
     speechSynthesis.speak(u);
@@ -766,7 +769,7 @@ function say(text){
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=slow?.6:.9;
-    const v=speechSynthesis.getVoices().find(v=>v.lang==="en-US");if(v)u.voice=v;
+    const v=pickVoices()[0];if(v)u.voice=v;
     u.onstart=()=>$("speak").classList.add("playing");
     u.onend=u.onerror=()=>$("speak").classList.remove("playing");
     speechSynthesis.speak(u);
