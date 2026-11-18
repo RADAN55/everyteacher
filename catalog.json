@@ -319,6 +319,17 @@
   "new": ""
  },
  {
+  "u": "read-your-roster.html",
+  "t": "Read Your Roster: the ELPA21 Level Decoder",
+  "o": "Your roster says Level 2. Here is what that student can do in your class, what is fair to grade, and what MAAP allows.",
+  "f": "Decoder · 4 domains · whole class",
+  "g": "Every classroom teacher",
+  "k": "For the content teacher handed a class list with ELPT levels next to the names. Tap a student's four domain levels (Listening, Speaking, Reading, Writing) and get the ELPA21 status, the hub's lane, what the student can do in your biology, algebra or history class right now and what that looks like, which assessment formats are a fair measure of content and which still measure English, the accommodations Mississippi allows on MAAP for that profile with the LSP wording, three moves for tomorrow, and a printable profile card. Paste a whole roster and see the class by lane, the domain averages, the lowest domain and what it means for planning. A third tab explains the five levels, the Emerging / Progressing / Proficient rule, the Mississippi exit line and four things a roster cannot tell you. Nothing leaves the browser.",
+  "th": "thumbs/read-your-roster.jpg",
+  "pin": "2026-12-20",
+  "new": "2026-11-17"
+ },
+ {
   "u": "spanish-course/",
   "t": "Spanish for Teachers: the 6-Module Course",
   "o": "Self-paced from names and greetings to the family call: audio phrases, self-checking practice, quizzes, cheat sheets, a printable workbook and a certificate.",
@@ -606,11 +617,11 @@
  },
  {
   "u": "tech-radar.html",
-  "t": "Eleven New Tech Tools for English Learners",
+  "t": "Six New Tech Tools for English Learners",
   "o": "What is new and free this month, with a classroom use for each lane.",
   "f": "Radar · Updated weekly",
   "g": "Every classroom teacher",
-  "k": "Verified this fall: Guided Learning in Google Classroom (newest, Nov 17), Snorkl, Ask YouTube, English no kidding, Canva Learn Grid, Gemini in Google Classroom student study tools, Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a four-lane classroom use for each, and a watch list.",
+  "k": "Verified this month: Gemini in Google Classroom student study tools (newest, Oct 6), Read Along in Google Classroom, SpeakingMonkey, MinuteMic, Brisk Boost and Google Translate Practice — what's new, what it costs, a four-lane classroom use for each, and a watch list.",
   "th": "",
   "pin": "",
   "new": ""

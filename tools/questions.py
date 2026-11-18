@@ -20,6 +20,17 @@ WHO = [
 
 Q = [
  ("teachers",
+  "My roster says ELPT Level 2 next to a student's name. What does that mean for my class?",
+  "A level is a measure of English, not of ability, and the four domain numbers matter more "
+  "than the one overall. Read Your Roster decodes them: tap Listening, Speaking, Reading and "
+  "Writing and it tells you what the student can do in your biology or algebra class right now, "
+  "which assessment formats are a fair measure of content and which still measure English, the "
+  "accommodations Mississippi allows on MAAP for that profile, and three moves for tomorrow. "
+  "Paste the whole roster to see the class by lane and which domain to plan around.",
+  [("Read Your Roster: the ELPA21 Level Decoder", "read-your-roster.html"),
+   ("EL Accommodations Quick Cards", "accommodations-cards.html")]),
+
+ ("teachers",
   "I have an English learner in my class and I don't teach English. Where do I start?",
   "Post a language goal next to your content objective, give one sentence frame, and "
   "let the student talk before writing. Those three moves cost about two minutes a "

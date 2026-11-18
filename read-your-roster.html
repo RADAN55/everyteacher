@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Read Your Roster · the ELPA21 level decoder for content teachers · EL Publishing</title>
+<meta name="description" content="Your class list says ELPT Level 2, or Reading 3 / Writing 2. This tells you what that student can do in your biology, algebra or history class right now, what is fair to grade, which accommodations Mississippi allows on MAAP, and three moves for tomorrow. Paste a whole roster to see your class by lane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;
+    --ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}
+  .bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel{background:var(--paper);border:1px solid var(--rule);padding:18px 20px}
+  /* pickers */
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .dom{background:var(--paper);border:1px solid var(--rule);padding:12px 14px}
+  .dom b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+  .lv{display:flex;gap:4px}
+  .lv button{flex:1;font:inherit;font-weight:700;font-size:16px;padding:9px 0;border:1px solid var(--rule);background:var(--mist);color:var(--ink);cursor:pointer;border-radius:6px}
+  .lv button[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  .dom small{display:block;margin-top:7px;font-size:12.5px;color:var(--muted);min-height:34px;line-height:1.3}
+  .meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+  .meta label{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:4px}
+  .meta input,.meta select{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+  /* result */
+  #out{margin-top:22px}
+  .status{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+  .big{background:var(--navy-bg);color:#fff;padding:18px 20px;position:relative;overflow:hidden}
+  .big::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
+  .big>*{position:relative}
+  .big .k{font-size:12px;letter-spacing:.14em;color:var(--gold-lt);font-weight:600;text-transform:uppercase}
+  .big h3{font-family:Fraunces,Georgia,serif;font-size:30px;margin:4px 0 6px;line-height:1.05}
+  .big p{margin:0;color:#D7DBF0;font-size:14.5px}
+  .lanebox{padding:18px 20px;border:1px solid var(--rule);background:var(--paper);border-left:8px solid var(--lc,var(--navy))}
+  .lanebox .k{font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:600;text-transform:uppercase}
+  .lanebox h3{font-family:Fraunces,Georgia,serif;font-size:26px;margin:4px 0 6px;color:var(--lc,var(--navy))}
+  .lanebox p{margin:0;font-size:14.5px}
+  .four{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+  .dc{background:var(--paper);border:1px solid var(--rule);display:flex;flex-direction:column}
+  .dc .top{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--rule)}
+  .dc .top b{font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy)}
+  .dc .top span{font-family:Fraunces,Georgia,serif;font-size:24px;font-weight:700;color:var(--gold)}
+  .dc .top span small{font-family:"Source Sans 3",sans-serif;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-right:5px;font-weight:600}
+  .dc .body{padding:10px 14px 12px;font-size:14px;display:grid;grid-template-columns:96px 1fr;gap:6px 10px}
+  .dc .body b{color:var(--navy);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+  .dc .body p{margin:0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .ok,.no{padding:14px 16px;border:1px solid var(--rule)}
+  .ok{background:var(--wash-green)}.no{background:var(--wash-red)}
+  .ok h4,.no h4{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .ok h4{color:var(--ink-green)}.no h4{color:var(--ink-red)}
+  .ok ul,.no ul,.card ul{margin:0;padding-left:18px;font-size:14px}
+  .ok li,.no li,.card li{margin:3px 0}
+  .card{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .sub{font-size:13px;color:var(--muted);margin:-4px 0 10px}
+  .acc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .acc div{border:1px solid var(--rule);padding:9px 11px;font-size:13.5px;background:var(--mist)}
+  .acc div b{display:block;color:var(--navy)}
+  .acc div i{display:inline-block;font-style:normal;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;letter-spacing:.04em;margin:2px 0 4px}
+  .y{background:var(--wash-green);color:var(--ink-green)}.p{background:var(--wash-gold);color:var(--ink-gold)}.n{background:var(--wash-red);color:var(--ink-red)}
+  .acc div q{display:block;quotes:none;color:var(--muted);font-size:12.5px;margin-top:3px}
+  .moves{counter-reset:m}
+  .moves li{list-style:none;position:relative;padding-left:34px;margin:8px 0;font-size:14.5px}
+  .moves li::before{counter-increment:m;content:counter(m);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--navy-dk);font-weight:700;font-size:13px;display:grid;place-items:center}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  /* roster */
+  textarea{width:100%;min-height:170px;font:inherit;font-size:14.5px;font-family:ui-monospace,Menlo,Consolas,monospace;padding:12px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px;resize:vertical}
+  .how{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+  .how code{background:var(--mist);padding:1px 6px;border-radius:4px;font-size:12.5px}
+  .sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+  .tile{background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--lc);padding:12px 14px}
+  .tile b{display:block;font-family:Fraunces,Georgia,serif;font-size:32px;line-height:1;color:var(--lc)}
+  .tile span{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-top:4px}
+  .tile small{display:block;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .doms{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+  .dm{background:var(--paper);border:1px solid var(--rule);padding:10px 12px}
+  .dm b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+  .dm .avg{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--navy);line-height:1.1}
+  .dm .bars{display:flex;gap:3px;align-items:flex-end;height:38px;margin-top:6px}
+  .dm .bars i{flex:1;background:var(--navy);opacity:.25;display:block;min-height:3px;border-radius:2px 2px 0 0}
+  .dm .bars i.hi{opacity:1}
+  .dm small{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:14px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);cursor:pointer;user-select:none}
+  td.c,th.c{text-align:center}
+  td .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;color:#fff;background:var(--lc)}
+  td .st{font-size:12px;color:var(--muted)}
+  .warn{font-size:13px;color:var(--ink-red);margin-top:8px}
+  /* ladder */
+  .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+  .step{background:var(--paper);border:1px solid var(--rule);padding:12px 14px;border-top:6px solid var(--navy)}
+  .step b{font-family:Fraunces,Georgia,serif;font-size:28px;color:var(--navy);line-height:1}
+  .step span{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 8px;font-weight:700}
+  .step p{margin:0;font-size:13.5px}
+  .rule3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+  .rule3 div{padding:14px 16px;border:1px solid var(--rule);background:var(--paper);border-left:8px solid var(--lc)}
+  .rule3 b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--lc)}
+  .rule3 p{margin:4px 0 0;font-size:14px}
+  .myths{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .myth{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;font-size:14.5px}
+  .myth b{display:block;color:var(--ink-red);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .myth p{margin:0}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.pick,.sum,.doms{grid-template-columns:1fr 1fr}.meta,.status,.four,.two,.acc,.rule3,.myths{grid-template-columns:1fr}.ladder{grid-template-columns:1fr 1fr 1fr}.dc .body{grid-template-columns:1fr}}
+  @media (max-width:460px){.pick,.sum,.doms,.ladder{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.pick,.meta,.row,.links,.note,#rin,.how,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.big,.lanebox,.dc,.ok,.no,.card,.tile,.dm,table{border:1px solid #888;break-inside:avoid}.big{background:#fff;color:#000}.big::before{display:none}.big .k,.big p{color:#000}.four{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr 1fr}.acc{grid-template-columns:1fr 1fr}.dc .body{font-size:12px}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/read-your-roster.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Read Your Roster", "url": "https://radan55.github.io/everyteacher/read-your-roster.html", "description": "Your class list says ELPT Level 2, or Reading 3 / Writing 2. This tells you what that student can do in your biology, algebra or history class right now, what is fair to grade, which accommodations Mississippi allows on MAAP, and three moves for tomorrow. Paste a whole roster to see your class by lane.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Decoder"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/read-your-roster.html">
+<meta property="og:title" content="Read Your Roster · the ELPA21 level decoder for content teachers · EL Publishing">
+<meta property="og:description" content="Your class list says ELPT Level 2, or Reading 3 / Writing 2. This tells you what that student can do in your biology, algebra or history class right now, what is fair to grade, which accommodations Mississippi allows on MAAP, and three moves for tomorrow. Paste a whole roster to see your class by lane.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/read-your-roster.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR CONTENT TEACHERS · READ YOUR ROSTER · MISSISSIPPI</p>
+    <h1>Read your <em>roster.</em></h1>
+    <p class="tag">Your class list says <b>ELPT Level 2</b>, or <b>Reading 3 · Writing 2</b>, next to a name. This page tells you what that means for Tuesday's lesson: what the student can do in your biology, algebra or history class right now, what is fair to grade, which accommodations Mississippi allows on MAAP, and three moves for tomorrow. Paste the whole roster and see the class by lane.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('one')">Decode one student</button><button class="btn ghost" type="button" onclick="setMode('class')">Paste a roster</button><button class="btn ghost" type="button" onclick="setMode('levels')">The levels, explained</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="one" aria-pressed="true" onclick="setMode('one')">One student</button><button type="button" data-m="class" aria-pressed="false" onclick="setMode('class')">Whole class</button><button type="button" data-m="levels" aria-pressed="false" onclick="setMode('levels')">The levels, explained</button><span class="sp"></span><span class="priv">Nothing you type leaves this browser. Use initials if you like.</span></div></nav>
+
+<main>
+<!-- ============================================================ ONE -->
+<section class="mode on" id="m-one">
+  <h2 class="sec">Tap the four domain levels</h2>
+  <p class="lead">They are on the ELPT score report and usually on the roster the EL teacher sends. If you only have one number, tap it in all four domains — the page will tell you what it can and cannot say from an overall level alone.</p>
+  <div class="pick" id="pick"></div>
+  <div class="meta">
+    <div><label for="nm">Student (optional, stays here)</label><input id="nm" placeholder="Initials or first name"></div>
+    <div><label for="sb">Your class</label><select id="sb"><option value="alg">Algebra I / math</option><option value="bio">Biology / science</option><option value="hist">U.S. History / social studies</option><option value="eng">English II / ELA</option><option value="cte">CTE, arts, PE, electives</option></select></div>
+    <div><label for="yr">Years in U.S. schools</label><select id="yr"><option value="0">Arrived this year</option><option value="1">1–2 years</option><option value="3" selected>3–5 years</option><option value="6">6 or more</option></select></div>
+  </div>
+  <div class="row"><button class="btn navy" type="button" id="go">Decode this student</button><button class="btn line" type="button" onclick="sample()">Try an example</button><button class="btn line" type="button" onclick="window.print()" id="pr" disabled>🖨 Print the profile card</button><button class="btn line" type="button" id="cp" disabled>Copy the LSP wording</button></div>
+  <div id="out" aria-live="polite"></div>
+  <div class="note"><b>Where these descriptions come from.</b> The can-do lines paraphrase the ELPA21 proficiency-level descriptors as Mississippi uses them for the ELPT (grades 9–12), plainly worded for a content teacher. "Allowed on state tests" follows the hub's <a href="accommodations-cards.html">Accommodations Quick Cards</a>, checked against the Mississippi Testing Accommodations Manual (Feb 19, 2026) for ELs without an IEP; the District Test Coordinator's current manual is the authority, and a test accommodation must already be in the student's Language Service Plan and in routine classroom use. The EL teacher has the plan; this page helps you read it.</div>
+</section>
+
+<!-- ============================================================ CLASS -->
+<section class="mode" id="m-class">
+  <h2 class="sec">Paste your roster</h2>
+  <p class="lead">One student per line: a name or initials, then the four levels in the order <b>Listening, Speaking, Reading, Writing</b>. Commas, tabs or spaces all work; a header row is ignored. A line with a single level is read as an overall level.</p>
+  <div id="rin">
+    <textarea id="ros" placeholder="A.G., 2, 3, 2, 1&#10;J.R.  3 3 3 2&#10;M.T.&#9;L4&#9;S4&#9;R3&#9;W3&#10;D.P. 1"></textarea>
+    <p class="how">Accepted: <code>A.G., 2, 3, 2, 1</code> · <code>J.R. 3 3 3 2</code> · <code>M.T. L4 S4 R3 W3</code> · <code>D.P. 1</code> (overall only). Copy straight from a spreadsheet; the columns come through as tabs.</p>
+    <div class="row"><button class="btn navy" type="button" id="rgo">Read the roster</button><button class="btn line" type="button" onclick="sampleClass()">Try a sample class</button><button class="btn line" type="button" onclick="window.print()" id="rpr" disabled>🖨 Print the class view</button><button class="btn line" type="button" id="rcp" disabled>Copy the summary</button></div>
+  </div>
+  <div id="rout" aria-live="polite"></div>
+  <div class="note"><b>Privacy.</b> The roster is read by this page in your browser and is not sent or saved anywhere; reload and it is gone. Still, initials are enough — the page does not need names to do its work. For the one page about a single student that a substitute or co-teacher can keep, the EL teacher can make one in <a href="student-profile.html">EL Student Profile</a>.</div>
+</section>
+
+<!-- ============================================================ LEVELS -->
+<section class="mode" id="m-levels">
+  <h2 class="sec">The five levels, in one screen</h2>
+  <p class="lead">ELPA21 (Mississippi calls the test the ELPT) scores each of four domains — Listening, Speaking, Reading, Writing — on a 1-to-5 scale every spring. A level is a measure of English, not of intelligence, effort or content knowledge. A Level 2 student may be the strongest mathematician in the room.</p>
+  <div class="ladder">
+    <div class="step"><b>1</b><span>Beginning</span><p>Understands and produces a few words and set phrases with pictures, gestures and a patient partner. Everything new needs a visual.</p></div>
+    <div class="step"><b>2</b><span>Early intermediate</span><p>Follows simple directions and short, familiar talk; speaks and writes in short sentences about known topics. Frames and word banks turn silence into answers.</p></div>
+    <div class="step"><b>3</b><span>Intermediate</span><p>Follows a lesson on a familiar topic, reads a page-long text with support, writes a paragraph. Can look fluent in the hallway and still miss half of a lecture.</p></div>
+    <div class="step"><b>4</b><span>Early advanced</span><p>Handles grade-level text and talk with vocabulary preview; writes multi-paragraph pieces with evidence. Academic register and precise grammar are what is left.</p></div>
+    <div class="step"><b>5</b><span>Advanced</span><p>Reads, writes, listens and speaks about grade-level content independently. Still benefits from writing feedback like any student.</p></div>
+  </div>
+
+  <h2 class="sec">How the four numbers become one status</h2>
+  <div class="rule3">
+    <div style="--lc:var(--lane-n)"><b>Emerging</b><p>Every domain is a 1 or a 2. The student is building the basics in all four skills.</p></div>
+    <div style="--lc:var(--lane-p)"><b>Progressing</b><p>Everything in between — the most common status in a high school. Usually at least one domain is a 3 or better and at least one is still below a 4.</p></div>
+    <div style="--lc:var(--lane-c)"><b>Proficient</b><p>Every domain is a 4 or a 5. In Mississippi this is the exit line (State Board, June 19, 2025): the student leaves EL services and is monitored for four years.</p></div>
+  </div>
+
+  <h2 class="sec">From a status to a lane</h2>
+  <p class="lead">The hub's tools work in four lanes, because "Progressing" alone is too wide to plan from. This page assigns the lane like this:</p>
+  <div class="rule3">
+    <div style="--lc:var(--lane-n)"><b>Newcomer</b><p>Three or four domains at Level 1, or a student in a first year of U.S. schooling who tests Emerging. Survival English comes first; content comes through pictures, the home language and doing.</p></div>
+    <div style="--lc:var(--lane-e)"><b>Emerging</b><p>Emerging status otherwise: 1s and 2s, with at least one 2. Every task needs a visual, a word bank and a frame — and the student can show content knowledge with them.</p></div>
+    <div style="--lc:var(--lane-p)"><b>Progressing</b><p>Progressing status with fewer than three domains at 4 or 5. Grade-level work with scaffolds: organizers before writing, partner talk before whole-class, academic words required.</p></div>
+  </div>
+  <div class="rule3" style="margin-top:12px">
+    <div style="--lc:var(--lane-c)"><b>Challenge</b><p>Three or four domains at 4 or 5, or Proficient and being monitored. Grade-level expectations with a vocabulary preview; push the academic register; advocate for honors, AP and dual credit.</p></div>
+    <div><b style="color:var(--navy)">The lowest domain plans the task</b><p>A student who is 4 · 4 · 4 · 2 is Progressing, but the Writing 2 decides what a fair written assessment looks like. The one-student view reads each domain separately for that reason.</p></div>
+    <div><b style="color:var(--navy)">Levels move about one a year</b><p>Reaching Proficient typically takes four to seven years; academic reading and writing come last. A Level 3 in year three is on schedule, not behind.</p></div>
+  </div>
+
+  <h2 class="sec">Four things a roster cannot tell you — and the level does not change</h2>
+  <div class="myths">
+    <div class="myth"><b>"He speaks fine in the hall, so he's fluent."</b><p>Social English arrives in one to two years; the English of a textbook, a lab report or a DBQ takes five or more. A Speaking 4 with a Reading 2 is common. Trust the Reading and Writing numbers for schoolwork.</p></div>
+    <div class="myth"><b>"She's been here three years — why is she still Level 2?"</b><p>Interrupted schooling, limited literacy in the home language, or a late start all slow the climb, and none of them is the student's choice. Three years at Level 2 is a reason to look at the plan, not at the student.</p></div>
+    <div class="myth"><b>"If I grade her writing for grammar she'll learn faster."</b><p>On a non-ELA assignment, a grammar penalty measures English, not biology, and the student already takes a test of English every spring. Score the content; mark the language separately; teach one language feature at a time.</p></div>
+    <div class="myth"><b>"A translation app on the test would be fairer."</b><p>Not on MAAP or the ELPT — the home language is not permitted on the ELPT and only a print word-to-word dictionary is allowed on MAAP, and only when it is in the plan. In class, a translation app for understanding is fine; for writing to be turned in, it is not.</p></div>
+  </div>
+  <div class="note"><b>Sources.</b> ELPA21 proficiency-level descriptors and the Emerging / Progressing / Proficient scoring rule as used for the Mississippi ELPT; the State Board of Education's exit standard of June 19, 2025 (Level 4 or higher in every domain) and the four-year monitoring period, as described on this hub's <a href="elpt-family-guide.html">The English Test, Explained for Families</a> and <a href="el-compliance-calendar.html">EL Program Compliance Calendar</a>; the Mississippi Testing Accommodations Manual revised February 19, 2026. Time-to-proficiency figures are the range reported across large-scale studies of English learners; individual students vary.</div>
+</section>
+</main>
+
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+
+<script>
+/* ------------------------------------------------------------ data ---- */
+const D = ["L","S","R","W"];
+const DN = {L:"Listening",S:"Speaking",R:"Reading",W:"Writing"};
+const SUBN = {alg:"Algebra I",bio:"Biology",hist:"U.S. History",eng:"English II",cte:"your elective"};
+
+/* Can-do, in plain words, indexed 1–5. Paraphrased from the ELPA21 proficiency-level
+   descriptors (grades 9–12), kept consistent with the hub's EL Student Profile. */
+const CAN = {
+ L:["understands a few words and set phrases when they come with pictures, gestures or a demonstration",
+    "follows one- or two-step directions and simple questions about a familiar topic when you speak slowly and show as you say",
+    "follows most of a lesson on a familiar topic and takes simple notes, but loses the thread when the talk is fast, idiomatic or has no visuals",
+    "follows a full lesson with few new words, including a discussion with several speakers",
+    "understands fast, technical talk — a lecture, a lab briefing, a debate — like any student"],
+ S:["answers with one or two words, points, or uses a set phrase to ask for help",
+    "asks simple questions and describes with short sentences; needs a frame to go longer",
+    "gives an opinion with a reason, retells in order, explains a process in simple sentences",
+    "presents and argues a point using academic words, with some errors that do not block meaning",
+    "discusses, disagrees, presents and asks precise questions fluently"],
+ R:["reads signs, names, numbers and simple words with picture support",
+    "reads short, simple sentences about familiar topics; needs written directions read or simplified",
+    "reads a page-long text on a familiar topic and answers questions; guesses unknown words from context",
+    "reads grade-level text with vocabulary preview or a purpose for reading; finds and cites evidence",
+    "reads technical, dense and primary-source text independently"],
+ W:["writes name and date, copies from the board, labels pictures and diagrams",
+    "writes simple sentences about self and familiar topics; short notes with a frame",
+    "writes a paragraph with a topic sentence and details; uses past tense with some errors",
+    "writes a multi-paragraph response with evidence and transitions; register and precision still developing",
+    "writes research, argument and varied genres with few errors"]
+};
+/* What that looks like in a content class (teacher-visible), indexed 1–5 */
+const LOOK = {
+ L:["Watches what others do before starting. Needs the direction shown, not just said. Silence is processing, not refusal.",
+    "Nods, then does the wrong thing — the words were too many. One instruction at a time, checked by asking the student to show you.",
+    "Keeps up when there are slides or a diagram; drops off during a ten-minute explanation with none. Notes are thin.",
+    "Follows lecture and discussion; may ask you to repeat a technical term or an idiom.",
+    "Indistinguishable from classmates in listening."],
+ S:["Points, draws or answers in the home language. A bilingual peer or a translation app for understanding unlocks a lot of content.",
+    "Will answer a partner before the class. Gives a one-clause answer; 'because…' needs a frame.",
+    "Explains to a partner readily; hesitates in whole-class talk. Academic words come slowly and may be replaced with 'thing'.",
+    "Presents, argues and asks questions; small grammar slips, correct meaning.",
+    "Fully fluent in class talk."],
+ R:["Cannot use the textbook, a word problem or a written quiz yet. Labeled diagrams, photos and the real object carry the content.",
+    "Reads a short caption, a word problem of one sentence, or a glossary entry with pictures. Grade-level text alone is not readable yet.",
+    "Reads the textbook section slowly with the five key words previewed; misses inference, idioms and long sentences.",
+    "Reads grade-level text with a purpose; may need help with dense passages, primary sources or figurative language.",
+    "Reads anything you assign."],
+ W:["Copies. Can label a diagram, fill a table, number steps, draw and caption.",
+    "Writes one to three simple sentences with a frame and a word bank; lists; short answers.",
+    "Writes a paragraph with an organizer; errors in tense and word form that do not hide the idea.",
+    "Writes the essay or the lab report; needs feedback on precision, transitions and formal register.",
+    "Writes like any grade-level student; still benefits from writing feedback."]
+};
+/* fair-to-grade per domain level: [fair formats, not yet a fair measure] */
+const FAIR = {
+ R:[["labeled diagrams, photos and real objects as the 'text'; questions read aloud; matching and sorting",
+     "a grade-level passage read silently; a written quiz the student must read alone; a word problem of more than one sentence"],
+    ["a short leveled text (two or three sentences) with the key words previewed; questions read aloud; pictures beside every item",
+     "a grade-level textbook section as the only source; a timed reading quiz; inference questions on dense text"],
+    ["the grade-level text with the five key words previewed and a purpose for reading; a graphic organizer to fill while reading",
+     "cold reading of a dense passage under time; idiom-heavy or figurative text without support"],
+    ["grade-level text with a vocabulary preview; evidence-finding and citation",
+     "very little — perhaps a dense primary source with no preview"],
+    ["any grade-level reading task", "nothing specific to language"]],
+ W:[["a labeled diagram, a completed table, a sequence of numbered steps, a drawing with a caption, an oral answer you note down",
+     "a paragraph or essay — it measures English, not your content"],
+    ["two or three sentences built on a frame with a word bank; a list; a short answer; an oral or recorded response",
+     "a multi-paragraph essay; a lab report with no frame; penalizing grammar on content work"],
+    ["a paragraph with an organizer and a frame for the topic sentence; content scored separately from language",
+     "a timed multi-paragraph essay with no organizer; grading grammar as part of the content grade"],
+    ["the grade-level essay, lab report or DBQ, scored for content; one or two language features taught and then held to",
+     "docking content points for register or small grammar slips"],
+    ["any grade-level writing task", "nothing specific to language"]],
+ S:[["point-to, yes/no and one-word answers; showing or drawing an answer; a bilingual peer as go-between",
+     "a cold whole-class answer; a presentation in English"],
+    ["partner talk with a frame; a short answer after wait time; a one-sentence oral explanation to you",
+     "a cold whole-class answer; an unsupported presentation"],
+    ["partner and small-group discussion; a short presentation with notes; explaining a process aloud",
+     "a graded debate with no preparation time"],
+    ["presentations, Socratic seminars, debates with preparation", "very little"],
+    ["any speaking task", "nothing specific to language"]],
+ L:[["a direction given with a demonstration; a video with pictures; a bilingual peer's help",
+     "a lecture as the only way the content is delivered; a listening-based quiz"],
+    ["chunked instruction with slides and a check after each chunk; 'tell your partner the first step'",
+     "a ten-minute explanation with no visuals; multi-step directions given once"],
+    ["a lesson with slides, a diagram and key words posted; notes with a skeleton to fill",
+     "fast idiomatic talk with nothing on the board"],
+    ["ordinary lecture and discussion; a note-taking guide for new technical terms",
+     "very little"],
+    ["any listening task", "nothing specific to language"]]
+};
+/* subject flavor for a fair content task, by lane */
+const SUBJ = {
+ alg:{n:"Show the steps of a solved equation with numbers only; match each step to a one-word label (add, divide). Word problems come as a picture plus one sentence.",
+      e:"Solve, then say the first step in a frame: 'First I ___ because ___.' Word problems rewritten in two short sentences, key words boxed.",
+      p:"Full problem set; write the explanation of one problem in a paragraph with an organizer. Grade the math; mark the English separately.",
+      c:"Grade-level work. Preview the problem-type vocabulary (consecutive, at most, per) and expect full written justifications."},
+ bio:{n:"Label the diagram; sequence the steps of a process with pictures; sort cards. The lab is done by doing, with the student narrating in any language to a peer.",
+      e:"Lab report as a filled table and three framed sentences: 'We observed ___. This shows ___ because ___.' Vocabulary previewed with pictures.",
+      p:"Full lab report with a section-by-section organizer; CER paragraph with a frame for the claim. Content score separate from language.",
+      c:"Grade-level lab reports and readings with the ten technical words previewed; push for precise, hedged scientific register."},
+ hist:{n:"Timelines built from pictures; a map labeled; a primary source replaced by an image or a two-sentence summary with the date.",
+       e:"Cause-and-effect chart with a word bank; a three-sentence framed response to one short, simplified source.",
+       p:"Document set with a leveled version of the hardest source and the key terms previewed; a DBQ paragraph with an organizer.",
+       c:"Full DBQ with a preview of archaic or idiomatic language in the sources; feedback on argument and formal register."},
+ eng:{n:"Grade-level text through a picture-supported summary and audio; vocabulary with pictures; a labeled story map instead of an essay.",
+      e:"A leveled version of the text beside the original; a framed paragraph; literary terms taught with examples, not definitions alone.",
+      p:"The grade-level text with audio support and vocabulary preview; the essay with an organizer; one or two grammar features taught and held to.",
+      c:"Grade-level reading and essays; coach register, transitions and precision as you would for any strong writer."},
+ cte:{n:"Demonstration first, words second. Safety vocabulary with pictures on the wall; the student shows the skill rather than describing it.",
+      e:"Short written responses on a frame; vocabulary of the trade or the art previewed with pictures; oral checks of understanding.",
+      p:"Full participation; written reflections with an organizer; technical vocabulary explicitly taught.",
+      c:"Grade-level expectations; industry or discipline terminology previewed."}
+};
+/* three moves per lane */
+const MOVES = {
+ n:["Put a picture, a diagram or the real object next to every new idea — today, not after the student fails the quiz. Post the five key words with a picture each.",
+    "Seat the student near a bilingual peer, allow the home language for thinking and for understanding (a translation app is fine for that), and accept answers that are drawn, pointed to or in one word.",
+    "Give one direction at a time, demonstrate it, then ask the student to show you the first step. Learn how to say the student's name correctly and use it every day."],
+ e:["Every task gets a word bank of 6–10 content words and two sentence frames matched to what you are asking (describe, compare, explain why). Frames are scaffolds, not cheating.",
+    "Let the student talk to a partner before anyone writes or answers in front of the class: 'Tell your partner the first step.' Oral answers count.",
+    "Shorten the task, keep the standard: odd-numbered problems, one paragraph instead of three, a labeled diagram instead of an essay. Grade the content."],
+ p:["Preview the five hardest words before the reading and give a purpose for reading. Use a graphic organizer before any writing.",
+    "Require academic words and complete sentences — 'because', 'however', 'as a result' — and make frames optional rather than absent.",
+    "Score content and language separately, and tell the student which single language feature you are watching this unit."],
+ c:["Treat this as a grade-level student who may still need writing feedback. Preview technical and idiomatic vocabulary; expect everything else.",
+    "Teach the register explicitly: how a scientist hedges, how a historian cites, how an argument transitions. This is what separates a 4 from a 5.",
+    "Advocate for honors, AP, dual credit and the Seal of Biliteracy. Have the student teach a Level 2 peer — it locks in the language."]
+};
+/* accommodations, carried from accommodations-cards.html; fits(l) gates them by level */
+const ACC = [
+ {n:"Extended time",t:"y",note:"MTAM #20; the amount is specified in the LSP.",doc:"Extended time (time-and-a-half) on classroom and state assessments.",fits:v=>true,why:v=>v.min<=3?"Essential at Levels 1–3 and for every writing task.":"Still worth having for writing."},
+ {n:"Directions read aloud and clarified in English",t:"y",note:"MAAP and ELPT — directions only, never items or passages.",doc:"Test directions read aloud, repeated and clarified in English.",fits:v=>true,why:v=>"The most used accommodation; read, then have the student restate."},
+ {n:"Word-to-word bilingual dictionary (print)",t:"p",note:"MTAM #81: MAAP yes with an LSP (no pictures or definitions); not allowable on the ELPT.",doc:"Word-to-word bilingual glossary (print) on classroom assessments and MAAP (MTAM #81).",fits:v=>v.R<=4,why:v=>"Only helps a student literate in the home language; teach how to use it in week one."},
+ {n:"Test items read aloud in English",t:"p",note:"MTAM #55: questions and answer choices may be read; ELA 3–8 and English II passages may not; not on the ELPT Reading domain.",doc:"Test questions and answer choices read aloud (MTAM #55); passages not read.",fits:v=>v.R<=3&&v.L>v.R,why:v=>"Listening is stronger than reading here, so reading the stem aloud shows the content knowledge."},
+ {n:"Small-group or individual setting",t:"y",note:"Allowed on MAAP and ELPT; needs a trained administrator.",doc:"Small-group administration (≤ 5 students) for state assessments.",fits:v=>v.min<=2,why:v=>"Pairs with read-aloud and breaks, which need a separate room anyway."},
+ {n:"Frequent or extended breaks",t:"y",note:"Allowed on MAAP and ELPT within the session.",doc:"Supervised breaks between test sections.",fits:v=>v.min<=2,why:v=>"A long computer test in a second language is exhausting; plan breaks at section ends."},
+ {n:"Preferential seating",t:"y",note:"A setting accommodation; allowed.",doc:"Preferential seating near the test administrator.",fits:v=>v.min<=3,why:v=>"Front and to the side, where the student can see your mouth and the board."},
+ {n:"Sentence frames and word banks",t:"n",note:"Classroom only.",doc:"Sentence frames and word banks provided for classroom writing and speaking tasks.",fits:v=>v.W<=4||v.S<=4,why:v=>"Two or three frames per task; a word bank of the content words the student must use."},
+ {n:"Visuals, realia and graphic organizers",t:"n",note:"Classroom only; blank organizers are generally not allowed on state tests.",doc:"Visual supports and graphic organizers for instruction and classroom assessments.",fits:v=>v.max<=4,why:v=>v.min<=2?"Non-negotiable at Levels 1–2.":"Organizers replace blank-page prompts."},
+ {n:"Home-language support in class",t:"n",note:"Classroom only; on state tests only the print dictionary.",doc:"Home-language support (bilingual peer, translation app for comprehension, bilingual notes) in class.",fits:v=>v.min<=2,why:v=>"For understanding, not for producing work to turn in."},
+ {n:"Reduced length or alternate format",t:"n",note:"Classroom only.",doc:"Reduced-length classroom assignments and alternate response formats at teacher discretion.",fits:v=>v.W<=3||v.R<=3,why:v=>"Fewer items, same standard: odd problems, one paragraph, a labeled diagram."},
+ {n:"Oral or recorded response",t:"n",note:"Classroom only.",doc:"Oral or recorded responses accepted in place of written responses on classroom assessments.",fits:v=>v.S>v.W&&v.W<=3,why:v=>"Speaking is ahead of writing here; let the student say it, then write it later in the unit."},
+ {n:"Leveled or modified text",t:"n",note:"Classroom only.",doc:"Leveled or modified texts for classroom reading with grade-level vocabulary retained.",fits:v=>v.R<=3,why:v=>"Same content, lower reading load, key vocabulary and diagram kept."},
+ {n:"Previewed vocabulary before the lesson",t:"n",note:"Instructional practice.",doc:"Vocabulary and concept preview prior to content lessons (EL teacher / co-teacher).",fits:v=>v.max<=4||v.R<=4,why:v=>"The EL teacher or co-teacher can front-load the five words the day before — ask."},
+ {n:"Content scored separately from language",t:"n",note:"Classroom only; state tests use their own rubrics.",doc:"Content responses scored for accuracy of content; language errors not penalized on non-ELA assignments.",fits:v=>true,why:v=>"The fairness move that costs nothing."}
+];
+const LANES = {n:["Newcomer","var(--lane-n)"],e:["Emerging","var(--lane-e)"],p:["Progressing","var(--lane-p)"],c:["Challenge","var(--lane-c)"]};
+const TN = {y:"Allowed on state tests",p:"Conditional on state tests",n:"Classroom only"};
+
+/* ---------------------------------------------------------- logic ---- */
+function status(v){ const a=D.map(d=>v[d]); if(a.every(x=>x<=2))return"Emerging"; if(a.every(x=>x>=4))return"Proficient"; return"Progressing"; }
+function lane(v,yrs){
+  const a=D.map(d=>v[d]); const ones=a.filter(x=>x===1).length, hi=a.filter(x=>x>=4).length; const st=status(v);
+  if(st==="Emerging"&&(ones>=3||yrs===0))return"n";
+  if(st==="Emerging")return"e";
+  if(st==="Proficient"||hi>=3)return"c";
+  return"p";
+}
+function vals(v){ const a=D.map(d=>v[d]); return Object.assign({},v,{min:Math.min(...a),max:Math.max(...a)}); }
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ------------------------------------------------------ one student -- */
+const picked={L:0,S:0,R:0,W:0};
+const HINT={L:"Following directions and the lesson",S:"Answering and explaining aloud",R:"Textbook, word problems, quizzes",W:"Short answers, paragraphs, reports"};
+function drawPick(){
+  document.getElementById("pick").innerHTML=D.map(d=>`<div class="dom"><b>${DN[d]}</b><div class="lv" role="group" aria-label="${DN[d]} level">${[1,2,3,4,5].map(n=>`<button type="button" data-d="${d}" data-n="${n}" aria-pressed="${picked[d]===n}">${n}</button>`).join("")}</div><small>${picked[d]?esc(CAN[d][picked[d]-1][0].toUpperCase()+CAN[d][picked[d]-1].slice(1))+".":HINT[d]}</small></div>`).join("");
+}
+document.getElementById("pick").addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;picked[b.dataset.d]=+b.dataset.n;drawPick();});
+drawPick();
+function sample(){ Object.assign(picked,{L:3,S:3,R:2,W:2}); drawPick(); document.getElementById("nm").value="J.R."; document.getElementById("sb").value="bio"; document.getElementById("yr").value="3"; decode(); }
+document.getElementById("go").addEventListener("click",decode);
+let lastDoc="";
+function decode(){
+  if(D.some(d=>!picked[d])){ document.getElementById("out").innerHTML=`<p class="warn">Tap a level in all four domains first. If you only have one overall level, tap it in all four.</p>`; return; }
+  const v=vals(picked), st=status(v), yrs=+document.getElementById("yr").value, ln=lane(v,yrs), [LN,LC]=LANES[ln];
+  const sub=document.getElementById("sb").value, nm=document.getElementById("nm").value.trim()||"This student";
+  const same=D.every(d=>picked[d]===picked.L);
+  const low=D.reduce((a,b)=>picked[a]<picked[b]?a:b), high=D.reduce((a,b)=>picked[a]>=picked[b]?a:b);
+  const accs=ACC.filter(a=>a.fits(v));
+  lastDoc=accs.map(a=>"• "+a.doc).join("\n");
+  const stText={Emerging:"Every domain is a 1 or 2.",Progressing:"At least one domain is above 2 and at least one is below 4 — the most common status in a high school.",Proficient:"Every domain is 4 or 5. In Mississippi that is the exit line; a student who scores this on the spring test leaves EL services and is monitored for four years."}[st];
+  const laneText={n:"Survival English comes first; content comes through pictures, the home language and doing. Expect the student to understand far more than they can say.",
+    e:"Every task needs a visual, a word bank and a frame — and with them the student can show real content knowledge.",
+    p:"Grade-level work with scaffolds: preview the words, organize before writing, talk before whole-class. Academic words required.",
+    c:"Grade-level expectations with a vocabulary preview. The remaining work is register and precision. Advocate for advanced coursework."}[ln];
+  let html=`<div class="status"><div class="big"><div class="k">${esc(nm)} · ELPT ${D.map(d=>d+picked[d]).join(" · ")}</div><h3>${st}</h3><p>${stText}${same?" <br><em>You entered one level for all four domains, so this reads an overall level: the domain-by-domain lines below are the typical profile and the student's real score report may differ by a level in either direction, most often with Reading or Writing lower.</em>":""}</p></div>
+  <div class="lanebox" style="--lc:${LC}"><div class="k">Lane on this hub</div><h3>${LN}</h3><p>${laneText}</p></div></div>`;
+  html+=`<h2 class="sec">Right now, in ${esc(SUBN[sub])}</h2><div class="four">`+D.map(d=>{const n=picked[d];return`<div class="dc"><div class="top"><b>${DN[d]}</b><span><small>LEVEL</small>${n}</span></div><div class="body"><b>Can</b><p>${esc(CAN[d][n-1][0].toUpperCase()+CAN[d][n-1].slice(1))}.</p><b>Looks like</b><p>${esc(LOOK[d][n-1])}</p></div></div>`}).join("")+`</div>`;
+  const lowN=picked[low];
+  html+=`<h2 class="sec">What is fair to grade</h2><p class="lead">The lowest domain plans the assessment. Here that is <b>${DN[low]} ${lowN}</b>${picked[high]>lowN?`; the strongest is ${DN[high]} ${picked[high]}, which is the door in`:""}.</p><div class="two">
+  <div class="ok"><h4>A fair measure of ${esc(SUBN[sub])} knowledge</h4><ul>${D.map(d=>`<li><b>${DN[d]}:</b> ${esc(FAIR[d][picked[d]-1][0])}</li>`).join("")}</ul></div>
+  <div class="no"><h4>Not yet a fair measure</h4><ul>${D.map(d=>`<li><b>${DN[d]}:</b> ${esc(FAIR[d][picked[d]-1][1])}</li>`).join("")}</ul></div></div>
+  <div class="card"><h4>In ${esc(SUBN[sub])}, a fair task looks like this</h4><p style="margin:0;font-size:14.5px">${esc(SUBJ[sub][ln])}</p></div>`;
+  html+=`<div class="card"><h4>Accommodations that fit this profile</h4><p class="sub">Green = allowed on MAAP (and the ELPT unless noted) when it is in the student's Language Service Plan and in routine class use. Gold = allowed with conditions. Red = classroom only. Full cards, with how to do each tomorrow: <a href="accommodations-cards.html">Accommodations Quick Cards</a>.</p><div class="acc">${accs.map(a=>`<div><b>${esc(a.n)}</b><i class="${a.t}">${TN[a.t]}</i> ${esc(a.why(v))} <q>LSP wording: “${esc(a.doc)}” <span style="opacity:.8">${esc(a.note)}</span></q></div>`).join("")}</div></div>`;
+  html+=`<div class="card"><h4>Three moves for tomorrow</h4><ol class="moves">${MOVES[ln].map(m=>`<li>${esc(m)}</li>`).join("")}</ol>
+  <div class="links"><a href="el-bridge.html">Build this week's lesson in four lanes → EL Bridge</a><a href="el-assistants.html">Paste your lesson into the Lane Scaffold Builder →</a><a href="sentence-frames.html">150 sentence frames by level →</a><a href="monday-moves.html">This week's Monday Move →</a>${ln==="n"?`<a href="newcomer-week1.html">The newcomer's first week →</a>`:""}${ln==="c"?`<a href="graduation-roadmap.html">Graduation roadmap →</a>`:""}<a href="sheltered.html">Feel it yourself: twelve minutes as an EL →</a></div></div>`;
+  html+=`<div class="card" style="font-size:14px;color:var(--muted)"><b style="color:var(--ink)">Years in U.S. schools: ${["arrived this year","1–2 years","3–5 years","6 or more"][["0","1","3","6"].indexOf(String(yrs))]}.</b> ${yrs===0?"Everything is new — the building, the schedule, the idea of raising a hand. Expect a silent period of weeks or months; it is normal and it is not the student's content knowledge. Check whether a newcomer intake has happened.":yrs<=2?"Social English is arriving or has arrived; academic reading and writing are years behind it and should be. Trust the Reading and Writing levels over how the student sounds in the hall.":yrs<=5?"Reaching Proficient typically takes four to seven years. A student here is on schedule, and the biggest lever now is explicit academic vocabulary and writing in every content class.":"A student still an EL after six or more years is a long-term English learner. Oral English is usually strong; academic reading and writing are the gap. The plan should say what is being done differently this year — ask the EL teacher."}</div>`;
+  document.getElementById("out").innerHTML=html;
+  document.getElementById("pr").disabled=false; document.getElementById("cp").disabled=false;
+  document.getElementById("out").scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.getElementById("cp").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(lastDoc);e.target.textContent="Copied ✓";setTimeout(()=>e.target.textContent="Copy the LSP wording",1800);}catch(err){prompt("Copy the wording:",lastDoc);}});
+
+/* ------------------------------------------------------ whole class -- */
+function parseRoster(txt){
+  const rows=[],bad=[];
+  txt.split(/\r?\n/).forEach((line,i)=>{
+    const raw=line.trim(); if(!raw)return;
+    if(/^(name|student|first|last)/i.test(raw)&&!/\d/.test(raw.split(/[,\t]/)[1]||""))return;
+    const toks=raw.split(/[,\t;]+|\s{1,}/).map(t=>t.trim()).filter(Boolean);
+    const lv={},nums=[];const nameT=[];
+    toks.forEach(t=>{
+      let m;
+      if((m=t.match(/^(L|S|R|W)[:=-]?([1-5])$/i)))lv[m[1].toUpperCase()]=+m[2];
+      else if(/^[1-5](\.\d+)?$/.test(t))nums.push(Math.round(+t));
+      else if(/^(level|lvl|elpt|overall)$/i.test(t)){}
+      else nameT.push(t);
+    });
+    let v=null,overall=false;
+    if(D.every(d=>lv[d]))v={L:lv.L,S:lv.S,R:lv.R,W:lv.W};
+    else if(nums.length>=4)v={L:nums[0],S:nums[1],R:nums[2],W:nums[3]};
+    else if(nums.length===1){v={L:nums[0],S:nums[0],R:nums[0],W:nums[0]};overall=true;}
+    if(!v){bad.push(raw);return;}
+    rows.push({name:nameT.join(" ")||("Student "+(rows.length+1)),v,overall});
+  });
+  return{rows,bad};
+}
+let lastSum="";
+function sampleClass(){ document.getElementById("ros").value=`A.G., 2, 3, 2, 1
+J.R., 3, 3, 2, 2
+M.T., 4, 4, 3, 3
+D.P., 1, 1, 1, 1
+S.L., 3, 4, 3, 3
+K.V., 5, 4, 4, 4
+E.M., 2, 2, 1, 1
+R.C., 4, 4, 4, 3
+L.O., 3, 3, 3, 2
+B.N., 2, 3, 2, 2
+T.H., 4, 5, 4, 4
+C.A., 1, 2, 1, 1`; readRoster(); }
+document.getElementById("rgo").addEventListener("click",readRoster);
+function readRoster(){
+  const {rows,bad}=parseRoster(document.getElementById("ros").value);
+  const out=document.getElementById("rout");
+  if(!rows.length){out.innerHTML=`<p class="warn">No lines I could read yet. Each line needs a name or initials and four levels (Listening, Speaking, Reading, Writing), or one overall level.</p>`;return;}
+  rows.forEach(r=>{r.st=status(r.v);r.lane=lane(r.v,3);r.min=Math.min(...D.map(d=>r.v[d]));});
+  const n=rows.length, byLane={n:0,e:0,p:0,c:0}; rows.forEach(r=>byLane[r.lane]++);
+  const avg={},dist={}; D.forEach(d=>{avg[d]=(rows.reduce((s,r)=>s+r.v[d],0)/n);dist[d]=[1,2,3,4,5].map(k=>rows.filter(r=>r.v[d]===k).length);});
+  const lowD=D.reduce((a,b)=>avg[a]<=avg[b]?a:b), hiD=D.reduce((a,b)=>avg[a]>=avg[b]?a:b);
+  const w12=rows.filter(r=>r.v.W<=2).length, r12=rows.filter(r=>r.v.R<=2).length, l12=rows.filter(r=>r.v.L<=2).length, s12=rows.filter(r=>r.v.S<=2).length;
+  const prof=rows.filter(r=>r.st==="Proficient").length, over=rows.filter(r=>r.overall).length;
+  const laneNote={n:"need a picture, the home language and a demonstration for every new idea — and a bilingual peer nearby",e:"need a word bank and two frames on every task; shorten the task, keep the standard",p:"do grade-level work with a vocabulary preview and an organizer; score content and language separately",c:"work at grade level with technical words previewed; candidates for honors, AP and dual credit"};
+  const plan=[];
+  if(byLane.n)plan.push(`<b>${byLane.n} ${byLane.n===1?"student is a newcomer":"students are newcomers"}</b> and ${laneNote.n}. Their silence is processing. Ask the EL teacher whether intake and a Language Service Plan are done.`);
+  if(byLane.e)plan.push(`<b>${byLane.e} Emerging</b> ${laneNote.e}. Oral answers count.`);
+  if(byLane.p)plan.push(`<b>${byLane.p} Progressing</b> ${laneNote.p}.`);
+  if(byLane.c)plan.push(`<b>${byLane.c} Challenge</b> ${laneNote.c}.`);
+  plan.push(`<b>${DN[lowD]} is the lowest domain</b> (average ${avg[lowD].toFixed(1)}), ${DN[hiD]} the highest (${avg[hiD].toFixed(1)}). ${lowD==="W"?`Written assessments measure English before they measure content for ${w12} of ${n} students: give those students a labeled diagram, a framed response or an oral answer as the fair format.`:lowD==="R"?`${r12} of ${n} cannot yet read the grade-level text alone: preview the five key words, read questions aloud, and keep a leveled version of the hardest text.`:lowD==="L"?`${l12} of ${n} will lose a lecture with no visuals: chunk the talk, put the key words and a diagram on the board, check after each chunk.`:`${s12} of ${n} will not answer cold in front of the class: partner talk first, frames on the board, wait time.`}`);
+  if(prof)plan.push(`<b>${prof} ${prof===1?"student scores":"students score"} Proficient</b> in every domain — if that was this spring's test, ${prof===1?"this student has exited or is about to; the school monitors for four years":"they have exited or are about to; the school monitors them for four years"}, and your grades are part of that monitoring.`);
+  if(over)plan.push(`<em>${over} ${over===1?"line was":"lines were"} read as an overall level only, so ${over===1?"that student's":"those students'"} domain columns are the same number; the real score report usually has Reading or Writing a level lower.</em>`);
+  lastSum=`Class of ${n} English learners — ELPT lanes: ${byLane.n} Newcomer, ${byLane.e} Emerging, ${byLane.p} Progressing, ${byLane.c} Challenge. Domain averages: L ${avg.L.toFixed(1)}, S ${avg.S.toFixed(1)}, R ${avg.R.toFixed(1)}, W ${avg.W.toFixed(1)}. Lowest domain: ${DN[lowD]}. Students with Writing 1–2: ${w12}; Reading 1–2: ${r12}.`;
+  let html=`<h2 class="sec">${n} English learner${n===1?"":"s"}, by lane</h2><div class="sum">${["n","e","p","c"].map(k=>`<div class="tile" style="--lc:${LANES[k][1]}"><b>${byLane[k]}</b><span>${LANES[k][0]}</span><small>${{n:"3–4 domains at Level 1",e:"all domains 1–2",p:"in between",c:"3–4 domains at 4–5"}[k]}</small></div>`).join("")}</div>
+  <div class="doms">${D.map(d=>`<div class="dm"><b>${DN[d]}</b><div class="avg">${avg[d].toFixed(1)}</div><div class="bars">${dist[d].map((c,i)=>`<i class="${c===Math.max(...dist[d])&&c?"hi":""}" style="height:${Math.max(8,Math.round(100*c/n))}%" title="Level ${i+1}: ${c}"></i>`).join("")}</div><small><span>L1</span><span>L5</span></small></div>`).join("")}</div>
+  <div class="card"><h4>What this means for your planning</h4><ul style="font-size:14.5px">${plan.map(p=>`<li>${p}</li>`).join("")}</ul>
+  <div class="links"><a href="el-bridge.html">Build the lesson in four lanes → EL Bridge</a><a href="el-assistants.html">Lane Scaffold Builder →</a><a href="accommodations-cards.html">Accommodations, MAAP-checked →</a><a href="monday-moves.html">Monday Moves →</a><a href="by-subject.html">Your subject, your grade band →</a></div></div>
+  <table id="rt"><thead><tr><th data-k="name">Student</th><th class="c" data-k="L">L</th><th class="c" data-k="S">S</th><th class="c" data-k="R">R</th><th class="c" data-k="W">W</th><th data-k="st">Status</th><th data-k="lane">Lane</th><th>Plan the task around</th></tr></thead><tbody>${rows.map((r,i)=>{const low=D.reduce((a,b)=>r.v[a]<r.v[b]?a:b);return`<tr data-i="${i}"><td>${esc(r.name)}${r.overall?' <span class="st">(overall)</span>':""}</td>${D.map(d=>`<td class="c">${r.v[d]}</td>`).join("")}<td>${r.st}</td><td><span class="pill" style="--lc:${LANES[r.lane][1]}">${LANES[r.lane][0]}</span></td><td class="st">${DN[low]} ${r.v[low]} — ${esc(FAIR[low][r.v[low]-1][0].split(";")[0])}</td></tr>`}).join("")}</tbody></table>
+  <p class="how">Tap a column heading to sort. Lanes here assume a student is not in a first year of U.S. schooling; a newcomer who arrived this year and tests Emerging belongs in the Newcomer lane whatever the numbers say.</p>
+  ${bad.length?`<p class="warn">Could not read ${bad.length} line${bad.length===1?"":"s"}: ${bad.map(esc).join(" · ")}</p>`:""}`;
+  out.innerHTML=html;
+  document.getElementById("rpr").disabled=false; document.getElementById("rcp").disabled=false;
+  const tb=out.querySelector("tbody"); let dir=1; const trs=[...tb.children];
+  out.querySelectorAll("th[data-k]").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.k;const order=rows.map((r,i)=>i).sort((a,b)=>{const x=k in rows[a].v?rows[a].v[k]:rows[a][k],y=k in rows[b].v?rows[b].v[k]:rows[b][k];return (x>y?1:x<y?-1:0)*dir;});dir=-dir;order.forEach(i=>tb.appendChild(trs[i]));}));
+  out.scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.getElementById("rcp").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(lastSum);e.target.textContent="Copied ✓";setTimeout(()=>e.target.textContent="Copy the summary",1800);}catch(err){prompt("Copy:",lastSum);}});
+
+/* ------------------------------------------------------------ modes -- */
+function setMode(m){
+  document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));
+  document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));
+  if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);
+  if(m!=="one")window.scrollTo({top:document.querySelector(".bar").offsetTop,behavior:"smooth"});
+}
+if(["#class","#levels","#one"].includes(location.hash))setMode(location.hash.slice(1));
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

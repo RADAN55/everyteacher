@@ -448,5 +448,10 @@
   "long": "Three phonics tools in one place. The Easy Guide to Teaching Phonics is a ten-minute read for any teacher: what to teach in order across nine stages, the 15-minute daily lesson, four routines (blending, sound boxes, dictation, decodable reading), the sounds Spanish speakers need extra time on, and quick checks and fixes. Phonics Coach teaches one 15-minute lesson aloud for each of 187 school days, with captions, coach's notes and a box for the teacher's own notes. Storm Readers is a Science of Reading program for grades 9-12 newcomers at ELPA21 Level 1: 120 lessons in eight stages with a recorded voice coach and 48 decodable readers written for teenagers. Free, no login; coach voices are synthesized. It lives on its own site.",
   "thumb": "thumbs/storm-phonics-lab.jpg",
   "who": "K–12 · 9–12 newcomers"
+ },
+ "read-your-roster.html": {
+  "long": "For the content teacher handed a class list with ELPT levels next to the names. Tap a student's four domain levels (Listening, Speaking, Reading, Writing) and get the ELPA21 status, the hub's lane, what the student can do in your biology, algebra or history class right now and what that looks like, which assessment formats are a fair measure of content and which still measure English, the accommodations Mississippi allows on MAAP for that profile with the LSP wording, three moves for tomorrow, and a printable profile card. Paste a whole roster and see the class by lane, the domain averages, the lowest domain and what it means for planning. A third tab explains the five levels, the Emerging / Progressing / Proficient rule, the Mississippi exit line and four things a roster cannot tell you. Nothing leaves the browser.",
+  "thumb": "thumbs/read-your-roster.jpg",
+  "who": "Content teachers"
  }
 }
