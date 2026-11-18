@@ -137,6 +137,66 @@
   .myth{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;font-size:14.5px}
   .myth b{display:block;color:var(--ink-red);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
   .myth p{margin:0}
+  /* watch the level */
+  .dc .top .w{font:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:4px 10px;border-radius:999px;cursor:pointer;margin-left:auto;margin-right:10px}
+  .dc .top .w:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  .stage-wrap{position:fixed;inset:0;z-index:950;background:rgba(10,14,34,.72);display:none;align-items:center;justify-content:center;padding:16px}
+  .stage-wrap.on{display:flex}
+  .stage{background:var(--paper);color:var(--ink);width:min(760px,100%);max-height:94vh;overflow:auto;border:1px solid var(--rule);box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative}
+  .stage .hd{background:var(--navy-bg);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .stage .hd b{font-family:Fraunces,Georgia,serif;font-size:20px}
+  .stage .hd .lvl{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--gold);font-weight:700}
+  .stage .hd .x{margin-left:auto;font:inherit;font-size:22px;line-height:1;background:transparent;border:0;color:#fff;cursor:pointer}
+  .stage .bd{padding:18px 20px 20px}
+  .cap{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px;min-height:18px}
+  .scene{min-height:180px;position:relative}
+  .txt{font-family:Fraunces,Georgia,serif;font-size:clamp(20px,3.4vw,27px);line-height:1.45;margin:0}
+  .txt .wd{display:inline-block;transition:opacity .5s,color .5s,background .5s;border-radius:4px;padding:0 2px}
+  .txt .wd.dim{opacity:.18}
+  .txt .wd.noise{color:transparent;background:repeating-linear-gradient(90deg,var(--rule) 0 6px,transparent 6px 9px);opacity:.6}
+  .txt .wd.lit{opacity:1;background:var(--wash-gold)}
+  .txt .wd.on{opacity:1}
+  .bub{display:inline-block;background:var(--mist);border:1px solid var(--rule);border-radius:18px;padding:10px 16px;font-size:19px;margin:6px 0;max-width:92%;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+  .bub.on{opacity:1;transform:none}
+  .bub.t{background:var(--navy-bg);color:#fff;border-color:var(--navy-bg)}
+  .bub.s{margin-left:8%;border-color:var(--gold)}
+  .who{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:10px}
+  .scaf{margin-top:14px;border:2px dashed var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;opacity:0;transform:translateX(-14px);transition:opacity .5s,transform .5s}
+  .scaf.on{opacity:1;transform:none}
+  .scaf b{color:var(--ink-gold);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .scaf .wb{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .scaf .wb span{background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:2px 10px;font-size:13.5px}
+  .slide{border:1px solid var(--rule);background:var(--paper);padding:12px 14px;margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;opacity:0;transition:opacity .5s}
+  .slide.on{opacity:1}
+  .slide .pic{aspect-ratio:4/3;max-height:120px;background:var(--mist);border:1px solid var(--rule);display:grid;place-items:center;font-size:40px}
+  .slide ul{margin:0;padding-left:18px;font-size:14px}
+  .typed{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;line-height:1.6;white-space:pre-wrap;background:var(--mist);border:1px solid var(--rule);padding:12px 14px;min-height:72px;margin:0}
+  .typed .cur{display:inline-block;width:8px;height:18px;background:var(--navy);vertical-align:-3px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{to{visibility:hidden}}
+  .verdict{margin-top:14px;font-size:15px;border-left:6px solid var(--gold);padding:8px 12px;background:var(--mist);opacity:0;transition:opacity .5s}
+  .verdict.on{opacity:1}
+  .stage .ft{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 20px 18px}
+  .stage .ft .btn{font-size:14px;padding:8px 14px}
+  .stage .ft .lvs{display:flex;gap:4px;margin-left:auto}
+  .stage .ft .lvs button{font:inherit;font-weight:700;width:34px;height:34px;border:1px solid var(--rule);background:var(--mist);color:var(--ink);border-radius:6px;cursor:pointer}
+  .stage .ft .lvs button[aria-pressed="true"]{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  /* growth projector */
+  .grow{display:grid;grid-template-columns:1fr 1.2fr;gap:16px;align-items:start}
+  .grow .ctl label{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700}
+  .grow .ctl input[type=range]{width:100%;accent-color:var(--gold);margin:8px 0}
+  .grow .when{font-family:Fraunces,Georgia,serif;font-size:24px;color:var(--navy);line-height:1.1}
+  .grow .when small{display:block;font-family:"Source Sans 3",sans-serif;font-size:13px;color:var(--muted);margin-top:2px}
+  .gbars{position:relative;padding-top:6px}
+  .gb{display:grid;grid-template-columns:84px 1fr 40px;gap:10px;align-items:center;margin:7px 0;font-size:14px}
+  .gb b{color:var(--navy);font-weight:700}
+  .gb .tr{height:18px;background:var(--mist);border:1px solid var(--rule);position:relative;border-radius:3px}
+  .gb .fl{position:absolute;left:0;top:0;bottom:0;background:var(--navy);transition:width .6s cubic-bezier(.2,.8,.2,1);border-radius:2px 0 0 2px}
+  .gb .fl.now{background:var(--gold)}
+  .gb .ex{position:absolute;left:calc(100% * 3 / 4);top:-4px;bottom:-4px;border-left:2px dashed var(--ink-red)}
+  .gb .gnum{font-family:Fraunces,Georgia,serif;font-size:18px;text-align:right;color:var(--navy)}
+  .exl{font-size:12px;color:var(--ink-red);text-align:right;margin:2px 0 0}
+  .gnote{margin-top:10px;font-size:14px}
+  @media (max-width:760px){.grow,.slide{grid-template-columns:1fr}}
   footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
   footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
   footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
@@ -243,6 +303,7 @@
   <div class="note"><b>Sources.</b> ELPA21 proficiency-level descriptors and the Emerging / Progressing / Proficient scoring rule as used for the Mississippi ELPT; the State Board of Education's exit standard of June 19, 2025 (Level 4 or higher in every domain) and the four-year monitoring period, as described on this hub's <a href="elpt-family-guide.html">The English Test, Explained for Families</a> and <a href="el-compliance-calendar.html">EL Program Compliance Calendar</a>; the Mississippi Testing Accommodations Manual revised February 19, 2026. Time-to-proficiency figures are the range reported across large-scale studies of English learners; individual students vary.</div>
 </section>
 </main>
+<div class="stage-wrap" id="stage" role="dialog" aria-modal="true" aria-label="Watch the level"><div class="stage"><div class="hd"><b id="st-t"></b><span class="lvl" id="st-l"></span><button type="button" class="x" id="st-x" aria-label="Close">×</button></div><div class="bd"><p class="cap" id="st-cap"></p><div class="scene" id="st-sc"></div><div class="verdict" id="st-v"></div></div><div class="ft"><button type="button" class="btn navy" id="st-re">↻ Replay</button><button type="button" class="btn line" id="st-sp">🔊 Hear it</button><div class="lvs" id="st-lvs"></div></div></div></div>
 
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
 
@@ -434,7 +495,8 @@ function decode(){
     c:"Grade-level expectations with a vocabulary preview. The remaining work is register and precision. Advocate for advanced coursework."}[ln];
   let html=`<div class="status"><div class="big"><div class="k">${esc(nm)} · ELPT ${D.map(d=>d+picked[d]).join(" · ")}</div><h3>${st}</h3><p>${stText}${same?" <br><em>You entered one level for all four domains, so this reads an overall level: the domain-by-domain lines below are the typical profile and the student's real score report may differ by a level in either direction, most often with Reading or Writing lower.</em>":""}</p></div>
   <div class="lanebox" style="--lc:${LC}"><div class="k">Lane on this hub</div><h3>${LN}</h3><p>${laneText}</p></div></div>`;
-  html+=`<h2 class="sec">Right now, in ${esc(SUBN[sub])}</h2><div class="four">`+D.map(d=>{const n=picked[d];return`<div class="dc"><div class="top"><b>${DN[d]}</b><span><small>LEVEL</small>${n}</span></div><div class="body"><b>Can</b><p>${esc(CAN[d][n-1][0].toUpperCase()+CAN[d][n-1].slice(1))}.</p><b>Looks like</b><p>${esc(LOOK[d][n-1])}</p></div></div>`}).join("")+`</div>`;
+  html+=growthCard(picked);
+  html+=`<h2 class="sec">Right now, in ${esc(SUBN[sub])}</h2><div class="four">`+D.map(d=>{const n=picked[d];return`<div class="dc"><div class="top"><b>${DN[d]}</b><button type="button" class="w" data-w="${d}" data-n="${n}">▶ Watch the level</button><span><small>LEVEL</small>${n}</span></div><div class="body"><b>Can</b><p>${esc(CAN[d][n-1][0].toUpperCase()+CAN[d][n-1].slice(1))}.</p><b>Looks like</b><p>${esc(LOOK[d][n-1])}</p></div></div>`}).join("")+`</div>`;
   const lowN=picked[low];
   html+=`<h2 class="sec">What is fair to grade</h2><p class="lead">The lowest domain plans the assessment. Here that is <b>${DN[low]} ${lowN}</b>${picked[high]>lowN?`; the strongest is ${DN[high]} ${picked[high]}, which is the door in`:""}.</p><div class="two">
   <div class="ok"><h4>A fair measure of ${esc(SUBN[sub])} knowledge</h4><ul>${D.map(d=>`<li><b>${DN[d]}:</b> ${esc(FAIR[d][picked[d]-1][0])}</li>`).join("")}</ul></div>
@@ -445,6 +507,7 @@ function decode(){
   <div class="links"><a href="el-bridge.html">Build this week's lesson in four lanes → EL Bridge</a><a href="el-assistants.html">Paste your lesson into the Lane Scaffold Builder →</a><a href="sentence-frames.html">150 sentence frames by level →</a><a href="monday-moves.html">This week's Monday Move →</a>${ln==="n"?`<a href="newcomer-week1.html">The newcomer's first week →</a>`:""}${ln==="c"?`<a href="graduation-roadmap.html">Graduation roadmap →</a>`:""}<a href="sheltered.html">Feel it yourself: twelve minutes as an EL →</a></div></div>`;
   html+=`<div class="card" style="font-size:14px;color:var(--muted)"><b style="color:var(--ink)">Years in U.S. schools: ${["arrived this year","1–2 years","3–5 years","6 or more"][["0","1","3","6"].indexOf(String(yrs))]}.</b> ${yrs===0?"Everything is new — the building, the schedule, the idea of raising a hand. Expect a silent period of weeks or months; it is normal and it is not the student's content knowledge. Check whether a newcomer intake has happened.":yrs<=2?"Social English is arriving or has arrived; academic reading and writing are years behind it and should be. Trust the Reading and Writing levels over how the student sounds in the hall.":yrs<=5?"Reaching Proficient typically takes four to seven years. A student here is on schedule, and the biggest lever now is explicit academic vocabulary and writing in every content class.":"A student still an EL after six or more years is a long-term English learner. Oral English is usually strong; academic reading and writing are the gap. The plan should say what is being done differently this year — ask the EL teacher."}</div>`;
   document.getElementById("out").innerHTML=html;
+  wireGrowth(picked); CUR.sub=sub;
   document.getElementById("pr").disabled=false; document.getElementById("cp").disabled=false;
   document.getElementById("out").scrollIntoView({behavior:"smooth",block:"start"});
 }
@@ -522,6 +585,146 @@ function readRoster(){
   out.scrollIntoView({behavior:"smooth",block:"start"});
 }
 document.getElementById("rcp").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(lastSum);e.target.textContent="Copied ✓";setTimeout(()=>e.target.textContent="Copy the summary",1800);}catch(err){prompt("Copy:",lastSum);}});
+
+
+/* ============================================== watch the level ======= */
+/* Each scene is one subject line, every word tagged with the lowest level that
+   can read or hear it on its own: 1 numbers, names, cognates and pictures;
+   2 everyday words; 3 common school words; 4 academic words; 5 dense or
+   idiomatic language. The same text shows what each level gets. */
+const SCN = {
+ alg:{R:[["If",2],["a",2],["number",2],["is",2],["decreased",4],["by",2],["7",1],["and",2],["the",2],["result",3],["is",2],["divided",3],["by",2],["3,",1],["the",2],["quotient",5],["is",2],["4.",1],["Find",2],["the",2],["number.",2]],
+      Rkey:["decreased by = subtract","quotient = the answer to a division"],
+      L:[["Okay,",3],["before",2],["you",1],["isolate",4],["the",2],["variable,",1],["combine",4],["like",2],["terms",3],["on",2],["both",3],["sides",2],["—",1],["otherwise",4],["you'll",2],["end",2],["up",2],["chasing",5],["your",2],["tail.",5]],
+      Lslide:["Step 1: combine like terms","Step 2: isolate x","🧮"],
+      Sq:"Why do we do the same thing to both sides of the equation?",
+      S:["Same… both.","Because is equal. Same here, same here.","Because the two sides are equal, so if you change one you change the other.","Because an equation is a balance; whatever you do to one side you have to do to the other to keep it equal.","To preserve equality — any operation applied to one side must be applied to the other, or the solution set changes."],
+      Sframe:"Both sides have to stay ___ because ___.",
+      Wq:"Explain how you solved 3x + 7 = 22.",
+      W:["3x + 7 = 22\n3x = 15\nx = 5","First I minus 7. Then I divide 3. x = 5.","First I subtracted 7 from both sides to get 3x = 15. Then I divided both sides by 3, so x = 5.","To isolate x, I first subtracted 7 from both sides, which left 3x = 15. Dividing both sides by 3 gives x = 5, and substituting 5 back in confirms 15 + 7 = 22.","I isolated the variable by applying inverse operations in reverse order: subtracting 7 from both sides yields 3x = 15, and dividing by 3 yields x = 5. Substitution verifies the solution."],
+      Wframe:"First I ___ both sides. Then I ___. So x = ___.",Wbank:["subtracted","divided","both sides","isolate","check"]},
+ bio:{R:[["During",3],["photosynthesis,",1],["chloroplasts",1],["capture",3],["light",2],["energy",1],["and",2],["convert",4],["carbon",1],["dioxide",1],["and",2],["water",2],["into",2],["glucose,",1],["releasing",4],["oxygen",1],["as",2],["a",2],["byproduct.",5]],
+      Rkey:["capture = take in","convert = change into","byproduct = something extra that is made"],
+      L:[["So",2],["remember,",3],["the",2],["mitochondria",1],["aren't",2],["just",3],["the",2],["powerhouse",5],["—",1],["they",2],["break",2],["down",2],["glucose",1],["through",3],["cellular",1],["respiration",1],["to",2],["release",4],["energy",1],["the",2],["cell",2],["can",2],["actually",4],["use.",2]],
+      Lslide:["Mitochondria break down glucose","Cellular respiration → energy (ATP)","🔬"],
+      Sq:"Why did the plant on the windowsill die?",
+      S:["No water.","The plant no have water. It is dry.","The plant died because it didn't get water for a long time.","The plant died because without water it couldn't carry out photosynthesis, so it had no energy.","Without water the plant could not sustain photosynthesis or transport nutrients, so it eventually wilted and died."],
+      Sframe:"The plant died because it ___, so it could not ___.",
+      Wq:"Write a conclusion for the bean-plant lab.",
+      W:["light ✔ grow\ndark ✘ grow","The plant in light grow more. The plant in dark not grow. Light is important.","The plant in the light grew 12 cm and the plant in the dark grew 3 cm. This shows plants need light to grow.","Our results show that light is necessary for growth: the plant in light grew 12 cm while the plant in the dark grew only 3 cm, because photosynthesis cannot happen without light.","The data support our hypothesis that light is required for growth. The illuminated plant grew 12 cm compared with 3 cm in darkness, which is consistent with photosynthesis being light-dependent."],
+      Wframe:"We observed ___. This shows ___ because ___.",Wbank:["observed","grew","light","dark","because","photosynthesis"]},
+ hist:{R:[["The",2],["colonists",1],["objected",4],["to",2],["taxation",4],["without",3],["representation,",1],["arguing",4],["that",2],["Parliament",1],["could",2],["not",2],["levy",5],["taxes",3],["on",2],["people",2],["who",2],["had",2],["no",2],["voice",3],["in",2],["it.",2]],
+      Rkey:["objected = said no to","levy = charge","voice = a say, a vote"],
+      L:[["Now",2],["here's",3],["the",2],["thing",2],["—",1],["the",2],["Stamp",1],["Act",1],["wasn't",2],["really",3],["about",2],["the",2],["money,",2],["it",2],["was",2],["about",2],["principle,",4],["and",2],["that's",2],["what",2],["lit",5],["the",2],["fuse.",5]],
+      Lslide:["Stamp Act 1765 = a tax on paper","Colonists' objection: no representation","📜"],
+      Sq:"Why were the colonists angry about the Stamp Act?",
+      S:["Tax. No.","They pay tax but no vote.","They were angry because they had to pay a tax but they didn't have a vote in Parliament.","They were angry because Parliament taxed them without their consent — they had no representatives, so it felt unjust.","The grievance was constitutional rather than financial: taxation imposed by a body in which they were unrepresented violated what they understood as their rights as Englishmen."],
+      Sframe:"The colonists were angry because ___, so they ___.",
+      Wq:"Was the Boston Tea Party justified? Use one source.",
+      W:["Boston Tea Party — 1773\ntea → water\nangry about tax","I think yes. The colonists was angry. The tax is not fair. They throw the tea.","I think the Boston Tea Party was justified because the colonists had no vote on the tax. Source 2 says they tried to protest first and nobody listened.","The Boston Tea Party was justified because peaceful protest had failed. As Source 2 shows, petitions to Parliament were ignored, so the colonists turned to direct action against the tea tax.","Although destruction of property is difficult to defend, the Boston Tea Party was a justified response to a Parliament that, as Source 2 documents, had repeatedly ignored colonial petitions; the colonists had exhausted their lawful remedies."],
+      Wframe:"The Boston Tea Party was / was not justified because ___. Source ___ shows ___.",Wbank:["justified","protest","tax","Parliament","source","because"]},
+ eng:{R:[["Scout",1],["did",2],["not",2],["understand",3],["why",2],["Atticus",1],["accepted",3],["the",2],["case,",2],["but",2],["she",2],["sensed",4],["that",2],["the",2],["town's",2],["whispers",4],["carried",3],["a",2],["judgment",4],["he",2],["refused",3],["to",2],["share.",2]],
+      Rkey:["sensed = felt, noticed","whispers carried a judgment = people were quietly judging"],
+      L:[["Notice",3],["how",2],["the",2],["author",2],["doesn't",2],["tell",2],["us",2],["Scout",1],["is",2],["confused",3],["—",1],["she",2],["shows",2],["it,",2],["and",2],["that's",2],["the",2],["difference",3],["between",3],["a",2],["narrator",4],["who",2],["explains",3],["and",2],["one",2],["who",2],["lets",3],["you",1],["figure",4],["it",2],["out.",2]],
+      Lslide:["Show, don't tell","Narrator: explains vs. lets you infer","📖"],
+      Sq:"How does Scout feel about her father here, and how do you know?",
+      S:["Confused.","She is confused. She don't know why.","She feels confused because she doesn't understand why he took the case.","She's confused but also proud — she can't see his reasons, but she notices he won't give in to the town's judgment.","Her confusion is mixed with a dawning respect: the narration lets us infer that she admires his refusal to share the town's prejudice, even before she understands it."],
+      Sframe:"Scout feels ___. I know because the text says ___.",
+      Wq:"Write a paragraph: what does this passage show about Atticus?",
+      W:["Atticus — father\nbrave? ✔\ntown — angry","Atticus is brave. The town is angry but he take the case. Scout is confused.","This passage shows Atticus is brave. He takes the case even though the town whispers about him, and he does not share their judgment.","This passage characterizes Atticus as quietly principled. Although the town's whispers carry a judgment, he refuses to share it, and Scout's confusion shows that his courage is not something a child can see yet.","Through Scout's limited perspective, the passage establishes Atticus as a man of principle whose integrity outruns his daughter's understanding; the town's whispered judgment becomes the measure of his quiet resistance to it."],
+      Wframe:"This passage shows that Atticus is ___. For example, ___. This matters because ___.",Wbank:["brave","principled","judgment","refuses","shows","because"]},
+ cte:{R:[["Before",2],["operating",4],["the",2],["saw,",2],["confirm",4],["the",2],["blade",2],["guard",2],["is",2],["in",2],["place",2],["and",2],["the",2],["work",2],["piece",2],["is",2],["clamped",4],["securely",4],["to",2],["the",2],["table.",2]],
+      Rkey:["confirm = check","clamped securely = held tight so it cannot move"],
+      L:[["Alright,",3],["eyes",2],["up",2],["—",1],["when",2],["you",1],["feed",3],["the",2],["stock",5],["through,",2],["keep",2],["your",2],["hands",2],["outside",3],["the",2],["red",2],["zone,",2],["because",2],["kickback",5],["happens",3],["faster",2],["than",2],["you",1],["can",2],["react.",4]],
+      Lslide:["Hands outside the red zone","Kickback = the wood jumps back at you","⚠️"],
+      Sq:"What do you check before you turn the machine on?",
+      S:["Guard. Clamp.","I check the guard and I check the clamp.","I check that the guard is on and the piece is clamped so it can't move.","I check the blade guard is in place and the stock is clamped securely, and that my hands are outside the red zone.","I verify the guard, confirm the work piece is clamped, clear the area, and position my hands outside the hazard zone before powering on."],
+      Sframe:"Before I start, I check ___ and ___.",
+      Wq:"Write the safety steps for the saw.",
+      W:["1. guard ✔\n2. clamp ✔\n3. hands out\n4. ON","1. Check the guard. 2. Clamp the wood. 3. Hands out of red zone. 4. Turn on.","First, check that the blade guard is in place. Second, clamp the wood to the table. Then keep your hands outside the red zone and turn on the saw.","Before operating the saw, confirm the blade guard is in place and the work piece is clamped securely. Keep both hands outside the marked zone, then power on and feed the stock slowly.","Prior to operation, verify the guard and secure the work piece with clamps. Maintain hand position outside the hazard zone, power on, and feed the stock at a steady rate to avoid kickback."],
+      Wframe:"First, ___. Second, ___. Then ___.",Wbank:["guard","clamp","hands","red zone","turn on","first","then"]}
+};
+const CUR={sub:"bio",d:"R",n:2,timers:[]};
+const stage=document.getElementById("stage");
+function later(fn,ms){CUR.timers.push(setTimeout(fn,ms));}
+function clearStage(){CUR.timers.forEach(clearTimeout);CUR.timers=[];try{speechSynthesis.cancel()}catch(e){}}
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.95;const v=speechSynthesis.getVoices().find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||speechSynthesis.getVoices().find(v=>/^en/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+function openStage(d,n){CUR.d=d;CUR.n=n;stage.classList.add("on");document.body.style.overflow="hidden";document.getElementById("st-lvs").innerHTML=[1,2,3,4,5].map(k=>`<button type="button" data-n="${k}" aria-pressed="${k===n}" aria-label="Level ${k}">${k}</button>`).join("");playScene();}
+function closeStage(){clearStage();stage.classList.remove("on");document.body.style.overflow="";}
+document.getElementById("st-x").addEventListener("click",closeStage);
+stage.addEventListener("click",e=>{if(e.target===stage)closeStage();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&stage.classList.contains("on"))closeStage();});
+document.getElementById("st-re").addEventListener("click",playScene);
+document.getElementById("st-lvs").addEventListener("click",e=>{const b=e.target.closest("button[data-n]");if(!b)return;CUR.n=+b.dataset.n;[...e.currentTarget.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b)));playScene();});
+document.getElementById("out").addEventListener("click",e=>{const b=e.target.closest("button[data-w]");if(b)openStage(b.dataset.w,+b.dataset.n);});
+document.getElementById("st-sp").addEventListener("click",()=>{const sc=SCN[CUR.sub],d=CUR.d,n=CUR.n;const t=d==="L"?sc.L.map(w=>w[0]).join(" "):d==="S"?sc.S[n-1]:d==="R"?sc.R.map(w=>w[0]).join(" "):sc.W[n-1];speak(t);});
+const wrap=(arr,cls)=>arr.map(([w,t],i)=>`<span class="wd ${cls(t,i)}" data-t="${t}">${esc(w)}</span>`).join(" ");
+function playScene(){
+  clearStage(); const sc=SCN[CUR.sub],d=CUR.d,n=CUR.n;
+  document.getElementById("st-t").textContent=DN[d]+" · "+SUBN[CUR.sub]; document.getElementById("st-l").textContent="Level "+n;
+  const cap=document.getElementById("st-cap"),S=document.getElementById("st-sc"),V=document.getElementById("st-v"); V.className="verdict";V.textContent="";
+  const got=arr=>arr.filter(w=>w[1]<=n).length, tot=arr=>arr.length;
+  if(d==="R"){
+    cap.textContent="The textbook sentence, as written";
+    S.innerHTML=`<p class="txt">${wrap(sc.R,()=>"on")}</p><div class="scaf" id="sf"><b>The scaffold: key words previewed, question read aloud</b>${sc.Rkey.map(k=>`<div>• ${esc(k)}</div>`).join("")}</div>`;
+    later(()=>{cap.textContent=`What a Level ${n} reader can read alone — ${got(sc.R)} of ${tot(sc.R)} words`;S.querySelectorAll(".wd").forEach(w=>{w.classList.toggle("dim",+w.dataset.t>n);});},1400);
+    if(n<=3){later(()=>{document.getElementById("sf").classList.add("on");cap.textContent="Now the scaffold slides in";},3600);
+      later(()=>{let c=0;S.querySelectorAll(".wd").forEach(w=>{const key=sc.Rkey.some(k=>w.textContent.replace(/[^a-z]/gi,"").toLowerCase().startsWith(k.split(" ")[0].toLowerCase()));if(w.classList.contains("dim")&&key){w.classList.remove("dim");w.classList.add("lit");}if(!w.classList.contains("dim"))c++;});cap.textContent=`With the key words previewed, a Level ${n} reads ${c} of ${tot(sc.R)}`;},5200);}
+    later(()=>{V.textContent=n<=2?"Alone, this sentence is not readable yet — the content is hidden behind the language. With the five key words previewed and the question read aloud, most of it is.":n===3?"Readable, slowly, with the academic words previewed. Give a purpose for reading and an organizer and the content comes through.":n===4?"Readable with a vocabulary preview. The dense phrase at the end is the only thing left to teach.":"Readable. Nothing to scaffold.";V.classList.add("on");},n<=3?6600:3200);
+  }
+  if(d==="L"){
+    cap.textContent="You, explaining — at normal speed";
+    S.innerHTML=`<span class="who">You</span><div class="bub t on"><span class="txt" style="font-size:19px">${wrap(sc.L,()=>"on")}</span></div><span class="who">What a Level ${n} listener gets</span><div class="bub s" id="heard"><span class="txt" style="font-size:19px">${wrap(sc.L,t=>t<=n?"on":"noise")}</span></div><div class="slide" id="sl"><div class="pic">${sc.Lslide[2]}</div><ul><li>${esc(sc.Lslide[0])}</li><li>${esc(sc.Lslide[1])}</li></ul></div>`;
+    later(()=>{document.getElementById("heard").classList.add("on");cap.textContent=`${got(sc.L)} of ${tot(sc.L)} words land; the rest is sound`;},1600);
+    if(n<=3){later(()=>{document.getElementById("sl").classList.add("on");cap.textContent="Now the slide goes up and the talk comes in chunks";},3800);
+      later(()=>{let c=0;S.querySelectorAll("#heard .wd").forEach(w=>{if(+w.dataset.t<=n+1){w.classList.remove("noise");w.classList.add("on");}if(!w.classList.contains("noise"))c++;});cap.textContent=`With a diagram and the key words on the board, ${c} of ${tot(sc.L)} land`;},5400);}
+    later(()=>{V.textContent=n<=2?"A lecture with nothing on the board reaches this student as noise with a few words in it — and the student looks like they are listening. A slide, a diagram and one chunk at a time change what gets through.":n===3?"Most of it lands when there are slides and a diagram; the idioms and the aside do not. Check after each chunk.":n>=4?"Lands. A note-taking guide for new technical terms is enough.":"";V.classList.add("on");},n<=3?6800:3400);
+  }
+  if(d==="S"){
+    cap.textContent="You ask";
+    S.innerHTML=`<span class="who">You</span><div class="bub t on">${esc(sc.Sq)}</div><span class="who">A Level ${n} answers</span><div class="bub s" id="ans">${esc(sc.S[n-1])}</div><div class="scaf" id="sf"><b>The scaffold: a frame on the board, partner first</b>${esc(sc.Sframe)}</div><span class="who" id="w2" style="opacity:0">With the frame</span><div class="bub s" id="ans2" style="opacity:0"></div>`;
+    later(()=>{document.getElementById("ans").classList.add("on");cap.textContent=n<=2?"The idea is there. The English is not yet.":n===3?"The idea and a reason — in simple sentences":"The idea, with the academic words";},1500);
+    if(n<=3){later(()=>{document.getElementById("sf").classList.add("on");cap.textContent="Now the frame goes up";},3600);
+      later(()=>{const a2=document.getElementById("ans2");a2.textContent=sc.S[Math.min(4,n)];a2.style.opacity="";a2.classList.add("on");document.getElementById("w2").style.opacity="";cap.textContent="Same student, one frame, thirty seconds of partner talk first";},5000);}
+    later(()=>{V.textContent=n<=2?"The content knowledge was there in the first answer. Count it. The frame turns it into the sentence you were listening for.":n===3?"A clear answer with a reason; the academic word arrives with the frame. Make frames optional, not absent.":"Fluent enough to present and argue. What is left is the register.";V.classList.add("on");},n<=3?6500:3000);
+  }
+  if(d==="W"){
+    cap.textContent="The prompt: "+sc.Wq;
+    S.innerHTML=`<span class="who">A Level ${n} writes</span><pre class="typed" id="ty"><span class="cur"></span></pre><div class="scaf" id="sf"><b>The scaffold: a frame and a word bank</b>${esc(sc.Wframe)}<div class="wb">${sc.Wbank.map(w=>`<span>${esc(w)}</span>`).join("")}</div></div><span class="who" id="w2" style="opacity:0">With the frame and the bank</span><pre class="typed" id="ty2" style="opacity:0"></pre>`;
+    const type=(el,text,done)=>{let i=0;const step=()=>{el.innerHTML=esc(text.slice(0,i))+'<span class="cur"></span>';if(i<text.length){i++;later(step,text.length>160?18:28);}else{el.innerHTML=esc(text);done&&done();}};step();};
+    later(()=>type(document.getElementById("ty"),sc.W[n-1],()=>{
+      cap.textContent=n<=2?"Is the content there? Yes. Is a paragraph a fair measure of it? Not yet.":n===3?"A paragraph — with errors that do not hide the idea":"Grade-level writing; register and precision are what is left";
+      if(n<=3){later(()=>{document.getElementById("sf").classList.add("on");cap.textContent="Now the frame and the word bank";},1600);
+        later(()=>{document.getElementById("w2").style.opacity="";const t2=document.getElementById("ty2");t2.style.opacity="";type(t2,sc.W[Math.min(4,n)]);},3000);
+        later(()=>{V.textContent=n<=2?"Grade the first version for content — it shows the concept. Then the frame and bank produce the sentences, and they are the student's own.":"The organizer and frame move a paragraph toward the essay. Score content and language separately and name one feature to fix.";V.classList.add("on");},5200);}
+      else{later(()=>{V.textContent=n===4?"The essay is here. Feedback on transitions, hedging and formal register is what moves a 4 to a 5.":"Writes like any grade-level student.";V.classList.add("on");},1200);}
+    }),900);
+  }
+}
+
+/* ============================================== growth projector ====== */
+/* About one level a year on average; reading and writing a little slower. */
+const RATE={L:1/12,S:1/12,R:1/14,W:1/15};
+function proj(v,m){const o={};D.forEach(d=>o[d]=Math.min(5,v[d]+RATE[d]*m));return o;}
+function monthsToExit(v){let worst=0;D.forEach(d=>{if(v[d]<4)worst=Math.max(worst,Math.ceil((4-v[d])/RATE[d]));});return worst;}
+function growthCard(v){
+  const mx=monthsToExit(v);
+  return `<div class="card" id="gcard"><h4>Where this student is headed</h4><p class="sub">Drag the months. Levels move about one a year on average — reading and writing a little slower — so this is a pace, not a promise. The dashed line is the Mississippi exit standard: 4 in every domain.</p>
+  <div class="grow"><div class="ctl"><label for="gm">Months from now</label><input type="range" id="gm" min="0" max="36" step="1" value="0"><div class="when" id="gw">Now<small>${mx===0?"Already at the exit standard in every domain.":(y=>"At this pace, the exit standard in about "+y+(y===1?" year.":" years."))(Math.round(mx/12*10)/10)}</small></div><div class="row" style="margin-top:8px"><button class="btn line" type="button" id="gplay">▶ Play three years</button></div></div>
+  <div><div class="gbars">${D.map(d=>`<div class="gb"><b>${DN[d]}</b><div class="tr"><div class="fl now" id="gf-${d}" style="width:${v[d]/5*100}%"></div><div class="ex"></div></div><div class="gnum" id="gn-${d}">${v[d]}</div></div>`).join("")}<p class="exl">exit line · Level 4</p></div><p class="gnote" id="gnote"></p></div></div></div>`;
+}
+function wireGrowth(v){
+  const r=document.getElementById("gm"),w=document.getElementById("gw"),note=document.getElementById("gnote");if(!r)return;
+  const mx=monthsToExit(v);
+  const draw=()=>{const m=+r.value,p=proj(v,m);
+    D.forEach(d=>{const f=document.getElementById("gf-"+d);f.style.width=(p[d]/5*100)+"%";f.classList.toggle("now",m===0);document.getElementById("gn-"+d).textContent=p[d].toFixed(1);});
+    const under=D.filter(d=>p[d]<4), hold=under.length?under.reduce((a,b)=>p[a]<p[b]?a:b):null;
+    w.firstChild.textContent=m===0?"Now":m<12?m+" months":(m/12).toFixed(m%12?1:0)+" years";
+    w.querySelector("small").textContent=mx===0?"Already at the exit standard in every domain.":m>=mx?"At this pace the student has reached the exit standard.":(y=>"Exit standard in about "+y+(y===1?" more year":" more years")+" at this pace.")(Math.round((mx-m)/12*10)/10);
+    note.innerHTML=hold?`<b>${DN[hold]}</b> is what holds exit back${under.length>1?" (with "+under.filter(d=>d!==hold).map(d=>DN[d]).join(", ")+")":""}. ${hold==="W"?"Writing moves in content classes that ask for writing with a frame and give feedback on one feature at a time — your class is where it moves.":hold==="R"?"Reading moves with daily grade-level text, the key words previewed and a purpose for reading — your textbook is the practice.":hold==="S"?"Speaking moves with partner talk before whole-class talk, every day. Make the frame visible and the wait time long.":"Listening moves with chunked talk and a diagram on the board; check after each chunk."}`:"Every domain is at or above the exit standard. The student exits on the next spring test that shows this, then is monitored for four years — your grades are part of that record.";};
+  r.addEventListener("input",draw); draw();
+  document.getElementById("gplay").addEventListener("click",()=>{let m=0;r.value=0;draw();const t=setInterval(()=>{m+=1;r.value=m;draw();if(m>=36)clearInterval(t);},120);});
+}
 
 /* ------------------------------------------------------------ modes -- */
 function setMode(m){
