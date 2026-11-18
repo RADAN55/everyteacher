@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Front Office Kit · enrolling a family that does not speak English · EL Publishing</title>
+<meta name="description" content="For registrars and school secretaries in Mississippi: the first ten minutes with a family that does not speak English, an “I speak…” board in 14 languages, the Home Language Survey in six languages, twenty counter phrases with Spanish audio, the identification clock, and an interpreter request form. Free, printable, no account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+
+  .iboard{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:14px}
+  .ic{background:var(--paper);border:2px solid var(--navy);padding:16px 18px;min-height:150px;display:flex;flex-direction:column;gap:6px}
+  .ic .nm{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--navy);line-height:1.1}
+  .ic .ph{font-size:20px;line-height:1.35}
+  .ic .en{margin-top:auto;font-size:12.5px;color:var(--muted)}
+  .ic.rtl .ph,.ic.rtl .nm{direction:rtl;text-align:right}
+  .hls td{font-size:14.5px}
+  .due{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .due div{border:1px solid var(--rule);background:var(--paper);padding:12px 14px;border-top:6px solid var(--gold)}
+  .due b{display:block;font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy)}
+  .due span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .due small{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+  .due .late{border-top-color:var(--ink-red)}
+  @media (max-width:760px){.due{grid-template-columns:1fr}}
+  @media print{.iboard{grid-template-columns:1fr 1fr}.ic{min-height:200px;break-inside:avoid}.hls{font-size:12px}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/front-office-kit.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Front Office Kit", "url": "https://radan55.github.io/everyteacher/front-office-kit.html", "description": "For registrars and school secretaries in Mississippi: the first ten minutes with a family that does not speak English, an “I speak…” board in 14 languages, the Home Language Survey in six languages, twenty counter phrases with Spanish audio, the identification clock, and an interpreter request form. Free, printable, no account.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Office kit"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/front-office-kit.html">
+<meta property="og:title" content="The Front Office Kit · enrolling a family that does not speak English · EL Publishing">
+<meta property="og:description" content="For registrars and school secretaries in Mississippi: the first ten minutes with a family that does not speak English, an “I speak…” board in 14 languages, the Home Language Survey in six languages, twenty counter phrases with Spanish audio, the identification clock, and an interpreter request form. Free, printable, no account.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/front-office-kit.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR THE FRONT OFFICE · REGISTRARS & SECRETARIES · MISSISSIPPI</p>
+    <h1>The front office <em>kit.</em></h1>
+    <p class="tag">The family at the counter met you before they met any teacher. This is everything the office needs to enroll a child who speaks another language — today, legally, kindly — in the order you will need it.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('start')">The first ten minutes</button><button class="btn ghost" type="button" onclick="setMode('ispeak')">Print the “I speak…” board</button><button class="btn ghost" type="button" onclick="setMode('clock')">The identification clock</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="start" aria-pressed="true" onclick="setMode('start')">Start here</button><button type="button" data-m="ispeak" aria-pressed="false" onclick="setMode('ispeak')">“I speak…” board</button><button type="button" data-m="hls" aria-pressed="false" onclick="setMode('hls')">Home Language Survey</button><button type="button" data-m="phrases" aria-pressed="false" onclick="setMode('phrases')">20 phrases</button><button type="button" data-m="clock" aria-pressed="false" onclick="setMode('clock')">The clock</button><button type="button" data-m="interp" aria-pressed="false" onclick="setMode('interp')">Interpreter request</button><span class="sp"></span><span class="priv">Free · no account · nothing you type leaves this browser</span></div></nav>
+<main>
+
+<section class="mode on" id="m-start">
+  <h2 class="sec">The first ten minutes</h2>
+  <p class="lead">A family is at the counter and you do not share a language. This is the whole procedure. Print it and tape it under the counter.</p>
+  <div class="grid3">
+    <div class="card"><span class="k">1 · Find the language</span><h4>Point to the board</h4><p>Turn the <b>I speak…</b> board toward the family. They point to their language. Say the language name back and smile. You now know what to ask for.</p></div>
+    <div class="card"><span class="k">2 · Get a voice</span><h4>Call the interpreter line</h4><p>Your district's phone or video interpreter number goes here: <input type="text" id="iphone" placeholder="(601) 000-0000 · access code" style="margin-top:6px" aria-label="Interpreter line"> Family members, older siblings and the student are not the interpreter for enrollment, discipline or health. A bilingual staff member may help with directions and small talk while you wait.</p></div>
+    <div class="card"><span class="k">3 · Enroll today</span><h4>Start the paperwork now</h4><p>Enrollment is not delayed for missing records, a missing Social Security number or any question of immigration status — none of those may be asked. Take what the family has, list what is missing, and give them a date to bring it.</p></div>
+  </div>
+  <h3 class="sub">The three things the office owns</h3>
+  <div class="grid3">
+    <div class="card"><h4>The Home Language Survey</h4><p>Every new student, every time, in a language the family understands. Any answer other than English sends the form to the EL teacher the same day. It is about language, never about status — say so if a family hesitates.</p><div class="links"><a href="#hls" onclick="setMode('hls')">The survey in six languages →</a></div></div>
+    <div class="card"><h4>The clock</h4><p>The screener and the parent notice run on a deadline from the day the student enrolls: thirty calendar days from the first day of school for students who start with the year, two weeks (many Mississippi plans say ten school days) for anyone who enrolls later. The office starts the clock; the EL teacher finishes it.</p><div class="links"><a href="#clock" onclick="setMode('clock')">Work out the dates →</a></div></div>
+    <div class="card"><h4>Language access</h4><p>Enrollment papers, the handbook, discipline, health, grades and meetings reach the family in a language they understand, through a competent interpreter or translation, free. That is federal law (Title VI), not a courtesy. Log the language in the student system so every teacher sees it.</p><div class="links"><a href="#interp" onclick="setMode('interp')">Interpreter request form →</a></div></div>
+  </div>
+  <h3 class="sub">Do · don't</h3>
+  <div class="grid2">
+    <div class="okbox"><b>Do</b><ul style="margin:6px 0 0;padding-left:18px"><li>Enroll the same day with whatever documents exist.</li><li>Accept any proof of age and address the district accepts from anyone — a lease, a utility bill, an affidavit of residence.</li><li>Give the Home Language Survey in the family's language.</li><li>Write the family's language and preferred contact in the student system.</li><li>Hand the family the welcome guide in their language and the school's hours, lunch form and bus form.</li><li>Tell the EL teacher and the counselor today.</li></ul></div>
+    <div class="flag"><b>Don't</b><ul style="margin:6px 0 0;padding-left:18px"><li>Ask for a Social Security number as a condition of enrollment, or anything about visas, status or how the family entered the country.</li><li>Send a family away to "come back with papers."</li><li>Use a child, sibling or Google Translate for enrollment, health, discipline or special-education conversations.</li><li>Change or "Americanize" a name — enter it as the family writes it, in order.</li><li>Guess a birth date format: ask which number is the day and which the month.</li></ul></div>
+  </div>
+  <div class="tip"><b>Immunizations.</b> Mississippi requires an immunization certificate (Form 121) for school entry. Start the enrollment, send the family to the school nurse or county health department with a written note of what is needed, and set the start date with the nurse — do not turn the family away without that plan.</div>
+  <div class="links"><a href="newcomer-guide.html">The family's welcome guide, five languages →</a><a href="parent-letters.html">Parent notification letters →</a><a href="newcomer-intake.html">Newcomer intake (EL teacher) →</a><a href="el-compliance-calendar.html">The compliance calendar →</a></div>
+</section>
+
+<section class="mode" id="m-ispeak">
+  <h2 class="sec">The “I speak…” board</h2>
+  <p class="lead">Print this page and put it at the counter. The family points; you know what to ask for. Fourteen languages present in Mississippi schools; the first five are the ones the hub's parent letters already come in.</p>
+  <div class="row noprint"><button class="btn navy" type="button" onclick="window.print()">🖨 Print the board</button></div>
+  <div class="iboard"><div class="ic"><div class="nm">Español</div><div class="ph">Hablo español. Por favor, busque un intérprete.</div><div class="en">Spanish — “I speak Spanish. Please find an interpreter.”</div></div><div class="ic"><div class="nm">Tiếng Việt</div><div class="ph">Tôi nói tiếng Việt. Xin vui lòng tìm người phiên dịch.</div><div class="en">Vietnamese — “I speak Vietnamese. Please find an interpreter.”</div></div><div class="ic rtl"><div class="nm">العربية</div><div class="ph">أنا أتكلم العربية. من فضلك أحضر مترجماً.</div><div class="en">Arabic — “I speak Arabic. Please find an interpreter.”</div></div><div class="ic"><div class="nm">中文</div><div class="ph">我说中文。请找一位翻译。</div><div class="en">Chinese (Simplified) — “I speak Chinese (Simplified). Please find an interpreter.”</div></div><div class="ic"><div class="nm">Kreyòl ayisyen</div><div class="ph">Mwen pale kreyòl ayisyen. Tanpri jwenn yon entèprèt.</div><div class="en">Haitian Creole — “I speak Haitian Creole. Please find an interpreter.”</div></div><div class="ic"><div class="nm">Français</div><div class="ph">Je parle français. Veuillez trouver un interprète.</div><div class="en">French — “I speak French. Please find an interpreter.”</div></div><div class="ic"><div class="nm">Português</div><div class="ph">Eu falo português. Por favor, chame um intérprete.</div><div class="en">Portuguese — “I speak Portuguese. Please find an interpreter.”</div></div><div class="ic"><div class="nm">Tagalog</div><div class="ph">Nagsasalita ako ng Tagalog. Pakihanap po ng tagapagsalin.</div><div class="en">Tagalog — “I speak Tagalog. Please find an interpreter.”</div></div><div class="ic"><div class="nm">한국어</div><div class="ph">저는 한국어를 합니다. 통역사를 불러 주세요.</div><div class="en">Korean — “I speak Korean. Please find an interpreter.”</div></div><div class="ic"><div class="nm">हिंदी</div><div class="ph">मैं हिंदी बोलता/बोलती हूँ। कृपया एक दुभाषिया बुलाइए।</div><div class="en">Hindi — “I speak Hindi. Please find an interpreter.”</div></div><div class="ic"><div class="nm">ગુજરાતી</div><div class="ph">હું ગુજરાતી બોલું છું. કૃપા કરીને દુભાષિયો બોલાવો.</div><div class="en">Gujarati — “I speak Gujarati. Please find an interpreter.”</div></div><div class="ic rtl"><div class="nm">اردو</div><div class="ph">میں اردو بولتا/بولتی ہوں۔ براہ کرم ایک مترجم بلائیں۔</div><div class="en">Urdu — “I speak Urdu. Please find an interpreter.”</div></div><div class="ic"><div class="nm">Kiswahili</div><div class="ph">Ninazungumza Kiswahili. Tafadhali tafuta mkalimani.</div><div class="en">Swahili — “I speak Swahili. Please find an interpreter.”</div></div><div class="ic"><div class="nm">नेपाली</div><div class="ph">म नेपाली बोल्छु। कृपया दोभाषे बोलाउनुहोस्।</div><div class="en">Nepali — “I speak Nepali. Please find an interpreter.”</div></div></div>
+  <div class="note"><b>About the translations.</b> Each card says "I speak [language]. Please find an interpreter." The Spanish is the author's; the others were drafted for this page and should be read once by a native speaker before the board goes on a wall — a two-minute favor any of your families can do.</div>
+</section>
+
+<section class="mode" id="m-hls">
+  <h2 class="sec">The Home Language Survey, in six languages</h2>
+  <p class="lead">Mississippi districts use their own form; the questions are these four. If your packet's version is English-only, this table lets the family answer in their language today, and the EL teacher copies the answers to the district form.</p>
+  <div class="row noprint"><button class="btn navy" type="button" onclick="window.print()">🖨 Print the survey</button></div>
+  <table class="hls"><thead><tr><th>English</th><th>Español</th><th>Tiếng Việt</th><th>العربية</th><th>中文</th><th>Kreyòl</th></tr></thead><tbody><tr><td><b>What language did your child learn first?</b></td><td>¿Qué idioma aprendió su hijo/a primero?</td><td>Con của quý vị học ngôn ngữ nào đầu tiên?</td><td dir='rtl'>ما هي اللغة التي تعلمها طفلك أولاً؟</td><td>您的孩子最先学会的是哪种语言？</td><td>Ki lang pitit ou a te aprann an premye?</td></tr><tr><td><b>What language does your child speak most often at home?</b></td><td>¿Qué idioma habla su hijo/a con más frecuencia en casa?</td><td>Ở nhà con của quý vị thường nói ngôn ngữ nào nhất?</td><td dir='rtl'>ما هي اللغة التي يتحدثها طفلك غالباً في المنزل؟</td><td>您的孩子在家最常说哪种语言？</td><td>Ki lang pitit ou a pale pi souvan lakay?</td></tr><tr><td><b>What language do the adults in your home speak most often?</b></td><td>¿Qué idioma hablan con más frecuencia los adultos en su casa?</td><td>Người lớn trong gia đình quý vị thường nói ngôn ngữ nào nhất?</td><td dir='rtl'>ما هي اللغة التي يتحدثها الكبار في منزلك غالباً؟</td><td>您家中的成年人最常说哪种语言？</td><td>Ki lang granmoun lakay ou pale pi souvan?</td></tr><tr><td><b>In what language would you like the school to communicate with you?</b></td><td>¿En qué idioma prefiere que la escuela se comunique con usted?</td><td>Quý vị muốn nhà trường liên lạc với quý vị bằng ngôn ngữ nào?</td><td dir='rtl'>بأي لغة تود أن تتواصل معك المدرسة؟</td><td>您希望学校用哪种语言与您沟通？</td><td>Nan ki lang ou ta renmen lekòl la kominike avèk ou?</td></tr></tbody></table>
+  <div class="card"><h4>What happens to the answers</h4><ul><li><b>Any language other than English</b> on questions 1–3 → the student is screened for English proficiency (the ELPT screener) within the window. The survey does not make a student an EL; the screener does.</li><li><b>Question 4</b> is the family's language for everything the school sends home. Enter it in the student system today.</li><li>The survey is kept in the cumulative folder. It is the first document a federal review asks for.</li><li>Tell the family in plain words: <i>This asks what language you speak so we can help your child and talk with you. It has nothing to do with immigration.</i></li></ul></div>
+</section>
+
+<section class="mode" id="m-phrases">
+  <h2 class="sec">Twenty phrases for the counter</h2>
+  <p class="lead">English on the left, Spanish on the right, a speaker button that says it aloud in a Spanish voice. Point to the line and press play; the family hears it while they read it.</p>
+  <div class="row noprint"><button class="btn navy" type="button" onclick="window.print()">🖨 Print the sheet</button><a class="btn line" href="spanish-for-teachers.html">Learn to say them yourself: the 90-minute workshop →</a></div>
+  <table><thead><tr><th>#</th><th>English</th><th>Español</th></tr></thead><tbody><tr><td>1</td><td>Welcome. How can I help you?</td><td>Bienvenidos. ¿En qué puedo ayudarle? <button type="button" class="say" data-say="Bienvenidos. ¿En qué puedo ayudarle?" data-lang="es-ES">🔊</button></td></tr><tr><td>2</td><td>One moment, please. I am calling an interpreter.</td><td>Un momento, por favor. Estoy llamando a un intérprete. <button type="button" class="say" data-say="Un momento, por favor. Estoy llamando a un intérprete." data-lang="es-ES">🔊</button></td></tr><tr><td>3</td><td>Yes, your child can enroll today.</td><td>Sí, su hijo/a puede inscribirse hoy. <button type="button" class="say" data-say="Sí, su hijo/a puede inscribirse hoy." data-lang="es-ES">🔊</button></td></tr><tr><td>4</td><td>Do you have any school records from the last school? It is okay if you do not.</td><td>¿Tiene algún documento de la escuela anterior? No pasa nada si no lo tiene. <button type="button" class="say" data-say="¿Tiene algún documento de la escuela anterior? No pasa nada si no lo tiene." data-lang="es-ES">🔊</button></td></tr><tr><td>5</td><td>Do you have a vaccination record?</td><td>¿Tiene el registro de vacunas? <button type="button" class="say" data-say="¿Tiene el registro de vacunas?" data-lang="es-ES">🔊</button></td></tr><tr><td>6</td><td>What is the child's full name? Please write it here.</td><td>¿Cuál es el nombre completo del niño/a? Por favor, escríbalo aquí. <button type="button" class="say" data-say="¿Cuál es el nombre completo del niño/a? Por favor, escríbalo aquí." data-lang="es-ES">🔊</button></td></tr><tr><td>7</td><td>What is the child's date of birth?</td><td>¿Cuál es la fecha de nacimiento del niño/a? <button type="button" class="say" data-say="¿Cuál es la fecha de nacimiento del niño/a?" data-lang="es-ES">🔊</button></td></tr><tr><td>8</td><td>What is your address?</td><td>¿Cuál es su dirección? <button type="button" class="say" data-say="¿Cuál es su dirección?" data-lang="es-ES">🔊</button></td></tr><tr><td>9</td><td>What is the best phone number to reach you?</td><td>¿Cuál es el mejor número de teléfono para comunicarnos con usted? <button type="button" class="say" data-say="¿Cuál es el mejor número de teléfono para comunicarnos con usted?" data-lang="es-ES">🔊</button></td></tr><tr><td>10</td><td>Who can we call in an emergency?</td><td>¿A quién podemos llamar en caso de emergencia? <button type="button" class="say" data-say="¿A quién podemos llamar en caso de emergencia?" data-lang="es-ES">🔊</button></td></tr><tr><td>11</td><td>Please sign here.</td><td>Por favor, firme aquí. <button type="button" class="say" data-say="Por favor, firme aquí." data-lang="es-ES">🔊</button></td></tr><tr><td>12</td><td>This form asks which language you speak at home. It is not about immigration.</td><td>Este formulario pregunta qué idioma hablan en casa. No tiene que ver con inmigración. <button type="button" class="say" data-say="Este formulario pregunta qué idioma hablan en casa. No tiene que ver con inmigración." data-lang="es-ES">🔊</button></td></tr><tr><td>13</td><td>School starts at ___ and ends at ___.</td><td>Las clases empiezan a las ___ y terminan a las ___. <button type="button" class="say" data-say="Las clases empiezan a las ___ y terminan a las ___." data-lang="es-ES">🔊</button></td></tr><tr><td>14</td><td>Breakfast and lunch are served at school. Here is the form.</td><td>En la escuela se sirve desayuno y almuerzo. Aquí está el formulario. <button type="button" class="say" data-say="En la escuela se sirve desayuno y almuerzo. Aquí está el formulario." data-lang="es-ES">🔊</button></td></tr><tr><td>15</td><td>Does your child need the bus?</td><td>¿Su hijo/a necesita el autobús? <button type="button" class="say" data-say="¿Su hijo/a necesita el autobús?" data-lang="es-ES">🔊</button></td></tr><tr><td>16</td><td>The nurse will help you with this.</td><td>La enfermera le ayudará con esto. <button type="button" class="say" data-say="La enfermera le ayudará con esto." data-lang="es-ES">🔊</button></td></tr><tr><td>17</td><td>The counselor will make the class schedule.</td><td>El consejero/la consejera hará el horario de clases. <button type="button" class="say" data-say="El consejero/la consejera hará el horario de clases." data-lang="es-ES">🔊</button></td></tr><tr><td>18</td><td>A teacher will test your child's English in the next few weeks. It is not a grade.</td><td>Un maestro evaluará el inglés de su hijo/a en las próximas semanas. No es una calificación. <button type="button" class="say" data-say="Un maestro evaluará el inglés de su hijo/a en las próximas semanas. No es una calificación." data-lang="es-ES">🔊</button></td></tr><tr><td>19</td><td>We will send papers home in Spanish.</td><td>Le enviaremos los documentos a casa en español. <button type="button" class="say" data-say="Le enviaremos los documentos a casa en español." data-lang="es-ES">🔊</button></td></tr><tr><td>20</td><td>Thank you. Your child starts on ___.</td><td>Gracias. Su hijo/a empieza el ___. <button type="button" class="say" data-say="Gracias. Su hijo/a empieza el ___." data-lang="es-ES">🔊</button></td></tr></tbody></table>
+  <div class="note"><b>Audio.</b> Uses the Spanish voice already on the computer or phone; on a phone, tap once anywhere on the page first if the first press is silent. For a family language other than Spanish, use the interpreter line — the phrases are for the minutes before the interpreter answers.</div>
+</section>
+
+<section class="mode" id="m-clock">
+  <h2 class="sec">The identification clock</h2>
+  <p class="lead">Enter the day the student enrolled. The page works out when the English screener and the parent notice are due, and who owns each step.</p>
+  <div class="panel">
+    <div class="grid3">
+      <div><label class="f" for="ed">Date enrolled</label><input type="date" id="ed" style="width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px"></div>
+      <div><label class="f" for="fd">First day of school this year</label><input type="date" id="fd" value="2026-08-05" style="width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px"></div>
+      <div><label class="f" for="lw">Your district's window for later enrollees</label><select id="lw"><option value="10s">10 school days (common in Mississippi plans)</option><option value="14c">14 calendar days (the federal floor)</option></select></div>
+    </div>
+    <div id="clock" style="margin-top:14px"></div>
+  </div>
+  <div class="card"><h4>Who owns what</h4><table><thead><tr><th>Step</th><th>Owner</th><th>Done when</th></tr></thead><tbody>
+  <tr><td>Home Language Survey</td><td>Front office</td><td>Same day as enrollment, in the family's language, copy to the EL teacher</td></tr>
+  <tr><td>Family language in the student system</td><td>Front office</td><td>Same day</td></tr>
+  <tr><td>English screener</td><td>EL teacher / trained screener</td><td>Within the window above</td></tr>
+  <tr><td>Parent notification of placement</td><td>EL teacher, signed by the principal</td><td>Within the window, in the family's language (<a href="parent-letters.html">templates</a>)</td></tr>
+  <tr><td>Class schedule</td><td>Counselor, with the EL teacher</td><td>Before the first day — not after the screener; placement can be adjusted</td></tr>
+  <tr><td>Language Service Plan</td><td>EL teacher with content teachers</td><td>Within the first weeks of placement (<a href="lsp-builder.html">builder</a>)</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="mode" id="m-interp">
+  <h2 class="sec">Interpreter request</h2>
+  <p class="lead">Fill it in, print it or copy it into an email. Keep the printed copies in a folder at the counter; a log of requests is also what a reviewer asks to see.</p>
+  <div class="panel">
+    <div class="grid3">
+      <div><label class="f">Student (initials are fine)</label><input type="text" id="r1" placeholder="A.G."></div>
+      <div><label class="f">Family language</label><input type="text" id="r2" placeholder="Spanish"></div>
+      <div><label class="f">Requested by</label><input type="text" id="r3" placeholder="Front office / Ms. ___"></div>
+      <div><label class="f">Date and time needed</label><input type="text" id="r4" placeholder="Nov 20, 9:00 a.m."></div>
+      <div><label class="f">Purpose</label><select id="r5"><option>Enrollment / registration</option><option>Parent–teacher conference</option><option>Discipline meeting</option><option>Health / nurse</option><option>IEP or 504 meeting</option><option>Counseling / schedule</option><option>Phone call home</option><option>Other</option></select></div>
+      <div><label class="f">Mode</label><select id="r6"><option>Phone interpreter line</option><option>Video interpreter</option><option>In person — district interpreter</option><option>In person — contracted agency</option></select></div>
+    </div>
+    <label class="f">Notes (what the family needs to understand or decide)</label><textarea id="r7" placeholder="Enrollment forms, bus and lunch forms, immunization follow-up with the nurse."></textarea>
+    <div class="row"><button class="btn navy" type="button" id="mk">Make the request</button><button class="btn line" type="button" id="cpy" disabled>Copy</button><button class="btn line" type="button" onclick="window.print()">🖨 Print</button></div>
+    <pre id="req" style="white-space:pre-wrap;font:inherit;font-size:14.5px;background:var(--mist);border:1px solid var(--rule);padding:12px 14px;margin-top:12px;display:none"></pre>
+  </div>
+  <div class="card"><h4>The rules in one breath</h4><ul><li><b>Free to the family</b>, always.</li><li><b>Competent</b>: someone trained to interpret, who knows school words, and who keeps it confidential. Being bilingual is not the same thing.</li><li><b>Not the child, not a sibling, not a classmate</b> for enrollment, health, discipline, special education or anything a parent must decide.</li><li><b>Machine translation</b> (apps, Google Translate) is fine for a hallway hello and a lunch-menu question, not for anything the family signs or decides.</li><li><b>Written notices</b> — the handbook, discipline, grades, the EL letters — go home translated or with an interpreter's explanation.</li></ul><p class="es">Title VI of the Civil Rights Act; ESSA §1112(e)(4); 2015 USDOJ/OCR Dear Colleague Letter.</p></div>
+</section>
+
+<div class="note"><b>Sources.</b> Plyler v. Doe (1982) and MDE enrollment guidance (no proof of immigration status, no Social Security number, no delay for missing records); ESSA §1112(e)(3) screening and notification windows as described on this hub's <a href='el-compliance-calendar.html'>Compliance Calendar</a> and <a href='el-audit.html'>Self-Audit</a>; Title VI and the 2015 USDOJ/OCR Dear Colleague Letter on language access; Mississippi immunization requirements (Form 121). Your district's EL plan and the District Test Coordinator set the exact windows — if they differ from this page, theirs govern.</div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+
+const fmt=d=>d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"});
+function addSchool(d,n){const x=new Date(d);let c=0;while(c<n){x.setDate(x.getDate()+1);const w=x.getDay();if(w!==0&&w!==6)c++;}return x;}
+function clock(){const ed=document.getElementById("ed").value,fd=document.getElementById("fd").value,lw=document.getElementById("lw").value,out=document.getElementById("clock");if(!ed||!fd){out.innerHTML='<p class="lead">Pick the enrollment date.</p>';return;}
+ const e=new Date(ed+"T12:00"),f=new Date(fd+"T12:00");const start30=new Date(f);start30.setDate(start30.getDate()+30);
+ const early=e<=start30;let due;if(early){due=start30;}else{due=lw==="10s"?addSchool(e,10):new Date(e.getTime()+14*864e5);}
+ const today=new Date();today.setHours(12,0,0,0);const left=Math.round((due-today)/864e5);
+ out.innerHTML=`<div class="due"><div><span>Home Language Survey</span><b>${fmt(e)}</b><small>Same day as enrollment, in the family's language.</small></div><div class="${left<0?"late":""}"><span>Screener due</span><b>${fmt(due)}</b><small>${early?"Enrolled within the first thirty days of school: thirty calendar days from the first day.":(lw==="10s"?"Later enrollee: ten school days from enrollment (weekends skipped; adjust for holidays).":"Later enrollee: fourteen calendar days from enrollment.")}</small></div><div class="${left<0?"late":""}"><span>Parent notice due</span><b>${fmt(due)}</b><small>Same window as the screener, in the family's language.</small></div></div><p style="margin:10px 0 0;font-size:14.5px">${left<0?`<b style="color:var(--ink-red)">${-left} days past due.</b> Screen and notify now and record the date; a late step documented is far better than a late step hidden.`:left===0?"<b>Due today.</b>":`<b>${left} days left.</b> Tell the EL teacher today so the screener is on the calendar.`}</p>`;}
+["ed","fd","lw"].forEach(i=>document.getElementById(i).addEventListener("input",clock));clock();
+let REQ="";
+document.getElementById("mk").addEventListener("click",()=>{const v=i=>document.getElementById(i).value.trim();REQ=`INTERPRETER REQUEST\nStudent: ${v("r1")||"—"}\nFamily language: ${v("r2")||"—"}\nRequested by: ${v("r3")||"—"}\nDate/time needed: ${v("r4")||"—"}\nPurpose: ${v("r5")}\nMode: ${v("r6")}\nNotes: ${v("r7")||"—"}\n\nReminder: interpretation is free to the family; the student, siblings and other children may not interpret for this purpose.`;const p=document.getElementById("req");p.textContent=REQ;p.style.display="block";document.getElementById("cpy").disabled=false;});
+document.getElementById("cpy").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(REQ);e.target.textContent="Copied ✓";setTimeout(()=>e.target.textContent="Copy",1600);}catch(x){prompt("Copy:",REQ);}});
+try{const k="elhub.iphone";const i=document.getElementById("iphone");i.value=localStorage.getItem(k)||"";i.addEventListener("input",()=>localStorage.setItem(k,i.value));}catch(e){}
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

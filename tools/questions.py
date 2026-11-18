@@ -20,6 +20,64 @@ WHO = [
 
 Q = [
  ("teachers",
+  "A family who speaks no English is at the front desk. What does the office do?",
+  "Enroll today — no Social Security number, no immigration questions, no delay for missing "
+  "records — and give the Home Language Survey in the family's language. The Front Office Kit "
+  "is the whole procedure for the counter: an “I speak…” board in fourteen languages, the "
+  "survey in six, twenty phrases with Spanish audio, the clock for the screener and parent "
+  "notice, and the interpreter request form.",
+  [("The Front Office Kit", "front-office-kit.html"),
+   ("Your Guide to School in the U.S.", "newcomer-guide.html")]),
+
+ ("coordinators",
+  "How does a counselor evaluate a foreign transcript and schedule a newcomer?",
+  "Place by what the student knows, support by how much English they have. The Counselor's "
+  "EL Desk walks the transcript line by line (grade-span crosswalks for ten systems, course "
+  "equivalents) and prints the credit evaluation, lays out placement by level, the diploma "
+  "endorsements and state tests, the Seal of Biliteracy, and a four-year plan for the "
+  "seventeen-year-old Level 1, with bilingual scripts for the family meeting.",
+  [("The Counselor's EL Desk", "counselor-desk.html"),
+   ("Graduation Roadmap for Newcomers", "graduation-roadmap.html")]),
+
+ ("teachers",
+  "My student has been an EL for six years and is still Writing 2. What do I do?",
+  "That is a long-term English learner — fluent in the hallway, stuck in academic reading and "
+  "writing — and the fix is explicit: twelve weeks on the academic register, one feature a "
+  "week, taught on the student's own content reading. The Long-Term EL Clinic finds them on "
+  "your roster, runs a thirty-minute diagnostic, gives the twelve weeks and tracks them.",
+  [("The Long-Term EL Clinic", "ltel-clinic.html"),
+   ("Storm Sentence Lab", "https://radan55.github.io/Stormsentencelab/")]),
+
+ ("teachers",
+  "I have a parent conference with a Spanish-speaking family. What do I say?",
+  "What the child knows first; then the four English levels in one sentence each; then one "
+  "thing the family can do at home in Spanish. The Family Conference Kit has the interpreter "
+  "checklist, the fifteen-minute script in both languages with audio, the report card "
+  "explained, six questions for the family to ask, and a builder that prints the bilingual "
+  "take-home summary.",
+  [("The Family Conference Kit", "family-conference-kit.html"),
+   ("The English Test, Explained for Families", "elpt-family-guide.html")]),
+
+ ("teachers",
+  "How do I grade an English learner fairly — can I take off points for grammar?",
+  "Not on a content assignment: grade the content, mark one language feature separately. "
+  "Grade It Fair does it with your own materials — paste a rubric and it splits content from "
+  "language with a lane-fair expectation for each; paste a quiz and it flags the language that "
+  "gets in the way and writes the four-lane version with a fair answer per lane; score one "
+  "piece of work with the two apart.",
+  [("Grade It Fair", "grade-it-fair.html"),
+   ("Read Your Roster", "read-your-roster.html")]),
+
+ ("teachers",
+  "Where are the short answers to the questions content teachers always ask about ELs?",
+  "Straight Answers: forty of them — grammar points, Google Translate on the test, why he is "
+  "still an EL after three years, honors and AP, what to say to the parent, what the law "
+  "actually requires of you — each in about a hundred words, with the rule and the tool. "
+  "Searchable and printable.",
+  [("Straight Answers", "straight-answers.html"),
+   ("For Content Teachers", "content-teachers.html")]),
+
+ ("teachers",
   "My roster says ELPT Level 2 next to a student's name. What does that mean for my class?",
   "A level is a measure of English, not of ability, and the four domain numbers matter more "
   "than the one overall. Read Your Roster decodes them: tap Listening, Speaking, Reading and "

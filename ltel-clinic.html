@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Long-Term EL Clinic · twelve weeks for the student who has been an EL six years · EL Publishing</title>
+<meta name="description" content="For Mississippi EL and content teachers: who long-term English learners are and why they are stuck, a roster finder, a thirty-minute diagnostic that names the profile, a twelve-week clinic on the academic register (one language feature a week, taught on the student's own content reading), two moves for content teachers, and a twelve-week tracker that stays in the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+
+  .weeks{display:grid;gap:10px;margin-top:12px}
+  .wk{display:grid;grid-template-columns:86px 1fr;gap:12px;background:var(--paper);border:1px solid var(--rule);padding:12px 14px}
+  .wk .wn{font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--gold);font-weight:700;line-height:1.1}
+  .wk h4{margin:0 0 4px;font-family:Fraunces,Georgia,serif;font-size:18px;color:var(--navy)}
+  .wk p{margin:3px 0;font-size:14px}
+  .tag2{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;color:#fff}
+  .lt{background:var(--ink-red)}.ar{background:#B07A1A}.ok2{background:var(--ink-green)}
+  .bars{display:grid;grid-template-columns:repeat(13,1fr);gap:4px;align-items:end;height:120px;border-bottom:1px solid var(--rule);padding:0 2px}
+  .bars div{background:var(--navy);border-radius:3px 3px 0 0;position:relative;min-height:2px}
+  .bars div.e{background:var(--gold)}
+  .bars div span{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px;color:var(--muted)}
+  .axis{display:grid;grid-template-columns:repeat(13,1fr);gap:4px;font-size:10.5px;color:var(--muted);text-align:center;margin-top:3px}
+  .profile{border-left:8px solid var(--gold);background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
+  .profile h4{margin:0 0 6px;font-family:Fraunces,Georgia,serif;font-size:20px;color:var(--navy)}
+  @media (max-width:600px){.wk{grid-template-columns:1fr}}
+  @media print{.wk{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/ltel-clinic.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Long-Term EL Clinic", "url": "https://radan55.github.io/everyteacher/ltel-clinic.html", "description": "For Mississippi EL and content teachers: who long-term English learners are and why they are stuck, a roster finder, a thirty-minute diagnostic that names the profile, a twelve-week clinic on the academic register (one language feature a week, taught on the student's own content reading), two moves for content teachers, and a twelve-week tracker that stays in the browser.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Clinic"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/ltel-clinic.html">
+<meta property="og:title" content="The Long-Term EL Clinic · twelve weeks for the student who has been an EL six years · EL Publishing">
+<meta property="og:description" content="For Mississippi EL and content teachers: who long-term English learners are and why they are stuck, a roster finder, a thirty-minute diagnostic that names the profile, a twelve-week clinic on the academic register (one language feature a week, taught on the student&#x27;s own content reading), two moves for content teachers, and a twelve-week tracker that stays in the browser.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/ltel-clinic.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR EL TEACHERS · LONG-TERM ENGLISH LEARNERS · MISSISSIPPI</p>
+    <h1>The long-term EL <em>clinic.</em></h1>
+    <p class="tag">Six years an English learner, fluent in the hallway, stuck at Writing 2 or 3 every spring. They are the largest group on most rosters and the most invisible. Twelve weeks on the academic register — one feature a week, on their own content reading — is the map out.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('find')">Find them on your roster</button><button class="btn ghost" type="button" onclick="setMode('diag')">The 30-minute diagnostic</button><button class="btn ghost" type="button" onclick="setMode('weeks')">The twelve weeks</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="who" aria-pressed="true" onclick="setMode('who')">Who they are</button><button type="button" data-m="find" aria-pressed="false" onclick="setMode('find')">Find them</button><button type="button" data-m="diag" aria-pressed="false" onclick="setMode('diag')">Diagnostic</button><button type="button" data-m="weeks" aria-pressed="false" onclick="setMode('weeks')">The 12 weeks</button><button type="button" data-m="content" aria-pressed="false" onclick="setMode('content')">Content teachers</button><button type="button" data-m="track" aria-pressed="false" onclick="setMode('track')">Tracker</button><span class="sp"></span><span class="priv">Free · no account · nothing you type leaves this browser</span></div></nav>
+<main>
+
+<section class="mode on" id="m-who">
+  <h2 class="sec">Who they are</h2>
+  <p class="lead">A long-term English learner has been in U.S. schools six years or more and is still an EL. Most sound fluent, many were born here, and almost all are stuck in the same place: Listening and Speaking at 4 or 5, Reading and Writing at 2 or 3, year after year. They are the largest group in most Mississippi high schools' EL counts, the hardest to see, and the ones the accountability model counts most heavily.</p>
+  <div class="grid3">
+    <div class="card"><h4>What it looks like</h4><ul><li>Oral English indistinguishable from classmates; academic reading and writing two or three grade levels behind.</li><li>Writes the way they talk: short sentences, missing endings, <i>thing</i> and <i>a lot</i>, no transitions.</li><li>Passes by doing the minimum quietly; rarely called on; rarely asks.</li><li>Often literate in neither language at an academic level — and told for years that they are "almost there."</li></ul></div>
+    <div class="card"><h4>How it happened</h4><ul><li>Services that changed every time they changed schools, or stopped.</li><li>Social English arrived in two years and was mistaken for the whole job.</li><li>Nobody ever taught the academic register explicitly — it was assumed to come with time.</li><li>Lowered expectations that felt like kindness: shorter tasks, no writing, no feedback.</li></ul></div>
+    <div class="card"><h4>Why it matters now</h4><ul><li>Mississippi's accountability model credits EL <b>progress</b> on the ELPT; a student who scores the same level six years running pulls the school's indicator down every year.</li><li>Exit is 4 or higher in every domain; for an LTEL the gap is almost always Writing, then Reading — teachable, specific, finite.</li><li>They are on the graduation clock. English II and the ACT reward exactly the language this clinic teaches.</li></ul></div>
+  </div>
+  <div class="tip"><b>The frame to hold.</b> The student is not behind; the student is stuck in one place, and that place has a map. Twelve weeks of explicit, daily work on the academic register — in the EL block and echoed in content classes — moves Writing a level more reliably than anything else we have.</div>
+  <div class="links"><a href="#find" onclick="setMode('find')">Find them on your roster →</a><a href="#diag" onclick="setMode('diag')">The 30-minute diagnostic →</a><a href="#weeks" onclick="setMode('weeks')">The twelve weeks →</a></div>
+</section>
+
+<section class="mode" id="m-find">
+  <h2 class="sec">Find them</h2>
+  <p class="lead">Paste a roster: initials, years in U.S. schools (or year first identified), then the four ELPT levels — Listening, Speaking, Reading, Writing. The page flags long-term and at-risk students and names the domain to work on. Nothing leaves the browser.</p>
+  <div class="panel noprint">
+    <textarea id="ros" placeholder="A.G., 7, 4, 4, 3, 2&#10;J.R., 3, 3, 3, 2, 2&#10;M.T., 9, 5, 5, 3, 3"></textarea>
+    <div class="row"><button class="btn navy" type="button" id="go">Find long-term ELs</button><button class="btn line" type="button" id="smp">Try a sample</button><button class="btn line" type="button" onclick="window.print()">🖨 Print</button></div>
+  </div>
+  <div id="out"></div>
+</section>
+
+<section class="mode" id="m-diag">
+  <h2 class="sec">The thirty-minute diagnostic</h2>
+  <p class="lead">Before week 1. Four parts, one sitting, scored on the spot. It tells you which of the four clinic profiles the student fits and gives the student a baseline they will beat.</p>
+  <div class="grid2">
+    <div class="card"><span class="k">10 min</span><h4>1 · Writing sample</h4><p>Prompt from a current content class: <i>Explain one cause of ___ and its effect.</i> Ten minutes, no help. Score the <b>four features</b> below (0–3 each): sentence variety (any subordination or relative clauses?), academic vocabulary (content words, nominalizations), verb control (tense consistent, endings present), organization (claim → support → so-what, with transitions).</p></div>
+    <div class="card"><span class="k">8 min</span><h4>2 · Reading check</h4><p>One grade-level paragraph from the same class, read aloud by the student (note hesitations on multisyllable academic words), then three questions: one literal, one inference, one vocabulary-in-context. Score 0–3.</p></div>
+    <div class="card"><span class="k">6 min</span><h4>3 · Academic vocabulary</h4><p>Twenty words from the general academic list (<i>analyze, evidence, significant, contrast, however, consequently, process, structure, interpret, assume…</i>). Student says a sentence for each. Count the ones used correctly.</p></div>
+    <div class="card"><span class="k">6 min</span><h4>4 · The interview</h4><p>Three questions: <i>How long have you been an EL? What do you think is keeping you from exiting? What do you want to be able to do in English that you can't yet?</i> Write the answers down verbatim; read them back at week 12.</p></div>
+  </div>
+  <div class="panel">
+    <h3 class="sub" style="margin-top:0">Score it</h3>
+    <div class="grid2">
+      <div><label class="f">Writing — sentence variety (0–3)</label><input type="number" id="d1" min="0" max="3" value="1"><label class="f">Writing — academic vocabulary (0–3)</label><input type="number" id="d2" min="0" max="3" value="1"><label class="f">Writing — verb control (0–3)</label><input type="number" id="d3" min="0" max="3" value="1"><label class="f">Writing — organization (0–3)</label><input type="number" id="d4" min="0" max="3" value="1"></div>
+      <div><label class="f">Reading check (0–3)</label><input type="number" id="d5" min="0" max="3" value="1"><label class="f">Vocabulary — words used correctly (0–20)</label><input type="number" id="d6" min="0" max="20" value="8"><label class="f">Interview — student names a specific goal?</label><select id="d7"><option value="1">Yes</option><option value="0">No / "I don't know"</option></select></div>
+    </div>
+    <div class="row"><button class="btn navy" type="button" id="dg">Name the profile</button></div>
+    <div id="prof" style="margin-top:12px"></div>
+  </div>
+</section>
+
+<section class="mode" id="m-weeks">
+  <h2 class="sec">The twelve weeks</h2>
+  <p class="lead">One language feature a week, taught explicitly, practiced on <b>this week's content reading</b> from the student's own classes, checked on Friday. The daily rhythm in the EL block: <b>Mon</b> teach the feature on a mentor sentence · <b>Tue</b> find it in the content text · <b>Wed</b> write with it · <b>Thu</b> talk with it (structured academic talk) · <b>Fri</b> exit check and a two-minute goal conference.</p>
+  <div class="row noprint"><button class="btn line" type="button" onclick="window.print()">🖨 Print the twelve weeks</button><a class="btn line" href="literacy-lab/">Pull this week's sentences from the Literacy Lab →</a><a class="btn line" href="https://radan55.github.io/Stormsentencelab/">Storm Sentence Lab for weeks 1 and 11 →</a></div>
+  <div class="weeks"><div class="wk"><div class="wn">Week 1</div><div><h4>Sentence combining</h4><p><b>Teach:</b> Take two or three short sentences and make one, with a subordinator or a relative clause.</p><p><b>Do:</b> Mentor: <i>Because the colonists had no representative, they refused the tax.</i> Students combine six pairs from this week's content reading, then write three of their own.</p><p><b>Check:</b> Three combined sentences, each with a different joiner, in the exit ticket.</p></div></div><div class="wk"><div class="wn">Week 2</div><div><h4>Nominalization</h4><p><b>Teach:</b> Turn a verb into the noun academic texts prefer: <i>migrate → migration, decide → decision</i>.</p><p><b>Do:</b> Hunt the content text for -tion / -ment / -ance nouns; rewrite three sentences from the "people did X" form into the "the X of…" form.</p><p><b>Check:</b> Two sentences using a nominalized form correctly.</p></div></div><div class="wk"><div class="wn">Week 3</div><div><h4>Transitions that mean something</h4><p><b>Teach:</b> Replace <i>and, also, then</i> with <i>however, as a result, in contrast, for example</i> — and know which relationship each signals.</p><p><b>Do:</b> Sort twelve transitions by relationship; rewrite a paragraph of the student's own writing with three precise transitions.</p><p><b>Check:</b> A paragraph with three transitions, each one correct for the relationship.</p></div></div><div class="wk"><div class="wn">Week 4</div><div><h4>Verb forms in academic writing</h4><p><b>Teach:</b> Present tense for analysis, past for events, present perfect for what still matters; the -ed and -s endings that drop in speech.</p><p><b>Do:</b> Edit a paragraph written in spoken register; read it aloud and hear the endings.</p><p><b>Check:</b> Five verbs corrected with the reason named.</p></div></div><div class="wk"><div class="wn">Week 5</div><div><h4>The language of evidence</h4><p><b>Teach:</b> <i>According to…, the author states that…, this shows…, which suggests…</i> — and the difference between quoting and paraphrasing.</p><p><b>Do:</b> Three evidence sentences from the content text, each with a frame, then the same three with the frame removed.</p><p><b>Check:</b> One claim + one piece of evidence + one explanation, cited.</p></div></div><div class="wk"><div class="wn">Week 6</div><div><h4>Hedging and certainty</h4><p><b>Teach:</b> <i>may, might, tends to, suggests, is likely to</i> versus <i>proves, always, never</i>. Science and history both need it.</p><p><b>Do:</b> Rewrite five over-certain claims; discuss what each hedge changes.</p><p><b>Check:</b> Two hedged claims about this week's content.</p></div></div><div class="wk"><div class="wn">Week 7</div><div><h4>Cause and effect</h4><p><b>Teach:</b> <i>leads to, results in, due to, consequently, because of</i> — the structures, not just the words.</p><p><b>Do:</b> Build a cause–effect chain from the content reading, then write it as a paragraph with three different structures.</p><p><b>Check:</b> A three-sentence cause–effect paragraph.</p></div></div><div class="wk"><div class="wn">Week 8</div><div><h4>Compare and contrast</h4><p><b>Teach:</b> <i>whereas, while, both… and, unlike, similarly</i>; the two-paragraph and the point-by-point shapes.</p><p><b>Do:</b> Compare two things from this week's content in a T-chart, then in a paragraph.</p><p><b>Check:</b> A compare–contrast paragraph using at least four of the structures.</p></div></div><div class="wk"><div class="wn">Week 9</div><div><h4>The counterclaim</h4><p><b>Teach:</b> <i>Some argue that…; however…; although it is true that…, …</i>. Argument writing on the English II test lives here.</p><p><b>Do:</b> Take a position from the content, write the strongest opposing view, then answer it.</p><p><b>Check:</b> A claim, a counterclaim and a rebuttal in three sentences.</p></div></div><div class="wk"><div class="wn">Week 10</div><div><h4>Summarizing without copying</h4><p><b>Teach:</b> Main idea in your own words; the three-step summary; what to leave out.</p><p><b>Do:</b> Summarize a content paragraph in one sentence, then a page in four.</p><p><b>Check:</b> A four-sentence summary with no copied phrase over three words.</p></div></div><div class="wk"><div class="wn">Week 11</div><div><h4>Precision</h4><p><b>Teach:</b> Kill <i>thing, stuff, a lot, good, bad, get</i>. Replace with the content word.</p><p><b>Do:</b> Students find the vague words in their own last three pieces and replace each with a precise one from the content vocabulary.</p><p><b>Check:</b> A revised paragraph with zero vague words.</p></div></div><div class="wk"><div class="wn">Week 12</div><div><h4>Revision and the portfolio</h4><p><b>Teach:</b> Students compare week 1 writing with week 11, name three changes they made on purpose, and set the next goal.</p><p><b>Do:</b> Portfolio conference, five minutes each; the student leads it.</p><p><b>Check:</b> A one-page reflection and the next twelve-week goal.</p></div></div></div>
+  <div class="card"><h4>Every week, no matter the feature</h4><ul><li><b>Grade-level text every day.</b> No leveled substitutes for an LTEL; preview the words, read the real thing.</li><li><b>Write every day</b>, at least a paragraph, with the feature required and named.</li><li><b>Feedback on one feature only</b>, written in the margin as the feature's name, not a correction. The student fixes it.</li><li><b>Read it aloud.</b> Students hear the endings and the sentence boundaries they do not see.</li><li><b>Keep the portfolio.</b> Week 1 next to week 12 is the evidence the student, the family and the LSP review need.</li></ul></div>
+</section>
+
+<section class="mode" id="m-content">
+  <h2 class="sec">For the content teacher: two moves</h2>
+  <p class="lead">The clinic lives in the EL block; it only works if the content classes stop accepting the spoken register in writing. Two moves, five minutes a week to set up.</p>
+  <div class="grid2">
+    <div class="card"><h4>1 · Require the register, with a frame</h4><p>Every written answer longer than a sentence gets a frame that forces the week's feature — the EL teacher sends it Monday. <i>"Although ___, ___ because ___."</i> Grade the content; mark the feature. A long-term EL who is allowed to answer in spoken English will, forever.</p></div>
+    <div class="card"><h4>2 · One feature, in the margin</h4><p>Pick one thing — verb endings, transitions, <i>thing/stuff</i> — and write only its name in the margin where it is missing. The student fixes it before the grade posts. Five seconds per paper; it is the only feedback that changes writing.</p></div>
+  </div>
+  <div class="card"><h4>And three habits</h4><ul><li><b>Call on them.</b> Long-term ELs have learned that silence is safe. Wait time, then the question, then wait again.</li><li><b>Grade-level text, previewed</b>, never the easy version — they can read the easy version; it is why they are stuck.</li><li><b>Say what you see.</b> "Your explanation of the cause was exactly right; now say it the way the textbook would." Precision is a compliment.</li></ul><div class="links"><a href="monday-moves.html">Monday Moves →</a><a href="sentence-frames.html">150 frames by level →</a><a href="read-your-roster.html">What a Level 3 writer can do →</a></div></div>
+</section>
+
+<section class="mode" id="m-track">
+  <h2 class="sec">Track twelve weeks</h2>
+  <p class="lead">One student at a time, by initials. Enter the Friday check each week; the chart draws itself. Saved in this browser only — print at week 12 for the folder and the LSP review.</p>
+  <div class="panel">
+    <div class="grid3"><div><label class="f">Student (initials)</label><input type="text" id="t-nm" placeholder="A.G."></div><div><label class="f">Week</label><select id="t-wk"><option value="0">Week 0</option><option value="1">Week 1</option><option value="2">Week 2</option><option value="3">Week 3</option><option value="4">Week 4</option><option value="5">Week 5</option><option value="6">Week 6</option><option value="7">Week 7</option><option value="8">Week 8</option><option value="9">Week 9</option><option value="10">Week 10</option><option value="11">Week 11</option><option value="12">Week 12</option></select></div><div><label class="f">Writing features present (0–4)</label><input type="number" id="t-w" min="0" max="4" value="1"></div><div><label class="f">Academic words used (0–20)</label><input type="number" id="t-v" min="0" max="20" value="8"></div><div><label class="f">Reading check (0–3)</label><input type="number" id="t-r" min="0" max="3" value="1"></div><div><label class="f">Exit check passed?</label><select id="t-e"><option value="1">Yes</option><option value="0">Not yet</option></select></div></div>
+    <div class="row"><button class="btn navy" type="button" id="t-save">Save this week</button><button class="btn line" type="button" id="t-show">Show the chart</button><button class="btn line" type="button" id="t-clear">Clear this student</button><button class="btn line" type="button" onclick="window.print()">🖨 Print</button></div>
+    <div id="chart" style="margin-top:14px"></div>
+  </div>
+  <div class="card"><h4>The student's letter (week 0)</h4><p><b>English:</b> You have been learning English for a long time, and you speak it well. The test says your reading and writing are the two things left. That is not a weakness — it is a map. For twelve weeks we are going to work on exactly those two things, one skill a week, and you will be able to see the change in your own writing. You are closer than anyone has told you.</p><p><b>Español:</b> Llevas mucho tiempo aprendiendo inglés y lo hablas bien. El examen dice que la lectura y la escritura son las dos cosas que faltan. Eso no es una debilidad: es un mapa. Durante doce semanas vamos a trabajar exactamente en esas dos cosas, una destreza por semana, y vas a poder ver el cambio en tu propia escritura. Estás más cerca de lo que te han dicho. <button type="button" class="say" data-say="Llevas mucho tiempo aprendiendo inglés y lo hablas bien. El examen dice que la lectura y la escritura son las dos cosas que faltan. Eso no es una debilidad: es un mapa." data-lang="es-ES">🔊</button></p></div>
+</section>
+
+<div class="note"><b>Basis.</b> The long-term EL profile (six-plus years, oral proficiency ahead of academic literacy) and the explicit-register approach draw on the research summarized in this hub's <a href='field-notes.html'>Field Notes</a> and the federal adolescent-literacy practice guide (<a href='adolescent-literacy-brochure.html'>in plain English here</a>); Mississippi's EL progress indicator and the exit standard are as described on the <a href='el-outcomes.html'>Outcomes Dashboard</a> and <a href='elpt-family-guide.html'>family guide</a>. The diagnostic and tracker are the author's instruments, not standardized measures.</div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+
+/* ---- find ---- */
+const D=["L","S","R","W"],DN={L:"Listening",S:"Speaking",R:"Reading",W:"Writing"};
+function parse(t){const rows=[],bad=[];t.split(/\r?\n/).forEach(l=>{const raw=l.trim();if(!raw)return;if(/^(name|student|initials)/i.test(raw))return;const toks=raw.split(/[,\t;]+|\s+/).filter(Boolean);const nums=toks.filter(x=>/^\d+(\.\d+)?$/.test(x)).map(Number);const name=toks.filter(x=>!/^\d+(\.\d+)?$/.test(x)).join(" ")||("Student "+(rows.length+1));if(nums.length<5){bad.push(raw);return;}let yrs=nums[0];if(yrs>1990)yrs=new Date().getFullYear()-yrs;rows.push({name,yrs,v:{L:nums[1],S:nums[2],R:nums[3],W:nums[4]}});});return{rows,bad};}
+function flag(r){const lit=Math.min(r.v.R,r.v.W),oral=Math.min(r.v.L,r.v.S);if(r.yrs>=6)return["lt","Long-term EL"];if(r.yrs>=4&&lit<=3&&oral>=4)return["ar","At risk — oral ahead of literacy"];if(r.yrs>=5)return["ar","At risk — year "+r.yrs];return["ok2","On schedule"];}
+document.getElementById("smp").addEventListener("click",()=>{document.getElementById("ros").value="A.G., 7, 4, 4, 3, 2\nJ.R., 3, 3, 3, 2, 2\nM.T., 9, 5, 5, 3, 3\nD.P., 1, 1, 1, 1, 1\nS.L., 5, 4, 5, 3, 2\nK.V., 2, 3, 3, 3, 3\nE.M., 8, 5, 4, 4, 3\nR.C., 6, 4, 4, 4, 4";find();});
+document.getElementById("go").addEventListener("click",find);
+function find(){const {rows,bad}=parse(document.getElementById("ros").value),o=document.getElementById("out");if(!rows.length){o.innerHTML='<p class="lead">Each line needs initials, years in U.S. schools, and four levels.</p>';return;}
+ rows.forEach(r=>{[r.cls,r.lab]=flag(r);r.low=r.v.W<=r.v.R?"W":"R";});const lt=rows.filter(r=>r.cls==="lt"),ar=rows.filter(r=>r.cls==="ar");
+ o.innerHTML=`<div class="grid3"><div class="card"><span class="k">Long-term ELs</span><h4 style="font-size:34px">${lt.length}</h4><p>of ${rows.length}, six or more years and still an EL</p></div><div class="card"><span class="k">At risk</span><h4 style="font-size:34px">${ar.length}</h4><p>four or five years with literacy behind oral English</p></div><div class="card"><span class="k">The domain</span><h4 style="font-size:34px">${lt.concat(ar).filter(r=>r.low==="W").length>=lt.concat(ar).filter(r=>r.low==="R").length?"Writing":"Reading"}</h4><p>is where most of them are held; the clinic's weekly cycle targets it</p></div></div>
+ <table><thead><tr><th>Student</th><th>Years</th><th>L</th><th>S</th><th>R</th><th>W</th><th>Status</th><th>Work on</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${r.yrs}</td>${D.map(d=>`<td>${r.v[d]}</td>`).join("")}<td><span class="tag2 ${r.cls}">${r.lab}</span></td><td>${r.cls==="ok2"?"—":DN[r.low]+" "+r.v[r.low]+" → "+(r.v[r.low]+1)+(r.v[r.low]>=3?" exits the domain":"")}</td></tr>`).join("")}</tbody></table>${bad.length?`<p class="es">Could not read: ${bad.map(esc).join(" · ")}</p>`:""}
+ <div class="tip"><b>Next:</b> run the thirty-minute diagnostic with each flagged student this week; start the twelve weeks the Monday after. Tell each student the number of years and the two domains out loud — most have never been told.</div>`;}
+/* ---- diagnostic ---- */
+document.getElementById("dg").addEventListener("click",()=>{const g=i=>+document.getElementById(i).value;const w=[g("d1"),g("d2"),g("d3"),g("d4")],ws=w.reduce((a,b)=>a+b,0),rd=g("d5"),vc=g("d6"),iv=g("d7");
+ const names=["sentence variety","academic vocabulary","verb control","organization"];const lowest=names[w.indexOf(Math.min(...w))];
+ let prof,plan;if(rd<=1&&ws>=6){prof="Reading-held";plan="Reading is the gate: daily grade-level text read aloud with the academic words previewed; the writing is closer than it looks. Lead with weeks 2, 5, 10 (vocabulary, evidence, summary) and run week 3 in reading, not writing.";}
+ else if(ws<=5){prof="Writing-held";plan=`Writing in the spoken register. Start the twelve weeks in order and spend extra time on <b>${lowest}</b>; require a paragraph a day in every class with the week's frame.`;}
+ else if(vc<10){prof="Vocabulary-held";plan="Sentences and reading are workable; the academic word store is thin. Front-load weeks 2 and 11, add ten academic words a week from the content classes with morphology (prefix, root, suffix), and insist on them in writing.";}
+ else{prof="Near exit";plan="Everything is close. Twelve weeks of precision and register — weeks 4, 6, 9 and 11 matter most — plus ELPT writing practice under the clock. This student can exit this spring.";}
+ document.getElementById("prof").innerHTML=`<div class="profile"><h4>${prof}</h4><p style="margin:0 0 6px;font-size:14.5px">Writing ${ws}/12 (lowest: ${lowest}) · Reading ${rd}/3 · Vocabulary ${vc}/20 · Goal named: ${iv?"yes":"no"}</p><p style="margin:0;font-size:14.5px">${plan}</p>${iv?"":"<p style='margin:8px 0 0;font-size:14px'><b>No goal named.</b> Start there: at week 0 the student writes one sentence they want to be able to write by week 12. Pin it to the portfolio.</p>"}</div>`;});
+/* ---- tracker ---- */
+const K="elhub.ltel.";const g=i=>document.getElementById(i);
+function load(n){try{return JSON.parse(localStorage.getItem(K+n)||"{}")}catch(e){return{}}}
+g("t-save").addEventListener("click",()=>{const n=g("t-nm").value.trim().toUpperCase();if(!n)return alert("Initials first.");const d=load(n);d[g("t-wk").value]={w:+g("t-w").value,v:+g("t-v").value,r:+g("t-r").value,e:+g("t-e").value};try{localStorage.setItem(K+n,JSON.stringify(d));}catch(e){}chart(n);});
+g("t-show").addEventListener("click",()=>chart(g("t-nm").value.trim().toUpperCase()));
+g("t-clear").addEventListener("click",()=>{const n=g("t-nm").value.trim().toUpperCase();if(n&&confirm("Clear "+n+"?")){try{localStorage.removeItem(K+n)}catch(e){}chart(n);}});
+function chart(n){const d=load(n),c=g("chart");if(!n){c.innerHTML="";return;}const wk=[...Array(13).keys()];const has=wk.filter(i=>d[i]);if(!has.length){c.innerHTML=`<p class="lead">No weeks saved for ${esc(n)} yet.</p>`;return;}
+ const bar=(key,max,label)=>`<p class="k" style="margin:10px 0 18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-weight:700">${label}</p><div class="bars">${wk.map(i=>d[i]?`<div class="${d[i].e?"e":""}" style="height:${Math.max(3,d[i][key]/max*100)}%"><span>${d[i][key]}</span></div>`:`<div style="height:2px;background:var(--rule)"></div>`).join("")}</div><div class="axis">${wk.map(i=>`<span>${i===0?"W0":i}</span>`).join("")}</div>`;
+ const first=d[has[0]],last=d[has[has.length-1]];
+ c.innerHTML=`<h3 class="sub" style="margin-top:0">${esc(n)} · ${has.length} week${has.length===1?"":"s"} recorded</h3>${bar("w",4,"Writing features present (of 4)")}${bar("v",20,"Academic words used (of 20)")}${bar("r",3,"Reading check (of 3)")}<p style="font-size:14px;margin-top:12px">Gold bars = exit check passed. From week ${has[0]} to week ${has[has.length-1]}: writing ${first.w} → ${last.w}, vocabulary ${first.v} → ${last.v}, reading ${first.r} → ${last.r}.</p>`;}
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

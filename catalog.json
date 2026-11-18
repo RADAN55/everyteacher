@@ -319,6 +319,50 @@
   "new": ""
  },
  {
+  "u": "front-office-kit.html",
+  "t": "The Front Office Kit",
+  "o": "For the registrar: enroll a family that speaks no English — today, legally, kindly — with the board, the survey and the clock.",
+  "f": "Office kit · 14 languages · 20 phrases",
+  "g": "Every classroom teacher",
+  "k": "For registrars and school secretaries: the first ten minutes with a family that does not speak English, an “I speak…” board in fourteen languages, the Home Language Survey in six languages, twenty counter phrases with Spanish audio, an identification clock that works out when the screener and parent notice are due, and an interpreter request form. Plyler enrollment rules and Title VI language access in plain words.",
+  "th": "thumbs/front-office-kit.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
+ },
+ {
+  "u": "family-conference-kit.html",
+  "t": "The Family Conference Kit",
+  "o": "A bilingual parent conference for an EL: interpreter checklist, the script with audio, the report card explained, a take-home summary.",
+  "f": "Conference kit · EN/ES · 15 minutes",
+  "g": "Every classroom teacher",
+  "k": "For any teacher meeting the family of an English learner: an interpreter checklist and bilingual invitation, a fifteen-minute conference script in English and Spanish with a speaker on every line, the report card explained in fourteen bilingual terms, six questions for the family to ask (and what to say when they do not understand), and a builder that prints a one-page English/Spanish take-home summary with the four levels, the help in class and one thing to do at home.",
+  "th": "thumbs/family-conference-kit.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
+ },
+ {
+  "u": "grade-it-fair.html",
+  "t": "Grade It Fair",
+  "o": "Paste a rubric or a quiz; get the version that grades the content, with the English handled separately, in four lanes.",
+  "f": "Grading tool · Rubric · quiz · score",
+  "g": "Every classroom teacher",
+  "k": "For content teachers: paste any rubric and the page splits content criteria from language criteria with a lane-fair expectation for each (flip any line); paste a quiz and it names each question type, flags negative stems, idioms, long stems and passive voice, and writes the four-lane version with a sample fair answer per lane; score one piece of work with content and language apart and get the margin note and grade-book comment. The legal basis on one page.",
+  "th": "thumbs/grade-it-fair.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
+ },
+ {
+  "u": "straight-answers.html",
+  "t": "Straight Answers",
+  "o": "The forty questions content teachers actually ask about ELs, answered in a hundred words, with the rule and the tool.",
+  "f": "FAQ · 40 questions",
+  "g": "Every classroom teacher",
+  "k": "Forty questions teachers of biology, algebra and history actually ask about English learners — can I take off points for grammar, can she use Google Translate on the test, why is he still an EL after three years, should I tell the family to speak English at home, can an EL be in honors, what do I actually have to do — each answered in about a hundred words, with the rule behind it where there is one and the hub tool that finishes the job. Searchable, filterable by topic, printable.",
+  "th": "thumbs/straight-answers.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
+ },
+ {
   "u": "read-your-roster.html",
   "t": "Read Your Roster: the ELPA21 Level Decoder",
   "o": "Your roster says Level 2. Here is what that student can do in your class, what is fair to grade, and what MAAP allows.",
@@ -671,6 +715,17 @@
   "new": ""
  },
  {
+  "u": "ltel-clinic.html",
+  "t": "The Long-Term EL Clinic",
+  "o": "Six years an EL and stuck at Writing 2: a roster finder, a 30-minute diagnostic, twelve weeks on the academic register.",
+  "f": "Clinic · 12 weeks · tracker",
+  "g": "The EL teacher's desk",
+  "k": "For EL and content teachers: who long-term English learners are and why they are stuck, a roster finder that flags six-plus-year and at-risk students, a thirty-minute diagnostic that names one of four profiles, a twelve-week clinic on the academic register (one language feature a week — sentence combining, nominalization, transitions, evidence, hedging, counterclaim — taught on the student's own content reading), two moves for content teachers, a bilingual student letter and a twelve-week tracker that stays in the browser.",
+  "th": "thumbs/ltel-clinic.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
+ },
+ {
   "u": "teaching-the-elpt.html",
   "t": "Teaching the ELPT · Special Issue",
   "o": "A page-turning issue: four domain features, daily routines with a live timer, sixteen test moves, coaches who read aloud.",
@@ -845,6 +900,17 @@
   "th": "thumbs/09-command-center.jpg",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "counselor-desk.html",
+  "t": "The Counselor's EL Desk",
+  "o": "Foreign transcripts, placement by level, diplomas and tests, and the seventeen-year-old Level 1 — with printable worksheets.",
+  "f": "Counselor desk · 5 decisions · worksheets",
+  "g": "District & compliance",
+  "k": "For school counselors: evaluate a foreign transcript line by line and print the credit evaluation (grade-span crosswalks for ten school systems, course equivalents, marks), place an English learner by level without lowering the ceiling, the Traditional diploma and three endorsements, the four state tests and their options, the Seal of Biliteracy, a four-year plan builder for the seventeen-year-old newcomer, and bilingual scripts for the family meeting and the teacher who wants a student out of honors.",
+  "th": "thumbs/counselor-desk.jpg",
+  "pin": "2026-12-23",
+  "new": "2026-11-18"
  },
  {
   "u": "leaders.html",

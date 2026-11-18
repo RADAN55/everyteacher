@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade It Fair · split any rubric or quiz into content and language, in four lanes · EL Publishing</title>
+<meta name="description" content="Paste any rubric and the page separates content criteria from language criteria with a lane-fair expectation for each; paste a quiz and it flags negative stems, idioms and passive voice, then writes the four-lane version with a sample fair answer per lane; score one piece of work with content and language apart. For content teachers of English learners. Free, no account, nothing leaves the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+
+  .crit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .col{background:var(--paper);border:1px solid var(--rule)}
+  .col h4{margin:0;padding:10px 14px;font-family:Fraunces,Georgia,serif;font-size:18px;color:#fff;background:var(--navy-bg)}
+  .col.lang h4{background:#5A4714}
+  .line{padding:10px 14px;border-bottom:1px solid var(--rule);font-size:14px}
+  .line .t{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+  .line .flip{font:inherit;font-size:11.5px;border:1px solid var(--rule);background:var(--mist);color:var(--navy);border-radius:999px;padding:1px 8px;cursor:pointer;white-space:nowrap}
+  .lanes{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+  .lanes div{font-size:12.5px;padding:6px 8px;border-top:4px solid var(--lc);background:var(--mist)}
+  .lanes b{display:block;color:var(--lc);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .q{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:12px}
+  .q .stem{font-size:15px;margin:0 0 6px}
+  .q .type{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .q .flags span{display:inline-block;font-size:12px;background:var(--wash-red);color:var(--ink-red);border-radius:4px;padding:2px 8px;margin:4px 4px 0 0}
+  .q .flags span.ok{background:var(--wash-green);color:var(--ink-green)}
+  .q .lanes div{font-size:13px}
+  .q .lanes p{margin:4px 0 0}
+  .q .lanes i{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+  .scorebox{border-left:8px solid var(--gold);background:var(--paper);border:1px solid var(--rule);padding:14px 16px}
+  .scorebox h4{margin:0 0 6px;font-family:Fraunces,Georgia,serif;font-size:28px;color:var(--navy)}
+  @media (max-width:760px){.crit,.lanes{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/grade-it-fair.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Grade It Fair", "url": "https://radan55.github.io/everyteacher/grade-it-fair.html", "description": "Paste any rubric and the page separates content criteria from language criteria with a lane-fair expectation for each; paste a quiz and it flags negative stems, idioms and passive voice, then writes the four-lane version with a sample fair answer per lane; score one piece of work with content and language apart. For content teachers of English learners. Free, no account, nothing leaves the browser.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Grading tool"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/grade-it-fair.html">
+<meta property="og:title" content="Grade It Fair · split any rubric or quiz into content and language, in four lanes · EL Publishing">
+<meta property="og:description" content="Paste any rubric and the page separates content criteria from language criteria with a lane-fair expectation for each; paste a quiz and it flags negative stems, idioms and passive voice, then writes the four-lane version with a sample fair answer per lane; score one piece of work with content and language apart. For content teachers of English learners. Free, no account, nothing leaves the browser.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/grade-it-fair.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR CONTENT TEACHERS · FAIR GRADING · FOUR LANES</p>
+    <h1>Grade it <em>fair.</em></h1>
+    <p class="tag">A correct biology answer that loses points for grammar stops telling the truth about biology. Paste your rubric or your quiz; get back the version that grades what the student knows, with the English handled separately — in four lanes, with what a fair answer looks like in each.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('rubric')">Split a rubric</button><button class="btn ghost" type="button" onclick="setMode('quiz')">Make a quiz fair</button><button class="btn ghost" type="button" onclick="setMode('score')">Score one piece of work</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="rubric" aria-pressed="true" onclick="setMode('rubric')">Rubric</button><button type="button" data-m="quiz" aria-pressed="false" onclick="setMode('quiz')">Quiz or prompt</button><button type="button" data-m="score" aria-pressed="false" onclick="setMode('score')">Score it</button><button type="button" data-m="rules" aria-pressed="false" onclick="setMode('rules')">The rules</button><span class="sp"></span><span class="priv">Free · no account · nothing you type leaves this browser</span></div></nav>
+<main>
+
+<section class="mode on" id="m-rubric">
+  <h2 class="sec">Paste a rubric</h2>
+  <p class="lead">One criterion per line, however your rubric is written. The page sorts each line into <b>content</b> (what the student knows) or <b>language</b> (how the English came out), lets you flip any line, and writes the two-part rubric with a lane-fair expectation for each language line. Nothing leaves this browser.</p>
+  <div class="panel noprint">
+    <textarea id="rub" placeholder="Claim is clearly stated and accurate&#10;Uses two pieces of evidence from the lab&#10;Explains how the evidence supports the claim&#10;Uses complete sentences and correct grammar&#10;Spelling and punctuation&#10;Uses scientific vocabulary"></textarea>
+    <div class="row"><button class="btn navy" type="button" id="rgo">Split the rubric</button><button class="btn line" type="button" id="rsmp">Try an example</button><button class="btn line" type="button" onclick="window.print()">🖨 Print</button></div>
+  </div>
+  <div id="rout"></div>
+</section>
+
+<section class="mode" id="m-quiz">
+  <h2 class="sec">Paste a quiz or a prompt</h2>
+  <p class="lead">Paste the questions as they are. For each one the page names the question type, flags the language that gets in the way of the content (negatives, idioms, long stems, passive voice), and writes the four-lane version — including what a fair answer looks like in each lane.</p>
+  <div class="panel noprint">
+    <textarea id="qz" placeholder="1. Which of the following is NOT a product of photosynthesis?&#10;A. glucose  B. oxygen  C. carbon dioxide  D. water&#10;2. Explain why plants in the dark closet did not grow as tall.&#10;3. Compare aerobic and anaerobic respiration."></textarea>
+    <div class="row"><button class="btn navy" type="button" id="qgo">Make it fair</button><button class="btn line" type="button" id="qsmp">Try an example</button><button class="btn line" type="button" onclick="window.print()">🖨 Print</button></div>
+  </div>
+  <div id="qout"></div>
+</section>
+
+<section class="mode" id="m-score">
+  <h2 class="sec">Score one piece of work</h2>
+  <p class="lead">Content points and language points, entered separately. The page gives the content grade, a language line for the margin, and the sentence for the grade book. Use it until the habit is automatic.</p>
+  <div class="panel">
+    <div class="grid3">
+      <div><label class="f">Student lane</label><select id="s-lane"><option value="n">Newcomer</option><option value="e">Emerging</option><option value="p" selected>Progressing</option><option value="c">Challenge</option></select></div>
+      <div><label class="f">Content points earned</label><input type="number" id="s-ce" value="17" min="0"></div>
+      <div><label class="f">Content points possible</label><input type="number" id="s-cp" value="20" min="1"></div>
+      <div><label class="f">Language feature you are watching this unit</label><select id="s-feat"><option>complete sentences</option><option>past-tense verb endings</option><option>transitions (however, as a result)</option><option>the unit's academic vocabulary</option><option>subject–verb agreement</option><option>citing evidence with a frame</option><option>capital letters and periods</option></select></div>
+      <div><label class="f">That feature, this time</label><select id="s-fl"><option value="2">Present and mostly correct</option><option value="1">Attempted; some errors</option><option value="0">Not yet</option></select></div>
+      <div><label class="f">District rule for language in content grades</label><select id="s-pol"><option value="0">Not counted (report separately)</option><option value="5">Up to 5% of the grade</option><option value="10">Up to 10% of the grade</option></select></div>
+    </div>
+    <div class="row"><button class="btn navy" type="button" id="sgo">Score it</button></div>
+    <div id="sout" style="margin-top:12px"></div>
+  </div>
+</section>
+
+<section class="mode" id="m-rules">
+  <h2 class="sec">The rules behind fair grading</h2>
+  <div class="grid2">
+    <div class="card"><h4>What the law expects</h4><ul><li>English learners must have <b>meaningful access</b> to the same curriculum and the same grades as everyone else (Lau v. Nichols; the Equal Educational Opportunities Act). A grade that is really a language score denies that access twice: it hides the content the student learned and it penalizes the thing the school is supposed to be teaching.</li><li>The Castañeda standard asks whether the program actually works. Grades that track English level rather than content learning are the first evidence a reviewer reads that it doesn't.</li><li>Retention or failure <b>for language reasons alone</b> is not defensible. The student's Language Service Plan has a grading section for exactly this reason — read it.</li></ul></div>
+    <div class="card"><h4>What fair looks like in practice</h4><ul><li><b>Two scores, always.</b> Content: did the student show the concept, in words, a diagram, a label, a list, aloud or in Spanish? Language: one feature, named, with feedback. The content score is the grade.</li><li><b>Same standard, different evidence.</b> A Newcomer proves "describes the water cycle" with a labeled diagram and four words; a Challenge student with a paragraph. Both met the standard.</li><li><b>No courtesy pass.</b> A C for "trying" tells the student and the family nothing and hides a gap. Score the content honestly; scaffold until the content shows.</li><li><b>Language counts where the standard is language.</b> In ELA, the writing standards are the content. Even there, grade the feature you taught, not every error.</li><li><b>Tests are different.</b> State tests are scored to their own rubrics; the fairness lever there is the accommodations in the LSP, in place before the window.</li></ul></div>
+  </div>
+  <div class="links"><a href="read-your-roster.html">What a Level 2 can do, and what is fair to grade →</a><a href="accommodations-cards.html">Accommodations, MAAP-checked →</a><a href="el-assistants.html">Fair Assessment Clinic (AI prompt) →</a><a href="sentence-frames.html">150 frames by level →</a></div>
+</section>
+
+<div class="note"><b>How it decides.</b> The split uses word lists (grammar, spelling, conventions, vocabulary, organization → language; evidence, accuracy, explanation, steps → content) and lets you flip any line, because your rubric knows better than a word list. Lane expectations follow the hub's four lanes and the ELPA21 level descriptors (<a href='read-your-roster.html'>Read Your Roster</a>). Legal basis: Lau v. Nichols, the EEOA, Castañeda v. Pickard, and the grading section of the Mississippi Language Service Plan. District grading policy governs whether language may count toward a content grade at all.</div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+
+const LANE={n:["Newcomer","var(--lane-n)"],e:["Emerging","var(--lane-e)"],p:["Progressing","var(--lane-p)"],c:["Challenge","var(--lane-c)"]};
+const LANGW=/\b(grammar|grammatical|spelling|spell|punctuation|mechanics|conventions|complete sentences?|sentence structure|sentence fluency|fluency|word choice|vocabulary|academic (language|vocabulary|words)|transitions?|neat|neatness|handwriting|legib|capitaliz|voice|tone|clarity|clear(ly)? written|well[- ]written|organization|organized|paragraph|essay format|formal|register|articulate|pronunciation|speaks? clearly|eye contact|length|at least \d+ (sentences|paragraphs|words))\b/i;
+const CONTW=/\b(accurate|accuracy|correct(ly)?|evidence|data|claim|reason|explain|explanation|concept|cause|effect|identif|calculat|solve|solution|steps?|procedure|label|diagram|hypothesis|conclusion|analy|compar|contrast|describe|define|definition|formula|equation|graph|measure|process|function|structure|date|event|source|argument|thesis|theme|character|summar|infer|predict|classif)\b/i;
+/* lane-fair expectation for a language criterion */
+function laneLang(c){const l=c.toLowerCase();
+ if(/vocab|academic/.test(l))return["Uses the content words from the word bank, in any form — labels count.","Uses 3–5 content words in framed sentences.","Uses the unit vocabulary in own sentences; frames optional.","Precise academic vocabulary throughout, as for any student."];
+ if(/complete sentence|sentence|grammar|convention|mechanic|spelling|punctuation|capital/.test(l))return["Not scored. Words, labels, lists and drawings carry the content.","Scored on the frame only: did the frame get completed? Spelling of content words from the bank.","One feature named and scored (e.g., past-tense endings); other errors marked, not counted.","Grade-level expectation; feedback on register and precision."];
+ if(/organiz|paragraph|essay|transition|length|at least/.test(l))return["A completed organizer, table or sequence replaces the paragraph.","Organizer plus two or three framed sentences; length not scored.","Paragraph with an organizer; transitions from a posted list.","Full structure as assigned."];
+ if(/clarity|clear|voice|tone|formal|register|articulate/.test(l))return["Clear enough to see the idea — in a drawing, a word or Spanish.","Clear with a frame.","Clear in simple academic English; one register feature coached.","Formal register expected; coached, not penalized."];
+ if(/pronunc|speak|eye contact|presentation/.test(l))return["Points to, shows, or says key words; a partner may voice the rest.","Short framed sentences; notes allowed.","Presents with notes; academic words required.","As assigned."];
+ return["Not scored for a newcomer; content shown another way.","Scored lightly, with a frame.","Scored on one named feature.","Grade-level expectation."];}
+function classify(c){const l=c.toLowerCase();const lang=LANGW.test(l),cont=CONTW.test(l);if(lang&&!cont)return"lang";if(cont&&!lang)return"cont";if(lang&&cont){return /vocab|complete sentence|grammar|spelling|punctuation|mechanic|convention|transition|organiz|neat|length/.test(l)?"lang":"cont";}return"cont";}
+let CRIT=[];
+document.getElementById("rsmp").addEventListener("click",()=>{document.getElementById("rub").value="Claim is clearly stated and scientifically accurate (4)\nUses two pieces of evidence from the lab data (4)\nReasoning explains how the evidence supports the claim (4)\nUses complete sentences and correct grammar (3)\nSpelling and punctuation (2)\nUses scientific vocabulary from the unit (3)";splitRubric();});
+document.getElementById("rgo").addEventListener("click",splitRubric);
+function splitRubric(){const lines=document.getElementById("rub").value.split(/\r?\n/).map(s=>s.replace(/^\s*(\d+[.)]|[-•*])\s*/,"").trim()).filter(Boolean);if(!lines.length){document.getElementById("rout").innerHTML='<p class="lead">Paste at least one criterion.</p>';return;}CRIT=lines.map(t=>({t,k:classify(t)}));drawRubric();}
+function drawRubric(){const o=document.getElementById("rout");const cont=CRIT.filter(c=>c.k==="cont"),lang=CRIT.filter(c=>c.k==="lang");
+ const pts=s=>{const m=s.match(/\((\d+)\s*(pts?|points?)?\)|(\d+)\s*(pts?|points?)/i);return m?+(m[1]||m[3]):null;};const cp=cont.map(c=>pts(c.t)).filter(x=>x!=null).reduce((a,b)=>a+b,0),lp=lang.map(c=>pts(c.t)).filter(x=>x!=null).reduce((a,b)=>a+b,0);
+ o.innerHTML=`<div class="crit"><div class="col"><h4>Content — this is the grade${cp?` · ${cp} pts`:""}</h4>${cont.map(c=>`<div class="line"><div class="t"><span>${esc(c.t)}</span><button type="button" class="flip" data-i="${CRIT.indexOf(c)}">→ language</button></div><div class="lanes">${["n","e","p","c"].map(k=>`<div style="--lc:${LANE[k][1]}"><b>${LANE[k][0]}</b>${k==="n"?"Same standard; evidence may be a labeled diagram, a list, a sequence, an oral answer or Spanish.":k==="e"?"Same standard; evidence in framed sentences, a table or an organizer.":k==="p"?"Same standard; a paragraph with an organizer.":"Same standard, as assigned."}</div>`).join("")}</div></div>`).join("")||'<div class="line">No content lines yet — flip some across.</div>'}</div>
+ <div class="col lang"><h4>Language — reported separately${lp?` · ${lp} pts moved out of the grade`:""}</h4>${lang.map(c=>{const L=laneLang(c.t);return`<div class="line"><div class="t"><span>${esc(c.t)}</span><button type="button" class="flip" data-i="${CRIT.indexOf(c)}">→ content</button></div><div class="lanes">${["n","e","p","c"].map((k,i)=>`<div style="--lc:${LANE[k][1]}"><b>${LANE[k][0]}</b>${L[i]}</div>`).join("")}</div></div>`}).join("")||'<div class="line">No language lines — this rubric already grades content only.</div>'}</div></div>
+ <div class="card"><h4>How to use it tomorrow</h4><ul><li>The <b>content column is the grade</b>, for every lane, on the same standard. ${cp&&lp?`Here that is ${cp} of the original ${cp+lp} points; rescale to 100.`:""}</li><li>The <b>language column</b> becomes written feedback on <b>one</b> named feature per unit — or, where district policy counts language, no more than 5–10% of the grade, scored to the lane's expectation.</li><li>Say the lane expectation out loud when you hand out the task: "Show me the claim and two pieces of evidence — a labeled diagram counts."</li></ul><div class="links"><a href="#score" onclick="setMode('score')">Score a piece of work this way →</a><a href="read-your-roster.html">Which lane is the student in? →</a></div></div>`;
+ o.querySelectorAll(".flip").forEach(b=>b.addEventListener("click",()=>{const c=CRIT[+b.dataset.i];c.k=c.k==="cont"?"lang":"cont";drawRubric();}));}
+/* ---- quiz ---- */
+const IDIOMS=["come up with","take into account","taking into account","takes into account","figure out","point out","rule out","in light of","on the other hand","as a matter of fact","make up","carry out","bring about","account for","in terms of","get rid of","in order to","take place","keep track","run out","end up","give rise to","look up","set up","turn into","deal with","go through","put together","by and large","all of a sudden","at stake","best describes","most likely","least likely"];
+function qtype(s){const l=s.toLowerCase();if(/\b[a-d][.)]\s/i.test(s)||/which of the following|best describes|select the|choose the/.test(l))return"Multiple choice";if(/^(true|false)\b|true or false/.test(l))return"True / false";if(/_{3,}|fill in|complete the sentence/.test(l))return"Fill in the blank";if(/compare|contrast|similar|differ/.test(l))return"Compare / contrast";if(/\bwhy\b|explain|justify|reason|cause/.test(l))return"Explain why";if(/\bhow\b|describe the process|steps|procedure/.test(l))return"Explain how";if(/describe|what is|define|identify|list|name/.test(l))return"Describe / identify";if(/argue|do you think|should|position|claim|defend|evaluate|to what extent/.test(l))return"Argue / evaluate";if(/solve|calculate|find the value|simplify|graph|evaluate the expression/.test(l))return"Solve";return"Short answer";}
+function flags(s){const f=[];const words=s.split(/\s+/).length;if(/\b(NOT|EXCEPT|LEAST|never|cannot|no longer)\b/.test(s))f.push("Negative stem — ELs miss it; bold it or ask the positive question");if(words>28)f.push(`Long stem (${words} words) — split into two sentences`);IDIOMS.forEach(i=>{if(s.toLowerCase().includes(i))f.push(`Idiom / phrasal: “${i}”`);});if(/\b(is|are|was|were|been|be)\s+\w+ed\b(\s+by)?/.test(s))f.push("Passive voice — say who did what");if(/\b(which|that|whose)\b.*\b(which|that|whose)\b/.test(s))f.push("Two relative clauses — one idea per sentence");if((s.match(/,/g)||[]).length>=3)f.push("Several clauses — chunk it");if(/\b(former|latter|respectively|aforementioned|vice versa)\b/i.test(s))f.push("Academic connective ELs rarely know (former/latter, respectively)");return f;}
+function topic(s){const m=s.replace(/^\d+[.)]\s*/,"").replace(/\b(explain|describe|compare|contrast|why|how|what|which|of the following|is|are|do|does|did|the|a|an|not|best|describes)\b/gi," ").replace(/[?.:]/g," ").trim().split(/\s+/).filter(w=>w.length>3).slice(0,4).join(" ");return m||"the idea";}
+function lanesFor(t,s){const T=topic(s);
+ const base={
+ "Multiple choice":["Same question read aloud; two choices instead of four; a picture or the term in Spanish beside each choice.","Four choices, read aloud, key words in the stem bolded; a word bank is not needed.","As written, with the stem read aloud if in the LSP.","As written."],
+ "True / false":["Read aloud; student may point or say sí/no; one idea per statement.","Read aloud; ask the student to say which word makes it false.","As written.","As written."],
+ "Fill in the blank":["Word bank of 5 words with pictures; one blank per sentence.","Word bank of 8 words, no pictures.","Word bank optional; spelling of content words from the bank accepted.","As written."],
+ "Explain why":[`A labeled drawing or sequence of the topic with three content words; or the answer said aloud in English or Spanish and noted by you.`,`Frame: “___ happened because ___. I know because ___.” plus a word bank of six content words.`,`Paragraph with an organizer (cause → effect → evidence); frame optional; the unit's academic words required.`,`As written; expect “because / as a result / which led to” and a cited piece of evidence.`],
+ "Explain how":[`Number the steps under pictures; label each with one word from the bank.`,`Frame per step: “First ___. Then ___. Finally ___.” with the word bank.`,`A sequenced paragraph; transitions from a posted list.`,`As written; precise verbs and sequence language expected.`],
+ "Compare / contrast":[`A T-chart or Venn with words and drawings; two items in each column.`,`Frame: “Both ___ and ___ ___. However, ___ ___ while ___ ___.” with the word bank.`,`Paragraph with a comparison organizer; “whereas / unlike / similarly” required.`,`As written; expect point-by-point structure.`],
+ "Describe / identify":[`Point to, label or match; a word bank with pictures.`,`Two framed sentences: “___ is ___. It has ___.”`,`Short paragraph; academic words required.`,`As written.`],
+ "Argue / evaluate":[`Pick a side by circling; give one reason as a word or picture; say it aloud.`,`Frame: “I think ___ because ___. One example is ___.”`,`Claim, two reasons, one counterclaim with a frame for the counterclaim.`,`As written; counterclaim and rebuttal expected.`],
+ "Solve":[`Same problem; word problems reduced to one sentence plus a picture; the math is the standard.`,`Same problem; key words boxed; “First I ___” frame for the explanation.`,`As written; explanation paragraph with an organizer.`,`As written.`],
+ "Short answer":[`Answer with a word, a label, a drawing or in Spanish; read the question aloud.`,`One framed sentence plus a word bank.`,`Two or three sentences; frame optional.`,`As written.`]};
+ return base[t]||base["Short answer"];}
+function sample(t,s){const l=s.toLowerCase();const hit={"Explain why":/plant|light|dark|grow|photosynth/,"Compare / contrast":/aerobic|anaerobic|respiration/,"Explain how":/leaf|food|photosynth|plant/}[t];if(!hit||!hit.test(l))return null;const T=topic(s);const S={
+ "Explain why":[`[drawing of ${T}] — no light → no food → small`,`${T.charAt(0).toUpperCase()+T.slice(1)} happened because there was no light. I know because the plant was small.`,`The plants in the dark did not grow as tall because they could not make food without light. The data show the dark plant grew 3 cm and the light plant grew 12 cm, which means light is necessary for growth.`,`Without light, photosynthesis cannot occur, so the plants in the closet could not produce glucose for growth; this is supported by the 9 cm difference in height between conditions.`],
+ "Compare / contrast":[`[T-chart] A: oxygen, more energy · B: no oxygen, less energy`,`Both aerobic and anaerobic respiration make energy. However, aerobic uses oxygen while anaerobic does not.`,`Aerobic and anaerobic respiration both release energy from glucose. Whereas aerobic respiration requires oxygen and produces a large amount of ATP, anaerobic respiration occurs without oxygen and produces much less.`,`Although both pathways release energy from glucose, aerobic respiration depends on oxygen and yields far more ATP, whereas anaerobic respiration proceeds without oxygen at a fraction of the yield.`],
+ "Explain how":[`1 [picture] 2 [picture] 3 [picture] — labels: light, water, sugar`,`First the leaf takes in light. Then it uses water and CO₂. Finally it makes sugar.`,`First, the leaf absorbs light energy in the chloroplasts. Next, water and carbon dioxide are combined. Finally, glucose is produced and oxygen is released.`,`Light energy absorbed by chlorophyll drives the splitting of water; the resulting energy carriers power the conversion of carbon dioxide into glucose, releasing oxygen as a byproduct.`]};
+ return S[t]||null;}
+document.getElementById("qsmp").addEventListener("click",()=>{document.getElementById("qz").value="1. Which of the following is NOT a product of photosynthesis?\nA. glucose  B. oxygen  C. carbon dioxide  D. water\n2. Explain why the plants that were placed in the dark closet by the lab group did not grow as tall as the plants on the windowsill.\n3. Compare aerobic and anaerobic respiration.\n4. Describe how a leaf makes food.";makeFair();});
+document.getElementById("qgo").addEventListener("click",makeFair);
+function makeFair(){const raw=document.getElementById("qz").value;const items=[];let cur=null;raw.split(/\r?\n/).forEach(l=>{const s=l.trim();if(!s)return;if(/^\d+[.)]\s/.test(s)||(!cur)){cur={stem:s.replace(/^\d+[.)]\s*/,""),opts:[]};items.push(cur);}else if(/^[a-d][.)]/i.test(s)||/\b[a-d][.)]\s/i.test(s)){cur.opts.push(s);}else{cur.stem+=" "+s;}});
+ const o=document.getElementById("qout");if(!items.length){o.innerHTML='<p class="lead">Paste at least one question.</p>';return;}
+ o.innerHTML=items.map((it,i)=>{const t=it.opts.length?"Multiple choice":qtype(it.stem);const f=flags(it.stem);const L=lanesFor(t,it.stem);const S=sample(t,it.stem);
+ return`<div class="q"><div class="type">Question ${i+1} · ${t}</div><p class="stem">${esc(it.stem)}${it.opts.length?`<br><span class="es">${esc(it.opts.join("  "))}</span>`:""}</p><div class="flags">${f.length?f.map(x=>`<span>${esc(x)}</span>`).join(""):'<span class="ok">Stem is clean — the language load is the content vocabulary only</span>'}</div><div class="lanes">${["n","e","p","c"].map((k,j)=>`<div style="--lc:${LANE[k][1]}"><b>${LANE[k][0]}</b><p>${L[j]}</p>${S?`<i>Fair answer: ${esc(S[j])}</i>`:""}</div>`).join("")}</div></div>`}).join("")+`<div class="card"><h4>Scoring every version</h4><ul><li>All four lanes are scored on the <b>same content standard</b>; what differs is the evidence you accept.</li><li>Where a sample answer appears, it is a model of the <i>form</i> a fair answer takes in each lane (the examples are biology items); for your own items, the lane description is the model.</li><li>Flagged stems: fix them for everyone. A negative stem or an idiom costs native speakers points too.</li></ul><div class="links"><a href="el-assistants.html">Need the whole quiz rewritten? The Fair Assessment Clinic prompt →</a><a href="el-bridge.html">Build MAAP-style items in four lanes →</a></div></div>`;}
+/* ---- score ---- */
+document.getElementById("sgo").addEventListener("click",()=>{const g=i=>document.getElementById(i).value;const ce=+g("s-ce"),cp=+g("s-cp"),fl=+g("s-fl"),pol=+g("s-pol"),lane=g("s-lane"),feat=g("s-feat");const cpct=Math.round(ce/cp*100);let grade=cpct;if(pol){const lp=pol*(fl/2);grade=Math.round(cpct*(100-pol)/100+lp);}
+ const letter=x=>x>=90?"A":x>=80?"B":x>=70?"C":x>=65?"D":"F";const fb=["Not yet — "+feat+": we will practice it this week; fix the three marked spots and resubmit.","Attempted — "+feat+" is there in places; fix the two marked spots.","Yes — "+feat+" is present. Next feature coming."][fl];
+ const lanenote={n:"Newcomer: content shown by diagram, list, oral answer or Spanish counts in full.",e:"Emerging: content shown in framed sentences or an organizer counts in full.",p:"Progressing: paragraph with organizer; one language feature coached.",c:"Challenge: grade-level evidence; register coached."}[lane];
+ document.getElementById("sout").innerHTML=`<div class="scorebox"><h4>${grade}% · ${letter(grade)}</h4><p style="margin:0 0 6px;font-size:14.5px"><b>Content:</b> ${ce}/${cp} = ${cpct}%${pol?` · <b>Language (${pol}% of grade):</b> ${feat}, ${["not yet","attempted","present"][fl]}`:" · language reported separately, not in the grade"}</p><p style="margin:0 0 6px;font-size:14.5px"><b>Margin note:</b> ${esc(fb)}</p><p style="margin:0;font-size:13.5px;color:var(--muted)"><b>Grade book comment:</b> Content ${cpct}% (${lanenote}) · Language focus: ${esc(feat)} — ${["not yet","attempted","present"][fl]}.</p></div>`;});
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

@@ -97,6 +97,14 @@ R = [
  ("https://radan55.github.io/elstudentmagazine01/", "Many Voices", "students", "Magazine", "Issue 1",
   "A magazine written for multilingual high-school students.", False),
 
+ ("front-office-kit.html", "The Front Office Kit", "classroom", "Office kit", "14 languages · 20 phrases",
+  "For the registrar: enroll a family that speaks no English — today, legally, kindly — with the board, the survey and the clock.", True),
+ ("family-conference-kit.html", "The Family Conference Kit", "classroom", "Conference kit", "EN/ES · 15 minutes",
+  "A bilingual parent conference for an EL: interpreter checklist, the script with audio, the report card explained, a take-home summary.", True),
+ ("grade-it-fair.html", "Grade It Fair", "classroom", "Grading tool", "Rubric · quiz · score",
+  "Paste a rubric or a quiz; get the version that grades the content, with the English handled separately, in four lanes.", True),
+ ("straight-answers.html", "Straight Answers", "classroom", "FAQ", "40 questions",
+  "The forty questions content teachers actually ask about ELs, answered in a hundred words, with the rule and the tool.", True),
  ("read-your-roster.html", "Read Your Roster: the ELPA21 Level Decoder", "classroom", "Decoder", "4 domains · whole class",
   "Your roster says Level 2. Here is what that student can do in your class, what is fair to grade, and what MAAP allows.", True),
  ("spanish-course/", "Spanish for Teachers: the 6-Module Course", "classroom", "Course", "6 modules · 45–60 min each",
@@ -162,6 +170,8 @@ R = [
  ("https://radan55.github.io/everyteacherisalanguageteacher/", "Every Teacher Is a Language Teacher", "classroom", "PD module", "45–60 min",
   "Self-paced PD that fits a department meeting. Six sections, no facilitator.", False),
 
+ ("ltel-clinic.html", "The Long-Term EL Clinic", "elteacher", "Clinic", "12 weeks · tracker",
+  "Six years an EL and stuck at Writing 2: a roster finder, a 30-minute diagnostic, twelve weeks on the academic register.", True),
  ("teaching-the-elpt.html", "Teaching the ELPT · Special Issue", "elteacher", "Magazine", "Winter 2026–27 · 24 pages",
   "A page-turning issue: four domain features, daily routines with a live timer, sixteen test moves, coaches who read aloud.", True),
  ("https://radan55.github.io/RichardDaniel/language-functions/", "36-Week Language Functions", "elteacher", "Scope & sequence", "36 weeks · K–12",
@@ -195,6 +205,8 @@ R = [
  ("https://radan55.github.io/ms-el-command-center/", "MS EL Command Center", "elteacher", "Reference app", "Mississippi",
   "The reference desk: identification timelines, procedures, §15 accountability.", False),
 
+ ("counselor-desk.html", "The Counselor's EL Desk", "district", "Counselor desk", "5 decisions · worksheets",
+  "Foreign transcripts, placement by level, diplomas and tests, and the seventeen-year-old Level 1 — with printable worksheets.", True),
  ("leaders.html", "For District Leaders", "district", "Start here", "3 questions",
   "Are we compliant, are they growing, what does it cost — and the tools for each.", True),
  ("el-evaluate.html", "Evaluate Your Own EL Program", "district", "Course", "6 sessions",
@@ -226,8 +238,8 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"read-your-roster.html": "2026-11-17", 'https://radan55.github.io/stormphonicslab/': "2026-11-15", 'https://radan55.github.io/stormelresourcelist-/': "2026-11-15", 'https://radan55.github.io/Stormsentencelab/': "2026-11-15", "literacy-lab/": "2026-11-14", "adolescent-literacy-brochure.html": "2026-11-08", "monday-moves.html": "2026-11-08", "teaching-the-elpt.html": "2026-11-07", "elpa21-listening-2/": "2026-11-04", "elpa21-listening/": "2026-11-04", "el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
-PIN = {"read-your-roster.html": "2026-12-20", 'https://radan55.github.io/stormphonicslab/': "2026-12-13", 'https://radan55.github.io/stormelresourcelist-/': "2026-12-06", 'https://radan55.github.io/Stormsentencelab/': "2026-12-06", "literacy-lab/": "2026-12-05", "adolescent-literacy-brochure.html": "2026-11-22", "monday-moves.html": "2026-11-29", "teaching-the-elpt.html": "2026-12-12", "elpa21-listening-2/": "2026-11-25", "elpa21-listening/": "2026-11-25", "el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
+NEW = {"front-office-kit.html": "2026-11-18", "counselor-desk.html": "2026-11-18", "ltel-clinic.html": "2026-11-18", "family-conference-kit.html": "2026-11-18", "grade-it-fair.html": "2026-11-18", "straight-answers.html": "2026-11-18", "read-your-roster.html": "2026-11-17", 'https://radan55.github.io/stormphonicslab/': "2026-11-15", 'https://radan55.github.io/stormelresourcelist-/': "2026-11-15", 'https://radan55.github.io/Stormsentencelab/': "2026-11-15", "literacy-lab/": "2026-11-14", "adolescent-literacy-brochure.html": "2026-11-08", "monday-moves.html": "2026-11-08", "teaching-the-elpt.html": "2026-11-07", "elpa21-listening-2/": "2026-11-04", "elpa21-listening/": "2026-11-04", "el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+PIN = {"front-office-kit.html": "2026-12-23", "counselor-desk.html": "2026-12-23", "ltel-clinic.html": "2026-12-23", "family-conference-kit.html": "2026-12-23", "grade-it-fair.html": "2026-12-23", "straight-answers.html": "2026-12-23", "read-your-roster.html": "2026-12-20", 'https://radan55.github.io/stormphonicslab/': "2026-12-13", 'https://radan55.github.io/stormelresourcelist-/': "2026-12-06", 'https://radan55.github.io/Stormsentencelab/': "2026-12-06", "literacy-lab/": "2026-12-05", "adolescent-literacy-brochure.html": "2026-11-22", "monday-moves.html": "2026-11-29", "teaching-the-elpt.html": "2026-12-12", "elpa21-listening-2/": "2026-11-25", "elpa21-listening/": "2026-11-25", "el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 
