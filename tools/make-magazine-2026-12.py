@@ -398,7 +398,7 @@ text(c, M, H - 86, "EL PUBLISHING", "Fr-X", 54, white)
 text(c, M + 2, H - 102, "THE ENGLISH LEARNER MAGAZINE", "In-B", 7.6, GOLD, track=3)
 text(c, W - M, H - 102, "DECEMBER 2026  ·  NO. 4", "In-B", 7.6, GOLD, "r", track=2)
 hline(c, M, W - M, H - 112, GOLD, .9)
-cl = [("15 LESSONS", "for the three weeks before break"), ("THE SECOND KEY", "original fiction about a door and a word"), ("USED TO / NOW", "the grammar of change, in seven minutes"), ("DAYLIGHT", "real data from eight cities students call home")]
+cl = [("15 LESSONS", "for the three weeks before break"), ("THE SECOND KEY", "original fiction about a door and a word"), ("USED TO / NOW", "the grammar of change, in seven minutes"), ("K–12 EDITION", "the same routine for K–2, 3–5 and 6–8")]
 yy = H - 140
 for a, b in cl:
     text(c, M, yy, a, "In-X", 10.5, GOLDLT, track=1); text(c, M, yy - 12, b, "In-R", 8.6, white); yy -= 36
@@ -413,28 +413,28 @@ rnd = random.Random(12); xx = bx + 8
 while xx < bx + 104:
     bw = rnd.choice([1, 1, 1.5, 2, 3]); rect(c, xx, by + 14, bw, 30, NIGHT); xx += bw + rnd.choice([1, 1.5, 2])
 text(c, bx + 56, by + 5, "RADAN55.GITHUB.IO/EVERYTEACHER", "In-M", 5.2, NIGHT, "c")
-text(c, M, 34, "GRADES 9–12  ·  26 PAGES  ·  ISSUE NO. 4  ·  MANY VOICES · ONE STORM", "In-B", 7, GOLDLT, track=1.4)
+text(c, M, 34, "GRADES K–12  ·  30 PAGES  ·  ISSUE NO. 4  ·  MANY VOICES · ONE STORM", "In-B", 7, GOLDLT, track=1.4)
 c.showPage(); PAGE_MIN[0] = H
 
 # ---------------- 02 CONTENTS ----------------
 runhead(c, "Contents", "December 2026 · No. 4")
 display(c, M, H - 92, ["Inside."], size=46, color=NAVY)
-text(c, M + 150, H - 92, "Four features, six labs, two community pages and the teacher desk.", "Fr-R", 12, MUTED)
+text(c, M + 150, H - 92, "Four features, six labs, community pages, the teacher desk, and a K–12 edition.", "Fr-R", 12, MUTED)
 feat = [("04", "The home language is the bridge", "A three-move routine for any content lesson.", bridge), ("07", "The Window on Pine Street", "A family's first December became a whole street's tradition.", lambda c, x, y, w, h: street(c, x, y, w, h, seed=31, big=False)), ("13", "The Second Key", "Original fiction: a door, a decision, a word.", key_scene), ("17", "The Home Language Wall", "Student publishing with a real audience.", wall_of_cards)]
 tw = (CW - 3 * 10) / 4; ty = H - 118
 for i, (pg, t, d, scn) in enumerate(feat):
     tx = M + i * (tw + 10); c.saveState(); p = c.beginPath(); p.rect(tx, ty - 96, tw, 96); c.clipPath(p, stroke=0, fill=0); scn(c, tx, ty - 96, tw, 96); c.restoreState()
     rect(c, tx, ty - 96, 30, 18, GOLD); text(c, tx + 15, ty - 91, pg, "In-X", 9, NAVYDK, "c")
     col(c, tx, ty - 156, tw, 56, [P(t, S("ft", "Fr-B", 11, 12.5, NAVY, spaceAfter=2)), P(d, S("ftd", "In-R", 7.4, 9.6, MUTED))])
-yy = ty - 180
+yy = ty - 184
 def toclist(c, x, y, w, title, items):
     text(c, x, y, title, "In-X", 7, GOLDINK, track=1.6); hline(c, x, x + w, y - 6, GOLD, .8); ly = y - 24
     for pg, t, d in items:
         text(c, x, ly, pg, "In-X", 13, RUST); text(c, x + 40, ly + 1, t, "In-B", 9.2, NAVY)
         col(c, x + 40, ly - 26, w - 40, 24, [P(d, S("tocd", "In-R", 7.8, 10, MUTED))]); hline(c, x, x + w, ly - 16, RULE); ly -= 40
     return ly
-feats = [("03", "From the editor", "Every language is a way home"), ("04", "Feature · The bridge", "Name it, compare it, carry it, with three supports"), ("06", "December with care", "Light, observances, and three questions first"), ("07", "Reading lab", "The Window on Pine Street + response"), ("09", "Voice studio", "Neighborhood Hour listening script + a 60-second talk"), ("11", "Language workshop", "Used to / now, time connectors, words that travel"), ("13", "Literary lens", "The Second Key + analysis")]
-regs = [("15", "Writing workshop", "A how-to from your kitchen"), ("16", "Data", "Daylight on December 21 in eight cities"), ("17", "Community", "The Home Language Wall + a family interview"), ("19", "Teacher desk", "90-minute block + fifteen lessons"), ("21", "Check & rubric", "Can you explain what changed? + growth log"), ("23", "Answer keys", "Two pages, with the next teaching move"), ("25", "Sources · Back page", "What we read, and the five-day challenge")]
+feats = [("03", "From the editor", "Every language is a way home"), ("04", "Feature · The bridge", "Name it, compare it, carry it, with three supports"), ("06", "December with care", "Light, observances, and three questions first"), ("07", "Reading lab", "The Window on Pine Street + response"), ("09", "Voice studio", "Neighborhood Hour listening script + a 60-second talk"), ("11", "Language workshop", "Used to / now, time connectors, words that travel"), ("13", "Literary lens", "The Second Key + analysis"), ("15", "Writing & data", "A how-to from home · daylight in eight cities")]
+regs = [("17", "Community", "The Home Language Wall + a family interview"), ("19", "Teacher desk", "90-minute block + fifteen lessons"), ("21", "Check & rubric", "Can you explain what changed? + growth log"), ("23", "Answer keys", "Two pages, with the next teaching move"), ("25", "Sources", "What we read, and how the art was made"), ("26", "K–12 edition", "The routine for K–2, 3–5 and 6–8, with original readings · back page: the five-day challenge")]
 toclist(c, M, yy, C2, "FEATURES & LABS", feats); toclist(c, M + C2 + GUT, yy, C2, "REGULARS & TEACHER DESK", regs)
 rect(c, M, 44, CW, 40, NAVY, r=3)
 col(c, M + 12, 50, CW - 24, 30, [P("<b>Independent classroom edition.</b> Original passages, scripts, activities and art. Students answer in a notebook or on separate paper. Emerging and Progressing are planning labels, not fixed descriptions of ability. Not an official ELPA21 publication.", S("ice", "In-R", 7.8, 10.2, white))])
@@ -759,7 +759,7 @@ display(c, M, H - 92, ["Fifteen lessons. Three weeks."], size=30, color=NAVY)
 sy = standfirst(c, M, H - 132, CW, "Use these between Thanksgiving and winter break. Adjust to your calendar; the lessons are numbered, not dated.")
 cycles = [("WEEK 1 / Then and now", SLATE, [("01", "Name it, compare it, carry it", "Teach the routine (pp. 4–5) on one term from your content."), ("02", "The 90-minute block", "Page 19 in full, or split across two days."), ("03", "Reading response", "Page 8, A–C; language support frames."), ("04", "Grammar: used to / now", "Page 11, A–D; error hunt."), ("05", "Vocabulary + word families", "Page 12; Friday quiz on six words.")]),
           ("WEEK 2 / Voices", PINE, [("06", "Listening: Neighborhood Hour", "Page 9; two readings, note grid."), ("07", "Speaking: sixty seconds", "Page 10, Rounds 1 and 2; record."), ("08", "December with care", "Page 6 light inquiry; Human Rights Day on the 10th."), ("09", "The Second Key, read", "Page 13; mark the turning point."), ("10", "The Second Key, analyze", "Page 14, A–D; the <i>although</i> sentence.")]),
-          ("WEEK 3 / Publish", RUST, [("11", "Writing: a how-to from home", "Page 15, plan and draft."), ("12", "Visual literacy: daylight", "Page 16; add your birthplace."), ("13", "Home Language Wall, sessions 1–2", "Page 17; family page (18) came home in week 2."), ("14", "Student check", "Pages 21–22; rubric for the writing."), ("15", "Publish + reflect", "Wall opens; Round 2 recordings; the five-day challenge (p. 26) goes home.")])]
+          ("WEEK 3 / Publish", RUST, [("11", "Writing: a how-to from home", "Page 15, plan and draft."), ("12", "Visual literacy: daylight", "Page 16; add your birthplace."), ("13", "Home Language Wall, sessions 1–2", "Page 17; family page (18) came home in week 2."), ("14", "Student check", "Pages 21–22; rubric for the writing."), ("15", "Publish + reflect", "Wall opens; Round 2 recordings; the five-day challenge (back page) goes home.")])]
 yy = sy - 26
 for i, (t, colr, items) in enumerate(cycles):
     bx = M + i * (C3 + GUT); rect(c, bx, yy - 22, C3, 22, colr, r=3); text(c, bx + 10, yy - 15, t, "In-X", 7.4, white, track=1); ly = yy - 30
@@ -863,7 +863,84 @@ rect(c, M, by - 100, CW, 100, NAVY, r=3)
 col(c, M + 14, by - 92, CW - 28, 86, [P("ON THE HUB THIS MONTH", S("oh", "In-X", 6.8, 9.6, GOLDLT)), Spacer(1, 4), P("<b>Today in EL</b> · a daily feed of EL articles and three curated picks. <b>Read Your Roster</b> · the ELPA21 level decoder. <b>Teaching the ELPT</b> · the 24-page special issue for the spring test. <b>The Long-Term EL Clinic</b> · twelve weeks on the academic register. <b>Monday Moves</b> · one two-minute move for every classroom teacher, every week. All free at radan55.github.io/everyteacher", S("ohb", "In-R", 9, 12.4, white))])
 endpage(c, 25, "planner")
 
-# ---------------- 26 BACK COVER ----------------
+
+# ---------------- 26 K–12: OVERVIEW ----------------
+SECTIONS["k12"] = (EMBER, "K–12 EDITION")
+runhead(c, "K–12 edition · Overview", "The same routine, every grade")
+display(c, M, H - 92, ["Every grade.", "Same routine."], size=34, color=NAVY)
+sy = standfirst(c, M, H - 176, CW * .64, "Name it, compare it, carry it works in kindergarten and in chemistry. What changes is the text, the sentence the student carries, and how much of the comparison the teacher does for them. The next three pages give each band its own reading, language target, speaking and writing tasks, family note and a five-lesson week.")
+pull(c, M + CW * .68, H - 92, CW * .32, "“A kindergartner compares two words with a picture. A senior compares two grammars. It is the same move.”", RUST, 12.5)
+rows = [["BAND", "THE TEXT", "NAME IT", "COMPARE IT", "CARRY IT (the sentence)", "GROWTH SAMPLE"],
+        ["K–2", "The Lantern on Our Street (p. 27), 110 words, read aloud", "Say the home word for one picture", "Teacher shows both words; students point to what is the same", "“At home we ____.”  “We have ____.”", "A labeled drawing + one spoken sentence"],
+        ["3–5", "The Walk (p. 28), 210 words", "Write the home word beside the English word", "Circle a shared letter pattern or sound; say if it is a true friend", "“Before, we ____. Now we ____.”", "Three-sentence paragraph, dictated or written"],
+        ["6–8", "The Lantern Hall (p. 29), 260 words, article", "Write the home word; find one more English word in the family", "Explain one difference in word order or ending", "“We used to ____. Now we ____, because ____.”", "A paragraph with one connector + a 30-second talk"],
+        ["9–12", "The Window on Pine Street (p. 7), The Second Key (p. 13)", "Name the term; find the root", "Compare structure (<i>used to</i> vs. imperfect), find a false friend", "“Although ____, ____.”  “The data suggest ____ because ____.”", "Paragraph + how-to + check (pp. 15, 19, 21)"]]
+tdata = [[Paragraph(x, S("k12", "In-X" if r == 0 else "In-R", 6.8 if r == 0 else 8, 9 if r == 0 else 10.4, white if r == 0 else INK)) for x in row] for r, row in enumerate(rows)]
+kt = Table(tdata, colWidths=[40, (CW - 40) * .2, (CW - 40) * .17, (CW - 40) * .21, (CW - 40) * .22, (CW - 40) * .2])
+kt.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), NAVY), ("BACKGROUND", (0, 1), (0, -1), MIST), ("VALIGN", (0, 0), (-1, -1), "TOP"), ("LINEBELOW", (0, 0), (-1, -1), .5, RULE), ("TOPPADDING", (0, 0), (-1, -1), 5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5), ("LEFTPADDING", (0, 0), (-1, -1), 6), ("FONTNAME", (0, 1), (0, -1), "In-X")]))
+_, kh = kt.wrap(CW, 400); kt.drawOn(c, M, sy - 18 - kh); yy = sy - 18 - kh - 14
+OV = [P("What stays the same in every band", h2), BL(["The concept comes first, in any language; the English word comes second.", "The comparison is said out loud before it is written.", "The sentence the student carries is academic, complete, and posted on the wall for the month.", "December with care (page 6) applies at every age: no task assumes a belief, and every student has a December."]),
+      P("What changes", h2), P("<b>How much the teacher does.</b> In K–2 the teacher supplies both words and the picture; by 6–8 students find the home word themselves; by 9–12 they explain the grammar. <b>The length of the text.</b> 110 words read aloud, then 210, 260, and the full stories. <b>The grammar target.</b> <i>have / like</i> → <i>before / now</i> → <i>used to / now</i> + a connector → <i>although</i> and discipline frames."),
+      P("ELPA21 grade bands", h2), P("ELPA21 reports in K, 1, 2–3, 4–5, 6–8 and 9–12. The pages here are grouped K–2, 3–5 and 6–8 for planning; the K–2 page notes where kindergarten differs from second grade. Levels 1–5 apply across all bands, so a Level 2 second grader and a Level 2 ninth grader share the same descriptor and need very different texts.", bodyS),
+      P("Elementary and middle school teachers", h2r), P("The Elementary Newcomer Kit, the Picture Dictionary issues and Storm Studio: Elementary Edition on the hub pair with these pages.", bodyS)]
+columns(c, OV, 2, yy, 44)
+endpage(c, 26, "k12")
+
+# ---------------- 27 K–2 ----------------
+runhead(c, "K–12 edition · Kindergarten to grade 2", "Read aloud · picture support")
+display(c, M, H - 92, ["K–2: The Lantern", "on Our Street."], size=32, color=NAVY)
+sy = standfirst(c, M, H - 172, CW * .62, "An original read-aloud with a repeating line, six picture words, one sentence to carry, and a show-and-tell. Kindergarten: say and draw. Grades 1–2: say, draw and write the sentence.")
+rect(c, M + CW * .66, sy - 2, CW * .34, H - 92 - sy + 2, NAVY, r=3); lantern(c, M + CW * .83, H - 140, .7)
+col(c, M + CW * .66 + 10, sy + 6, CW * .34 - 20, 40, [P("THE SENTENCE TO CARRY", S("k2s", "In-X", 6.6, 9, GOLDLT)), P("“At home we ____.”  ·  “We have ____.”", S("k2sb", "Fr-I", 11, 13.5, white))])
+K2 = [P("The read-aloud · 110 words", h2), P("<b>The Lantern on Our Street</b>", S("k2t", "Fr-B", 12, 14, NAVY, spaceAfter=3)),
+      P("Our street is dark in December. Mama has a lantern. It is yellow. We walk to the first house. We sing. The door opens. We walk to the next house. We sing. The door opens. Mr. Boyd has a guitar. Mrs. Patel has a plate of sweets. Now we are ten people. Now we are twelve. At the last house we all sing together. The street is not dark anymore. At home we hang the lantern in the window. Tomorrow we will walk again.", S("k2r", "In-R", 10.2, 15, INK, spaceAfter=6)),
+      P("Read it twice. The second time, children say the repeating lines with you: <i>We sing. The door opens.</i>", bodyS),
+      P("Six picture words", h2), P("<b>lantern · door · street · sing · house · window.</b> Show a picture for each. <b>Name it:</b> children say the word in any language they know. <b>Compare it:</b> you say both words; children clap if they start with the same sound. <b>Carry it:</b> the class says “We have a ____” for each picture.", body),
+      P("Talk about it", h2), NL(["Who has the lantern?", "What happens when they sing?", "How many people are walking at the end?", "What does your family have at home in December? (Any answer is right.)"]),
+      P("Show and tell · speaking", h2), P("Each child brings or draws one thing from home: a food, a song, a light, a game. They say two sentences: <i>At home we ____. We have ____.</i> Partners repeat it back. Kindergarten may say one sentence; grade 2 adds <i>because</i>.", body),
+      P("Draw and write", h2), P("Fold a paper in half. Left: a drawing of the street in the story. Right: a drawing of home. Under each, the carried sentence. Grade 2: add one more sentence with <i>and</i>.", body),
+      P("Five short lessons", h2), P("<b>1</b> Read-aloud + picture words. <b>2</b> Second read + talk questions. <b>3</b> Name it / compare it with the six pictures; a home-language word wall. <b>4</b> Show and tell. <b>5</b> Draw and write; hang the pages in the hallway as the K–2 Lantern Wall.", bodyS),
+      P("Family note (send home)", h2p), P("<i>This week we read a story about a street in December. Ask your child: What do we have at home in December? They may answer in any language. Please send one word or a small drawing for our wall.</i> (Spanish: <i>Pregúntele a su hijo/a: ¿Qué tenemos en casa en diciembre? Puede responder en cualquier idioma.</i>)", bodyS),
+      P("Growth sample", h2r), P("Keep the draw-and-write page. In January, repeat the two sentences with a new topic and compare: more words, a connector, a complete sentence written alone.", bodyS)]
+columns(c, K2, 2, sy - 14, 44)
+endpage(c, 27, "k12")
+
+# ---------------- 28 GRADES 3–5 ----------------
+runhead(c, "K–12 edition · Grades 3–5", "Before / now · a how-to")
+display(c, M, H - 92, ["3–5: The Walk."], size=32, color=NAVY)
+sy = standfirst(c, M, H - 132, CW * .62, "An original reading at about a fourth-grade level, a <i>before / now</i> language target, six words with a home-language column, a short how-to, and a five-lesson week.")
+rect(c, M + CW * .66, sy - 2, CW * .34, H - 92 - sy + 2, PINE, r=3)
+col(c, M + CW * .66 + 10, sy + 6, CW * .34 - 20, 40, [P("THE SENTENCE TO CARRY", S("k5s", "In-X", 6.6, 9, GOLDLT)), P("“Before, we ____. Now we ____.”", S("k5sb", "Fr-I", 11, 13.5, white))])
+G5 = [P("The reading · 210 words", h2), P("<b>The Walk</b>", S("k5t", "Fr-B", 12, 14, NAVY, spaceAfter=3)),
+      P("When Luis moved to Pine Street, he did not know anyone. He walked past eleven houses every morning and never said hello. His mother remembered the December walks in her old town. Neighbors carried candles from house to house and sang at every door. “Nobody here knows the song,” Luis said. “Then we will teach them,” his mother said.<br/>There was a problem. The lease said no candles on the porch. Luis wrote an email to the landlord and asked about battery lanterns. The answer was yes.<br/>Luis wrote an invitation in English and put one in every mailbox. He explained the plan: a walk, one song, no pressure. On December 16, four doors opened. One neighbor brought cookies. Another brought a guitar. By the end of the street, fourteen people were walking.<br/>Before the walk, Luis knew nobody. Now he knows the whole street. The neighbors call it the Pine Street Walk, and they do it every year.", S("k5r", "In-R", 9.6, 13.6, INK, spaceAfter=6)),
+      P("Understand", h2), NL(["What was the problem with candles, and how did Luis solve it?", "What did the invitation promise? Find the three things.", "Before the walk, Luis knew nobody. What is true now?"]),
+      P("Language target · before / now", h2), P("Write the two sentences from the last paragraph on the board. Ask: which word tells us about the past? Which tells us about today? <b>Name it:</b> how do you say <i>before</i> and <i>now</i> at home? (Spanish: <i>antes / ahora</i>.) <b>Compare it:</b> are they short words in your language too? <b>Carry it:</b> every student says one true pair: <i>Before, I ____. Now I ____.</i>", body),
+      P("Six words", h2), P("<b>neighbor · invitation · lantern · lease · problem · promise.</b> Make a three-column chart: English · my language · a picture or example. Students fill the middle column in any language and read their row to a partner.", bodyS),
+      P("Write · a short how-to", h2), P("Choose something you do at home in December (a food, a game, a decoration). Write a title, three materials and four steps using <i>First, Then, Next, Finally.</i> Read it to a partner who acts it out.", body),
+      P("Speak · 30 seconds", h2), P("Tell a partner one thing your family does in December, or something you would like to start. Use one <i>before / now</i> pair.", bodyS),
+      P("Five lessons", h2), P("<b>1</b> Read + Understand 1–3. <b>2</b> Before / now; the word chart. <b>3</b> Speak, both partners. <b>4</b> Write the how-to. <b>5</b> Read the how-tos aloud; post them with the K–2 pages. <b>Family note:</b> the English/Spanish letter on page 18 works as written; cut the four questions to two for this age.", bodyS),
+      P("Growth sample", h2r), P("The how-to is the December sample. Score it with the page-22 rubric using only the Meaning and Structure rows.", bodyS)]
+columns(c, G5, 2, sy - 14, 44)
+endpage(c, 28, "k12")
+
+# ---------------- 29 GRADES 6–8 ----------------
+runhead(c, "K–12 edition · Grades 6–8", "Used to / now · one connector")
+display(c, M, H - 92, ["6–8: The Lantern Hall."], size=32, color=NAVY)
+sy = standfirst(c, M, H - 132, CW * .62, "An original article about a student-run tradition, the full <i>used to / now</i> target with one connector, a paragraph with evidence, a 30-second talk, and a five-lesson week that feeds a check.")
+rect(c, M + CW * .66, sy - 2, CW * .34, H - 92 - sy + 2, RUST, r=3)
+col(c, M + CW * .66 + 10, sy + 6, CW * .34 - 20, 40, [P("THE SENTENCE TO CARRY", S("k8s", "In-X", 6.6, 9, GOLDLT)), P("“We used to ____. Now we ____, because ____.”", S("k8sb", "Fr-I", 11, 13.5, white))])
+G8 = [P("The article · 260 words", h2), P("<b>Two Hundred Lanterns and One Rule</b>", S("k8t", "Fr-B", 12, 14, NAVY, spaceAfter=3)),
+      P("Three years ago, the main hallway at one middle school used to be empty in December. Now, on the last Friday before break, more than two hundred paper lanterns hang from the ceiling, each one carrying a sentence about a family tradition in English and in a home language.<br/>The idea came from an eighth grader named Amara. “I wanted a place where every family showed up, not just the ones with a holiday,” she said. The first year, thirty-one students made lanterns. This year the sentences are in nineteen languages.<br/>The hardest part was not the art. It was the rules. The fire marshal said no candles, which everyone expected. He also said nothing could hang below seven feet, so the students measured every lantern and moved the whole display up. They lost a week.<br/>Not every lantern describes a holiday. One says, “We don't celebrate anything in December, so we watch movies for three days.” Amara says that one is her favorite, because it belongs there too. “The point is not the holiday,” she said. “The point is that everybody has a December.”<br/>Before the Lantern Hall existed, students used to walk through the hallway without looking up. Now they stop, read, and ask each other how to pronounce the words.", S("k8r", "In-R", 9.4, 13.2, INK, spaceAfter=6)),
+      P("Understand", h2), NL(["What used to happen in the hallway, and what happens now?", "What two rules did the fire marshal give?", "Why is the movie lantern Amara's favorite? Quote her."]),
+      P("Language target · used to / now + because", h2), P("Find the two <i>used to / now</i> sentences in the article. <b>Name it:</b> how does your language show a habit that stopped? (Spanish uses one verb ending: <i>caminaba</i>.) <b>Compare it:</b> English adds <i>used to</i> before the verb; your language may change the verb instead. <b>Carry it:</b> write the carried sentence about your own school, with a real reason after <i>because</i>.", body),
+      P("Write · a paragraph with evidence", h2), P("In 60–100 words: How did the Lantern Hall change the school? Use one <i>used to / now</i> pair, one <i>because</i>, and one detail from the article in quotation marks.", body),
+      P("Speak · 30 seconds", h2), P("Describe a tradition or routine that changed, at home or at school. Use <i>used to</i> and <i>now</i>. Partner names the pair they heard.", bodyS),
+      P("Five lessons", h2), P("<b>1</b> Read + Understand. <b>2</b> The language target; error hunt from page 11 (same mistakes appear here). <b>3</b> Speak, two rounds; record Round 2. <b>4</b> Write the paragraph; partner checks for the pair, the <i>because</i> and the quote. <b>5</b> Lantern sentences: each student writes one true December sentence in English and a home language for a class display. <b>Family note:</b> page 18 as written.", bodyS),
+      P("Check and growth", h2r), P("The paragraph is the December writing sample; the Round 2 recording is the speaking sample. Score both with the page-22 rubric. Students ready for more can take the full page-21 check.", bodyS)]
+columns(c, G8, 2, sy - 14, 44)
+endpage(c, 29, "k12")
+
+# ---------------- 30 BACK COVER ----------------
 street(c, 0, 0, W, H, seed=61, moon=False, big=False)
 fade(c, 0, 0, W, H, a_bottom=.92, a_top=.5)
 text(c, M, H - 64, "EL PUBLISHING", "Fr-X", 26, white); text(c, M, H - 80, "DECEMBER 2026  ·  THE CLOSING CHALLENGE", "In-B", 7.4, GOLD, track=2)
