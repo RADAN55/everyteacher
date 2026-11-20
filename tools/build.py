@@ -630,6 +630,17 @@ def series_page(r):
             f'<small>{e(m["fmt"])} · {e(m["size"])}{" · opens on its own site" if m["ext"] else ""}</small></div></a>'
         )
     label = GLABEL[r["group"]]
+    shelves = getattr(catalog, "SHELVES", {}).get(r["is_series"])
+    if shelves:
+        card_by = dict(zip(r["members"], cards)); used = set(); parts = []
+        for heading, blurb, hrefs in shelves:
+            cs = [card_by[h] for h in hrefs if h in card_by]; used.update(hrefs)
+            if cs: parts.append(f'<h2 class="shelf">{e(heading)}</h2><p class="lead">{e(blurb)}</p><div class="grid">{"".join(cs)}</div>')
+        rest = [card_by[h] for h in r["members"] if h not in used]
+        if rest: parts.append(f'<h2 class="shelf">More</h2><div class="grid">{"".join(rest)}</div>')
+        grid_html = "".join(parts)
+    else:
+        grid_html = f'<div class="grid">{"".join(cards)}</div>'
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -652,6 +663,7 @@ def series_page(r):
   .shot{{aspect-ratio:700/509;background:var(--navy-dk-bg);display:grid;place-items:center;overflow:hidden}}.shot img{{width:100%;height:100%;object-fit:cover;display:block}}.shot .ph{{color:var(--gold);font-size:34px}}
   .mb{{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}}.mb b{{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.2;color:var(--navy)}}.mb span{{font-size:14px}}.mb small{{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-top:4px}}
   .back{{display:inline-block;margin-top:22px;font-size:14px;font-weight:600}}
+  h2.shelf{{font-family:Fraunces,Georgia,serif;font-size:22px;color:var(--navy);margin:28px 0 4px;padding-top:18px;border-top:2px solid var(--gold)}}h2.shelf:first-of-type{{border-top:0;padding-top:0;margin-top:8px}}
   footer{{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}}footer .wrap{{max-width:1000px;margin:0 auto;padding:0 22px}}footer b{{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}}footer a{{color:var(--gold)}}
 </style>
 {THEME_LINK}
@@ -661,7 +673,7 @@ def series_page(r):
 <header><div class="head-in"><p class="brand"><a href="index.html">EL PUBLISHING</a> · {e(label.upper())} · A SERIES</p><h1>{e(r["title"])}</h1><p class="tag">{e(r["one"])}</p></div></header>
 <main>
 <p class="lead">{e(r["long"])}</p>
-<div class="grid">{"".join(cards)}</div>
+{grid_html}
 <a class="back" href="all.html?g={e(r["group"])}">← Everything under {e(label)}</a>
 </main>
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>

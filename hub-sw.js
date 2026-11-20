@@ -15,7 +15,7 @@
 
    Bump VERSION on any change to the shell list; the activate step drops old
    caches, including the retired newcomer-v* ones. */
-const VERSION = "elhub-v1-20261120e";
+const VERSION = "elhub-v1-20261120f";
 
 const SHELL = [
   "./",

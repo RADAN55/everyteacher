@@ -310,6 +310,19 @@ CORE = [
 ]
 CORE_ORDER = {h: i for i, h in enumerate(CORE)}
 
+# Optional shelves inside a series page: series id -> [(heading, blurb, [hrefs])].
+# Members not named on a shelf fall into a final "More" shelf.
+SHELVES = {
+ "magazines": [
+  ("Professional · the teacher magazine", "The monthly EL Publishing magazine for teachers, numbered from the first issue.",
+   ["https://radan55.github.io/everyteachermagazineeditionone/", "https://radan55.github.io/elpa21speaking01/october/", "el-magazine-2026-11.html", "el-magazine-2026-12.html"]),
+  ("Professional · special issues", "Single-topic issues for the EL teacher's desk.", ["teaching-the-elpt.html"]),
+  ("Professional · bulletins", "Short, regular reads: one page a month, or one a day.", ["language-bridge-2026-09.html", "field-notes.html", "tech-radar.html"]),
+  ("For students", "Magazines written for multilingual students to read themselves.", ["https://radan55.github.io/elstudentmagazine01/"]),
+ ],
+}
+
+
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 
 
