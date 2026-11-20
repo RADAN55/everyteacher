@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today in EL · the daily feed of English-learner pedagogy and articles worth a teacher's time · EL Publishing</title>
+<meta name="description" content="Updated every morning: three curated picks with a take and a move to try tomorrow, plus the last thirty days of English-learner pedagogy and education articles from fourteen public sources, searchable and filterable, with Mississippi mentions flagged.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+
+  .today{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .today div{background:var(--paper);border:1px solid var(--rule);padding:10px 14px;border-top:6px solid var(--gold)}
+  .today .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block}
+  .today b{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy);line-height:1.15}
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .pick{background:var(--navy-bg);color:#fff;padding:16px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px}
+  .pick::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.08) 0 2px,transparent 2px 24px)}
+  .pick>*{position:relative}
+  .pick .src{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);font-weight:700}
+  .pick h3{font-family:Fraunces,Georgia,serif;font-size:20px;line-height:1.15;margin:0}
+  .pick h3 a{color:#fff;text-decoration:none}
+  .pick p{margin:0;font-size:14px;color:#D7DBF0}
+  .pick .try{margin-top:auto;background:rgba(201,162,39,.18);border-left:4px solid var(--gold);padding:8px 10px;font-size:13.5px;color:#fff}
+  .pick .try b{color:var(--gold-lt);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block}
+  .pick .lanes{display:flex;gap:4px;flex-wrap:wrap}
+  .pick .lanes span{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:1px 7px;border-radius:999px;background:rgba(255,255,255,.14)}
+  .empty{background:var(--paper);border:1px dashed var(--rule);padding:16px 18px;font-size:14.5px;color:var(--muted);grid-column:1/-1}
+  .tools{background:var(--paper);border:1px solid var(--rule);padding:14px 16px;margin-top:22px}
+  .tools input{font-size:15px;padding:10px 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .chips button{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:4px 11px;border-radius:999px;cursor:pointer}
+  .chips button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .sp{flex:1}
+  .cols{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+  .list .day{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:14px 0 6px}
+  .it{background:var(--paper);border:1px solid var(--rule);padding:10px 14px;margin-top:6px}
+  .it a{font-family:Fraunces,Georgia,serif;font-size:17px;color:var(--navy);text-decoration:none;line-height:1.25}
+  .it a:hover{text-decoration:underline}
+  .it .m{font-size:12px;color:var(--muted);margin-top:2px}
+  .it .m .ms{color:var(--ink-red);font-weight:700}
+  .it p{margin:4px 0 0;font-size:13.5px;color:var(--ink)}
+  .srclist{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .srclist span{font-size:12.5px;border:1px solid var(--rule);border-radius:999px;padding:2px 10px;background:var(--mist)}
+  .srclist span.bad{border-color:var(--ink-red);color:var(--ink-red)}
+  @media (max-width:860px){.today,.picks{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}}
+  @media (max-width:520px){.today,.picks{grid-template-columns:1fr}}
+  @media print{.pick{background:#fff;color:#000;border:1px solid #888}.pick::before{display:none}.pick p,.pick h3 a,.pick .try{color:#000}.it{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · DAILY · EL PEDAGOGY · ARTICLES WORTH YOUR TIME</p>
+    <h1>Today in <em>EL.</em></h1>
+    <p class="tag">Every morning: three picks worth your planning period, each with a take and one move to try tomorrow — and underneath, the last thirty days of English-learner pedagogy and good education writing from fourteen sources, read for you at 4:40 a.m.</p>
+    <div class="cta"><a class="btn" href="#picks-sec">This morning's three</a><a class="btn ghost" href="#el">EL pedagogy — latest</a><a class="btn ghost" href="#gen">Of interest</a></div>
+  </div>
+</header>
+
+<main>
+
+<div class="today"><div><span class="k">Today</span><b id="tday">—</b></div><div><span class="k">Feed updated</span><b id="tupd">—</b></div><div><span class="k">In the last 30 days</span><b id="tcount">—</b></div><div><span class="k">Picks updated</span><b id="tpick">—</b></div></div>
+
+<section id="picks-sec">
+  <h2 class="sec">This morning's three</h2>
+  <p class="lead">Chosen from the feed each morning: the one worth your planning period, with a take and one move to try tomorrow.</p>
+  <div id="picks" class="picks"></div>
+</section>
+
+<div class="tools noprint">
+  <input type="text" id="s" placeholder="Search the last thirty days — vocabulary, newcomer, grading, Mississippi…" aria-label="Search">
+  <div class="chips" id="src"></div>
+  <div class="row" style="margin-top:8px"><label style="font-size:13.5px"><input type="checkbox" id="ms"> Mississippi mentions only</label><span class="sp"></span><button class="btn line sm" type="button" onclick="window.print()">🖨 Print today's page</button></div>
+</div>
+
+<div class="cols">
+  <section><h2 class="sec">EL pedagogy — latest</h2><p class="lead">Articles about teaching English learners, newest first.</p><div id="el" class="list"></div></section>
+  <section><h2 class="sec">Of interest</h2><p class="lead">Good teaching, policy and research for any classroom.</p><div id="gen" class="list"></div></section>
+</div>
+
+<div class="card" id="srcs"><h4>Where this comes from</h4><p>Fourteen public feeds, read every morning at 4:40 Central by the hub's own script, kept thirty days, sorted by whether they are about English learners. Headlines and first lines are the publishers'; links go to the source. The morning picks are drafted by Richard's scheduled assistant and reviewed when he reads them — the take is the hub's, the reporting is theirs.</p><div id="srclist" class="srclist"></div></div>
+
+<div class="note"><b>How it updates.</b> A script in the hub's own repository (<code>tools/fetch-feed.py</code>, run by a GitHub Action at 4:40 a.m. Central) reads the feeds listed in <code>tools/feeds.txt</code> and writes <code>daily/feed.json</code>; the page reads that file when you open it. The three picks come from a separate morning run that writes <code>daily/picks.json</code>. To add a source, add one line to <code>feeds.txt</code>. Nothing is stored about readers.</div>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+
+const fmtD=s=>{const d=new Date(s+(s.length===10?"T12:00:00":""));return d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});};
+const fmtS=s=>{const d=new Date(s+(s.length===10?"T12:00:00":""));return d.toLocaleDateString("en-US",{month:"short",day:"numeric"});};
+document.getElementById("tday").textContent=new Date().toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+let FEED={items:[]},SRC="all";
+const bust="?t="+new Date().toISOString().slice(0,13);
+Promise.all([fetch("daily/feed.json"+bust).then(r=>r.json()).catch(()=>({items:[]})),fetch("daily/picks.json"+bust).then(r=>r.json()).catch(()=>({picks:[]}))]).then(([f,p])=>{FEED=f;drawPicks(p);drawTools();draw();});
+function drawPicks(p){const el=document.getElementById("picks");document.getElementById("tpick").textContent=p.updated?fmtS(p.updated.slice(0,10)):"not yet";
+ if(!p.picks||!p.picks.length){el.innerHTML=`<div class="empty">The first morning run has not happened yet. From tomorrow, three picks appear here by 6 a.m. Central — in the meantime, the feed below is live.</div>`;return;}
+ el.innerHTML=p.picks.slice(0,3).map(k=>`<article class="pick"><div class="src">${esc(k.source||"")}${k.date?" · "+esc(fmtS(k.date)):""}</div><h3><a href="${esc(k.url)}" target="_blank" rel="noopener">${esc(k.title)}</a></h3><p>${esc(k.take||"")}</p>${k.lanes&&k.lanes.length?`<div class="lanes">${k.lanes.map(l=>`<span>${esc(l)}</span>`).join("")}</div>`:""}${k.try?`<div class="try"><b>Try tomorrow</b>${esc(k.try)}</div>`:""}</article>`).join("");}
+function drawTools(){const f=FEED;document.getElementById("tupd").textContent=f.updated?fmtS(f.updated.slice(0,10))+" · "+new Date(f.updated).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"}):"not yet";document.getElementById("tcount").textContent=f.items.length?`${f.counts.el} EL · ${f.counts.gen} general`:"—";
+ const srcs=[...new Set(f.items.map(i=>i.source))].sort();document.getElementById("src").innerHTML=`<button type="button" data-s="all" aria-pressed="true">All sources</button>`+srcs.map(s=>`<button type="button" data-s="${esc(s)}" aria-pressed="false">${esc(s)}</button>`).join("");
+ document.querySelectorAll("#src button").forEach(b=>b.addEventListener("click",()=>{SRC=b.dataset.s;document.querySelectorAll("#src button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));draw();}));
+ document.getElementById("srclist").innerHTML=(f.sources||[]).map(s=>`<span class="${s.ok?"":"bad"}" title="${s.ok?s.items+" items":esc(s.error||"failed")}">${esc(s.source)}${s.ok?"":" · unreachable today"}</span>`).join("")||"<span>Feed list: tools/feeds.txt in the hub repo</span>";}
+function draw(){const q=document.getElementById("s").value.trim().toLowerCase(),ms=document.getElementById("ms").checked;
+ ["el","gen"].forEach(b=>{const el=document.getElementById(b);const its=FEED.items.filter(i=>i.bucket===b&&(SRC==="all"||i.source===SRC)&&(!ms||i.ms)&&(!q||(i.title+" "+i.summary+" "+i.source).toLowerCase().includes(q)));
+  if(!its.length){el.innerHTML=`<div class="empty">${FEED.items.length?"Nothing matches.":"The feed fills in on its first morning run (4:40 a.m. Central)."}</div>`;return;}
+  let day="",h="";its.slice(0,80).forEach(i=>{if(i.date!==day){day=i.date;h+=`<div class="day">${esc(fmtD(day))}</div>`;}h+=`<div class="it"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a><div class="m">${esc(i.source)}${i.ms?' · <span class="ms">Mississippi</span>':""}</div>${i.summary?`<p>${esc(i.summary.length>220?i.summary.slice(0,217)+"…":i.summary)}</p>`:""}</div>`;});
+  if(its.length>80)h+=`<div class="empty">${its.length-80} older items not shown — narrow with search or a source.</div>`;el.innerHTML=h;});}
+document.getElementById("s").addEventListener("input",draw);document.getElementById("ms").addEventListener("change",draw);
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

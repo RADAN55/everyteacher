@@ -483,5 +483,10 @@
   "long": "Forty questions teachers of biology, algebra and history actually ask about English learners — can I take off points for grammar, can she use Google Translate on the test, why is he still an EL after three years, should I tell the family to speak English at home, can an EL be in honors, what do I actually have to do — each answered in about a hundred words, with the rule behind it where there is one and the hub tool that finishes the job. Searchable, filterable by topic, printable.",
   "thumb": "thumbs/straight-answers.jpg",
   "who": "Content teachers"
+ },
+ "today-in-el.html": {
+  "long": "The hub's daily page. Every morning at 4:40 Central a script in the hub's repository reads fourteen public feeds — Colorín Colorado, Larry Ferlazzo, TESOL, Language Magazine, Reading Rockets, Edutopia, Cult of Pedagogy, Hechinger, Chalkbeat, MindShift, NPR Education, Education Week, The 74 and Mississippi Today — keeps thirty days, and sorts items into English-learner pedagogy and articles of interest to any teacher, with Mississippi mentions flagged. A separate morning run chooses three picks and writes a short take and one move to try tomorrow for each. Searchable, filterable by source, printable.",
+  "thumb": "thumbs/today-in-el.jpg",
+  "who": "Every teacher"
  }
 }

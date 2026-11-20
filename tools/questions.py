@@ -20,6 +20,15 @@ WHO = [
 
 Q = [
  ("teachers",
+  "Is there something new to read about teaching ELs today?",
+  "Yes — Today in EL updates every morning: three picks chosen from the day's feed, each with a "
+  "take and one move to try tomorrow, and underneath the last thirty days of English-learner "
+  "pedagogy and good education writing from fourteen sources, searchable, with Mississippi "
+  "mentions flagged.",
+  [("Today in EL: the Daily Feed", "today-in-el.html"),
+   ("EL Tech Radar", "tech-radar.html")]),
+
+ ("teachers",
   "A family who speaks no English is at the front desk. What does the office do?",
   "Enroll today — no Social Security number, no immigration questions, no delay for missing "
   "records — and give the Home Language Survey in the family's language. The Front Office Kit "
