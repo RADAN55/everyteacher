@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T04:21+00:00",
+"updated": "2026-11-20T04:24+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -14,8 +14,8 @@
 },
 {
 "source": "TESOL Blog",
-"ok": true,
-"items": 0
+"ok": false,
+"error": "no items parsed; body starts: <!DOCTYPE html>\r <html dir=\"ltr\" lang=\"en\" class=\"no-js usn\">\r <head>\r             <!-- Google Analytics -->\r "
 },
 {
 "source": "Language Magazine",
@@ -29,8 +29,8 @@
 },
 {
 "source": "Edutopia",
-"ok": true,
-"items": 0
+"ok": false,
+"error": "no items parsed; body starts:        <!doctype html>       <html lang=\"en\">         <head>           <meta charset=\"utf-8\">           <meta "
 },
 {
 "source": "Cult of Pedagogy",
@@ -59,8 +59,8 @@
 },
 {
 "source": "Education Week",
-"ok": true,
-"items": 0
+"ok": false,
+"error": "no items parsed; body starts: <!DOCTYPE html> <html class=\"Page\" lang=\"en\"> <head>     <meta charset=\"UTF-8\">       <meta name=\"robots\" cont"
 },
 {
 "source": "The 74",
@@ -74,8 +74,8 @@
 },
 {
 "source": "The Education Trust",
-"ok": true,
-"items": 0
+"ok": false,
+"error": "no items parsed; body starts: <?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\" \txmlns:content=\"http://purl.org/rss/1.0/modules/conte"
 },
 {
 "source": "Immigrant Learning Center",
