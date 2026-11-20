@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T04:24+00:00",
+"updated": "2026-11-20T04:26+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -15,7 +15,7 @@
 {
 "source": "TESOL Blog",
 "ok": false,
-"error": "no items parsed; body starts: <!DOCTYPE html>\r <html dir=\"ltr\" lang=\"en\" class=\"no-js usn\">\r <head>\r             <!-- Google Analytics -->\r "
+"error": "HTTP Error 404: Not Found"
 },
 {
 "source": "Language Magazine",
@@ -28,9 +28,9 @@
 "error": "HTTP Error 403: Forbidden"
 },
 {
-"source": "Edutopia",
-"ok": false,
-"error": "no items parsed; body starts:        <!doctype html>       <html lang=\"en\">         <head>           <meta charset=\"utf-8\">           <meta "
+"source": "The Conversation — Education",
+"ok": true,
+"items": 15
 },
 {
 "source": "Cult of Pedagogy",
@@ -49,8 +49,8 @@
 },
 {
 "source": "KQED MindShift",
-"ok": false,
-"error": "HTTP Error 404: Not Found"
+"ok": true,
+"items": 8
 },
 {
 "source": "NPR Education",
@@ -58,9 +58,9 @@
 "items": 10
 },
 {
-"source": "Education Week",
-"ok": false,
-"error": "no items parsed; body starts: <!DOCTYPE html> <html class=\"Page\" lang=\"en\"> <head>     <meta charset=\"UTF-8\">       <meta name=\"robots\" cont"
+"source": "EdSurge",
+"ok": true,
+"items": 15
 },
 {
 "source": "The 74",
@@ -84,8 +84,8 @@
 }
 ],
 "counts": {
-"el": 50,
-"gen": 142
+"el": 51,
+"gen": 179
 },
 "items": [
 {
@@ -323,6 +323,15 @@
 "ms": false
 },
 {
+"title": "Google Says Schools Can’t Have Search Without AI. Some Are Finding a Way.",
+"link": "https://www.edsurge.com/news/google-says-schools-cant-have-search-without-ai-some-are-finding-a-way",
+"source": "EdSurge",
+"date": "2026-11-19",
+"summary": "Districts and filtering companies were blocking AI search results long before Google’s new policy.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "As the Denver Preschool Program turns 20, it’s expanding its early childhood mission",
 "link": "https://www.chalkbeat.org/colorado/2026/11/19/denver-preschool-program-launches-first-step-collective/",
 "source": "Chalkbeat",
@@ -521,6 +530,24 @@
 "ms": false
 },
 {
+"title": "AI Has a Place in Education, Just Not in My Classroom",
+"link": "https://www.edsurge.com/news/ai-has-a-place-in-education-just-not-in-my-classroom",
+"source": "EdSurge",
+"date": "2026-11-18",
+"summary": "Despite the rise of AI in schools, a seventh-grade literacy teacher argues for the irreplaceable value of a low-tech classroom centered on foundational ...",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A New Classroom Use for Artificial Intelligence: Grade the Chat, Not Just the Answer",
+"link": "https://www.edsurge.com/news/a-new-classroom-use-for-artificial-intelligence-grade-the-chat-not-just-the-answer",
+"source": "EdSurge",
+"date": "2026-11-18",
+"summary": "Two guests on “This Week with EdSurge” explain how AI can be used to assess when students think through their answers and when they talk with chatbots.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "A Deep Dive Into Alabama’s Reading Gains",
 "link": "https://www.the74million.org/article/a-deep-dive-into-alabamas-reading-gains/",
 "source": "The 74",
@@ -530,12 +557,30 @@
 "ms": true
 },
 {
+"title": "Why Americans are losing confidence in public education",
+"link": "https://theconversation.com/why-americans-are-losing-confidence-in-public-education-293797",
+"source": "The Conversation — Education",
+"date": "2026-11-17",
+"summary": "Political polarization and declining student test scores are two factors fueling people’s mistrust of schools.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "What education issues will Indiana lawmakers consider in 2027?",
 "link": "https://www.chalkbeat.org/indiana/2026/11/17/lawmakers-to-weigh-childcare-funding-and-k-12-budgets-for-2027/",
 "source": "Chalkbeat",
 "date": "2026-11-17",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The beginning of the 2027 legislative session in Indiana looks different than many expected just a short time ago. A na",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "What Happens When AI Suggests Minecraft for a Lesson on Circles?",
+"link": "https://www.edsurge.com/news/what-happens-when-ai-suggests-minecraft-for-a-lesson-on-circles",
+"source": "EdSurge",
+"date": "2026-11-17",
+"summary": "New research on AI-powered personalized learning shows why teacher judgment is crucial when chatbots miss the mark.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -591,6 +636,15 @@
 "summary": "CORINTH, Miss. — Vaughn Dodd is using Magna-Tiles to make a rocketship, carefully selecting different shapes for the nose cone and the tail. The four-year-old pre-K student at Corinth Elementary School knows that a diamond shape is called a rhombus. She knows the sun is a circle. Proficiency with translucent plastic sh",
 "bucket": "gen",
 "ms": true
+},
+{
+"title": "Power Up Learning with an Official Pokémon Club",
+"link": "https://www.edsurge.com/news/power-up-learning-with-an-official-pokemon-club",
+"source": "EdSurge",
+"date": "2026-11-17",
+"summary": "Beyond the card battles lies a secret superpower for educators: a fun, low-stress way to boost student confidence and build community.",
+"bucket": "gen",
+"ms": false
 },
 {
 "title": "Phone Bans Improve Learning, Study Finds — But So Far, Only Slightly",
@@ -791,6 +845,15 @@
 "ms": false
 },
 {
+"title": "States Step Up Their Role Picking Winners Among College Majors and Training Programs",
+"link": "https://ww2.kqed.org/mindshift/2026/11/16/states-step-up-their-role-picking-winners-among-college-majors-and-training-programs/",
+"source": "KQED MindShift",
+"date": "2026-11-16",
+"summary": "A new 50-state report describes how states prioritize funding for particular fields of study.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Parents of Students With Disabilities Fear Losing Texas’ “Life-Changing” School Vouchers",
 "link": "https://www.the74million.org/article/parents-of-students-with-disabilities-fear-losing-texas-life-changing-school-vouchers/",
 "source": "The 74",
@@ -850,6 +913,15 @@
 "source": "Chalkbeat",
 "date": "2026-11-16",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Indianapolis Public Schools board will discuss “school consolidation” on Tuesday, a sign that district officials ar",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "For Special Education Teachers, “Everydayness Is the Enemy”",
+"link": "https://www.edsurge.com/news/for-special-education-teachers-everydayness-is-the-enemy",
+"source": "EdSurge",
+"date": "2026-11-16",
+"summary": "Routine provides structure, but missing the student behind it stops growth. Here’s how special educators can break the cycle.",
 "bucket": "gen",
 "ms": false
 },
@@ -1142,6 +1214,15 @@
 "ms": false
 },
 {
+"title": "Children are not colorblind: Why early conversations about race are essential",
+"link": "https://theconversation.com/children-are-not-colorblind-why-early-conversations-about-race-are-essential-293500",
+"source": "The Conversation — Education",
+"date": "2026-11-12",
+"summary": "Without explicit conversations and learning about race and racial inequality, children might believe stereotypes and draw other false assumptions about others.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Chicago’s Black Student Achievement Committee is meeting for the first time",
 "link": "https://www.chalkbeat.org/chicago/2026/11/12/chicago-public-schools-black-student-achievement-committee-meets/",
 "source": "Chalkbeat",
@@ -1174,6 +1255,15 @@
 "source": "Chalkbeat",
 "date": "2026-11-12",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Pushback on the use of artificial intelligence in the classroom is seeing renewed fervor after tensions flared this mon",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "The Day the Take-Home Essay Died: How I Stopped Grading AI and Started Designing Real Learning",
+"link": "https://www.edsurge.com/news/the-day-the-take-home-essay-died-how-i-stopped-grading-ai-and-started-designing-real-learning",
+"source": "EdSurge",
+"date": "2026-11-11",
+"summary": "When generative AI exposed the flaws in my traditional assignments, I redesigned student learning experiences — turning AI from a cheating tool to a ...",
 "bucket": "gen",
 "ms": false
 },
@@ -1241,6 +1331,15 @@
 "ms": false
 },
 {
+"title": "Can Schools Prepare Students to Vote Without Telling Them What to Think?",
+"link": "https://www.edsurge.com/news/can-schools-prepare-students-to-vote-without-telling-them-what-to-think",
+"source": "EdSurge",
+"date": "2026-11-11",
+"summary": "Two conversations examine how schools help young people weigh the facts and make up their own minds.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Advocates explore ways to boost health affordability and food security in Mississippi",
 "link": "https://mississippitoday.org/2026/11/11/advocates-explore-ways-to-boost-health-affordability-and-food-security-in-mississippi/?utm_medium=rss",
 "source": "Mississippi Today — Education",
@@ -1273,6 +1372,15 @@
 "source": "Chalkbeat",
 "date": "2026-11-10",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The state takeover of Memphis-Shelby County Schools will remain paused until at least December as a local lawsuit plays",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Students creating documentaries with scientists deepens STEM belonging and public trust in science",
+"link": "https://theconversation.com/students-creating-documentaries-with-scientists-deepens-stem-belonging-and-public-trust-in-science-293506",
+"source": "The Conversation — Education",
+"date": "2026-11-10",
+"summary": "In a Rutgers University lab, students and scientists collaborate to tell the story behind scientific research.",
 "bucket": "gen",
 "ms": false
 },
@@ -1313,12 +1421,30 @@
 "ms": false
 },
 {
+"title": "How Can Early-Career Teachers Engage Students? Try Improv.",
+"link": "https://www.edsurge.com/news/how-can-early-career-teachers-engage-students-try-improv",
+"source": "EdSurge",
+"date": "2026-11-10",
+"summary": "Adding elements of theatrical improvisation to his science classes changed how one young teacher saw students — and himself.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Fostering Authentic Belonging",
 "link": "https://languagemagazine.com/2026/11/10/fostering-authentic-belonging/?utm_source=rss&utm_medium=rss&utm_campaign=fostering-authentic-belonging",
 "source": "Language Magazine",
 "date": "2026-11-10",
 "summary": "Becki Cohn-Vargas offers strategies to help Multilingual Learners in unprecedented times Children deeply want to belong. However, if they feel emotionally or physically unsafe, or when they must hide parts of their identity to feel included, they cannot experience a sense of authentic belonging. Identity safety emerges",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "Flag Football is Growing in Popularity, Especially Among Girls",
+"link": "https://ww2.kqed.org/mindshift/2026/11/10/flag-football-is-growing-in-popularity-especially-among-girls/",
+"source": "KQED MindShift",
+"date": "2026-11-10",
+"summary": "Flag football has seen a recent rise in participation, and the girls at Oakland Technical High School are enjoying the experience.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -1367,6 +1493,24 @@
 "ms": false
 },
 {
+"title": "Can AI Tell How Well Teachers Notice? Researchers Are Testing It.",
+"link": "https://www.edsurge.com/news/can-ai-tell-how-well-teachers-notice-researchers-are-testing-it",
+"source": "EdSurge",
+"date": "2026-11-09",
+"summary": "The team will study whether AI can measure a key teaching skill and provide useful feedback faster than humans.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "5 Reports, 5 Different Conclusions About Fairness in School Funding",
+"link": "https://ww2.kqed.org/mindshift/2026/11/09/5-reports-5-different-conclusions-about-fairness-in-school-funding/",
+"source": "KQED MindShift",
+"date": "2026-11-09",
+"summary": "How researchers count education dollars changes the answers to who gets less.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Bringing Whole Books Back to the Classroom",
 "link": "https://www.cultofpedagogy.com/whole-books/",
 "source": "Cult of Pedagogy",
@@ -1382,6 +1526,24 @@
 "date": "2026-11-07",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado voters passed a ballot measure this week to bar transgender students from joining school sports teams that mat",
 "bucket": "gen",
+"ms": false
+},
+{
+"title": "Young people turned out in near-record numbers for the 2026 midterms, with the economy top of their minds",
+"link": "https://theconversation.com/young-people-turned-out-in-near-record-numbers-for-the-2026-midterms-with-the-economy-top-of-their-minds-295947",
+"source": "The Conversation — Education",
+"date": "2026-11-06",
+"summary": "Whether they went to college or not, young voters heavily favored Democrats.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Why Public Schools Nationwide Are Facing a Massive Drop in Student Enrollment",
+"link": "https://ww2.kqed.org/mindshift/2026/11/06/why-public-schools-nationwide-are-facing-a-massive-drop-in-student-enrollment/",
+"source": "KQED MindShift",
+"date": "2026-11-06",
+"summary": "School enrollment was already expected to plunge by 2 million kids by 2030. Education experts say deporting immigrant families, many with school-age children, is making the crisis worse.",
+"bucket": "el",
 "ms": false
 },
 {
@@ -1520,6 +1682,15 @@
 "ms": true
 },
 {
+"title": "I research play – and here’s why recess is much more important than just a fun break",
+"link": "https://theconversation.com/i-research-play-and-heres-why-recess-is-much-more-important-than-just-a-fun-break-294764",
+"source": "The Conversation — Education",
+"date": "2026-11-05",
+"summary": "Offering daily recess to young children and teenagers alike can help strengthen students’ executive functioning skills, focus and creativity, among other benefits.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Here’s how school district tax measures fared in Colorado this year",
 "link": "https://www.chalkbeat.org/colorado/2026/11/05/school-district-tax-measures-bond-mlo-approvals-and-rejections/",
 "source": "Chalkbeat",
@@ -1544,6 +1715,15 @@
 "date": "2026-11-05",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. If all leads hold from Tuesday night’s election, Chicago’s first fully elected school board will bring together members",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "An ADHD diagnosis can be a map to guide a person through challenging territory – not to avoid it altogether",
+"link": "https://theconversation.com/an-adhd-diagnosis-can-be-a-map-to-guide-a-person-through-challenging-territory-not-to-avoid-it-altogether-293507",
+"source": "The Conversation — Education",
+"date": "2026-11-05",
+"summary": "Using an ADHD diagnosis to avoid hard tasks, rather than to plan around them, is linked to more anxiety and lower quality of life.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -1610,6 +1790,15 @@
 "ms": false
 },
 {
+"title": "Finding Our Way Forward: The Struggle and Promise of AI Literacy",
+"link": "https://www.edsurge.com/news/finding-our-way-forward-the-struggle-and-promise-of-ai-literacy",
+"source": "EdSurge",
+"date": "2026-11-04",
+"summary": "Preparing students for an AI-driven future requires prioritizing the human qualities and values we cannot afford to lose along the way.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Election results: Proposition NN passes, with money going to Colorado education",
 "link": "https://www.chalkbeat.org/colorado/2026/11/03/colorado-proposition-nn-2026-election-night-results/",
 "source": "Chalkbeat",
@@ -1625,6 +1814,15 @@
 "date": "2026-11-04",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Chicago voters made history Tuesday, casting ballots for 21 members of the Board of Education , ending 30 years of mayo",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "Do Classroom Games Teach or Just Entertain?",
+"link": "https://www.edsurge.com/news/do-classroom-games-teach-or-just-entertain",
+"source": "EdSurge",
+"date": "2026-11-04",
+"summary": "",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -1673,11 +1871,29 @@
 "ms": false
 },
 {
+"title": "Are schools a great equalizer? They help kids catch up, but wealthier children still pull ahead",
+"link": "https://theconversation.com/are-schools-a-great-equalizer-they-help-kids-catch-up-but-wealthier-children-still-pull-ahead-295330",
+"source": "The Conversation — Education",
+"date": "2026-11-04",
+"summary": "By some measures, schools are a great equalizer for children coming from different backgrounds. But this isn’t the full story.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Voters approve Indianapolis tax measure for IPS and charter schools",
 "link": "https://www.chalkbeat.org/indiana/2026/11/03/indianapolis-tax-measure-for-ips-and-charter-schools-live-election-results/",
 "source": "Chalkbeat",
 "date": "2026-11-03",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Voters approved a $95 million tax measure benefiting Indianapolis Public Schools and the city’s charter schools , accor",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Survey: Most Parents Want Students to Use AI in School — With Strong Safeguards",
+"link": "https://www.edsurge.com/news/survey-most-parents-want-students-to-use-ai-in-school-with-strong-safeguards",
+"source": "EdSurge",
+"date": "2026-11-03",
+"summary": "Parents want schools to teach AI — but 4 in 10 teachers say they’ve had no training at all.",
 "bucket": "gen",
 "ms": false
 },
@@ -1688,6 +1904,15 @@
 "date": "2026-11-03",
 "summary": "Kate Kinsella provides guidance and resources to support Multilingual Learners in becoming focused and responsive communicators during task-based learning From kindergarten to AP coursework, young scholars are routinely expected to demonstrate their ability to work productively with diverse lesson partners and contribu",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "Nearly 7 in 10 professors report being bullied, often by students over grades",
+"link": "https://theconversation.com/nearly-7-in-10-professors-report-being-bullied-often-by-students-over-grades-244397",
+"source": "The Conversation — Education",
+"date": "2026-11-03",
+"summary": "The rates are similar to high-stress workplaces like emergency services.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -1754,6 +1979,33 @@
 "ms": false
 },
 {
+"title": "Why AI Tools Work Differently on Middle Schoolers Compared to College Students, According to a Researcher",
+"link": "https://ww2.kqed.org/mindshift/2026/11/02/why-ai-tools-work-differently-on-middle-schoolers-compared-to-college-students-according-to-a-researcher/",
+"source": "KQED MindShift",
+"date": "2026-11-02",
+"summary": "One AI tutor engaged middle schoolers. Another backfired with college students.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Want Students to Think With AI? Raise the Stakes.",
+"link": "https://www.edsurge.com/news/want-students-to-think-with-ai-raise-the-stakes",
+"source": "EdSurge",
+"date": "2026-11-02",
+"summary": "AI tutors won’t teach students to think until the conversation itself becomes the assessment.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Students who attended Miami-Dade public school pre-K outperformed peers in 18-year study",
+"link": "https://theconversation.com/students-who-attended-miami-dade-public-school-pre-k-outperformed-peers-in-18-year-study-288884",
+"source": "The Conversation — Education",
+"date": "2026-11-02",
+"summary": "A new longitudinal study followed kids from pre-K through grade 12 and found that those who attended public school pre-K programs had an academic advantage.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Mississippians will soon be able to participate in a school-choice tax credit program. Here’s what to know",
 "link": "https://mississippitoday.org/2026/11/02/mississippians-will-soon-be-able-to-participate-in-a-school-choice-tax-credit-program-heres-what-to-know/?utm_medium=rss",
 "source": "Mississippi Today — Education",
@@ -1772,11 +2024,47 @@
 "ms": false
 },
 {
+"title": "What the Cornell 7 sexual assault allegations reveal about how parents talk to their kids about rape",
+"link": "https://theconversation.com/what-the-cornell-7-sexual-assault-allegations-reveal-about-how-parents-talk-to-their-kids-about-rape-294629",
+"source": "The Conversation — Education",
+"date": "2026-10-30",
+"summary": "Repeatedly talking about consent with teenagers and young adults is necessary to help them understand the risks of sexual assault.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Philadelphia’s Academy of Natural Sciences just closed – a blow for budding young scientists like me",
+"link": "https://theconversation.com/philadelphias-academy-of-natural-sciences-just-closed-a-blow-for-budding-young-scientists-like-me-293504",
+"source": "The Conversation — Education",
+"date": "2026-10-30",
+"summary": "Generations of young Philadelphians experienced science firsthand by wandering through Dinosaur Hall, examining dozens of wildlife dioramas or visiting the butterfly garden.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Lost Your Spark? Why Parents and Caregivers Should Know About High-functioning Depression",
+"link": "https://ww2.kqed.org/mindshift/2026/10/30/lost-your-spark-why-parents-and-caregivers-should-know-about-high-functioning-depression/",
+"source": "KQED MindShift",
+"date": "2026-10-30",
+"summary": "Always busy, but rarely joyful? Parents and caregivers had the highest anhedonia and high-functioning depression scores in the study. But there's a tool that can help.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Jackson State employees face layoffs amid restrictions on federal funding",
 "link": "https://mississippitoday.org/2026/10/30/jackson-state-layoffs-federal-funding/?utm_medium=rss",
 "source": "Mississippi Today — Education",
 "date": "2026-10-30",
 "summary": "Jackson State University is eliminating eight positions amid restrictions on federal funding.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "How moving civil rights enforcement out of the US Department of Education threatens students’ protections from race, sex and disability discrimination",
+"link": "https://theconversation.com/how-moving-civil-rights-enforcement-out-of-the-us-department-of-education-threatens-students-protections-from-race-sex-and-disability-discrimination-288262",
+"source": "The Conversation — Education",
+"date": "2026-10-30",
+"summary": "A reorganization of civil rights investigations in education likely means many complaints will never be investigated and others will take years to solve.",
 "bucket": "gen",
 "ms": false
 },
@@ -1790,12 +2078,30 @@
 "ms": false
 },
 {
+"title": "Faculty and students show how reporting is done when a university partners with local news",
+"link": "https://theconversation.com/faculty-and-students-show-how-reporting-is-done-when-a-university-partners-with-local-news-292102",
+"source": "The Conversation — Education",
+"date": "2026-10-29",
+"summary": "Some universities are developing innovative arrangements with media outlets where students help report and faculty provide guidance.",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "AI Foundations for Learners",
 "link": "https://languagemagazine.com/2026/10/29/ai-foundations-for-learners/?utm_source=rss&utm_medium=rss&utm_campaign=ai-foundations-for-learners",
 "source": "Language Magazine",
 "date": "2026-10-29",
 "summary": "Sara Davila directs students toward responsible and creative use of AI Students today encounter AI across nearly every aspect of their learning, from search engines and writing tools to content recommendations and automated feedback. Students may rely on AI regularly without fully understanding how it works, what it pr",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "How Teachers Are Turning the Midterms Into a Nonpartisan Civics Lesson",
+"link": "https://www.edsurge.com/news/how-teachers-are-turning-the-midterms-into-a-nonpartisan-civics-lesson",
+"source": "EdSurge",
+"date": "2026-10-28",
+"summary": "A new survey finds young people doubt elected officials are listening, yet more plan to vote than in 2024.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -1814,6 +2120,42 @@
 "date": "2026-10-28",
 "summary": "Douglas Fisher and Nancy Frey create conditions where all students can progress from participation to ownership Walk into a busy classroom and you may see students participating in very different ways. One student eagerly contributes to a discussion. Another listens carefully but says little. A third speaks animatedly ",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "School librarians are vanishing from Michigan schools just when they are needed most",
+"link": "https://theconversation.com/school-librarians-are-vanishing-from-michigan-schools-just-when-they-are-needed-most-291339",
+"source": "The Conversation — Education",
+"date": "2026-10-27",
+"summary": "Certified librarians can help boost students’ reading and technological skills but aren’t required in Michigan public schools.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Spending in-person time with friends is the biggest predictor of whether college students flourish",
+"link": "https://theconversation.com/spending-in-person-time-with-friends-is-the-biggest-predictor-of-whether-college-students-flourish-293908",
+"source": "The Conversation — Education",
+"date": "2026-10-26",
+"summary": "Helping young people thrive involves supporting healthy relationships, as well as being engaged in work, school and family life.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "An Audit Finds Serious Flaws in Research on AI in Education",
+"link": "https://ww2.kqed.org/mindshift/2026/10/26/an-audit-finds-serious-flaws-in-research-on-ai-in-education/",
+"source": "KQED MindShift",
+"date": "2026-10-26",
+"summary": "‘Anybody can sort of say that they have evidence for anything,’ a top scholar says.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Can the New Federal Voucher Program Help Public Schools?",
+"link": "https://ww2.kqed.org/mindshift/2026/10/23/can-the-new-federal-voucher-program-help-public-schools/",
+"source": "KQED MindShift",
+"date": "2026-10-23",
+"summary": "The new scholarship tax credit program could help public school families pay for some educational services, but advocates worry it could do more harm than good.",
+"bucket": "gen",
 "ms": false
 }
 ]
