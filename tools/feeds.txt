@@ -3,13 +3,15 @@ Colorín Colorado | https://www.colorincolorado.org/rss.xml | el
 Larry Ferlazzo | https://larryferlazzo.edublogs.org/feed/ | el
 TESOL Blog | https://blog.tesol.org/feed/ | el
 Language Magazine | https://www.languagemagazine.com/feed/ | el
-Reading Rockets | https://www.readingrockets.org/rss.xml | gen
-Edutopia | https://www.edutopia.org/rss.xml | gen
+Reading Rockets | https://www.readingrockets.org/rss | gen
+Edutopia | https://www.edutopia.org/rss | gen
 Cult of Pedagogy | https://www.cultofpedagogy.com/feed/ | gen
 The Hechinger Report | https://hechingerreport.org/feed/ | gen
 Chalkbeat | https://www.chalkbeat.org/arc/outboundfeeds/rss/ | gen
-KQED MindShift | https://www.kqed.org/mindshift/feed | gen
+KQED MindShift | https://www.kqed.org/mindshift/feed/ | gen
 NPR Education | https://feeds.npr.org/1013/rss.xml | gen
 Education Week | https://www.edweek.org/feed | gen
 The 74 | https://www.the74million.org/feed/ | gen
 Mississippi Today — Education | https://mississippitoday.org/category/education/feed/ | gen
+The Education Trust | https://edtrust.org/feed/ | gen
+Immigrant Learning Center | https://www.ilctr.org/feed/ | el

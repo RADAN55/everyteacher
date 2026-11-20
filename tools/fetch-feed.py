@@ -9,6 +9,7 @@ from email.utils import parsedate_to_datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "daily" / "feed.json"
 KEEP_DAYS = 30
+PER_SOURCE = 15   # newest N per source per run, so one busy outlet cannot swamp the page
 UA = "Mozilla/5.0 (compatible; EL-Publishing-hub-feed/1.0; +https://radan55.github.io/everyteacher/)"
 EL_WORDS = re.compile(r"\b(english[- ]learners?|english[- ]language[- ]learners?|\bELs?\b|\bELLs?\b|multilingual|bilingual|biliteracy|dual[- ]language|newcomers?|immigrant|refugee|\bESL\b|\bESOL\b|\bENL\b|\bEFL\b|\bTESOL\b|language acquisition|second language|translanguaging|\bWIDA\b|ELPA21|\bELPT\b|Title III|Spanish[- ]speaking|home language|heritage language|sheltered instruction|\bSIOP\b|academic language|academic vocabulary|language learners?|Lau v\.|Castañeda|Plyler)\b", re.I)
 
@@ -31,8 +32,31 @@ def when(e, ns):
                         pass
     return None
 
+def items_lenient(xml):
+    """Regex fallback for feeds that are not well-formed XML."""
+    t = xml.decode("utf-8", "ignore") if isinstance(xml, bytes) else xml
+    out = []
+    for m in re.finditer(r"<(item|entry)\b.*?</\1>", t, re.S | re.I):
+        blk = m.group(0)
+        g = lambda tag: (re.search(r"<%s\b[^>]*>(.*?)</%s>" % (tag, tag), blk, re.S | re.I) or [None, ""])[1]
+        title = strip(re.sub(r"^\s*<!\[CDATA\[|\]\]>\s*$", "", g("title")))
+        link = strip(re.sub(r"<!\[CDATA\[|\]\]>", "", g("link"))) or (re.search(r'<link[^>]*href="([^"]+)"', blk) or [None, ""])[1]
+        desc = strip(re.sub(r"<!\[CDATA\[|\]\]>", "", g("description") or g("summary") or g("content")))
+        d = None
+        dm = re.search(r"<(pubDate|published|updated|dc:date)>(.*?)</\1>", blk, re.S | re.I)
+        if dm:
+            try: d = parsedate_to_datetime(dm.group(2).strip()).astimezone(dt.timezone.utc)
+            except Exception:
+                try: d = dt.datetime.fromisoformat(dm.group(2).strip().replace("Z", "+00:00")).astimezone(dt.timezone.utc)
+                except Exception: pass
+        out.append((title, link, desc, d))
+    return out
+
 def items_of(xml):
-    root = ET.fromstring(xml)
+    try:
+        root = ET.fromstring(xml)
+    except ET.ParseError:
+        return items_lenient(xml)
     out = []
     # RSS 2.0
     for it in root.iter("item"):
@@ -73,6 +97,7 @@ def main():
             with urllib.request.urlopen(req, timeout=25) as r:
                 xml = r.read()
             got = items_of(xml)
+            got = sorted(got, key=lambda x: x[3] or now, reverse=True)[:PER_SOURCE]
             n = 0
             for title, link, desc, d in got:
                 if not title or not link: continue
