@@ -1,5 +1,43 @@
 {
- "updated": null,
- "note": "Written each morning by Richard's scheduled assistant: three picks from the day's feed with a short take and one move to try. Empty until the first morning run.",
- "picks": []
+  "updated": "2026-11-20T11:22:01Z",
+  "picks": [
+    {
+      "title": "A Deep Dive Into Alabama’s Reading Gains",
+      "url": "https://www.the74million.org/article/a-deep-dive-into-alabamas-reading-gains/",
+      "source": "The 74",
+      "date": "2026-11-18",
+      "take": "The 74 walks through a Fordham report on how Alabama climbed from 45th to 13th in fourth-grade reading using Mississippi’s playbook: funded literacy coaches kept out of recess duty and subbing, screeners three times a year, summer camps, and good-cause retention exemptions for English learners. It also names weak spots, including uneven coach loads and leadership turnover.",
+      "try": "Ask your literacy coach for your ELs’ most recent screener results and pick one shared skill to target in content-area reading next week.",
+      "lanes": [
+        "Emerging",
+        "Progressing",
+        "Admin"
+      ]
+    },
+    {
+      "title": "Study Outlines Specific Student Motivation Strategies",
+      "url": "https://larryferlazzo.edublogs.org/2026/11/19/study-outlines-specific-student-motivation-strategies/",
+      "source": "Larry Ferlazzo",
+      "date": "2026-11-19",
+      "take": "Ferlazzo summarizes a chapter by USC’s Erika Patall listing 26 classroom practices tied to five motivation needs: competence, autonomy, interest and value, growth mindset, and belonging. The moves are small and concrete, like process praise over ability praise and having students generate their own relevance, a good fit for ELs who often hear only directive language. Note the summary was AI-assisted.",
+      "try": "Before tomorrow’s lesson, have students write or say one sentence connecting the topic to their own life, in English or their home language.",
+      "lanes": [
+        "Newcomer",
+        "Emerging",
+        "Progressing"
+      ]
+    },
+    {
+      "title": "A New Classroom Use for Artificial Intelligence: Grade the Chat, Not Just the Answer",
+      "url": "https://www.edsurge.com/news/a-new-classroom-use-for-artificial-intelligence-grade-the-chat-not-just-the-answer",
+      "source": "EdSurge",
+      "date": "2026-11-18",
+      "take": "EdSurge talks with teacher Mike Kentz, who found most middle schoolers barely used an assigned AI tutor, so he now grades the conversation itself, capped at about ten messages, with criteria the class builds by comparing a strong chat to a weak one. For ELs, the transcript shows how a student asks, clarifies, and explains in English. No outcome data yet.",
+      "try": "Have students explain one concept to a “confused” chatbot in ten messages, then print the chat and mark where they asked a good clarifying question.",
+      "lanes": [
+        "Progressing",
+        "Challenge"
+      ]
+    }
+  ]
 }
