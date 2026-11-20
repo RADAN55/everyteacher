@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T04:26+00:00",
+"updated": "2026-11-20T04:28+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -13,19 +13,9 @@
 "items": 15
 },
 {
-"source": "TESOL Blog",
-"ok": false,
-"error": "HTTP Error 404: Not Found"
-},
-{
 "source": "Language Magazine",
-"ok": true,
-"items": 10
-},
-{
-"source": "Reading Rockets",
 "ok": false,
-"error": "HTTP Error 403: Forbidden"
+"error": "HTTP Error 429: Too Many Requests"
 },
 {
 "source": "The Conversation — Education",
@@ -71,11 +61,6 @@
 "source": "Mississippi Today — Education",
 "ok": true,
 "items": 12
-},
-{
-"source": "The Education Trust",
-"ok": false,
-"error": "no items parsed; body starts: <?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\" \txmlns:content=\"http://purl.org/rss/1.0/modules/conte"
 },
 {
 "source": "Immigrant Learning Center",
