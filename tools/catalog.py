@@ -169,8 +169,10 @@ R = [
   "The December issue: the home language as a bridge, fifteen lessons, a K–12 edition, teacher keys.", True),
  ("el-magazine-2026-11.html", "The Language of Belonging · November 2026", "classroom", "Magazine", "Nov 2026 · 26 pages",
   "The November issue: belonging through contribution, 15 lessons, teacher keys.", False),
- ("https://radan55.github.io/elpa21speaking01/october/", "The Field Atlas", "classroom", "Magazine", "Oct 2026",
+ ("https://radan55.github.io/elpa21speaking01/october/", "The Field Atlas · October 2026", "classroom", "Magazine", "Oct 2026 · No. 2",
   "Sixteen plates for the teacher who never planned to teach language.", False),
+ ("https://radan55.github.io/everyteachermagazineeditionone/", "Every Teacher · Issue No. 1 · Fall 2026", "classroom", "Magazine", "Sept 2026 · No. 1",
+  "The first issue of the EL Publishing teacher magazine: every teacher is a language teacher.", False),
  ("https://radan55.github.io/everyteacherisalanguageteacher/", "Every Teacher Is a Language Teacher", "classroom", "PD module", "45–60 min",
   "Self-paced PD that fits a department meeting. Six sections, no facilitator.", False),
 
@@ -263,10 +265,10 @@ SERIES = [
   "For the teacher who speaks no Spanish: a 90-minute workshop, a six-module course, the research guide, handouts, phrases, cognates.",
   "Six pieces for the content teacher who speaks no Spanish: the 90-minute teacher-led workshop, the self-paced six-module course with audio, Using Spanish in the Content Classroom (the research-based guide for math, science, social studies and ELA), the Teacher Handout Folder (ten one-page handouts), Spoken Spanish & Spoken English (what you will hear and a reply for each), and Cognate Hunt (paste any reading; the words your Spanish speakers already know light up).",
   ["spanish-for-teachers.html", "spanish-course/", "using-spanish-content-classroom.html", "using-spanish-handouts.html", "spoken-spanish-english.html", "cognate-hunt.html"]),
- ("magazines", "Magazines & Bulletins", "classroom", "Series", "monthly",
-  "The teacher magazine, the Field Atlas, the Language Bridge bulletin, Field Notes and the Tech Radar, in one rack.",
-  "The hub's periodicals for teachers, in one rack: the EL Publishing teacher magazine (December 2026: The Language of Home; November 2026: The Language of Belonging; October 2026: The Field Atlas), The Language Bridge one-page bulletin, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
-  ["el-magazine-2026-12.html", "el-magazine-2026-11.html", "https://radan55.github.io/elpa21speaking01/october/", "language-bridge-2026-09.html", "field-notes.html", "tech-radar.html"]),
+ ("magazines", "Magazines & Bulletins", "classroom", "Series", "6 issues + bulletins",
+  "Every issue of the teacher magazine (No. 1 to No. 4), the Teaching the ELPT special issue, the student magazine, the bulletins and the Tech Radar, in one rack.",
+  "Every EL Publishing periodical in one rack. The teacher magazine: No. 1 Every Teacher (Sept 2026), No. 2 The Field Atlas (Oct), No. 3 The Language of Belonging (Nov), No. 4 The Language of Home (Dec, with a K–12 edition). The special issue Teaching the ELPT (24 pages, interactive). The student magazine Many Voices, Issue 1. Then the bulletins: The Language Bridge, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
+  ["el-magazine-2026-12.html", "el-magazine-2026-11.html", "https://radan55.github.io/elpa21speaking01/october/", "https://radan55.github.io/everyteachermagazineeditionone/", "teaching-the-elpt.html", "https://radan55.github.io/elstudentmagazine01/", "language-bridge-2026-09.html", "field-notes.html", "tech-radar.html"]),
  ("pd", "The PD Library", "classroom", "Series", "60+ pieces",
   "Every piece of professional learning on the hub: the self-paced module, the taught session, the podcast, the book study, the literacy guide.",
   "Every piece of professional learning on the hub: Every Teacher Is a Language Teacher (self-paced, six sections, fits a department meeting), The Session with Elena (Emerging and Progressing, taught), the Every Teacher podcast, Fifty Strategies, One Semester (a PLC book study), Improving Adolescent Literacy in plain English, and the PD Library index of 54 more pieces by grade and level.",
@@ -320,7 +322,7 @@ def load():
     member_of = {}
     for sid, *_, members in SERIES:
         for h in members:
-            member_of[h] = sid
+            member_of.setdefault(h, sid)  # first series listed is the home; later ones only cross-list
     out = []
     for sid, title, group, fmt, size, one, long, members in SERIES:
         href = SERIES_HREF[sid]

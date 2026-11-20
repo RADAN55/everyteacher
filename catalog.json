@@ -35,10 +35,10 @@
  {
   "u": "series-magazines.html",
   "t": "Magazines & Bulletins",
-  "o": "The teacher magazine, the Field Atlas, the Language Bridge bulletin, Field Notes and the Tech Radar, in one rack.",
-  "f": "Series · monthly",
+  "o": "Every issue of the teacher magazine (No. 1 to No. 4), the Teaching the ELPT special issue, the student magazine, the bulletins and the Tech Radar, in one rack.",
+  "f": "Series · 6 issues + bulletins",
   "g": "Every classroom teacher",
-  "k": "The hub's periodicals for teachers, in one rack: the EL Publishing teacher magazine (December 2026: The Language of Home; November 2026: The Language of Belonging; October 2026: The Field Atlas), The Language Bridge one-page bulletin, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
+  "k": "Every EL Publishing periodical in one rack. The teacher magazine: No. 1 Every Teacher (Sept 2026), No. 2 The Field Atlas (Oct), No. 3 The Language of Belonging (Nov), No. 4 The Language of Home (Dec, with a K–12 edition). The special issue Teaching the ELPT (24 pages, interactive). The student magazine Many Voices, Issue 1. Then the bulletins: The Language Bridge, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
   "th": "",
   "pin": "",
   "new": ""
@@ -815,12 +815,23 @@
  },
  {
   "u": "https://radan55.github.io/elpa21speaking01/october/",
-  "t": "The Field Atlas",
+  "t": "The Field Atlas · October 2026",
   "o": "Sixteen plates for the teacher who never planned to teach language.",
-  "f": "Magazine · Oct 2026",
+  "f": "Magazine · Oct 2026 · No. 2",
   "g": "Every classroom teacher",
   "k": "\"For the teacher who never planned to teach language.\" Sixteen plates on working with English learners in the general-education classroom.",
   "th": "thumbs/06-field-atlas.jpg",
+  "pin": "",
+  "new": ""
+ },
+ {
+  "u": "https://radan55.github.io/everyteachermagazineeditionone/",
+  "t": "Every Teacher · Issue No. 1 · Fall 2026",
+  "o": "The first issue of the EL Publishing teacher magazine: every teacher is a language teacher.",
+  "f": "Magazine · Sept 2026 · No. 1",
+  "g": "Every classroom teacher",
+  "k": "Issue No. 1 of the EL Publishing teacher magazine (Fall 2026): Every Teacher Is a Language Teacher. The founding issue for content teachers who never planned to teach language, with a web edition and the free PDF.",
+  "th": "",
   "pin": "",
   "new": ""
  },

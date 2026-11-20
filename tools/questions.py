@@ -342,6 +342,8 @@ Q = [
   "Free PDF, every page previewed on the hub.",
   [("The Language of Home · December 2026", "el-magazine-2026-12.html"),
    ("The Language of Belonging · November 2026", "el-magazine-2026-11.html"),
+   ("Every Teacher · Issue No. 1 · Fall 2026", "https://radan55.github.io/everyteachermagazineeditionone/"),
+   ("Teaching the ELPT · Special Issue", "teaching-the-elpt.html"),
    ("The Field Atlas · October 2026", "https://radan55.github.io/elpa21speaking01/october/")]),
 
  ("students",
