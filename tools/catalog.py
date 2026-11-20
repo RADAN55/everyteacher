@@ -97,7 +97,7 @@ R = [
  ("https://radan55.github.io/elstudentmagazine01/", "Many Voices", "students", "Magazine", "Issue 1",
   "A magazine written for multilingual high-school students.", False),
 
- ("today-in-el.html", "Today in EL: the Daily Feed", "classroom", "Daily feed", "3 picks · 14 sources",
+ ("today-in-el.html", "Today in EL: the Daily Feed", "classroom", "Daily feed", "3 picks · 13 sources",
   "Updated every morning: three picks with a take and a move to try, plus thirty days of EL pedagogy and articles worth your time.", True),
  ("front-office-kit.html", "The Front Office Kit", "classroom", "Office kit", "14 languages · 20 phrases",
   "For the registrar: enroll a family that speaks no English — today, legally, kindly — with the board, the survey and the clock.", True),

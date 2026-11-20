@@ -23,7 +23,7 @@ Q = [
   "Is there something new to read about teaching ELs today?",
   "Yes — Today in EL updates every morning: three picks chosen from the day's feed, each with a "
   "take and one move to try tomorrow, and underneath the last thirty days of English-learner "
-  "pedagogy and good education writing from fourteen sources, searchable, with Mississippi "
+  "pedagogy and good education writing from thirteen sources, searchable, with Mississippi "
   "mentions flagged.",
   [("Today in EL: the Daily Feed", "today-in-el.html"),
    ("EL Tech Radar", "tech-radar.html")]),
