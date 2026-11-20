@@ -60,7 +60,13 @@ def days_old(iso):
 
 # ---------------------------------------------------------------- the catalog
 C = catalog.load()
-N = len(C)
+TOP = [r for r in C if not r["series"]]            # what a door shows: series cards + stand-alone pages
+RES = [r for r in C if not r["is_series"]]         # real resources, for counts
+N = len(RES)
+BY_SERIES = {}
+for r in C:
+    if r["series"]:
+        BY_SERIES.setdefault(r["series"], []).append(r)
 GROUPS = catalog.GROUPS
 GI = {g[0]: i for i, g in enumerate(GROUPS)}
 GLABEL = {g[0]: g[1] for g in GROUPS}
@@ -85,8 +91,9 @@ pinned = [r for r in C if r["pin"] and days_old(r["pin"]) <= 0]
 def doors():
     out = []
     for i, (gid, label, aud, deck, role, sub) in enumerate(GROUPS, 1):
-        core = [r for r in C if r["group"] == gid and r["core"]]
-        rest = len([r for r in C if r["group"] == gid]) - len(core)
+        core = sorted((r for r in TOP if r["group"] == gid and r["core"]),
+                      key=lambda r: catalog.CORE_ORDER[r["href"]])
+        rest = len([r for r in RES if r["group"] == gid]) - len([r for r in core if not r["is_series"]]) - sum(len(r["members"]) for r in core)
         steps = "".join(
             f'<li><a href="{e(r["href"])}"{ext_attr(r["href"])}>{e(r["title"])}</a>'
             f'<span>{e(r["one"])}</span></li>' for r in core
@@ -161,7 +168,7 @@ def week():
 def index_panel():
     cards = "".join(
         f'<a href="all.html?g={gid}"><b>{e(label)}</b>'
-        f'<span>{len([r for r in C if r["group"] == gid])} resources · '
+        f'<span>{len([r for r in RES if r["group"] == gid])} resources · '
         f'{e(deck.split(".")[0].lower()[:1] + deck.split(".")[0][1:])}</span></a>'
         for gid, label, aud, deck, role, sub in GROUPS
     )
@@ -459,42 +466,54 @@ def gbtns():
 WHO_SORT = {"students": "1", "teachers": "2", "admin": "3"}
 
 
+def row(r, gid, label, mem=False):
+    is_new = r["new"] and 0 <= days_old(r["new"]) <= FRESH_DAYS
+    marks = ""
+    if r["core"]:
+        marks += '<span class="st" title="Start here">★</span>'
+    if r["ext"]:
+        marks += '<span class="ex" title="Opens on its own site">↗</span>'
+    if is_new:
+        marks += '<span class="nw">New</span>'
+    if r["is_series"]:
+        marks += f'<span class="sr" title="A series">{len(r["members"])} inside</span>'
+    txt = " ".join([r["title"], r["one"], r["fmt"], r["size"],
+                    r["who"], label, r["long"]]).lower()
+    return (
+        f'<tr data-g="{gid}" data-core="{1 if r["core"] else 0}"'
+        f'{" class=mem data-series=" + e(r["series"]) if mem else ""}'
+        f' data-t="{e(txt)}"'
+        f' data-st="{e(r["title"].lower())}"'
+        f' data-sg="{GI[gid]}"'
+        f' data-sa="{WHO_SORT[r["aud"]]}{e(r["who"].lower())}"'
+        f' data-sf="{e(r["fmt"].lower())}">'
+        f'<td class="r"><a href="{e(r["href"])}"{ext_attr(r["href"])}>'
+        f'{"↳ " if mem else ""}{e(r["title"])}</a>{marks}'
+        f'<span class="o">{e(r["one"])}</span></td>'
+        f'<td class="g">{e(label)}</td>'
+        f'<td class="a">{e(r["who"])}</td>'
+        f'<td class="f">{e(r["fmt"])}</td>'
+        f'<td class="z">{e(r["size"])}</td></tr>'
+    )
+
+
 def rows():
     out = []
+    by_href = {r["href"]: r for r in C}
     for gid, label, aud, deck, role, sub in GROUPS:
-        rs = [r for r in C if r["group"] == gid]
-        rs.sort(key=lambda r: (not r["core"], r["title"].lower()))
+        rs = [r for r in TOP if r["group"] == gid]
+        rs.sort(key=lambda r: (not r["core"], not r["is_series"], r["title"].lower()))
+        n_res = len([r for r in RES if r["group"] == gid])
         out.append(
             f'<tr class="gh" data-g="{gid}"><td colspan="5"><div class="gh-in">'
-            f'<b>{e(label)}</b><i>{len(rs)} resources</i>'
+            f'<b>{e(label)}</b><i>{n_res} resources</i>'
             f'<span>{e(deck)}</span></div></td></tr>'
         )
         for r in rs:
-            is_new = r["new"] and 0 <= days_old(r["new"]) <= FRESH_DAYS
-            marks = ""
-            if r["core"]:
-                marks += '<span class="st" title="Start here">★</span>'
-            if r["ext"]:
-                marks += '<span class="ex" title="Opens on its own site">↗</span>'
-            if is_new:
-                marks += '<span class="nw">New</span>'
-            txt = " ".join([r["title"], r["one"], r["fmt"], r["size"],
-                            r["who"], label, r["long"]]).lower()
-            out.append(
-                f'<tr data-g="{gid}" data-core="{1 if r["core"] else 0}"'
-                f' data-t="{e(txt)}"'
-                f' data-st="{e(r["title"].lower())}"'
-                f' data-sg="{GI[gid]}"'
-                f' data-sa="{WHO_SORT[r["aud"]]}{e(r["who"].lower())}"'
-                f' data-sf="{e(r["fmt"].lower())}">'
-                f'<td class="r"><a href="{e(r["href"])}"{ext_attr(r["href"])}>'
-                f'{e(r["title"])}</a>{marks}'
-                f'<span class="o">{e(r["one"])}</span></td>'
-                f'<td class="g">{e(label)}</td>'
-                f'<td class="a">{e(r["who"])}</td>'
-                f'<td class="f">{e(r["fmt"])}</td>'
-                f'<td class="z">{e(r["size"])}</td></tr>'
-            )
+            out.append(row(r, gid, label))
+            for h in r["members"]:
+                m = by_href[h]
+                out.append(row(m, gid, label, mem=True))
     return "\n".join(out)
 
 
@@ -555,7 +574,8 @@ t = p.read_text(encoding="utf-8")
 t = region(t, "intro", (
     f'<p>All {N} free resources on the hub, in one place. Everything opens in a '
     f'browser and prints. Nothing needs an account, a license or a login. Sort by '
-    f'any column; the star marks the {sum(1 for r in C if r["core"])} to start with.</p>'
+    f'any column; the star marks the {sum(1 for r in TOP if r["core"])} to start with. '
+    f'Series rows hold their members underneath (↳).</p>'
 ), p)
 t = region(t, "gbtns", gbtns(), p)
 t = region(t, "rows", rows(), p)
@@ -596,6 +616,66 @@ HEAD_SNIPPET = (
 THEME_LINK = '<link rel="stylesheet" href="theme.css">'
 MANIFEST_LINK = '<link rel="manifest" href="manifest.webmanifest">'  # the hub installs as an app; hub-chrome.js adds the rest
 CHROME_TAG = '<script src="hub-chrome.js" defer></script>'
+
+# ----------------------------------------------------------- series pages
+def series_page(r):
+    by_href = {x["href"]: x for x in C}
+    cards = []
+    for h in r["members"]:
+        m = by_href[h]
+        shot = f'<img src="{e(m["thumb"])}" alt="" loading="lazy">' if m["thumb"] else '<span class="ph">✦</span>'
+        cards.append(
+            f'<a class="mc" href="{e(h)}"{ext_attr(h)}><div class="shot">{shot}</div>'
+            f'<div class="mb"><b>{e(m["title"])}</b><span>{e(m["one"])}</span>'
+            f'<small>{e(m["fmt"])} · {e(m["size"])}{" · opens on its own site" if m["ext"] else ""}</small></div></a>'
+        )
+    label = GLABEL[r["group"]]
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{HEAD_SNIPPET}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{e(r["title"])} · EL Publishing</title>
+<meta name="description" content="{e(r["long"])}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9}}
+  *{{box-sizing:border-box}}body{{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}}a{{color:var(--navy)}}
+  header{{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}}header::before{{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}}
+  .head-in{{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}}.brand{{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}}.brand a{{color:var(--gold);text-decoration:none}}
+  h1{{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}}.tag{{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}}
+  main{{max-width:1000px;margin:0 auto;padding:22px 22px 44px}}.lead{{color:var(--muted);margin:0 0 16px;max-width:72ch}}
+  .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}}
+  .mc{{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--rule);text-decoration:none;color:var(--ink);overflow:hidden;transition:transform .15s,box-shadow .15s}}.mc:hover{{transform:translateY(-2px);box-shadow:0 10px 30px rgba(30,39,97,.12)}}
+  .shot{{aspect-ratio:700/509;background:var(--navy-dk-bg);display:grid;place-items:center;overflow:hidden}}.shot img{{width:100%;height:100%;object-fit:cover;display:block}}.shot .ph{{color:var(--gold);font-size:34px}}
+  .mb{{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}}.mb b{{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.2;color:var(--navy)}}.mb span{{font-size:14px}}.mb small{{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-weight:700;margin-top:4px}}
+  .back{{display:inline-block;margin-top:22px;font-size:14px;font-weight:600}}
+  footer{{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}}footer .wrap{{max-width:1000px;margin:0 auto;padding:0 22px}}footer b{{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}}footer a{{color:var(--gold)}}
+</style>
+{THEME_LINK}
+{MANIFEST_LINK}
+</head>
+<body>
+<header><div class="head-in"><p class="brand"><a href="index.html">EL PUBLISHING</a> · {e(label.upper())} · A SERIES</p><h1>{e(r["title"])}</h1><p class="tag">{e(r["one"])}</p></div></header>
+<main>
+<p class="lead">{e(r["long"])}</p>
+<div class="grid">{"".join(cards)}</div>
+<a class="back" href="all.html?g={e(r["group"])}">← Everything under {e(label)}</a>
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script src="guide.js" defer></script>
+{CHROME_TAG}
+</body>
+</html>
+"""
+
+for r in C:
+    if r["is_series"]:
+        p = ROOT / r["href"]
+        if write(p, series_page(r)):
+            changed.append(r["href"])
 
 def insert_at(s, tag, payload, last):
     """Put payload before the document's own closing tag.
@@ -727,9 +807,9 @@ for page in sorted(ROOT.glob("*.html")):
 if cards:
     changed.append(f"link previews on {cards} pages")
 
-core = sum(1 for r in C if r["core"])
+core = sum(1 for r in TOP if r["core"])
 print(f"{N} resources · {core} starred · {len(fresh)} new · "
       f"{len(pinned)} pinned")
 for gid, label, *_ in GROUPS:
-    print(f"  {len([r for r in C if r['group'] == gid]):3}  {label}")
+    print(f"  {len([r for r in RES if r['group'] == gid]):3}  {label}")
 print("wrote: " + (", ".join(changed) if changed else "nothing (already current)"))

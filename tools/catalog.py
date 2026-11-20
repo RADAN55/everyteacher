@@ -243,25 +243,111 @@ R = [
 NEW = {"today-in-el.html": "2026-11-19", "front-office-kit.html": "2026-11-18", "counselor-desk.html": "2026-11-18", "ltel-clinic.html": "2026-11-18", "family-conference-kit.html": "2026-11-18", "grade-it-fair.html": "2026-11-18", "straight-answers.html": "2026-11-18", "read-your-roster.html": "2026-11-17", 'https://radan55.github.io/stormphonicslab/': "2026-11-15", 'https://radan55.github.io/stormelresourcelist-/': "2026-11-15", 'https://radan55.github.io/Stormsentencelab/': "2026-11-15", "literacy-lab/": "2026-11-14", "adolescent-literacy-brochure.html": "2026-11-08", "monday-moves.html": "2026-11-08", "teaching-the-elpt.html": "2026-11-07", "elpa21-listening-2/": "2026-11-04", "elpa21-listening/": "2026-11-04", "el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
 PIN = {"today-in-el.html": "2026-12-24", "front-office-kit.html": "2026-12-23", "counselor-desk.html": "2026-12-23", "ltel-clinic.html": "2026-12-23", "family-conference-kit.html": "2026-12-23", "grade-it-fair.html": "2026-12-23", "straight-answers.html": "2026-12-23", "read-your-roster.html": "2026-12-20", 'https://radan55.github.io/stormphonicslab/': "2026-12-13", 'https://radan55.github.io/stormelresourcelist-/': "2026-12-06", 'https://radan55.github.io/Stormsentencelab/': "2026-12-06", "literacy-lab/": "2026-12-05", "adolescent-literacy-brochure.html": "2026-11-22", "monday-moves.html": "2026-11-29", "teaching-the-elpt.html": "2026-12-12", "elpa21-listening-2/": "2026-11-25", "elpa21-listening/": "2026-11-25", "el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
+# ------------------------------------------------------------------ series
+# A series is one card on the home page that opens a landing page listing its
+# members. Members stay in the catalog (search, the Hub Guide, the full index
+# and sitemap all still find them) but no longer get their own card on a door.
+#   id, title, group, fmt, size, one, long, [member hrefs]
+SERIES = [
+ ("newcomer", "The Newcomer Series", "elteacher", "Series", "3 kits + 2 for families",
+  "The student arrived this week: intake, the first week hour by hour, the K–5 kit, and what goes home.",
+  "Everything for the week a student arrives: Newcomer Intake (type the student once; the profile, plan and letter fill themselves), the Newcomer Week 1 Kit (the first week hour by hour, ending in an exit ticket), the Elementary Newcomer Kit for K–5, and the two things that go home — Your Guide to School in the U.S. in five languages and My First 100 Words at School. The front office's part is in the Front Office Kit.",
+  ["newcomer-intake.html", "newcomer-week1.html", "newcomer-k5.html"]),
+ ("elpt-teacher", "Teaching the ELPT", "elteacher", "Series", "issue + task sets",
+  "The spring test from the teacher's side: the special issue, the task practice with keys, the Six Pies set.",
+  "The ELPT from the EL teacher's desk: the page-turning special issue with daily routines and sixteen test moves, the teacher edition of the ELPA21 task practice (read-aloud scripts, keys, look-fors, four lanes), and Six Southern Pies, one infographic that runs every task type across all four domains.",
+  ["teaching-the-elpt.html", "elpa21-practice-teacher.pdf", "six-pies-elpa21.html"]),
+ ("spanish", "Spanish for Teachers", "classroom", "Series", "6 pieces",
+  "For the teacher who speaks no Spanish: a 90-minute workshop, a six-module course, the research guide, handouts, phrases, cognates.",
+  "Six pieces for the content teacher who speaks no Spanish: the 90-minute teacher-led workshop, the self-paced six-module course with audio, Using Spanish in the Content Classroom (the research-based guide for math, science, social studies and ELA), the Teacher Handout Folder (ten one-page handouts), Spoken Spanish & Spoken English (what you will hear and a reply for each), and Cognate Hunt (paste any reading; the words your Spanish speakers already know light up).",
+  ["spanish-for-teachers.html", "spanish-course/", "using-spanish-content-classroom.html", "using-spanish-handouts.html", "spoken-spanish-english.html", "cognate-hunt.html"]),
+ ("magazines", "Magazines & Bulletins", "classroom", "Series", "monthly",
+  "The teacher magazine, the Field Atlas, the Language Bridge bulletin, Field Notes and the Tech Radar, in one rack.",
+  "The hub's periodicals for teachers, in one rack: the EL Publishing teacher magazine (November 2026: The Language of Belonging; October 2026: The Field Atlas), The Language Bridge one-page bulletin, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
+  ["el-magazine-2026-11.html", "https://radan55.github.io/elpa21speaking01/october/", "language-bridge-2026-09.html", "field-notes.html", "tech-radar.html"]),
+ ("pd", "The PD Library", "classroom", "Series", "60+ pieces",
+  "Every piece of professional learning on the hub: the self-paced module, the taught session, the podcast, the book study, the literacy guide.",
+  "Every piece of professional learning on the hub: Every Teacher Is a Language Teacher (self-paced, six sections, fits a department meeting), The Session with Elena (Emerging and Progressing, taught), the Every Teacher podcast, Fifty Strategies, One Semester (a PLC book study), Improving Adolescent Literacy in plain English, and the PD Library index of 54 more pieces by grade and level.",
+  ["pd-library.html", "https://radan55.github.io/everyteacherisalanguageteacher/", "session.html", "podcast.html", "book-study-50-strategies.html", "adolescent-literacy-brochure.html"]),
+ ("elpt-practice", "The ELPT Practice Center", "students", "Series", "4 domains · 7 tools",
+  "Practice for every domain of the spring English test: listening sets, speaking, reading, the full form, the question-types guide.",
+  "Every ELPT practice tool for students in one place, by domain: Listening Practice Sets 1 and 2, the Listening & Speaking Studio (hear it twice, record, compare), the ELPA21 Reading Studio under mock-test conditions, English On Your Own (a full form with every task type, speaking checked by the browser), the student Task Practice packet, and the ELPA Question Types guide.",
+  ["elpa21-listening/", "elpa21-listening-2/", "listening-speaking-studio.html", "https://radan55.github.io/elpa21-reading-studio/", "english-on-your-own.html", "elpa21-practice-student.pdf", "elpa-question-types-guide.html"]),
+ ("grammar", "Grammar & Writing", "students", "Series", "7 tools",
+  "Run-ons, sentence features, the grammar map, calisthenics, grammar songs, and two writing coaches.",
+  "The sentence and the paragraph, seven ways: Storm Sentence Lab (stop writing run-ons), Sentence Lab (sixteen grammar features in real school scenes), The Grammar Map (grammar you can see), Storm Grammar Calisthenics (a bilingual coach, fifteen minutes a day), Grammar Beats (grammar as radio songs), The Writing Studio (Mr. Castillo teaches the shape of a 4 or 5) and Write About It (Ms. Bell's six-step routine).",
+  ["https://radan55.github.io/Stormsentencelab/", "sentence-lab.html", "grammar-map.html", "grammar-calisthenics/", "https://radan55.github.io/el-publishing-grammar-songs/", "writing-studio.html", "write-about-it.html"]),
+ ("vocab", "Picture Dictionary & Vocabulary", "students", "Series", "3 issues + camera",
+  "Point at the thing, hear the word: three picture-dictionary issues and Storm Lens, the camera that names the room.",
+  "Vocabulary you can see and hear: The Picture Dictionary Issues 1–3 (twelve spreads each, Spanish, word and sentence audio, four activities per spread) and Storm Lens, which points a Chromebook at the room and turns it into the vocabulary list.",
+  ["picture-dictionary.html", "picture-dictionary-2.html", "picture-dictionary-3.html", "storm-lens/"]),
+ ("storm", "Storm Lessons & Readers", "students", "Series", "4 titles",
+  "Full-period interactive lessons and readers for the 9–12 block: attention, tamales, a school day, a student magazine.",
+  "Full-period interactive lessons and readers for the 9–12 EL block: Your Attention Is for Sale, How Tamales Are Made (the feature article behind the sample lesson), School Life • Language Lab (twenty-five four-skill activities inside an ordinary school day) and Many Voices, the magazine written for multilingual high-school students.",
+  ["https://radan55.github.io/Stormattention/", "https://radan55.github.io/tamales02/", "https://radan55.github.io/elpa21speaking01/", "https://radan55.github.io/elstudentmagazine01/"]),
+]
+SERIES_HREF = {sid: f"series-{sid}.html" for sid, *_ in SERIES}
+
+# The cards that earn a place on the home page, in the order each door shows them.
+CORE = [
+ # 1 · the EL teacher's desk — "your first month, in order"
+ "series-newcomer.html", "student-profile.html", "lsp-builder.html",
+ "https://radan55.github.io/RichardDaniel/curriculum-36/", "https://radan55.github.io/stormphonicslab/",
+ "series-elpt-teacher.html", "ltel-clinic.html",
+ # 2 · every classroom teacher
+ "read-your-roster.html", "straight-answers.html", "monday-moves.html", "grade-it-fair.html",
+ "el-bridge.html", "literacy-lab/", "series-spanish.html", "sheltered.html", "today-in-el.html",
+ # 3 · students & families
+ "series-elpt-practice.html", "series-grammar.html", "series-vocab.html", "series-storm.html",
+ "newcomer-guide.html", "first-100-words.html", "elpt-family-guide.html", "graduation-roadmap.html",
+ # 4 · district & compliance
+ "leaders.html", "el-audit.html", "el-compliance-calendar.html", "parent-letters.html",
+ "title3-planner.html", "policy-brief.html", "counselor-desk.html",
+]
+CORE_ORDER = {h: i for i, h in enumerate(CORE)}
+
 GROUP_AUD = {g[0]: g[2] for g in GROUPS}
 
 
 def load():
-    """Build the catalog, carrying over the long descriptions and thumbnails."""
+    """Build the catalog, carrying over the long descriptions and thumbnails.
+    Series cards come first in their group; members carry "series": id."""
     import json, pathlib
     here = pathlib.Path(__file__).resolve().parent
     extra = json.loads((here / "catalog-long.json").read_text(encoding="utf-8"))
+    member_of = {}
+    for sid, *_, members in SERIES:
+        for h in members:
+            member_of[h] = sid
     out = []
+    for sid, title, group, fmt, size, one, long, members in SERIES:
+        href = SERIES_HREF[sid]
+        e = extra.get(href, {})
+        out.append({
+            "href": href, "title": title, "group": group, "aud": GROUP_AUD[group],
+            "fmt": fmt, "size": size, "one": one, "core": href in CORE,
+            "long": long, "thumb": e.get("thumb", ""), "who": e.get("who", ""),
+            "new": NEW.get(href, ""), "pin": PIN.get(href, ""), "ext": False,
+            "series": "", "is_series": sid, "members": list(members),
+        })
     for href, title, group, fmt, size, one, core in R:
         e = extra.get(href, {})
         out.append({
             "href": href, "title": title, "group": group, "aud": GROUP_AUD[group],
-            "fmt": fmt, "size": size, "one": one, "core": core,
+            "fmt": fmt, "size": size, "one": one, "core": href in CORE,
             "long": e.get("long", one), "thumb": e.get("thumb", ""),
             "who": e.get("who", ""),
             "new": NEW.get(href, ""), "pin": PIN.get(href, ""),
             "ext": href.startswith("http"),
+            "series": member_of.get(href, ""), "is_series": "", "members": [],
         })
+    hrefs = {r["href"] for r in out}
+    for h in member_of:
+        if h not in hrefs:
+            raise SystemExit(f"catalog: series member {h} is not in the catalog")
+    for h in CORE:
+        if h not in hrefs:
+            raise SystemExit(f"catalog: CORE entry {h} is not in the catalog")
     return out
 
 
