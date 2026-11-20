@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T04:28+00:00",
+"updated": "2026-11-20T18:48+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -14,8 +14,8 @@
 },
 {
 "source": "Language Magazine",
-"ok": false,
-"error": "HTTP Error 429: Too Many Requests"
+"ok": true,
+"items": 10
 },
 {
 "source": "The Conversation — Education",
@@ -40,7 +40,7 @@
 {
 "source": "KQED MindShift",
 "ok": true,
-"items": 8
+"items": 10
 },
 {
 "source": "NPR Education",
@@ -69,10 +69,64 @@
 }
 ],
 "counts": {
-"el": 51,
-"gen": 179
+"el": 54,
+"gen": 187
 },
 "items": [
+{
+"title": "“How the Turbulent Political Climate Has Affected Classrooms”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/20/how-the-turbulent-political-climate-has-affected-classrooms/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-20",
+"summary": "How the Turbulent Political Climate Has Affected Classrooms is the headline on one of my Education Week columns. Student attitudes have changed, as has how some educators teach, in this period of divisiveness. Here are some excerpts:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "‘Now We Have to Deliver:’ New Texas House Member on Her Education Goals",
+"link": "https://www.the74million.org/article/now-we-have-to-deliver-new-texas-house-member-on-her-education-goals/",
+"source": "The 74",
+"date": "2026-11-20",
+"summary": "Democrat Montserrat Garibay, who won Texas House District 49 in this month’s history-making election, told The 74 she has big plans for education when she assumes her new role in January. Garibay will take the seat vacated by Gina Hinojosa, who successfully challenged Republican Greg Abbott for governor, denying the co",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "The Best Fun Videos For English Language Learners In 2026 – Part Two",
+"link": "https://larryferlazzo.edublogs.org/2026/11/20/the-best-fun-videos-for-english-language-learners-in-2026-part-two/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-20",
+"summary": "I use short, funny video clips a lot when I’m teaching ELLs, and you can read in detail about how I use them in The Best Popular Movies/TV Shows For ESL/EFL (& How To Use Them). In short, there are many ways to use them that promote speaking, listening, writing and reading (including having students […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Parents criticize IPS plans to close schools and renegotiate Innovation Network contracts",
+"link": "https://www.chalkbeat.org/indiana/2026/11/20/parents-criticize-ips-school-closure-plan-and-innovation-network-changes/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Parents and other community members are criticizing Indianapolis Public Schools’ recent proposals to close schools and ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Consent — and the Courage to Speak Up — Must Be Taught Long Before College",
+"link": "https://www.the74million.org/article/consent-and-the-courage-to-speak-up-must-be-taught-long-before-college/",
+"source": "The 74",
+"date": "2026-11-20",
+"summary": "When my 9-year-old son was little, I used to put him in a shirt that said, “Boys will be boys,” but the words were crossed out and underneath it read: “Boys will be good human beings.” That should be the standard — not just for boys, but for all children. And it starts with parents, […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Indianapolis Public Schools Proposes Closing 6 Schools Amid Declining Enrollment and Budget Shortfall",
+"link": "https://www.the74million.org/article/indianapolis-public-schools-proposes-closing-6-schools-amid-declining-enrollment-and-budget-shortfall/",
+"source": "The 74",
+"date": "2026-11-20",
+"summary": "Indianapolis Public Schools is proposing to close six schools after this school year as student enrollment plunges and budget problems plague the district. The following schools would be affected, according to information shared at a Tuesday agenda review session of the IPS school board, which is expected to take actio",
+"bucket": "gen",
+"ms": false
+},
 {
 "title": "In a split vote, Caron Blanke appointed to fill a vacancy on Denver school board",
 "link": "https://www.chalkbeat.org/colorado/2026/11/20/denver-school-board-appoints-caron-blanke-to-vacant-district-3-seat/",
@@ -98,6 +152,24 @@
 "date": "2026-11-20",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Denver Democrats are urging the nonpartisan school board to reconsider its censure of Vice President Monica Hunter ",
 "bucket": "gen",
+"ms": false
+},
+{
+"title": "Democrats Took Power in the States. Now Comes the Hard Part on Education",
+"link": "https://www.the74million.org/article/democrats-took-power-in-the-states-now-comes-the-hard-part-on-education/",
+"source": "The 74",
+"date": "2026-11-20",
+"summary": "Headlines following this month’s seismic midterm elections have largely focused on the high drama of national politics, from challenges to the Senate leadership to the emergence of new contenders in the upcoming presidential nomination fight. Less attention has been devoted to a quieter revolution unfolding far from Wa",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Could Shohei Ohtani’s Goal-Setting Process Be Used By Students?",
+"link": "https://larryferlazzo.edublogs.org/2026/11/20/could-shohei-ohtanis-goal-setting-process-be-used-by-students/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-20",
+"summary": "The New York Times ran a very interesting story about the goal-setting method used by baseball superstar Shohei Ohtani – it’s called the Harada Method. The article is headlined Shohei Ohtani used this goal-setting method when he was a freshman in high school, and here’s a tweet about it that actually shows his goal […]",
+"bucket": "el",
 "ms": false
 },
 {
@@ -297,6 +369,15 @@
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Denise Wilson decided to become a Memphis teacher 10 years ago while working at a local Wendy’s. “I had a lot of teenag",
 "bucket": "gen",
 "ms": false
+},
+{
+"title": "IHL board taps national firm to assist with Mississippi University for Women president search",
+"link": "https://mississippitoday.org/2026/11/19/ihl-board-taps-national-firm-to-assist-with-mississippi-university-for-women-president-search/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-19",
+"summary": "A Boston-based search firm will help recruit and evaluate candidates to lead MUW. The firm will also help the Mississippi college board develop a job profile.",
+"bucket": "gen",
+"ms": true
 },
 {
 "title": "Head Start Advocates Want Change, Just Not the Kind the Administration Proposed",
@@ -716,6 +797,15 @@
 "title": "Does locking up a student's cellphone improve test scores? A new study suggests so",
 "link": "https://www.npr.org/2026/11/17/nx-s1-6035684/school-cellphone-ban-learning-loss-yondr-research",
 "source": "NPR Education",
+"date": "2026-11-17",
+"summary": "A new study of school cellphone bans finds they may help students make up for some of the learning they've lost since 2013 – a divergence from earlier study results.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Does Locking Up a Student’s Cellphone Improve Test Scores? A New Study Suggests So",
+"link": "https://ww2.kqed.org/mindshift/2026/11/17/does-locking-up-a-students-cellphone-improve-test-scores-a-new-study-suggests-so/",
+"source": "KQED MindShift",
 "date": "2026-11-17",
 "summary": "A new study of school cellphone bans finds they may help students make up for some of the learning they've lost since 2013 – a divergence from earlier study results.",
 "bucket": "gen",
@@ -1447,6 +1537,15 @@
 "source": "Chalkbeat",
 "date": "2026-11-10",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. One in eight New York City public school students experienced homelessness last school year, according to a report rele",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Read, Think, Debate: How Schools Are Trying To Outsmart AI and Bring Back Learning",
+"link": "https://ww2.kqed.org/mindshift/2026/11/09/read-think-debate-how-schools-are-trying-to-outsmart-ai-and-bring-back-learning/",
+"source": "KQED MindShift",
+"date": "2026-11-09",
+"summary": "Through civic participation and liberal education, South Korean educators hope to \"quietly stitch the fabric of our democracy…before it unravels beyond repair.\"",
 "bucket": "gen",
 "ms": false
 },
