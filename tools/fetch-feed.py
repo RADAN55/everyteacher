@@ -96,7 +96,21 @@ def main():
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*"})
             with urllib.request.urlopen(req, timeout=25) as r:
                 xml = r.read()
+                enc = (r.headers.get("Content-Encoding") or "").lower()
+            if enc == "gzip" or xml[:2] == b"\x1f\x8b":
+                import gzip; xml = gzip.decompress(xml)
+            elif enc == "br":
+                try:
+                    import brotli; xml = brotli.decompress(xml)
+                except Exception: pass
             got = items_of(xml)
+            if not got:
+                head = xml[:160].decode("utf-8", "ignore").replace("\n", " ")
+                status.append({"source": name, "ok": False, "error": "no items parsed; body starts: " + head[:110]})
+                for link, it in prev.items():
+                    if it.get("source") == name and it.get("date", "0000") >= cutoff.date().isoformat():
+                        items.setdefault(link, it)
+                continue
             got = sorted(got, key=lambda x: x[3] or now, reverse=True)[:PER_SOURCE]
             n = 0
             for title, link, desc, d in got:
