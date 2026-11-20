@@ -102,13 +102,11 @@
 <article class="sheet" id="sheet"></article>
 </main>
 <footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script src="cando.js"></script>
 <script>
 const ACC=["Extended time (1.5×)","Word-to-word bilingual dictionary","Directions read aloud & clarified","Test items read aloud (non-reading tests)","Small-group setting","Breaks","Sentence frames & word banks","Visuals & graphic organizers","Home-language support (peer / app / notes)","Reduced length / alternate format","Oral or recorded response","Preferential seating","Leveled / modified text","Vocabulary preview before lessons"];
 document.getElementById('acc').innerHTML=ACC.map((a,i)=>`<label><input type="checkbox" data-a="${i}">${a}</label>`).join('');
-const CAN={L:["understands a few words with gestures and pictures","follows two-step directions and simple questions","follows most of a lesson on a familiar topic; takes simple notes","follows a full lesson with few new words","understands fast, technical talk"],
-S:["gives one- or two-word answers; can ask for help with set phrases","asks simple questions; describes with short sentences","gives an opinion with a reason; retells in order","presents and argues a point with academic words","discusses, disagrees and presents fluently"],
-R:["reads signs, names, numbers and simple words with pictures","reads short simple sentences; needs help with directions","reads a page-long text and answers questions; guesses words from context","reads grade-level text with some support; finds evidence","reads technical and primary texts independently"],
-W:["writes name, date, copies from the board, labels pictures","writes simple sentences about self; short notes","writes a paragraph with a topic sentence; uses past tense","writes a multi-paragraph essay with evidence and transitions","writes research and varied genres with few errors"]};
+const CAN=window.ELCAN.CAN; /* shared with Read Your Roster — edit cando.js */
 const HELP={1:["Pair with a bilingual peer; seat near you","Pictures, objects and labeled diagrams for every new idea","One-step directions, modeled, then checked by having the student show you","Accept one-word, drawn or home-language answers; never silence as 'doesn't care'","Translation app for comprehension is fine; keep it off during writing they will turn in"],
 2:["Word bank + two sentence frames on every task","Preview the 5 key words before the lesson","Short, frequent checks: 'tell your partner the first step'","Shorten the task, keep the standard: odd problems, one paragraph","Oral answers count"],
 3:["Frames optional, academic words required","Graphic organizer before any writing","Partner talk before whole-class answers","Score content and language separately","Push for complete sentences and 'because'"],
