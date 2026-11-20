@@ -1,1 +1,1801 @@
-{"updated": null, "items": [], "sources": [], "counts": {"el": 0, "gen": 0}}
+{
+"updated": "2026-11-20T04:19+00:00",
+"keep_days": 30,
+"sources": [
+{
+"source": "Colorín Colorado",
+"ok": true,
+"items": 2
+},
+{
+"source": "Larry Ferlazzo",
+"ok": true,
+"items": 20
+},
+{
+"source": "TESOL Blog",
+"ok": false,
+"error": "not well-formed (invalid token): line 33, column 18"
+},
+{
+"source": "Language Magazine",
+"ok": true,
+"items": 10
+},
+{
+"source": "Reading Rockets",
+"ok": false,
+"error": "HTTP Error 403: Forbidden"
+},
+{
+"source": "Edutopia",
+"ok": false,
+"error": "syntax error: line 2, column 6"
+},
+{
+"source": "Cult of Pedagogy",
+"ok": true,
+"items": 2
+},
+{
+"source": "The Hechinger Report",
+"ok": true,
+"items": 10
+},
+{
+"source": "Chalkbeat",
+"ok": true,
+"items": 100
+},
+{
+"source": "KQED MindShift",
+"ok": false,
+"error": "HTTP Error 404: Not Found"
+},
+{
+"source": "NPR Education",
+"ok": true,
+"items": 10
+},
+{
+"source": "Education Week",
+"ok": false,
+"error": "not well-formed (invalid token): line 340, column 400"
+},
+{
+"source": "The 74",
+"ok": true,
+"items": 25
+},
+{
+"source": "Mississippi Today — Education",
+"ok": true,
+"items": 12
+}
+],
+"counts": {
+"el": 49,
+"gen": 142
+},
+"items": [
+{
+"title": "In a split vote, Caron Blanke appointed to fill a vacancy on Denver school board",
+"link": "https://www.chalkbeat.org/colorado/2026/11/20/denver-school-board-appoints-caron-blanke-to-vacant-district-3-seat/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A Denver Public Schools parent who was runner-up in last year’s school board election was appointed Thursday to fill a ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Foundation Funded Initiative Chooses To Fund Three AI Projects Supporting English Language Learners",
+"link": "https://larryferlazzo.edublogs.org/2026/11/19/foundation-funded-initiative-chooses-to-fund-three-ai-projects-supporting-english-language-learners/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-20",
+"summary": "In March, I posted about a big foundation-funded initiative to develop Artificial Intelligence tools to support English Language Learners (see This Is Interesting: Foundations Putting A Bunch Of Money Into Creating AI Tools For English Language Learners). In that post, I also shared some concerns about they’re not real",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Denver Democrats call on nonpartisan school board to reevaluate censure of VP Monica Hunter",
+"link": "https://www.chalkbeat.org/colorado/2026/11/20/denver-democrats-call-on-school-board-to-reconsider-monica-hunter-censure/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Denver Democrats are urging the nonpartisan school board to reconsider its censure of Vice President Monica Hunter ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Conservative group files lawsuit to stop Amendment 87 alleging it won’t benefit Colorado education",
+"link": "https://www.chalkbeat.org/colorado/2026/11/20/advance-colorado-files-lawsuit-to-overturn-amendment-87-education-ballot-measure/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A conservative group that led a failed bid to counteract Amendment 87 filed a lawsuit on Thursday to overturn the measu",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Trump Administration Cancels Mandatory Pay Hike for Head Start Teachers",
+"link": "https://www.the74million.org/zero2eight/trump-administration-cancels-mandatory-pay-hike-for-head-start-teachers/",
+"source": "The 74",
+"date": "2026-11-19",
+"summary": "WASHINGTON (AP) — The Trump administration on Friday said it would cancel a rule mandating pay increases for teachers in Head Start, the federally funded early education program that serves more than 700,000 of the nation’s neediest preschoolers every year. The move will undo a requirement that large Head Start program",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Top Illinois House leaders say not to expect more education funding for public schools in veto session",
+"link": "https://www.chalkbeat.org/chicago/2026/11/19/illinois-legislature-says-no-extra-money-for-chicago-schools-is-expected-in-veto-session/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Top Illinois House leaders say they don’t expect public education to get extra funds during the state legislature’s ong",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "This Week’s Free & Useful Artificial Intelligence Tools For The Classroom",
+"link": "https://larryferlazzo.edublogs.org/2026/11/19/this-weeks-free-useful-artificial-intelligence-tools-for-the-classroom-173/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-19",
+"summary": "At least, for now, I’m going to make this a weekly feature which will highlight additions to THE BEST NEW – & FREE – ARTIFICIAL INTELLIGENCE TOOLS THAT COULD BE USED IN THE CLASSROOM: Slide2Video does just that… LingoGPT is an app that will create bilingual stories. LangWire is a so-so language-teaching chatbot. Ulearn",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "The cost of college is confusing. Some schools are trying to change that",
+"link": "https://www.npr.org/2026/11/19/nx-s1-6023392-e1/the-cost-of-college-is-confusing-some-schools-are-trying-to-change-that",
+"source": "NPR Education",
+"date": "2026-11-19",
+"summary": "A growing number of colleges are trying to reduce widespread public confusion about what college actually costs.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Texas Spent Millions on a Divisive Reading Program. Will It Pay for an Overhaul?",
+"link": "https://www.the74million.org/article/texas-spent-millions-on-a-divisive-reading-program-will-it-pay-for-an-overhaul/",
+"source": "The 74",
+"date": "2026-11-19",
+"summary": "As a state representative, Texas Gov.-elect Gina Hinojosa frequently criticized Gov. Greg Abbott’s administration, including the Texas Education Agency, for using emergency powers to execute huge government contracts with little transparency. “Someone’s getting rich,” she posted in 2024 as costs to develop a state-owne",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Test scores, enrollment, demographics: What we know about the schools IPS has proposed closing",
+"link": "https://www.chalkbeat.org/indiana/2026/11/19/ips-school-closure-proposal-would-affect-10-percent-of-students/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The schools Indianapolis Public Schools is planning to close tend to be smaller and have been losing students faster th",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Teachers union fires legal shot over pension clawback",
+"link": "https://www.chalkbeat.org/newyork/2026/11/19/uft-united-federation-of-teachers-paraprofessional-pension-lawsuit/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "This story was originally published on Nov. 19 by The City Reporter. Sign up here to get the latest stories from The City Reporter delivered to you each morning. The United Federation of Teachers formally announced its intent to sue the main pension fund covering the city’s retired educators over a pension clawback imp",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Study Outlines Specific Student Motivation Strategies",
+"link": "https://larryferlazzo.edublogs.org/2026/11/19/study-outlines-specific-student-motivation-strategies/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-19",
+"summary": "Erika A. Patall is a USC education professor who co-wrote a book chapter for Oxford Press titled 26 Instructional Practices That Support Adaptive Motivation, Engagement, and Learning, and a short summary for Ed Source called Grades vs. learning: AI reveals the flaws in our education system. The chapter is behind a payw",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Specialized school being investigated for restraint has overcorrected, former staff members allege",
+"link": "https://www.chalkbeat.org/colorado/2026/11/19/former-staff-members-austin-centers-westminster-say-school-overcorrected/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Months after Colorado officials began investigating a specialized school for allegedly improperly restraining students,",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Sold a story: It’s up to us",
+"link": "https://hechingerreport.org/sold-a-story-its-up-to-us/",
+"source": "The Hechinger Report",
+"date": "2026-11-19",
+"summary": "This podcast, Sold a Story, was produced by APM Reports and reprinted with permission. Sold a Story is an investigative podcast about how kids learn — what works in the classroom, the science behind those insights and why that research often doesn’t make it into schools. Season 1 revealed why so many kids are strugglin",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Sentences Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/19/sentences-of-the-week-45/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-19",
+"summary": "I thought readers might, or might not, find this new regular post useful. Each week, I highlight several sentences, with links to their sources, that I find interesting/concerning/useful. And they may, or may not, be directly connected to education. I may also include my own comments or related links. This regular post",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Schools don’t have to check student gender to comply with transgender athlete ballot issue, Colorado officials say",
+"link": "https://www.chalkbeat.org/colorado/2026/11/19/education-department-guidance-no-gender-checks-needed-prop-134/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. New guidance from Colorado officials says schools don’t need to verify whether a student is male or female to comply wi",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Philly cut substitute teacher roles to save money. Now the district wants $11 million more for them.",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/19/school-district-wants-more-money-for-substitute-teachers-after-cutting-them/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Less than a year ago, Philadelphia school officials said eliminating hundreds of substitute teacher positions would sav",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Pennsylvania Board of Education rejects proposal to change cut scores, citing lack of transparency",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/19/pennsylvania-proposal-to-change-state-test-cut-scores-fails-to-pass/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Pennsylvania State Board of Education rejected the Department of Education’s proposal to change how it scores stude",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: The Trouble with Looking for Miracle Cures in Education",
+"link": "https://www.the74million.org/article/the-trouble-with-looking-for-miracle-cures-in-education/",
+"source": "The 74",
+"date": "2026-11-19",
+"summary": "Imagine finding the one instructional approach that could finally solve our reading problems, close achievement gaps, and give every child the education they deserve. No more arguments about pedagogy. No more endless debates about which programs work. Just follow the evidence, adopt the method and poof! Watch children ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Fear in the Hallways, Cuts in the Budget: The Real Cost of Targeting Immigrants",
+"link": "https://www.the74million.org/article/fear-in-the-hallways-cuts-in-the-budget-the-real-cost-of-targeting-immigrants/",
+"source": "The 74",
+"date": "2026-11-19",
+"summary": "Nearly 20 years ago, Oklahoma adopted what was then the strictest anti-immigrant bill in the country. House Bill 1804 aimed to eliminate public funding and jobs for undocumented immigrants, pushed police officers to check folks’ immigration status and made it a felony to harbor and transport undocumented individuals. T",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "OPINION: For a well-prepared workforce, schools must rethink the kinds of skills that will be useful in a changing economy",
+"link": "https://hechingerreport.org/workforce-preparation-changing-economy/",
+"source": "The Hechinger Report",
+"date": "2026-11-19",
+"summary": "For years, the debate about artificial intelligence and jobs has understandably focused on which workers machines will replace. People are worried about job security, and employers are seeking efficiencies. Yet as AI-supported tasks and outputs become increasingly commonplace in virtually every workplace, the conversat",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "New state dashboard reveals Colorado young people need more help connecting to college and careers",
+"link": "https://www.chalkbeat.org/colorado/2026/11/19/jared-polis-releases-lets-get-ready-data-dashboard/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "On Monday, Gov. Jared Polis unveiled a new data dashboard focused on young people’s career readiness, civic experiences, and personal well-being. It’s an initiative he pushed for during his time as chair of the National Governors Association . The new scorecard shows the state scored a 21.14 out of 30 this year in the ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Nearly 1,100 NYC schools lost enrollment this year. See if your school was one of them.",
+"link": "https://www.chalkbeat.org/newyork/2026/11/19/nyc-student-enrollment-losses-by-school/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Nearly two-thirds of New York City public schools lost enrollment over the past year, according to newly released schoo",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Last year, this Memphis teacher started a school food pantry. It now serves over 250 students.",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/19/memphis-teacher-feeds-hundreds-with-school-food-pantry/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Denise Wilson decided to become a Memphis teacher 10 years ago while working at a local Wendy’s. “I had a lot of teenag",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Head Start Advocates Want Change, Just Not the Kind the Administration Proposed",
+"link": "https://www.the74million.org/zero2eight/head-start-advocates-want-change-just-not-the-kind-the-administration-proposed/",
+"source": "The 74",
+"date": "2026-11-19",
+"summary": "It’s been a little over three months since the Trump administration unveiled its proposal to drastically reduce the performance standards for Head Start, the federal antipoverty program that began in the 1960s and has been supported by decades of science and research. On Aug. 7, the Administration for Children and Fami",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "As the Denver Preschool Program turns 20, it’s expanding its early childhood mission",
+"link": "https://www.chalkbeat.org/colorado/2026/11/19/denver-preschool-program-launches-first-step-collective/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. As Denver Mayor Mike Johnston pitches universal childcare as a way to keep the city affordable, the city’s 20-year-old ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A proven way to keep teachers in needy schools is losing ground",
+"link": "https://www.chalkbeat.org/2026/11/19/teacher-pay-in-high-poverty-schools-turnover/",
+"source": "Chalkbeat",
+"date": "2026-11-19",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. States and school districts all across the country face the same problem: Teachers are far more likely to leave high-po",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "‘I’m no superhero’: Jackson schools superintendent to depart district next summer",
+"link": "https://mississippitoday.org/2026/11/18/im-no-superhero-jackson-schools-superintendent-to-depart-district-next-summer/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-18",
+"summary": "Errick Greene, who has led Jackson Public Schools since 2018, plans to resign at the end of the school year.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Would You Sue Your Kid’s School Over a Bad Grade?",
+"link": "https://www.the74million.org/article/would-you-sue-your-kids-school-over-a-bad-grade/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Why school districts are using corporate buzzwords to rebrand painful school closures",
+"link": "https://www.chalkbeat.org/2026/11/18/districts-rebrand-school-closures-with-buzzwords-as-enrollment-falls/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A sleek Minneapolis school district webpage markets a “districtwide effort to reimagine a district where every student ",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "The Attendance Crisis Isn’t Over: Why Students Are Missing School & What Can Help",
+"link": "https://www.the74million.org/article/the-attendance-crisis-isnt-over-why-students-are-missing-school-what-can-help/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "Chronic absenteeism has become one of the defining post-pandemic challenges facing schools. In a one-hour webinar, hosted by AERA and The 74, our panelists will explore why attendance rates have remained stubbornly low, which interventions are supported by evidence, what successful states and districts are doing and ho",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Special education teachers shared their stories. You told NPR you felt seen",
+"link": "https://www.npr.org/2026/11/18/nx-s1-6031176/special-education-teachers-audience-response",
+"source": "NPR Education",
+"date": "2026-11-18",
+"summary": "NPR is following along as about a dozen special education teachers navigate this school year and share their joys and challenges. Listeners say they're not alone.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "SEL Weekly Update",
+"link": "https://larryferlazzo.edublogs.org/2026/11/18/sel-weekly-update-308/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-18",
+"summary": "I’ve begun this weekly post where I’ll be sharing resources I’m adding to The Best Social Emotional Learning (SEL) Resources or other related “Best” lists. Also, check out “Best” Lists Of The Week: Social Emotional Learning Resources. Here are this week’s picks: Why Your Students Need (Some) Extrinsic Motivation is fro",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Preschool math blasts off in Mississippi",
+"link": "https://mississippitoday.org/2026/11/18/preschool-math-blasts-off-in-mississippi/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-18",
+"summary": "A new mandated math curriculum for state-funded preschools goes beyond counting and learning shapes.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Philly needs thousands of shipbuilders. Can its schools prepare the next generation?",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/18/philadelphia-schools-aim-to-prepare-students-for-trump-shipbuilding-jobs/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Kristopher Purnell, 17, wants to be an underwater welder when he graduates high school. But he acknowledges that “it’s ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: We Hold Adults Accountable. Why Are Children Paying the Price?",
+"link": "https://www.the74million.org/article/we-hold-adults-accountable-why-are-children-paying-the-price/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "Personal responsibility is deeply embedded in American social policy. Adults receiving public assistance may be expected to work, document their eligibility, report changes in income and comply with program requirements. There is a legitimate debate about whether those expectations make sense for adults. They do not fo",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NYC Public School Enrollment Drops, Raising Questions Over Budgets and Closures",
+"link": "https://www.the74million.org/article/nyc-public-school-enrollment-drops-raising-questions-over-budgets-and-closures/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "New York City’s public schools lost about 23,000 students, or nearly 3%, from the year before, according to preliminary numbers the Education Department released Monday. That leaves the nation’s largest school system with about 766,900 students, from kindergarten through senior year, as of Oct. 31, with several contrib",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Memphis state takeover board talks priorities while blocked from action in court",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/18/memphis-schools-state-takeover-board-talks-priorities-while-blocked-in-court/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Memphis-Shelby County schools takeover board on Tuesday held its first meeting in five months to discuss its priori",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Memphis schools academic growth rating plummets after four years at the top",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/18/memphis-schools-earn-lowest-academic-growth-rating-in-four-years/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. For the first time in four years , Memphis schools received the lowest state rating for academic growth. Memphis-Shelby",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Job pipelines for Black and Latino students ‘dry up’ after attacks on DEI and affirmative action",
+"link": "https://hechingerreport.org/job-pipelines-for-black-and-latino-students-dry-up-after-dei-and-affirmative-action-attacks/",
+"source": "The Hechinger Report",
+"date": "2026-11-18",
+"summary": "This video story, by Soledad O’Brien Productions for TIME and The Hechinger Report, examines the consequences of the SCOTUS decision about affirmative action. LOS ANGELES — Jamila Chambers remembers when recruiters came to interview students at Occidental College with a clear mission: They wanted a diverse workforce. T",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Hundreds of NYC students still lack bus service months into school year",
+"link": "https://www.chalkbeat.org/newyork/2026/11/18/nyc-school-bus-hearing-reveals-service-gaps/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Hundreds of New York City students still lack assigned school bus transportation more than two months into the academic",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Here are 6 issues the new Detroit school board will face",
+"link": "https://www.chalkbeat.org/detroit/2026/11/18/here-are-6-of-the-top-issues-the-new-dpscd-board-will-face/",
+"source": "Chalkbeat",
+"date": "2026-11-18",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Detroit school board will swear in five members in January, a new majority that will help make pivotal decisions fo",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Following the Midterm Elections, Could Universal Childcare Become a Reality?",
+"link": "https://www.the74million.org/zero2eight/following-the-midterm-elections-could-universal-childcare-become-a-reality/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "A decade ago, childcare was overwhelmingly viewed as a private matter. Politicians weren’t prone to taking up the issue on the campaign trail. Proposals for a better system were not top of mind for lawmakers. That has finally begun to change, and the recent midterm elections prove it. Not only did many candidates run o",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Fewer students, more teachers: Districts balk at cutting staff even as enrollment falls",
+"link": "https://hechingerreport.org/fewer-students-more-teachers-districts-balk-at-cutting-staff-even-as-enrollment-falls/",
+"source": "The Hechinger Report",
+"date": "2026-11-18",
+"summary": "SEATTLE — Nearly four decades ago, state auditors delivered a stark warning to Seattle Public Schools. The district needed to close several campuses with low enrollment to avert a deepening budget crisis. But the recommendations generated fierce neighborhood outcry, so Seattle officials set the audit aside. Then, 34 ye",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Everything You Wanted To Know About Teaching ELLs Speaking But Were Afraid To Ask",
+"link": "https://larryferlazzo.edublogs.org/2026/11/18/everything-you-wanted-to-know-about-teaching-ells-speaking-but-were-afraid-to-ask/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-18",
+"summary": "Gianfranco Conti always publishes helpful posts about language teaching, but he outdid himself with one titled The Ten Principles of Effective Speaking Instruction: Moving Beyond “Let’s Talk.” Any ELL instructor could benefit from reading it. I’m adding this info to The Best Sites To Practice Speaking English.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "COLUMN: Will the blue wave reopen job opportunities for Black and Hispanic students?",
+"link": "https://hechingerreport.org/column-will-the-blue-wave-reopen-job-opportunities-for-black-and-hispanic-students/",
+"source": "The Hechinger Report",
+"date": "2026-11-18",
+"summary": "WASHINGTON – Trinity Williams has some advice for prospective students visiting Howard University in the era since the Supreme Court banned colleges from considering race in admissions. “Always choose an HBCU,” Williams, a junior and tour guide at the historically Black university, told me on a recent October day, reco",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Advice On Handling Disagreements Over The Holidays (& All The Time!)",
+"link": "https://larryferlazzo.edublogs.org/2026/11/18/advice-on-handling-disagreements-over-the-holidays-all-the-time-5/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-18",
+"summary": "A lot of family holiday meals are coming up for many of us. It might be a good time to review The Best Ways To Talk With Someone Who Disagrees With You.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "A Deep Dive Into Alabama’s Reading Gains",
+"link": "https://www.the74million.org/article/a-deep-dive-into-alabamas-reading-gains/",
+"source": "The 74",
+"date": "2026-11-18",
+"summary": "Updated November 18, 2026 In recent years, four southern states appear to be leading the way in reading growth: Mississippi, Louisiana, Tennessee and Alabama. Decades of policy and commitment to the science of reading in Mississippi has been reported and analyzed extensively, but a new report from Thomas B. Fordham Ins",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "What education issues will Indiana lawmakers consider in 2027?",
+"link": "https://www.chalkbeat.org/indiana/2026/11/17/lawmakers-to-weigh-childcare-funding-and-k-12-budgets-for-2027/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The beginning of the 2027 legislative session in Indiana looks different than many expected just a short time ago. A na",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "U.S. Just Lost Measles Elimination Status. What to Know Now",
+"link": "https://www.the74million.org/article/u-s-just-lost-measles-elimination-status-what-to-know-now/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "This Week’s “Round-Up” Of Useful Posts & Articles On Ed Policy Issues",
+"link": "https://larryferlazzo.edublogs.org/2026/11/17/this-weeks-round-up-of-useful-posts-articles-on-ed-policy-issues-531/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-17",
+"summary": "Here are some recent useful posts and articles on educational policy issues (You might also be interested in seeing all my “Best” lists related to education policy here): A Haitian 8-year-old was taken by ICE at routine check-in, rattling a San Diego school district www.nbcnews.com/news/us-news… [image or embed] — Larr",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "This Is “Personalized Learning” Done Right",
+"link": "https://larryferlazzo.edublogs.org/2026/11/17/this-is-personalized-learning-done-right/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-17",
+"summary": "A whole lot has been written about the idea of “personalized learning” in education (see The Best Resources For Understanding “Personalized Learning”). I recently saw two interesting tweets about it: Interesting Open Access piece on the link below too: https://t.co/IEgAgEyott — Terry Pearson (@TPLTD) June 15, 2026 Here",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Students want hands-on training in the work of democracy. Colleges are answering",
+"link": "https://hechingerreport.org/fed-up-with-national-politics-students-want-hands-on-training-on-democracy-in-action/",
+"source": "The Hechinger Report",
+"date": "2026-11-17",
+"summary": "KENOSHA, Wis. — Andrew Staff knew the data. The sophomore at the University of Wisconsin-Madison had helped create an information packet for the 26 residents of Kenosha County, each randomly selected and paid $100 to spend a Saturday confronting the local housing crunch. The key question: Could factory-built dwellings ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "She didn’t like school as a kid. Now, she’s Colorado’s 2027 Teacher of the Year.",
+"link": "https://www.chalkbeat.org/colorado/2026/11/17/2027-teacher-of-the-year-merci-ames-strasburg-high-school/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Aside from P.E., Merci Ames didn’t like school much as a kid. What was the point? How would the lessons ever be relevan",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Preschool math blasts off in Mississippi",
+"link": "https://hechingerreport.org/preschool-math-curriculum-mississippi/",
+"source": "The Hechinger Report",
+"date": "2026-11-17",
+"summary": "CORINTH, Miss. — Vaughn Dodd is using Magna-Tiles to make a rocketship, carefully selecting different shapes for the nose cone and the tail. The four-year-old pre-K student at Corinth Elementary School knows that a diamond shape is called a rhombus. She knows the sun is a circle. Proficiency with translucent plastic sh",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Phone Bans Improve Learning, Study Finds — But So Far, Only Slightly",
+"link": "https://www.the74million.org/article/phone-bans-improve-learning-study-finds-but-so-far-only-slightly/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "Recently enacted prohibitions on phone use in schools have produced slight, though recognizable, improvements in learning, according to a new study of millions of U.S. students. The paper’s authors argue that effective bans on devices during the school day could, over time, restore a substantial portion of the academic",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Google and Other Ed Tech Companies Ignore Pushback at Their Own Peril",
+"link": "https://www.the74million.org/article/google-and-other-ed-tech-companies-ignore-pushback-at-their-own-peril/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "The signs of the blowback against technology — and its effects on kids — are all around. Pushback against artificial intelligence data centers was a key part of successful insurgent campaigns from Democratic governors-elect in Texas and Ohio. While Americans see some potential in certain uses of AI, concern is now far ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Are the Public Schools in Massachusetts Districts Truly Open to the Public?",
+"link": "https://www.the74million.org/article/are-the-public-schools-in-massachusetts-districts-truly-open-to-the-public/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "The town of Milton, Massachusetts, has been roiled by recent reporting in the Boston Globe showing that its school district has been conducting surveillance and residency checks on children who may not live within the town’s boundaries. The outrage has centered on two details of the program. First, the district hired o",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Let’s Bake & Talk Native Foods in Schools",
+"link": "https://www.the74million.org/article/lets-bake-talk-native-foods-in-schools/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Indianapolis Public Schools proposes closing 6 schools amid declining enrollment and budget shortfall",
+"link": "https://www.chalkbeat.org/indiana/2026/11/17/indianapolis-public-schools-proposes-closing-six-schools/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Indianapolis Public Schools is proposing to close six schools after this school year as student enrollment plunges and ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Hopi Corn & Chokecherry Gravy: Feeding Students’ Taste for Native Foods, Culture",
+"link": "https://www.the74million.org/article/hopi-corn-chokecherry-gravy-feeding-students-taste-for-native-foods-culture/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "The tall, dense stalks of blue Hopi corn were a burst of green among the dry grassland of southeastern Wyoming. As the small patch of crops whipped in the wind, Lisa Ansell Frazier led the way into the rows and gently touched the leaves, tassels and budding silk. If you talk to the corn and […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Has American education been sold a story about how to teach? Join our conversation with Emily Hanford.",
+"link": "https://www.chalkbeat.org/2026/11/17/emily-hanford-sold-a-story-discuss-direct-instruction-at-chalkbeat-event/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Join Emily Hanford and Chalkbeat's Matt Barnum on Dec. 8 for a virtual conversation about Direct Instruction, education research, and what educators and school leaders should know. Chalkbeat Ideas editor Matt Barnum will talk with the journalist behind “Sold a Story” about her provocative new investigation into teachin",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Funding, consistency, and leadership: What education advocates want from Democratic-controlled legislature",
+"link": "https://www.chalkbeat.org/detroit/2026/11/17/what-democratic-control-in-michigan-could-mean-for-education/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Heather Eckner has enjoyed broad bipartisan support for the work she does advocating for students with disabilities. St",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Fewer Than Half of States Require K-12 Native American Education",
+"link": "https://www.the74million.org/article/fewer-than-half-of-states-require-k-12-native-american-education/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "Cammie DuPuis-Pablo had reached her breaking point. For years, her two sons had been bullied at school because of their Native American heritage. They were called girls because of their long, dark braids. They were taunted with racist remarks and got into fights. The underlying reason, she felt, was a lack of knowledge",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Does locking up a student's cellphone improve test scores? A new study suggests so",
+"link": "https://www.npr.org/2026/11/17/nx-s1-6035684/school-cellphone-ban-learning-loss-yondr-research",
+"source": "NPR Education",
+"date": "2026-11-17",
+"summary": "A new study of school cellphone bans finds they may help students make up for some of the learning they've lost since 2013 – a divergence from earlier study results.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Denver school board narrows 12 applicants down to 3 finalists for District 3 vacancy",
+"link": "https://www.chalkbeat.org/colorado/2026/11/17/denver-school-board-picks-3-finalists-for-district-3-vacant-seat/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A runner-up in last year’s Denver school board election, a former Denver Public Schools parent, and a former top distri",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Chicago principals’ historic three-year contract deal would boost pay and protections against harassment",
+"link": "https://www.chalkbeat.org/chicago/2026/11/17/chicago-public-schools-reaches-contract-deal-with-principals/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Chicago Public Schools and its principals union have reached a tentative deal on a historic three-year contract that wo",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Around The Web In ESL/EFL/ELL",
+"link": "https://larryferlazzo.edublogs.org/2026/11/17/around-the-web-in-esl-efl-ell-386/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-17",
+"summary": "Ten years ago I began this regular feature where I share a few posts and resources from around the Web related to ESL/EFL or to language in general that have caught my attention. You might also be interested in all my Best lists on teaching ELLs. Also, check out A Collection Of My Best […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "An Educator May Finally Lead Texas Schools. Families Say It’s Overdue",
+"link": "https://www.the74million.org/article/texas-next-schools-chief-is-poised-to-be-an-educator-teachers-parents-say-its-past-due/",
+"source": "The 74",
+"date": "2026-11-17",
+"summary": "Gov.-elect Gina Hinojosa’s opposition to vouchers, excessive testing and state takeovers injected optimism into Texas communities longing for their students’ education to improve — but her first meaningful action toward change will likely occur when she appoints a career educator to oversee public schools for the first",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Yondr pouch might be as effective as an extra week of learning, new cell phone ban study finds",
+"link": "https://www.chalkbeat.org/2026/11/17/school-cell-phone-bans-could-yield-small-learning-gains-study-finds/",
+"source": "Chalkbeat",
+"date": "2026-11-17",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. School cell phone bans are overwhelmingly popular with teachers, and many school administrators say that getting kids o",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "“Reverse Pictionary” Would Be A Fun Game To Play With Intermediate ELLs",
+"link": "https://larryferlazzo.edublogs.org/2026/11/16/reverse-pictionary-would-be-a-fun-game-to-play-with-intermediate-ells/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-16",
+"summary": "Just about every ELL teacher on the planet has had their students play Pictionary at some point in class. It’s a great opportunity to practice language. I’ve borrowed several games from late night host Jimmy Fallon for the classroom, and he recently played another one with classroom potential – called “Reverse Pictiona",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "World Toilet Day Is On Nov. 19th – Here Are Teaching & Learning Resources",
+"link": "https://larryferlazzo.edublogs.org/2026/11/16/world-toilet-day-is-on-nov-19th-here-are-teaching-learning-resources-8/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-16",
+"summary": "Nov. 19th is World Toilet Day, organized by the U.N. to bring attention to the need for public sanitation in developing countries. You might be interested in The Best Resources For Learning About World Toilet Day & The Issue Of Public Sanitation In The Third World.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Who Cares for America’s Young Children? A Massive National Survey Has Answers",
+"link": "https://www.the74million.org/zero2eight/who-cares-for-americas-young-children-a-massive-national-survey-has-answers/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "Across the United States, a majority of babies and young children regularly participate in some form of early care and education. Just over half of children from birth to age 3 and more than two-thirds of children ages 3 to 5 — around 12.8 million children total — are cared for by someone other than […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Una cuidadora infantil reclama cambios en las políticas migratorias de Estados Unidos",
+"link": "https://www.the74million.org/zero2eight/una-cuidadora-infantil-reclama-cambios-en-las-politicas-migratorias-de-estados-unidos/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "Click here to read in English. En mayo pasado, Yanet Martínez caminaba hacia la parada del autobús para recoger a dos de sus nietos en la escuela cuando vio a agentes federales de inmigración deteniendo a personas cerca de MacArthur Park, en Los Ángeles. Un autobús se convirtió en su vía de escape. “No sé […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Trump administration launches probe into alleged antisemitism in Philadelphia schools",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/16/trump-administration-probes-alleged-antisemitism-in-school-district/",
+"source": "Chalkbeat",
+"date": "2026-11-16",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Philadelphia’s school district is under scrutiny from the Trump administration for alleged antisemitism. But district o",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Supreme Court Rejects Funding Cuts Related to DEI",
+"link": "https://languagemagazine.com/2026/11/16/supreme-court-rejects-funding-cuts-related-to-dei/?utm_source=rss&utm_medium=rss&utm_campaign=supreme-court-rejects-funding-cuts-related-to-dei",
+"source": "Language Magazine",
+"date": "2026-11-16",
+"summary": "The US Supreme Court on November 16 declined to hear the Trump administration’s appeal of a lower court ruling that blocked it from canceling research grants to University of California scientists over diversity, equity, and inclusion (DEI) concerns. The justices issued a one-line order with no explanation, and no diss",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "States step up their role picking winners among college majors and training programs",
+"link": "https://hechingerreport.org/proof-points-states-priority-fields/",
+"source": "The Hechinger Report",
+"date": "2026-11-16",
+"summary": "For years, higher education policy has focused on getting more Americans into college and helping more of them graduate. Now the emphasis has shifted to another question: What are students and the general public getting out of these degrees? Colleges are being pressed to show that their graduates find good jobs and ear",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Parents of Students With Disabilities Fear Losing Texas’ “Life-Changing” School Vouchers",
+"link": "https://www.the74million.org/article/parents-of-students-with-disabilities-fear-losing-texas-life-changing-school-vouchers/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "For about two months, Kelci Jagge tried to send her adopted son to a public school in San Antonio. But Ruslan, who has cerebral palsy and a seizure disorder, could never make it through a single full day of class in East Central ISD. “He’s profoundly disabled,” Jagge said. “He’s nonverbal, non-ambulatory and G-tube fed",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: D.C. Schools Lead the Country in Academic Recovery. Here’s How",
+"link": "https://www.the74million.org/article/d-c-schools-lead-the-country-in-academic-recovery-heres-how/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "Washington, D.C., is considered one of the fastest improving urban school districts in the country and leads all states in post-pandemic academic recovery for both math and reading. For those of us who live and work in the nation’s capital, this is not a shock. Our city leadership and schools — which are half D.C. […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "New Mexico wanted free childcare for all. There's just one drawback",
+"link": "https://www.npr.org/2026/11/16/nx-s1-5819524/new-mexico-wanted-free-childcare-for-all-theres-just-one-drawback",
+"source": "NPR Education",
+"date": "2026-11-16",
+"summary": "About a year ago, New Mexico became the first state to offer free childcare to every eligible family, regardless of income. One catch: The state doesn't have the capacity to meet the demand.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NYC public school enrollment drops by 23,000 students, raising tough questions over budgets and closures",
+"link": "https://www.chalkbeat.org/newyork/2026/11/16/nyc-2026-27-public-school-student-enrollment-drop-pressures-budget-closures/",
+"source": "Chalkbeat",
+"date": "2026-11-16",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. New York City’s public schools lost about 23,000 students, or nearly 3%, from the year before, according to preliminary",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NPR's Student Podcast Challenge is back for 2027",
+"link": "https://www.npr.org/2026/11/16/nx-s1-6028826/student-podcast-challenge-2027-information-deadline",
+"source": "NPR Education",
+"date": "2026-11-16",
+"summary": "The annual audio competition for grades four through 12 returns in January. Now in its ninth year, the contest has involved more than 90,000 students around the country.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "It’s “Geography Awareness Week” – Here Are Tons Of Teaching & Learning Resources",
+"link": "https://larryferlazzo.edublogs.org/2026/11/16/its-geography-awareness-week-here-are-tons-of-teaching-learning-resources-7/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-16",
+"summary": "It’s Geography Awareness Week: Each year more than 100,000 Americans actively participate in Geography Awareness Week. Established by presidential proclamation more than 25 years ago, this annual public awareness program encourages citizens young and old to think and learn about the significance of place and how we aff",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "IPS board to discuss school closures on Tuesday",
+"link": "https://www.chalkbeat.org/indiana/2026/11/16/ips-board-to-discuss-school-closures-at-meeting/",
+"source": "Chalkbeat",
+"date": "2026-11-16",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Indianapolis Public Schools board will discuss “school consolidation” on Tuesday, a sign that district officials ar",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Chicago Public Schools overtime spending surged to $150 million. Watchdog flags oversight gaps.",
+"link": "https://www.chalkbeat.org/chicago/2026/11/16/chicago-public-schools-watchdog-flags-overtime-pay/",
+"source": "Chalkbeat",
+"date": "2026-11-16",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Extra pay for Chicago Public Schools employees nearly tripled during the pandemic, reaching $150 million in 2024, accor",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Blue-State Voters Support Trans Sports Limits, but Officials Push Back",
+"link": "https://www.the74million.org/article/voters-adopted-transgender-sports-restrictions-in-blue-states-officials-are-pushing-back/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "Activists who want to keep transgender athletes out of girls’ sports think they now have a playbook that works in Democratic states: Put the issue on the ballot. Even amid an overwhelming blue wave on Nov. 3, voters in four states chose to restrict transgender rights in youth athletics. Two of those states — Washington",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Childcare Provider Urges Changes to America’s Immigration Policies",
+"link": "https://www.the74million.org/zero2eight/a-childcare-provider-urges-changes-to-americas-immigration-policies/",
+"source": "The 74",
+"date": "2026-11-16",
+"summary": "This story originally appeared in palabra. Clic aquí para leer en español. This past May, Yanet Martínez was making her usual walk to the bus stop to pick up two of her grandchildren from school when she witnessed federal immigration officers detaining people near MacArthur Park in Los Angeles. That day, the bus was he",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "32 Americans named as Rhodes scholars have variety of interests, from space junk to art history",
+"link": "https://mississippitoday.org/2026/11/16/32-americans-named-as-rhodes-scholars-have-variety-of-interests-from-space-junk-to-art-history/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-16",
+"summary": "The 2027 Rhodes scholars include a senior at Mississippi State University.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Research Studies Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/15/research-studies-of-the-week-214/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-15",
+"summary": "I often write about research studies from various fields and how they can be applied to the classroom. I write individual posts about ones that I think are especially significant, and will continue to do so. However, so many studies are published that it’s hard to keep up. So I’ve started writing a “round-up” […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "New Mexico wanted free childcare for all. This is what's worked — and what hasn't",
+"link": "https://www.npr.org/2026/11/15/nx-s1-6040194/new-mexico-free-universal-childcare-families",
+"source": "NPR Education",
+"date": "2026-11-15",
+"summary": "A year ago in November, New Mexico became the first state to offer free childcare to every eligible family, regardless of income.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "How a class on climate change leaves students feeling ‘energized’",
+"link": "https://hechingerreport.org/how-a-class-on-climate-change-leaves-students-feeling-energized/",
+"source": "The Hechinger Report",
+"date": "2026-11-15",
+"summary": "Jeffrey Seidman holds a doctorate in philosophy. He spent much of his first two decades as a college professor helping students interpret texts by writers like Aristotle, Plato and Kant. And yet Seidman, of Vassar College, also teaches one of the most compelling classes on climate change I’ve come across. The course, C",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A new generation of disability rights activists carry on Judy Heumann's legacy",
+"link": "https://www.npr.org/2026/11/15/nx-s1-6002935/being-heumann-new-generation-disability-rights",
+"source": "NPR Education",
+"date": "2026-11-15",
+"summary": "The film Being Heumann tells the lesser-known story of the mother of the disability rights movement. A new generation of activists share how they \"carry the torch\" today.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Look Back: Here Is How I’m TRYING to Create The Conditions Where My ELL Students Can Motivate Themselves (With A Little Encouragement)",
+"link": "https://larryferlazzo.edublogs.org/2026/11/15/a-look-back-here-is-how-im-trying-to-create-the-conditions-where-my-ell-students-can-motivate-themselves-with-a-little-encouragement-2/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-15",
+"summary": "For the next several months, each week I’ll be republishing posts from the past that I think readers might still find useful. This post first appeared in 2022. As regular readers know, I try – and write about – the many different strategies I use to try and help my students to motivate […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "2026’s Best Posts From This Blog – Part Two",
+"link": "https://larryferlazzo.edublogs.org/2026/11/15/2026s-best-posts-from-this-blog-part-two/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-15",
+"summary": "As usual, I’m kicking-off my end-of-year “Best” lists with my choices for the best posts from this blog so far from the past several months.. There are many more “Best” lists to come over the next two months. You can see my picks for the best over the past nineteen years here, and you can […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Ruby Bridges Integrated An All-White School In Louisiana On This Day In 1960 – Here Are Teaching & Learning Resources",
+"link": "https://larryferlazzo.edublogs.org/2026/11/14/ruby-bridges-integrated-an-all-white-school-in-louisiana-on-this-day-in-1960-here-are-teaching-learning-resources-7/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-14",
+"summary": "Ruby Bridges is famous for, as a first-grader, integrating an all-white school in Louisiana on this day in 1960. You might be interested in THE BEST RESOURCES FOR LEARNING ABOUT RUBY BRIDGES.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Pins Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/14/pins-of-the-week-297/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-14",
+"summary": "I’m fairly active on Pinterest and, in fact, have curated 25,000 resources there that I haven’t shared on this blog. I thought readers might find it useful if I began sharing a handful of my most recent “pins” each week (I’m not sure if you can see them through an RSS Reader – you might have to click […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "An NPR correspondent on what she's learning following special education teachers all year",
+"link": "https://www.npr.org/2026/11/14/nx-s1-6035713/an-npr-correspondent-on-what-shes-learning-following-special-education-teachers-all-year",
+"source": "NPR Education",
+"date": "2026-11-14",
+"summary": "NPR's Jonaki Mehta talks about she learned from following special education teachers throughout a school year.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Look Back: Video: My Thirty Minute Presentation On Teaching English Language Learners",
+"link": "https://larryferlazzo.edublogs.org/2026/11/14/a-look-back-video-my-thirty-minute-presentation-on-teaching-english-language-learners/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-14",
+"summary": "For the next several months, each week I’ll be republishing posts from the past that I think readers might still find useful. This post first appeared in 2018. As I previously shared, ELL teachers from around the world today shared short professional development video presentations as part of the second VirtuEL. You ca",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "With free-tuition promises, some colleges try to untangle confusion over what they cost",
+"link": "https://hechingerreport.org/with-free-tuition-promises-some-colleges-try-to-untangle-confusion-over-what-they-cost/",
+"source": "The Hechinger Report",
+"date": "2026-11-13",
+"summary": "MIDDLEBURY, Vt. — Stately buildings of Vermont limestone surround meticulously tended lawns at the edge of a New England village that looks like it’s the setting for a Hallmark Christmas movie. There’s a golf course on this campus. The student-faculty ratio is an exclusive 9-to-1. And an undergraduate tour guide is tel",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Why is Google cutting off Search from AI-free schools? Here are some theories",
+"link": "https://www.npr.org/2026/11/13/nx-s1-6029408/google-ai-search-schools",
+"source": "NPR Education",
+"date": "2026-11-13",
+"summary": "The forthcoming move has left some parents and educators frustrated and wondering about the company's motivations.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "The cost of college is confusing. Some schools are trying to change that",
+"link": "https://www.npr.org/2026/11/13/nx-s1-6023392/real-college-costs-confusing",
+"source": "NPR Education",
+"date": "2026-11-13",
+"summary": "Many Americans have soured on higher education because of how frustratingly hard it is to figure out what they will pay to attend.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Proposition NN and Amendment 87 reverse years of K-12 funding failure at the ballot box",
+"link": "https://www.chalkbeat.org/colorado/2026/11/13/why-proposition-nn-and-amendment-87-succeeded/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. For years, Colorado education advocates have tried and failed to persuade voters to approve more tax revenue for school",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NYC meets class size target, but only after state lowers the bar and city changes its math",
+"link": "https://www.chalkbeat.org/newyork/2026/11/13/mamdani-class-size-law-compliance-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. New York City public schools not only met the state-mandated targets to shrink classes, they surpassed the goal, Mayor ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Jeffco Public Schools Ballot Issue 5A passing by 327 votes and headed for a recount",
+"link": "https://www.chalkbeat.org/colorado/2026/11/13/jeffco-public-schools-ballot-issue-5a-headed-for-recount-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Election officials will recount all of the ballots cast for and against a $73 million tax increase to benefit Jeffco Pu",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "In split vote, Denver school board approves closure of Robert F. Smith STEAM Academy",
+"link": "https://www.chalkbeat.org/colorado/2026/11/13/denver-school-board-votes-to-close-hbcu-style-robert-f-smith-steam-academy/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Robert F. Smith STEAM Academy will close at the end of the school year after the Denver school board voted 4-2 Thursday",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Here’s how the Denver school board will narrow applicants for a vacant seat from 12 to 3 to 1",
+"link": "https://www.chalkbeat.org/colorado/2026/11/13/how-denver-school-board-will-narrow-applicants-district-3-seat-vacancy/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Denver school board has decided how it will fill a vacant board seat — a process that until recently was the subjec",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Ed Tech Digest",
+"link": "https://larryferlazzo.edublogs.org/2026/11/13/ed-tech-digest-446/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-13",
+"summary": "Ten years ago, in another somewhat futile attempt to reduce the backlog of resources I want to share, I began this occasional “Ed Tech Digest” post where I share three or four links I think are particularly useful and related to…ed tech, including some Web 2.0 apps. You might also be interested in checking out all my [",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Dr. Elsa Cárdenas-Hagan: Literacy Instruction for ELLs",
+"link": "https://www.colorincolorado.org/slide/dr-elsa-c%C3%A1rdenas-hagan-literacy-instruction-ells",
+"source": "Colorín Colorado",
+"date": "2026-11-13",
+"summary": "Link https://www.colorincolorado.org/dr-elsa-cardenas-hagan-literacy-instruction-ells Image",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "AI tools might help teachers. Students? Not so much, research review finds",
+"link": "https://www.chalkbeat.org/2026/11/13/ai-research-review-shows-tools-help-teachers-more-than-students/",
+"source": "Chalkbeat",
+"date": "2026-11-13",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Most AI tools don’t help students learn. Education-specific AI tools aren’t necessarily better than general purpose cha",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Philadelphia school district delays school selection deadline as wait for state test scores drags on",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/12/district-pushes-school-selection-deadline-to-december-16/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Philadelphia families will have an extra three weeks to decide which Philadelphia schools they want to apply to, Superi",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Memphis graduation rate climbs nearly 8 points since 2020, but test scores still trail the state",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/12/memphis-graduation-rates-up-while-test-scores-lag/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. More Memphis students are graduating high school than six years ago, according to the state’s most recent data. More th",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Listen, Wonder, Ask: An Interview with Elly Berke and Luciana Navarro Powell",
+"link": "https://www.colorincolorado.org/slide/listen-wonder-ask-interview-elly-berke-and-luciana-navarro-powell",
+"source": "Colorín Colorado",
+"date": "2026-11-12",
+"summary": "Link https://www.colorincolorado.org/article/listen-wonder-ask-interview-elly-berke-a… Image",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Did education help power the blue wave? Here’s what the polls say",
+"link": "https://www.chalkbeat.org/2026/11/12/did-education-help-democrats-2026-midterms/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Following last week’s far-reaching Democratic victories , commentators have been debating what, if any, role education ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Detroit school district opens office to handle parent complaints and mediate school conflicts",
+"link": "https://www.chalkbeat.org/detroit/2026/11/12/dpscd-fair-office-opened-to-de-escalate-parent-conflicts/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Detroit school district saw an increase in parent complaints about issues with their children’s schools and conflic",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Cops for a first grader?: Why NYC schools are still calling 911 on 6-year-olds",
+"link": "https://www.chalkbeat.org/newyork/2026/11/12/nyc-schools-call-911-on-students-in-mental-health-crisis/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "This is part two of a three-part series. Here’s the first story. And be sure to sign up for Chalkbeat New York’s free email newsletter to be the first to know when our next stories publish. Crystal Roach felt her hands shake as she ordered an Uber. Her thoughts were racing, imagining her 6-year-old son, Zai, confused a",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Christian school wins Tennessee court case challenging religious charter ban",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/12/court-ruling-challenges-religious-charter-school-ban/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Knox County Schools cannot block a Christian charter school application on religious grounds despite a Tennessee law ba",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Chicago’s Black Student Achievement Committee is meeting for the first time",
+"link": "https://www.chalkbeat.org/chicago/2026/11/12/chicago-public-schools-black-student-achievement-committee-meets/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Almost three years after Illinois lawmakers required a committee to drive academic progress for Chicago’s Black student",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "CTU-backed candidates win three Chicago school board races that were too close to call",
+"link": "https://www.chalkbeat.org/chicago/2026/11/12/ctu-candidates-win-three-more-school-board-races/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. More than a week after Election Day, Chicago voters in three electoral districts have clarity about who will represent ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Black University of Mississippi students wrestle with forgiveness in wake of racist gestures",
+"link": "https://mississippitoday.org/2026/11/12/black-university-of-mississippi-students-wrestle-with-forgiveness-in-wake-of-racist-gestures/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-12",
+"summary": "One woman accused of making racist gestures outside Ole Miss students' apartment has publicly apologized. The other woman is the subject of an online fundraiser that claims the incident was a “juvenile stunt.” It has already raised thousands of dollars.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "After Google warns schools about disabling AI feature, Chicago protesters say ‘we don’t want your Gemini’",
+"link": "https://www.chalkbeat.org/chicago/2026/11/12/chicago-ai-protest-against-google-removal-in-school-classrooms/",
+"source": "Chalkbeat",
+"date": "2026-11-12",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Pushback on the use of artificial intelligence in the classroom is seeing renewed fervor after tensions flared this mon",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Philadelphia teachers union pitches plan to repair school buildings not close them",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/11/teachers-union-proposes-alternative-to-philly-school-closures/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Months before Philadelphia is set to begin closing 17 schools , the teacher’s union has a proposal they say could keep ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Newark scores on state tests could increase scrutiny of tutoring and literacy initiatives",
+"link": "https://www.chalkbeat.org/newark/2026/11/11/newark-gets-2026-njsla-state-test-scores-in-english-math/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The share of Newark students meeting state English language arts standards dropped last school year, while the share me",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Newark parents push for independent interpreters after superintendent summarizes Spanish testimony",
+"link": "https://www.chalkbeat.org/newark/2026/11/11/spanish-speaking-families-demand-professional-translators-at-board-meetings/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Newark Latino families and labor organizers are asking the school district to require professional interpreters at ever",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "NYC’s $26 million Teenspace mental health contract in limbo as officials stay quiet",
+"link": "https://www.chalkbeat.org/newyork/2026/11/11/nyc-teenspace-teletherapy-contract-limbo-privacy-concerns/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "This story was initially published in Healthbeat, public health, explained. Sign up to receive Healthbeat’s free New York City newsletter here . One of New York City’s more high-profile efforts to tackle the youth mental health crisis after the pandemic appears to be in limbo, and Health Department officials refuse to ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Mississippi’s top general: Veterans Day time to remember sacrifices of America’s military members",
+"link": "https://mississippitoday.org/2026/11/11/veterans-day-sacrifice-mississippi-ceremony/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-11",
+"summary": "The sacrifices made by America’s military members were highlighted during a Veterans Day ceremony at the Two Mississippi Museums",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "In Denver, a 3-school effort to take advantage of the federal tax credit scholarship program",
+"link": "https://www.chalkbeat.org/colorado/2026/11/11/three-denver-schools-go-in-on-federal-tax-credit-scholarship-program/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Most of the efforts for public schools to get in on a new federal tax credit have been macro: Public education boosters",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Can The Mind Trust succeed outside of Indiana? This state’s charter school sector will find out.",
+"link": "https://www.chalkbeat.org/indiana/2026/11/11/mind-trust-indiana-charter-school-model-expands-in-new-england/",
+"source": "Chalkbeat",
+"date": "2026-11-11",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. An influential Indianapolis nonprofit that has incubated charter schools while advocating for school choice will soon t",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Advocates explore ways to boost health affordability and food security in Mississippi",
+"link": "https://mississippitoday.org/2026/11/11/advocates-explore-ways-to-boost-health-affordability-and-food-security-in-mississippi/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-11",
+"summary": "Mississippi ranks last on overall child well-being, despite outperforming most of the nation in education, according to the Annie E. Casey Foundation's latest KIDS Count Data Book.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Why grade retention may improve learning before anyone is held back",
+"link": "https://www.chalkbeat.org/2026/11/10/grade-retention-policy-reading-achievement-in-ohio-and-indiana/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Making a struggling student repeat a grade is one of the most fraught and debated practices in American education. Some",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Voters adopted transgender sports restrictions in blue states. Officials are pushing back.",
+"link": "https://www.chalkbeat.org/2026/11/10/transgender-sports-restrictions-in-blue-states-meet-official-resistance/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Activists who want to keep transgender athletes out of girls’ sports think they now have a playbook that works in Democ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Temporary pause on Memphis schools state takeover continues until December",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/10/state-takeover-of-memphis-schools-remains-paused-until-december/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The state takeover of Memphis-Shelby County Schools will remain paused until at least December as a local lawsuit plays",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Sherrill’s school choice dilemma: Funding windfall or private school vouchers?",
+"link": "https://www.chalkbeat.org/newark/2026/11/10/mikie-sherrill-weighs-trump-school-choice-tax-credit/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. This story was originally published by NJ Spotlight News through the NJ News Wire. Gov. Mikie Sherrill faces a tough ch",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Ole Miss students and parents call for accountability after viral racist incident",
+"link": "https://mississippitoday.org/2026/11/10/ole-miss-students-and-parents-call-for-accountability-after-viral-racist-incident/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-10",
+"summary": "On Tuesday, a student appearing to make ape-like sounds and gestures outside other University of Mississippi students' apartment apologized.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Memphis parents complained of a school laptop shortage. Now MSCS wants to buy 25,000 more.",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/10/memphis-school-leaders-propose-buying-laptops-after-parent-complaints/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Memphis-Shelby County Schools leaders on Tuesday proposed a mid-year purchase of 25,000 laptops for high schoolers afte",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "In Memoriam: Dolores Huerta",
+"link": "https://languagemagazine.com/2026/11/09/in-memoriam-dolores-huerta/?utm_source=rss&utm_medium=rss&utm_campaign=in-memoriam-dolores-huerta",
+"source": "Language Magazine",
+"date": "2026-11-10",
+"summary": "Dolores Huerta inspired generations with three words: “Sí, se puede”—“Yes, we can.” In her hands, those words became a rallying cry for workers, women, immigrants, and people fighting for justice around the world. She gave people the courage to recognize their own power—and showed them how to use it. Through historic l",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Fostering Authentic Belonging",
+"link": "https://languagemagazine.com/2026/11/10/fostering-authentic-belonging/?utm_source=rss&utm_medium=rss&utm_campaign=fostering-authentic-belonging",
+"source": "Language Magazine",
+"date": "2026-11-10",
+"summary": "Becki Cohn-Vargas offers strategies to help Multilingual Learners in unprecedented times Children deeply want to belong. However, if they feel emotionally or physically unsafe, or when they must hide parts of their identity to feel included, they cannot experience a sense of authentic belonging. Identity safety emerges",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Bilingualism is Driven by a Single ‘Grammar Engine’",
+"link": "https://languagemagazine.com/2026/11/10/bilingualism-is-driven-by-a-single-grammar-engine/?utm_source=rss&utm_medium=rss&utm_campaign=bilingualism-is-driven-by-a-single-grammar-engine",
+"source": "Language Magazine",
+"date": "2026-11-10",
+"summary": "A study by a team of New York University scientists finds that bilingualism is not powered by separate grammar engines in the brain, but by a common neural system that works across languages. “Our research suggests that brains have a single grammatical engine that fuels all of the languages we speak—rather than separat",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "1 in 8 NYC students were homeless last year, advocates find",
+"link": "https://www.chalkbeat.org/newyork/2026/11/10/nyc-student-homelessness-advocates-for-children-report-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-10",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. One in eight New York City public school students experienced homelessness last school year, according to a report rele",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NY lawmaker introduces bill to strip Hochul of power over federal tax credit program",
+"link": "https://www.chalkbeat.org/newyork/2026/11/09/john-liu-hochul-trump-school-choice-tax-credit-bill/",
+"source": "Chalkbeat",
+"date": "2026-11-09",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. State Sen. John Liu plans to introduce a bill Monday that would strip Gov. Kathy Hochul and future New York governors o",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Johnny Moore shares his vision for Rust College’s next 100 years",
+"link": "https://mississippitoday.org/2026/11/09/johnny-moore-shares-his-vision-for-rust-colleges-next-100-years/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-09",
+"summary": "Mississippi's oldest, private historically Black college is celebrating its 160th year. On Friday, the Rust community inaugurated Johnny Moore as the college’s 13th president.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Denver Public Schools Ballot Issue 4A passes, election results show",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/election-results-denver-public-schools-4a-mill-levy-override-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-09",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A $44 million tax increase to benefit Denver Public Schools passed by a comfortable margin, continuing a yearslong tren",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Bringing Whole Books Back to the Classroom",
+"link": "https://www.cultofpedagogy.com/whole-books/",
+"source": "Cult of Pedagogy",
+"date": "2026-11-08",
+"summary": "Somewhere along the way, we stopped reading books in a lot of schools. Let's get them back. The post Bringing Whole Books Back to the Classroom first appeared on Cult of Pedagogy .",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Election results: Colorado’s Prop 134 passes",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/colorado-prop-134-voting-results-elections-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-07",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado voters passed a ballot measure this week to bar transgender students from joining school sports teams that mat",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Texas Dems vowed seismic education change. Here’s how schools could change for millions of students.",
+"link": "https://www.chalkbeat.org/2026/11/06/texas-dems-vowed-seismic-education-change-heres-how-schools-could-change-for-millions-of-students/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. This story first appeared in the Texas Tribune and is republished with permission. From state takeovers to religion in ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "School districts that lost Indiana tax referendums confront a tough question: What should we cut?",
+"link": "https://www.chalkbeat.org/indiana/2026/11/06/most-school-district-tax-measures-pass-on-election-day/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. This story was co-reported with WFYI. In Gas City, the cuts start now. The small Mississinewa Community School district",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Remembering Mónica Rhor: storyteller, mentor, mother, friend",
+"link": "https://www.chalkbeat.org/2026/11/06/remembering-monica-rhor-for-her-storytelling-kindness-and-mentoring/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "On a hot June day in 2010, a fresh-out-of-college Jason Gonzales worked up the nerve to approach the person seated alone at a desk in a hotel conference room in Denver. This was the popup student newsroom at the annual convening of the National Association of Hispanic Journalists, where experienced pros mentor journali",
+"bucket": "el",
+"ms": true
+},
+{
+"title": "Mississippi GEAR UP programs help students navigate paths to college",
+"link": "https://mississippitoday.org/2026/11/06/mississippi-gear-up-programs-help-students-navigate-paths-to-college/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-06",
+"summary": "Two Mississippi universities and Jackson Public Schools offer grant-funded programs to help students consider college as a viable option after high school.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Michigan voters return Democrat incumbents to the State Board of Education",
+"link": "https://www.chalkbeat.org/detroit/2026/11/06/michigan-state-board-education-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Michigan reelected Democrats to two seats on the State Board of Education, maintaining the party’s control on the body ",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Jeffco Public Schools Ballot Issue 5A failing by just 3 votes, preliminary election results show",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/election-results-jeffco-schools-ballot-issue-5a-5b-mill-levy-override/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. A $73 million tax increase to benefit Jeffco Public Schools was failing by just three votes as of Friday, a razor-thin ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Former Indiana Virtual School director found guilty of fraud in enrollment inflation scheme",
+"link": "https://www.chalkbeat.org/indiana/2026/11/06/former-virtual-school-director-guilty-of-fraud-enrollment-scheme/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The former director of the Indiana Virtual School was found guilty of fraud on Thursday over his role in a scheme to in",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Election results: Colorado voters approve Amendment 87, strike down Proposition 136",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/colorado-amendment-87-tax-rate-change-2026-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado voters this week approved an overhaul of the state’s tax code that will boost funding for K-12 and early child",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Did the Tennessee midterms complicate Marsha Blackburn’s voucher expansion plans?",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/06/tennessee-election-could-affect-voucher-expansion/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. In April, 95 Tennessee lawmakers voted in the House of Representatives on a bill to expand the state’s fledgling privat",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Detroit needs more special education teachers. MSU partnership aims to help.",
+"link": "https://www.chalkbeat.org/detroit/2026/11/06/dpscd-michigan-state-university-partner-for-teachers-special-education-certification/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Detroit school district has launched a new partnership with Michigan State University to meet the growing demand fo",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A new coalition of student creators hopes content can stem violence among their peers",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/06/content-creators-seek-gun-violence-narrative-change/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Sign up for Chalkbeat Philadelphia’s free newsletter to keep up with the city’s public school system. Zyla Smack just t",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "12 applicants for Denver school board vacancy talk about school closures, rebuilding trust",
+"link": "https://www.chalkbeat.org/colorado/2026/11/06/12-applicants-for-district-3-denver-school-board-vacancy-forum/",
+"source": "Chalkbeat",
+"date": "2026-11-06",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. “Independent” yet “collaborative” was a common way the 12 applicants to fill a vacancy on the Denver school board descr",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Philadelphia state test scores are months late. Now state officials want to change the cut scores.",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/05/pennsylvania-proposes-changing-math-and-reading-cut-scores/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Pennsylvania state officials have proposed changing how they score students’ performance on state math and reading test",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NYC sends 30% of students with emotional disabilities to segregated schools. Is this program a way out?",
+"link": "https://www.chalkbeat.org/newyork/2026/11/05/nyc-path-program-helps-with-emotional-disabilities-in-classrooms/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "This is part one of a three-part series. Read part two here. Sign up for Chalkbeat New York’s free email newsletter to be the first to know when the next story publishes. At the beginning of last school year, a second grader in Emily Levin and Christina O’Connell’s class at P.S. 105 in Far Rockaway kept walking out of ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Judge temporarily halts efforts to revoke Canton school’s charter",
+"link": "https://mississippitoday.org/2026/11/05/judge-temporarily-halts-efforts-to-revoke-canton-schools-charter/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-05",
+"summary": "A Canton school is appealing the Mississippi Charter School Authorizer Board's October vote to revoke its charter.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "Here’s how school district tax measures fared in Colorado this year",
+"link": "https://www.chalkbeat.org/colorado/2026/11/05/school-district-tax-measures-bond-mlo-approvals-and-rejections/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Voters approved about 60% of 33 school district property tax measures around Colorado on Nov. 3, unofficial election re",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Detroit school board’s new elected members bring history, criticism, and fresh ideas",
+"link": "https://www.chalkbeat.org/detroit/2026/11/05/new-dpscd-board-members-share-priorities-thoughts-on-vitti/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The Detroit school board’s new majority, according to unofficial results, brings a mix of history, institutional knowle",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Chicago voted for its first fully elected school board. What’s next?",
+"link": "https://www.chalkbeat.org/chicago/2026/11/05/three-takeaways-about-chicagos-first-fully-elected-school-board/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. If all leads hold from Tuesday night’s election, Chicago’s first fully elected school board will bring together members",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "A new campus health building at Aims Community College seeks to address a gap in student needs",
+"link": "https://www.chalkbeat.org/colorado/2026/11/05/aims-community-college-health-clinic-seeks-to-address-student-need/",
+"source": "Chalkbeat",
+"date": "2026-11-05",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. About half of Aims Community College’s students report they don’t have insurance, are underinsured, or on Medicaid. Hal",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Sen. Marsha Blackburn, staunch voucher advocate, elected Tennessee governor",
+"link": "https://www.chalkbeat.org/tennessee/2026/11/04/marsha-blackburn-elected-governor-education-policy/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. U.S. Sen. Marsha Blackburn is Tennessee’s next governor. Blackburn, a Republican, pulled out a win in the unusually com",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Jocelyn Benson is Michigan’s next governor. Here’s what education will look like in her administration.",
+"link": "https://www.chalkbeat.org/detroit/2026/11/04/jocelyn-benson-elected-governor-in-michigan-education-plan/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Michigan voters have elected a new governor, Jocelyn Benson, who promises to transform education and guarantee that whe",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Incumbents leading in Colorado State Board of Education election, results show",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/election-results-colorado-state-board-of-education-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. After Democrats were leading in early returns on Election Day, one Republican candidate for the Colorado State Board of",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "How the 2026 election scrambled the politics of American education",
+"link": "https://www.chalkbeat.org/2026/11/04/2026-election-midterms-education-politics-school-vouchers/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Democrats’ far-reaching victories on Tuesday have the potential to reshape American schools and politics. Here’s how. T",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Hochul criticizes plan to drop Regents exams, renews push for control of state Education Department",
+"link": "https://www.chalkbeat.org/newyork/2026/11/04/hochul-regents-exams-graduation-requirements-education-control/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. New York’s slow-moving transition away from requiring Regents exams to graduate has a new critic: Gov. Kathy Hochul. Ho",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Here’s who won five seats on the Detroit school board",
+"link": "https://www.chalkbeat.org/detroit/2026/11/03/2026-dpscd-school-board-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Voters elected two former board members, an incumbent, a newcomer, and a familiar face to the Detroit school board Tues",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Election results: Proposition NN passes, with money going to Colorado education",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/colorado-proposition-nn-2026-election-night-results/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado voters have approved Proposition NN, which will secure billions of dollars for K-12 education over the next 10",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Election 2026: In historic vote, Chicago elected 21 school board members, including almost half backed by the teachers union",
+"link": "https://www.chalkbeat.org/chicago/2026/11/03/election-2026-chicago-school-board-results/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Chicago voters made history Tuesday, casting ballots for 21 members of the Board of Education , ending 30 years of mayo",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Democrats take full control of Pennsylvania government. What does it mean for schools?",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/04/pennsylvania-democratic-sweep-could-mean-changes-for-education-policy/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Pennsylvania’s legislature will no longer be divided. Tuesday night’s Democratic midterm election sweep handed the part",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Democrats sweep in blue tsunami. What does it mean for education?",
+"link": "https://www.chalkbeat.org/2026/11/04/democrats-sweep-2026-midterms-what-does-it-mean-for-public-schools/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Democrats swept key midterm races across the country, potentially setting the stage for a harder line against President",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Democrats sweep University of Colorado Board of Regents 2026 election",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/2026-university-of-colorado-board-of-regents-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Democrats running for the University of Colorado Board of Regents won the three seats up for election on Tuesday night.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Chicago elects Jessica Biggs, current school board member and former principal, as school board president",
+"link": "https://www.chalkbeat.org/chicago/2026/11/04/chicago-public-schools-will-have-first-elected-school-board-president/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Former principal and current school board member Jessica Biggs has won the race to serve as Chicago Public Schools’ fir",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Bob Behning, who helped start vouchers and grow charters in Indiana, toppled in election shocker",
+"link": "https://www.chalkbeat.org/indiana/2026/11/04/bob-behning-indiana-education-reform-champion-loses-reelection/",
+"source": "Chalkbeat",
+"date": "2026-11-04",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Before Bob Behning took the reins of the Indiana House Education Committee, there were no school vouchers in the state.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Voters approve Indianapolis tax measure for IPS and charter schools",
+"link": "https://www.chalkbeat.org/indiana/2026/11/03/indianapolis-tax-measure-for-ips-and-charter-schools-live-election-results/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Voters approved a $95 million tax measure benefiting Indianapolis Public Schools and the city’s charter schools , accor",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Strengthening Interactions with Academic Listening Scaffolds",
+"link": "https://languagemagazine.com/2026/11/03/strengthening-interactions-with-academic-listening-scaffolds/?utm_source=rss&utm_medium=rss&utm_campaign=strengthening-interactions-with-academic-listening-scaffolds",
+"source": "Language Magazine",
+"date": "2026-11-03",
+"summary": "Kate Kinsella provides guidance and resources to support Multilingual Learners in becoming focused and responsive communicators during task-based learning From kindergarten to AP coursework, young scholars are routinely expected to demonstrate their ability to work productively with diverse lesson partners and contribu",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "IPS election results could extend conflicts with charters but change balance of power elsewhere",
+"link": "https://www.chalkbeat.org/indiana/2026/11/03/indianapolis-school-board-election-results-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Indianapolis Public Schools board incumbents won four of five races in Tuesday’s election, unofficial results showed, w",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "How a Democrat in Iowa and a Republican in Oregon are making education a campaign issue",
+"link": "https://www.chalkbeat.org/2026/11/03/iowa-oregon-governor-races-education-2026/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. As voters go to the polls today , education issues are not top of mind in most cases — but there are some notable excep",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Here’s what the Supreme Court said during oral arguments in Colorado’s Catholic preschool case",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/st-mary-catholic-parish-v-roy-supreme-court-oral-arguments/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. The U.S. Supreme Court heard two hours of arguments Tuesday in a Colorado case that could have nationwide implications ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Gov. Jared Polis releases his final budget, but education funding calculations could change",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/governor-jared-polis-releases-his-final-budget-proposal/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado Gov. Jared Polis released his eighth and final budget plan on Monday, but the state’s education funding pictur",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Google promises to stop doing students’ homework for them",
+"link": "https://www.chalkbeat.org/2026/11/03/google-pushes-gemini-guided-learning-amid-ai-backlash/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. It’s one of the biggest problems with AI and education: Students can present a chatbot with any question, from the volu",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Colorado students will spend less time taking state math and science tests in 2027",
+"link": "https://www.chalkbeat.org/colorado/2026/11/03/colorado-to-shorten-cmas-standardized-testing-time-math-and-science/",
+"source": "Chalkbeat",
+"date": "2026-11-03",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colorado students will spend less time taking state standardized math and science tests in the spring, the Colorado Dep",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Beyond the Mandated Curriculum",
+"link": "https://languagemagazine.com/2026/11/03/beyond-the-mandated-curriculum/?utm_source=rss&utm_medium=rss&utm_campaign=beyond-the-mandated-curriculum",
+"source": "Language Magazine",
+"date": "2026-11-03",
+"summary": "Diep Nguyen focuses on advice from teachers on how best to implement the Science of Reading for Multilingual Learners For the past several years, a revolution in how we teach English reading has spread across the US, mainly through state policies that mandated a reading curriculum based on the Science of Reading (SoR) ",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Mississippians will soon be able to participate in a school-choice tax credit program. Here’s what to know",
+"link": "https://mississippitoday.org/2026/11/02/mississippians-will-soon-be-able-to-participate-in-a-school-choice-tax-credit-program-heres-what-to-know/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-02",
+"summary": "Proponents of school choice policies say a new federal tax credit program is a win for the state. Opponents say it undermines Mississippi voters' rejection of school choice.",
+"bucket": "gen",
+"ms": true
+},
+{
+"title": "From Learning to Read to Loving to Read: Rethinking the Future of Publishing",
+"link": "https://languagemagazine.com/2026/11/02/on-the-decline-in-reading/?utm_source=rss&utm_medium=rss&utm_campaign=on-the-decline-in-reading",
+"source": "Language Magazine",
+"date": "2026-11-02",
+"summary": "Scholastic Children’s Book Group president Sasha Quinton on the reading engagement crisis, the need for greater responsiveness in publishing, and why the industry’s future depends on leaving room for creativity and possibility Reading is not just about skill. It’s about desire. I am deeply passionate about reading enga",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Jackson State employees face layoffs amid restrictions on federal funding",
+"link": "https://mississippitoday.org/2026/10/30/jackson-state-layoffs-federal-funding/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-10-30",
+"summary": "Jackson State University is eliminating eight positions amid restrictions on federal funding.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Rethinking Performance Assessment",
+"link": "https://www.cultofpedagogy.com/performance-assessments/",
+"source": "Cult of Pedagogy",
+"date": "2026-10-29",
+"summary": "Knowing the content and mastering the skills is one thing. Putting them to use is another. The post Rethinking Performance Assessment first appeared on Cult of Pedagogy .",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "AI Foundations for Learners",
+"link": "https://languagemagazine.com/2026/10/29/ai-foundations-for-learners/?utm_source=rss&utm_medium=rss&utm_campaign=ai-foundations-for-learners",
+"source": "Language Magazine",
+"date": "2026-10-29",
+"summary": "Sara Davila directs students toward responsible and creative use of AI Students today encounter AI across nearly every aspect of their learning, from search engines and writing tools to content recommendations and automated feedback. Students may rely on AI regularly without fully understanding how it works, what it pr",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "French Philosophy",
+"link": "https://languagemagazine.com/2026/10/27/french-philosophy/?utm_source=rss&utm_medium=rss&utm_campaign=french-philosophy",
+"source": "Language Magazine",
+"date": "2026-10-28",
+"summary": "Safira Amazan asks why decisions are made in English but taken in French There is a curious asymmetry between English and French: in English, we make decisions; in French, we take them (prendre une décision). At first glance, this looks like a harmless idiomatic difference, the sort of thing language learners simply me",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Designing Engagement for Multilingual Learners",
+"link": "https://languagemagazine.com/2026/10/28/designing-engagement-for-multilingual-learners/?utm_source=rss&utm_medium=rss&utm_campaign=designing-engagement-for-multilingual-learners",
+"source": "Language Magazine",
+"date": "2026-10-28",
+"summary": "Douglas Fisher and Nancy Frey create conditions where all students can progress from participation to ownership Walk into a busy classroom and you may see students participating in very different ways. One student eagerly contributes to a discussion. Another listens carefully but says little. A third speaks animatedly ",
+"bucket": "el",
+"ms": false
+}
+]
+}
