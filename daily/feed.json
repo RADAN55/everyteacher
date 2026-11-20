@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T04:19+00:00",
+"updated": "2026-11-20T04:21+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -10,12 +10,12 @@
 {
 "source": "Larry Ferlazzo",
 "ok": true,
-"items": 20
+"items": 15
 },
 {
 "source": "TESOL Blog",
-"ok": false,
-"error": "not well-formed (invalid token): line 33, column 18"
+"ok": true,
+"items": 0
 },
 {
 "source": "Language Magazine",
@@ -29,8 +29,8 @@
 },
 {
 "source": "Edutopia",
-"ok": false,
-"error": "syntax error: line 2, column 6"
+"ok": true,
+"items": 0
 },
 {
 "source": "Cult of Pedagogy",
@@ -45,7 +45,7 @@
 {
 "source": "Chalkbeat",
 "ok": true,
-"items": 100
+"items": 15
 },
 {
 "source": "KQED MindShift",
@@ -59,22 +59,32 @@
 },
 {
 "source": "Education Week",
-"ok": false,
-"error": "not well-formed (invalid token): line 340, column 400"
+"ok": true,
+"items": 0
 },
 {
 "source": "The 74",
 "ok": true,
-"items": 25
+"items": 15
 },
 {
 "source": "Mississippi Today — Education",
 "ok": true,
 "items": 12
+},
+{
+"source": "The Education Trust",
+"ok": true,
+"items": 0
+},
+{
+"source": "Immigrant Learning Center",
+"ok": true,
+"items": 1
 }
 ],
 "counts": {
-"el": 49,
+"el": 50,
 "gen": 142
 },
 "items": [
@@ -274,6 +284,15 @@
 "date": "2026-11-19",
 "summary": "On Monday, Gov. Jared Polis unveiled a new data dashboard focused on young people’s career readiness, civic experiences, and personal well-being. It’s an initiative he pushed for during his time as chair of the National Governors Association . The new scorecard shows the state scored a 21.14 out of 30 this year in the ",
 "bucket": "gen",
+"ms": false
+},
+{
+"title": "Neslihan",
+"link": "https://www.ilctr.org/neslihan/",
+"source": "Immigrant Learning Center",
+"date": "2026-11-19",
+"summary": "Neslihan wanted to continue her educator career after moving to the United States from Turkey, but felt her English wasn't strong enough. The post Neslihan appeared first on The Immigrant Learning Center .",
+"bucket": "el",
 "ms": false
 },
 {
