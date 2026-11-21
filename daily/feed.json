@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-20T18:48+00:00",
+"updated": "2026-11-21T17:45+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -69,10 +69,55 @@
 }
 ],
 "counts": {
-"el": 54,
-"gen": 187
+"el": 58,
+"gen": 192
 },
 "items": [
+{
+"title": "LAUSD Spent Over $6 Million on a Phone Ban. Survey Data Show Mixed Results",
+"link": "https://www.the74million.org/article/lausd-spent-over-6-million-on-a-phone-ban-survey-data-show-mixed-results/",
+"source": "The 74",
+"date": "2026-11-21",
+"summary": "A majority of students are complying with Los Angeles Unified’s cellphone ban and paying more attention in class, at least according to school staff. That’s one finding from the first survey of students and staff to include questions about bell-to-bell restrictions implemented in February 2025. “It’s a big difference i",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Join Me For A Free Dec. 1st Webinar On Dual Language Instruction",
+"link": "https://larryferlazzo.edublogs.org/2026/11/21/join-me-for-a-free-dec-1st-webinar-on-dual-language-instruction/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-21",
+"summary": "I’ll be co-hosting another webinar for Seidlitz Education on December 1st, and I hope you’ll join us! Are you seeking ways to improve and inspire instruction in all dual language classrooms? Log in to learn how to select activities from La lotería del aula dual to weave listening, speaking, reading, and writing into ev",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Classroom Instruction Resources Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/21/classroom-instruction-resources-of-the-week-562/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-21",
+"summary": "Each week, I publish a post or two containing three or four particularly useful resources on classroom instruction, and you can see them all here. You can also see all my “Best” lists on instructional strategies here. Here are this week’s picks: This could be a great source of classroom prompts, perhaps for “Warm-Ups” ",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Chicago bids goodbye to three decades of mayors controlling public schools",
+"link": "https://www.chalkbeat.org/chicago/2026/11/21/mayoral-control-of-chicago-public-schools-ends/",
+"source": "Chalkbeat",
+"date": "2026-11-21",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. On a late spring day in 1995, Mayor Richard M. Daley called his chief budget and finance director, Paul Vallas, into hi",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "An Important Point About “Making Student Learning Visible To Students Themselves” & A Bunch Of Ways To Do Just That",
+"link": "https://larryferlazzo.edublogs.org/2026/11/21/an-important-point-about-making-student-learning-visible-to-students-themselves-a-bunch-of-ways-to-do-just-that/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-21",
+"summary": "John Warner wrote a good piece titled The Emotional Toll of AI in Education. I highlighted in the above text what I thought was his most important point. I’ve always been an advocate of creating situations in the classroom where students can see the impact their learning is having, and I think that’s become […]",
+"bucket": "el",
+"ms": false
+},
 {
 "title": "“How the Turbulent Political Climate Has Affected Classrooms”",
 "link": "https://larryferlazzo.edublogs.org/2026/11/20/how-the-turbulent-political-climate-has-affected-classrooms/",
@@ -89,6 +134,15 @@
 "date": "2026-11-20",
 "summary": "Democrat Montserrat Garibay, who won Texas House District 49 in this month’s history-making election, told The 74 she has big plans for education when she assumes her new role in January. Garibay will take the seat vacated by Gina Hinojosa, who successfully challenged Republican Greg Abbott for governor, denying the co",
 "bucket": "gen",
+"ms": false
+},
+{
+"title": "Winning Over Translation",
+"link": "https://languagemagazine.com/2026/11/20/winning-over-translation/?utm_source=rss&utm_medium=rss&utm_campaign=winning-over-translation",
+"source": "Language Magazine",
+"date": "2026-11-20",
+"summary": "Andrea Honigsfeld, Maria G. Dove, and Carrie McDermott Goldman look beyond translation to build language, literacy, and relationships Amara, a tenth-grade new arrival from Guinea, sat through a biology class while a paraprofessional quietly translated the information into French on her phone. By the end of the period, ",
+"bucket": "el",
 "ms": false
 },
 {
@@ -119,6 +173,24 @@
 "ms": false
 },
 {
+"title": "New York investigation finds no errors behind steep swings in grades 3-5 reading scores",
+"link": "https://www.chalkbeat.org/newyork/2026/11/20/ny-education-department-reading-test-scores-investigation/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. After reading test scores for New York students in grades 3-5 dropped significantly last school year following big gain",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Nevada Parents Push Lawmakers for 45-Minute Daily Recess in Elementary Schools",
+"link": "https://www.the74million.org/article/nevada-parents-push-lawmakers-for-45-minute-daily-recess-in-elementary-schools/",
+"source": "The 74",
+"date": "2026-11-20",
+"summary": "The first time her daughter came home saying she’d missed recess for “study hall,” Brandi Vesco thought nothing of it. But as it continued to happen, she began to see skipped recess as a bigger problem. Vesco found out the school was keeping kids from recess if they hadn’t finished their in-class work. On Wednesdays, [",
+"bucket": "gen",
+"ms": false
+},
+{
 "title": "Indianapolis Public Schools Proposes Closing 6 Schools Amid Declining Enrollment and Budget Shortfall",
 "link": "https://www.the74million.org/article/indianapolis-public-schools-proposes-closing-6-schools-amid-declining-enrollment-and-budget-shortfall/",
 "source": "The 74",
@@ -143,6 +215,15 @@
 "date": "2026-11-20",
 "summary": "In March, I posted about a big foundation-funded initiative to develop Artificial Intelligence tools to support English Language Learners (see This Is Interesting: Foundations Putting A Bunch Of Money Into Creating AI Tools For English Language Learners). In that post, I also shared some concerns about they’re not real",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "Denver school board, superintendent disagree on whether goals should be aspirational or realistic",
+"link": "https://www.chalkbeat.org/colorado/2026/11/20/denver-school-board-superintendent-disagree-on-goal-setting/",
+"source": "Chalkbeat",
+"date": "2026-11-20",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Twenty-one percent. That’s the goal that Denver Superintendent Alex Marrero set for the percentage of Latino students w",
+"bucket": "gen",
 "ms": false
 },
 {
