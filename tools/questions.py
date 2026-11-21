@@ -68,6 +68,16 @@ Q = [
    ("The English Test, Explained for Families", "elpt-family-guide.html")]),
 
  ("teachers",
+  "I have English learners in my class and no EL training. What do I do in tomorrow's lesson?",
+  "Five things: teach a few key words first, post sentence starters, seat each English learner "
+  "with a partner, make the reading easier, and check each student with one question. The EL "
+  "Lesson Planner writes all five for your own standard and your own students in about a "
+  "minute — tap, no typing — and tells you why each one helps. Extras are one step each, and "
+  "the last step prints one complete plan.",
+  [("EL Lesson Planner", "el-lesson-planner.html"),
+   ("Read Your Roster", "read-your-roster.html")]),
+
+ ("teachers",
   "How do I grade an English learner fairly — can I take off points for grammar?",
   "Not on a content assignment: grade the content, mark one language feature separately. "
   "Grade It Fair does it with your own materials — paste a rubric and it splits content from "

@@ -39,6 +39,11 @@
   "thumb": "thumbs/sheltered.jpg",
   "who": "Faculty PD"
  },
+ "el-lesson-planner.html": {
+  "long": "For the teacher who teaches biology, algebra or history and has English learners on the roster, with no EL training needed. Three plain steps: pick a Mississippi standard (454 across ELA, math, science and social studies, kindergarten to grade 12), tap in your English learners by what you see and hear in class, and get five things to do, each with the reason it helps: the words to teach first, sentence starters in English and Spanish, where to seat students, how to make the reading easier, and one question to check each student. Then add extras one step at a time: lesson ideas, the lesson part by part, a daily leveled text with Spanish, example texts and free text builders, discussion questions and an exit ticket, a student choice board, a supports tracker, and a teach mode with a timer. The last step puts it all together in one plan to print or copy. Everything is tap or choose from a list; no typing, no account, no AI.",
+  "thumb": "thumbs/el-lesson-planner.jpg",
+  "who": "Content teachers"
+ },
  "el-bridge.html": {
   "long": "Pick a Mississippi standard (K–12 ELA, math, science, or Algebra I, Biology I, English II), describe the lesson you already teach, and get it back in four lanes: Newcomer, Emerging, Progressing, Challenge. Also writes leveled texts with text-dependent questions and MAAP-style items with a linguistically accessible twin for every item. Builds the prompt, you run it in Claude, ChatGPT, Gemini or Copilot, paste the answer back, and it lays out the plan. No sign-up on this site.",
   "thumb": "thumbs/el-bridge.jpg",
