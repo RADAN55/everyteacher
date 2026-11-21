@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-20T11:22:01Z",
+  "updated": "2026-11-21T11:22:54Z",
   "picks": [
     {
-      "title": "A Deep Dive Into Alabama’s Reading Gains",
-      "url": "https://www.the74million.org/article/a-deep-dive-into-alabamas-reading-gains/",
-      "source": "The 74",
-      "date": "2026-11-18",
-      "take": "The 74 walks through a Fordham report on how Alabama climbed from 45th to 13th in fourth-grade reading using Mississippi’s playbook: funded literacy coaches kept out of recess duty and subbing, screeners three times a year, summer camps, and good-cause retention exemptions for English learners. It also names weak spots, including uneven coach loads and leadership turnover.",
-      "try": "Ask your literacy coach for your ELs’ most recent screener results and pick one shared skill to target in content-area reading next week.",
+      "title": "Foundation Funded Initiative Chooses To Fund Three AI Projects Supporting English Language Learners",
+      "url": "https://larryferlazzo.edublogs.org/2026/11/19/foundation-funded-initiative-chooses-to-fund-three-ai-projects-supporting-english-language-learners/",
+      "source": "Larry Ferlazzo",
+      "date": "2026-11-19",
+      "take": "Multilingual by Design, the Gates-backed effort Ferlazzo questioned in March for not consulting working EL teachers, has named three grantees at $350,000 each: live transcription and translation of small-group math talk, a tool that chunks and glosses texts by proficiency level, and an AI lesson planner tied to ELD frameworks. Pilots run this year; no results yet.",
+      "try": "Pick one reading you already assign and hand-chunk it into short sections with two or three glossed words each, the move the Medley tool is trying to automate.",
       "lanes": [
         "Emerging",
         "Progressing",
@@ -15,28 +15,28 @@
       ]
     },
     {
-      "title": "Study Outlines Specific Student Motivation Strategies",
-      "url": "https://larryferlazzo.edublogs.org/2026/11/19/study-outlines-specific-student-motivation-strategies/",
-      "source": "Larry Ferlazzo",
+      "title": "Texas Spent Millions on a Divisive Reading Program. Will It Pay for an Overhaul?",
+      "url": "https://www.the74million.org/article/texas-spent-millions-on-a-divisive-reading-program-will-it-pay-for-an-overhaul/",
+      "source": "The 74",
       "date": "2026-11-19",
-      "take": "Ferlazzo summarizes a chapter by USC’s Erika Patall listing 26 classroom practices tied to five motivation needs: competence, autonomy, interest and value, growth mindset, and belonging. The moves are small and concrete, like process praise over ability praise and having students generate their own relevance, a good fit for ELs who often hear only directive language. Note the summary was AI-assisted.",
-      "try": "Before tomorrow’s lesson, have students write or say one sentence connecting the topic to their own life, in English or their home language.",
+      "take": "Linda Jacobson reports that Bluebonnet Learning, Texas’s state-written K-5 reading program, may be overhauled once Gov.-elect Gina Hinojosa replaces the education commissioner. Texas has spent tens of millions on licensing, revisions and error fixes, pays districts up to $60 per student to adopt it, and shows a 0.2-point reading edge. A Reading League review found weak teaching guidance.",
+      "try": "Ask your literacy coach what curriculum review process your district uses, and whether EL scaffolds are part of the rubric when materials are adopted.",
+      "lanes": [
+        "Admin",
+        "Emerging"
+      ]
+    },
+    {
+      "title": "Could Shohei Ohtani’s Goal-Setting Process Be Used By Students?",
+      "url": "https://larryferlazzo.edublogs.org/2026/11/20/could-shohei-ohtanis-goal-setting-process-be-used-by-students/",
+      "source": "Larry Ferlazzo",
+      "date": "2026-11-20",
+      "take": "Ferlazzo points to the Harada Method grid Ohtani used as a ninth-grader: one central goal, eight supporting areas, eight actions under each. He suggests students use only the first ring, the goal plus eight supports, not all 64 cells. For ELs the format is visual, uses short phrases, and can be drafted in the home language first.",
+      "try": "Have students write one semester goal in the center of a 3x3 grid, fill the eight squares around it with short action phrases in any language, then share one.",
       "lanes": [
         "Newcomer",
         "Emerging",
         "Progressing"
-      ]
-    },
-    {
-      "title": "A New Classroom Use for Artificial Intelligence: Grade the Chat, Not Just the Answer",
-      "url": "https://www.edsurge.com/news/a-new-classroom-use-for-artificial-intelligence-grade-the-chat-not-just-the-answer",
-      "source": "EdSurge",
-      "date": "2026-11-18",
-      "take": "EdSurge talks with teacher Mike Kentz, who found most middle schoolers barely used an assigned AI tutor, so he now grades the conversation itself, capped at about ten messages, with criteria the class builds by comparing a strong chat to a weak one. For ELs, the transcript shows how a student asks, clarifies, and explains in English. No outcome data yet.",
-      "try": "Have students explain one concept to a “confused” chatbot in ten messages, then print the chat and mark where they asked a good clarifying question.",
-      "lanes": [
-        "Progressing",
-        "Challenge"
       ]
     }
   ]
