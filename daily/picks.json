@@ -1,42 +1,42 @@
 {
-  "updated": "2026-11-21T11:22:54Z",
+  "updated": "2026-11-22T11:20:38Z",
   "picks": [
     {
-      "title": "Foundation Funded Initiative Chooses To Fund Three AI Projects Supporting English Language Learners",
-      "url": "https://larryferlazzo.edublogs.org/2026/11/19/foundation-funded-initiative-chooses-to-fund-three-ai-projects-supporting-english-language-learners/",
-      "source": "Larry Ferlazzo",
-      "date": "2026-11-19",
-      "take": "Multilingual by Design, the Gates-backed effort Ferlazzo questioned in March for not consulting working EL teachers, has named three grantees at $350,000 each: live transcription and translation of small-group math talk, a tool that chunks and glosses texts by proficiency level, and an AI lesson planner tied to ELD frameworks. Pilots run this year; no results yet.",
-      "try": "Pick one reading you already assign and hand-chunk it into short sections with two or three glossed words each, the move the Medley tool is trying to automate.",
+      "title": "Winning Over Translation",
+      "url": "https://languagemagazine.com/2026/11/20/winning-over-translation/",
+      "source": "Language Magazine",
+      "date": "2026-11-20",
+      "take": "Honigsfeld, Dove and McDermott Goldman argue that leaning on translation alone can stall a newcomer's English, content learning and social growth, and they are not against translation. They offer dos and don'ts: translate on purpose, check AI output with a fluent speaker, keep the English original alongside, and never use students or siblings for sensitive content.",
+      "try": "Hand a newcomer the English text next to the translation and ask for one sentence back in English before you accept the translated notes.",
       "lanes": [
+        "Newcomer",
         "Emerging",
-        "Progressing",
         "Admin"
       ]
     },
     {
-      "title": "Texas Spent Millions on a Divisive Reading Program. Will It Pay for an Overhaul?",
-      "url": "https://www.the74million.org/article/texas-spent-millions-on-a-divisive-reading-program-will-it-pay-for-an-overhaul/",
-      "source": "The 74",
-      "date": "2026-11-19",
-      "take": "Linda Jacobson reports that Bluebonnet Learning, Texas’s state-written K-5 reading program, may be overhauled once Gov.-elect Gina Hinojosa replaces the education commissioner. Texas has spent tens of millions on licensing, revisions and error fixes, pays districts up to $60 per student to adopt it, and shows a 0.2-point reading edge. A Reading League review found weak teaching guidance.",
-      "try": "Ask your literacy coach what curriculum review process your district uses, and whether EL scaffolds are part of the rubric when materials are adopted.",
+      "title": "An Important Point About “Making Student Learning Visible To Students Themselves” & A Bunch Of Ways To Do Just That",
+      "url": "https://larryferlazzo.edublogs.org/2026/11/21/an-important-point-about-making-student-learning-visible-to-students-themselves-a-bunch-of-ways-to-do-just-that/",
+      "source": "Larry Ferlazzo",
+      "date": "2026-11-21",
+      "take": "Ferlazzo picks up John Warner's point that students who can see their own growth have less reason to reach for AI shortcuts. His own moves: a vocabulary checklist returned at unit end, rewriting an August essay for the final, and recorded repeated readings. He adds a dozen low-prep options, from confidence ratings to fluency graphs and \"I used to think\" reflections.",
+      "try": "Give students the unit vocabulary list on day one, have them mark what they know, and return the same sheet on the last day to mark again.",
       "lanes": [
-        "Admin",
-        "Emerging"
+        "Emerging",
+        "Progressing",
+        "Challenge"
       ]
     },
     {
-      "title": "Could Shohei Ohtani’s Goal-Setting Process Be Used By Students?",
-      "url": "https://larryferlazzo.edublogs.org/2026/11/20/could-shohei-ohtanis-goal-setting-process-be-used-by-students/",
+      "title": "The Best Fun Videos For English Language Learners In 2026 – Part Two",
+      "url": "https://larryferlazzo.edublogs.org/2026/11/20/the-best-fun-videos-for-english-language-learners-in-2026-part-two/",
       "source": "Larry Ferlazzo",
       "date": "2026-11-20",
-      "take": "Ferlazzo points to the Harada Method grid Ohtani used as a ninth-grader: one central goal, eight supporting areas, eight actions under each. He suggests students use only the first ring, the goal plus eight supports, not all 64 cells. For ELs the format is visual, uses short phrases, and can be drafted in the home language first.",
-      "try": "Have students write one semester goal in the center of a 3x3 grid, fill the eight squares around it with short action phrases in any language, then share one.",
+      "take": "A fresh batch of short, funny clips Ferlazzo uses with ELLs for speaking, listening and writing, mostly animal videos, a Super Bowl ad and a Colbert song remake with a lyrics video. One clip looks AI-made, which he suggests turning into a class discussion. Useful for the week before Thanksgiving break when attention is thin.",
+      "try": "Play one 30-second clip twice with no sound, have pairs narrate the sequence orally, then write it in three sentences using first, then, finally.",
       "lanes": [
         "Newcomer",
-        "Emerging",
-        "Progressing"
+        "Emerging"
       ]
     }
   ]
