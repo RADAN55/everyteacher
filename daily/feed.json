@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-21T17:45+00:00",
+"updated": "2026-11-22T18:01+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -40,7 +40,7 @@
 {
 "source": "KQED MindShift",
 "ok": true,
-"items": 10
+"items": 9
 },
 {
 "source": "NPR Education",
@@ -69,10 +69,82 @@
 }
 ],
 "counts": {
-"el": 58,
-"gen": 192
+"el": 62,
+"gen": 196
 },
 "items": [
+{
+"title": "This Is The Best “Don’t Eat The Marshmallow” Video You’ll Ever See",
+"link": "https://larryferlazzo.edublogs.org/2026/11/22/this-is-the-best-dont-eat-the-marshmallow-video-youll-ever-see/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-22",
+"summary": "If you’re not familiar with “Don’t Eat The Marshmallow,” then check out Best Posts About Helping Students Develop Their Capacity For Self-Control. This video is an embedded Facebook post, so if you can’t see it on RSS or via email, you’ll need to come to the actual blog post:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "The Best “Words Of The Year” Features For 2026",
+"link": "https://larryferlazzo.edublogs.org/2026/11/22/the-best-words-of-the-year-features-for-2026/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-22",
+"summary": "Here’s this year’s ‘Best” list about “Words Of The Year,” though many dictionaries still have to announce their choices. I’ll add them to the list as they come up. You can see all the previous “Words of the Year” lists here. Here’s what I have so far: The shortlist for Oxford Word of the […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Research Studies Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/22/research-studies-of-the-week-215/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-22",
+"summary": "I often write about research studies from various fields and how they can be applied to the classroom. I write individual posts about ones that I think are especially significant, and will continue to do so. However, so many studies are published that it’s hard to keep up. So I’ve started writing a “round-up” […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Opinion: If AI Does the Junior Work, How Will Young People Become Experienced?",
+"link": "https://www.the74million.org/article/if-ai-does-the-junior-work-how-will-young-people-become-experienced/",
+"source": "The 74",
+"date": "2026-11-22",
+"summary": "I serve on a local school board and have spent my career in finance and strategy. Those are very different parts of my life, but lately they have led me to the same question: How do people develop judgment and experience if artificial intelligence starts doing more of the work through which beginners used to […]",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NPR's Senior Podcast Challenge: Early entries we love",
+"link": "https://www.npr.org/2026/11/22/nx-s1-6044221/npr-senior-podcast-challenge-early-entries",
+"source": "NPR Education",
+"date": "2026-11-22",
+"summary": "People 65 and older have been submitting stories for a chance to win our grand prize — a visit to NPR watch your podcast air live on Weekend Edition . There's still time to enter!",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Must-Watch Video Of The Day: “What Does It Actually Mean to Write ‘Like a Human’?”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/22/must-watch-video-of-the-day-what-does-it-actually-mean-to-write-like-a-human/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-22",
+"summary": "This video appeared on The NY Times website today. You can access the transcript on this gift link. I’m adding it to A Beginning List Of The Best Resources For Teaching About Artificial Intelligence.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Moms Feared What the Midterms Would Mean for Their Disabled Daughters. Then Came Some Hope.",
+"link": "https://www.the74million.org/article/moms-feared-what-the-midterms-would-mean-for-their-disabled-daughters-then-came-some-hope/",
+"source": "The 74",
+"date": "2026-11-22",
+"summary": "Yasmina Halim approached this year’s midterms with “a sense of dread.” On election night, the 44-year-old went to bed early after Republicans won the major statewide races in Florida, where she lives with her family. Her 13-year-old daughter, Lily, is dying from a neurodegenerative condition called juvenile Tay-Sachs d",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Departing Providence Superintendent to Receive Nearly $200,000",
+"link": "https://www.the74million.org/article/departing-providence-superintendent-to-receive-nearly-200000/",
+"source": "The 74",
+"date": "2026-11-22",
+"summary": "The Providence School Board approved a nearly $200,000 separation package for outgoing Providence Public School District Superintendent Javier Montañez at its Wednesday night meeting. Montañez’s resignation — first announced on Oct. 30 and formally submitted in a Nov. 4 letter — took effect at the end of the day Wednes",
+"bucket": "gen",
+"ms": false
+},
 {
 "title": "LAUSD Spent Over $6 Million on a Phone Ban. Survey Data Show Mixed Results",
 "link": "https://www.the74million.org/article/lausd-spent-over-6-million-on-a-phone-ban-survey-data-show-mixed-results/",
