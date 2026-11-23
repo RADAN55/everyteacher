@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-22T18:01+00:00",
+"updated": "2026-11-23T22:13+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -40,7 +40,7 @@
 {
 "source": "KQED MindShift",
 "ok": true,
-"items": 9
+"items": 10
 },
 {
 "source": "NPR Education",
@@ -69,10 +69,172 @@
 }
 ],
 "counts": {
-"el": 62,
-"gen": 196
+"el": 67,
+"gen": 208
 },
 "items": [
+{
+"title": "“‘Teachers Have no Time for Oversimplified Stories’ Like Sold A Story 2”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/23/teachers-have-no-time-for-oversimplified-stories-like-sold-a-story-2/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-23",
+"summary": "‘Teachers Have no Time for Oversimplified Stories’ Like Sold A Story 2 is the headline of one of my Education Week columns. A researcher and former teacher says Direct Instruction claims are built on old, flawed studies. Here are some excerpts:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "“Everybody Is a Math Person. Now, Convince Your Students”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/23/everybody-is-a-math-person-now-convince-your-students/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-23",
+"summary": "Everybody Is a Math Person. Now, Convince Your Students is the headline of one of my recent Education Week columns. Math educators offer tips on how to engage students on the subject. Here are some excerpts:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Video: Are Humans Still Evolving?",
+"link": "https://larryferlazzo.edublogs.org/2026/11/23/video-are-humans-still-evolving/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-23",
+"summary": "I’m adding this video from the American Museum of Natural History to The Best Sites For Learning About Human Evolution:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Three studies in a row show teeny-tiny or zero academic gains from school cellphone bans",
+"link": "https://hechingerreport.org/proof-points-3-cellphone-ban-studies/",
+"source": "The Hechinger Report",
+"date": "2026-11-23",
+"summary": "Since 2023, cellphone use during the school day has been banned or restricted in at least 40 states and the District of Columbia, in the hope that reducing digital distractions would help students focus on their lessons. So how’s it working? Last week researchers at Harvard University released the third major study of ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "The Wise Rise: How One of Virginia’s Poorest Counties Built Some of Its Best Schools",
+"link": "https://www.the74million.org/article/the-wise-rise-how-one-of-va-s-poorest-counties-built-some-of-its-best-schools/",
+"source": "The 74",
+"date": "2026-11-23",
+"summary": "Wise County, Virginia, is one of the state’s most economically disadvantaged counties. Over the last two decades, its population has shrunk as the coal industry that once supported much of its local economy has declined. And yet, Wise County boasts some of the highest-performing schools in the state. When The 74 went l",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Some people claim to speak many languages. But what does it really mean to be a polyglot?",
+"link": "https://theconversation.com/some-people-claim-to-speak-many-languages-but-what-does-it-really-mean-to-be-a-polyglot-297026",
+"source": "The Conversation — Education",
+"date": "2026-11-23",
+"summary": "Fluency in a language is not an all-or-nothing achievement. It is a spectrum, ranging from basic conversational ability to sophisticated, near-native command.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: The Midterm Results Should Be Great for Kids. Full Stop",
+"link": "https://www.the74million.org/article/the-midterm-results-should-be-great-for-kids-full-stop/",
+"source": "The 74",
+"date": "2026-11-23",
+"summary": "Normally, post-election prognostication involves sifting through and reading the proverbial tea leaves to divine our new political future. One region may tilt right, but only among older voters, while another state’s new political lean seems to be drifting left due to an influx of young college graduates. But my goodne",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Amid Immigration Crackdown, Let’s Support School Family Liaisons",
+"link": "https://www.the74million.org/article/amid-immigration-crackdown-lets-support-school-family-liaisons/",
+"source": "The 74",
+"date": "2026-11-23",
+"summary": "On election day, voters sent Democrats into office, up and down the ballot, in typically blue strongholds and in places where it had been hard to imagine Republicans losing power. As citizens cast their votes, many were reckoning with the most visible harms caused by this administration’s immigration policies, includin",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "OPINION: It’s time to put curiosity, creativity and critical thinking first in the early learning years",
+"link": "https://hechingerreport.org/opinion-its-time-to-put-curiosity-creativity-and-critical-thinking-first-in-the-early-learning-years/",
+"source": "The Hechinger Report",
+"date": "2026-11-23",
+"summary": "Early education is often judged by how quickly children master the 3 Rs: reading, writing and arithmetic. Those skills are essential, but not sufficient. Children also need the 3 Cs: curiosity, creativity and critical thinking. We often treat the 3 Cs as “nice-to-haves” after children master reading, writing and arithm",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Newark school district’s new student recruitment strategy is a reality show",
+"link": "https://www.chalkbeat.org/newark/2026/11/23/district-betting-reality-tv-will-help-recruit-students/",
+"source": "Chalkbeat",
+"date": "2026-11-23",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Newark Public Schools is turning to reality television to help recruit students and teachers, investing more than $250,",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "New Jersey school segregation lawsuit remains unresolved after appeals court ruling",
+"link": "https://www.chalkbeat.org/newark/2026/11/23/new-jersey-appellate-court-allows-school-segregation-lawsuit-to-continue/",
+"source": "Chalkbeat",
+"date": "2026-11-23",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. This story was originally published by NJ Spotlight News . In the latest maneuvering of a landmark lawsuit claiming seg",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "NYC teachers: How do your school’s attendance and grading policies affect student absences? Tell us.",
+"link": "https://www.chalkbeat.org/newyork/2026/11/23/nyc-teachers-raise-concerns-over-attendance-and-grading-policies-survey/",
+"source": "Chalkbeat",
+"date": "2026-11-23",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. New York City revamped attendance policies this school year in hopes of making a dent in the stubbornly high rate of ch",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Most Parents Let Their Young Kids Use Screens. Many Feel Guilty About It",
+"link": "https://www.the74million.org/zero2eight/most-parents-let-their-young-kids-use-screens-many-feel-guilty-about-it/",
+"source": "The 74",
+"date": "2026-11-23",
+"summary": "The modern world is replete with screens. That’s true for kids as well as adults. Parents today must decide how much screen time to allow their children at different ages and developmental stages, even as questions about the quality and long-term impacts of digital media persist. Most parents of young children use scre",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "K is for kindness, but families worry the world has less of it",
+"link": "https://www.npr.org/2026/11/23/nx-s1-6035702/kindness-kids-sesame-street-parents-survey",
+"source": "NPR Education",
+"date": "2026-11-23",
+"summary": "A decade after first asking families about kindness, Sesame Workshop asked parents similar questions. They responded that their kids are getting kinder even as the wider world becomes less so.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "If Representation Matters, Then Authenticity Does Too",
+"link": "https://www.edsurge.com/news/if-representation-matters-then-authenticity-does-too",
+"source": "EdSurge",
+"date": "2026-11-23",
+"summary": "As a Black male kindergarten teacher, I spent a decade defying stereotypes. To keep people like me in the classroom, schools must stop boxing us in.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "From Bus Routes to Ball Games, Diesel Prices Are Squeezing Montana School Budgets",
+"link": "https://www.the74million.org/article/from-bus-routes-to-ball-games-diesel-prices-are-squeezing-montana-school-budgets/",
+"source": "The 74",
+"date": "2026-11-23",
+"summary": "At Beaverhead County High School in the southwest corner of Montana, superintendent Josh Patterson had a dilemma last month when the school’s football team, the Beavers, qualified for a state playoff game in Whitefish. Patterson had to get students back and forth from Dillon to Whitefish, a roughly 12-hour round-trip b",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Look Back: New Study Finds A Specific Form Of “Collaboration” Gets The Best Results",
+"link": "https://larryferlazzo.edublogs.org/2026/11/23/a-look-back-new-study-finds-a-specific-form-of-collaboration-gets-the-best-results-3/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-23",
+"summary": "For the next several months, each week I’ll be republishing posts from the past that I think readers might still find useful. This post first appeared in 2018. I’ve written extensively in some of my books about the difference between cooperative learning and collaborative learning. An example of cooperative learning is",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "0.0087 of a Standard Deviation? That’s the Academic Gain From School Cellphone Bans, Studies Show",
+"link": "https://ww2.kqed.org/mindshift/2026/11/23/0-0087-of-a-standard-deviation-thats-the-academic-gain-from-school-cellphone-bans-studies-show/",
+"source": "KQED MindShift",
+"date": "2026-11-23",
+"summary": "Education researchers spar over what these small numbers mean.",
+"bucket": "gen",
+"ms": false
+},
 {
 "title": "This Is The Best “Don’t Eat The Marshmallow” Video You’ll Ever See",
 "link": "https://larryferlazzo.edublogs.org/2026/11/22/this-is-the-best-dont-eat-the-marshmallow-video-youll-ever-see/",
@@ -2383,15 +2545,6 @@
 "source": "KQED MindShift",
 "date": "2026-10-26",
 "summary": "‘Anybody can sort of say that they have evidence for anything,’ a top scholar says.",
-"bucket": "gen",
-"ms": false
-},
-{
-"title": "Can the New Federal Voucher Program Help Public Schools?",
-"link": "https://ww2.kqed.org/mindshift/2026/10/23/can-the-new-federal-voucher-program-help-public-schools/",
-"source": "KQED MindShift",
-"date": "2026-10-23",
-"summary": "The new scholarship tax credit program could help public school families pay for some educational services, but advocates worry it could do more harm than good.",
 "bucket": "gen",
 "ms": false
 }
