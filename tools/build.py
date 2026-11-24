@@ -111,7 +111,7 @@ def doors():
 
 # A short film for the Now Showing screen, keyed by the resource's href.
 # The page script shows it only while that resource is the one on screen.
-PREMIERE_VIDEO = {
+PREMIERE_VIDEO = {  # only the first one found among the new releases is used
     "el-special-2026-12-world.html": (
         "video/christmas-around-the-world.mp4",
         "video/christmas-around-the-world.jpg",
@@ -725,7 +725,8 @@ def insert_at(s, tag, payload, last):
 
 wired = 0
 NO_CHROME = {"commercial.html", "video-stage.html", "avatar-stage.html", "timer.html",  # a full-screen stage; no bar, no theme toggle
-             "storm-reading-sets.html", "storm-writing-sets.html", "storm-listening-sets.html", "storm-speaking-sets.html"}  # Storm Studio engine: own rail, own dark mode; home-button.js links back
+             "storm-reading-sets.html", "storm-writing-sets.html", "storm-listening-sets.html", "storm-speaking-sets.html",
+             "el-special-2026-12-world-interactive.html"}  # Storm Studio engine: own rail, own dark mode; home-button.js links back
 for page in sorted(ROOT.glob("*.html")):
     if page.name in NO_CHROME:
         continue
