@@ -961,4 +961,11 @@ text(c, W - M - 95, 176, "THE HUB", "In-X", 8, NAVYDK, "c", track=2)
 col(c, W - M - 180, 56, 170, 112, [P("<b>97 free resources</b> for teachers of English learners: Today in EL, Read Your Roster, Teaching the ELPT, Monday Moves, the Newcomer Guide in five languages, and every issue of this magazine.", S("ad", "In-R", 8.6, 11.4, NAVYDK, spaceAfter=6)), P("radan55.github.io/everyteacher", S("adu", "In-X", 8.6, 11, NAVYDK))])
 c.showPage()
 c.save()
+# The December ELPA21 insert is bound in as pages 31-38 (built by tools/make-elpa21-insert-2026-12.py).
+INSERT = os.path.join(ROOT, "elpa21-insert-2026-12.pdf")
+if os.path.exists(INSERT):
+    from pypdf import PdfReader, PdfWriter
+    w_ = PdfWriter(clone_from=OUT)
+    for pg_ in PdfReader(INSERT).pages: w_.add_page(pg_)
+    w_.write(OUT)
 print("wrote", OUT)
