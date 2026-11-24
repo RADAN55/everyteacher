@@ -36,9 +36,9 @@
   "u": "series-magazines.html",
   "t": "Magazines & Bulletins",
   "o": "Every issue of the teacher magazine (No. 1 to No. 4), the Teaching the ELPT special issue, the student magazine, the bulletins and the Tech Radar, in one rack.",
-  "f": "Series · 6 issues + bulletins",
+  "f": "Series · 7 issues + bulletins",
   "g": "Every classroom teacher",
-  "k": "Every EL Publishing periodical in one rack. The teacher magazine: No. 1 Every Teacher (Sept 2026), No. 2 The Field Atlas (Oct), No. 3 The Language of Belonging (Nov), No. 4 The Language of Home (Dec, with a K–12 edition). The special issue Teaching the ELPT (24 pages, interactive). The student magazine Many Voices, Issue 1. Then the bulletins: The Language Bridge, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
+  "k": "Every EL Publishing periodical in one rack. The teacher magazine: No. 1 Every Teacher (Sept 2026), No. 2 The Field Atlas (Oct), No. 3 The Language of Belonging (Nov), No. 4 The Language of Home (Dec, with a K–12 edition). The special issues: Christmas Around the World (36 pages, K–12, every subject) and Teaching the ELPT (24 pages, interactive). The student magazine Many Voices, Issue 1. Then the bulletins: The Language Bridge, What's New in Teaching English Learners (Field Notes, with evidence ratings) and the monthly EL Tech Radar. For the day-by-day version, read Today in EL.",
   "th": "",
   "pin": "",
   "new": ""
@@ -900,6 +900,17 @@
   "th": "",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "el-special-2026-12-world.html",
+  "t": "Christmas Around the World · Special Edition",
+  "o": "Eight December traditions, a 15-day countdown, coloring pages and state test prep, for every teacher in the building.",
+  "f": "Magazine · Dec 2026 · 36 pages · K–12",
+  "g": "Every classroom teacher",
+  "k": "Christmas Around the World, the special December 2026 edition for every teacher, grades K–12, on customs only (what people make, cook, carry and light): an eight-stop world tour to read (Las Posadas, the parol, tamales at midnight, las patinatas, the fanal, Genna, the twelve dishes, the crown of candles) with words to teach and a move for grades 6–12 and K–5; a December greeting in fourteen languages; one lesson for any grade in four lanes; a 15-school-day countdown calendar with a practice for each band, a coaching note and a note for the teacher; coaching notes by domain; four coloring pages with a sentence to trace; listen-and-circle for K–2 and a reading page for grades 3–5; an eight-page black-and-white ELPA21 practice insert for grades 6–12 with listening scripts, a teacher key and a family interview in English and Spanish; Mississippi ELA standards K–12 and eight whole-class ELA activities for the general education teacher; one activity for every subject (math, science, social studies, art, music, PE, career and technical, technology, library, homeroom); five moves for any teacher; and state test prep (MAAP-style practice) for math grades 3–8 and Algebra I, science grades 5 and 8 and Biology, and U.S. History, with a key and the language of the test. Holiday, winter, Christmas, traditions, coloring sheets, countdown.",
+  "th": "",
+  "pin": "",
+  "new": "2026-11-24"
  },
  {
   "u": "el-magazine-2026-12.html",
