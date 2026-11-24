@@ -109,6 +109,16 @@ def doors():
     return '<div class="doors">' + "".join(out) + "</div>"
 
 
+# A short film for the Now Showing screen, keyed by the resource's href.
+# The page script shows it only while that resource is the one on screen.
+PREMIERE_VIDEO = {
+    "el-special-2026-12-world.html": (
+        "video/christmas-around-the-world.mp4",
+        "video/christmas-around-the-world.jpg",
+    ),
+}
+
+
 def now_showing():
     if not fresh:
         return "<!-- nothing released in the last three weeks -->"
@@ -117,6 +127,16 @@ def now_showing():
     shot = (
         f'<img id="prem-img" src="{e(h["thumb"])}" alt="">' if h["thumb"] else ""
     )
+    for r in fresh[:6]:
+        if r["href"] in PREMIERE_VIDEO:
+            src, poster = PREMIERE_VIDEO[r["href"]]
+            on = r is h
+            shot += (
+                f'<video id="prem-vid" data-for="{e(r["href"])}" src="{e(src)}" '
+                f'poster="{e(poster)}" muted playsinline preload="metadata"'
+                + ("" if on else " hidden") + "></video>"
+            )
+            break
     rail = ""
     if len(fresh) > 1:
         items = "".join(

@@ -159,6 +159,10 @@
   @keyframes pfill{to{transform:scaleX(1)}}
   .prem-shot img{transition:opacity .45s}
   .prem-shot.fade img{opacity:0}
+  .prem-shot video{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .45s}
+  .prem-shot.fade video{opacity:0}
+  .prem-shot.has-vid{aspect-ratio:1/1;max-width:460px;width:100%;justify-self:center}
+  .prem-shot.has-vid>i,.prem-shot.has-vid .vig,.prem-shot.has-vid .rec{display:none}
   .prem-t,.prem-kind,.prem-p{transition:opacity .35s}
   .premiere.swapping .prem-t,.premiere.swapping .prem-kind,.premiere.swapping .prem-p{opacity:0}
   @media(prefers-reduced-motion:reduce){.prem-dots button[aria-current="true"]::after{animation:none;transform:scaleX(1)}}
@@ -654,7 +658,7 @@ a.wl-play::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80
         <div class="prem-cta"><a class="go" id="prem-go" href="el-special-2026-12-world.html">▶ &nbsp;Open Christmas Around the World · Special Edition</a><a class="alt" href="whats-new.html">What's new on the hub →</a></div>
         <div class="prem-dots" id="prem-dots" role="tablist" aria-label="New releases" hidden></div>
       </div>
-      <a class="prem-shot" id="prem-shot" href="el-special-2026-12-world.html" aria-label="Open the featured resource"><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
+      <a class="prem-shot" id="prem-shot" href="el-special-2026-12-world.html" aria-label="Open the featured resource"><video id="prem-vid" data-for="el-special-2026-12-world.html" src="video/christmas-around-the-world.mp4" poster="video/christmas-around-the-world.jpg" muted playsinline preload="metadata"></video><i></i><i></i><i></i><i></i><div class="vig"></div><span class="rec"><b></b>NEW</span></a>
     </div>
     <div class="prem-rail" id="prem-rail"><p class="rk">Also new</p><div class="rr" id="prem-rr"><a href="dual-identified.html"><span class="nb">NEW · Nov 23</span><span class="ph">✦</span><span><b>The Dual-Identified Desk</b><small>Desk · EL + IEP · 7 parts</small></span></a><a href="storm-reading-sets.html"><span class="nb">NEW · Nov 23</span><span class="ph">✦</span><span><b>Storm Reading Sets</b><small>Interactive · 5 sets · 31 items · 9–12</small></span></a><a href="storm-writing-sets.html"><span class="nb">NEW · Nov 23</span><span class="ph">✦</span><span><b>Storm Writing Sets</b><small>Interactive · 5 task types · 9–12</small></span></a></div></div>
   </div>
@@ -990,7 +994,7 @@ window.HUB_CATALOG=[{"u": "series-newcomer.html", "t": "The Newcomer Series", "o
   function T(id,v){var el=document.getElementById(id);if(el)el.textContent=v}
   var tEl=document.getElementById('prem-title'),dots=document.getElementById('prem-dots');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DUR=7000,cur=0,timer=null,paused=false,first=true;
+  var DUR=7000,cur=0,timer=null,paused=false,first=true,vidOn=false;
   C=C.slice(0,6);
   function letters(t){var k=0;
     tEl.innerHTML=t.split(' ').map(function(w){
@@ -1007,6 +1011,12 @@ window.HUB_CATALOG=[{"u": "series-newcomer.html", "t": "The Newcomer Series", "o
     var shot=document.getElementById('prem-shot');if(shot)shot.href=h.u;
     var img=document.getElementById('prem-img');
     if(img){if(h.th){img.src=h.th;img.hidden=false}else img.hidden=true}
+    var vid=document.getElementById('prem-vid');
+    if(vid&&shot){vidOn=vid.getAttribute('data-for')===h.u;
+      vid.hidden=!vidOn;shot.classList.toggle('has-vid',vidOn);
+      if(vidOn){if(img)img.hidden=true;
+        if(!reduce){try{vid.currentTime=0}catch(e){}var pl=vid.play();if(pl&&pl.catch)pl.catch(function(){})}}
+      else{try{vid.pause()}catch(e){}}}
     var rail=document.getElementById('prem-rail'),rr=document.getElementById('prem-rr');
     var rest=C.filter(function(r,j){return j!==i}).slice(0,3);
     if(rail&&rr){
@@ -1031,8 +1041,13 @@ window.HUB_CATALOG=[{"u": "series-newcomer.html", "t": "The Newcomer Series", "o
     setTimeout(function(){cur=i;fill(i);
       sec.classList.remove('swapping');if(shot)shot.classList.remove('fade')},reduce?0:380);
   }
+  /* the film plays through once, then the screen moves on; alone, it loops */
+  (function(){var v=document.getElementById('prem-vid');if(!v)return;
+    v.addEventListener('ended',function(){
+      if(vidOn&&C.length>1&&!paused&&!reduce){show(cur+1);arm()}
+      else{try{v.currentTime=0;v.play()}catch(e){}}})})();
   function arm(){clearInterval(timer);if(C.length<2||reduce)return;
-    timer=setInterval(function(){if(!paused&&!document.hidden)show(cur+1)},DUR)}
+    timer=setInterval(function(){if(!paused&&!document.hidden&&!vidOn)show(cur+1)},DUR)}
   if(dots&&C.length>1){
     dots.hidden=false;dots.style.setProperty('--pdur',DUR+'ms');
     dots.innerHTML=C.map(function(r,j){return '<button type="button" role="tab" aria-label="'+esc(r.t)+'"></button>'}).join('')+'<span class="pn" aria-hidden="true"></span>';
