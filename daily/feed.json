@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-23T22:13+00:00",
+"updated": "2026-11-24T20:51+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -69,10 +69,163 @@
 }
 ],
 "counts": {
-"el": 67,
-"gen": 208
+"el": 71,
+"gen": 222
 },
 "items": [
+{
+"title": "Virginia Families Navigate School Closures After Lapses in Child Abuse Screening",
+"link": "https://www.the74million.org/article/virginia-families-navigate-school-closures-after-lapses-in-child-abuse-screening/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "Under pressure to do well on an exam, University of Virginia graduate student Kara Guyton was home taking a test last Thursday, joined by her three elementary school children, who made forts with blankets while students in other parts of the commonwealth were in class. In Albemarle County, Guyton’s kids and others were",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Unpacking Lessons Learned From Summit Learning, Part 2",
+"link": "https://www.the74million.org/article/unpacking-lessons-learned-from-summit-learning-part-2/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "Class Disrupted is an education podcast featuring author Michael Horn and Futre’s Diane Tavenner in conversation with educators, school leaders, students and other members of school communities as they investigate the challenges facing the education system in the aftermath of the pandemic — and where we should go from ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "These maps show how expensive state schools can be for low-income students",
+"link": "https://hechingerreport.org/these-maps-show-how-expensive-state-schools-can-be-for-low-income-students/",
+"source": "The Hechinger Report",
+"date": "2026-11-24",
+"summary": "To avoid spending their young adult lives in debt, students have long been counseled to stay in-state for college. After all, it’s the mission of public universities, funded by tax dollars, to provide an affordable, high-quality education to state residents. Yet, in 34 states, it costs students from low-income families",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "The high school bake sale — and home economics — get a makeover",
+"link": "https://www.chalkbeat.org/2026/11/24/culinary-arts-evolve-into-career-prep-amid-demand-for-workforce-skills/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. JaMichael Boles, 18, is not intimidated by cooking Thanksgiving dinner for his family this year. He is focused on a muc",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Some 2M Children Have Lost SNAP Benefits — And Now Millions More Are at Risk",
+"link": "https://www.the74million.org/article/some-2m-children-have-lost-snap-benefits-and-now-millions-more-are-at-risk/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "Staff at Madrona Elementary School in Seattle spent last Friday stocking a brand new food pantry opened on-site to meet the community’s growing demand for help after drastic cuts to federal aid programs. Principal Regina Carter said the types of families seeking food assistance have widened dramatically this year as lo",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Pins Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/24/pins-of-the-week-291/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-24",
+"summary": "I’m fairly active on Pinterest and, in fact, have curated 25,000 resources there that I haven’t shared on this blog. I thought readers might find it useful if I began sharing a handful of my most recent “pins” each week (I’m not sure if you can see them through an RSS Reader – you […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Pennsylvania state test scores still aren’t ready. Here’s everything to know about the delay.",
+"link": "https://www.chalkbeat.org/philadelphia/2026/11/24/pennsylvania-delayed-state-test-scores-what-to-know/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. When can Pennsylvania families and educators expect to see state test results? Months past the usual release date, offi",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: To New Blue State Governors: Be an Education Governor",
+"link": "https://www.the74million.org/article/to-new-blue-state-governors-be-an-education-governor/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "Democrats have a long tradition of expanding opportunity through public education, and with 75% of the nation’s school-aged children in states with Democratic governors as of January, the practical work of improving student learning deserves a more prominent place in our national agenda. For too many years, the big “bl",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Teaching Kids to Read Is Important. So Is Teaching Them to Communicate",
+"link": "https://www.the74million.org/article/teaching-kids-to-read-is-important-so-is-teaching-them-to-communicate/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "Abraham Lincoln had less than a year of formal schooling, an awkward manner and a high-pitched voice. He became one of America’s greatest communicators through study and practice, not innate ability. As a boy, he learned storytelling from his father and repeated preachers’ sermons for other children. As a young man, he",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "New Tax Credit Program Sparks Questions Over Special Education Services",
+"link": "https://www.the74million.org/article/new-tax-credit-program-sparks-questions-over-special-education-services/",
+"source": "The 74",
+"date": "2026-11-24",
+"summary": "As the mother of a son with autism, Angie Pannuti knows what it’s like to negotiate with a school district for special education services. “Every meeting is the same,” she said, describing conferences with officials in eastern Kentucky’s Greenup County schools. “You will hear, ‘That is not how we do it.’ “ She called h",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "If I Was Going To Teach An Online Class (& I Never Will Again), I Would Definitely Study This Essay To Help Me Design It",
+"link": "https://larryferlazzo.edublogs.org/2026/11/24/if-i-was-going-to-teach-an-online-class-i-never-will-again-i-would-definitely-study-this-essay-to-help-me-design-it/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-24",
+"summary": "Adam Pryor has written a post about the changes he’s making to the asynchronous college class he teaches in light of the advent of Artificial Intelligence. I know if I was teaching such a class, which I never will, The Verb that Needs a Body and a Name would be a post I would […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "How One Teacher Prep Program Made Its Technology Use Visible",
+"link": "https://www.edsurge.com/news/how-one-teacher-prep-program-made-its-technology-use-visible",
+"source": "EdSurge",
+"date": "2026-11-24",
+"summary": "A faculty survey turned into a program-wide conversation — and a plan to align with the ISTE Standards.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "How Brooklyn librarians are training in the science of reading to back NYC schools’ literacy shift",
+"link": "https://www.chalkbeat.org/newyork/2026/11/24/brooklyn-public-library-science-of-reading-training-nyc-literacy/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. To support New York City’s literacy instruction overhaul, it takes a village. The Brooklyn Public Library is joining th",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "DPSCD board, parents raise school safety concerns amid reports of increased fights",
+"link": "https://www.chalkbeat.org/detroit/2026/11/24/dpscd-increases-police-presence-at-mumford-amid-school-fights/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Amid escalating violence, Detroit’s public school district has increased police presence at one high school and impleme",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Boulder County asked voters for a tax hike to ease childcare struggles. They said yes.",
+"link": "https://www.chalkbeat.org/colorado/2026/11/24/boulder-county-30-milion-property-tax-for-childcare/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Some Boulder County families and childcare providers could get a financial boost in 2027. That’s because county voters ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Around The Web In ESL/EFL/ELL",
+"link": "https://larryferlazzo.edublogs.org/2026/11/24/around-the-web-in-esl-efl-ell-387/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-24",
+"summary": "Ten years ago I began this regular feature where I share a few posts and resources from around the Web related to ESL/EFL or to language in general that have caught my attention. You might also be interested in all my Best lists on teaching ELLs. Also, check out A Collection Of My Best […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "A college education pays off in Colorado — but not as much as in other states",
+"link": "https://www.chalkbeat.org/colorado/2026/11/24/the-hea-group-analsysis-shows-colorado-college-education-payoff/",
+"source": "Chalkbeat",
+"date": "2026-11-24",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Students who completed a Colorado college program in 2017-18 earned about 55% more than state residents with only a hig",
+"bucket": "gen",
+"ms": false
+},
 {
 "title": "“‘Teachers Have no Time for Oversimplified Stories’ Like Sold A Story 2”",
 "link": "https://larryferlazzo.edublogs.org/2026/11/23/teachers-have-no-time-for-oversimplified-stories-like-sold-a-story-2/",
@@ -216,6 +369,15 @@
 "summary": "At Beaverhead County High School in the southwest corner of Montana, superintendent Josh Patterson had a dilemma last month when the school’s football team, the Beavers, qualified for a state playoff game in Whitefish. Patterson had to get students back and forth from Dillon to Whitefish, a roughly 12-hour round-trip b",
 "bucket": "gen",
 "ms": false
+},
+{
+"title": "Former Jackson Public Schools employee arrested for embezzling",
+"link": "https://mississippitoday.org/2026/11/23/former-jackson-public-schools-employee-arrested-for-embezzling/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-23",
+"summary": "Special agents from the Mississippi State Auditor's Office arrested a former Jackson Public Schools employee on Nov. 12 for allegedly issuing payouts to herself from the district totaling more than $220,000 over several years.",
+"bucket": "gen",
+"ms": true
 },
 {
 "title": "A Look Back: New Study Finds A Specific Form Of “Collaboration” Gets The Best Results",
