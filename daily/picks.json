@@ -1,40 +1,42 @@
 {
-  "updated": "2026-11-23T11:20:51Z",
+  "updated": "2026-11-24T11:21:03Z",
   "picks": [
     {
-      "title": "Officials: 1K fewer multilingual learners attend Delaware schools this year",
-      "url": "https://spotlightdelaware.org/2026/11/20/officials-1k-fewer-multilingual-learners-attend-delaware-schools-this-year/",
-      "source": "Spotlight Delaware",
-      "date": "2026-11-20",
-      "take": "Delaware's Sept. 30 count shows about 1,000 fewer multilingual learners, out of roughly 19,000. State finance staff point to kindergarten and birth-rate declines; legislators and district EL leads point to immigration enforcement and family fear. Because EL counts drive funding, a quiet drop in enrollment or attendance hits exactly the schools serving newcomers.",
-      "try": "Pull your own EL roster against last fall's and flag any newcomer family who has gone quiet for a counselor check-in this week.",
+      "title": "Valley English learners made academic gains this year. How a new law will help them continue succeeding",
+      "url": "https://www.kvpr.org/education/2026-11-23/valley-english-learners-made-academic-gains-this-year-how-a-new-law-will-help-them-continue-succeeding",
+      "source": "KVPR / Central Valley Journalism Collaborative",
+      "date": "2026-11-23",
+      "take": "Three Central Valley districts report about half of their ELs moving up a level on California's English proficiency test. Merced credits having classroom teachers give the test to their own students, so they see what it demands and plan practice for it. A new state law also drops teacher and parent sign-off as a reclassification hurdle.",
+      "try": "Ask your EL specialist what ELPT tasks look like, then build one speaking or writing prompt in that format into this week's lesson.",
+      "lanes": [
+        "Emerging",
+        "Progressing",
+        "Admin"
+      ]
+    },
+    {
+      "title": "Amid Immigration Crackdown, Let's Support School Family Liaisons",
+      "url": "https://www.the74million.org/article/amid-immigration-crackdown-lets-support-school-family-liaisons/",
+      "source": "The 74 (opinion)",
+      "date": "2026-11-23",
+      "take": "A Boston University researcher argues that family liaisons and front-office staff, not policy, are what make immigrant families trust a school: they explain EL services, find rides and food, and hear deportation fears. She found liaisons part-time, without devices or private space, paid far below teachers. Most Mississippi schools have no liaison, so that work lands on EL teachers.",
+      "try": "Find out who at your school a newcomer parent actually calls, and put that name and number on your syllabus in the home language.",
       "lanes": [
         "Newcomer",
         "Admin"
       ]
     },
     {
-      "title": "Join Me For A Free Dec. 1st Webinar On Dual Language Instruction",
-      "url": "https://larryferlazzo.edublogs.org/2026/11/21/join-me-for-a-free-dec-1st-webinar-on-dual-language-instruction/",
-      "source": "Larry Ferlazzo",
-      "date": "2026-11-21",
-      "take": "Ferlazzo is co-hosting a free Seidlitz Education webinar on December 1 built around La lotería del aula dual, a set of activities that fold listening, speaking, reading and writing into every lesson. Free, short, and aimed at classroom moves rather than theory, which is rare PD for Mississippi teachers who rarely see dual-language training.",
-      "try": "Register, then pick one lotería-style activity to run as a Spanish-English warm-up with your Emerging students next week.",
+      "title": "'Teacher as Participant' and Other Methods to Engage English Learners",
+      "url": "https://www.edweek.org/teaching-learning/opinion-teacher-as-participant-and-other-methods-to-engage-english-learners/2026/11",
+      "source": "Education Week (Larry Ferlazzo)",
+      "date": "2026-11-13",
+      "take": "Four veteran EL educators each name one strategy: mini-whiteboards for whole-class answers, sentence frames with the same idea repeated in talk and writing, screen-free card and bingo games for vocabulary, and previewing the five to ten words a unit really needs. The common thread is low-stakes, high-participation practice any content teacher can run without a separate EL curriculum.",
+      "try": "Model your own answer to a discussion prompt aloud, slip in one deliberate error, and let students catch it before they write theirs.",
       "lanes": [
+        "Newcomer",
         "Emerging",
         "Progressing"
-      ]
-    },
-    {
-      "title": "The Best “Words Of The Year” Features For 2026",
-      "url": "https://larryferlazzo.edublogs.org/2026/11/22/the-best-words-of-the-year-features-for-2026/",
-      "source": "Larry Ferlazzo",
-      "date": "2026-11-22",
-      "take": "Ferlazzo's running list collects this year's Word of the Year announcements as dictionaries release them, starting with the Oxford shortlist, with links back to prior years. Word-of-the-year lists are a low-prep way to teach how meaning shifts, how slang and news feed vocabulary, and how to argue for a choice with evidence.",
-      "try": "Have students read the Oxford shortlist, pick one word, and write a three-sentence case for it as this year's word.",
-      "lanes": [
-        "Progressing",
-        "Challenge"
       ]
     }
   ]
