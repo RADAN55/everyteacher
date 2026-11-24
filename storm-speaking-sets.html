@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Speaking Sets · Four Interactive ELPA21-Style Speaking Tasks · Storm Studio</title>
+<meta name="description" content="Four interactive ELPA21-style speaking tasks for grades 9–12 on one page: Compare Pictures, Language Arts Presentation, Analyze a Visual and a Claim, and Observe and Report. Record in the browser, play back, live transcript with a self-check, animated science demonstration, teacher rubrics and scripts. Storm Studio · EL Publishing.">
+<meta name="theme-color" content="#ff4d2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23111418'/%3E%3Cpath d='M58 8 22 58h22l-8 34 42-54H56z' fill='%23ff4d2e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@500;700&family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1f0ea; --surface:#ffffff; --fg:#111418; --muted:#525a66;
+  --accent:#ff4d2e; --accent-soft:#ffe3dc; --line:#111418;
+  --vocab:#0b6e62; --vocab-soft:#d9f2ec; --active:#fff3a3;
+  --violet:#5b3df5; --violet-soft:#e6e0ff; --grid:rgba(17,20,24,.07);
+  --clay:#d08a5e; --clay2:#b8714a; --sand:#e2cf95; --cloth:#dfe3e8; --leaf:#4f9a5a; --leaf2:#2f6e3a; --sky:#dbe9f3;
+  --font-read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-ui:"Public Sans","Segoe UI",Arial,sans-serif;
+  --font-display:"Bricolage Grotesque","Public Sans",Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:5px 5px 0 var(--fg); --read:1.1rem;
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#181b22; --fg:#f4f4f4; --muted:#c7ccd6; --line:#e8e8e8;
+  --accent:#ff6a4d; --accent-soft:#4a2017; --vocab:#4fd1c0; --vocab-soft:#123b36; --active:#5a5010;
+  --violet:#a594ff; --violet-soft:#2a2350; --grid:rgba(244,244,244,.07); --shadow:5px 5px 0 #e8e8e8;
+  --clay:#b8714a; --clay2:#8f5436; --sand:#b9a66a; --cloth:#3a3f48; --leaf:#5fae6a; --leaf2:#3d8a49; --sky:#263241;
+}
+:root[data-size="1"]{--read:1.25rem} :root[data-size="2"]{--read:1.42rem}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 var(--font-ui);color:var(--fg);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;-webkit-text-size-adjust:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:0}
+button{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{display:grid;grid-template-columns:1fr;min-height:100vh}
+.main{margin:0 auto;padding:1rem 16px 7rem;min-width:0;width:100%;max-width:78ch}
+@media (min-width:960px){
+  .wrap{grid-template-columns:17rem 1fr}
+  .rail{position:sticky;top:0;height:100vh;overflow:auto;border-right:3px solid var(--line);background:var(--surface);padding:1.1rem 1rem 1.5rem;display:grid;align-content:start;gap:1rem}
+  .rail-fab{display:none}
+  .main{padding:1.5rem 2.2rem 4rem}
+}
+@media (min-width:1180px){
+  .main{max-width:none}
+  .split{display:grid;grid-template-columns:minmax(0,47%) minmax(0,1fr);gap:0 2rem;align-items:start}
+  .split.single{grid-template-columns:minmax(0,1fr);max-width:84ch}
+  .passcol{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;padding:4px 8px 12px 4px}
+  .itemcol{min-width:0}
+}
+@media (max-width:959px){
+  .rail{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:3px solid var(--line);
+    padding:.9rem 16px calc(1rem + env(safe-area-inset-bottom,0px));display:grid;gap:.8rem;max-height:78vh;overflow:auto;
+    transform:translateY(100%);transition:transform .25s}
+  .rail.open{transform:none}
+  .rail-fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:41;border:3px solid var(--line);
+    background:var(--accent);color:#111418;font:700 .85rem var(--font-mono);padding:.7rem 1rem;box-shadow:var(--shadow);cursor:pointer;
+    text-transform:uppercase;letter-spacing:.06em}
+}
+.brand{display:flex;gap:.7rem;align-items:center}
+.brandmark{width:46px;height:46px;border:3px solid var(--line);background:#111418;flex:none;box-shadow:3px 3px 0 var(--accent)}
+.brand-t{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.05rem;line-height:1}
+.brand-s{color:var(--muted);margin-top:.3rem}
+.prog{border:3px solid var(--line);padding:.7rem .8rem;background:var(--surface);display:grid;gap:.45rem}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.prog-row b{font-family:var(--font-mono);font-size:.95rem}
+.bar{height:14px;border:2px solid var(--line);background:var(--surface);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(135deg,var(--accent) 0 8px,var(--accent-soft) 8px 16px);transition:width .35s}
+.toc{display:grid;gap:.25rem}
+.toc a{display:grid;grid-template-columns:2.1rem 1fr auto;gap:.5rem;align-items:center;padding:.36rem .55rem;border:2px solid transparent;color:var(--fg);text-decoration:none;font-weight:600;font-size:.85rem}
+.toc a .n{font-family:var(--font-mono);font-weight:700;font-size:.72rem;background:var(--fg);color:var(--surface);padding:.15rem .3rem;text-align:center}
+.toc a .st{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}
+.toc a .st.ok{color:var(--vocab);font-weight:700} .toc a .st.no{color:var(--accent);font-weight:700}
+.toc a.active{border-color:var(--line);background:var(--active)}
+.toc a:hover{border-color:var(--line)}
+.tools{display:grid;gap:.4rem}
+.tool{display:flex;align-items:center;gap:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.45rem .6rem;font:600 .84rem var(--font-ui);cursor:pointer;text-align:left}
+.tool .k{font-family:var(--font-mono);font-weight:700;font-size:.64rem;letter-spacing:.06em;min-width:3.9rem;background:var(--fg);color:var(--surface);padding:.22rem .35rem;text-align:center}
+.tool[aria-pressed="true"] .k{background:var(--accent);color:#111418}
+.tool:hover{box-shadow:3px 3px 0 var(--fg)}
+.tool.danger .k{background:var(--accent);color:#111418}
+.rail-foot{color:var(--muted);font-size:.72rem;line-height:1.5}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line)}
+.seg button{border:0;background:var(--surface);color:var(--fg);padding:.45rem;font:700 .75rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--surface)}
+.settabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:0 0 1.2rem}
+.settab{border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.6rem .7rem;text-align:left;cursor:pointer;box-shadow:3px 3px 0 var(--fg);display:grid;gap:.2rem}
+.settab .g{font-family:var(--font-mono);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.settab .tt{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1rem;line-height:1.05}
+.settab .pr{font-family:var(--font-mono);font-size:.68rem;color:var(--muted)}
+.settab[aria-pressed="true"]{background:var(--active);box-shadow:none;transform:translate(3px,3px)}
+.settab[aria-pressed="true"] .g{color:var(--accent)}
+.hero{padding:.6rem 0 1rem}
+.eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);margin:.35rem 0 .6rem;font-weight:800}
+.lede{font-size:1.08rem;max-width:66ch;margin:0 0 .9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:2px solid var(--line);padding:.3rem .55rem;background:var(--surface)}
+.card{position:relative;background:var(--surface);border:3px solid var(--line);box-shadow:var(--shadow);margin:0 0 2rem;padding:1.7rem 1.3rem 1.4rem;scroll-margin-top:1rem}
+.card::before{content:"";position:absolute;left:-3px;right:-3px;top:-3px;height:12px;background:var(--stripe,var(--accent));border:3px solid var(--line);border-bottom:none}
+.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 1rem;align-items:flex-end;margin:.2rem 0 1rem}
+.card h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:800}
+.card h3{font-size:1.05rem;margin:1.1rem 0 .5rem}
+.meta{color:var(--muted);margin-bottom:.4rem}
+@media (max-width:600px){.card{padding:1.6rem 1rem 1.3rem}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .95rem;font:700 .85rem var(--font-ui);cursor:pointer;box-shadow:3px 3px 0 var(--fg);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;line-height:1.2}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--fg)}
+.btn.primary{background:var(--accent);color:#111418}
+.btn.ghost{box-shadow:none;border-width:2px;font-size:.76rem;padding:.42rem .65rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn[aria-pressed="true"]{background:var(--active)}
+.tag{font-family:var(--font-mono);font-weight:700;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .45rem;border:2px solid var(--line);background:var(--surface);white-space:nowrap}
+.tag.ok{background:var(--vocab);color:var(--surface);border-color:var(--vocab)}
+.tag.no{background:var(--accent);color:#111418;border-color:var(--accent)}
+.tag.dok{background:var(--violet-soft);border-color:var(--violet)}
+.tag.fmt{background:var(--bg)}
+.tag.std{background:var(--vocab-soft);border-color:var(--vocab);white-space:normal}
+.steps{display:grid;gap:.6rem;margin:0 0 .4rem}
+.step{display:grid;grid-template-columns:2.4rem 1fr;gap:.8rem;align-items:center;border:2px solid var(--line);padding:.6rem .8rem}
+.step .num{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1;color:var(--accent)}
+.step p{margin:0;font-weight:600}
+/* stimulus */
+.stim{font-family:var(--font-read);font-size:var(--read);line-height:1.7;padding:1rem 1.1rem;border:2px dashed var(--line);background:var(--bg);margin:0 0 1rem}
+.stim h3{font-family:var(--font-display);font-size:1.25rem;margin:0 0 .7rem}
+.stim h4{font:700 .72rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .4rem}
+.stim p{margin:0 0 .8rem}
+.stim .s{padding:.05em .12em;border-radius:2px}
+.stim .s.speaking{background:var(--active)}
+.stim .cap{font-family:var(--font-ui);font-size:.88rem;color:var(--muted);margin:.4rem 0 0}
+.passtools{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .9rem}
+.wb{display:grid;gap:.4rem;margin:0 0 .9rem}
+.wb div{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:baseline;border:2px solid var(--line);background:var(--surface);padding:.4rem .6rem;font-size:.9rem}
+.wb b{font-family:var(--font-mono);font-size:.74rem;color:var(--vocab)}
+.player{display:grid;gap:.7rem;border:3px solid var(--line);background:var(--surface);padding:1rem;margin:0 0 1rem}
+.player .big{display:flex;align-items:center;gap:.9rem}
+.player .playbtn{width:4.2rem;height:4.2rem;border:3px solid var(--line);background:var(--accent);color:#111418;font-size:1.6rem;display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);flex:none}
+.player .playbtn[aria-pressed="true"]{background:var(--active)}
+.player .playbtn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.player .pt{font-weight:700;line-height:1.3}
+.player .pt .count{display:block;margin-top:.2rem}
+.waves{display:flex;gap:4px;align-items:end;height:28px}
+.waves i{display:block;width:5px;background:var(--fg);height:30%}
+.player.on .waves i{animation:wv .9s ease-in-out infinite alternate}
+.player.on .waves i:nth-child(2){animation-delay:.15s}.player.on .waves i:nth-child(3){animation-delay:.3s}.player.on .waves i:nth-child(4){animation-delay:.45s}.player.on .waves i:nth-child(5){animation-delay:.6s}
+@keyframes wv{from{height:20%}to{height:100%}}
+.email{font-family:var(--font-ui)}
+.email .hd{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;font-size:.85rem;border-bottom:2px solid var(--line);padding:0 0 .6rem;margin:0 0 .8rem}
+.email .hd b{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:center}
+.email .body{font-family:var(--font-read)}
+.sides{display:grid;gap:.8rem;margin:0 0 .4rem}
+.side{border:3px solid var(--line);background:var(--surface);padding:.8rem .9rem;position:relative}
+.side .who{display:flex;align-items:center;gap:.6rem;margin:0 0 .5rem;font-family:var(--font-ui)}
+.side .av{width:2.2rem;height:2.2rem;border:2px solid var(--line);display:grid;place-items:center;font:800 .95rem var(--font-display);flex:none}
+.side .who b{display:block;font-size:.95rem}
+.side .who span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:0 0 .6rem}
+@media (max-width:420px){.frames{grid-template-columns:1fr}}
+.frame{border:3px solid var(--line);background:var(--surface);position:relative}
+.frame svg{width:100%;height:auto;display:block}
+.frame .fn{position:absolute;left:-3px;top:-3px;font:800 1rem var(--font-display);background:var(--fg);color:var(--surface);padding:.15rem .5rem;border:3px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .6rem}
+.wchip{border:2px solid var(--line);background:var(--active);color:#111418;padding:.25rem .6rem;font:600 .88rem var(--font-ui);cursor:pointer}
+:root[data-theme="dark"] .wchip{color:var(--fg)}
+.wchip:hover{box-shadow:2px 2px 0 var(--fg)}
+.wchip.seq{background:var(--violet-soft)}
+/* items */
+.item .stem{font-weight:700;font-size:1.05rem;margin:0 0 .9rem;line-height:1.45}
+.item .dir{color:var(--muted);font-size:.92rem;margin:0 0 .7rem}
+.opts{display:grid;gap:.5rem}
+.opt{display:grid;grid-template-columns:2rem 1fr auto;gap:.7rem;align-items:center;text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .7rem;font:500 1rem var(--font-ui);cursor:pointer;line-height:1.35}
+.opt .box{font-family:var(--font-mono);font-weight:700;border:2px solid var(--line);width:2rem;height:2rem;display:grid;place-items:center;font-size:.85rem}
+.opt.radio .box{border-radius:50%}
+.opt:hover:not([disabled]){box-shadow:3px 3px 0 var(--fg)}
+.opt[aria-checked="true"]{background:var(--active);border-width:3px;margin:-1px}
+.opt[aria-checked="true"] .box{background:var(--fg);color:var(--surface)}
+.opt[disabled]{cursor:default}
+.opt small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:.15rem}
+.count{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+.ed{font-family:var(--font-read);font-size:var(--read);line-height:2.25;border:2px dashed var(--line);background:var(--bg);padding:.9rem 1rem;margin:0 0 .9rem}
+.ed .bn{font:700 .6em var(--font-mono);color:var(--accent);vertical-align:super;margin-right:.15em}
+select.dd{font:600 .95rem var(--font-ui);border:3px solid var(--line);background:var(--active);color:#111418;padding:.25rem .4rem;margin:0 .15rem;max-width:100%;cursor:pointer;vertical-align:baseline}
+:root[data-theme="dark"] select.dd{color:var(--fg)}
+select.dd.correct{background:var(--vocab-soft);border-color:var(--vocab)}
+select.dd.wrong{background:var(--accent-soft);border-color:var(--accent)}
+select.dd[disabled]{cursor:default;opacity:1}
+.ddans{font-family:var(--font-mono);font-size:.72rem;color:var(--vocab);font-weight:700;margin-left:.2rem}
+.bank{display:flex;flex-wrap:wrap;gap:.5rem;min-height:3rem;border:2px dashed var(--line);padding:.6rem;margin:0 0 .9rem;background:var(--bg)}
+.bank .lbl{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:100%}
+.namechip{display:inline-flex;align-items:center;gap:.4rem;border:3px solid var(--line);background:var(--active);color:#111418;padding:.4rem .75rem;font:600 .9rem var(--font-ui);cursor:grab;box-shadow:3px 3px 0 var(--fg);touch-action:none;user-select:none;line-height:1.3;text-align:left}
+:root[data-theme="dark"] .namechip{color:var(--fg)}
+.namechip.armed{outline:3px solid var(--accent);outline-offset:2px;background:var(--accent-soft)}
+.namechip:active{cursor:grabbing}
+.namechip.ghost{opacity:.4}
+.bslot{display:inline-flex;align-items:center;justify-content:center;min-width:7.5rem;min-height:2.3rem;border:2px dashed var(--line);background:var(--surface);vertical-align:middle;margin:0 .2rem;padding:0 .45rem;font:700 .64rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer;line-height:1.2}
+.bslot.ready{border-color:var(--accent);color:var(--accent)}
+.bslot.over{background:var(--active)}
+.bslot .namechip{box-shadow:none;cursor:pointer;padding:.2rem .55rem;font-size:.9rem;text-transform:none;letter-spacing:0}
+.bslot.correct{border-style:solid;border-color:var(--vocab);background:var(--vocab-soft)}
+.bslot.wrong{border-style:solid;border-color:var(--accent);background:var(--accent-soft)}
+.bslot[aria-disabled="true"]{cursor:default}
+.blankfb{display:grid;gap:.45rem;margin:.6rem 0 0}
+.blankfb div{display:grid;grid-template-columns:2rem 1fr;gap:.6rem;align-items:start;border:2px solid var(--line);padding:.5rem .6rem;font-size:.92rem;background:var(--surface)}
+.blankfb .bnum{font-family:var(--font-mono);font-weight:700;font-size:.8rem;text-align:center;padding:.2rem 0;background:var(--fg);color:var(--surface)}
+.blankfb div.ok .bnum{background:var(--vocab)} .blankfb div.no .bnum{background:var(--accent);color:#111418}
+.blankfb .foc{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:.4rem}
+.resp{margin:0 0 .6rem}
+.resp textarea{width:100%;border:3px solid var(--line);background:var(--surface);color:var(--fg);font:1.02rem/1.6 var(--font-ui);padding:.7rem .8rem;min-height:9rem;resize:vertical}
+.resp textarea.q{min-height:4.5rem}
+.resp textarea.long{min-height:15rem}
+.resp textarea[readonly]{background:var(--bg)}
+.resp textarea:focus{box-shadow:3px 3px 0 var(--fg)}
+.counter{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;margin:.4rem 0 .8rem}
+.checks{display:grid;gap:.4rem;margin:.8rem 0 .2rem}
+.chk{display:grid;grid-template-columns:1.7rem 1fr;gap:.6rem;align-items:start;border:2px solid var(--line);padding:.45rem .6rem;font-size:.92rem;background:var(--surface)}
+.chk .ic{font-family:var(--font-mono);font-weight:700;font-size:.95rem;text-align:center;line-height:1.3;color:var(--muted)}
+.chk.ok{background:var(--vocab-soft);border-color:var(--vocab)} .chk.ok .ic{color:var(--vocab)}
+.chk.no{border-style:dashed} .chk .tip{display:block;color:var(--muted);font-size:.85rem;margin-top:.15rem}
+.chk.bonus .ic{color:var(--violet)}
+.stems{display:grid;gap:.35rem;margin:0 0 .9rem}
+.stems button{border-left:4px solid var(--violet);border-top:0;border-right:0;border-bottom:0;padding:.3rem .6rem;background:var(--violet-soft);color:var(--fg);font:.92rem var(--font-ui);text-align:left;cursor:pointer}
+.stems button:hover{outline:2px solid var(--violet)}
+.fb{margin:.9rem 0 .2rem;padding:.75rem .9rem;border:2px solid var(--line);background:var(--bg);display:grid;gap:.5rem}
+.fb-head{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.fb p{margin:0}
+.item-foot{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.1rem;padding-top:.9rem;border-top:3px solid var(--line)}
+.tagrow{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.score-big{display:flex;align-items:baseline;gap:.6rem;font-family:var(--font-display);font-weight:800;font-size:4.2rem;line-height:1}
+.score-big .mono{font-size:1rem;color:var(--muted)}
+.band{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.3rem;margin:.4rem 0 1.1rem;color:var(--accent)}
+.rtable{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 1rem}
+.rtable th,.rtable td{border:2px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}
+.rtable th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.toolrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.toolrow input[type=text]{border:2px solid var(--line);background:var(--surface);color:var(--fg);font:1rem var(--font-ui);padding:.5rem .6rem;min-width:14rem}
+.msg{font-size:.9rem;color:var(--muted)}
+.fallback{width:100%;border:2px solid var(--line);background:var(--surface);color:var(--fg);margin-top:.7rem;min-height:7rem;font-family:var(--font-mono);font-size:.8rem;padding:.5rem}
+.key table{width:100%;border-collapse:collapse;font-size:.9rem;margin:0 0 1rem}
+.key th,.key td{border:2px solid var(--line);padding:.35rem .5rem;text-align:left;vertical-align:top}
+.key th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.key blockquote{margin:.4rem 0 1rem;padding:.6rem .9rem;border-left:4px solid var(--vocab);background:var(--vocab-soft);font-family:var(--font-read);font-size:.98rem}
+.toast{position:fixed;left:50%;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--surface);padding:.6rem 1rem;border:3px solid var(--accent);font:600 .9rem var(--font-ui);z-index:60;opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw;text-align:center}
+.toast.show{opacity:1}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:1rem 0 2rem;line-height:1.6}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* speaking */
+.turns{display:grid;gap:.55rem;font-family:var(--font-read);font-size:var(--read);line-height:1.6}
+.turn{display:grid;grid-template-columns:2.3rem 1fr;gap:.6rem;align-items:start}
+.turn .av{width:2.3rem;height:2.3rem;border:2px solid var(--line);display:grid;place-items:center;font:800 .9rem var(--font-display);background:var(--vocab-soft)}
+.turn .who{display:block;font:700 .64rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .1rem}
+.pair{display:grid;grid-template-columns:1fr;gap:.7rem;margin:0 0 .8rem}
+@media (min-width:600px) and (max-width:1179px){.pair{grid-template-columns:1fr 1fr}}
+.pair .frame{border:3px solid var(--line);background:var(--surface);position:relative}
+.pair .frame svg{width:100%;height:auto;display:block}
+.pair .frame .fn{position:absolute;left:-3px;top:-3px;font:800 .9rem var(--font-display);background:var(--fg);color:var(--surface);padding:.15rem .55rem;border:3px solid var(--line)}
+.vis{border:2px dashed var(--line);background:var(--bg);padding:.6rem .8rem;margin:0 0 .9rem}
+.vis h4{font:700 .72rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+.chart{width:100%;height:auto;display:block;margin:.4rem auto .6rem;max-width:560px}
+.chart text{font-family:var(--font-ui)}
+.chart .lbl{font-family:var(--font-mono);font-weight:700}
+.fig{width:100%;height:auto;display:block;margin:.3rem auto .4rem;max-width:560px}
+.fig text{font-family:var(--font-ui)}
+.bookcard{display:grid;grid-template-columns:auto 1fr;gap:.25rem .8rem;font-size:.95rem;border:3px solid var(--line);background:var(--surface);padding:.7rem .9rem;margin:0 0 .9rem}
+.bookcard b{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:center}
+.claimcard{border:3px solid var(--violet);background:var(--violet-soft);padding:.8rem .9rem;margin:0 0 .9rem;font-family:var(--font-read);font-size:var(--read);line-height:1.5}
+.claimcard .who{display:block;font:700 .66rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .3rem;font-family:var(--font-mono)}
+.stage{border:3px solid var(--line);background:var(--surface);margin:0 0 .6rem;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stepbar{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:0 0 .6rem}
+.stepbar button{border:2px solid var(--line);background:var(--surface);color:var(--fg);width:2.1rem;height:2.1rem;font:700 .8rem var(--font-mono);cursor:pointer}
+.stepbar button[aria-current="true"]{background:var(--fg);color:var(--surface)}
+.stepbar button.seen{border-color:var(--vocab)}
+.caption{font-family:var(--font-read);font-size:var(--read);border:2px dashed var(--line);background:var(--bg);padding:.6rem .9rem;margin:0 0 .9rem;min-height:3.6rem}
+.caption.speaking{background:var(--active)}
+.rec{border:3px solid var(--line);background:var(--surface);padding:.9rem 1rem;margin:0 0 .9rem;display:grid;gap:.7rem}
+.rec .row{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.recbtn{display:inline-flex;align-items:center;gap:.6rem;border:3px solid var(--line);background:var(--accent);color:#111418;padding:.7rem 1.1rem;font:800 .95rem var(--font-ui);text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:var(--shadow)}
+.recbtn .dot{width:.9rem;height:.9rem;border-radius:50%;background:#111418;display:inline-block}
+.recbtn.live{background:var(--fg);color:var(--surface)} .recbtn.live .dot{background:var(--accent);animation:blink 1s steps(2) infinite}
+@keyframes blink{to{opacity:.2}}
+.recbtn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.timer{font-family:var(--font-mono);font-weight:700;font-size:1.6rem;min-width:5.5rem}
+.timer.warn{color:var(--accent)}
+.rec audio{width:100%;max-width:520px;display:block}
+.rec .st{font-size:.9rem;color:var(--muted)}
+.prep{font-family:var(--font-mono);font-weight:700;font-size:.8rem;border:2px solid var(--violet);background:var(--violet-soft);padding:.3rem .6rem}
+.resp{margin:0 0 .6rem}
+.resp label{display:block;font:700 .68rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .35rem}
+.live-note{font-size:.86rem;color:var(--muted);margin:.3rem 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside class="rail" id="rail" aria-label="Navigation and supports">
+  <div class="brand">
+    <svg class="brandmark" viewBox="0 0 100 100" aria-hidden="true"><path d="M58 8 22 58h22l-8 34 42-54H56z" fill="#ff4d2e"/></svg>
+    <div><div class="brand-t">Storm Studio</div><div class="brand-s mono" id="brandSub">Speaking sets</div></div>
+  </div>
+  <div class="prog" aria-live="polite">
+    <div class="prog-row"><span class="mono" data-t="rail.answered">Recorded</span><b id="progText">0 / 0</b></div>
+    <div class="bar"><i id="progFill"></i></div>
+    <div class="prog-row"><span class="mono" id="scoreLbl" data-t="rail.score">Score</span><b id="scoreText">—</b></div>
+  </div>
+  <div class="seg" role="group" aria-label="Mode"><button type="button" id="modePractice" aria-pressed="true" data-t="mode.practice">Practice</button><button type="button" id="modeTest" aria-pressed="false" data-t="mode.test">Test</button></div>
+  <nav class="toc" id="toc" aria-label="Sections"></nav>
+  <div class="tools">
+    <button type="button" class="tool" id="audioBtn"><span class="k">AUDIO</span><span data-t="rail.audio">Read aloud</span></button>
+    <button type="button" class="tool" id="wbBtn" aria-pressed="false"><span class="k">WORDS</span><span data-t="rail.wb">Glossary</span></button>
+    <button type="button" class="tool" id="sizeBtn"><span class="k">A A</span><span data-t="rail.size">Text size</span></button>
+    <button type="button" class="tool" id="langBtn"><span class="k" id="langK">ES</span><span id="langLbl">Español</span></button>
+    <button type="button" class="tool" id="themeBtn" aria-pressed="false"><span class="k">DARK</span><span data-t="rail.theme">Dark mode</span></button>
+    <button type="button" class="tool danger" id="resetAll"><span class="k">RESET</span><span id="resetLbl" data-t="rail.reset">Reset this set</span></button>
+  </div>
+  <div class="rail-foot">EL Publishing · Many Voices · One Storm</div>
+</aside>
+<button type="button" class="rail-fab" id="railFab" aria-expanded="false" aria-controls="rail"><span id="fabPct">0 / 0</span> · Menu</button>
+
+<main class="main" id="main">
+  <div class="settabs" id="settabs" role="tablist" aria-label="Speaking sets"></div>
+  <header class="hero" id="hero"></header>
+  <section class="card" id="s00" style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">00</div><h2 data-t="dir.title">Directions</h2></div></div>
+    <div class="steps" id="dirs"></div>
+  </section>
+  <div class="split" id="split">
+    <div class="passcol" id="passcol">
+      <section class="card" id="s01" style="--stripe:var(--vocab)">
+        <div class="card-head"><div><div class="mono meta">01 · <span id="stimLabel"></span></div><h2 id="stimTitle"></h2></div>
+          <button type="button" class="btn ghost readbtn" id="readBtn" aria-pressed="false">▶ <span class="lbl" data-t="btn.read">Read aloud</span></button></div>
+        <div class="passtools">
+          <button type="button" class="btn ghost" id="sizeBtn2"><span data-t="rail.size">Text size</span> A A</button>
+          <button type="button" class="btn ghost" id="wbBtn2" aria-pressed="false" data-t="rail.wb">Glossary</button>
+          <button type="button" class="btn ghost" id="transBtn" aria-pressed="false" data-t="btn.transcript">Show text</button>
+        </div>
+        <div class="wb" id="wordbank" hidden></div>
+        <div id="stimBody"></div>
+      </section>
+    </div>
+    <div class="itemcol" id="items"></div>
+  </div>
+  <section class="card results" id="sRes" style="--stripe:var(--violet)">
+    <div class="card-head"><div><div class="mono meta" id="resMeta"></div><h2 data-t="res.title">My results</h2></div></div>
+    <div id="resBody"></div>
+  </section>
+  <section class="card key" id="key" hidden style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">Teacher</div><h2>Teacher key, rubrics, and scripts</h2></div></div>
+    <div id="keyBody"></div>
+  </section>
+  <footer>
+    Storm Studio · Speaking Sets · four interactive ELPA21-style speaking tasks · EL Publishing · Richard A. Daniel, M.Ed.<br>
+    <span data-t="not.real">Original pictures, scripts, data, and practice tasks written for classroom use. All names, books, and numbers are invented.</span>
+  </footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+var KEY='storm-speaking-v1';
+var L=['A','B','C','D','E','F'];
+
+/* =========================================================
+   SET 1 · COMPARE PICTURES · science lab vs. library
+   ========================================================= */
+var COMPARE={
+ id:'compare',grade:'Grades 9–12',title:'Compare Pictures',short:'Compare Pictures',
+ kind:{en:'Compare pictures',es:'Comparar dibujos'},
+ t:{en:{eyebrow:'Grades 9–12 · Speaking · Compare pictures',lede:'Two pictures show students working in two different places at school. Describe how the pictures are similar and how they are different. Give details — what you see, how it looks, and how it would sound.',
+        dirs:['Study both pictures. Use the 20-second prep timer to plan: two similarities, two differences, and details for each.','Press Record and talk for up to 90 seconds. Use transition words (both, also, however, while, in the first picture…).','Play your recording back. If a live transcript appears, read the self-check and record again if you want to improve.'],chips:['2 pictures','1 recording · 90 s','Transitions · details · sensory language','0–3 rubric']},
+    es:{eyebrow:'Grados 9–12 · Expresión oral · Comparar dibujos',lede:'Dos dibujos muestran a estudiantes trabajando en dos lugares diferentes de la escuela. Describe en qué se parecen y en qué se diferencian. Da detalles: qué ves, cómo se ve y cómo sonaría.',
+        dirs:['Estudia los dos dibujos. Usa el temporizador de 20 segundos para planear: dos semejanzas, dos diferencias y detalles de cada una.','Presiona Grabar y habla hasta 90 segundos. Usa palabras de transición (both, also, however, while, in the first picture…).','Escucha tu grabación. Si aparece una transcripción, lee la autoevaluación y vuelve a grabar si quieres mejorar.'],chips:['2 dibujos','1 grabación · 90 s','Transiciones · detalles · lenguaje sensorial','Rúbrica 0–3']}},
+ stim:{type:'pics',title:'Two Places to Work',label:{en:'The pictures',es:'Los dibujos'},
+  alts:['Picture 1. A science lab. A teacher points at a diagram on the whiteboard. Four students in safety goggles work in pairs at two lab tables with beakers and a flask. Sunlight comes through a window.',
+   'Picture 2. A school library. Three students sit at a round table: one uses a laptop, one reads a book, one writes in a notebook. Tall bookshelves line the wall, a librarian works at a desk, and a clock shows two o’clock.'],
+  gloss:[['similar','almost the same'],['transition word','a word that links ideas, such as both, also, however, or while'],['sensory language','words about what you see, hear, or feel, such as bright, quiet, or crowded'],['goggles','safety glasses that protect the eyes'],['beaker','a glass container used in science class']]},
+ items:[{n:1,type:'speak',fmt:'fmt.cr',label:{en:'Your description',es:'Tu descripción'},prep:20,max:90,chk:'compare',
+   stem:'Describe how the two pictures are **similar** and how they are **different**. Use details from both pictures.'}],
+ stems:{en:['Both pictures show…','In the first picture, … However, in the second picture, …','One difference is… Another difference is…','The lab looks … and sounds …, while the library looks …'],es:['Both pictures show…','In the first picture, … However, in the second picture, …','One difference is… Another difference is…','The lab looks … and sounds …, while the library looks …']},
+ rubric:{max:3,rows:[['3','Describes the main features of both pictures and compares them, with relevant, appropriate vocabulary. Grammar is effective; small errors do not interfere, and the response is clear.'],['2','Describes some main features, but the comparison is incomplete. Vocabulary is limited or sometimes inaccurate; errors occasionally interfere.'],['1','Only words or phrases connected to the pictures. Limited vocabulary and grammar obscure meaning most of the time.'],['0','No response, not in English, or unrelated to the pictures.']]},
+ model:'Both pictures show students working at school with an adult nearby. In the first picture, the students are in a science lab. They wear safety goggles and work in pairs at long tables with beakers, while the teacher points at a diagram on the whiteboard. The room looks bright because sunlight comes through the window, and it probably sounds busy, with students talking about their experiment. However, the second picture shows a quiet library. Three students sit together at a round table, but each one is doing something different: one is typing on a laptop, one is reading a book, and one is writing in a notebook. Behind them, tall shelves are full of colorful books, and a librarian works at her desk. One similarity is that in both places students are learning together. One difference is that the lab is hands-on and noisy, while the library is calm and silent.',
+ keynote:'Scored 0–3 by a rater. The self-check watches for references to both pictures, a stated similarity, a stated difference, at least four concrete details, two or more descriptive or sensory words, three or more different transition words, and length. ELP Standards 3, 7, 9 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>The rubric rewards comparing, not listing: a response that describes each picture separately without “both,” “while,” or “however” usually tops out at 2.</li><li>Teach a four-sentence frame before recording: both… / in the first… / however, in the second… / one difference I notice…</li></ul>'
+};
+
+/* =========================================================
+   SET 2 · LANGUAGE ARTS PRESENTATION · Nadia's book report (invented novel)
+   ========================================================= */
+var LIT={
+ id:'lit',grade:'Grades 9–12',title:'Book Report: The Lantern Keeper',short:'Language Arts',
+ kind:{en:'Language arts presentation',es:'Presentación de literatura'},
+ t:{en:{eyebrow:'Grades 9–12 · Speaking · Language arts presentation',lede:'A classmate presents a book report with a story diagram. Listen, then record three separate answers: one about a detail from the report, one that analyzes the story, and one that gives your opinion with reasons.',
+        dirs:['Press Play and listen to Nadia’s whole report. You may play it again. Look at the story diagram and the book card while you listen.','Record one answer per question. Each recording can be up to 45 seconds. Answer in complete sentences, and name people and places exactly as Nadia did.','For the opinion question, give at least two reasons connected to what you heard.'],chips:['1 presentation','3 recordings · 45 s each','Detail · analysis · opinion','0–3 rubric each']},
+    es:{eyebrow:'Grados 9–12 · Expresión oral · Presentación de literatura',lede:'Una compañera presenta un reporte de lectura con un diagrama de la trama. Escucha y graba tres respuestas separadas: una sobre un detalle del reporte, una que analice la historia y una con tu opinión y razones.',
+        dirs:['Presiona Reproducir y escucha todo el reporte de Nadia. Puedes repetirlo. Mira el diagrama y la ficha del libro mientras escuchas.','Graba una respuesta por pregunta. Cada grabación puede durar hasta 45 segundos. Responde con oraciones completas y nombra personas y lugares exactamente como lo hizo Nadia.','En la pregunta de opinión, da al menos dos razones conectadas con lo que escuchaste.'],chips:['1 presentación','3 grabaciones · 45 s','Detalle · análisis · opinión','Rúbrica 0–3 cada una']}},
+ stim:{type:'lit',title:'Nadia’s Book Report',label:{en:'The presentation and the story diagram',es:'La presentación y el diagrama'},
+  book:{title:'The Lantern Keeper',author:'Imani Reyes (a novel)',setting:'A fishing village on the coast of Maine, autumn 1952',character:'Teo Marsh, age 15',theme:'Responsibility'},
+  diagram:[['Exposition','Teo wants to leave the village for the city.'],['Rising action','Grandfather gets sick; Teo keeps the lantern lit alone.'],['Climax','The big storm — a boat is lost, the lamp breaks, Teo climbs the tower.'],['Falling action','The boat finds its way home by the light.'],['Resolution','Teo chooses to stay one more year, on his own terms.']],
+  speakers:{'Nadia':'presenter'},
+  turns:[{who:'Nadia',text:'For my book report, I read The Lantern Keeper, a novel by Imani Reyes. The story takes place in 1952, in a small fishing village on the coast of Maine, during one stormy autumn. The main character is Teo Marsh, a fifteen-year-old boy whose grandfather keeps the lighthouse.'},
+   {who:'Nadia',text:'Here is my story diagram. In the exposition, Teo wants to leave the village and move to the city. The rising action begins when his grandfather gets sick, and Teo has to keep the lantern lit by himself. The climax comes on the night of the biggest storm, when a fishing boat is lost at sea and the lamp breaks. Teo has to climb the tower in the wind and fix it. In the falling action, the boat finds its way home by the light. In the resolution, Teo decides to stay for one more year, but on his own terms.'},
+   {who:'Nadia',text:'I think the lighthouse is a symbol of responsibility, because keeping it lit means keeping other people safe. My favorite part was the storm chapter, because the author uses short sentences that make you feel out of breath. Thank you. I’m happy to answer questions.'}],
+  gloss:[['story diagram','a drawing of the parts of a plot: exposition, rising action, climax, falling action, resolution'],['climax','the most exciting or important moment in a story'],['symbol','something in a story that stands for a bigger idea'],['on his own terms','by his own choice, in his own way'],['lantern','the light at the top of a lighthouse']]},
+ items:[
+  {n:1,type:'speak',fmt:'fmt.cr',label:{en:'Question 1 · Detail',es:'Pregunta 1 · Detalle'},max:45,chk:'lit1',stem:'According to Nadia’s report, **where and when** does the story take place, and **who** is the main character? Give the character’s full name.'},
+  {n:2,type:'speak',fmt:'fmt.cr',label:{en:'Question 2 · Analysis',es:'Pregunta 2 · Análisis'},max:45,chk:'lit2',stem:'Nadia says the lighthouse is a **symbol**. What does it represent, and what happens in the story that makes that symbol fit? Explain.'},
+  {n:3,type:'speak',fmt:'fmt.cr',label:{en:'Question 3 · Opinion',es:'Pregunta 3 · Opinión'},max:45,chk:'lit3',stem:'Would you recommend this book to a classmate? Give **at least two reasons** based on what you heard in the report.'}],
+ stems:{en:['The story takes place in … in …, and the main character is …','The lighthouse represents … because …','I would (not) recommend this book because … Also, …'],es:['The story takes place in … in …, and the main character is …','The lighthouse represents … because …','I would (not) recommend this book because … Also, …']},
+ rubric:{max:3,rows:[['3','Answers the question effectively with relevant information from the presentation (for the opinion question, with at least one reason). Ideas connect logically with effective linking words; vocabulary and grammar are appropriate, with only minor errors.'],['2','Partly addresses the question; the answer is incomplete or the reason is weak. Connections appear in parts; vocabulary or grammar is limited but meaning is kept.'],['1','Only some relevant words, mostly unconnected to the question; errors interfere with meaning most of the time.'],['0','No response, not in English, or unrelated to the question.']]},
+ model:['The story takes place in 1952 in a small fishing village on the coast of Maine, during a stormy autumn. The main character is Teo Marsh, a fifteen-year-old boy whose grandfather keeps the lighthouse.','The lighthouse represents responsibility. When Teo’s grandfather gets sick, Teo has to keep the lantern lit by himself, and during the storm he climbs the tower to fix the lamp so the lost boat can find its way home. Keeping the light burning means keeping other people safe, so the symbol fits what Teo has to do.','Yes, I would recommend this book. First, the climax sounds exciting, because a boat is lost in a storm and Teo has to climb the tower in the wind. Second, Nadia said the author uses short sentences in the storm chapter that make you feel out of breath, and I like books that make me feel what the character feels. Also, the ending is realistic: Teo stays, but on his own terms.'],
+ keynote:'Each question is scored 0–3 by a rater; on the real test, a question about the main character needs the first and last name for full credit. The self-check watches for the setting and the full name (Q1), the symbol plus a reason and story evidence (Q2), and an opinion with two reasons tied to the report (Q3). ELP Standards 2, 3, 4 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Q1 is where points leak: “a boy” or “Teo” instead of “Teo Marsh,” or “Maine” without the year. Have students write the book card details before recording.</li><li>Q3 reasons must come from the report, not from a real book they know.</li></ul>'
+};
+
+/* =========================================================
+   SET 3 · ANALYZE A VISUAL AND A CLAIM · study preferences chart
+   ========================================================= */
+var STUDY_DATA=[{g:'Study group',v:42},{g:'Alone with notes',v:36},{g:'Online videos',v:24},{g:'Flashcard app',v:18}];
+var VISUAL={
+ id:'visual',grade:'Grades 9–12',title:'Chart and Claim: How We Study',short:'Visual and Claim',
+ kind:{en:'Analyze a visual and a claim',es:'Analizar un visual y una afirmación'},
+ t:{en:{eyebrow:'Grades 9–12 · Speaking · Analyze a visual and a claim',lede:'A chart shows how 120 tenth graders said they prefer to study for a test. A classmate makes a claim about it. First summarize the chart; then decide whether the claim is supported, using numbers from the chart as evidence.',
+        dirs:['Read the chart carefully: the categories, the numbers, and the total (120 students).','Recording 1: summarize what the chart shows with at least two specific details. Recording 2: listen to Marcus’s claim, then agree or disagree and support your answer with evidence from the chart.','Each recording can be up to 60 seconds. Use words like most, more than, fewer than, less than half, and because.'],chips:['1 chart · 1 claim','2 recordings · 60 s each','Summarize · evaluate','0–5 rubric']},
+    es:{eyebrow:'Grados 9–12 · Expresión oral · Analizar un visual y una afirmación',lede:'Una gráfica muestra cómo 120 estudiantes de décimo grado prefieren estudiar para un examen. Un compañero hace una afirmación sobre ella. Primero resume la gráfica; luego decide si la afirmación está apoyada, usando números de la gráfica como evidencia.',
+        dirs:['Lee la gráfica con cuidado: las categorías, los números y el total (120 estudiantes).','Grabación 1: resume lo que muestra la gráfica con al menos dos detalles específicos. Grabación 2: escucha la afirmación de Marcus, luego di si estás de acuerdo o no y apóyate en la evidencia de la gráfica.','Cada grabación puede durar hasta 60 segundos. Usa palabras como most, more than, fewer than, less than half y because.'],chips:['1 gráfica · 1 afirmación','2 grabaciones · 60 s','Resumir · evaluar','Rúbrica 0–5']}},
+ stim:{type:'visual',title:'How Do You Prefer to Study for a Test?',label:{en:'The chart and the claim',es:'La gráfica y la afirmación'},
+  speakers:{'Marcus':'classmate'},
+  turns:[{who:'Marcus',text:'The chart shows that most students in our grade prefer studying in groups. So the school should turn the quiet reading room in the library into group study rooms.'}],
+  gloss:[['claim','a statement someone says is true and wants others to accept'],['evidence','facts or numbers that support or go against a claim'],['refute','show that a claim is wrong or not supported'],['majority','more than half of a group'],['prefer','like one thing more than another']]},
+ items:[
+  {n:1,type:'speak',fmt:'fmt.cr',label:{en:'Recording 1 · Summarize the chart',es:'Grabación 1 · Resume la gráfica'},max:60,chk:'vis1',stem:'**Summarize** what the chart shows. Include at least **two** specific details, such as which choice was most popular and how many students chose it.'},
+  {n:2,type:'speak',fmt:'fmt.cr',label:{en:'Recording 2 · Evaluate the claim',es:'Grabación 2 · Evalúa la afirmación'},max:60,chk:'vis2',stem:'Marcus claims that **most** students prefer studying in groups. Do you agree or disagree? Use **evidence from the chart** to support or refute his claim.'}],
+ stems:{en:['The chart shows how 120 students prefer to … The most popular choice was …, with … students.','… students chose …, which is more than / fewer than …','I disagree with Marcus because … out of 120 is less than half.','Although study group is the largest group, …'],es:['The chart shows how 120 students prefer to … The most popular choice was …, with … students.','… students chose …, which is more than / fewer than …','I disagree with Marcus because … out of 120 is less than half.','Although study group is the largest group, …']},
+ rubric:{max:5,rows:[['5','Fully answers with relevant support from the visual and sound reasoning. Ideas flow logically with effective linking words; vocabulary is specific and accurate; varied sentence structures with only minor errors.'],['4','Answers the question with support from the visual; organization is clear and language is mostly accurate with some variety.'],['3','Partly answers; some points are underdeveloped or the evidence is general. Some linking words; simple and compound sentences; errors sometimes obscure meaning.'],['2','Mostly unsupported or off-task; few connections between ideas; frequent errors interfere with meaning.'],['1','Isolated words or phrases related to the chart.'],['0','No response, not in English, or unrelated to the task.']]},
+ model:['The chart shows how 120 tenth graders prefer to study for a test. The most popular choice was a study group, with 42 students. Studying alone with notes was close behind, with 36 students. Fewer students chose online videos, 24, and the smallest group, 18 students, prefers a flashcard app. So the two top choices are much more popular than the two technology choices.','I disagree with Marcus. It is true that the study group is the largest category, but 42 out of 120 students is only 35 percent, which is less than half. “Most” means more than half, and 78 students chose something other than a group. In fact, 36 students said they prefer to study alone with notes, and those students would probably use the quiet reading room. So the chart does not support turning the whole reading room into group study rooms; maybe the school could do half and half.'],
+ keynote:'Scored 0–5 by a rater as a two-part task. The self-check watches for categories and numbers (Recording 1), and for a clear position, a number used as evidence, reasoning words, and the most-vs-largest distinction (Recording 2). ELP Standards 3, 4, 6, 7 (grades 9–12).',
+ keyextra:'<h3>The trap in the claim</h3><p>42 of 120 is 35%. The study group is the <em>largest</em> group but not <em>most</em> students (which needs more than 60). Strong responses name that distinction; the strongest add the 36 students who prefer to study alone and would lose the quiet room.</p>'
+};
+
+/* =========================================================
+   SET 4 · OBSERVE AND REPORT · candle, jar, and rising water (animated demo)
+   ========================================================= */
+var OBSERVE={
+ id:'observe',grade:'Grades 9–12',title:'Observe and Report: The Candle and the Jar',short:'Observe and Report',
+ kind:{en:'Observe and report',es:'Observar y reportar'},
+ t:{en:{eyebrow:'Grades 9–12 · Speaking · Observe and report',lede:'Watch a short science demonstration. The narrator describes each step, and the materials are labeled. Then retell the key events from the beginning, in order, using precise words for the materials and what happened.',
+        dirs:['Press Play to watch the demonstration. You can watch it as many times as you need, and you can jump to any step with the numbered buttons.','When you are ready, press Record and retell what happened from the beginning. Use time words: first, next, then, after that, finally.','Name the materials exactly (plate, blue water, candle, glass jar, match) and say what happened to the flame and to the water.'],chips:['1 demonstration · 5 steps','1 recording · 90 s','Sequence · precise vocabulary','0–5 rubric']},
+    es:{eyebrow:'Grados 9–12 · Expresión oral · Observar y reportar',lede:'Mira una demostración corta de ciencias. El narrador describe cada paso y los materiales están etiquetados. Luego cuenta los eventos clave desde el principio, en orden, con palabras precisas para los materiales y lo que pasó.',
+        dirs:['Presiona Reproducir para ver la demostración. Puedes verla todas las veces que necesites y saltar a cualquier paso con los botones numerados.','Cuando estés listo, presiona Grabar y cuenta lo que pasó desde el principio. Usa palabras de tiempo: first, next, then, after that, finally.','Nombra los materiales con exactitud (plate, blue water, candle, glass jar, match) y di qué pasó con la llama y con el agua.'],chips:['1 demostración · 5 pasos','1 grabación · 90 s','Secuencia · vocabulario preciso','Rúbrica 0–5']}},
+ stim:{type:'demo',title:'The Candle and the Jar',label:{en:'The demonstration',es:'La demostración'},
+  steps:[{text:'Watch this science demonstration. The materials are a shallow plate, a cup of water with a few drops of blue food coloring, a small candle, a glass jar, and a box of matches.'},
+   {text:'First, the teacher pours the blue water onto the plate until it covers the bottom.'},
+   {text:'Next, she stands the candle in the middle of the plate and lights it with a match.'},
+   {text:'Then, she carefully places the glass jar upside down over the burning candle.'},
+   {text:'After a few seconds, the flame gets smaller and smaller, and then it goes out.'},
+   {text:'Finally, the blue water rises up inside the jar, higher than the water outside it.'}],
+  gloss:[['shallow','not deep'],['food coloring','liquid dye used to color food or water'],['upside down','turned over so the top is at the bottom'],['flame','the burning part of a fire'],['rise','move upward']]},
+ items:[{n:1,type:'speak',fmt:'fmt.cr',label:{en:'Your report',es:'Tu reporte'},max:90,chk:'observe',
+   stem:'**Retell** the key events of the demonstration from the **beginning**, in order. Name the materials and describe what happened at each step.'}],
+ stems:{en:['First, the teacher poured … onto …','Next, she … and lit it with …','Then she placed … over …','After a few seconds, the flame …','Finally, the water …'],es:['First, the teacher poured … onto …','Next, she … and lit it with …','Then she placed … over …','After a few seconds, the flame …','Finally, the water …']},
+ rubric:{max:5,rows:[['5','Retells the sequence accurately with clear details and explanations. Steps are in order with logical links and appropriate time words; vocabulary is specific; varied sentence structures with only minor errors.'],['4','Retells the sequence in order with most details; organization is clear and language is mostly accurate.'],['3','A partial summary: some details are incomplete, wrong, or missing; some linking; simple and compound sentences; errors sometimes obscure meaning.'],['2','A limited summary: essential events are left out or out of order; few clear connections; frequent errors interfere with meaning.'],['1','Isolated words or phrases related to the demonstration.'],['0','No response, not in English, or unrelated to the demonstration.']]},
+ model:'At the beginning, the teacher had a shallow plate, a cup of water with blue food coloring, a small candle, a glass jar, and matches. First, she poured the blue water onto the plate until it covered the bottom. Next, she stood the candle in the middle of the plate and lit it with a match. Then she carefully placed the glass jar upside down over the burning candle. After a few seconds, the flame got smaller and smaller, and then it went out. Finally, the blue water rose up inside the jar, higher than the water on the plate outside it. I think the water rose because the air inside the jar cooled and took up less space after the flame went out.',
+ keynote:'Scored 0–5 by a rater. The self-check watches for three or more time words, four or more materials named, the four key events (lighting the candle, covering it with the jar, the flame going out, the water rising), length, and a bonus for an explanation. ELP Standards 3, 9 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>The task asks for a retelling, not an explanation — but a one-sentence “I think this happened because…” at the end often lifts vocabulary and structure into the 4–5 range.</li><li>Students who skip step 3 (the jar goes over the candle) cannot explain step 5; use the step buttons to replay just that part.</li></ul>'
+};
+
+var SETS=[COMPARE,LIT,VISUAL,OBSERVE];
+
+/* ---------- shared strings ---------- */
+var T={
+ en:{'dir.title':'Directions','sec.dir':'Directions','sec.results':'Results','res.title':'My results',
+  'rail.answered':'Recorded','rail.score':'Self-check','rail.audio':'Play audio','rail.wb':'Glossary','rail.size':'Text size','rail.lang':'Español','rail.theme':'Dark mode','rail.reset':'Reset this set',
+  'mode.practice':'Practice','mode.test':'Test','reset.arm':'Sure? Tap again','reset.done':'This set was cleared.',
+  'btn.read':'Play','btn.stop':'Stop','btn.next':'Next','btn.transcript':'Show text','btn.hide':'Hide text','btn.stems':'Sentence stems','btn.submit':'Submit all {n}',
+  'fmt.cr':'Audio constructed response','item':'Task','screen':'Recording',
+  'rec.start':'Record','rec.stop':'Stop','rec.again':'Record again','rec.play':'Your recording','rec.download':'Download','rec.prep':'Prep timer','rec.prepgo':'Go!','rec.ready':'Press Record when you are ready. Your microphone is used only on this device; nothing is uploaded.','rec.live':'Recording… speak clearly. It stops automatically at {n} seconds.','rec.done':'Recorded {n} seconds. Listen, then record again if you want.','rec.nomic':'The microphone could not be started. Check the browser permission, or type what you would say below.','rec.nosupport':'This browser cannot record audio. Type what you would say below to use the self-check.','rec.max':'up to {n} s',
+  'tr.h':'Transcript (edit if the computer heard you wrong)','tr.live':'Live transcript is on — words appear as you speak.','tr.off':'Live transcript is not available in this browser. After you record, type what you said to run the self-check.','tr.ph':'What you said…',
+  'words':'{n} words','live':'Self-check updates as you type.','res.criteria':'criteria met','test.cr':'Test mode: the self-check appears when you submit.',
+  'play.pres':'Play the presentation','play.claim':'Play Marcus’s claim','play.demo':'Play the demonstration','replay':'Replay','step':'Step','materials':'Materials','transcript':'Text',
+  'c.both':'Refers to both pictures','c.sim':'States a similarity (both, also, similar…)','c.diff':'States a difference (however, while, but…)','c.details':'Gives at least four concrete details','c.sensory':'Uses two or more descriptive or sensory words','c.trans':'Uses three or more different transition words','c.len60':'Developed enough (60+ words)',
+  'c.setting':'Names the setting (place and time)','c.fullname':'Gives the main character’s full name','c.sent':'Answers in a complete sentence','c.symbol':'Says what the lighthouse represents','c.reason':'Gives a reason (because, since…)','c.evidence':'Uses an event from the story as evidence','c.len25':'Developed enough (25+ words)','c.opinion':'States an opinion clearly','c.two':'Gives at least two reasons','c.fromreport':'Reasons connect to the report','c.len30':'Developed enough (30+ words)',
+  'c.cats':'Names at least two categories from the chart','c.nums':'Uses at least two numbers from the chart','c.compare':'Uses comparison words (most, more than, fewer…)','c.topic':'Says what the chart is about','c.len40':'Developed enough (40+ words)','c.pos':'Takes a clear position (agree / disagree)','c.evnum':'Uses a number from the chart as evidence','c.because':'Explains with reasoning words (because, shows…)','c.half':'Addresses “most” vs. less than half','c.nuance':'Acknowledges the other side (bonus)',
+  'c.time':'Uses three or more time words (first, next, then, finally…)','c.mats':'Names at least four materials','c.lit':'Says the candle was lit','c.jar':'Says the jar was placed over the candle','c.out':'Says the flame went out','c.rise':'Says the water rose inside the jar','c.len70':'Developed enough (70+ words)','c.why':'Explains why it happened (bonus)',
+  'tip.both':'Say “in the first picture” and “in the second picture.”','tip.sim':'Start one sentence with “Both pictures show…”','tip.diff':'Try “However, …” or “…, while …”','tip.details':'Name things you see: goggles, beakers, laptop, shelves, clock.','tip.sensory':'Add how it looks or sounds: bright, quiet, busy, crowded.','tip.trans':'Mix them: both, also, however, while, another.','tip.len60':'Add one more similarity or difference with a detail.',
+  'tip.setting':'Say the place and the year: a fishing village in Maine, 1952.','tip.fullname':'Say both names: Teo Marsh.','tip.sent':'Answer in a full sentence, not a phrase.','tip.symbol':'Say “The lighthouse represents…”','tip.reason':'Add “because…”','tip.evidence':'Mention the storm, the boat, or the grandfather.','tip.len25':'Add one more detail from the story.','tip.opinion':'Say “I would recommend…” or “I would not recommend…”','tip.two':'Use “First… Second…” or “Also…”','tip.fromreport':'Use something Nadia said: the storm chapter, the short sentences, the ending.','tip.len30':'Explain one reason more fully.',
+  'tip.cats':'Name the choices: study group, alone with notes, videos, flashcards.','tip.nums':'Say the numbers: 42, 36, 24, 18.','tip.compare':'Use “the most popular,” “more than,” “fewer than.”','tip.topic':'Start with “The chart shows how students prefer to study…”','tip.len40':'Add one more comparison.','tip.pos':'Say “I agree” or “I disagree” in your first sentence.','tip.evnum':'Use 42 out of 120, or 35 percent.','tip.because':'Add “because” or “the chart shows.”','tip.half':'Point out that 42 of 120 is less than half.','tip.nuance':'Try “It is true that…, but…”',
+  'tip.time':'Use first, next, then, after that, finally.','tip.mats':'Say plate, blue water, candle, glass jar, match.','tip.lit':'Say she lit the candle with a match.','tip.jar':'Say she placed the jar upside down over the candle.','tip.out':'Say the flame got smaller and went out.','tip.rise':'Say the water rose inside the jar.','tip.len70':'Describe each step in its own sentence.','tip.why':'Try “I think this happened because…”',
+  'res.none':'Record your answers to see your results here.','res.testwait':'Test mode: {a} of {n} recorded. Submit when all are done.','res.item':'Task','res.result':'Self-check','res.rec':'Recording','res.name':'Your name','res.copy':'Copy my results','res.copytr':'Copy my transcripts','res.copied':'Copied.','res.copyfail':'Copy is blocked here — select the text below and copy it.','res.all':'All four sets','res.crnote':'Self-check counts are a guide, not a score. Your teacher scores speaking with the rubric by listening to the recording.',
+  'band.a':'Ready for the real thing','band.b':'Strong — polish what is marked and record again','band.c':'Getting there — read each unmet item, then record again','band.d':'Keep going — use the stems, then record again',
+  'answered':'{a} of {n} recorded','audio.none':'This device has no English voice. Try another browser or a Chromebook.',
+  'not.real':'Original pictures, scripts, data, and practice tasks written for classroom use. All names, books, and numbers are invented.'},
+ es:{'dir.title':'Instrucciones','sec.dir':'Instrucciones','sec.results':'Resultados','res.title':'Mis resultados',
+  'rail.answered':'Grabadas','rail.score':'Autoevaluación','rail.audio':'Reproducir audio','rail.wb':'Glosario','rail.size':'Tamaño del texto','rail.lang':'English','rail.theme':'Modo oscuro','rail.reset':'Reiniciar este conjunto',
+  'mode.practice':'Práctica','mode.test':'Examen','reset.arm':'¿Seguro? Toca otra vez','reset.done':'Este conjunto se borró.',
+  'btn.read':'Reproducir','btn.stop':'Detener','btn.next':'Siguiente','btn.transcript':'Mostrar texto','btn.hide':'Ocultar texto','btn.stems':'Inicios de oración','btn.submit':'Enviar las {n}',
+  'fmt.cr':'Respuesta oral construida','item':'Tarea','screen':'Grabación',
+  'rec.start':'Grabar','rec.stop':'Detener','rec.again':'Grabar otra vez','rec.play':'Tu grabación','rec.download':'Descargar','rec.prep':'Tiempo para planear','rec.prepgo':'¡Ya!','rec.ready':'Presiona Grabar cuando estés listo. El micrófono se usa solo en este dispositivo; nada se sube a internet.','rec.live':'Grabando… habla con claridad. Se detiene sola a los {n} segundos.','rec.done':'Grabaste {n} segundos. Escucha y vuelve a grabar si quieres.','rec.nomic':'No se pudo iniciar el micrófono. Revisa el permiso del navegador, o escribe abajo lo que dirías.','rec.nosupport':'Este navegador no puede grabar audio. Escribe abajo lo que dirías para usar la autoevaluación.','rec.max':'hasta {n} s',
+  'tr.h':'Transcripción (edítala si la computadora te escuchó mal)','tr.live':'La transcripción en vivo está activa: las palabras aparecen mientras hablas.','tr.off':'La transcripción en vivo no está disponible en este navegador. Después de grabar, escribe lo que dijiste para usar la autoevaluación.','tr.ph':'Lo que dijiste…',
+  'words':'{n} palabras','live':'La autoevaluación se actualiza mientras escribes.','res.criteria':'criterios cumplidos','test.cr':'Modo examen: la autoevaluación aparece cuando envías.',
+  'play.pres':'Reproducir la presentación','play.claim':'Reproducir la afirmación de Marcus','play.demo':'Reproducir la demostración','replay':'Repetir','step':'Paso','materials':'Materiales','transcript':'Texto',
+  'c.both':'Se refiere a los dos dibujos','c.sim':'Menciona una semejanza (both, also, similar…)','c.diff':'Menciona una diferencia (however, while, but…)','c.details':'Da al menos cuatro detalles concretos','c.sensory':'Usa dos o más palabras descriptivas o sensoriales','c.trans':'Usa tres o más palabras de transición diferentes','c.len60':'Suficientemente desarrollada (60+ palabras)',
+  'c.setting':'Nombra el escenario (lugar y tiempo)','c.fullname':'Da el nombre completo del personaje principal','c.sent':'Responde con una oración completa','c.symbol':'Dice qué representa el faro','c.reason':'Da una razón (because, since…)','c.evidence':'Usa un evento de la historia como evidencia','c.len25':'Suficientemente desarrollada (25+ palabras)','c.opinion':'Expresa una opinión con claridad','c.two':'Da al menos dos razones','c.fromreport':'Las razones se conectan con el reporte','c.len30':'Suficientemente desarrollada (30+ palabras)',
+  'c.cats':'Nombra al menos dos categorías de la gráfica','c.nums':'Usa al menos dos números de la gráfica','c.compare':'Usa palabras de comparación (most, more than, fewer…)','c.topic':'Dice de qué trata la gráfica','c.len40':'Suficientemente desarrollada (40+ palabras)','c.pos':'Toma una postura clara (agree / disagree)','c.evnum':'Usa un número de la gráfica como evidencia','c.because':'Explica con palabras de razonamiento (because, shows…)','c.half':'Aborda “most” frente a menos de la mitad','c.nuance':'Reconoce el otro lado (bono)',
+  'c.time':'Usa tres o más palabras de tiempo (first, next, then, finally…)','c.mats':'Nombra al menos cuatro materiales','c.lit':'Dice que encendieron la vela','c.jar':'Dice que pusieron el frasco sobre la vela','c.out':'Dice que la llama se apagó','c.rise':'Dice que el agua subió dentro del frasco','c.len70':'Suficientemente desarrollada (70+ palabras)','c.why':'Explica por qué pasó (bono)',
+  'tip.both':'Di “in the first picture” e “in the second picture”.','tip.sim':'Empieza una oración con “Both pictures show…”','tip.diff':'Prueba “However, …” o “…, while …”','tip.details':'Nombra lo que ves: goggles, beakers, laptop, shelves, clock.','tip.sensory':'Agrega cómo se ve o suena: bright, quiet, busy, crowded.','tip.trans':'Mézclalas: both, also, however, while, another.','tip.len60':'Agrega otra semejanza o diferencia con un detalle.',
+  'tip.setting':'Di el lugar y el año: a fishing village in Maine, 1952.','tip.fullname':'Di los dos nombres: Teo Marsh.','tip.sent':'Responde con una oración completa, no una frase.','tip.symbol':'Di “The lighthouse represents…”','tip.reason':'Agrega “because…”','tip.evidence':'Menciona la tormenta, el barco o el abuelo.','tip.len25':'Agrega otro detalle de la historia.','tip.opinion':'Di “I would recommend…” o “I would not recommend…”','tip.two':'Usa “First… Second…” o “Also…”','tip.fromreport':'Usa algo que dijo Nadia: el capítulo de la tormenta, las oraciones cortas, el final.','tip.len30':'Explica una razón con más detalle.',
+  'tip.cats':'Nombra las opciones: study group, alone with notes, videos, flashcards.','tip.nums':'Di los números: 42, 36, 24, 18.','tip.compare':'Usa “the most popular”, “more than”, “fewer than”.','tip.topic':'Empieza con “The chart shows how students prefer to study…”','tip.len40':'Agrega otra comparación.','tip.pos':'Di “I agree” o “I disagree” en tu primera oración.','tip.evnum':'Usa 42 out of 120, o 35 percent.','tip.because':'Agrega “because” o “the chart shows”.','tip.half':'Señala que 42 de 120 es menos de la mitad.','tip.nuance':'Prueba “It is true that…, but…”',
+  'tip.time':'Usa first, next, then, after that, finally.','tip.mats':'Di plate, blue water, candle, glass jar, match.','tip.lit':'Di que encendió la vela con un fósforo.','tip.jar':'Di que puso el frasco boca abajo sobre la vela.','tip.out':'Di que la llama se hizo pequeña y se apagó.','tip.rise':'Di que el agua subió dentro del frasco.','tip.len70':'Describe cada paso en su propia oración.','tip.why':'Prueba “I think this happened because…”',
+  'res.none':'Graba tus respuestas para ver tus resultados aquí.','res.testwait':'Modo examen: {a} de {n} grabadas. Envía cuando termines.','res.item':'Tarea','res.result':'Autoevaluación','res.rec':'Grabación','res.name':'Tu nombre','res.copy':'Copiar mis resultados','res.copytr':'Copiar mis transcripciones','res.copied':'Copiado.','res.copyfail':'Copiar está bloqueado aquí — selecciona el texto abajo y cópialo.','res.all':'Los cuatro conjuntos','res.crnote':'La autoevaluación es una guía, no una calificación. Tu maestro califica con la rúbrica escuchando la grabación.',
+  'band.a':'Listo para el examen real','band.b':'Fuerte — pule lo marcado y graba otra vez','band.c':'Vas avanzando — lee cada criterio sin cumplir y graba otra vez','band.d':'Sigue — usa los inicios de oración y graba otra vez',
+  'answered':'{a} de {n} grabadas','audio.none':'Este dispositivo no tiene voz en inglés. Prueba otro navegador o un Chromebook.',
+  'not.real':'Dibujos, guiones, datos y tareas de práctica originales escritos para el salón de clases. Todos los nombres, libros y números son inventados.'}
+};
+
+/* ---------- state ---------- */
+function blank(){return {ans:{},checked:{},submitted:false,name:'',rec:{},transcript:false,stems:{},step:0,seen:{}};}
+function load(){
+  var d={lang:'en',theme:null,size:0,wb:false,mode:'practice',cur:'compare',sets:{}};
+  try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object'){for(var k in s)d[k]=s[k];}}catch(e){}
+  if(d.lang!=='en'&&d.lang!=='es')d.lang='en';
+  SETS.forEach(function(st){if(!d.sets[st.id])d.sets[st.id]=blank();var b=blank();for(var k in b)if(d.sets[st.id][k]==null)d.sets[st.id][k]=b[k];});
+  if(!SETS.some(function(st){return st.id===d.cur;}))d.cur='compare';
+  return d;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(STATE));}catch(e){}}
+var STATE=load();
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function md(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');}
+function pad(n){return (n<10?'0':'')+n;}
+function t(k,v){var s=(T[STATE.lang]&&T[STATE.lang][k])||T.en[k]||k;if(v){for(var x in v)s=s.replace('{'+x+'}',v[x]);}return s;}
+function tt(obj){return obj?(obj[STATE.lang]||obj.en||''):'';}
+var toastTimer;function toast(m){var el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove('show');},3200);}
+function SET(){return SETS.filter(function(s){return s.id===STATE.cur;})[0];}
+function SS(){return STATE.sets[STATE.cur];}
+function item(n){return SET().items[n-1];}
+function N(){return SET().items.length;}
+function isLocked(n){return STATE.mode==='test'&&SS().submitted;}
+function recKey(stId,n){return stId+':'+n;}
+
+/* ---------- text analysis + self-checks ---------- */
+function words(s){return (String(s||'').match(/[A-Za-z0-9’'\-]+/g)||[]).length;}
+function sentences(s){return (String(s||'').replace(/\s+/g,' ').match(/[^.!?]+[.!?]+/g)||[]).length;}
+function cnt(s,re){var m=String(s||'').match(re);return m?m.length:0;}
+function distinct(s,re){var m=String(s||'').toLowerCase().match(re)||[];var o={};m.forEach(function(x){o[x.replace(/\s+/g,' ').trim()]=1;});return Object.keys(o).length;}
+function C(k,ok,bonus){return {k:'c.'+k,tip:'tip.'+k,ok:!!ok,bonus:!!bonus};}
+var RE={
+ both:/\b(first picture|second picture|picture (one|two|1|2|a|b)|left picture|right picture|the other picture|both pictures|in the lab|in the library|the first one|the second one)\b/gi,
+ sim:/\b(both|similar|similarit|the same|also|too|alike|in common|likewise)\b/i,
+ diff:/\b(however|while|whereas|but|different|differen|unlike|on the other hand|in contrast|instead|only|although)\b/i,
+ details:/\b(goggles|glasses|beaker|beakers|flask|table|tables|whiteboard|board|diagram|window|sun|sunlight|teacher|pairs|experiment|laptop|computer|book|books|notebook|shelf|shelves|bookshel|librarian|desk|clock|round table|writing|reading|typing|plant|lab|library|science)\b/gi,
+ sensory:/\b(bright|dark|quiet|silent|loud|noisy|busy|calm|peaceful|big|small|large|tall|round|long|red|blue|green|yellow|white|black|orange|brown|colorful|sunny|warm|cold|careful|carefully|happy|focused|serious|crowded|empty|wooden|clean|messy|relaxed|hands-on|comfortable)\b/gi,
+ trans:/\b(first|second|also|however|but|while|both|in addition|on the other hand|in contrast|similarly|whereas|another|finally|for example|next|likewise|although|then|too)\b/gi,
+ setting:/\b(maine|village|coast|1952|nineteen fifty-two|lighthouse|fishing|autumn|fall)\b/i,
+ symbol:/\b(represent|represents|symbol|symbolize|stands for|means|is about)\b/i,
+ reason:/\b(because|since|so that|that is why|the reason)\b/i,
+ evidence:/\b(storm|boat|grandfather|sick|lamp|climb|tower|safe|keep|keeps|lit|light|responsib)\b/i,
+ opinion:/\b(i would|i wouldn'?t|i would not|recommend|i think|in my opinion|yes|no|definitely|i believe)\b/i,
+ reasons:/\b(because|first|second|one reason|another reason|another|also|in addition|the other reason|reason|plus)\b/gi,
+ fromreport:/\b(storm|lighthouse|teo|short sentences|chapter|author|character|characters|plot|setting|ending|responsib|exciting|boat|grandfather|realistic|symbol|climax)\b/i,
+ cats:/\b(study group|group|groups|alone|notes|video|videos|online|flashcard|flashcards|app)\b/gi,
+ nums:/\b(42|forty[- ]two|36|thirty[- ]six|24|twenty[- ]four|18|eighteen|120|one hundred (and )?twenty|a hundred twenty|35|thirty[- ]five|78|seventy[- ]eight|60|sixty)\b/gi,
+ compare:/\b(most|more than|fewer|fewer than|less than|least|largest|smallest|biggest|popular|second|close behind|highest|lowest|more|than)\b/i,
+ topic:/\b(study|studying|test|prefer|prefers|preferred|tenth grade|students|chart)\b/i,
+ pos:/\b(i agree|i disagree|agree|disagree|is right|is wrong|is correct|not correct|is true|not true|partly|not supported|supported|he is right|he is wrong)\b/i,
+ because:/\b(because|since|shows|show|evidence|according to|the chart|based on|that means|which means)\b/i,
+ half:/\b(less than half|under half|not even half|not most|only 35|thirty[- ]five percent|more than half|majority|not the majority|not a majority|largest|biggest|most means)\b/i,
+ nuance:/\b(although|however|but|still|even though|it is true|it's true|i understand|on the other hand)\b/i,
+ time:/\b(first|next|then|after that|after a few seconds|after|before|finally|last|lastly|when|while|at the end|in the end|second|third|at the beginning|in the beginning|at first|later)\b/gi,
+ mats:/\b(plate|water|candle|jar|glass|food coloring|coloring|dye|blue|match|matches|lighter|flame|fire|cup)\b/gi,
+ lit:/\b(lit|lights|light|lighted|lighting)\b.{0,40}\b(candle|it|match)|\b(candle|it)\b.{0,30}\b(lit|on fire|burning)/i,
+ jar:/(put|puts|placed|places|place|covered|cover|covers|turned|set|sets)\b.{0,40}\b(jar|glass)|\b(jar|glass)\b.{0,40}\b(over|on top of|upside down|cover)/i,
+ out:/(went out|goes out|go out|got smaller|gets smaller|smaller and smaller|died|dies|blew out|disappear|burned out|burn out|stopped burning|stops burning|turned off|no more flame|was gone)/i,
+ rise:/(rose|rise|rises|rising|went up|goes up|go up|moved up|moves up|moved into|moves into|sucked|pulled|pushed into|inside the jar|into the jar|filled|higher)/i,
+ why:/\b(oxygen|air|pressure|cool|cools|cooled|heat|heated|expand|expands|contract|contracts|vacuum|temperature|gas|because the|that is because|the reason)\b/i
+};
+function calcChecks(st,ss,it){
+  var tx=String(ss.ans[it.n]||'');var tr=tx.trim();var k=it.chk;
+  if(k==='compare')return [C('both',distinct(tr,RE.both)>=2||/\bboth pictures\b/i.test(tr)),C('sim',RE.sim.test(tr)),C('diff',RE.diff.test(tr)),C('details',distinct(tr,RE.details)>=4),C('sensory',distinct(tr,RE.sensory)>=2),C('trans',distinct(tr,RE.trans)>=3),C('len60',words(tr)>=60)];
+  if(k==='lit1')return [C('setting',RE.setting.test(tr)&&/\b(1952|nineteen fifty|maine|village|coast)\b/i.test(tr)),C('fullname',/\bteo\b/i.test(tr)&&/\bmarsh\b/i.test(tr)),C('sent',words(tr)>=8&&/\b(is|was|takes place|happens|set in|named|called)\b/i.test(tr))];
+  if(k==='lit2')return [C('symbol',RE.symbol.test(tr)&&/\b(lighthouse|lantern|light)\b/i.test(tr)),C('reason',RE.reason.test(tr)),C('evidence',RE.evidence.test(tr)),C('len25',words(tr)>=25)];
+  if(k==='lit3')return [C('opinion',RE.opinion.test(tr)),C('two',cnt(tr,RE.reasons)>=2),C('fromreport',RE.fromreport.test(tr)),C('len30',words(tr)>=30)];
+  if(k==='vis1')return [C('topic',RE.topic.test(tr)),C('cats',distinct(tr,RE.cats)>=2),C('nums',distinct(tr,RE.nums)>=2),C('compare',RE.compare.test(tr)),C('len40',words(tr)>=40)];
+  if(k==='vis2')return [C('pos',RE.pos.test(tr)),C('evnum',cnt(tr,RE.nums)>=1),C('because',RE.because.test(tr)),C('half',RE.half.test(tr)),C('nuance',RE.nuance.test(tr),true),C('len40',words(tr)>=40)];
+  if(k==='observe')return [C('time',distinct(tr,RE.time)>=3),C('mats',distinct(tr,RE.mats)>=4),C('lit',RE.lit.test(tr)),C('jar',RE.jar.test(tr)),C('out',RE.out.test(tr)),C('rise',RE.rise.test(tr)),C('len70',words(tr)>=70),C('why',RE.why.test(tr),true)];
+  return [];
+}
+function checkScore(list){var s=0,n=0;list.forEach(function(c){if(c.bonus)return;n++;if(c.ok)s++;});return {s:s,n:n};}
+function hasRec(ss,it){return !!(ss.rec&&ss.rec[it.n]);}
+function answeredIn(ss,it){return hasRec(ss,it)||words(ss.ans[it.n])>=8;}
+function answered(it){return answeredIn(SS(),it);}
+function visibleIn(st,ss,it){if(STATE.mode==='test')return ss.submitted;return !!ss.checked[it.n];}
+function pointsIn(st,ss,it){return checkScore(calcChecks(st,ss,it));}
+function points(it){return pointsIn(SET(),SS(),it);}
+function setSummary(st){var ss=STATE.sets[st.id];var s=0,n=0,done=0;st.items.forEach(function(it){if(visibleIn(st,ss,it)&&words(ss.ans[it.n])>0){var p=pointsIn(st,ss,it);s+=p.s;n+=p.n;done++;}});return {s:s,n:n,done:done,items:st.items.length,rec:st.items.filter(function(it){return hasRec(ss,it);}).length};}
+function countAnswered(){return SET().items.filter(answered).length;}
+
+/* ---------- drawings ---------- */
+function pers(x,y,shirt,o){o=o||{};var skin=o.skin||'var(--clay)';var h='<g>';
+  h+='<circle cx="'+x+'" cy="'+y+'" r="9" fill="'+skin+'" stroke="var(--fg)" stroke-width="2"/>';
+  if(o.goggles)h+='<rect x="'+(x-9)+'" y="'+(y-4)+'" width="18" height="6" rx="3" fill="var(--sky)" stroke="var(--fg)" stroke-width="1.5"/>';
+  if(o.hair)h+='<path d="M'+(x-9)+' '+(y-2)+' q9 -14 18 0" fill="var(--fg)"/>';
+  h+='<rect x="'+(x-8)+'" y="'+(y+9)+'" width="16" height="'+(o.sit?16:24)+'" fill="'+shirt+'" stroke="var(--fg)" stroke-width="2"/>';
+  if(!o.sit)h+='<line x1="'+(x-4)+'" y1="'+(y+33)+'" x2="'+(x-4)+'" y2="'+(y+50)+'" stroke="var(--fg)" stroke-width="3"/><line x1="'+(x+4)+'" y1="'+(y+33)+'" x2="'+(x+4)+'" y2="'+(y+50)+'" stroke="var(--fg)" stroke-width="3"/>';
+  var ax=o.armL||[x-8,y+12,x-18,y+26],bx=o.armR||[x+8,y+12,x+18,y+26];
+  h+='<line x1="'+ax[0]+'" y1="'+ax[1]+'" x2="'+ax[2]+'" y2="'+ax[3]+'" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/><line x1="'+bx[0]+'" y1="'+bx[1]+'" x2="'+bx[2]+'" y2="'+bx[3]+'" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/>';
+  return h+'</g>';}
+function labSVG(alt){var h='<svg viewBox="0 0 320 200" role="img" aria-label="'+esc(alt)+'"><title>'+esc(alt)+'</title><rect width="320" height="200" fill="var(--bg)"/><rect y="150" width="320" height="50" fill="var(--cloth)"/>';
+  h+='<rect x="18" y="22" width="130" height="70" fill="var(--surface)" stroke="var(--fg)" stroke-width="3"/><circle cx="60" cy="56" r="14" fill="none" stroke="var(--vocab)" stroke-width="3"/><path d="M80 56 h30 M104 50 l8 6 -8 6" stroke="var(--accent)" stroke-width="3" fill="none"/><rect x="116" y="44" width="22" height="24" fill="none" stroke="var(--violet)" stroke-width="3"/>';
+  h+='<rect x="236" y="18" width="66" height="60" fill="var(--sky)" stroke="var(--fg)" stroke-width="3"/><circle cx="282" cy="40" r="11" fill="var(--sand)" stroke="var(--fg)" stroke-width="2"/><path d="M236 48h66M269 18v60" stroke="var(--fg)" stroke-width="2"/>';
+  h+=pers(170,70,'var(--vocab)',{armL:[162,82,150,66]});
+  [[40,'var(--accent)','var(--violet)'],[190,'var(--sand)','var(--accent)']].forEach(function(tb){var x=tb[0];h+='<rect x="'+x+'" y="128" width="110" height="10" fill="var(--clay2)" stroke="var(--fg)" stroke-width="2"/><line x1="'+(x+8)+'" y1="138" x2="'+(x+8)+'" y2="172" stroke="var(--fg)" stroke-width="3"/><line x1="'+(x+102)+'" y1="138" x2="'+(x+102)+'" y2="172" stroke="var(--fg)" stroke-width="3"/>';
+    h+='<path d="M'+(x+48)+' 104 h12 v10 l8 14 h-28 l8 -14z" fill="var(--surface)" stroke="var(--fg)" stroke-width="2"/><rect x="'+(x+44)+'" y="120" width="20" height="8" fill="var(--vocab)"/><rect x="'+(x+72)+'" y="108" width="14" height="20" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/><rect x="'+(x+72)+'" y="118" width="14" height="10" fill="var(--accent)"/>';
+    h+=pers(x+22,92,tb[1],{goggles:true,sit:true,armR:[x+30,104,x+46,114]})+pers(x+92,92,tb[2],{goggles:true,sit:true,skin:'var(--clay2)',armL:[x+84,104,x+70,116]});});
+  return h+'</svg>';}
+function librarySVG(alt){var h='<svg viewBox="0 0 320 200" role="img" aria-label="'+esc(alt)+'"><title>'+esc(alt)+'</title><rect width="320" height="200" fill="var(--bg)"/><rect y="150" width="320" height="50" fill="var(--sand)"/>';
+  var cols=['var(--accent)','var(--vocab)','var(--violet)','var(--sand)','var(--clay)'];
+  [10,70].forEach(function(x){h+='<rect x="'+x+'" y="14" width="52" height="136" fill="var(--clay2)" stroke="var(--fg)" stroke-width="3"/>';for(var r=0;r<4;r++){h+='<rect x="'+(x+3)+'" y="'+(20+r*33)+'" width="46" height="26" fill="var(--surface)"/>';for(var b=0;b<6;b++)h+='<rect x="'+(x+5+b*7.3)+'" y="'+(24+r*33+(b%2)*3)+'" width="6" height="'+(22-(b%2)*3)+'" fill="'+cols[(b+r)%5]+'" stroke="var(--fg)" stroke-width="1"/>';}});
+  h+='<circle cx="268" cy="40" r="14" fill="var(--surface)" stroke="var(--fg)" stroke-width="3"/><path d="M268 40 V30 M268 40 L276 40" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/>';
+  h+='<rect x="226" y="118" width="84" height="8" fill="var(--clay2)" stroke="var(--fg)" stroke-width="2"/><line x1="232" y1="126" x2="232" y2="166" stroke="var(--fg)" stroke-width="3"/><line x1="304" y1="126" x2="304" y2="166" stroke="var(--fg)" stroke-width="3"/><rect x="246" y="94" width="30" height="22" fill="var(--cloth)" stroke="var(--fg)" stroke-width="2"/>';
+  h+=pers(290,80,'var(--vocab)',{hair:true,sit:true,skin:'var(--clay2)',armL:[282,92,270,104]});
+  h+='<ellipse cx="160" cy="138" rx="58" ry="18" fill="var(--clay)" stroke="var(--fg)" stroke-width="3"/><line x1="160" y1="156" x2="160" y2="178" stroke="var(--fg)" stroke-width="4"/>';
+  h+='<rect x="112" y="118" width="26" height="16" fill="var(--cloth)" stroke="var(--fg)" stroke-width="2"/><rect x="114" y="106" width="22" height="14" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/>';
+  h+='<path d="M150 124 h22 v12 h-22z M161 124 v12" fill="var(--sand)" stroke="var(--fg)" stroke-width="2"/><rect x="184" y="124" width="20" height="12" fill="var(--surface)" stroke="var(--fg)" stroke-width="2"/><line x1="200" y1="112" x2="192" y2="128" stroke="var(--accent)" stroke-width="3"/>';
+  h+=pers(124,88,'var(--accent)',{sit:true,armR:[132,100,136,116]})+pers(160,84,'var(--violet)',{hair:true,sit:true,skin:'var(--clay2)',armL:[152,96,152,120],armR:[168,96,170,120]})+pers(196,88,'var(--sand)',{sit:true,armL:[188,100,192,118]});
+  h+='<rect x="286" y="134" width="14" height="16" fill="var(--clay2)" stroke="var(--fg)" stroke-width="2"/><path d="M293 134 q-12 -14 -4 -26 q4 10 4 26 q4 -18 14 -22 q-2 14 -14 22" fill="var(--leaf,#4f9a5a)" stroke="var(--leaf2,#2f6e3a)" stroke-width="1.5"/>';
+  return h+'</svg>';}
+function plotSVG(d){var pts=[[40,170],[150,110],[280,36],[400,110],[520,160]];var h='<svg class="fig" viewBox="0 0 560 230" role="img" aria-label="Story diagram"><title>Story diagram</title>';
+  h+='<path d="M'+pts.map(function(p){return p[0]+' '+p[1];}).join(' L')+'" stroke="var(--fg)" stroke-width="4" fill="none" stroke-linejoin="round"/>';
+  d.forEach(function(s,i){var p=pts[i];var cols=['var(--vocab)','var(--violet)','var(--accent)','var(--violet)','var(--vocab)'];h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="12" fill="'+cols[i]+'" stroke="var(--fg)" stroke-width="3"/><text x="'+p[0]+'" y="'+(p[1]+5)+'" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">'+(i+1)+'</text>';
+    var ty=i===2?p[1]-24:p[1]+30;var anchor=i===0?'start':i===4?'end':'middle';var tx=i===0?p[0]-28:i===4?p[0]+28:p[0];h+='<text x="'+tx+'" y="'+ty+'" font-size="12" font-weight="700" text-anchor="'+anchor+'" fill="var(--fg)">'+esc(s[0])+'</text>';});
+  return h+'</svg>';}
+function studyChart(){var W=560,H=300,pl=60,pr=20,pt=40,pb=64;var cw=W-pl-pr,ch=H-pt-pb;var max=50;var bw=cw/4*0.56;var cols=['var(--accent)','var(--vocab)','var(--violet)','var(--sand)'];
+  var h='<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Bar chart: how 120 tenth graders prefer to study for a test"><title>How 120 tenth graders prefer to study for a test</title><text x="'+pl+'" y="22" font-size="15" font-weight="700" fill="var(--fg)">Preferred way to study for a test (n = 120)</text>';
+  for(var g=0;g<=max;g+=10){var y=pt+ch-g/max*ch;h+='<line x1="'+pl+'" y1="'+y+'" x2="'+(W-pr)+'" y2="'+y+'" stroke="var(--grid)"/><text x="'+(pl-8)+'" y="'+(y+4)+'" font-size="12" text-anchor="end" fill="var(--muted)">'+g+'</text>';}
+  h+='<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(pt+ch)+'" stroke="var(--fg)" stroke-width="2"/><line x1="'+pl+'" y1="'+(pt+ch)+'" x2="'+(W-pr)+'" y2="'+(pt+ch)+'" stroke="var(--fg)" stroke-width="2"/><text transform="translate(14 '+(pt+ch/2)+') rotate(-90)" font-size="12" text-anchor="middle" fill="var(--muted)">Students</text>';
+  STUDY_DATA.forEach(function(d,i){var cx=pl+cw/4*(i+0.5);var x=cx-bw/2;var y=pt+ch-d.v/max*ch;h+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+(pt+ch-y)+'" fill="'+cols[i]+'" stroke="var(--fg)" stroke-width="2.5"/><text x="'+cx+'" y="'+(y-8)+'" font-size="15" font-weight="700" text-anchor="middle" fill="var(--fg)" class="lbl">'+d.v+'</text>';
+    d.g.split(' ').forEach(function(w,k){h+='<text x="'+cx+'" y="'+(pt+ch+18+k*14)+'" font-size="12" text-anchor="middle" fill="var(--fg)">'+esc(w)+'</text>';});});
+  return h+'</svg>';}
+function demoSVG(step){var h='<svg viewBox="0 0 560 300" role="img" aria-label="Science demonstration, step '+step+'"><title>Demonstration step '+step+'</title><rect width="560" height="300" fill="var(--bg)"/><rect y="226" width="560" height="74" fill="var(--clay2)"/><line x1="0" y1="226" x2="560" y2="226" stroke="var(--fg)" stroke-width="3"/>';
+  function lbl(x,y,txt){return '<rect x="'+(x-4)+'" y="'+(y-12)+'" width="'+(txt.length*7.2+8)+'" height="16" fill="var(--surface)" stroke="var(--fg)" stroke-width="1.5"/><text x="'+x+'" y="'+y+'" font-size="11" font-weight="700" font-family="JetBrains Mono,monospace" fill="var(--fg)">'+esc(txt)+'</text>';}
+  h+='<ellipse cx="280" cy="222" rx="150" ry="16" fill="var(--surface)" stroke="var(--fg)" stroke-width="3"/>';
+  if(step>=1)h+='<ellipse cx="280" cy="220" rx="138" ry="11" fill="var(--sky)" stroke="var(--vocab)" stroke-width="2"/>';
+  h+='<rect x="266" y="150" width="28" height="68" fill="var(--sand)" stroke="var(--fg)" stroke-width="2.5"/><line x1="280" y1="150" x2="280" y2="140" stroke="var(--fg)" stroke-width="2"/>';
+  if(step===2||step===3)h+='<path d="M280 138 q-12 -18 0 -34 q12 16 0 34z" fill="var(--accent)" stroke="var(--fg)" stroke-width="1.5"/><path d="M280 136 q-5 -8 0 -16 q5 8 0 16z" fill="var(--sand)"/>';
+  if(step===4)h+='<path d="M280 138 q-5 -8 0 -14 q5 6 0 14z" fill="var(--accent)" stroke="var(--fg)" stroke-width="1.5"/><path d="M284 96 q-10 -14 4 -26 M276 98 q-12 -12 0 -26" stroke="var(--muted)" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  if(step>=3){h+='<path d="M220 222 V70 q0 -14 14 -14 h92 q14 0 14 14 V222" fill="rgba(200,225,245,.35)" stroke="var(--fg)" stroke-width="3"/>';if(step===5)h+='<rect x="222" y="178" width="116" height="42" fill="var(--sky)" stroke="var(--vocab)" stroke-width="2"/><path d="M222 178 h116" stroke="var(--vocab)" stroke-width="3"/><path d="M350 178 h30" stroke="var(--fg)" stroke-width="2" stroke-dasharray="4 3"/>'+lbl(384,182,'water rises');
+    h+=lbl(226,66,'glass jar');}
+  if(step<=1){h+='<path d="M60 150 h40 v62 q0 10 -10 10 h-20 q-10 0 -10 -10z" fill="var(--surface)" stroke="var(--fg)" stroke-width="2.5"/><rect x="63" y="'+(step===0?170:200)+'" width="34" height="'+(step===0?50:20)+'" fill="var(--sky)"/>'+lbl(40,140,'water + blue food coloring');}
+  if(step===1)h+='<path d="M110 160 q40 20 70 50" stroke="var(--sky)" stroke-width="6" fill="none" stroke-linecap="round"/>';
+  if(step<=2){h+='<rect x="470" y="196" width="56" height="22" fill="var(--sand)" stroke="var(--fg)" stroke-width="2"/><rect x="476" y="186" width="30" height="8" fill="var(--accent)" stroke="var(--fg)" stroke-width="1.5"/>'+lbl(470,180,'matches');}
+  if(step===2)h+='<line x1="330" y1="150" x2="300" y2="120" stroke="var(--sand)" stroke-width="5" stroke-linecap="round"/><circle cx="298" cy="118" r="6" fill="var(--accent)"/>';
+  if(step<=2)h+='<path d="M340 60 h110 v150 q0 12 -12 12 h-86 q-12 0 -12 -12z" fill="none" stroke="var(--fg)" stroke-width="2.5" stroke-dasharray="6 5" opacity="'+(step===0?'1':'.35')+'"/>'+(step===0?lbl(344,56,'glass jar'):'');
+  h+=lbl(258,246,'plate')+lbl(300,170,'candle');
+  if(step>=1)h+=lbl(140,236,'blue water');
+  if(step>=1)h+='';
+  return h+'</svg>';}
+
+/* ---------- stimulus ---------- */
+function avatar(who){return '<span class="av" aria-hidden="true">'+esc(who[0])+'</span>';}
+function turnsHTML(turns,prefix){return '<div class="turns">'+turns.map(function(tn,i){return '<div class="turn">'+avatar(tn.who)+'<div><span class="who">'+esc(tn.who)+'</span><span class="s" data-who="'+esc(tn.who)+'" data-k="'+prefix+i+'">'+esc(tn.text)+'</span></div></div>';}).join('')+'</div>';}
+function playerHTML(key,label){var on=Speech.on&&Speech.key===key;
+  return '<div class="player'+(on?' on':'')+'" data-player="'+key+'"><div class="big"><button type="button" class="playbtn" data-act="play" data-key="'+key+'" aria-pressed="'+on+'" aria-label="'+esc(label)+'">'+(on?'■':'▶')+'</button><div class="pt">'+esc(label)+'<span class="count">'+t('replay')+' ✓</span></div><div class="waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></div>';}
+function demoHTML(){var st=SET(),ss=SS();var step=ss.step||0;var steps=st.stim.steps;var on=Speech.on&&Speech.key==='demo';
+  var h='<div class="player'+(on?' on':'')+'" data-player="demo"><div class="big"><button type="button" class="playbtn" data-act="play" data-key="demo" aria-pressed="'+on+'" aria-label="'+esc(t('play.demo'))+'">'+(on?'■':'▶')+'</button><div class="pt">'+esc(t('play.demo'))+'<span class="count">'+t('step')+' '+step+' / '+(steps.length-1)+'</span></div><div class="waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div></div>';
+  h+='<div class="stage" id="stage">'+demoSVG(step)+'</div>';
+  h+='<div class="stepbar" role="group" aria-label="Steps">'+steps.map(function(_,i){return '<button type="button" data-act="step" data-i="'+i+'" aria-current="'+(i===step)+'" class="'+(ss.seen[i]?'seen':'')+'" aria-label="'+t('step')+' '+i+'">'+(i===0?'▣':i)+'</button>';}).join('')+'</div>';
+  h+='<div class="caption" id="caption"'+(ss.transcript?'':' style="display:none"')+'><span class="s" data-who="Narrator" data-k="d'+step+'">'+esc(steps[step].text)+'</span></div>';
+  return h;}
+function renderStim(){
+  var st=SET();var stim=st.stim;var split=$('#split');var pc=$('#passcol');
+  split.classList.remove('single');pc.hidden=false;
+  $('#stimLabel').textContent=tt(stim.label);$('#stimTitle').textContent=stim.title;$('#readBtn').hidden=true;
+  var tb=$('#transBtn');tb.hidden=!(stim.turns||stim.steps);tb.setAttribute('aria-pressed',String(!!SS().transcript));tb.textContent=SS().transcript?t('btn.hide'):t('btn.transcript');
+  var hasG=!!(stim.gloss&&stim.gloss.length);$('#wbBtn').hidden=!hasG;$('#wbBtn2').hidden=!hasG;
+  var wb=$('#wordbank');wb.hidden=!(STATE.wb&&hasG);if(hasG)wb.innerHTML=stim.gloss.map(function(g){return '<div><b>'+esc(g[0])+'</b><span>'+esc(g[1])+'</span></div>';}).join('');
+  ['#wbBtn','#wbBtn2'].forEach(function(s){$(s).setAttribute('aria-pressed',String(!!STATE.wb));});
+  var h='';
+  if(stim.type==='pics'){h+='<div class="pair"><div class="frame"><span class="fn">1</span>'+labSVG(stim.alts[0])+'</div><div class="frame"><span class="fn">2</span>'+librarySVG(stim.alts[1])+'</div></div>';}
+  else if(stim.type==='lit'){h+=playerHTML('stim',t('play.pres'));var b=stim.book;h+='<div class="bookcard"><b>Title</b><span>'+esc(b.title)+'</span><b>Author</b><span>'+esc(b.author)+'</span><b>Setting</b><span>'+esc(b.setting)+'</span><b>Main character</b><span>'+esc(b.character)+'</span><b>Theme</b><span>'+esc(b.theme)+'</span></div>';
+    h+='<div class="vis"><h4>Story diagram</h4>'+plotSVG(stim.diagram)+'<ol style="margin:.2rem 0 0;padding-left:1.3rem;font-size:.9rem">'+stim.diagram.map(function(s){return '<li><b>'+esc(s[0])+':</b> '+esc(s[1])+'</li>';}).join('')+'</ol></div>';
+    h+='<div class="stim" id="transcript"'+(SS().transcript?'':' hidden')+'><h4>'+t('transcript')+'</h4>'+turnsHTML(stim.turns,'s')+'</div>';}
+  else if(stim.type==='visual'){h+='<div class="vis">'+studyChart()+'<p class="count" style="margin:0">Source: survey of all 120 tenth graders at our school, September.</p></div>';
+    h+=playerHTML('stim',t('play.claim'))+'<div class="claimcard"><span class="who">Marcus’s claim</span><span class="s" data-who="Marcus" data-k="s0">'+esc(stim.turns[0].text)+'</span></div><div id="transcript" hidden></div>';}
+  else if(stim.type==='demo'){h+=demoHTML();}
+  $('#stimBody').innerHTML=h;
+}
+
+/* ---------- recordings: IndexedDB (fallback: memory) ---------- */
+var MEM={};var DB=null;
+function idb(){return new Promise(function(res,rej){if(DB)return res(DB);if(!('indexedDB' in window))return rej(new Error('no idb'));try{var r=indexedDB.open('storm-speaking',1);r.onupgradeneeded=function(){r.result.createObjectStore('rec');};r.onsuccess=function(){DB=r.result;res(DB);};r.onerror=function(){rej(r.error);};}catch(e){rej(e);}});}
+function idbPut(k,v){MEM[k]=v;return idb().then(function(db){return new Promise(function(res,rej){var tx=db.transaction('rec','readwrite');tx.objectStore('rec').put(v,k);tx.oncomplete=function(){res();};tx.onerror=function(){rej(tx.error);};});}).catch(function(){});}
+function idbGet(k){if(MEM[k])return Promise.resolve(MEM[k]);return idb().then(function(db){return new Promise(function(res,rej){var tx=db.transaction('rec','readonly');var q=tx.objectStore('rec').get(k);q.onsuccess=function(){res(q.result||null);};q.onerror=function(){rej(q.error);};});}).catch(function(){return null;});}
+function idbDel(k){delete MEM[k];return idb().then(function(db){return new Promise(function(res){var tx=db.transaction('rec','readwrite');tx.objectStore('rec').delete(k);tx.oncomplete=function(){res();};tx.onerror=function(){res();};});}).catch(function(){});}
+var URLS={};
+function audioURL(k,blob){if(URLS[k])URL.revokeObjectURL(URLS[k]);URLS[k]=URL.createObjectURL(blob);return URLS[k];}
+
+/* ---------- recorder + live transcript ---------- */
+var Rec={n:null,mr:null,stream:null,chunks:[],start:0,timer:null,sr:null,base:'',final:'',max:0,stopping:false};
+function supportsRec(){return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);}
+function SRClass(){return window.SpeechRecognition||window.webkitSpeechRecognition||null;}
+function fmtT(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+pad(s%60);}
+function pickMime(){var c=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus',''];for(var i=0;i<c.length;i++){try{if(!c[i]||MediaRecorder.isTypeSupported(c[i]))return c[i];}catch(e){}}return '';}
+function recUI(n){var sec=$('#s'+pad(n+1));return sec?{sec:sec,btn:$('[data-act="rec"]',sec),timer:$('.timer',sec),st:$('.rec .st',sec),ta:$('textarea[data-ta]',sec)}:null;}
+function startRec(n){
+  var it=item(n);if(!supportsRec()){toast(t('rec.nosupport'));return;}
+  stopSpeech();if(Rec.n!=null)stopRec();
+  navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    var mime=pickMime();var mr;try{mr=mime?new MediaRecorder(stream,{mimeType:mime}):new MediaRecorder(stream);}catch(e){mr=new MediaRecorder(stream);}
+    Rec={n:n,mr:mr,stream:stream,chunks:[],start:Date.now(),timer:null,sr:null,base:'',final:'',max:it.max,stopping:false};
+    mr.ondataavailable=function(e){if(e.data&&e.data.size)Rec.chunks.push(e.data);};
+    mr.onstop=function(){var dur=Math.round((Date.now()-Rec.start)/1000);var blob=new Blob(Rec.chunks,{type:mr.mimeType||mime||'audio/webm'});var key=recKey(STATE.cur,n);
+      try{stream.getTracks().forEach(function(tr){tr.stop();});}catch(x){}
+      var ss=SS();ss.rec[n]={dur:dur,mime:blob.type,ts:Date.now()};if(Rec.final.trim())ss.ans[n]=Rec.final.trim();save();
+      var done=function(){Rec.n=null;rerenderItem(n);updateProgress();renderResults();toast(t('rec.done',{n:dur}));};idbPut(key,blob).then(done,done);};
+    mr.start(250);
+    var ui=recUI(n);if(ui){ui.btn.classList.add('live');ui.btn.innerHTML='<span class="dot"></span>'+t('rec.stop');ui.st.textContent=t('rec.live',{n:it.max});ui.ta.value='';ui.ta.placeholder=t('tr.ph');}
+    SS().ans[n]='';save();
+    Rec.timer=setInterval(function(){var el=(Date.now()-Rec.start)/1000;var u=recUI(n);if(u){u.timer.textContent=fmtT(el);u.timer.classList.toggle('warn',it.max-el<=10);}if(el>=it.max)stopRec();},250);
+    startSR(n);
+  }).catch(function(){toast(t('rec.nomic'));var u=recUI(n);if(u)u.st.textContent=t('rec.nomic');});
+}
+function stopRec(){if(Rec.n==null||Rec.stopping)return;Rec.stopping=true;clearInterval(Rec.timer);try{if(Rec.sr){Rec.sr.onend=null;Rec.sr.stop();}}catch(e){}try{if(Rec.mr.state!=='inactive')Rec.mr.stop();else Rec.mr.onstop();}catch(e){}}
+function startSR(n){var SR=SRClass();if(!SR)return;try{var sr=new SR();sr.lang='en-US';sr.continuous=true;sr.interimResults=true;Rec.sr=sr;
+  sr.onresult=function(e){var interim='';for(var i=e.resultIndex;i<e.results.length;i++){var r=e.results[i];if(r.isFinal)Rec.final+=(Rec.final&&!/\s$/.test(Rec.final)?' ':'')+r[0].transcript.trim();else interim+=r[0].transcript;}
+    var u=recUI(n);if(u){u.ta.value=(Rec.final+' '+interim).trim();SS().ans[n]=Rec.final.trim();refreshText(n,true);}};
+  sr.onend=function(){if(Rec.n===n&&!Rec.stopping){try{sr.start();}catch(e){}}};sr.onerror=function(){};sr.start();}catch(e){Rec.sr=null;}}
+function loadRecAudio(n){var key=recKey(STATE.cur,n);var cur=STATE.cur;idbGet(key).then(function(blob){if(!blob||STATE.cur!==cur)return;var sec=$('#s'+pad(n+1));var box=sec&&$('[data-audio]',sec);if(!box)return;var url=audioURL(key,blob);var ext=/mp4/.test(blob.type)?'m4a':/ogg/.test(blob.type)?'ogg':'webm';
+  box.innerHTML='<span class="count">'+t('rec.play')+'</span><audio controls src="'+url+'"></audio><a class="btn ghost" href="'+url+'" download="'+esc(SET().id+'-'+n+'.'+ext)+'">⬇ '+t('rec.download')+'</a>';});}
+var prepTimer=null;
+function startPrep(n,sec){clearInterval(prepTimer);var left=sec;var el=$('#s'+pad(n+1)+' [data-prep]');if(!el)return;el.textContent=t('rec.prep')+' '+fmtT(left);prepTimer=setInterval(function(){left--;var e2=$('#s'+pad(n+1)+' [data-prep]');if(!e2){clearInterval(prepTimer);return;}if(left<=0){clearInterval(prepTimer);e2.textContent=t('rec.prepgo');var b=$('#s'+pad(n+1)+' [data-act="rec"]');if(b)b.focus();}else e2.textContent=t('rec.prep')+' '+fmtT(left);},1000);}
+
+/* ---------- items ---------- */
+function checksHTML(it){var list=calcChecks(SET(),SS(),it);var sc=checkScore(list);
+  return '<div class="fb-head"><span class="tag '+(sc.s===sc.n?'ok':'fmt')+'">'+sc.s+' / '+sc.n+' · '+t('res.criteria')+'</span><span class="count">'+(STATE.mode==='practice'?t('live'):'')+'</span></div><div class="checks">'+list.map(function(c){return '<div class="chk '+(c.ok?'ok':'no')+(c.bonus?' bonus':'')+'"><span class="ic">'+(c.ok?'✓':(c.bonus?'+':'○'))+'</span><span>'+t(c.k)+(c.ok?'':'<span class="tip">'+t(c.tip)+'</span>')+'</span></div>';}).join('')+'</div>';}
+function itemHTML(it){
+  var n=it.n,id='s'+pad(n+1);var locked=isLocked(n);var st=SET(),ss=SS();var tx=String(ss.ans[n]||'');var r=ss.rec[n];var show=visibleIn(st,ss,it);var live=Rec.n===n;
+  var stripe=['var(--accent)','var(--violet)','var(--vocab)','var(--fg)'][(n-1)%4];
+  var h='<section class="card item" id="'+id+'" data-n="'+n+'" style="--stripe:'+stripe+'"><div class="card-head"><div><div class="mono meta">'+pad(n+1)+' · '+t('item')+' '+n+' · '+t('screen')+' '+n+'</div><h2>'+esc(tt(it.label))+'</h2></div></div>'+
+   '<div class="tagrow"><span class="tag fmt">'+t(it.fmt)+'</span><span class="tag dok">'+t('rec.max',{n:it.max})+'</span></div><p class="stem">'+md(it.stem)+'</p>';
+  h+='<div class="rec" data-rec="'+n+'"><div class="row"><button type="button" class="recbtn'+(live?' live':'')+'" data-act="rec"'+(locked||!supportsRec()?' disabled':'')+'><span class="dot"></span>'+(live?t('rec.stop'):(r?t('rec.again'):t('rec.start')))+'</button><span class="timer">'+fmtT(r&&!live?r.dur:0)+'</span>'+(it.prep&&!locked?'<button type="button" class="prep" data-act="prep" data-sec="'+it.prep+'" data-prep>'+t('rec.prep')+' '+fmtT(it.prep)+'</button>':'')+'</div>'+
+   '<p class="st">'+(supportsRec()?(r?t('rec.done',{n:r.dur}):t('rec.ready')):t('rec.nosupport'))+'</p><div data-audio></div></div>';
+  h+='<div class="resp"><label for="ta'+n+'">'+t('tr.h')+'</label><textarea id="ta'+n+'" data-ta="'+n+'" rows="4" spellcheck="false" placeholder="'+esc(t('tr.ph'))+'"'+(locked?' readonly':'')+'>'+esc(tx)+'</textarea><p class="live-note">'+(SRClass()?t('tr.live'):t('tr.off'))+'</p></div>';
+  h+='<div class="counter" data-counter><span class="tag fmt">'+t('words',{n:words(tx)})+'</span></div>';
+  if(STATE.mode==='practice'&&st.stems){var open=!!ss.stems[n];h+='<div><button type="button" class="btn ghost" data-act="stems" aria-pressed="'+open+'">'+t('btn.stems')+'</button></div>'+(open?'<div class="stems" style="margin-top:.6rem">'+(st.stems[STATE.lang]||st.stems.en).map(function(s){return '<button type="button" data-act="stem" data-s="'+esc(s)+'">'+esc(s)+'</button>';}).join('')+'</div>':'');}
+  h+='<div class="fb" data-checks'+(show?'':' hidden')+'>'+(show?checksHTML(it):'')+'</div>';
+  h+='<div class="item-foot">';var nextHref=n<N()?'#s'+pad(n+2):'#sRes';var nextLbl=(n<N()?t('btn.next'):t('sec.results'))+' →';
+  if(STATE.mode==='practice'){if(!ss.checked[n])h+='<button type="button" class="btn primary" data-act="selfcheck"'+(words(tx)>=8?'':' disabled')+'>'+t('rail.score')+'</button>';h+='<a class="btn ghost" href="'+nextHref+'">'+nextLbl+'</a>';}
+  else h+='<span class="count">'+(ss.submitted?'':t('test.cr'))+'</span><a class="btn ghost" href="'+nextHref+'">'+nextLbl+'</a>';
+  return h+'</div></section>';
+}
+function renderItems(){$('#items').innerHTML=SET().items.map(itemHTML).join('');observe();SET().items.forEach(function(it){if(SS().rec[it.n])loadRecAudio(it.n);});}
+function rerenderItem(n){var old=$('#s'+pad(n+1));if(old){var tmp=document.createElement('div');tmp.innerHTML=itemHTML(item(n));old.replaceWith(tmp.firstElementChild);}observe();if(SS().rec[n])loadRecAudio(n);}
+function refreshText(n,quiet){var sec=$('#s'+pad(n+1));if(!sec)return;var it=item(n);var tx=String(SS().ans[n]||'');var c=$('[data-counter]',sec);if(c)c.innerHTML='<span class="tag fmt">'+t('words',{n:words(tx)})+'</span>';
+  var fb=$('[data-checks]',sec);if(fb&&!fb.hidden)fb.innerHTML=checksHTML(it);var b=$('[data-act="selfcheck"]',sec);if(b)b.disabled=words(tx)<8;if(!quiet){updateProgress();renderResults();}}
+
+/* ---------- frame ---------- */
+function renderTabs(){$('#settabs').innerHTML=SETS.map(function(st){var sm=setSummary(st);var pr=sm.done?sm.s+' / '+sm.n:'—';return '<button type="button" class="settab" role="tab" data-set="'+st.id+'" aria-pressed="'+(st.id===STATE.cur)+'"><span class="g">'+esc(tt(st.kind))+'</span><span class="tt">'+esc(st.short)+'</span><span class="pr">'+st.items.length+' rec · '+pr+'</span></button>';}).join('');}
+function renderHero(){
+  var st=SET();var tx=st.t[STATE.lang]||st.t.en;
+  $('#hero').innerHTML='<div class="eyebrow mono">'+esc(tx.eyebrow)+'</div><h1>'+esc(st.title)+'</h1><p class="lede">'+esc(tx.lede)+'</p><div class="chips">'+tx.chips.map(function(c){return '<span class="chip mono">'+esc(c)+'</span>';}).join('')+'</div>';
+  $('#dirs').innerHTML=tx.dirs.map(function(d,i){return '<div class="step"><span class="num">'+(i+1)+'</span><p>'+esc(d)+'</p></div>';}).join('');
+  $('#brandSub').textContent=st.grade+' · '+tt(st.kind);
+  $$('[data-t]').forEach(function(el){el.textContent=t(el.getAttribute('data-t'));});
+  $('#langLbl').textContent=t('rail.lang');$('#langK').textContent=STATE.lang==='en'?'ES':'EN';
+  $('#modePractice').setAttribute('aria-pressed',String(STATE.mode==='practice'));$('#modeTest').setAttribute('aria-pressed',String(STATE.mode==='test'));
+  $('#resMeta').textContent=pad(N()+2)+' · '+t('sec.results');
+}
+function itemStatus(it){var ss=SS();if(visibleIn(SET(),ss,it)&&words(ss.ans[it.n])>0){var p=points(it);return {st:p.s===p.n?'✓':(p.s+'/'+p.n),cls:p.s===p.n?'ok':(p.s?'':'no')};}return {st:answered(it)?'●':'—',cls:''};}
+function tocHTML(){var st=SET();var h='<a href="#s00" data-sec="s00"><span class="n">00</span><span>'+t('sec.dir')+'</span><span class="st"></span></a><a href="#s01" data-sec="s01"><span class="n">01</span><span>'+esc(tt(st.stim.label))+'</span><span class="st"></span></a>';
+  st.items.forEach(function(it){var s=itemStatus(it);h+='<a href="#s'+pad(it.n+1)+'" data-sec="s'+pad(it.n+1)+'"><span class="n">'+pad(it.n+1)+'</span><span>'+esc(tt(it.label))+'</span><span class="st '+s.cls+'">'+s.st+'</span></a>';});
+  return h+'<a href="#sRes" data-sec="sRes"><span class="n">'+pad(N()+2)+'</span><span>'+t('sec.results')+'</span><span class="st"></span></a>';}
+function updateProgress(){var a=countAnswered();$('#progText').textContent=a+' / '+N();$('#progFill').style.width=Math.round(a/N()*100)+'%';var fp=$('#fabPct');if(fp)fp.textContent=a+' / '+N();var sm=setSummary(SET());$('#scoreText').textContent=sm.done?sm.s+' / '+sm.n:'—';$('#toc').innerHTML=tocHTML();markActive();renderTabs();}
+function renderResults(){
+  var st=SET(),ss=SS();var body=$('#resBody');var a=countAnswered();var h='';
+  if(STATE.mode==='test'&&!ss.submitted){h+='<p>'+t('res.testwait',{a:a,n:N()})+'</p><div class="toolrow"><button type="button" class="btn primary" id="submitAll"'+(a<N()?' disabled':'')+'>'+t('btn.submit',{n:N()})+'</button></div>';body.innerHTML=h;return;}
+  var sm=setSummary(st);
+  if(!sm.done)h+='<p>'+t('res.none')+'</p>';
+  else{var pct=sm.n?sm.s/sm.n:0;var band=pct>=.9?'band.a':pct>=.66?'band.b':pct>=.5?'band.c':'band.d';
+    h+='<div class="score-big"><span>'+sm.s+'</span><span class="mono">/ '+sm.n+' '+t('res.criteria')+'</span></div><div class="band">'+t(band)+(sm.done<sm.items?' · '+t('answered',{a:sm.rec,n:sm.items}):'')+'</div><p class="msg">'+t('res.crnote')+'</p>';
+    h+='<table class="rtable"><thead><tr><th>'+t('res.item')+'</th><th>'+t('res.rec')+'</th><th>'+t('res.result')+'</th></tr></thead><tbody>'+st.items.map(function(it){var r=ss.rec[it.n];var s=itemStatus(it);var vis=s.st!=='●'&&s.st!=='—';var p=vis?points(it):null;return '<tr><td>'+esc(tt(it.label))+'</td><td>'+(r?'✓ '+fmtT(r.dur):'—')+'</td><td>'+(p?p.s+' / '+p.n+' '+t('res.criteria'):'—')+'</td></tr>';}).join('')+'</tbody></table>';}
+  h+='<p class="mono" style="color:var(--muted);margin:.6rem 0 .4rem">'+t('res.all')+'</p><table class="rtable"><tbody>'+SETS.map(function(s){var m=setSummary(s);return '<tr><td>'+esc(s.title)+'</td><td>'+(m.rec+' / '+m.items+' '+t('rail.answered').toLowerCase())+(m.done?' · '+m.s+' / '+m.n+' '+t('res.criteria'):'')+'</td></tr>';}).join('')+'</tbody></table>';
+  h+='<div class="toolrow"><input type="text" id="resName" placeholder="'+esc(t('res.name'))+'" value="'+esc(ss.name||'')+'" maxlength="60"><button type="button" class="btn primary" id="resCopy">'+t('res.copy')+'</button><button type="button" class="btn" id="resCopyT">'+t('res.copytr')+'</button><span class="msg" id="resMsg"></span></div><textarea class="fallback" id="resFallback" hidden aria-label="Results as text"></textarea>';
+  body.innerHTML=h;
+}
+function keyHTML(){
+  var st=SET();var h='<p class="msg" style="margin-top:0"><b>'+esc(st.title)+'</b> — visible only when the address ends in <code>#key</code>; switch sets and the key follows. '+esc(st.keynote)+'</p>';
+  h+='<h3>Rubric (0–'+st.rubric.max+', classroom version of the ELPA21 point scale)</h3><table><thead><tr><th>Score</th><th>Typical response</th></tr></thead><tbody>'+st.rubric.rows.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+esc(r[1])+'</td></tr>';}).join('')+'</tbody></table>';
+  h+='<h3>Model response'+(Array.isArray(st.model)?'s':'')+'</h3>'+(Array.isArray(st.model)?st.model.map(function(m,i){return '<blockquote>'+(i+1)+'. '+esc(m)+'</blockquote>';}).join(''):'<blockquote>'+esc(st.model)+'</blockquote>');
+  h+='<h3>What the self-check looks for</h3>'+st.items.map(function(it){var list=calcChecks(st,{ans:{}},it);return '<p class="count" style="margin:.4rem 0 .2rem">'+esc(tt(it.label))+'</p><ul style="margin:0 0 .4rem">'+list.map(function(c){return '<li>'+t(c.k)+(c.bonus?' <span class="count">bonus — not counted</span>':'')+'</li>';}).join('')+'</ul>';}).join('');
+  if(st.stim.turns)h+='<h3>Script</h3>'+turnsHTML(st.stim.turns,'k');
+  if(st.stim.steps)h+='<h3>Narration</h3><ol>'+st.stim.steps.map(function(s){return '<li>'+esc(s.text)+'</li>';}).join('')+'</ol>';
+  if(st.stim.alts)h+='<h3>Picture descriptions (alt text)</h3><ol>'+st.stim.alts.map(function(a){return '<li>'+esc(a.replace(/^Picture \d\. /,''))+'</li>';}).join('')+'</ol>';
+  h+=(st.keyextra||'');
+  if(st.stim.gloss)h+='<h3>Glossary</h3><ul>'+st.stim.gloss.map(function(w){return '<li><b>'+esc(w[0])+'</b> — '+esc(w[1])+'</li>';}).join('')+'</ul>';
+  h+='<h3>Privacy</h3><p class="msg">Recordings stay in this browser (IndexedDB) and are never uploaded; students can download a file to turn in. The live transcript uses the browser’s speech-recognition service when one is available (Chrome and Edge send audio to the browser vendor for recognition; Firefox has none). Nothing is sent to EL Publishing.</p>';
+  return h;
+}
+function renderAll(){renderTabs();renderHero();renderStim();renderItems();renderResults();updateProgress();document.documentElement.setAttribute('data-size',String(STATE.size||0));maybeKey();}
+function switchSet(id){if(!SETS.some(function(s){return s.id===id;}))return;stopSpeech();if(Rec.n!=null)stopRec();STATE.cur=id;save();renderAll();window.scrollTo(0,0);}
+
+/* ---------- interactions ---------- */
+function setAnswer(n,v){SS().ans[n]=v;save();}
+function insertAt(ta,txt){var s=ta.selectionStart||ta.value.length,e=ta.selectionEnd||s;var before=ta.value.slice(0,s),after=ta.value.slice(e);var pre=(before&&!/\s$/.test(before))?' ':'';var post=(after&&!/^\s/.test(after))?' ':'';ta.value=before+pre+txt+post+after;var pos=(before+pre+txt+post).length;ta.focus();try{ta.setSelectionRange(pos,pos);}catch(x){}ta.dispatchEvent(new Event('input',{bubbles:true}));}
+$('#settabs').addEventListener('click',function(e){var b=e.target.closest('[data-set]');if(b)switchSet(b.getAttribute('data-set'));});
+$('#stimBody').addEventListener('click',function(e){var b=e.target.closest('[data-act]');if(!b)return;var act=b.getAttribute('data-act');
+  if(act==='play'){var key=b.getAttribute('data-key');if(Speech.on&&Speech.key===key)stopSpeech();else if(key==='demo')playDemo(0);else playKey(key);}
+  if(act==='step'){var i=+b.getAttribute('data-i');stopSpeech();playDemo(i,true);}
+});
+$('#transBtn').addEventListener('click',function(){SS().transcript=!SS().transcript;save();renderStim();});
+$('#items').addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]');if(!b)return;var sec=b.closest('.item');if(!sec)return;var n=+sec.getAttribute('data-n');var it=item(n);var act=b.getAttribute('data-act');
+  if(act==='stems'){SS().stems[n]=!SS().stems[n];save();rerenderItem(n);return;}
+  if(act==='stem'){var ta=$('textarea',sec);if(ta&&!ta.readOnly)insertAt(ta,b.getAttribute('data-s'));return;}
+  if(act==='prep'){startPrep(n,+b.getAttribute('data-sec'));return;}
+  if(isLocked(n))return;
+  if(act==='rec'){if(Rec.n===n)stopRec();else startRec(n);}
+  else if(act==='selfcheck'){if(words(SS().ans[n])<8)return;SS().checked[n]=true;save();rerenderItem(n);updateProgress();renderResults();}
+});
+$('#items').addEventListener('input',function(e){var ta=e.target.closest('textarea[data-ta]');if(!ta||ta.readOnly)return;var n=+ta.getAttribute('data-ta');if(Rec.n===n)return;setAnswer(n,ta.value);refreshText(n);});
+function transcriptsText(){var st=SET(),ss=SS();var out=[st.title+' — '+st.grade+' — '+(ss.name||'________'),''];st.items.forEach(function(it){out.push(tt(it.label)+(ss.rec[it.n]?' ('+fmtT(ss.rec[it.n].dur)+')':''));out.push(String(ss.ans[it.n]||''));out.push('');});out.push('Storm Studio · EL Publishing');return out.join('\n');}
+$('#resBody').addEventListener('click',function(e){
+  if(e.target.id==='submitAll'){if(countAnswered()<N())return;if(Rec.n!=null)stopRec();SS().submitted=true;save();renderItems();renderResults();updateProgress();$('#sRes').scrollIntoView({block:'start'});}
+  if(e.target.id==='resCopy'){var st=SET(),ss=SS(),sm=setSummary(st);var lines=[st.title+' — '+st.grade+' ('+STATE.mode+')','Name: '+(ss.name||'________'),'Self-check: '+(sm.done?sm.s+' / '+sm.n:'—')];
+    st.items.forEach(function(it){var r=ss.rec[it.n];var s=itemStatus(it);var p=(s.st!=='●'&&s.st!=='—')?points(it):null;lines.push(tt(it.label)+': '+(r?'recorded '+fmtT(r.dur):'not recorded')+(p?' · '+p.s+' / '+p.n:''));});
+    lines.push('Storm Studio · EL Publishing');copyText(lines.join('\n'),$('#resMsg'),$('#resFallback'),'res.copied','res.copyfail');}
+  if(e.target.id==='resCopyT')copyText(transcriptsText(),$('#resMsg'),$('#resFallback'),'res.copied','res.copyfail');
+});
+$('#resBody').addEventListener('input',function(e){if(e.target.id==='resName'){SS().name=e.target.value;save();}});
+function copyText(txt,msgEl,fb,okKey,failKey){var done=function(){msgEl.textContent=t(okKey);fb.hidden=true;};var fail=function(){msgEl.textContent=t(failKey);fb.hidden=false;fb.value=txt;fb.focus();fb.select();};try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fail);else fail();}catch(e){fail();}}
+function toggleWb(){STATE.wb=!STATE.wb;save();renderStim();}
+function bumpSize(){STATE.size=((STATE.size||0)+1)%3;save();document.documentElement.setAttribute('data-size',String(STATE.size));}
+['#wbBtn','#wbBtn2'].forEach(function(s){$(s).addEventListener('click',toggleWb);});
+['#sizeBtn','#sizeBtn2'].forEach(function(s){$(s).addEventListener('click',bumpSize);});
+$('#railFab').addEventListener('click',function(){var r=$('#rail');var open=!r.classList.contains('open');r.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));this.innerHTML=open?'✕ Close':'<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';});
+$('#toc').addEventListener('click',function(e){if(e.target.closest('a')){$('#rail').classList.remove('open');var f=$('#railFab');f.setAttribute('aria-expanded','false');f.innerHTML='<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';}});
+$('#langBtn').addEventListener('click',function(){STATE.lang=STATE.lang==='en'?'es':'en';save();renderAll();});
+function setMode(m){if(STATE.mode===m)return;if(Rec.n!=null)stopRec();STATE.mode=m;SETS.forEach(function(st){STATE.sets[st.id].submitted=false;STATE.sets[st.id].checked={};});save();stopSpeech();renderAll();}
+$('#modePractice').addEventListener('click',function(){setMode('practice');});
+$('#modeTest').addEventListener('click',function(){setMode('test');});
+function applyTheme(){var th=STATE.theme||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',th);$('#themeBtn').setAttribute('aria-pressed',String(th==='dark'));}
+$('#themeBtn').addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme');STATE.theme=cur==='dark'?'light':'dark';save();applyTheme();});
+var resetArmed=false,resetTimer;
+$('#resetAll').addEventListener('click',function(){var lbl=$('#resetLbl');if(!resetArmed){resetArmed=true;lbl.textContent=t('reset.arm');clearTimeout(resetTimer);resetTimer=setTimeout(function(){resetArmed=false;lbl.textContent=t('rail.reset');},3500);return;}
+  resetArmed=false;clearTimeout(resetTimer);if(Rec.n!=null)stopRec();var st=SET();st.items.forEach(function(it){idbDel(recKey(st.id,it.n));});var keepT=SS().transcript;STATE.sets[STATE.cur]=blank();STATE.sets[STATE.cur].transcript=keepT;save();stopSpeech();renderAll();toast(t('reset.done'));$('#rail').classList.remove('open');});
+var io=null,CUR='s00';
+function observe(){if(!('IntersectionObserver' in window))return;if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){CUR=en.target.id;markActive();}});},{rootMargin:'-35% 0px -55% 0px',threshold:0});$$('.card[id]').forEach(function(c){if(c.id!=='key'&&!c.hidden)io.observe(c);});}
+function markActive(){$$('#toc a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-sec')===CUR);});}
+/* speech synthesis: presentation, claim, demo narration */
+var Speech={on:false,key:null};var VOICES=[];
+function loadVoices(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){VOICES=[];}}
+if('speechSynthesis' in window){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}}
+function enVoices(){if(!VOICES.length)loadVoices();var en=VOICES.filter(function(v){return /^en[-_]?/i.test(v.lang);});var loc=en.filter(function(v){return v.localService;});var us=loc.filter(function(v){return /en[-_]US/i.test(v.lang);});return (us.length?us.concat(loc.filter(function(v){return us.indexOf(v)<0;})):loc).concat(en.filter(function(v){return loc.indexOf(v)<0;}));}
+function voiceFor(who){var vs=enVoices();var i=who==='Narrator'?0:who==='Marcus'?1:who==='Nadia'?2:0;return {voice:vs.length?vs[i%vs.length]:null,pitch:vs.length>1?1:[1,0.9,1.1][i%3]};}
+function paintPlayers(){$$('[data-player]').forEach(function(p){var on=Speech.on&&Speech.key===p.getAttribute('data-player');p.classList.toggle('on',on);var b=$('.playbtn',p);if(b){b.textContent=on?'■':'▶';b.setAttribute('aria-pressed',String(on));}});var cap=$('#caption');if(cap)cap.classList.toggle('speaking',Speech.on&&Speech.key==='demo');}
+function stopSpeech(){try{speechSynthesis.cancel();}catch(e){}$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});Speech.on=false;Speech.key=null;paintPlayers();}
+function speakEls(key,els,onDone){if(!('speechSynthesis' in window)){toast(t('audio.none'));return;}stopSpeech();if(!els.length)return;Speech.on=true;Speech.key=key;paintPlayers();var i=0;
+  function next(){if(!Speech.on||Speech.key!==key)return;if(i>=els.length){stopSpeech();if(onDone)onDone();return;}var sp=els[i];var vf=voiceFor(sp.getAttribute('data-who')||'Narrator');var u=new SpeechSynthesisUtterance(sp.textContent);u.lang=(vf.voice&&vf.voice.lang)||'en-US';if(vf.voice)u.voice=vf.voice;u.rate=0.92;u.pitch=vf.pitch;
+    u.onstart=function(){$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});sp.classList.add('speaking');};u.onend=function(){sp.classList.remove('speaking');i++;setTimeout(next,200);};u.onerror=u.onend;try{speechSynthesis.speak(u);}catch(e){stopSpeech();toast(t('audio.none'));}}
+  setTimeout(next,60);}
+function playKey(key){speakEls(key,$$('#stimBody .s'));}
+function showStep(i){var ss=SS();ss.step=i;ss.seen[i]=1;save();var stage=$('#stage');if(stage)stage.innerHTML=demoSVG(i);var cap=$('#caption');if(cap)cap.innerHTML='<span class="s" data-who="Narrator" data-k="d'+i+'">'+esc(SET().stim.steps[i].text)+'</span>';$$('.stepbar button').forEach(function(b){var k=+b.getAttribute('data-i');b.setAttribute('aria-current',String(k===i));b.classList.toggle('seen',!!ss.seen[k]);});var pt=$('[data-player="demo"] .count');if(pt)pt.textContent=t('step')+' '+i+' / '+(SET().stim.steps.length-1);}
+function playDemo(from,single){var steps=SET().stim.steps;var i=from;showStep(i);
+  function go(){if(i>=steps.length)return;showStep(i);var el=$('#caption .s');speakEls('demo',[el],function(){if(single)return;i++;if(i<steps.length)setTimeout(go,500);});}
+  go();}
+$('#readBtn').addEventListener('click',function(){if(Speech.on)stopSpeech();else playKey('stim');});
+$('#audioBtn').addEventListener('click',function(){var st=SET();if(Speech.on){stopSpeech();return;}$('#s01').scrollIntoView({block:'start'});if(st.stim.type==='demo')playDemo(0);else if(st.stim.turns)playKey('stim');else toast(t('rec.ready'));});
+document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpeech();});
+function maybeKey(){var show=/(^|[?&])key(=|&|$)/.test(location.search)||location.hash==='#key';var k=$('#key');k.hidden=!show;if(show){$('#keyBody').innerHTML=keyHTML();k.scrollIntoView({block:'start'});}}
+window.addEventListener('hashchange',function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;})){switchSet(h);return;}maybeKey();});
+(function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;}))STATE.cur=h;})();
+applyTheme();renderAll();
+})();
+</script>
+<script src="home-button.js" defer></script>
+</body>
+</html>

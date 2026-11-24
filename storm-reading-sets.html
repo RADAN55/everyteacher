@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Item Sets · Five Interactive Assessments · Storm Studio</title>
+<meta name="description" content="Five interactive ELPT-style assessment sets on one page: Storm Salsa (9–12 literary), Screens and Sleep (9–12 data analysis), The Last Round (9–12 literary), The Pot-in-Pot Cooler (9–12 science investigation), and Fix It Yourself (9–12 argument essay). Drag-and-drop, hot spots, drop-downs, select-all, DOK 1–3, teacher keys. Storm Studio · EL Publishing.">
+<meta name="theme-color" content="#ff4d2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23111418'/%3E%3Cpath d='M58 8 22 58h22l-8 34 42-54H56z' fill='%23ff4d2e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@500;700&family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1f0ea; --surface:#ffffff; --fg:#111418; --muted:#525a66;
+  --accent:#ff4d2e; --accent-soft:#ffe3dc; --line:#111418;
+  --vocab:#0b6e62; --vocab-soft:#d9f2ec; --active:#fff3a3;
+  --violet:#5b3df5; --violet-soft:#e6e0ff; --grid:rgba(17,20,24,.07);
+  --clay:#d08a5e; --clay2:#b8714a; --sand:#e2cf95; --cloth:#dfe3e8;
+  --font-read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-ui:"Public Sans","Segoe UI",Arial,sans-serif;
+  --font-display:"Bricolage Grotesque","Public Sans",Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:5px 5px 0 var(--fg); --read:1.1rem;
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#181b22; --fg:#f4f4f4; --muted:#c7ccd6; --line:#e8e8e8;
+  --accent:#ff6a4d; --accent-soft:#4a2017; --vocab:#4fd1c0; --vocab-soft:#123b36; --active:#5a5010;
+  --violet:#a594ff; --violet-soft:#2a2350; --grid:rgba(244,244,244,.07); --shadow:5px 5px 0 #e8e8e8;
+  --clay:#b8714a; --clay2:#8f5436; --sand:#b9a66a; --cloth:#3a3f48;
+}
+:root[data-size="1"]{--read:1.25rem} :root[data-size="2"]{--read:1.42rem}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 var(--font-ui);color:var(--fg);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;-webkit-text-size-adjust:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:0}
+button{font-family:inherit}
+.wrap{display:grid;grid-template-columns:1fr;min-height:100vh}
+.main{margin:0 auto;padding:1rem 16px 7rem;min-width:0;width:100%;max-width:78ch}
+@media (min-width:960px){
+  .wrap{grid-template-columns:17rem 1fr}
+  .rail{position:sticky;top:0;height:100vh;overflow:auto;border-right:3px solid var(--line);background:var(--surface);padding:1.1rem 1rem 1.5rem;display:grid;align-content:start;gap:1rem}
+  .rail-fab{display:none}
+  .main{padding:1.5rem 2.2rem 4rem}
+}
+@media (min-width:1180px){
+  .main{max-width:none}
+  .split{display:grid;grid-template-columns:minmax(0,47%) minmax(0,1fr);gap:0 2rem;align-items:start}
+  .passcol{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;padding:4px 8px 12px 4px}
+  .itemcol{min-width:0}
+}
+@media (max-width:959px){
+  .rail{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:3px solid var(--line);
+    padding:.9rem 16px calc(1rem + env(safe-area-inset-bottom,0px));display:grid;gap:.8rem;max-height:78vh;overflow:auto;
+    transform:translateY(100%);transition:transform .25s}
+  .rail.open{transform:none}
+  .rail-fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:41;border:3px solid var(--line);
+    background:var(--accent);color:#111418;font:700 .85rem var(--font-mono);padding:.7rem 1rem;box-shadow:var(--shadow);cursor:pointer;
+    text-transform:uppercase;letter-spacing:.06em}
+}
+.brand{display:flex;gap:.7rem;align-items:center}
+.brandmark{width:46px;height:46px;border:3px solid var(--line);background:#111418;flex:none;box-shadow:3px 3px 0 var(--accent)}
+.brand-t{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.05rem;line-height:1}
+.brand-s{color:var(--muted);margin-top:.3rem}
+.prog{border:3px solid var(--line);padding:.7rem .8rem;background:var(--surface);display:grid;gap:.45rem}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.prog-row b{font-family:var(--font-mono);font-size:.95rem}
+.bar{height:14px;border:2px solid var(--line);background:var(--surface);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(135deg,var(--accent) 0 8px,var(--accent-soft) 8px 16px);transition:width .35s}
+.toc{display:grid;gap:.25rem}
+.toc a{display:grid;grid-template-columns:2.1rem 1fr auto;gap:.5rem;align-items:center;padding:.36rem .55rem;border:2px solid transparent;color:var(--fg);text-decoration:none;font-weight:600;font-size:.85rem}
+.toc a .n{font-family:var(--font-mono);font-weight:700;font-size:.72rem;background:var(--fg);color:var(--surface);padding:.15rem .3rem;text-align:center}
+.toc a .st{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}
+.toc a .st.ok{color:var(--vocab);font-weight:700} .toc a .st.no{color:var(--accent);font-weight:700}
+.toc a.active{border-color:var(--line);background:var(--active)}
+.toc a:hover{border-color:var(--line)}
+.tools{display:grid;gap:.4rem}
+.tool{display:flex;align-items:center;gap:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.45rem .6rem;font:600 .84rem var(--font-ui);cursor:pointer;text-align:left}
+.tool .k{font-family:var(--font-mono);font-weight:700;font-size:.64rem;letter-spacing:.06em;min-width:3.9rem;background:var(--fg);color:var(--surface);padding:.22rem .35rem;text-align:center}
+.tool[aria-pressed="true"] .k{background:var(--accent);color:#111418}
+.tool:hover{box-shadow:3px 3px 0 var(--fg)}
+.tool.danger .k{background:var(--accent);color:#111418}
+.rail-foot{color:var(--muted);font-size:.72rem;line-height:1.5}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line)}
+.seg button{border:0;background:var(--surface);color:var(--fg);padding:.45rem;font:700 .75rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--surface)}
+/* set tabs */
+.settabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:0 0 1.2rem}
+.settab{border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.6rem .7rem;text-align:left;cursor:pointer;box-shadow:3px 3px 0 var(--fg);display:grid;gap:.2rem}
+.settab .g{font-family:var(--font-mono);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.settab .tt{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1rem;line-height:1.05}
+.settab .pr{font-family:var(--font-mono);font-size:.68rem;color:var(--muted)}
+.settab[aria-pressed="true"]{background:var(--active);box-shadow:none;transform:translate(3px,3px)}
+.settab[aria-pressed="true"] .g{color:var(--accent)}
+.hero{padding:.6rem 0 1rem}
+.eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);margin:.35rem 0 .6rem;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{font-size:1.08rem;max-width:66ch;margin:0 0 .9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:2px solid var(--line);padding:.3rem .55rem;background:var(--surface)}
+.card{position:relative;background:var(--surface);border:3px solid var(--line);box-shadow:var(--shadow);margin:0 0 2rem;padding:1.7rem 1.3rem 1.4rem;scroll-margin-top:1rem}
+.card::before{content:"";position:absolute;left:-3px;right:-3px;top:-3px;height:12px;background:var(--stripe,var(--accent));border:3px solid var(--line);border-bottom:none}
+.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 1rem;align-items:flex-end;margin:.2rem 0 1rem}
+.card h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:800}
+.card h3{font-size:1.05rem;margin:1.1rem 0 .5rem}
+.meta{color:var(--muted);margin-bottom:.4rem}
+@media (max-width:600px){.card{padding:1.6rem 1rem 1.3rem}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .95rem;font:700 .85rem var(--font-ui);cursor:pointer;box-shadow:3px 3px 0 var(--fg);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;line-height:1.2}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--fg)}
+.btn.primary{background:var(--accent);color:#111418}
+.btn.ghost{box-shadow:none;border-width:2px;font-size:.76rem;padding:.42rem .65rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn[aria-pressed="true"]{background:var(--active)}
+.tag{font-family:var(--font-mono);font-weight:700;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .45rem;border:2px solid var(--line);background:var(--surface);white-space:nowrap}
+.tag.ok{background:var(--vocab);color:var(--surface);border-color:var(--vocab)}
+.tag.no{background:var(--accent);color:#111418;border-color:var(--accent)}
+.tag.dok{background:var(--violet-soft);border-color:var(--violet)}
+.tag.fmt{background:var(--bg)}
+.tag.std{background:var(--vocab-soft);border-color:var(--vocab);white-space:normal}
+.steps{display:grid;gap:.6rem;margin:0 0 .4rem}
+.step{display:grid;grid-template-columns:2.4rem 1fr;gap:.8rem;align-items:center;border:2px solid var(--line);padding:.6rem .8rem}
+.step .num{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1;color:var(--accent)}
+.step p{margin:0;font-weight:600}
+/* stimulus */
+.tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .9rem}
+.tabs button{border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.4rem .7rem;font:700 .74rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--surface)}
+.stim{font-family:var(--font-read);font-size:var(--read);line-height:1.7;padding:1rem 1.1rem;border:2px dashed var(--line);background:var(--bg);margin:0 0 1rem}
+.stim h3{font-family:var(--font-display);font-size:1.25rem;margin:0 0 .7rem}
+.stim h4{font:700 .72rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .4rem}
+.stim p{margin:0 0 .8rem}
+.stim ul,.stim ol{margin:0 0 .8rem;padding-left:1.4rem}
+.stim li{margin:0 0 .35rem}
+.stim .s{padding:.05em .12em;border-radius:2px}
+.stim .s .sn{font:700 .6em var(--font-mono);color:var(--accent);vertical-align:super;margin-right:.25em}
+.stim .s.speaking{background:var(--active)}
+.stim .para{display:block;margin:0 0 .85rem}
+.stim .cap{font-family:var(--font-ui);font-size:.88rem;color:var(--muted);margin:.4rem 0 0}
+.passtools{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .9rem}
+.chunkbar{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:0 0 .8rem}
+.chunkbar .btn.ghost[aria-pressed="true"]{background:var(--active)}
+.wb{display:grid;gap:.4rem;margin:0 0 .9rem}
+.wb div{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:baseline;border:2px solid var(--line);background:var(--surface);padding:.4rem .6rem;font-size:.9rem}
+.wb b{font-family:var(--font-mono);font-size:.74rem;color:var(--vocab)}
+.dtable{width:100%;border-collapse:collapse;font-family:var(--font-ui);font-size:.9rem;background:var(--surface);margin:0 0 .8rem}
+.dtable th,.dtable td{border:2px solid var(--line);padding:.35rem .5rem;text-align:left}
+.dtable th{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;background:var(--bg)}
+.dtable td.num{font-family:var(--font-mono);font-weight:700;text-align:right}
+.dtable tr.tot td{font-weight:700;background:var(--active)}
+.chart{width:100%;height:auto;display:block;margin:.4rem auto .3rem;max-width:560px}
+.chart text{font-family:var(--font-ui)}
+.fig{width:100%;height:auto;display:block;margin:.3rem auto;max-width:560px}
+.fig text{font-family:var(--font-ui)}
+.fig .lbl{font-family:var(--font-mono);font-weight:700}
+/* items */
+.item .stem{font-weight:700;font-size:1.05rem;margin:0 0 .9rem;line-height:1.45}
+.item .dir{color:var(--muted);font-size:.92rem;margin:0 0 .7rem}
+.opts{display:grid;gap:.5rem}
+.opt{display:grid;grid-template-columns:2rem 1fr auto;gap:.7rem;align-items:center;text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .7rem;font:500 1rem var(--font-ui);cursor:pointer;line-height:1.35}
+.opt .box{font-family:var(--font-mono);font-weight:700;border:2px solid var(--line);width:2rem;height:2rem;display:grid;place-items:center;font-size:.85rem}
+.opt.radio .box{border-radius:50%}
+.opt:hover:not([disabled]){box-shadow:3px 3px 0 var(--fg)}
+.opt[aria-checked="true"]{background:var(--active);border-width:3px;margin:-1px}
+.opt[aria-checked="true"] .box{background:var(--fg);color:var(--surface)}
+.opt.correct{background:var(--vocab-soft);border-color:var(--vocab);border-width:3px;margin:-1px}
+.opt.correct .box{background:var(--vocab);color:var(--surface);border-color:var(--vocab)}
+.opt.wrong{background:var(--accent-soft);border-color:var(--accent);border-width:3px;margin:-1px}
+.opt.wrong .box{background:var(--accent);color:#111418;border-color:var(--accent)}
+.opt.missed{border-style:dashed;border-color:var(--vocab)}
+.opt[disabled]{cursor:default}
+.opt .mk{font-family:var(--font-mono);font-weight:700;font-size:1.05rem;min-width:1.2rem;text-align:center}
+.count{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+.ddsent{font-size:1.08rem;line-height:2.1;font-weight:500}
+select.dd{font:600 .95rem var(--font-ui);border:3px solid var(--line);background:var(--active);color:#111418;padding:.25rem .4rem;margin:0 .15rem;max-width:100%;cursor:pointer;vertical-align:baseline}
+:root[data-theme="dark"] select.dd{color:var(--fg)}
+select.dd.correct{background:var(--vocab-soft);border-color:var(--vocab)}
+select.dd.wrong{background:var(--accent-soft);border-color:var(--accent)}
+select.dd[disabled]{cursor:default;opacity:1}
+.ddans{font-family:var(--font-mono);font-size:.72rem;color:var(--vocab);font-weight:700;margin-left:.2rem}
+.bank{display:flex;flex-wrap:wrap;gap:.5rem;min-height:3rem;border:2px dashed var(--line);padding:.6rem;margin:0 0 .9rem;background:var(--bg)}
+.bank .lbl{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:100%}
+.namechip{display:inline-flex;align-items:center;gap:.4rem;border:3px solid var(--line);background:var(--active);color:#111418;padding:.4rem .75rem;font:600 .9rem var(--font-ui);cursor:grab;box-shadow:3px 3px 0 var(--fg);touch-action:none;user-select:none;line-height:1.3;text-align:left}
+:root[data-theme="dark"] .namechip{color:var(--fg)}
+.namechip.armed{outline:3px solid var(--accent);outline-offset:2px;background:var(--accent-soft)}
+.namechip:active{cursor:grabbing}
+.namechip.ghost{opacity:.4}
+.drops{display:grid;gap:.55rem}
+.drop{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:2px solid var(--line);background:var(--surface);padding:.55rem .7rem;min-height:3.4rem;text-align:left;font:500 .96rem var(--font-ui);color:var(--fg);cursor:pointer}
+.drop.ordered{grid-template-columns:2.4rem 1fr}
+.drop .num{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--muted);text-align:center}
+.drop .slot{min-width:10rem;min-height:2.3rem;border:2px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:.15rem .4rem;text-align:center}
+.drop.ordered .slot{justify-content:flex-start;min-width:0}
+.drop.over{background:var(--active)}
+.drop.ready .slot{border-color:var(--accent);color:var(--accent)}
+.drop .slot .namechip{box-shadow:none;cursor:pointer;padding:.25rem .6rem;font-size:.85rem;text-transform:none;letter-spacing:0}
+.drop.correct{border-color:var(--vocab);border-width:3px;margin:-1px;background:var(--vocab-soft)}
+.drop.correct .num{color:var(--vocab)}
+.drop.wrong{border-color:var(--accent);border-width:3px;margin:-1px;background:var(--accent-soft)}
+.drop .fix{display:block;font-family:var(--font-mono);font-size:.68rem;color:var(--vocab);font-weight:700;margin-top:.25rem;text-transform:none;letter-spacing:0}
+@media (max-width:520px){.drop:not(.ordered){grid-template-columns:1fr}.drop .slot{min-width:0}}
+.hot{font-family:var(--font-read);font-size:var(--read);line-height:1.8;border:2px dashed var(--line);background:var(--bg);padding:.9rem 1rem;margin:0 0 .8rem}
+.hot .pn{font:700 .62em var(--font-mono);color:var(--accent);vertical-align:super;margin-right:.35em}
+.hs{display:inline;background:transparent;border:0;border-bottom:2px solid transparent;padding:.08em .15em;font:inherit;color:inherit;cursor:pointer;border-radius:2px;line-height:inherit;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hs .sn{font:700 .6em var(--font-mono);color:var(--accent);vertical-align:super;margin-right:.25em}
+.hs:hover{background:var(--active)}
+.hs[aria-pressed="true"]{background:var(--active);border-bottom-color:var(--fg)}
+.hs.correct{background:var(--vocab-soft);border-bottom-color:var(--vocab);box-shadow:0 0 0 3px var(--vocab-soft)}
+.hs.wrong{background:var(--accent-soft);border-bottom-color:var(--accent);text-decoration:line-through}
+.hs[aria-disabled="true"]{cursor:default}
+.figwrap{border:2px dashed var(--line);background:var(--bg);padding:.6rem;margin:0 0 .8rem}
+.task{border:3px solid var(--line);background:var(--violet-soft);padding:.7rem .9rem;margin:0 0 .9rem;font-family:var(--font-ui);font-size:.95rem}
+.task p{margin:.3rem 0 0}
+.zones{display:grid;gap:.5rem;margin:0 0 .8rem}
+.zone{display:grid;grid-template-columns:2rem 1fr;gap:.6rem;align-items:start;border:2px solid var(--line);background:var(--surface);padding:.6rem .75rem;cursor:pointer;font-family:var(--font-read);font-size:.95rem;line-height:1.5;color:var(--fg)}
+.zone .zn{font-family:var(--font-mono);font-weight:700;font-size:.8rem;background:var(--fg);color:var(--surface);text-align:center;padding:.2rem 0;line-height:1.1}
+.zone:hover{box-shadow:3px 3px 0 var(--fg)}
+.zone[aria-pressed="true"]{background:var(--active);border-width:3px;margin:-1px}
+.zone.correct{background:var(--vocab-soft);border-color:var(--vocab);border-width:3px;margin:-1px}
+.zone.correct .zn{background:var(--vocab)}
+.zone.wrong{background:var(--accent-soft);border-color:var(--accent);border-width:3px;margin:-1px}
+.zone.wrong .zn{background:var(--accent);color:#111418}
+.zone[aria-disabled="true"]{cursor:default;box-shadow:none}
+.fig .region{cursor:pointer;transition:filter .15s}
+.fig .region:hover{filter:brightness(1.08)}
+.fig .region.sel .shape{stroke:var(--fg);stroke-width:5}
+.fig .region.sel .pin{fill:var(--active)}
+.fig .region.correct .shape{stroke:var(--vocab);stroke-width:5}
+.fig .region.correct .pin{fill:var(--vocab)}
+.fig .region.correct .pintext{fill:#fff}
+.fig .region.wrong .shape{stroke:var(--accent);stroke-width:5;stroke-dasharray:8 6}
+.fig .region.wrong .pin{fill:var(--accent)}
+.fig.locked .region{cursor:default}
+.fb{margin:.9rem 0 .2rem;padding:.75rem .9rem;border:2px solid var(--line);background:var(--bg);display:grid;gap:.5rem}
+.fb-head{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.fb p{margin:0}
+.item-foot{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.1rem;padding-top:.9rem;border-top:3px solid var(--line)}
+.tagrow{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.frame{margin:0 0 1rem}
+.frame label{display:block;font-weight:700;margin:0 0 .4rem;line-height:1.45}
+.frame textarea{width:100%;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:1rem var(--font-ui);padding:.5rem .6rem;min-height:7rem;resize:vertical}
+.stems{display:grid;gap:.35rem;margin:0 0 .9rem}
+.stems div{border-left:4px solid var(--violet);padding:.3rem .6rem;background:var(--violet-soft);font-size:.92rem}
+.score-big{display:flex;align-items:baseline;gap:.6rem;font-family:var(--font-display);font-weight:800;font-size:4.2rem;line-height:1}
+.score-big .mono{font-size:1rem;color:var(--muted)}
+.band{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.3rem;margin:.4rem 0 1.1rem;color:var(--accent)}
+.rtable{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 1rem}
+.rtable th,.rtable td{border:2px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}
+.rtable th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.toolrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.toolrow input[type=text]{border:2px solid var(--line);background:var(--surface);color:var(--fg);font:1rem var(--font-ui);padding:.5rem .6rem;min-width:14rem}
+.msg{font-size:.9rem;color:var(--muted)}
+.fallback{width:100%;border:2px solid var(--line);background:var(--surface);color:var(--fg);margin-top:.7rem;min-height:7rem;font-family:var(--font-mono);font-size:.8rem;padding:.5rem}
+.key table{width:100%;border-collapse:collapse;font-size:.9rem}
+.key th,.key td{border:2px solid var(--line);padding:.35rem .5rem;text-align:left;vertical-align:top}
+.key th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.toast{position:fixed;left:50%;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--surface);padding:.6rem 1rem;border:3px solid var(--accent);font:600 .9rem var(--font-ui);z-index:60;opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw;text-align:center}
+.toast.show{opacity:1}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:1rem 0 2rem;line-height:1.6}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside class="rail" id="rail" aria-label="Navigation and supports">
+  <div class="brand">
+    <svg class="brandmark" viewBox="0 0 100 100" aria-hidden="true"><path d="M58 8 22 58h22l-8 34 42-54H56z" fill="#ff4d2e"/></svg>
+    <div><div class="brand-t">Storm Studio</div><div class="brand-s mono" id="brandSub">Item sets</div></div>
+  </div>
+  <div class="prog" aria-live="polite">
+    <div class="prog-row"><span class="mono" data-t="rail.answered">Answered</span><b id="progText">0 / 0</b></div>
+    <div class="bar"><i id="progFill"></i></div>
+    <div class="prog-row"><span class="mono" data-t="rail.score">Score</span><b id="scoreText">—</b></div>
+  </div>
+  <div class="seg" role="group" aria-label="Mode"><button type="button" id="modePractice" aria-pressed="true" data-t="mode.practice">Practice</button><button type="button" id="modeTest" aria-pressed="false" data-t="mode.test">Test</button></div>
+  <nav class="toc" id="toc" aria-label="Sections"></nav>
+  <div class="tools">
+    <button type="button" class="tool" id="audioBtn"><span class="k">AUDIO</span><span data-t="rail.audio">Read aloud</span></button>
+    <button type="button" class="tool" id="chunkBtn" aria-pressed="false"><span class="k">CHUNKS</span><span data-t="rail.chunks">Chunked text</span></button>
+    <button type="button" class="tool" id="wbBtn" aria-pressed="false"><span class="k">WORDS</span><span data-t="rail.wb">Glossary</span></button>
+    <button type="button" class="tool" id="sizeBtn"><span class="k">A A</span><span data-t="rail.size">Text size</span></button>
+    <button type="button" class="tool" id="langBtn"><span class="k" id="langK">ES</span><span id="langLbl">Español</span></button>
+    <button type="button" class="tool" id="themeBtn" aria-pressed="false"><span class="k">DARK</span><span data-t="rail.theme">Dark mode</span></button>
+    <button type="button" class="tool danger" id="resetAll"><span class="k">RESET</span><span id="resetLbl" data-t="rail.reset">Reset this set</span></button>
+  </div>
+  <div class="rail-foot">EL Publishing · Many Voices · One Storm</div>
+</aside>
+<button type="button" class="rail-fab" id="railFab" aria-expanded="false" aria-controls="rail"><span id="fabPct">0 / 0</span> · Menu</button>
+
+<main class="main" id="main">
+  <div class="settabs" id="settabs" role="tablist" aria-label="Item sets"></div>
+  <header class="hero" id="hero"></header>
+  <section class="card" id="s00" style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">00</div><h2 data-t="dir.title">Directions</h2></div></div>
+    <div class="steps" id="dirs"></div>
+  </section>
+  <div class="split">
+    <div class="passcol">
+      <section class="card" id="s01" style="--stripe:var(--vocab)">
+        <div class="card-head"><div><div class="mono meta">01 · <span id="stimLabel"></span></div><h2 id="stimTitle"></h2></div>
+          <button type="button" class="btn ghost readbtn" id="readBtn" aria-pressed="false">▶ <span class="lbl" data-t="btn.read">Read aloud</span></button></div>
+        <div class="tabs" id="tabs" role="tablist" hidden></div>
+        <div class="passtools">
+          <button type="button" class="btn ghost" id="sizeBtn2"><span data-t="rail.size">Text size</span> A A</button>
+          <button type="button" class="btn ghost" id="wbBtn2" aria-pressed="false" data-t="rail.wb">Glossary</button>
+          <button type="button" class="btn ghost" id="chunkBtn2" aria-pressed="false" data-t="rail.chunks">Chunked text</button>
+        </div>
+        <div class="wb" id="wordbank" hidden></div>
+        <div class="chunkbar" id="chunkbar" hidden></div>
+        <div id="stimBody"></div>
+      </section>
+    </div>
+    <div class="itemcol" id="items"></div>
+  </div>
+  <section class="card results" id="sRes" style="--stripe:var(--violet)">
+    <div class="card-head"><div><div class="mono meta" id="resMeta"></div><h2 data-t="res.title">My results</h2></div></div>
+    <div id="resBody"></div>
+  </section>
+  <section class="card" id="sExt" style="--stripe:var(--accent)" hidden>
+    <div class="card-head"><div><div class="mono meta" id="extMeta"></div><h2 id="extTitle"></h2></div></div>
+    <div id="extBody"></div>
+    <div class="toolrow"><button type="button" class="btn" id="extCopy" data-t="ext.copy">Copy my answers</button><span class="msg" id="extMsg"></span></div>
+    <textarea class="fallback" id="extFallback" hidden aria-label="Your answers as text"></textarea>
+  </section>
+  <section class="card key" id="key" hidden style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">Teacher</div><h2>Teacher key and notes</h2></div></div>
+    <div id="keyBody"></div>
+  </section>
+  <footer>
+    Storm Studio · Item Sets · five interactive assessments (DOK 1–3) · EL Publishing · Richard A. Daniel, M.Ed.<br>
+    <span data-t="not.real">Original passages, data, and practice items written for classroom use. All data are invented.</span>
+  </footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var KEY='storm-itemsets-v1';
+var L=['A','B','C','D','E','F'];
+
+/* =========================================================
+   SET 1 · STORM SALSA · grade 6 literary
+   ========================================================= */
+var SALSA={
+ id:'salsa',grade:'Grades 9–12',title:'Storm Salsa',short:'Storm Salsa',
+ kind:{en:'Literary reading set',es:'Lectura literaria'},
+ t:{en:{eyebrow:'Grades 9–12 · Literary reading set',lede:'Read the story, then answer six questions. Some questions ask you to choose more than one answer, pick from a dropdown, drag names into place, or select a sentence in the story.',
+        dirs:['Read the whole story first. Paragraph numbers help you find a place again.','Each question tells you how to answer. When you must choose more than one answer, the question says how many.','In Practice mode, check each question as you go. In Test mode, answer all six, then submit at the end.'],chips:['6 items','4 formats','DOK 1–3','1000–1100L']},
+    es:{eyebrow:'Grados 9–12 · Lectura literaria',lede:'Lee el cuento y responde seis preguntas. Algunas piden más de una respuesta, elegir de un menú, arrastrar nombres a su lugar o seleccionar una oración del cuento.',
+        dirs:['Lee todo el cuento primero. Los números de párrafo te ayudan a encontrar un lugar otra vez.','Cada pregunta te dice cómo responder. Cuando debes elegir más de una respuesta, la pregunta dice cuántas.','En modo Práctica, revisa cada pregunta al terminarla. En modo Examen, responde las seis y envía al final.'],chips:['6 preguntas','4 formatos','DOK 1–3','1000–1100L']}},
+ stim:{type:'text',unit:'para',title:'Storm Salsa',label:{en:'The passage',es:'El cuento'},
+  units:[
+   'Lena was seventeen, and she had spent the entire summer talking to her tomatoes. She watered them before the sun cleared the pines, pinched off the yellowing leaves, and tied the heavy vines to cedar stakes with strips torn from an old T-shirt. Her goal was simple and enormous at the same time: earn enough at the Saturday farmers’ market to cover the deposit for the welding program at the community college, which was due the first week of September. The deposit was $400, and by the middle of August her market jar held $312.',
+   '“One more Saturday,” she told her younger brother, Theo, who was supposed to be helping and was mostly eating cherry tomatoes off the vine. “One more good market, and that deposit is ours.”',
+   '“Yours,” Theo corrected with his mouth full. “You only say ours when you need somebody to carry the crates.”',
+   'On Friday night the sky turned the color of a bruise. Thunder rolled across the county, and then came a sound Lena had never heard before, a rattling hiss like gravel being poured onto the roof. It was hail. She pressed her face to the window and watched white stones the size of marbles bounce across the yard.',
+   'In the morning the garden looked as if someone had attacked it. Vines sagged against their stakes, leaves hung in shreds, and nearly every tomato was split, dented, or bruised, the softest ones already drawing flies. Lena walked the rows in silence, then sat down hard on the back step.',
+   '“We can still sell them,” Theo said, holding up a tomato with a crack across its shoulder.',
+   '“Nobody buys ugly tomatoes,” Lena said. “People at that market want perfect ones, and that’s the whole point of a market.” She could already picture the empty table and the neighbors glancing at her damaged pile before drifting on to the next stand.',
+   'Theo was quiet for a moment before he said, “Mrs. Ortega doesn’t buy perfect ones. She buys the ugly ones for her salsa, and she says the bruised ones are sweeter.”',
+   'Lena looked up from the step. Mrs. Ortega, who lived two houses down, made salsa so good that neighbors traded homemade bread and garden peppers just to get a jar, and Lena had once helped her chop onions and cried for twenty minutes afterward.',
+   '“We don’t know how to make salsa,” Lena said slowly, but she was already standing.',
+   'Mrs. Ortega answered her door in a flour-dusted apron, listened to the whole story, and then surveyed the ruined garden with the calm of someone who had seen many storms. “A tomato doesn’t need to be beautiful to be useful,” she said. “Bring me everything that isn’t rotten. We have four hours.”',
+   'For the rest of the morning they worked without stopping. Theo salvaged what he could, sorting the usable tomatoes from the ones that had to be discarded, while Lena chopped until her eyes streamed and her forearms ached. Mrs. Ortega stirred the pots and added lime, cilantro, and a pinch of something she refused to name. By eleven o’clock, twenty-six jars stood cooling on the counter with their lids glistening.',
+   'At the market, Lena set the jars on her table beside a sign Theo had lettered in black marker: STORM SALSA. MADE FROM THE TOMATOES THE HAIL COULDN’T BEAT. Customers slowed down to read it, laughed, and then reached for their wallets, and by noon the table was empty and the money jar was heavy.',
+   'Walking home, Lena counted the money twice: the summer’s savings plus the morning’s sales came to $420, enough for the deposit and a little more.',
+   '“So,” Theo said, swinging an empty crate, “whose deposit is it?”',
+   'Lena thought about the sorting, the chopping, and the sign. “Ours,” she said. “You said it first.”'],
+  chunks:[{from:1,to:3,en:'Part 1: the goal (1–3)',es:'Parte 1: la meta (1–3)'},{from:4,to:10,en:'Part 2: the storm and the idea (4–10)',es:'Parte 2: la tormenta y la idea (4–10)'},{from:11,to:16,en:'Part 3: the salsa and the ending (11–16)',es:'Parte 3: la salsa y el final (11–16)'}],
+  gloss:[['deposit','money paid ahead of time to hold a place, such as a spot in a program'],['salvaged','saved what could still be used'],['discarded','thrown away'],['surveyed','looked over carefully'],['glistening','shining'],['bruised','soft and marked from being hit']]},
+ items:[
+  {n:1,type:'ms',need:2,dok:1,fmt:'fmt.ms',stem:'Which **two** things did Lena do to care for her tomatoes during the summer? Choose **two** answers.',
+   opts:['She watered them early in the morning.','She tied the vines to cedar stakes.','She covered them with a tarp before the storm.','She sprayed them to keep flies away.','She sold them to Mrs. Ortega every week.'],ans:[0,1],
+   why:'Paragraph 1 says Lena watered the plants before the sun cleared the pines and tied the vines to cedar stakes. The other three things never happen in the story.'},
+  {n:2,type:'dd',dok:2,fmt:'fmt.dd',stem:'Choose the word or phrase from each dropdown that correctly completes the sentence.',
+   parts:['After the hailstorm, Lena feels ',{opts:['hopeful','discouraged','proud','confused'],ans:1},' because she believes that customers at the market will only buy ',{opts:['the cheapest','the largest','perfect-looking','cherry'],ans:2},' tomatoes.'],
+   why:'In paragraphs 5 and 7, Lena sits down hard, says nobody buys ugly tomatoes, and insists that people at the market want perfect ones.'},
+  {n:3,type:'dnd',dok:2,fmt:'fmt.dnd',stem:'Drag each character’s name to the description that best matches what that character does in the story. One description will not be used.',
+   names:['Lena','Theo','Mrs. Ortega'],targets:[{t:'Works hard for a long time to reach a goal',ans:0},{t:'Keeps looking for a way forward when a plan fails',ans:1},{t:'Stays calm and shares what she knows',ans:2},{t:'Refuses to help with the garden',ans:null}],
+   why:'Lena tends the garden all summer (paragraph 1), Theo keeps proposing ideas after the storm (paragraphs 6 and 8), and Mrs. Ortega answers with the calm of someone who has seen many storms and then teaches them (paragraphs 11–12). No one refuses to help.'},
+  {n:4,type:'hs',dok:3,fmt:'fmt.hs',pn:'11',stem:'A theme of the story is that something does not have to be perfect to have value. Select the **one** sentence in paragraph 11 that best supports this theme.',
+   sents:['Mrs. Ortega answered her door in a flour-dusted apron, listened to the whole story, and then surveyed the ruined garden with the calm of someone who had seen many storms.','“A tomato doesn’t need to be beautiful to be useful,” she said.','“Bring me everything that isn’t rotten.','We have four hours.”'],ans:1,
+   why:'This sentence states the idea directly. The other sentences in paragraph 11 describe what Mrs. Ortega does or give instructions.'},
+  {n:5,type:'ms',need:2,dok:3,fmt:'fmt.ms',stem:'At the end of the story, Lena tells Theo the deposit is “ours.” Which **two** statements best explain why her answer changed? Choose **two** answers.',
+   opts:['Theo’s idea about Mrs. Ortega saved Lena’s plan.','Theo sorted the tomatoes and made the sign that sold the salsa.','Theo paid for part of the deposit with his own money.','Lena no longer wants to join the welding program.','Mrs. Ortega told Lena that she had to share the credit.'],ans:[0,1],
+   why:'Paragraph 16 says Lena thought about the sorting, the chopping, and the sign before she answered. Those are Theo’s idea and Theo’s work. The other statements do not happen in the story.'},
+  {n:6,type:'dd',dok:2,fmt:'fmt.dd',stem:'Choose the phrase from each dropdown that correctly completes the sentence.',
+   parts:['Right after Theo says that Mrs. Ortega buys bruised tomatoes, Lena ',{opts:['sits down on the back step','goes to Mrs. Ortega’s house','counts the money jar','makes a sign for the market'],ans:1},'. The last thing that happens in the story is that ',{opts:['the hail falls','the jars sell out','Lena tells Theo the deposit is theirs','Mrs. Ortega stirs the pots'],ans:2},'.'],
+   why:'Paragraph 10 shows Lena already standing, and paragraph 11 opens at Mrs. Ortega’s door. The story ends with Lena’s answer, “Ours,” in paragraph 16.'}],
+ keynote:'DOK 1 — item 1; DOK 2 — items 2, 3, 6; DOK 3 — items 4, 5. CCSS RL.9-10.1 (evidence), RL.9-10.2 (theme), RL.9-10.3 (character), RL.9-10.5 (structure).',
+ keyextra:'<h3>UDL supports</h3><ul><li>Read-aloud, chunked passage (1–3 / 4–10 / 11–16), glossary, text size, dark mode, Spanish directions.</li><li>Every drag can be done by tapping a name and then a box, or with Tab + Enter.</li></ul>'
+};
+
+/* =========================================================
+   SET 2 · SCREENS AND SLEEP · grades 9–12 data analysis
+   ========================================================= */
+var SLEEP_DATA=[{g:'Less than 2',n:6,sleep:8.1},{g:'2 to 4',n:19,sleep:7.6},{g:'4 to 6',n:24,sleep:7.0},{g:'More than 6',n:9,sleep:6.2}];
+var SLEEP={
+ id:'sleep',grade:'Grades 9–12',title:'Screens and Sleep',short:'Screens and Sleep',
+ kind:{en:'Data analysis set',es:'Análisis de datos'},
+ t:{en:{eyebrow:'Grades 9–12 · Data analysis set',lede:'A biology class surveyed tenth graders about screen time and sleep, then one student wrote up the results. Read the table, the graph, and the paragraph together. Some of the student’s claims match the data and some do not — your job is to check.',
+        dirs:['Read the table and the graph first, then the paragraph. The sentences are numbered.','Each question tells you how to answer. When you must choose more than one answer, the question says how many.','Check the student’s claims against the numbers in the table. Do not assume the paragraph is right.'],chips:['5 items','5 formats','DOK 1–3','CCSS HSS-ID · NGSS SEP 4, 7']},
+    es:{eyebrow:'Grados 9–12 · Análisis de datos',lede:'Una clase de biología encuestó a estudiantes de décimo grado sobre el tiempo frente a pantallas y el sueño; luego un estudiante escribió los resultados. Lee la tabla, la gráfica y el párrafo juntos. Algunas afirmaciones coinciden con los datos y otras no: tu trabajo es comprobarlo.',
+        dirs:['Lee primero la tabla y la gráfica, y después el párrafo. Las oraciones están numeradas.','Cada pregunta te dice cómo responder. Cuando debes elegir más de una respuesta, la pregunta dice cuántas.','Compara las afirmaciones del estudiante con los números de la tabla. No supongas que el párrafo tiene razón.'],chips:['5 preguntas','5 formatos','DOK 1–3','CCSS HSS-ID · NGSS SEP 4, 7']}},
+ stim:{type:'graphic',unit:'sent',title:'What Our Survey Shows',label:{en:'The graphic and the student paragraph',es:'La gráfica y el párrafo del estudiante'},
+  units:[
+   'Our class surveyed 58 tenth graders about how many hours they spend on screens each day outside of school and how many hours they sleep on a school night.',
+   'We sorted the responses into four screen-time groups and calculated the average sleep for each group.',
+   'The table shows a clear pattern: as screen time increases, average sleep decreases.',
+   'Every group slept less than the group before it, and the largest drop, 0.8 hours, came between the 4 to 6 hour group and the more than 6 hour group.',
+   'The 4 to 6 hour group was the largest, with 24 students, so it made up more than half of the survey.',
+   'Students with the most screen time slept almost two hours less than students with the least.',
+   'This proves that phones cause teenagers to lose sleep, and that cutting screen time to under two hours would give every student at least eight hours of sleep.',
+   'Our next step is to present these results to the school.'],
+  chunks:[{from:1,to:2,en:'Part 1: method (1–2)',es:'Parte 1: método (1–2)'},{from:3,to:6,en:'Part 2: results (3–6)',es:'Parte 2: resultados (3–6)'},{from:7,to:8,en:'Part 3: conclusion (7–8)',es:'Parte 3: conclusión (7–8)'}],
+  gloss:[['trend','the overall direction the numbers move (up, down, or steady) as you read across the groups'],['average (mean)','the total of all the values divided by how many values there are'],['sample size','how many people were surveyed; a small group makes an average less reliable'],['correlation','two things change together (as one goes up, the other goes up or down)'],['causation','one thing makes the other happen; a survey alone cannot show this'],['relative frequency','the part compared to the whole, such as 24 out of 58 = 41%']]},
+ items:[
+  {n:1,type:'sc',dok:1,fmt:'fmt.sc',std:'RST.9-10.7 · NGSS SEP 4',stem:'According to the table, what was the average sleep for students in the 2 to 4 hour screen-time group?',
+   opts:['8.1 hours','7.6 hours','7.0 hours','6.2 hours'],ans:1,why:'The 2 to 4 hour row of the table lists 7.6 hours of average sleep.'},
+  {n:2,type:'sort',dok:2,fmt:'fmt.sort',std:'HSS-ID.A.2 · NGSS SEP 4',stem:'Drag each label to the statement it fits. Use the numbers in the table to decide. Each label can be used more than once.',
+   labels:['Supported by the table','Not supported by the table'],
+   rows:[{t:'Average sleep decreases as screen time increases.',ans:0},{t:'The 4 to 6 hour group makes up more than half of the students surveyed.',ans:1},{t:'The largest drop in average sleep is between the 4 to 6 hour group and the more than 6 hour group.',ans:0},{t:'More students were in the 2 to 4 hour group than in the 4 to 6 hour group.',ans:1}],
+   why:'Sleep falls 8.1 → 7.6 → 7.0 → 6.2 as screen time rises, and the drops are 0.5, 0.6, and 0.8, so the largest is the last one. But 24 of 58 students is 41%, not more than half, and 19 is fewer than 24.'},
+  {n:3,type:'dd',dok:2,fmt:'fmt.dd',std:'HSS-ID.A.2 · RST.9-10.7',stem:'Choose the option from each dropdown that makes the sentence true.',
+   parts:['Average sleep dropped by exactly 0.6 hours between the ',{opts:['less than 2','2 to 4','4 to 6'],ans:1},' hour group and the next group. The group with the most students slept an average of ',{opts:['7.6','7.0','6.2'],ans:1},' hours.'],
+   why:'7.6 − 7.0 = 0.6 hours between the 2 to 4 and 4 to 6 hour groups (the other drops are 0.5 and 0.8), and the largest group, 4 to 6 hours with 24 students, averaged 7.0 hours.'},
+  {n:4,type:'hs',dok:3,fmt:'fmt.hs',std:'HSS-ID.B.5 · RST.9-10.8',useUnits:true,stem:'One sentence in the paragraph contains an arithmetic error. Select that sentence. Use the table to check the numbers.',ans:4,
+   why:'24 ÷ 58 ≈ 0.41, so the largest group is 41% of the survey, which is less than half. Every other number in the paragraph matches the table.'},
+  {n:5,type:'ms',need:2,dok:3,fmt:'fmt.ms',std:'HSS-ID.C.9 · NGSS SEP 7 · RST.9-10.8',stem:'Sentence 7 says the survey “proves that phones cause teenagers to lose sleep.” Which **two** statements explain why the data do not support this claim? Choose **two** answers.',
+   opts:['The survey shows a pattern between two variables, but it did not test whether one causes the other.','Only six students were in the less than 2 hour group, so that group’s average rests on a very small sample.','The table does not report how many students were in each group.','Average sleep increased as screen time increased.','The survey included students from several different schools.'],ans:[0,1],
+   why:'A survey that sorts students by screen time can show a relationship but cannot show cause (A), and the group that anchors the comparison has only 6 students (B). C and D contradict the table, and E contradicts the source note.'}],
+ ext:{title:{en:'Design a better study',es:'Diseña un mejor estudio'},prompts:[{en:'Sentence 7 claims that phones cause teenagers to lose sleep. Propose a follow-up study that could actually test this claim. Describe (a) what you would change on purpose, (b) what you would keep the same, (c) how many students you would need and why, and (d) what result would support the claim and what result would weaken it.',es:'La oración 7 afirma que los teléfonos hacen que los adolescentes pierdan sueño. Propón un estudio de seguimiento que realmente pueda poner a prueba esta afirmación. Describe (a) qué cambiarías a propósito, (b) qué mantendrías igual, (c) cuántos estudiantes necesitarías y por qué, y (d) qué resultado apoyaría la afirmación y cuál la debilitaría.'}]},
+ keynote:'DOK 1 — item 1; DOK 2 — items 2, 3; DOK 3 — items 4, 5. CCSS HSS-ID.A.2, B.5, C.9; RST.9-10.7, .8; NGSS SEP 4, 7.',
+ keyextra:'<h3>Built-in flaws in the paragraph</h3><ul><li>Accurate — sentences 3, 4, 6 match the table.</li><li>Arithmetic error — sentence 5: 24 ÷ 58 ≈ 41%, not “more than half.”</li><li>Overstated — sentence 7: a causal claim from a correlational survey with a 6-student group anchoring the comparison.</li></ul><h3>Extension</h3><p>A strong design describes an experiment or controlled comparison rather than another survey, holds other sleep factors constant, uses groups larger than six, and names a measurable outcome.</p>'
+};
+
+/* =========================================================
+   SET 3 · THE LAST ROUND · grades 9–12 literary
+   ========================================================= */
+var ROUND={
+ id:'round',grade:'Grades 9–12',title:'The Last Round',short:'The Last Round',
+ kind:{en:'Literary reading set',es:'Lectura literaria'},
+ t:{en:{eyebrow:'Grades 9–12 · Literary reading set',lede:'Edinburgh, October 1932. A lamplighter walks his route on the night the city switches his street to electric light. Read the story, then answer seven questions that ask you to find, compare, analyze, and judge — using the text, not what you already know.',
+        dirs:['Open the Glossary first — five words from 1930s Scotland that nobody expects you to know. Then read the whole story.','Each question tells you how to answer. Paragraph numbers tell you where to look.','Every answer must be supported by the text. If you cannot point to a sentence, look again.'],chips:['7 items','5 formats','DOK 1–3','1000–1100L']},
+    es:{eyebrow:'Grados 9–12 · Lectura literaria',lede:'Edimburgo, octubre de 1932. Un farolero recorre su ruta la noche en que la ciudad cambia su calle a luz eléctrica. Lee el cuento y responde siete preguntas que te piden encontrar, comparar, analizar y juzgar, usando el texto y no lo que ya sabes.',
+        dirs:['Abre primero el Glosario: cinco palabras de la Escocia de 1930 que nadie espera que conozcas. Luego lee todo el cuento.','Cada pregunta te dice cómo responder. Los números de párrafo te dicen dónde buscar.','Cada respuesta debe apoyarse en el texto. Si no puedes señalar una oración, vuelve a mirar.'],chips:['7 preguntas','5 formatos','DOK 1–3','1000–1100L']}},
+ stim:{type:'text',unit:'para',title:'The Last Round',label:{en:'The passage',es:'El cuento'},
+  units:[
+   'Angus Rennie had lit the lamps of the Grassmarket for forty-four years, and he intended to light them as properly on the last night as he had on the first. He left his room at a quarter to five, when the October gloaming was settling over the Old Town like soot, and he carried the long brass pole on his shoulder. A small flame burned at its tip under a brass hood, beside a hook for turning the gas cock, and forty-four years had worn its handle to the shape of his hand.',
+   'At the foot of Candlemaker Row the boy was waiting. Tam Lauder was eleven, thin as a fence post, and he had followed Angus on his round every evening since the spring his father went to the shipyards in Glasgow and did not come back. Angus had never invited him and had never sent him away. “They’re saying it’s the finish tonight,” Tam said, falling into step. “The electric comes on at seven.”',
+   '“So it does,” Angus said, without slowing, because there were sixty-one lamps between here and the Cowgate and the dark did not wait for sentiment.',
+   'He had been a boy himself, younger than Tam, when he first saw a leerie at work. His mother had lifted him to the tenement window to watch the man move down the street, and at each lamp a soft yellow bloom had opened in the dusk, one after another, until the whole street was strung with them like beads. It had seemed to him then that the man was not lighting lamps at all but making the evening itself, summoning it into being with his pole, and he had announced to his mother that he would do that work one day. She had laughed, and then she had seen his face and stopped laughing.',
+   'The first lamp hissed and caught, and Tam counted under his breath. Angus had taught him nothing deliberately, yet the boy knew every lamp that stuck, every cock that needed a double turn, every window where someone would be watching for the light: at number twenty, the baker’s apprentice would nod from the doorway with flour to his elbows. These were not Angus’s friends, exactly. They were his round.',
+   'Halfway down the Cowgate the wind came up the way it did off the Forth, sharp and salted, and the flame at the end of the pole guttered and nearly died. Angus turned his back to shield it and felt in his shoulder a stiffness that had not been there a year ago. He was sixty-seven. In August the council had sent a letter thanking him for his service and informing him that the position of lamplighter would cease to exist on the thirty-first of October. He had read it twice and put it in the drawer with his wife’s letters.',
+   '“Mr. Rennie,” Tam said, when the wind had dropped. “What will you do?”',
+   'He lit number forty and number forty-one, and at forty-two he worked a stuck cock loose with the patience of a man opening a familiar door. “I’ll do what everybody does,” he said at last. “I’ll wake up in the morning.”',
+   'It was not the answer the boy wanted, and the truth was that he had no better one. For forty-four years the shape of his days had been decided by the sun, and he had never once resented it; now the sun would go down and nothing would be required of him. He found that he could not picture it, any more than he could picture the street without its lamps.',
+   'At the last lamp, outside the chapel on the corner, he stopped. Tam stood beside him, waiting as he had waited every night, and Angus understood all at once that the boy was not there for the lamps. He was there for the round itself: for the counting, the nod from the baker’s door, the certainty that someone would walk the same streets at the same hour and make the dark give way. Angus had thought he was lighting lamps. He had been keeping a promise, one that the street had come to depend on, and the promise did not belong to the gas company.',
+   'He held out the pole. “Last one’s yours,” he said.',
+   'Tam took it with both hands. The flame wobbled, and Angus nearly reached out to steady it, but he did not. The boy lifted the hook, found the cock, turned it, and raised the flame to the mantle, and the lamp hissed, caught, and bloomed.',
+   'They stood together beneath it. At seven o’clock, somewhere in a building neither of them had ever seen, a switch was thrown, and the whole length of the Cowgate came on at once, white and even and silent, with no one walking beneath them. It was brighter than the gas had ever been; Angus could see the cobbles, the chapel door, the lines in the boy’s thin face. He could see everything, and nothing was being made.',
+   '“It’s very bright,” Tam said carefully.',
+   '“It is,” said Angus. He took the pole back, shouldered it, and turned toward home, and after a few steps he noticed that the boy was still beside him, keeping pace, counting nothing now, and found that he did not mind. The round was finished. The walk, it seemed, was not.'],
+  chunks:[{from:1,to:4,en:'Part 1: the round begins (1–4)',es:'Parte 1: empieza la ronda (1–4)'},{from:5,to:9,en:'Part 2: the walk and the letter (5–9)',es:'Parte 2: la caminata y la carta (5–9)'},{from:10,to:15,en:'Part 3: the last lamp (10–15)',es:'Parte 3: el último farol (10–15)'}],
+  gloss:[['leerie','Scots word for a lamplighter, the person who lit the city’s gas street lamps each evening'],['gloaming','twilight; the dim light after sunset'],['tenement','a tall city building divided into many small apartments, common in Scottish cities'],['gas cock','the small valve on a gas lamp that is turned to let the gas flow'],['mantle','the mesh cap inside a gas lamp that glows white when the flame heats it'],['the Forth','the sea inlet north of Edinburgh; the Grassmarket, Candlemaker Row, and the Cowgate are real streets in the Old Town']]},
+ items:[
+  {n:1,type:'sc',dok:1,bloom:'bloom.understand',fmt:'fmt.sc',stem:'According to paragraph 2, why did Tam begin following Angus on his round?',
+   opts:['Angus hired him as an apprentice lamplighter.','His father went to Glasgow and did not come back.','He hoped to get a job with the gas company.','His mother asked Angus to look after him.'],ans:1,
+   why:'Paragraph 2: Tam “had followed Angus on his round every evening since the spring his father went to the shipyards in Glasgow and did not come back.” The same paragraph says Angus “had never invited him,” which rules out A and D; C confuses Tam with Angus’s own boyhood wish in paragraph 4.'},
+  {n:2,type:'order',dok:2,bloom:'bloom.understand',fmt:'fmt.order',stem:'Drag the events into the order in which they happened in Angus’s life. The story does not tell them in this order.',
+   events:['The wind off the Forth nearly puts out the flame on the pole.','The council’s letter arrives in August.','Tam asks Angus what he will do.','The electric lights come on all along the Cowgate.','Angus’s mother lifts him to the window to watch a leerie.','Angus hands the pole to Tam.'],ans:[4,1,0,2,5,3],
+   why:'The flashback in paragraph 4 is Angus’s childhood, and paragraph 6 says the letter came “in August,” before this October night. After that the events follow the walk: the wind (paragraph 6), Tam’s question (7), the hand-off (11), the electric lights (13).'},
+  {n:3,type:'dd',dok:2,bloom:'bloom.understand',fmt:'fmt.dd',stem:'Choose the option from each dropdown that best completes the statement.',
+   parts:['The narrator’s tone toward Angus is best described as ',{opts:['mocking','respectful','impatient'],ans:1},'. In paragraph 13, describing the electric lights as “white and even and silent” makes them seem ',{opts:['welcoming','impersonal','dangerous'],ans:1},' compared with the gas lamps.'],
+   why:'The narrator credits Angus with skill and intention (“the patience of a man opening a familiar door,” paragraph 8) and never ridicules him. In paragraph 13 the lights come on “with no one walking beneath them,” and “nothing was being made” — light without a person, which is what “impersonal” names.'},
+  {n:4,type:'hs',dok:3,bloom:'bloom.analyze',fmt:'fmt.hs',pn:'10',stem:'Paragraph 10 is the moment Angus changes how he understands his own work. Select the **one** sentence in paragraph 10 in which Angus names what his work has really been.',
+   sents:['At the last lamp, outside the chapel on the corner, he stopped.','Tam stood beside him, waiting as he had waited every night, and Angus understood all at once that the boy was not there for the lamps.','He was there for the round itself: for the counting, the nod from the baker’s door, the certainty that someone would walk the same streets at the same hour and make the dark give way.','Angus had thought he was lighting lamps.','He had been keeping a promise, one that the street had come to depend on, and the promise did not belong to the gas company.'],ans:4,
+   why:'This sentence renames the work: “keeping a promise.” The sentence before it states the old view, and the two sentences about Tam explain what the boy wants, not what Angus’s work has been.'},
+  {n:5,type:'ms',all:true,dok:3,bloom:'bloom.analyze',fmt:'fmt.msall',stem:'Why does Angus hand the pole to Tam at the last lamp? **Select all that apply.**',
+   opts:['He has realized that the round matters to Tam, not just the lamps.','His shoulder is too stiff to lift the pole.','He wants to pass on the promise that the street has come to depend on.','The council has ordered him to train a replacement.','He wants to show Tam how difficult the work is.'],ans:[0,2],
+   why:'Paragraph 10: Angus “understood all at once that the boy was not there for the lamps” (A) and that he “had been keeping a promise” (C), and the hand-off in paragraph 11 follows directly. B fails because he shoulders the pole again in paragraph 15; D fails because the letter ends the position and orders nothing; E has no support in the text.'},
+  {n:6,type:'sc',dok:3,bloom:'bloom.analyze',fmt:'fmt.sc',stem:'Paragraph 4 interrupts the story to describe Angus as a boy watching a leerie. What is the main effect of this paragraph?',
+   opts:['It explains why Tam decided to follow Angus.','It shows that Angus has seen his work as a kind of wonder since childhood, which makes its ending matter more.','It suggests that Angus wishes he had chosen a different trade.','It introduces the council’s decision to end the lamplighter’s position.'],ans:1,
+   why:'Paragraph 4 shows the lamps as “a soft yellow bloom” and the leerie “making the evening itself” — a childhood wonder that paragraph 13 answers with “nothing was being made.” Paragraph 2 explains Tam (A), nothing suggests regret (C), and the council’s letter is in paragraph 6 (D).'},
+  {n:7,type:'sc',dok:3,bloom:'bloom.evaluate',fmt:'fmt.sc',stem:'Which claim about the ending of the passage is **best supported** by the text?',
+   opts:['Although the job has ended, something of Angus’s round will continue through Tam.','Angus regrets having let Tam follow him for so long.','The electric lights have made the street warmer and more welcoming.','Angus intends to ask the council to give him back his position.'],ans:0,
+   why:'Paragraph 15: the boy is “still beside him, keeping pace,” and the story ends, “The round was finished. The walk, it seemed, was not.” Angus “found that he did not mind” (not B); the lights are “white and even and silent” (not C); his only plan is “I’ll wake up in the morning” (not D).'}],
+ ext:{title:{en:'The author’s craft',es:'El oficio del autor'},
+  stems:{en:['The sentence that shows Angus’s realization is “…” because before it he believed … and after it he …','Angus hands Tam the pole because … . The text supports this in paragraph …, where …','The flashback in paragraph 4 matters because it shows …, which makes the ending …','The author describes the electric lights as … ; this word choice makes them seem …','One place the pattern of light appears is paragraph …, where … . It contributes to the theme by …'],
+         es:['La oración que muestra lo que Angus comprende es “…” porque antes creía … y después …','Angus le da el poste a Tam porque … . El texto lo apoya en el párrafo …, donde …','El recuerdo del párrafo 4 importa porque muestra …, lo cual hace que el final …','El autor describe las luces eléctricas como … ; esta elección de palabras las hace parecer …','Un lugar donde aparece el patrón de la luz es el párrafo …, donde … . Contribuye al tema porque …']},
+  prompts:[{en:'The author builds the passage around light: the “soft yellow bloom” of the gas lamps, the pole’s small flame that the wind nearly kills, and the electric light that is “white and even and silent.” Evaluate how effectively the author uses this pattern, together with the parallel between young Angus at the window (paragraph 4) and Tam on the street, to develop a theme about what is lost and what continues when a way of life ends. Cite at least three places in the text and explain how each one contributes.',es:'El autor construye el texto alrededor de la luz: el “suave resplandor amarillo” de los faroles de gas, la pequeña llama del poste que el viento casi apaga y la luz eléctrica que es “blanca, pareja y silenciosa”. Evalúa qué tan bien usa el autor este patrón, junto con el paralelo entre el joven Angus en la ventana (párrafo 4) y Tam en la calle, para desarrollar un tema sobre lo que se pierde y lo que continúa cuando termina una forma de vida. Cita al menos tres lugares del texto y explica cómo contribuye cada uno.'}]},
+ keynote:'DOK 1 — item 1; DOK 2 — items 2, 3; DOK 3 — items 4–7. Bloom’s: Understand (1–3), Analyze (4–6), Evaluate (7). CCSS RL.9-10.1, .3, .4, .5; RL.9-10.2 for the extension.',
+ keyextra:'<h3>Extension: what a strong response does</h3><p>Names the theme in its own words; traces the light pattern across the flashback (4), the wind scene (6), the hand-off (12), and the final paragraph (13); connects Tam’s counting and “keeping pace” to young Angus’s promise; and judges the final sentence as the payoff of the pattern rather than describing it only.</p>'
+};
+
+/* =========================================================
+   SET 4 · THE POT-IN-POT COOLER · grades 9–12 science
+   ========================================================= */
+var COOL_DATA=[[0,31.0,31.0,31.0],[1,31.0,28.5,27.0],[2,31.2,27.0,24.5],[3,31.2,26.4,23.2],[4,31.1,26.0,22.4],[5,31.0,25.9,22.0]];
+var COOL_REGIONS=['Wall of the outer pot (porous clay)','Wet sand between the pots','Wall of the inner pot','Space inside the inner pot, with the thermometer','Cloth lid','Box fan and airflow'];
+var COOLER={
+ id:'cooler',grade:'Grades 9–12',title:'The Pot-in-Pot Cooler',short:'Pot-in-Pot Cooler',
+ kind:{en:'Science investigation set',es:'Investigación científica'},
+ t:{en:{eyebrow:'Grades 9–12 · Science investigation set',lede:'A physical science class tested a refrigerator that runs on evaporation instead of electricity. Read the background, study the figure and the procedure, check the student’s report against the data, and then answer seven questions.',
+        dirs:['Read all four parts of the investigation: Background, Figure, Procedure, and Report. Use the tabs to focus on one at a time.','Each question tells you how many responses are correct and where to look.','The student who wrote the report made some good calls and some mistakes. Check every claim against the table and the procedure.'],chips:['7 items','5 formats','DOK 1–3','NGSS HS-PS3-4 · HS-ETS1-3']},
+    es:{eyebrow:'Grados 9–12 · Investigación científica',lede:'Una clase de ciencias físicas probó un refrigerador que funciona con evaporación en lugar de electricidad. Lee los antecedentes, estudia la figura y el procedimiento, compara el informe del estudiante con los datos y responde siete preguntas.',
+        dirs:['Lee las cuatro partes de la investigación: Antecedentes, Figura, Procedimiento e Informe. Usa las pestañas para enfocarte en una a la vez.','Cada pregunta te dice cuántas respuestas son correctas y dónde buscar.','El estudiante que escribió el informe acertó en algunas cosas y se equivocó en otras. Comprueba cada afirmación con la tabla y el procedimiento.'],chips:['7 preguntas','5 formatos','DOK 1–3','NGSS HS-PS3-4 · HS-ETS1-3']}},
+ stim:{type:'investigation',title:'Keeping Food Cool',label:{en:'The investigation',es:'La investigación'},
+  bg:['In many hot regions of the world, families keep food fresh without electricity by using a pot-in-pot cooler, sometimes called a zeer.','The device is simple: a small clay pot sits inside a larger clay pot, and the gap between them is packed with wet sand.','Both pots are unglazed, which means the clay is porous — full of tiny holes that let water pass through slowly.','Water from the sand seeps into the outer pot and evaporates from its surface.','Evaporation is the change from liquid to gas, and it takes energy.','That energy comes from the surroundings, so the pot and everything inside it lose heat and become cooler.','Two conditions control how fast evaporation happens.','The first is airflow: moving air carries water vapor away from the surface, so more water can evaporate.','The second is relative humidity, the amount of water vapor already in the air compared with the most it can hold at that temperature.','When the air is dry, evaporation is rapid; when the air is nearly saturated, it slows almost to a stop.','A tenth-grade physical science class built two coolers and a control to test whether airflow changes how much a pot-in-pot cooler can lower the temperature inside it.'],
+  bgBreaks:[6,10],
+  materials:['2 large unglazed clay pots, 30 cm across','3 small unglazed clay pots, 20 cm across (two for the coolers, one for the control)','8 kg of dry play sand','4 L of tap water and a 500 mL measuring cup','3 digital thermometers with probes on wires (reads to 0.1 °C)','1 box fan with a low setting','3 cotton cloths large enough to cover a pot','1 room thermometer and 1 humidity meter for the porch','clock or timer'],
+  steps:['Soak the two large pots and two of the small pots in water for 10 minutes. Leave the third small pot dry; it is the control.','Put a 3 cm layer of sand in the bottom of each large pot, set a small pot inside, and pack sand into the gap up to the rim. Pour 1.5 L of water slowly into the sand of each cooler. Label the coolers Pot A and Pot B.','Place all three pots in the shade on the school’s covered porch. Put Pot A near the open end of the porch, where a light breeze was noted, with the box fan 1 m away on its low setting. Put Pot B and the control at the back of the porch, away from the fan.','Hang a thermometer probe in the middle of each small pot (Pot A, Pot B, and the control), lay a dry cloth across the top of each, and record the inside temperature at hour 0 and then every hour for 5 hours. Record the porch temperature and relative humidity at the same times.','At hour 3, the sand in Pot A felt dry on top, so add 0.5 L of water to Pot A only. Continue recording until hour 5, then calculate the total temperature drop for each pot.'],
+  report:['All three pots started at 31.0 °C, the temperature of the porch.','The control pot, which had no sand or water, stayed between 31.0 and 31.2 °C for the whole test.','Both coolers dropped quickly in the first hour and then more slowly, which suggests that the sand was wettest and evaporation fastest at the start.','With the fan running, Pot A dropped 9.0 °C, almost twice the 5.1 °C drop of Pot B, which had the same sand and water but no fan.','The relative humidity on the porch stayed near 35 percent all afternoon.','We concluded that evaporation from the wet sand pulled heat out of the inner pot, and that moving air made the evaporation faster.','Because the cooler needs no electricity except the fan, it would work just as well during a humid Mississippi summer, when families need to keep food cool.','Our next step is to test the cooler with a carton of milk inside to see whether it stays below 10 °C.'],
+  gloss:[['evaporation','a liquid changing into a gas; it takes energy, so the surface it leaves gets cooler'],['porous','full of tiny holes that let water or air pass through slowly (unglazed clay is porous)'],['relative humidity','how much water vapor the air already holds, as a percent of the most it can hold; high humidity means slow evaporation'],['independent variable','the one thing the experimenter changes on purpose (here, the fan)'],['dependent variable','the thing that is measured to see the effect (here, the temperature inside the pot)'],['controlled variable','anything kept the same for all setups so it cannot cause the difference'],['control','the setup with no treatment, used for comparison (here, the dry pot)']]},
+ items:[
+  {n:1,type:'dnd',dok:1,fmt:'fmt.dnd',stem:'Drag each part of the investigation to its role. Each role is used once. (One match per role.)',
+   names:['airflow from the fan','temperature inside the inner pot','1.5 L of water in the sand','the dry pot with no sand'],
+   targets:[{t:'Independent variable (what the class changed on purpose)',ans:0},{t:'Dependent variable (what the class measured)',ans:1},{t:'Controlled variable (kept the same for Pots A and B)',ans:2},{t:'Control setup (the comparison with no treatment)',ans:3}],
+   why:'The class changed only the fan (step 3), measured temperature (step 4), gave both coolers the same water (step 2), and kept one untreated pot for comparison (step 1). A controlled variable is kept the same; the control is the setup with no treatment.'},
+  {n:2,type:'dd',dok:1,fmt:'fmt.dd',stem:'Choose the value from each dropdown that makes the sentence true. (One correct choice per dropdown.)',
+   parts:['At hour 5, the inside temperature of Pot A was ',{opts:['22.0','25.9','31.0'],ans:0},' °C, which is ',{opts:['3.9','5.1','9.0'],ans:2},' °C lower than the control at the same time.'],
+   why:'Table 1, hour 5: Pot A 22.0 °C and control 31.0 °C; 31.0 − 22.0 = 9.0. The value 25.9 belongs to Pot B, 5.1 is Pot B’s drop, and 3.9 is the gap between A and B.'},
+  {n:3,type:'ms',all:true,need:3,dok:2,fmt:'fmt.msall',stem:'Which statements are supported by Table 1? **Select all that apply.** (Three are correct.)',
+   opts:['After hour 0, both coolers were cooler than the control at every reading.','Pot A cooled more during the first hour than Pot B did.','The control pot’s temperature dropped steadily over the 5 hours.','More than half of Pot A’s total cooling happened in the first two hours.','Pot B ended the test colder than Pot A.'],ans:[0,1,3],
+   why:'Every cooler reading from hour 1 on is below the control’s (A); Pot A fell 4.0 °C in hour 1 while Pot B fell 2.5 °C (B); Pot A fell 6.5 of its 9.0 °C by hour 2, which is 72% (D). The control wobbled between 31.0 and 31.2 and ended where it started, and Pot B ended at 25.9, warmer than Pot A at 22.0.'},
+  {n:4,type:'hs',dok:3,fmt:'fmt.sel',useReport:true,stem:'Select the **one** sentence from the student report that best supports the claim that moving air increases evaporative cooling.',ans:3,
+   why:'Sentence 4 is the only sentence that compares the fan and no-fan coolers with numbers while noting that the other conditions matched. Sentence 6 states the conclusion but gives no evidence; sentence 3 is about timing; sentence 5 is about humidity.'},
+  {n:5,type:'ms',all:true,need:2,dok:2,fmt:'fmt.msall',stem:'The class wants to conclude that the fan alone caused Pot A to cool more than Pot B. Which parts of the procedure make that conclusion harder to defend? **Select all that apply.** (Two are correct.)',
+   opts:['Step 1: the cooler pots were soaked for 10 minutes before the sand was added.','Step 3: Pot A was placed where a breeze was already blowing, while Pot B was not.','Step 4: readings were taken every hour instead of every half hour.','Step 5: 0.5 L of water was added to Pot A only.','Step 4: the cloths on the pots were dry.'],ans:[1,3],
+   why:'Pot A received two extras the fan comparison did not control: a natural breeze from its position (step 3) and 0.5 L of added water at hour 3 (step 5), so either could explain part of its larger drop. Soaking and dry cloths were the same for both coolers, and hourly readings change the detail of the data, not the cause of the difference.'},
+  {n:6,type:'fig',dok:2,fmt:'fmt.fig',stem:'Select the **one** region of Figure 1 where the water that was poured into the sand changes to vapor and carries heat away from the cooler.',ans:0,
+   why:'The background says water “seeps into the outer pot and evaporates from its surface,” and the figure draws vapor arrows rising from Region 1. Region 2 stores the water, Region 4 is where the cooling is felt, Region 6 moves air but holds no water, and the cloth (Region 5) was dry in this test.'},
+  {n:7,type:'dd',dok:3,fmt:'fmt.dd',stem:'Choose the option from each dropdown that best evaluates sentence 7 of the report. (One correct choice per dropdown.)',
+   parts:['The claim that the cooler “would work just as well during a humid Mississippi summer” is ',{opts:['well supported','not supported'],ans:1},' by this investigation, because evaporation ',{opts:['speeds up','slows down','does not change'],ans:1},' when the air already holds a lot of water vapor, and the class tested the cooler at a relative humidity of only ',{opts:['35%','65%','95%'],ans:0},'.'],
+   why:'The background explains that evaporation slows as the air nears saturation, and the table note and sentence 5 show the test was run in dry air (35%), so the result cannot be extended to humid conditions.'}],
+ ext:{title:{en:'Go further',es:'Ir más allá'},prompts:[
+  {en:'Calculation beyond the data. Using Table 1, calculate Pot A’s average cooling rate in °C per hour for hours 0–2 and for hours 3–5. Explain, using the background, why the two rates are so different, and predict the hour 6 reading if the pattern continued.',es:'Cálculo más allá de los datos. Con la Tabla 1, calcula la rapidez promedio de enfriamiento de la Olla A en °C por hora para las horas 0–2 y para las horas 3–5. Explica, usando los antecedentes, por qué las dos tasas son tan distintas y predice la lectura de la hora 6 si el patrón continuara.'},
+  {en:'Alternative procedure. Design a fair test of sentence 7’s claim about humidity. Describe how you would raise the humidity for one cooler while keeping sand, water, airflow, pot size, and starting temperature the same, what you would measure, and what result would support or refute the claim.',es:'Procedimiento alternativo. Diseña una prueba justa de la afirmación de la oración 7 sobre la humedad. Describe cómo aumentarías la humedad para una de las neveras manteniendo iguales la arena, el agua, el flujo de aire, el tamaño de las ollas y la temperatura inicial, qué medirías y qué resultado apoyaría o refutaría la afirmación.'}]},
+ keynote:'DOK 1 — items 1, 2; DOK 2 — items 3, 5, 6; DOK 3 — items 4, 7. NGSS HS-PS3-4, HS-ETS1-3; SEP 3, 4, 7.',
+ keyextra:'<h3>Built-in flaws</h3><ul><li>Procedure — step 3 gives Pot A a natural breeze Pot B lacks; step 5 re-wets Pot A only (item 5).</li><li>Conclusion — sentence 7 extends a 35%-humidity result to humid conditions (item 7).</li></ul><h3>Extension: expected responses</h3><ul><li>Rates — hours 0–2: 6.5 ÷ 2 = 3.25 °C/h; hours 3–5: 1.2 ÷ 2 = 0.6 °C/h; a reasonable hour 6 prediction is 21.6–21.9 °C.</li><li>Fair humidity test — change only humidity, same sand/water/airflow/pot size/start temperature, hourly readings, predict a smaller drop at high humidity.</li></ul>'
+};
+
+
+/* =========================================================
+   SET 5 · FIX IT YOURSELF · grades 9–12 argument essay
+   ========================================================= */
+var ARGUE={
+ id:'repair',grade:'Grades 9–12',title:'Fix It Yourself',short:'Fix It Yourself',
+ kind:{en:'Argument essay set',es:'Ensayo argumentativo'},
+ t:{en:{eyebrow:'Grades 9–12 · Argument and support set',lede:'A tenth grader wrote an argument essay about a law most people have never heard of. Read the task the student was given, then the essay, and answer six questions about the claim, the reasons, the evidence, and how well they hold together.',
+        dirs:['Read the task first so you know what the writer was asked to do. Then read the whole essay; paragraphs and sentences are numbered.','Each question tells you how many responses are correct. Some ask about what the writer says; others ask how well the writer supports it.','Judge the essay by its evidence and reasoning, not by whether you agree with the writer.'],chips:['6 items','5 formats','DOK 1–3','Argument & support']},
+    es:{eyebrow:'Grados 9–12 · Argumento y apoyo',lede:'Un estudiante de décimo grado escribió un ensayo argumentativo sobre una ley de la que casi nadie ha oído hablar. Lee la tarea que recibió el estudiante, luego el ensayo, y responde seis preguntas sobre la afirmación, las razones, la evidencia y qué tan bien se sostienen.',
+        dirs:['Lee primero la tarea para saber qué se le pidió al escritor. Luego lee todo el ensayo; los párrafos y las oraciones están numerados.','Cada pregunta te dice cuántas respuestas son correctas. Algunas preguntan qué dice el escritor; otras, qué tan bien lo apoya.','Juzga el ensayo por su evidencia y su razonamiento, no por si estás de acuerdo con el escritor.'],chips:['6 preguntas','5 formatos','DOK 1–3','Argumento y apoyo']}},
+ stim:{type:'text',unit:'para',title:'Fix It Yourself: Why Our State Needs a Right-to-Repair Law',label:{en:'The task and the student essay',es:'La tarea y el ensayo del estudiante'},
+  task:{en:'The task the student was given: “Take a position on whether our state should pass a right-to-repair law for electronics. Support your position with reasons and evidence, and respond to at least one opposing view.” The essay below was written by a student in grade 10.',
+        es:'La tarea que recibió el estudiante: “Toma una posición sobre si nuestro estado debe aprobar una ley de derecho a reparar para aparatos electrónicos. Apoya tu posición con razones y evidencia, y responde al menos a un punto de vista opuesto.” El ensayo siguiente fue escrito por un estudiante de décimo grado.'},
+  units:[
+   'Last spring my phone’s battery stopped holding a charge. The phone was two years old and worked fine otherwise, but the store told me the battery was glued in and could only be replaced by the manufacturer for $119, nearly half of what the phone had cost. I ended up buying a new phone, and the old one went into a drawer. My experience is not unusual, and it is the reason I believe our state should pass a right-to-repair law for electronics. Such a law would require manufacturers to sell replacement parts and publish repair manuals so that owners and independent shops can fix the devices people already own.',
+   'The first reason is cost. Independent repair shops usually charge far less than manufacturers because they compete with one another. A survey of 400 phone owners by a consumer group in our region found that an independent battery replacement averaged $45, compared with $110 at the manufacturer. For a family with three phones, that difference adds up. When repair is affordable, people keep devices longer and spend the savings elsewhere.',
+   'The second reason is waste. Electronics contain metals that must be mined, and every discarded phone is a small pile of them. According to the state’s environmental agency, residents threw away an estimated 2,800 tons of electronics last year, and less than one-fifth of it was recycled. Devices that could be repaired for the price of a part instead sit in landfills. A repair law would not solve the whole problem, but it would slow the flow.',
+   'Manufacturers argue that opening devices to outside repair is dangerous, because an untrained person could puncture a battery or install a faulty part. This concern is reasonable, but it proves too much. Cars are far more dangerous than phones, yet car makers have been required to share repair information with independent mechanics for years, and people are not afraid to drive. The solution to unsafe repair is good instructions and genuine parts, which is exactly what the law would require. Besides, everyone I know who has tried to fix a phone has done it carefully.',
+   'A right-to-repair law would save families money, keep working devices out of landfills, and treat the people who buy electronics as owners rather than renters. Our state should pass one this year.'],
+  chunks:[{from:1,to:1,en:'Part 1: the claim (1)',es:'Parte 1: la afirmación (1)'},{from:2,to:3,en:'Part 2: the reasons (2–3)',es:'Parte 2: las razones (2–3)'},{from:4,to:5,en:'Part 3: the other side and the ending (4–5)',es:'Parte 3: el otro lado y el final (4–5)'}],
+  gloss:[['right-to-repair law','a law that makes companies sell parts and share instructions so owners and independent shops can fix products'],['manufacturer','the company that makes a product'],['independent repair shop','a repair business not owned by the manufacturer'],['claim','the position the writer argues for'],['counterclaim','an opposing view the writer brings up in order to answer it'],['rebuttal','the writer’s answer to the counterclaim'],['anecdote','a short personal story used as support; it shows one case, not a pattern']]},
+ items:[
+  {n:1,type:'sc',dok:1,fmt:'fmt.sc',stem:'What does the writer want the state to do?',
+   opts:['Ban glued-in phone batteries.','Require manufacturers to sell replacement parts and publish repair manuals.','Lower the price of new phones.','Pay for electronics recycling programs.'],ans:1,
+   why:'Paragraph 1 defines the law the writer supports: it “would require manufacturers to sell replacement parts and publish repair manuals.” The glued-in battery is the writer’s story, not the proposal; prices and recycling are reasons, not the demand.'},
+  {n:2,type:'dnd',dok:2,fmt:'fmt.dnd',stem:'Drag each statement from the essay to the role it plays in the argument. Each role is used once. (One match per role.)',
+   names:['Our state should pass a right-to-repair law for electronics.','Independent repair shops usually charge far less than manufacturers.','An independent battery replacement averaged $45, compared with $110 at the manufacturer.','Opening devices to outside repair is dangerous.','Car makers have shared repair information with mechanics for years, and people are not afraid to drive.'],
+   targets:[{t:'Claim (the writer’s position)',ans:0},{t:'Reason (why the claim is right)',ans:1},{t:'Evidence (facts that back a reason)',ans:2},{t:'Counterclaim (the opposing view)',ans:3},{t:'Rebuttal (the answer to the opposing view)',ans:4}],
+   why:'The claim is stated in paragraph 1; the cost reason and its survey evidence are in paragraph 2; the manufacturers’ safety concern and the car comparison that answers it are in paragraph 4. Students often label the survey numbers as a reason or the car comparison as a counterclaim.'},
+  {n:3,type:'hs',dok:3,fmt:'fmt.sel',pn:'4',stem:'Select the **one** sentence in paragraph 4 that gives the weakest support for the writer’s argument because it relies on personal experience instead of evidence a reader could check.',
+   sents:['Manufacturers argue that opening devices to outside repair is dangerous, because an untrained person could puncture a battery or install a faulty part.','This concern is reasonable, but it proves too much.','Cars are far more dangerous than phones, yet car makers have been required to share repair information with independent mechanics for years, and people are not afraid to drive.','The solution to unsafe repair is good instructions and genuine parts, which is exactly what the law would require.','Besides, everyone I know who has tried to fix a phone has done it carefully.'],ans:4,
+   why:'“Everyone I know” is a small, unverifiable personal sample — an anecdote offered as if it were a pattern. The car comparison and the point about instructions and parts are reasoning a reader can test; the first two sentences present and evaluate the counterclaim.'},
+  {n:4,type:'dd',dok:2,fmt:'fmt.dd',stem:'Choose the option from each dropdown that best describes the essay. (One correct choice per dropdown.)',
+   parts:['The writer organizes the essay by ',{opts:['stating a claim and then giving reasons for it','telling a story from beginning to end','comparing two brands of phone'],ans:0},'. The writer answers the manufacturers’ concern mainly by ',{opts:['agreeing that repairs should stay with manufacturers','comparing phones to cars','ignoring the concern'],ans:1},'.'],
+   why:'Paragraph 1 ends with the claim, paragraphs 2 and 3 each open with “The first reason” and “The second reason,” and paragraph 4 answers the safety concern with the car comparison. The opening story is a hook, not the organizing pattern.'},
+  {n:5,type:'zone',dok:2,fmt:'fmt.zone',stem:'Select the **one** paragraph that presents an opposing view and then responds to it.',ans:3,
+   why:'Paragraph 4 begins “Manufacturers argue…” (the counterclaim) and then answers it (“This concern is reasonable, but…”). Paragraphs 2 and 3 give the writer’s own reasons; paragraph 5 restates the claim.'},
+  {n:6,type:'ms',all:true,need:2,dok:3,fmt:'fmt.msall',stem:'Which revisions would most strengthen the essay’s evidence? **Select all that apply.** (Two are correct.)',
+   opts:['Replace the sentence about “everyone I know” with data on how often independent repairs succeed or fail.','Give the name, date, and source of the 400-owner survey so readers can check it.','Add more details about the writer’s own broken phone.','Remove the manufacturers’ concern so readers are not confused.','Replace the environmental agency’s figure with the writer’s opinion about waste.'],ans:[0,1],
+   why:'A and B replace or document weak evidence with checkable evidence. C adds to the anecdote, D removes the counterclaim the task required, and E trades a sourced figure for an opinion.'}],
+ ext:{title:{en:'Repair the evidence',es:'Repara la evidencia'},
+  stems:{en:['The weakest sentence is “…” because …','A reader could check my replacement because it comes from …','My replacement sentence: “…”'],es:['La oración más débil es “…” porque …','Un lector podría comprobar mi reemplazo porque viene de …','Mi oración de reemplazo: “…”']},
+  prompts:[{en:'The last sentence of paragraph 4 is the essay’s weakest evidence. Write one or two sentences the writer could use instead that support the rebuttal with evidence a reader could check, and name the kind of source you would use (a study, an agency report, a survey, an expert). Then explain in one sentence why your version is stronger.',es:'La última oración del párrafo 4 es la evidencia más débil del ensayo. Escribe una o dos oraciones que el escritor podría usar en su lugar para apoyar la refutación con evidencia que un lector pueda comprobar, y nombra el tipo de fuente que usarías (un estudio, un informe de una agencia, una encuesta, un experto). Luego explica en una oración por qué tu versión es más fuerte.'}]},
+ keynote:'DOK 1 — item 1; DOK 2 — items 2, 4, 5; DOK 3 — items 3, 6. CCSS RI.9-10.8 (evaluate the argument and claims), RI.9-10.5 (structure), W.9-10.1 (argument writing, for the extension).',
+ keyextra:'<h3>Built into the essay</h3><ul><li><b>Sound structure</b> — claim (1), two reasons with evidence (2–3), counterclaim and rebuttal (4), conclusion (5).</li><li><b>Weak spot</b> — paragraph 4’s last sentence is an anecdote presented as a pattern (items 3 and 6).</li><li><b>Unsourced evidence</b> — the 400-owner survey has no name or date (item 6).</li></ul><h3>Extension: what a strong response does</h3><p>Replaces the anecdote with a checkable claim (for example, repair-outcome data from a consumer agency or a study of independent shops), names the source type, and explains that a reader can verify it while “everyone I know” cannot be checked and describes only a few people.</p>'
+};
+
+var SETS=[SALSA,SLEEP,ROUND,COOLER,ARGUE];
+
+/* ---------- shared strings ---------- */
+var T={
+ en:{'dir.title':'Directions','sec.dir':'Directions','sec.results':'Results','sec.ext':'Extension','res.title':'My results',
+  'rail.answered':'Answered','rail.score':'Score','rail.audio':'Read aloud','rail.chunks':'Chunked text','rail.wb':'Glossary','rail.size':'Text size','rail.lang':'Español','rail.theme':'Dark mode','rail.reset':'Reset this set',
+  'mode.practice':'Practice','mode.test':'Test','reset.arm':'Sure? Tap again','reset.done':'This set was cleared.',
+  'btn.read':'Read aloud','btn.stop':'Stop','btn.check':'Check my answer','btn.again':'Try again','btn.save':'Answer saved','btn.submit':'Submit all {n}','btn.next':'Next',
+  'fmt.sc':'Single select','fmt.ms':'Multiple select','fmt.msall':'Select all that apply','fmt.dd':'Drop-down','fmt.dnd':'Drag and drop match','fmt.sort':'Drag and drop sort','fmt.order':'Drag to order','fmt.hs':'Hot spot','fmt.sel':'Sentence selection','fmt.fig':'Hot spot on the figure','fmt.zone':'Hot spot zone',
+  'bloom.understand':'Understand','bloom.analyze':'Analyze','bloom.evaluate':'Evaluate',
+  'item':'Item','dok':'DOK','sel.count':'{a} selected','sel.exact':'Choose exactly {n}.','sel.need':'{n} are correct.','sel.min':'Select every answer that applies.',
+  'dd.pick':'Choose…','dnd.bank':'Drag a name to a box, or tap it and then tap the box','dnd.slot':'Drop here','dnd.notused':'Not used','sort.bank':'Drag a label onto a statement, or tap it and then tap the statement','order.bank':'Drag each event into a numbered slot, or tap it and then tap the slot','order.slot':'Drop an event here',
+  'hs.hint':'Tap a sentence to select it. Tap again to unselect.','fig.hint':'Tap a region of the figure to select it. Tap again to unselect.','zone.hint':'Tap a paragraph to select it. Tap again to unselect.','task.h':'The task',
+  'fb.ok':'Correct','fb.no':'Not yet','fb.first':'First try counts for your score.','fb.again':'Practice again — your first try is already counted.',
+  'answered':'{a} of {n} answered','test.locked':'Test mode: answers are checked when you submit.',
+  'res.none':'Answer the questions to see your results here.','res.testwait':'Test mode: {a} of {n} answered. Submit when all are done.',
+  'res.item':'Item','res.result':'Result','res.name':'Your name','res.copy':'Copy my results','res.copied':'Copied.','res.copyfail':'Copy is blocked here — select the text below and copy it.',
+  'res.bydok':'By Depth of Knowledge','res.first':'First tries only.','res.all':'All five sets',
+  'band.a':'Ready for the real thing','band.b':'Strong — review the misses','band.c':'Getting there — reread what the questions point to','band.d':'Keep going — open the glossary, then try again',
+  'ext.copy':'Copy my answers','ext.copied':'Copied. Paste it where your teacher asked.','ext.copyfail':'Copy is blocked here — select the text below and copy it.','ext.stems':'Sentence stems if you need a start',
+  'tab.all':'All','tab.bg':'Background','tab.fig':'Figure 1','tab.proc':'Procedure','tab.rep':'Report','bg.h':'Keeping Food Cool Without Electricity','fig.h':'Figure 1. Cross-section of the pot-in-pot cooler','fig.cap':'Water moves from the sand through the porous outer wall and evaporates from its surface. Regions 1–6 are labeled.','mat.h':'Materials','proc.h':'Procedure (as the class carried it out)','rep.h':'Student report','tab1':'Table 1. Inside temperature of each pot over 5 hours. Porch air: 31 °C average, relative humidity 35%, shade.','col.time':'Time (hours)','col.ctl':'Control: dry pot, no sand (°C)','col.b':'Pot B: wet sand, no fan (°C)','col.a':'Pot A: wet sand + fan (°C)','row.tot':'Total drop (hour 0 to hour 5)','chart.t':'Inside temperature over 5 hours','chart.x':'Time (hours)','rep.sub':'Results and conclusion (sentences numbered)','reg.h':'Regions',
+  'g.title':'Screen Time and Sleep','g.sub':'Survey of 10th graders','g.y':'Average sleep on a school night (hours)','g.x':'Daily screen time outside school (hours)','g.n':'n = number of students','g.c1':'Daily screen time outside school (hours)','g.c2':'Number of students','g.c3':'Average sleep on a school night (hours)','g.total':'Total','g.src':'Source: Survey of 58 tenth graders at our school, collected by our 2nd-period biology class, March 3–7. Students reported their own screen time and sleep.',
+  'audio.none':'This device has no English voice. Try another browser or a Chromebook.',
+  'not.real':'Original passages, data, and practice items written for classroom use. All data are invented.'},
+ es:{'dir.title':'Instrucciones','sec.dir':'Instrucciones','sec.results':'Resultados','sec.ext':'Extensión','res.title':'Mis resultados',
+  'rail.answered':'Respondidas','rail.score':'Puntos','rail.audio':'Leer en voz alta','rail.chunks':'Texto por partes','rail.wb':'Glosario','rail.size':'Tamaño del texto','rail.lang':'English','rail.theme':'Modo oscuro','rail.reset':'Reiniciar este conjunto',
+  'mode.practice':'Práctica','mode.test':'Examen','reset.arm':'¿Seguro? Toca otra vez','reset.done':'Este conjunto se borró.',
+  'btn.read':'Leer en voz alta','btn.stop':'Detener','btn.check':'Revisar mi respuesta','btn.again':'Intentar de nuevo','btn.save':'Respuesta guardada','btn.submit':'Enviar las {n}','btn.next':'Siguiente',
+  'fmt.sc':'Selección única','fmt.ms':'Selección múltiple','fmt.msall':'Selecciona todas las que apliquen','fmt.dd':'Menú desplegable','fmt.dnd':'Arrastrar y soltar','fmt.sort':'Clasificar arrastrando','fmt.order':'Arrastrar para ordenar','fmt.hs':'Punto caliente','fmt.sel':'Selección de oración','fmt.fig':'Punto caliente en la figura','fmt.zone':'Zona de punto caliente',
+  'bloom.understand':'Comprender','bloom.analyze':'Analizar','bloom.evaluate':'Evaluar',
+  'item':'Pregunta','dok':'DOK','sel.count':'{a} seleccionadas','sel.exact':'Elige exactamente {n}.','sel.need':'{n} son correctas.','sel.min':'Selecciona todas las respuestas que apliquen.',
+  'dd.pick':'Elige…','dnd.bank':'Arrastra un nombre a una casilla, o tócalo y luego toca la casilla','dnd.slot':'Suelta aquí','dnd.notused':'No se usa','sort.bank':'Arrastra una etiqueta a una afirmación, o tócala y luego toca la afirmación','order.bank':'Arrastra cada evento a una casilla numerada, o tócalo y luego toca la casilla','order.slot':'Suelta un evento aquí',
+  'hs.hint':'Toca una oración para seleccionarla. Toca otra vez para quitarla.','fig.hint':'Toca una región de la figura para seleccionarla. Toca otra vez para quitarla.','zone.hint':'Toca un párrafo para seleccionarlo. Toca otra vez para quitarlo.','task.h':'La tarea',
+  'fb.ok':'Correcto','fb.no':'Todavía no','fb.first':'El primer intento cuenta para tu puntuación.','fb.again':'Practica otra vez — tu primer intento ya está contado.',
+  'answered':'{a} de {n} respondidas','test.locked':'Modo examen: las respuestas se revisan cuando envías.',
+  'res.none':'Responde las preguntas para ver tus resultados aquí.','res.testwait':'Modo examen: {a} de {n} respondidas. Envía cuando termines.',
+  'res.item':'Pregunta','res.result':'Resultado','res.name':'Tu nombre','res.copy':'Copiar mis resultados','res.copied':'Copiado.','res.copyfail':'Copiar está bloqueado aquí — selecciona el texto abajo y cópialo.',
+  'res.bydok':'Por nivel de conocimiento (DOK)','res.first':'Solo cuentan los primeros intentos.','res.all':'Los cinco conjuntos',
+  'band.a':'Listo para el examen real','band.b':'Fuerte — repasa los errores','band.c':'Vas avanzando — relee lo que señalan las preguntas','band.d':'Sigue — abre el glosario y vuelve a intentar',
+  'ext.copy':'Copiar mis respuestas','ext.copied':'Copiado. Pégalo donde tu maestro te indique.','ext.copyfail':'Copiar está bloqueado aquí — selecciona el texto abajo y cópialo.','ext.stems':'Inicios de oración si necesitas ayuda',
+  'tab.all':'Todo','tab.bg':'Antecedentes','tab.fig':'Figura 1','tab.proc':'Procedimiento','tab.rep':'Informe','bg.h':'Keeping Food Cool Without Electricity','fig.h':'Figura 1. Corte transversal de la nevera de dos ollas','fig.cap':'El agua pasa de la arena a través de la pared porosa exterior y se evapora en su superficie. Las regiones 1–6 están marcadas.','mat.h':'Materiales','proc.h':'Procedimiento (tal como lo hizo la clase)','rep.h':'Informe del estudiante','tab1':'Tabla 1. Temperatura interior de cada olla durante 5 horas. Aire del porche: 31 °C en promedio, humedad relativa 35%, sombra.','col.time':'Tiempo (horas)','col.ctl':'Control: olla seca, sin arena (°C)','col.b':'Olla B: arena mojada, sin ventilador (°C)','col.a':'Olla A: arena mojada + ventilador (°C)','row.tot':'Descenso total (hora 0 a hora 5)','chart.t':'Temperatura interior durante 5 horas','chart.x':'Tiempo (horas)','rep.sub':'Resultados y conclusión (oraciones numeradas)','reg.h':'Regiones',
+  'g.title':'Pantallas y sueño','g.sub':'Encuesta de 10.º grado','g.y':'Promedio de sueño en noche escolar (horas)','g.x':'Tiempo diario frente a pantallas fuera de la escuela (horas)','g.n':'n = número de estudiantes','g.c1':'Tiempo diario frente a pantallas (horas)','g.c2':'Número de estudiantes','g.c3':'Promedio de sueño en noche escolar (horas)','g.total':'Total','g.src':'Fuente: Encuesta de 58 estudiantes de décimo grado de nuestra escuela, recogida por nuestra clase de biología de 2.º período, del 3 al 7 de marzo. Los estudiantes reportaron su propio tiempo de pantalla y de sueño.',
+  'audio.none':'Este dispositivo no tiene voz en inglés. Prueba otro navegador o un Chromebook.',
+  'not.real':'Textos, datos y preguntas de práctica originales escritos para el salón de clases. Todos los datos son inventados.'}
+};
+
+/* ---------- state ---------- */
+function blank(){return {ans:{},checked:{},first:{},submitted:false,name:'',ext:[],chunks:false,chunk:0,tab:'all'};}
+function load(){
+  var d={lang:'en',theme:null,size:0,wb:false,mode:'practice',cur:'salsa',sets:{}};
+  try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object'){for(var k in s)d[k]=s[k];}}catch(e){}
+  if(d.lang!=='en'&&d.lang!=='es')d.lang='en';
+  SETS.forEach(function(st){if(!d.sets[st.id])d.sets[st.id]=blank();var b=blank();for(var k in b)if(d.sets[st.id][k]==null)d.sets[st.id][k]=b[k];});
+  if(!SETS.some(function(st){return st.id===d.cur;}))d.cur='salsa';
+  return d;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(STATE));}catch(e){}}
+var STATE=load();
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function md(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');}
+function pad(n){return (n<10?'0':'')+n;}
+function t(k,v){var s=(T[STATE.lang]&&T[STATE.lang][k])||T.en[k]||k;if(v){for(var x in v)s=s.replace('{'+x+'}',v[x]);}return s;}
+function tt(obj){return obj?(obj[STATE.lang]||obj.en||''):'';}
+var toastTimer;function toast(m){var el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove('show');},3200);}
+function SET(){return SETS.filter(function(s){return s.id===STATE.cur;})[0];}
+function SS(){return STATE.sets[STATE.cur];}
+function item(n){return SET().items[n-1];}
+function isLocked(n){return STATE.mode==='test'?SS().submitted:!!SS().checked[n];}
+function N(){return SET().items.length;}
+
+/* ---------- answers ---------- */
+function ddParts(it){return it.parts.filter(function(p){return typeof p==='object';});}
+function hsSents(it){var st=SET().stim;if(it.sents)return it.sents;if(it.useReport)return st.report;if(it.useUnits)return st.units;return [];}
+function answered(it){
+  var a=SS().ans[it.n];
+  if(it.type==='sc'||it.type==='hs'||it.type==='fig'||it.type==='zone')return a!=null;
+  if(it.type==='ms')return Array.isArray(a)&&(it.all?a.length>=1:a.length===it.need);
+  if(it.type==='dd')return Array.isArray(a)&&ddParts(it).every(function(_,i){return a[i]!=null;});
+  if(it.type==='dnd'){var o=a||{};var used=it.targets.filter(function(tg){return tg.ans!==null;}).length;return Object.keys(o).filter(function(k){return o[k]!=null;}).length===used;}
+  if(it.type==='sort'){var o2=a||{};return it.rows.every(function(_,i){return o2[i]!=null;});}
+  if(it.type==='order'){var o3=a||{};return it.events.every(function(_,i){return o3[i]!=null;});}
+  return false;
+}
+function grade(it){
+  var a=SS().ans[it.n];
+  if(it.type==='sc'||it.type==='hs'||it.type==='fig'||it.type==='zone')return a===it.ans;
+  if(it.type==='ms'){if(!Array.isArray(a))return false;return a.slice().sort().join(',')===it.ans.slice().sort().join(',');}
+  if(it.type==='dd')return Array.isArray(a)&&ddParts(it).every(function(p,i){return a[i]===p.ans;});
+  if(it.type==='dnd'){var o=a||{};return it.targets.every(function(tg,i){return tg.ans===null?(o[i]==null):(o[i]===tg.ans);});}
+  if(it.type==='sort'){var o2=a||{};return it.rows.every(function(r,i){return o2[i]===r.ans;});}
+  if(it.type==='order'){var o3=a||{};return it.ans.every(function(ev,i){return o3[i]===ev;});}
+  return false;
+}
+function countAnswered(){return SET().items.filter(answered).length;}
+function firstScore(){var s=0,n=0;SET().items.forEach(function(it){if(SS().first[it.n]!=null){n++;if(SS().first[it.n])s++;}});return {s:s,n:n};}
+function setSummary(st){var ss=STATE.sets[st.id];var s=0,n=0;st.items.forEach(function(it){var r=null;if(STATE.mode==='practice'){if(ss.first[it.n]!=null)r=ss.first[it.n];}else if(ss.submitted){var saved=STATE.cur;STATE.cur=st.id;r=grade(it);STATE.cur=saved;}if(r!==null){n++;if(r)s++;}});return {s:s,n:n,total:st.items.length};}
+
+/* ---------- drawings ---------- */
+function sleepChart(){
+  var W=560,H=330,pl=64,pr=16,pt=44,pb=70;var cw=W-pl-pr,ch=H-pt-pb;var max=9;
+  var bw=cw/SLEEP_DATA.length*0.58;var s='<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(t('g.title'))+'">';
+  s+='<text x="'+(W/2)+'" y="20" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">'+esc(t('g.title'))+': '+esc(t('g.sub'))+'</text>';
+  for(var y=0;y<=max;y++){var yy=pt+ch-y/max*ch;s+='<line x1="'+pl+'" y1="'+yy+'" x2="'+(W-pr)+'" y2="'+yy+'" stroke="currentColor" stroke-opacity="'+(y%3===0?'.35':'.12')+'" stroke-width="1"/><text x="'+(pl-8)+'" y="'+(yy+4)+'" text-anchor="end" font-size="11" fill="currentColor">'+y+'</text>';}
+  s+='<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(pt+ch)+'" stroke="currentColor" stroke-width="2"/><line x1="'+pl+'" y1="'+(pt+ch)+'" x2="'+(W-pr)+'" y2="'+(pt+ch)+'" stroke="currentColor" stroke-width="2"/>';
+  SLEEP_DATA.forEach(function(d,i){var cx=pl+cw/SLEEP_DATA.length*(i+0.5);var h=d.sleep/max*ch;var x=cx-bw/2;var y=pt+ch-h;
+    s+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+h+'" fill="#ff4d2e" stroke="currentColor" stroke-width="2"/>';
+    s+='<text x="'+cx+'" y="'+(y-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">'+d.sleep.toFixed(1)+' h</text>';
+    s+='<text x="'+cx+'" y="'+(y+16)+'" text-anchor="middle" font-size="10" fill="#111418">n = '+d.n+'</text>';
+    s+='<text x="'+cx+'" y="'+(pt+ch+18)+'" text-anchor="middle" font-size="11" fill="currentColor">'+esc(d.g)+'</text>';});
+  s+='<text x="'+(pl+cw/2)+'" y="'+(H-32)+'" text-anchor="middle" font-size="11" fill="currentColor">'+esc(t('g.x'))+'</text>';
+  s+='<text x="'+(pl+cw/2)+'" y="'+(H-16)+'" text-anchor="middle" font-size="10" fill="currentColor" opacity=".75">'+esc(t('g.n'))+'</text>';
+  s+='<text transform="translate(14 '+(pt+ch/2)+') rotate(-90)" text-anchor="middle" font-size="11" fill="currentColor">'+esc(t('g.y'))+'</text>';
+  return s+'</svg>';
+}
+function coolChart(){
+  var W=560,H=300,pl=54,pr=16,pt=36,pb=52;var cw=W-pl-pr,ch=H-pt-pb;var ymin=20,ymax=32;
+  function X(h){return pl+h/5*cw;}function Y(v){return pt+ch-(v-ymin)/(ymax-ymin)*ch;}
+  var s='<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(t('chart.t'))+'">';
+  s+='<text x="'+(W/2)+'" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">'+esc(t('chart.t'))+'</text>';
+  for(var v=ymin;v<=ymax;v+=2){s+='<line x1="'+pl+'" y1="'+Y(v)+'" x2="'+(W-pr)+'" y2="'+Y(v)+'" stroke="currentColor" stroke-opacity=".15"/><text x="'+(pl-8)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="10" fill="currentColor">'+v+'</text>';}
+  for(var h=0;h<=5;h++){s+='<text x="'+X(h)+'" y="'+(pt+ch+16)+'" text-anchor="middle" font-size="10" fill="currentColor">'+h+'</text>';}
+  s+='<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(pt+ch)+'" stroke="currentColor" stroke-width="2"/><line x1="'+pl+'" y1="'+(pt+ch)+'" x2="'+(W-pr)+'" y2="'+(pt+ch)+'" stroke="currentColor" stroke-width="2"/>';
+  var series=[{i:1,c:'currentColor',d:'6 4',n:'Control'},{i:2,c:'#5b3df5',d:'',n:'Pot B (no fan)'},{i:3,c:'#ff4d2e',d:'',n:'Pot A (fan)'}];
+  series.forEach(function(se){var pts=COOL_DATA.map(function(r){return X(r[0])+','+Y(r[se.i]);}).join(' ');
+    s+='<polyline points="'+pts+'" fill="none" stroke="'+se.c+'" stroke-width="3"'+(se.d?' stroke-dasharray="'+se.d+'"':'')+'/>';
+    COOL_DATA.forEach(function(r){s+='<circle cx="'+X(r[0])+'" cy="'+Y(r[se.i])+'" r="4" fill="'+se.c+'" stroke="var(--surface)" stroke-width="1.5"/>';});});
+  var lx=pl+12,ly=pt+ch-54;series.forEach(function(se,k){s+='<line x1="'+lx+'" y1="'+(ly+k*16)+'" x2="'+(lx+24)+'" y2="'+(ly+k*16)+'" stroke="'+se.c+'" stroke-width="3"'+(se.d?' stroke-dasharray="'+se.d+'"':'')+'/><text x="'+(lx+30)+'" y="'+(ly+k*16+4)+'" font-size="10.5" fill="currentColor">'+esc(se.n)+'</text>';});
+  s+='<text x="'+(pl+cw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10.5" fill="currentColor">'+esc(t('chart.x'))+'</text>';
+  s+='<text transform="translate(14 '+(pt+ch/2)+') rotate(-90)" text-anchor="middle" font-size="10.5" fill="currentColor">°C</text>';
+  return s+'</svg>';
+}
+function figureSVG(opts){
+  opts=opts||{};var inter=!!opts.interactive;var sel=opts.sel;var locked=!!opts.locked;var ans=opts.ans;
+  function cls(i){var c='region';if(inter){if(locked){if(i===ans)c+=' correct';else if(i===sel)c+=' wrong';}else if(i===sel)c+=' sel';}return c;}
+  function g(i,inner,px,py){var attrs=inter?' tabindex="'+(locked?'-1':'0')+'" role="button" aria-pressed="'+(sel===i)+'" data-act="fig" data-i="'+i+'"':'';
+    return '<g class="'+cls(i)+'"'+attrs+'><title>'+esc('Region '+(i+1)+': '+COOL_REGIONS[i])+'</title>'+inner+'<g class="pin"><circle cx="'+px+'" cy="'+py+'" r="13" fill="var(--surface)" stroke="var(--fg)" stroke-width="2.5" class="pin"/><text x="'+px+'" y="'+(py+5)+'" text-anchor="middle" font-size="14" font-weight="800" fill="var(--fg)" class="lbl pintext">'+(i+1)+'</text></g></g>';}
+  var s='<svg class="fig'+(inter&&locked?' locked':'')+'" viewBox="0 0 560 340" role="img" aria-label="'+esc(t('fig.h'))+'">';
+  s+='<defs><pattern id="dots" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.1" fill="rgba(0,0,0,.35)"/></pattern><pattern id="grain" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="rgba(0,0,0,.25)"/><circle cx="5" cy="4.5" r=".7" fill="rgba(0,0,0,.2)"/></pattern></defs>';
+  var fan='<rect x="22" y="130" width="62" height="130" rx="6" fill="var(--surface)" stroke="var(--fg)" stroke-width="3" class="shape"/>'+[150,172,194,216,238].map(function(y){return '<line x1="30" y1="'+y+'" x2="76" y2="'+y+'" stroke="var(--fg)" stroke-width="2" opacity=".6"/>';}).join('')+'<rect x="40" y="260" width="26" height="14" fill="var(--fg)"/>'+[160,195,230].map(function(y){return '<line x1="94" y1="'+y+'" x2="150" y2="'+y+'" stroke="var(--fg)" stroke-width="3"/><polygon points="150,'+(y-6)+' 162,'+y+' 150,'+(y+6)+'" fill="var(--fg)"/>';}).join('');
+  s+=g(5,fan,53,112);
+  var outer='M190,96 L190,290 Q190,328 228,328 L412,328 Q450,328 450,290 L450,96 Z';var outerIn='M210,96 L210,280 Q210,308 238,308 L402,308 Q430,308 430,280 L430,96 Z';
+  var wall='<path d="'+outer+' '+outerIn+'" fill-rule="evenodd" fill="var(--clay)" stroke="var(--fg)" stroke-width="3" class="shape"/><path d="'+outer+' '+outerIn+'" fill-rule="evenodd" fill="url(#dots)" pointer-events="none"/>'+[120,170,220,270].map(function(y){return '<path d="M178,'+(y+14)+' c-6,-5 6,-10 0,-16 c-6,-5 6,-10 0,-16" fill="none" stroke="var(--vocab)" stroke-width="2.5"/><path d="M462,'+(y+14)+' c6,-5 -6,-10 0,-16 c6,-5 -6,-10 0,-16" fill="none" stroke="var(--vocab)" stroke-width="2.5"/>';}).join('');
+  s+=g(0,wall,172,96);
+  var innerOut='M248,110 L248,268 Q248,290 270,290 L370,290 Q392,290 392,268 L392,110 Z';
+  s+=g(1,'<path d="'+outerIn+' '+innerOut+'" fill-rule="evenodd" fill="var(--sand)" stroke="var(--fg)" stroke-width="2.5" class="shape"/><path d="'+outerIn+' '+innerOut+'" fill-rule="evenodd" fill="url(#grain)" pointer-events="none"/>',229,300);
+  var innerIn='M262,110 L262,258 Q262,276 280,276 L360,276 Q378,276 378,258 L378,110 Z';
+  s+=g(2,'<path d="'+innerOut+' '+innerIn+'" fill-rule="evenodd" fill="var(--clay2)" stroke="var(--fg)" stroke-width="2.5" class="shape"/>',392,296);
+  s+=g(3,'<path d="'+innerIn+'" fill="var(--surface)" stroke="var(--fg)" stroke-width="2" class="shape"/><line x1="320" y1="92" x2="320" y2="190" stroke="var(--fg)" stroke-width="2.5"/><circle cx="320" cy="196" r="7" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/><text x="332" y="200" font-size="11" fill="var(--fg)">probe</text>',320,240);
+  s+=g(4,'<path d="M176,84 Q200,76 224,84 T272,84 T320,84 T368,84 T416,84 T464,84 L464,96 L176,96 Z" fill="var(--cloth)" stroke="var(--fg)" stroke-width="2.5" class="shape"/>',482,90);
+  s+='<text x="320" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="var(--fg)">'+esc(t('fig.h'))+'</text><text x="320" y="40" text-anchor="middle" font-size="10.5" fill="var(--muted)">1 outer wall · 2 wet sand · 3 inner wall · 4 inside space · 5 cloth lid · 6 fan</text></svg>';
+  return s;
+}
+
+/* ---------- stimulus ---------- */
+function unitSpan(txt,i,mode){var n=i+1;if(mode==='para')return '<span class="s para" data-p="'+n+'"><span class="sn">'+n+'</span>'+esc(txt)+'</span>';return '<span class="s" data-p="'+n+'"><span class="sn">'+n+'</span>'+esc(txt)+'</span> ';}
+function textStim(st){
+  var ss=SS();var from=1,to=st.units.length;if(ss.chunks&&st.chunks){var c=st.chunks[ss.chunk]||st.chunks[0];from=c.from;to=c.to;}
+  var inner=st.units.map(function(u,i){var n=i+1;if(n<from||n>to)return '';return unitSpan(u,i,st.unit);}).join('');
+  var task=st.task?'<div class="task"><b class="mono">'+t('task.h')+'</b><p>'+esc(tt(st.task))+'</p></div>':'';
+  return task+'<div class="stim">'+(st.unit==='para'?inner:'<p>'+inner+'</p>')+'</div>';
+}
+function graphicStim(st){
+  var total=SLEEP_DATA.reduce(function(a,d){return a+d.n;},0);
+  var h='<div class="stim">'+sleepChart()+'<table class="dtable"><thead><tr><th>'+t('g.c1')+'</th><th>'+t('g.c2')+'</th><th>'+t('g.c3')+'</th></tr></thead><tbody>'+SLEEP_DATA.map(function(d){return '<tr><td>'+esc(d.g)+'</td><td class="num">'+d.n+'</td><td class="num">'+d.sleep.toFixed(1)+'</td></tr>';}).join('')+'<tr><td><b>'+t('g.total')+'</b></td><td class="num">'+total+'</td><td></td></tr></tbody></table><p class="cap">'+esc(t('g.src'))+'</p></div>';
+  h+='<h3 style="margin:.2rem 0 .6rem">'+esc(st.title)+'</h3>'+textStim(st);
+  return h;
+}
+function investigationStim(st){
+  var ss=SS();var tab=ss.tab||'all';
+  var bg='<div class="stim" data-part="bg"><h3>'+esc(t('bg.h'))+'</h3><p>'+st.bg.map(function(s,i){return (st.bgBreaks.indexOf(i)>=0?'</p><p>':'')+'<span class="s" data-p="bg'+i+'">'+esc(s)+'</span> ';}).join('')+'</p></div>';
+  var fig='<div class="stim" data-part="fig"><h3>'+esc(t('tab.fig'))+'</h3>'+figureSVG()+'<p class="cap">'+esc(t('fig.cap'))+'</p><h4>'+t('reg.h')+'</h4><ol>'+COOL_REGIONS.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ol></div>';
+  var proc='<div class="stim" data-part="proc"><h3>'+esc(t('mat.h'))+'</h3><ul>'+st.materials.map(function(m){return '<li>'+esc(m)+'</li>';}).join('')+'</ul><h3>'+esc(t('proc.h'))+'</h3><ol>'+st.steps.map(function(s,i){return '<li><span class="s" data-p="st'+i+'">'+esc(s)+'</span></li>';}).join('')+'</ol></div>';
+  var tot=[0,COOL_DATA[0][1]-COOL_DATA[5][1],COOL_DATA[0][2]-COOL_DATA[5][2],COOL_DATA[0][3]-COOL_DATA[5][3]];
+  var rep='<div class="stim" data-part="rep"><h3>'+esc(t('rep.h'))+'</h3><p class="cap" style="margin:0 0 .5rem"><b>'+esc(t('tab1'))+'</b></p><table class="dtable"><thead><tr><th>'+t('col.time')+'</th><th>'+t('col.ctl')+'</th><th>'+t('col.b')+'</th><th>'+t('col.a')+'</th></tr></thead><tbody>'+COOL_DATA.map(function(r){return '<tr><td class="num">'+r[0]+'</td><td class="num">'+r[1].toFixed(1)+'</td><td class="num">'+r[2].toFixed(1)+'</td><td class="num">'+r[3].toFixed(1)+'</td></tr>';}).join('')+'<tr class="tot"><td>'+t('row.tot')+'</td><td class="num">'+tot[1].toFixed(1)+'</td><td class="num">'+tot[2].toFixed(1)+'</td><td class="num">'+tot[3].toFixed(1)+'</td></tr></tbody></table>'+coolChart()+'<h4>'+t('rep.sub')+'</h4><p>'+st.report.map(function(s,i){return '<span class="s" data-p="rp'+i+'"><span class="sn">'+(i+1)+'</span>'+esc(s)+'</span> ';}).join('')+'</p></div>';
+  var parts={bg:bg,fig:fig,proc:proc,rep:rep};
+  return tab==='all'?bg+fig+proc+rep:parts[tab];
+}
+function renderStim(){
+  var st=SET().stim;var ss=SS();
+  $('#stimLabel').textContent=tt(st.label);$('#stimTitle').textContent=st.title;
+  var tabs=$('#tabs');
+  if(st.type==='investigation'){tabs.hidden=false;var tb=[['all','tab.all'],['bg','tab.bg'],['fig','tab.fig'],['proc','tab.proc'],['rep','tab.rep']];tabs.innerHTML=tb.map(function(x){return '<button type="button" role="tab" data-tab="'+x[0]+'" aria-pressed="'+((ss.tab||'all')===x[0])+'">'+t(x[1])+'</button>';}).join('');}
+  else{tabs.hidden=true;tabs.innerHTML='';}
+  var body=st.type==='text'?textStim(st):st.type==='graphic'?graphicStim(st):investigationStim(st);
+  $('#stimBody').innerHTML=body;
+  var cb=$('#chunkbar');var hasChunks=!!st.chunks;
+  cb.hidden=!(hasChunks&&ss.chunks);
+  if(hasChunks&&ss.chunks)cb.innerHTML=st.chunks.map(function(c,i){return '<button type="button" class="btn ghost" data-chunk="'+i+'" aria-pressed="'+(ss.chunk===i)+'">'+esc(tt(c))+'</button>';}).join('');
+  ['#chunkBtn','#chunkBtn2'].forEach(function(s){var b=$(s);b.setAttribute('aria-pressed',String(!!ss.chunks));b.disabled=!hasChunks;b.style.opacity=hasChunks?'':'.45';});
+  var wb=$('#wordbank');wb.hidden=!STATE.wb;wb.innerHTML=(st.gloss||[]).map(function(w){return '<div><b>'+esc(w[0])+'</b><span>'+esc(w[1])+'</span></div>';}).join('');
+  ['#wbBtn','#wbBtn2'].forEach(function(s){$(s).setAttribute('aria-pressed',String(STATE.wb));});
+}
+
+/* ---------- item renderers ---------- */
+function scHTML(it,locked){var a=SS().ans[it.n];
+  return '<div class="opts" role="radiogroup" aria-label="Answer choices">'+it.opts.map(function(o,j){var on=a===j,cls='opt radio',mk='';if(locked){if(j===it.ans){cls+=on?' correct':' missed';mk='✓';}else if(on){cls+=' wrong';mk='✗';}}
+    return '<button type="button" class="'+cls+'" role="radio" aria-checked="'+on+'" data-act="sc" data-j="'+j+'"'+(locked?' disabled':'')+'><span class="box">'+L[j]+'</span><span>'+esc(o)+'</span><span class="mk" aria-hidden="true">'+mk+'</span></button>';}).join('')+'</div>';}
+function msHTML(it,locked){var a=SS().ans[it.n]||[];
+  var note=it.all?(it.need?t('sel.need',{n:it.need}):t('sel.min')):(a.length!==it.need?t('sel.exact',{n:it.need}):'');
+  return '<div class="opts" role="group" aria-label="Answer choices">'+it.opts.map(function(o,j){var on=a.indexOf(j)>=0,cls='opt',mk='';if(locked){if(on&&it.ans.indexOf(j)>=0){cls+=' correct';mk='✓';}else if(on){cls+=' wrong';mk='✗';}else if(it.ans.indexOf(j)>=0){cls+=' missed';mk='✓';}}
+    return '<button type="button" class="'+cls+'" role="checkbox" aria-checked="'+on+'" data-act="ms" data-j="'+j+'"'+(locked?' disabled':'')+'><span class="box">'+L[j]+'</span><span>'+esc(o)+'</span><span class="mk" aria-hidden="true">'+mk+'</span></button>';}).join('')+'</div><div class="count" style="margin-top:.5rem">'+t('sel.count',{a:a.length})+(note?' · '+note:'')+'</div>';}
+function ddHTML(it,locked){var a=SS().ans[it.n]||[];var k=0;
+  return '<p class="ddsent">'+it.parts.map(function(p){if(typeof p==='string')return esc(p);var i=k++;var sel=a[i];var cls='dd';if(locked)cls+=(sel===p.ans?' correct':' wrong');
+    var h='<select class="'+cls+'" data-act="dd" data-i="'+i+'" aria-label="Choice '+(i+1)+'"'+(locked?' disabled':'')+'><option value="">'+t('dd.pick')+'</option>'+p.opts.map(function(o,j){return '<option value="'+j+'"'+(sel===j?' selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>';
+    if(locked&&sel!==p.ans)h+='<span class="ddans">→ '+esc(p.opts[p.ans])+'</span>';return h;}).join('')+'</p>';}
+function chip(label,idx,extra){return '<span class="namechip" draggable="true" tabindex="0" role="button" data-act="chip" data-name="'+idx+'"'+(extra||'')+'>'+esc(label)+'</span>';}
+function dndHTML(it,locked){var a=SS().ans[it.n]||{};var placed={};Object.keys(a).forEach(function(k){if(a[k]!=null)placed[a[k]]=+k;});
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('dnd.bank')+'</span>'+it.names.map(function(nm,i){return placed[i]!=null?'':chip(nm,i);}).join('')+'</div>';
+  var drops='<div class="drops">'+it.targets.map(function(tg,i){var ni=a[i];var cls='drop';var fix='';if(locked){var ok=tg.ans===null?(ni==null):(ni===tg.ans);cls+=ok?' correct':' wrong';if(!ok)fix='<span class="fix">→ '+(tg.ans===null?t('dnd.notused'):esc(it.names[tg.ans]))+'</span>';}
+    return '<div class="'+cls+'" role="button" tabindex="0" data-act="drop" data-i="'+i+'"><span>'+esc(tg.t)+fix+'</span><span class="slot">'+(ni!=null?chip(it.names[ni],ni,' data-placed="'+i+'"'):(locked?t('dnd.notused'):t('dnd.slot')))+'</span></div>';}).join('')+'</div>';
+  return (locked?'':bank)+drops;}
+function sortHTML(it,locked){var a=SS().ans[it.n]||{};
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('sort.bank')+'</span>'+it.labels.map(function(lb,i){return chip(lb,i);}).join('')+'</div>';
+  var drops='<div class="drops">'+it.rows.map(function(r,i){var li=a[i];var cls='drop';var fix='';if(locked){var ok=li===r.ans;cls+=ok?' correct':' wrong';if(!ok)fix='<span class="fix">→ '+esc(it.labels[r.ans])+'</span>';}
+    return '<div class="'+cls+'" role="button" tabindex="0" data-act="drop" data-i="'+i+'"><span>'+esc(r.t)+fix+'</span><span class="slot">'+(li!=null?chip(it.labels[li],li,' data-placed="'+i+'"'):t('dnd.slot'))+'</span></div>';}).join('')+'</div>';
+  return (locked?'':bank)+drops;}
+function orderHTML(it,locked){var a=SS().ans[it.n]||{};var placed={};Object.keys(a).forEach(function(k){if(a[k]!=null)placed[a[k]]=+k;});
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('order.bank')+'</span>'+it.events.map(function(ev,i){return placed[i]!=null?'':chip(ev,i);}).join('')+'</div>';
+  var drops='<div class="drops">'+it.events.map(function(_,i){var ei=a[i];var cls='drop ordered';var fix='';if(locked){var ok=ei===it.ans[i];cls+=ok?' correct':' wrong';if(!ok)fix='<span class="fix">→ '+esc(it.events[it.ans[i]])+'</span>';}
+    return '<div class="'+cls+'" role="button" tabindex="0" data-act="drop" data-i="'+i+'"><span class="num">'+(i+1)+'</span><span class="slot">'+(ei!=null?chip(it.events[ei],ei,' data-placed="'+i+'"'):t('order.slot'))+fix+'</span></div>';}).join('')+'</div>';
+  return (locked?'':bank)+drops;}
+function hsHTML(it,locked){var a=SS().ans[it.n];var sents=hsSents(it);var numbered=!it.sents;
+  return '<p class="dir">'+t('hs.hint')+'</p><div class="hot">'+(it.pn?'<span class="pn">'+it.pn+'</span>':'')+sents.map(function(s,i){var cls='hs';if(locked){if(i===it.ans)cls+=' correct';else if(i===a)cls+=' wrong';}
+    return '<span role="button" tabindex="'+(locked?'-1':'0')+'" class="'+cls+'" data-act="hs" data-i="'+i+'" aria-pressed="'+(a===i)+'"'+(locked?' aria-disabled="true"':'')+'>'+(numbered?'<span class="sn">'+(i+1)+'</span>':'')+esc(s)+'</span> ';}).join('')+'</div>';}
+function zoneHTML(it,locked){var a=SS().ans[it.n];var units=SET().stim.units;
+  return '<p class="dir">'+t('zone.hint')+'</p><div class="zones">'+units.map(function(u,i){var cls='zone';if(locked){if(i===it.ans)cls+=' correct';else if(i===a)cls+=' wrong';}
+    return '<div role="button" tabindex="'+(locked?'-1':'0')+'" class="'+cls+'" data-act="zone" data-i="'+i+'" aria-pressed="'+(a===i)+'"'+(locked?' aria-disabled="true"':'')+'><span class="zn">'+(i+1)+'</span><span>'+esc(u)+'</span></div>';}).join('')+'</div>';}
+function figHTML(it,locked){var a=SS().ans[it.n];
+  return '<p class="dir">'+t('fig.hint')+'</p><div class="figwrap">'+figureSVG({interactive:true,sel:a,locked:locked,ans:it.ans})+'</div>'+(a!=null?'<div class="count">'+esc('Region '+(a+1)+': '+COOL_REGIONS[a])+'</div>':'');}
+function itemHTML(it){
+  var n=it.n,id='s'+pad(n+1);var locked=isLocked(n);var done=answered(it);var st=SET();
+  var stripe=['var(--accent)','var(--violet)','var(--vocab)','var(--fg)'][(n-1)%4];
+  var h='<section class="card item" id="'+id+'" data-n="'+n+'" style="--stripe:'+stripe+'"><div class="card-head"><div><div class="mono meta">'+pad(n+1)+' · '+t('item')+' '+n+'</div><h2>'+t('item')+' '+n+'</h2></div></div>'+
+   '<div class="tagrow"><span class="tag fmt">'+t(it.fmt)+'</span>'+(it.bloom?'<span class="tag">'+t(it.bloom)+'</span>':'')+'<span class="tag dok">'+t('dok')+' '+it.dok+'</span>'+(it.std?'<span class="tag std">'+esc(it.std)+'</span>':'')+'</div><p class="stem">'+md(it.stem)+'</p>';
+  var correct=locked&&grade(it);
+  h+=({sc:scHTML,ms:msHTML,dd:ddHTML,dnd:dndHTML,sort:sortHTML,order:orderHTML,hs:hsHTML,fig:figHTML,zone:zoneHTML})[it.type](it,locked);
+  if(locked)h+='<div class="fb"><div class="fb-head"><span class="tag '+(correct?'ok':'no')+'">'+(correct?t('fb.ok'):t('fb.no'))+'</span><span class="tag dok">'+t('dok')+' '+it.dok+'</span></div><p>'+esc(it.why)+'</p></div>';
+  h+='<div class="item-foot">';var nextHref=n<N()?'#s'+pad(n+2):'#sRes';
+  if(STATE.mode==='practice'){if(!locked)h+='<button type="button" class="btn primary" data-act="check"'+(done?'':' disabled')+'>'+t('btn.check')+'</button><span class="count">'+(SS().first[n]!=null?t('fb.again'):t('fb.first'))+'</span>';else h+='<button type="button" class="btn" data-act="again">'+t('btn.again')+'</button><a class="btn ghost" href="'+nextHref+'">'+t('btn.next')+' →</a>';}
+  else h+='<span class="count">'+(SS().submitted?'':(done?'✓ '+t('btn.save')+' · ':'')+t('test.locked'))+'</span><a class="btn ghost" href="'+nextHref+'">'+(n<N()?t('btn.next'):t('sec.results'))+' →</a>';
+  return h+'</div></section>';
+}
+function renderItems(){$('#items').innerHTML=SET().items.map(itemHTML).join('');observe();}
+function rerenderItem(n){var old=$('#s'+pad(n+1));if(old){var tmp=document.createElement('div');tmp.innerHTML=itemHTML(item(n));old.replaceWith(tmp.firstElementChild);}observe();}
+
+/* ---------- frame ---------- */
+function renderTabs(){
+  $('#settabs').innerHTML=SETS.map(function(st){var sm=setSummary(st);var pr=sm.n?sm.s+' / '+sm.n:'—';return '<button type="button" class="settab" role="tab" data-set="'+st.id+'" aria-pressed="'+(st.id===STATE.cur)+'"><span class="g">'+esc(st.grade)+' · '+esc(tt(st.kind))+'</span><span class="tt">'+esc(st.short)+'</span><span class="pr">'+st.items.length+' items · '+pr+'</span></button>';}).join('');
+}
+function renderHero(){
+  var st=SET();var tx=st.t[STATE.lang]||st.t.en;
+  $('#hero').innerHTML='<div class="eyebrow mono">'+esc(tx.eyebrow)+'</div><h1>'+esc(st.title)+'</h1><p class="lede">'+esc(tx.lede)+'</p><div class="chips">'+tx.chips.map(function(c){return '<span class="chip mono">'+esc(c)+'</span>';}).join('')+'</div>';
+  $('#dirs').innerHTML=tx.dirs.map(function(d,i){return '<div class="step"><span class="num">'+(i+1)+'</span><p>'+esc(d)+'</p></div>';}).join('');
+  $('#brandSub').textContent=st.grade+' · '+tt(st.kind);
+  $$('[data-t]').forEach(function(el){el.textContent=t(el.getAttribute('data-t'));});
+  $('#langLbl').textContent=t('rail.lang');$('#langK').textContent=STATE.lang==='en'?'ES':'EN';
+  $('#modePractice').setAttribute('aria-pressed',String(STATE.mode==='practice'));$('#modeTest').setAttribute('aria-pressed',String(STATE.mode==='test'));
+  $('#resMeta').textContent=pad(N()+2)+' · '+t('sec.results');
+}
+function renderExt(){
+  var st=SET();var sec=$('#sExt');if(!st.ext){sec.hidden=true;return;}sec.hidden=false;
+  $('#extMeta').textContent=pad(N()+3)+' · '+t('sec.ext');$('#extTitle').textContent=tt(st.ext.title);
+  var h='';if(st.ext.stems){h+='<p class="mono" style="color:var(--muted);margin:0 0 .4rem">'+t('ext.stems')+'</p><div class="stems">'+(st.ext.stems[STATE.lang]||st.ext.stems.en).map(function(s){return '<div>'+esc(s)+'</div>';}).join('')+'</div>';}
+  st.ext.prompts.forEach(function(p,i){h+='<div class="frame"><label for="ext'+i+'">'+esc(tt(p))+'</label><textarea id="ext'+i+'" data-ext="'+i+'">'+esc((SS().ext||[])[i]||'')+'</textarea></div>';});
+  $('#extBody').innerHTML=h;
+}
+function tocHTML(){
+  var h='<a href="#s00" data-sec="s00"><span class="n">00</span><span>'+t('sec.dir')+'</span><span class="st"></span></a><a href="#s01" data-sec="s01"><span class="n">01</span><span>'+esc(tt(SET().stim.label))+'</span><span class="st"></span></a>';
+  SET().items.forEach(function(it){var st='',cls='';if(STATE.mode==='practice'){if(SS().first[it.n]!=null){st=SS().first[it.n]?'✓':'✗';cls=SS().first[it.n]?'ok':'no';}else st=answered(it)?'●':'—';}else{if(SS().submitted){st=grade(it)?'✓':'✗';cls=grade(it)?'ok':'no';}else st=answered(it)?'●':'—';}
+    h+='<a href="#s'+pad(it.n+1)+'" data-sec="s'+pad(it.n+1)+'"><span class="n">'+pad(it.n+1)+'</span><span>'+t('item')+' '+it.n+' · '+t(it.fmt)+'</span><span class="st '+cls+'">'+st+'</span></a>';});
+  h+='<a href="#sRes" data-sec="sRes"><span class="n">'+pad(N()+2)+'</span><span>'+t('sec.results')+'</span><span class="st"></span></a>';
+  if(SET().ext)h+='<a href="#sExt" data-sec="sExt"><span class="n">'+pad(N()+3)+'</span><span>'+t('sec.ext')+'</span><span class="st"></span></a>';
+  return h;
+}
+function scoreNow(){if(STATE.mode==='practice'){var f=firstScore();return {s:f.s,n:f.n,show:f.n>0};}var g=SET().items.filter(grade).length;return {s:g,n:N(),show:SS().submitted};}
+function updateProgress(){
+  var a=countAnswered();$('#progText').textContent=a+' / '+N();$('#progFill').style.width=Math.round(a/N()*100)+'%';var fp=$('#fabPct');if(fp)fp.textContent=a+' / '+N();
+  var sc=scoreNow();$('#scoreText').textContent=sc.show?sc.s+' / '+(STATE.mode==='practice'?sc.n:N()):'—';
+  $('#toc').innerHTML=tocHTML();markActive();renderTabs();
+}
+function renderResults(){
+  var body=$('#resBody');var a=countAnswered();var rows=[],got=0,n=0,byDok={1:{c:0,n:0},2:{c:0,n:0},3:{c:0,n:0}};
+  SET().items.forEach(function(it){var r=null;if(STATE.mode==='practice'){if(SS().first[it.n]!=null)r=SS().first[it.n];}else if(SS().submitted)r=grade(it);if(r!==null){n++;byDok[it.dok].n++;if(r){got++;byDok[it.dok].c++;}}
+    rows.push('<tr><td>'+it.n+'</td><td>'+t(it.fmt)+'</td><td>'+t('dok')+' '+it.dok+'</td><td>'+(r===null?'—':(r?'<span class="tag ok">'+t('fb.ok')+'</span>':'<span class="tag no">'+t('fb.no')+'</span>'))+'</td></tr>');});
+  var h='';
+  if(STATE.mode==='test'&&!SS().submitted){h+='<p>'+t('res.testwait',{a:a,n:N()})+'</p><div class="toolrow"><button type="button" class="btn primary" id="submitAll"'+(a<N()?' disabled':'')+'>'+t('btn.submit',{n:N()})+'</button></div>';body.innerHTML=h;return;}
+  if(!n){h+='<p>'+t('res.none')+'</p>';}
+  else{var pct=got/n;var band=pct>=.9?'band.a':pct>=.66?'band.b':pct>=.5?'band.c':'band.d';
+    h+='<div class="score-big"><span>'+got+'</span><span class="mono">/ '+(STATE.mode==='practice'?n:N())+'</span></div><div class="band">'+t(band)+(STATE.mode==='practice'&&n<N()?' · '+t('answered',{a:n,n:N()}):'')+'</div>';
+    if(STATE.mode==='practice')h+='<p class="count">'+t('res.first')+'</p>';
+    h+='<table class="rtable"><thead><tr><th>'+t('res.item')+'</th><th>Format</th><th>'+t('dok')+'</th><th>'+t('res.result')+'</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>';
+    h+='<p class="mono" style="color:var(--muted);margin:0 0 .4rem">'+t('res.bydok')+'</p><table class="rtable"><tbody>'+[1,2,3].map(function(d){return '<tr><td>'+t('dok')+' '+d+'</td><td>'+(byDok[d].n?byDok[d].c+' / '+byDok[d].n:'—')+'</td></tr>';}).join('')+'</tbody></table>';}
+  h+='<p class="mono" style="color:var(--muted);margin:.6rem 0 .4rem">'+t('res.all')+'</p><table class="rtable"><tbody>'+SETS.map(function(st){var sm=setSummary(st);return '<tr><td>'+esc(st.title)+'</td><td>'+(sm.n?sm.s+' / '+sm.n+(sm.n<sm.total?' ('+sm.n+' of '+sm.total+' answered)':''):'—')+'</td></tr>';}).join('')+'</tbody></table>';
+  h+='<div class="toolrow"><input type="text" id="resName" placeholder="'+esc(t('res.name'))+'" value="'+esc(SS().name||'')+'" maxlength="60"><button type="button" class="btn primary" id="resCopy">'+t('res.copy')+'</button><span class="msg" id="resMsg"></span></div><textarea class="fallback" id="resFallback" hidden aria-label="Results as text"></textarea>';
+  body.innerHTML=h;
+}
+function keyHTML(){
+  var st=SET();var rows=st.items.map(function(it){var ans='';
+    if(it.type==='sc')ans=L[it.ans]+' — '+it.opts[it.ans];else if(it.type==='ms')ans=it.ans.map(function(j){return L[j];}).join(', ');else if(it.type==='dd')ans=ddParts(it).map(function(p){return p.opts[p.ans];}).join('; ');
+    else if(it.type==='dnd')ans=it.targets.map(function(tg){return tg.t.split(' (')[0]+' → '+(tg.ans===null?'not used':it.names[tg.ans]);}).join('<br>');else if(it.type==='sort')ans=it.rows.map(function(r,i){return (i+1)+'. '+it.labels[r.ans];}).join('<br>');
+    else if(it.type==='order')ans=it.ans.map(function(ei,i){return (i+1)+'. '+it.events[ei];}).join('<br>');else if(it.type==='hs')ans='“'+hsSents(it)[it.ans]+'”';else if(it.type==='fig')ans='Region '+(it.ans+1)+' — '+COOL_REGIONS[it.ans];else if(it.type==='zone')ans='Paragraph '+(it.ans+1);
+    return '<tr><td>'+it.n+'</td><td>'+t(it.fmt)+(it.bloom?'<br><span class="count">'+t(it.bloom)+'</span>':'')+(it.std?'<br><span class="count">'+esc(it.std)+'</span>':'')+'</td><td>'+it.dok+'</td><td>'+((it.type==='dnd'||it.type==='sort'||it.type==='order')?ans:esc(ans))+'</td><td>'+esc(it.why)+'</td></tr>';}).join('');
+  return '<p class="msg" style="margin-top:0"><b>'+esc(st.title)+'</b> — visible only when the address ends in <code>#key</code>; switch sets and the key follows. Each item is 1 point, all-or-nothing. '+esc(st.keynote)+'</p><table><thead><tr><th>Item</th><th>Format</th><th>DOK</th><th>Correct response</th><th>Rationale</th></tr></thead><tbody>'+rows+'</tbody></table>'+(st.keyextra||'')+
+   '<h3>Glossary</h3><ul>'+(st.stim.gloss||[]).map(function(w){return '<li><b>'+esc(w[0])+'</b> — '+esc(w[1])+'</li>';}).join('')+'</ul>';
+}
+function renderAll(){
+  renderTabs();renderHero();renderStim();renderItems();renderResults();renderExt();updateProgress();updateReadButton();
+  document.documentElement.setAttribute('data-size',String(STATE.size||0));maybeKey();
+}
+function switchSet(id){if(!SETS.some(function(s){return s.id===id;}))return;stopSpeech();STATE.cur=id;save();renderAll();window.scrollTo(0,0);}
+
+/* ---------- interactions ---------- */
+var armed=null;
+function setAnswer(n,v){SS().ans[n]=v;save();}
+function afterChange(n){rerenderItem(n);updateProgress();renderResults();}
+$('#settabs').addEventListener('click',function(e){var b=e.target.closest('[data-set]');if(b)switchSet(b.getAttribute('data-set'));});
+$('#items').addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]');if(!b)return;var sec=b.closest('.item');if(!sec)return;var n=+sec.getAttribute('data-n');var it=item(n);var act=b.getAttribute('data-act');
+  if(isLocked(n)&&act!=='again')return;
+  if(act==='sc'){setAnswer(n,+b.getAttribute('data-j'));afterChange(n);}
+  else if(act==='ms'){var a=(SS().ans[n]||[]).slice();var j=+b.getAttribute('data-j');var k=a.indexOf(j);if(k>=0)a.splice(k,1);else a.push(j);setAnswer(n,a);afterChange(n);}
+  else if(act==='hs'||act==='fig'||act==='zone'){var i=+b.getAttribute('data-i');setAnswer(n,SS().ans[n]===i?null:i);afterChange(n);}
+  else if(act==='chip'){e.stopPropagation();var placedIn=b.getAttribute('data-placed');
+    if(placedIn!=null){var o=Object.assign({},SS().ans[n]||{});o[placedIn]=null;setAnswer(n,o);armed=null;afterChange(n);return;}
+    var ni=+b.getAttribute('data-name');armed=(armed===ni)?null:ni;$$('.bank .namechip',sec).forEach(function(c){c.classList.toggle('armed',+c.getAttribute('data-name')===armed);});$$('.drop',sec).forEach(function(d){d.classList.toggle('ready',armed!=null);});}
+  else if(act==='drop'){if(armed==null)return;place(n,armed,+b.getAttribute('data-i'));armed=null;}
+  else if(act==='check'){if(!answered(it))return;var ok=grade(it);if(SS().first[n]==null)SS().first[n]=ok;SS().checked[n]=true;save();afterChange(n);if(ok)toast('★ '+t('fb.ok'));}
+  else if(act==='again'){SS().checked[n]=false;SS().ans[n]=null;save();afterChange(n);var el=$('#s'+pad(n+1));if(el)el.scrollIntoView({block:'start'});}
+});
+$('#items').addEventListener('change',function(e){var s=e.target.closest('select.dd');if(!s)return;var sec=s.closest('.item');var n=+sec.getAttribute('data-n');if(isLocked(n))return;var a=(SS().ans[n]||[]).slice();a[+s.getAttribute('data-i')]=s.value===''?null:+s.value;setAnswer(n,a);
+  var it=item(n);var done=answered(it);var chk=$('[data-act="check"]',sec);if(chk)chk.disabled=!done;var cnt=$('.item-foot .count',sec);if(cnt&&STATE.mode==='test')cnt.textContent=(done?'✓ '+t('btn.save')+' · ':'')+t('test.locked');updateProgress();renderResults();});
+$('#items').addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target.closest('.namechip,.drop,.hs,.region,.zone');if(!el)return;e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}));});
+function place(n,idx,slot){var it=item(n);var o=Object.assign({},SS().ans[n]||{});if(it.type!=='sort')Object.keys(o).forEach(function(k){if(o[k]===idx)o[k]=null;});o[slot]=idx;setAnswer(n,o);afterChange(n);}
+var dragging=null;
+$('#items').addEventListener('dragstart',function(e){var c=e.target.closest('.namechip');if(!c)return;var sec=c.closest('.item');if(isLocked(+sec.getAttribute('data-n'))){e.preventDefault();return;}dragging={n:+sec.getAttribute('data-n'),idx:+c.getAttribute('data-name')};c.classList.add('ghost');try{e.dataTransfer.setData('text/plain',String(dragging.idx));e.dataTransfer.effectAllowed='copyMove';}catch(x){}});
+$('#items').addEventListener('dragend',function(e){var c=e.target.closest('.namechip');if(c)c.classList.remove('ghost');$$('.drop.over').forEach(function(d){d.classList.remove('over');});});
+$('#items').addEventListener('dragover',function(e){var d=e.target.closest('.drop,.bank');if(!d||!dragging)return;e.preventDefault();if(d.classList.contains('drop'))d.classList.add('over');});
+$('#items').addEventListener('dragleave',function(e){var d=e.target.closest('.drop');if(d)d.classList.remove('over');});
+$('#items').addEventListener('drop',function(e){var d=e.target.closest('.drop,.bank');if(!d||!dragging)return;e.preventDefault();var sec=d.closest('.item');var n=+sec.getAttribute('data-n');if(n!==dragging.n){dragging=null;return;}
+  if(d.classList.contains('bank')){if(item(n).type!=='sort'){var o=Object.assign({},SS().ans[n]||{});Object.keys(o).forEach(function(k){if(o[k]===dragging.idx)o[k]=null;});setAnswer(n,o);afterChange(n);}}
+  else place(n,dragging.idx,+d.getAttribute('data-i'));dragging=null;});
+$('#resBody').addEventListener('click',function(e){
+  if(e.target.id==='submitAll'){if(countAnswered()<N())return;SS().submitted=true;save();renderItems();renderResults();updateProgress();$('#sRes').scrollIntoView({block:'start'});}
+  if(e.target.id==='resCopy'){var sc=scoreNow();var lines=[SET().title+' — '+SET().grade+' ('+(STATE.mode==='practice'?'practice, first tries':'test')+')','Name: '+(SS().name||'________'),'Score: '+sc.s+' / '+(STATE.mode==='practice'?sc.n:N())];
+    SET().items.forEach(function(it){var r=STATE.mode==='practice'?SS().first[it.n]:(SS().submitted?grade(it):null);lines.push('Item '+it.n+' ('+t(it.fmt)+', DOK '+it.dok+'): '+(r==null?'—':(r?'correct':'incorrect')));});
+    lines.push('Storm Studio · EL Publishing');copyText(lines.join('\n'),$('#resMsg'),$('#resFallback'),'res.copied','res.copyfail');}
+});
+$('#resBody').addEventListener('input',function(e){if(e.target.id==='resName'){SS().name=e.target.value;save();}});
+$('#extBody').addEventListener('input',function(e){var ta=e.target.closest('[data-ext]');if(!ta)return;var ex=SS().ext||(SS().ext=[]);ex[+ta.getAttribute('data-ext')]=ta.value;save();});
+$('#extCopy').addEventListener('click',function(){var st=SET();if(!st.ext)return;var out=[st.title+' — '+tt(st.ext.title)+' — '+(SS().name||'________'),''];st.ext.prompts.forEach(function(p,i){out.push((i+1)+'. '+tt(p));out.push((SS().ext||[])[i]||'');out.push('');});out.push('Storm Studio · EL Publishing');copyText(out.join('\n'),$('#extMsg'),$('#extFallback'),'ext.copied','ext.copyfail');});
+function copyText(txt,msgEl,fb,okKey,failKey){var done=function(){msgEl.textContent=t(okKey);fb.hidden=true;};var fail=function(){msgEl.textContent=t(failKey);fb.hidden=false;fb.value=txt;fb.focus();fb.select();};try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fail);else fail();}catch(e){fail();}}
+$('#tabs').addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(!b)return;SS().tab=b.getAttribute('data-tab');save();stopSpeech();renderStim();});
+$('#chunkbar').addEventListener('click',function(e){var b=e.target.closest('[data-chunk]');if(!b)return;SS().chunk=+b.getAttribute('data-chunk');save();stopSpeech();renderStim();});
+function toggleChunks(){if(!SET().stim.chunks)return;SS().chunks=!SS().chunks;save();stopSpeech();renderStim();}
+function toggleWb(){STATE.wb=!STATE.wb;save();renderStim();}
+function bumpSize(){STATE.size=((STATE.size||0)+1)%3;save();document.documentElement.setAttribute('data-size',String(STATE.size));}
+['#chunkBtn','#chunkBtn2'].forEach(function(s){$(s).addEventListener('click',toggleChunks);});
+['#wbBtn','#wbBtn2'].forEach(function(s){$(s).addEventListener('click',toggleWb);});
+['#sizeBtn','#sizeBtn2'].forEach(function(s){$(s).addEventListener('click',bumpSize);});
+$('#railFab').addEventListener('click',function(){var r=$('#rail');var open=!r.classList.contains('open');r.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));this.innerHTML=open?'✕ Close':'<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';});
+$('#toc').addEventListener('click',function(e){if(e.target.closest('a')){$('#rail').classList.remove('open');var f=$('#railFab');f.setAttribute('aria-expanded','false');f.innerHTML='<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';}});
+$('#langBtn').addEventListener('click',function(){STATE.lang=STATE.lang==='en'?'es':'en';save();renderAll();});
+function setMode(m){if(STATE.mode===m)return;STATE.mode=m;SETS.forEach(function(st){STATE.sets[st.id].submitted=false;STATE.sets[st.id].checked={};});save();renderAll();}
+$('#modePractice').addEventListener('click',function(){setMode('practice');});
+$('#modeTest').addEventListener('click',function(){setMode('test');});
+function applyTheme(){var th=STATE.theme||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',th);$('#themeBtn').setAttribute('aria-pressed',String(th==='dark'));}
+$('#themeBtn').addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme');STATE.theme=cur==='dark'?'light':'dark';save();applyTheme();});
+var resetArmed=false,resetTimer;
+$('#resetAll').addEventListener('click',function(){var lbl=$('#resetLbl');if(!resetArmed){resetArmed=true;lbl.textContent=t('reset.arm');clearTimeout(resetTimer);resetTimer=setTimeout(function(){resetArmed=false;lbl.textContent=t('rail.reset');},3500);return;}
+  resetArmed=false;clearTimeout(resetTimer);var keep=SS();var b=blank();b.chunks=keep.chunks;b.chunk=keep.chunk;b.tab=keep.tab;STATE.sets[STATE.cur]=b;save();stopSpeech();renderAll();toast(t('reset.done'));$('#rail').classList.remove('open');});
+var io=null,CUR='s00';
+function observe(){if(!('IntersectionObserver' in window))return;if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){CUR=en.target.id;markActive();}});},{rootMargin:'-35% 0px -55% 0px',threshold:0});$$('.card[id]').forEach(function(c){if(c.id!=='key'&&!c.hidden)io.observe(c);});}
+function markActive(){$$('#toc a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-sec')===CUR);});}
+/* speech */
+var Speech={on:false};var VOICES=[];
+function loadVoices(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){VOICES=[];}}
+if('speechSynthesis' in window){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}}
+function pickVoice(){if(!VOICES.length)loadVoices();var en=VOICES.filter(function(v){return /^en\b/i.test(v.lang);});var pref=function(a){return a.filter(function(v){return v.localService;})[0]||a[0];};var want=STATE.cur==='round'?/en[-_]GB/i:/en[-_]US/i;return pref(en.filter(function(v){return want.test(v.lang);}))||pref(en)||null;}
+function updateReadButton(){var b=$('#readBtn');b.setAttribute('aria-pressed',String(Speech.on));b.innerHTML=(Speech.on?'■ ':'▶ ')+'<span class="lbl">'+(Speech.on?t('btn.stop'):t('btn.read'))+'</span>';}
+function stopSpeech(){try{speechSynthesis.cancel();}catch(e){}$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});Speech.on=false;updateReadButton();}
+function speakStim(){
+  if(!('speechSynthesis' in window)){toast(t('audio.none'));return;}
+  stopSpeech();Speech.on=true;updateReadButton();var spans=$$('#stimBody .s');if(!spans.length){stopSpeech();return;}var v=pickVoice();var i=0;
+  function next(){if(!Speech.on)return;if(i>=spans.length){stopSpeech();return;}var sp=spans[i];var u=new SpeechSynthesisUtterance(sp.textContent.replace(/^\d+\s*/,''));u.lang=(v&&v.lang)||'en-US';if(v)u.voice=v;u.rate=0.92;
+    u.onstart=function(){$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});sp.classList.add('speaking');sp.scrollIntoView({block:'nearest'});};u.onend=function(){sp.classList.remove('speaking');i++;next();};u.onerror=u.onend;
+    try{speechSynthesis.speak(u);}catch(e){stopSpeech();toast(t('audio.none'));}}
+  setTimeout(next,80);
+}
+$('#readBtn').addEventListener('click',function(){if(Speech.on)stopSpeech();else speakStim();});
+$('#audioBtn').addEventListener('click',function(){$('#s01').scrollIntoView({block:'start'});if(!Speech.on)speakStim();else stopSpeech();});
+document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpeech();});
+function maybeKey(){var show=/(^|[?&])key(=|&|$)/.test(location.search)||location.hash==='#key';var k=$('#key');k.hidden=!show;if(show){$('#keyBody').innerHTML=keyHTML();k.scrollIntoView({block:'start'});}}
+window.addEventListener('hashchange',function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;})){switchSet(h);return;}maybeKey();});
+(function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;}))STATE.cur=h;})();
+applyTheme();renderAll();
+})();
+</script>
+<script src="home-button.js" defer></script>
+</body>
+</html>

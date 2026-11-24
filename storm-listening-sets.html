@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Listening Sets · Seven Interactive ELPA21-Style Listening Tasks · Storm Studio</title>
+<meta name="description" content="Seven interactive ELPA21-style listening tasks for grades 9–12 on one page: Listen and Match (sentences, words), Listen for Information, Academic Debate, Short Conversation, Academic Lecture or Discussion, and Interactive Student Presentation. Spoken stimuli with distinct voices, hot spots, drag-and-drop organizers, diagram labeling, teacher key with full scripts. Storm Studio · EL Publishing.">
+<meta name="theme-color" content="#ff4d2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23111418'/%3E%3Cpath d='M58 8 22 58h22l-8 34 42-54H56z' fill='%23ff4d2e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@500;700&family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1f0ea; --surface:#ffffff; --fg:#111418; --muted:#525a66;
+  --accent:#ff4d2e; --accent-soft:#ffe3dc; --line:#111418;
+  --vocab:#0b6e62; --vocab-soft:#d9f2ec; --active:#fff3a3;
+  --violet:#5b3df5; --violet-soft:#e6e0ff; --grid:rgba(17,20,24,.07);
+  --clay:#d08a5e; --clay2:#b8714a; --sand:#e2cf95; --cloth:#dfe3e8; --leaf:#4f9a5a; --leaf2:#2f6e3a; --sky:#dbe9f3;
+  --font-read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --font-ui:"Public Sans","Segoe UI",Arial,sans-serif;
+  --font-display:"Bricolage Grotesque","Public Sans",Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:5px 5px 0 var(--fg); --read:1.1rem;
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#181b22; --fg:#f4f4f4; --muted:#c7ccd6; --line:#e8e8e8;
+  --accent:#ff6a4d; --accent-soft:#4a2017; --vocab:#4fd1c0; --vocab-soft:#123b36; --active:#5a5010;
+  --violet:#a594ff; --violet-soft:#2a2350; --grid:rgba(244,244,244,.07); --shadow:5px 5px 0 #e8e8e8;
+  --clay:#b8714a; --clay2:#8f5436; --sand:#b9a66a; --cloth:#3a3f48; --leaf:#5fae6a; --leaf2:#3d8a49; --sky:#263241;
+}
+:root[data-size="1"]{--read:1.25rem} :root[data-size="2"]{--read:1.42rem}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 var(--font-ui);color:var(--fg);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;-webkit-text-size-adjust:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;letter-spacing:-.01em;line-height:1;margin:0}
+button{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{display:grid;grid-template-columns:1fr;min-height:100vh}
+.main{margin:0 auto;padding:1rem 16px 7rem;min-width:0;width:100%;max-width:78ch}
+@media (min-width:960px){
+  .wrap{grid-template-columns:17rem 1fr}
+  .rail{position:sticky;top:0;height:100vh;overflow:auto;border-right:3px solid var(--line);background:var(--surface);padding:1.1rem 1rem 1.5rem;display:grid;align-content:start;gap:1rem}
+  .rail-fab{display:none}
+  .main{padding:1.5rem 2.2rem 4rem}
+}
+@media (min-width:1180px){
+  .main{max-width:none}
+  .split{display:grid;grid-template-columns:minmax(0,47%) minmax(0,1fr);gap:0 2rem;align-items:start}
+  .split.single{grid-template-columns:minmax(0,1fr);max-width:84ch}
+  .passcol{position:sticky;top:1rem;max-height:calc(100vh - 2rem);overflow:auto;padding:4px 8px 12px 4px}
+  .itemcol{min-width:0}
+}
+@media (max-width:959px){
+  .rail{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:3px solid var(--line);
+    padding:.9rem 16px calc(1rem + env(safe-area-inset-bottom,0px));display:grid;gap:.8rem;max-height:78vh;overflow:auto;
+    transform:translateY(100%);transition:transform .25s}
+  .rail.open{transform:none}
+  .rail-fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:41;border:3px solid var(--line);
+    background:var(--accent);color:#111418;font:700 .85rem var(--font-mono);padding:.7rem 1rem;box-shadow:var(--shadow);cursor:pointer;
+    text-transform:uppercase;letter-spacing:.06em}
+}
+.brand{display:flex;gap:.7rem;align-items:center}
+.brandmark{width:46px;height:46px;border:3px solid var(--line);background:#111418;flex:none;box-shadow:3px 3px 0 var(--accent)}
+.brand-t{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.05rem;line-height:1}
+.brand-s{color:var(--muted);margin-top:.3rem}
+.prog{border:3px solid var(--line);padding:.7rem .8rem;background:var(--surface);display:grid;gap:.45rem}
+.prog-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.prog-row b{font-family:var(--font-mono);font-size:.95rem}
+.bar{height:14px;border:2px solid var(--line);background:var(--surface);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(135deg,var(--accent) 0 8px,var(--accent-soft) 8px 16px);transition:width .35s}
+.toc{display:grid;gap:.25rem}
+.toc a{display:grid;grid-template-columns:2.1rem 1fr auto;gap:.5rem;align-items:center;padding:.36rem .55rem;border:2px solid transparent;color:var(--fg);text-decoration:none;font-weight:600;font-size:.85rem}
+.toc a .n{font-family:var(--font-mono);font-weight:700;font-size:.72rem;background:var(--fg);color:var(--surface);padding:.15rem .3rem;text-align:center}
+.toc a .st{font-family:var(--font-mono);font-size:.7rem;color:var(--muted)}
+.toc a .st.ok{color:var(--vocab);font-weight:700} .toc a .st.no{color:var(--accent);font-weight:700}
+.toc a.active{border-color:var(--line);background:var(--active)}
+.toc a:hover{border-color:var(--line)}
+.tools{display:grid;gap:.4rem}
+.tool{display:flex;align-items:center;gap:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.45rem .6rem;font:600 .84rem var(--font-ui);cursor:pointer;text-align:left}
+.tool .k{font-family:var(--font-mono);font-weight:700;font-size:.64rem;letter-spacing:.06em;min-width:3.9rem;background:var(--fg);color:var(--surface);padding:.22rem .35rem;text-align:center}
+.tool[aria-pressed="true"] .k{background:var(--accent);color:#111418}
+.tool:hover{box-shadow:3px 3px 0 var(--fg)}
+.tool.danger .k{background:var(--accent);color:#111418}
+.rail-foot{color:var(--muted);font-size:.72rem;line-height:1.5}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--line)}
+.seg button{border:0;background:var(--surface);color:var(--fg);padding:.45rem;font:700 .75rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--surface)}
+.settabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:0 0 1.2rem}
+.settab{border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.6rem .7rem;text-align:left;cursor:pointer;box-shadow:3px 3px 0 var(--fg);display:grid;gap:.2rem}
+.settab .g{font-family:var(--font-mono);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.settab .tt{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1rem;line-height:1.05}
+.settab .pr{font-family:var(--font-mono);font-size:.68rem;color:var(--muted)}
+.settab[aria-pressed="true"]{background:var(--active);box-shadow:none;transform:translate(3px,3px)}
+.settab[aria-pressed="true"] .g{color:var(--accent)}
+.hero{padding:.6rem 0 1rem}
+.eyebrow{color:var(--accent)}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);margin:.35rem 0 .6rem;font-weight:800}
+.lede{font-size:1.08rem;max-width:66ch;margin:0 0 .9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:2px solid var(--line);padding:.3rem .55rem;background:var(--surface)}
+.card{position:relative;background:var(--surface);border:3px solid var(--line);box-shadow:var(--shadow);margin:0 0 2rem;padding:1.7rem 1.3rem 1.4rem;scroll-margin-top:1rem}
+.card::before{content:"";position:absolute;left:-3px;right:-3px;top:-3px;height:12px;background:var(--stripe,var(--accent));border:3px solid var(--line);border-bottom:none}
+.card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 1rem;align-items:flex-end;margin:.2rem 0 1rem}
+.card h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:800}
+.card h3{font-size:1.05rem;margin:1.1rem 0 .5rem}
+.meta{color:var(--muted);margin-bottom:.4rem}
+@media (max-width:600px){.card{padding:1.6rem 1rem 1.3rem}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border:3px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .95rem;font:700 .85rem var(--font-ui);cursor:pointer;box-shadow:3px 3px 0 var(--fg);text-transform:uppercase;letter-spacing:.03em;text-decoration:none;line-height:1.2}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--fg)}
+.btn.primary{background:var(--accent);color:#111418}
+.btn.ghost{box-shadow:none;border-width:2px;font-size:.76rem;padding:.42rem .65rem}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn[aria-pressed="true"]{background:var(--active)}
+.tag{font-family:var(--font-mono);font-weight:700;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .45rem;border:2px solid var(--line);background:var(--surface);white-space:nowrap}
+.tag.ok{background:var(--vocab);color:var(--surface);border-color:var(--vocab)}
+.tag.no{background:var(--accent);color:#111418;border-color:var(--accent)}
+.tag.dok{background:var(--violet-soft);border-color:var(--violet)}
+.tag.fmt{background:var(--bg)}
+.tag.std{background:var(--vocab-soft);border-color:var(--vocab);white-space:normal}
+.steps{display:grid;gap:.6rem;margin:0 0 .4rem}
+.step{display:grid;grid-template-columns:2.4rem 1fr;gap:.8rem;align-items:center;border:2px solid var(--line);padding:.6rem .8rem}
+.step .num{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1;color:var(--accent)}
+.step p{margin:0;font-weight:600}
+/* stimulus */
+.stim{font-family:var(--font-read);font-size:var(--read);line-height:1.7;padding:1rem 1.1rem;border:2px dashed var(--line);background:var(--bg);margin:0 0 1rem}
+.stim h3{font-family:var(--font-display);font-size:1.25rem;margin:0 0 .7rem}
+.stim h4{font:700 .72rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:1rem 0 .4rem}
+.stim p{margin:0 0 .8rem}
+.stim .s{padding:.05em .12em;border-radius:2px}
+.stim .s.speaking{background:var(--active)}
+.stim .cap{font-family:var(--font-ui);font-size:.88rem;color:var(--muted);margin:.4rem 0 0}
+.passtools{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .9rem}
+.wb{display:grid;gap:.4rem;margin:0 0 .9rem}
+.wb div{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:baseline;border:2px solid var(--line);background:var(--surface);padding:.4rem .6rem;font-size:.9rem}
+.wb b{font-family:var(--font-mono);font-size:.74rem;color:var(--vocab)}
+.player{display:grid;gap:.7rem;border:3px solid var(--line);background:var(--surface);padding:1rem;margin:0 0 1rem}
+.player .big{display:flex;align-items:center;gap:.9rem}
+.player .playbtn{width:4.2rem;height:4.2rem;border:3px solid var(--line);background:var(--accent);color:#111418;font-size:1.6rem;display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow);flex:none}
+.player .playbtn[aria-pressed="true"]{background:var(--active)}
+.player .playbtn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.player .pt{font-weight:700;line-height:1.3}
+.player .pt .count{display:block;margin-top:.2rem}
+.waves{display:flex;gap:4px;align-items:end;height:28px}
+.waves i{display:block;width:5px;background:var(--fg);height:30%}
+.player.on .waves i{animation:wv .9s ease-in-out infinite alternate}
+.player.on .waves i:nth-child(2){animation-delay:.15s}.player.on .waves i:nth-child(3){animation-delay:.3s}.player.on .waves i:nth-child(4){animation-delay:.45s}.player.on .waves i:nth-child(5){animation-delay:.6s}
+@keyframes wv{from{height:20%}to{height:100%}}
+.email{font-family:var(--font-ui)}
+.email .hd{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;font-size:.85rem;border-bottom:2px solid var(--line);padding:0 0 .6rem;margin:0 0 .8rem}
+.email .hd b{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:center}
+.email .body{font-family:var(--font-read)}
+.sides{display:grid;gap:.8rem;margin:0 0 .4rem}
+.side{border:3px solid var(--line);background:var(--surface);padding:.8rem .9rem;position:relative}
+.side .who{display:flex;align-items:center;gap:.6rem;margin:0 0 .5rem;font-family:var(--font-ui)}
+.side .av{width:2.2rem;height:2.2rem;border:2px solid var(--line);display:grid;place-items:center;font:800 .95rem var(--font-display);flex:none}
+.side .who b{display:block;font-size:.95rem}
+.side .who span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:0 0 .6rem}
+@media (max-width:420px){.frames{grid-template-columns:1fr}}
+.frame{border:3px solid var(--line);background:var(--surface);position:relative}
+.frame svg{width:100%;height:auto;display:block}
+.frame .fn{position:absolute;left:-3px;top:-3px;font:800 1rem var(--font-display);background:var(--fg);color:var(--surface);padding:.15rem .5rem;border:3px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .6rem}
+.wchip{border:2px solid var(--line);background:var(--active);color:#111418;padding:.25rem .6rem;font:600 .88rem var(--font-ui);cursor:pointer}
+:root[data-theme="dark"] .wchip{color:var(--fg)}
+.wchip:hover{box-shadow:2px 2px 0 var(--fg)}
+.wchip.seq{background:var(--violet-soft)}
+/* items */
+.item .stem{font-weight:700;font-size:1.05rem;margin:0 0 .9rem;line-height:1.45}
+.item .dir{color:var(--muted);font-size:.92rem;margin:0 0 .7rem}
+.opts{display:grid;gap:.5rem}
+.opt{display:grid;grid-template-columns:2rem 1fr auto;gap:.7rem;align-items:center;text-align:left;border:2px solid var(--line);background:var(--surface);color:var(--fg);padding:.55rem .7rem;font:500 1rem var(--font-ui);cursor:pointer;line-height:1.35}
+.opt .box{font-family:var(--font-mono);font-weight:700;border:2px solid var(--line);width:2rem;height:2rem;display:grid;place-items:center;font-size:.85rem}
+.opt.radio .box{border-radius:50%}
+.opt:hover:not([disabled]){box-shadow:3px 3px 0 var(--fg)}
+.opt[aria-checked="true"]{background:var(--active);border-width:3px;margin:-1px}
+.opt[aria-checked="true"] .box{background:var(--fg);color:var(--surface)}
+.opt[disabled]{cursor:default}
+.opt small{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:.15rem}
+.count{font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+.ed{font-family:var(--font-read);font-size:var(--read);line-height:2.25;border:2px dashed var(--line);background:var(--bg);padding:.9rem 1rem;margin:0 0 .9rem}
+.ed .bn{font:700 .6em var(--font-mono);color:var(--accent);vertical-align:super;margin-right:.15em}
+select.dd{font:600 .95rem var(--font-ui);border:3px solid var(--line);background:var(--active);color:#111418;padding:.25rem .4rem;margin:0 .15rem;max-width:100%;cursor:pointer;vertical-align:baseline}
+:root[data-theme="dark"] select.dd{color:var(--fg)}
+select.dd.correct{background:var(--vocab-soft);border-color:var(--vocab)}
+select.dd.wrong{background:var(--accent-soft);border-color:var(--accent)}
+select.dd[disabled]{cursor:default;opacity:1}
+.ddans{font-family:var(--font-mono);font-size:.72rem;color:var(--vocab);font-weight:700;margin-left:.2rem}
+.bank{display:flex;flex-wrap:wrap;gap:.5rem;min-height:3rem;border:2px dashed var(--line);padding:.6rem;margin:0 0 .9rem;background:var(--bg)}
+.bank .lbl{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:100%}
+.namechip{display:inline-flex;align-items:center;gap:.4rem;border:3px solid var(--line);background:var(--active);color:#111418;padding:.4rem .75rem;font:600 .9rem var(--font-ui);cursor:grab;box-shadow:3px 3px 0 var(--fg);touch-action:none;user-select:none;line-height:1.3;text-align:left}
+:root[data-theme="dark"] .namechip{color:var(--fg)}
+.namechip.armed{outline:3px solid var(--accent);outline-offset:2px;background:var(--accent-soft)}
+.namechip:active{cursor:grabbing}
+.namechip.ghost{opacity:.4}
+.bslot{display:inline-flex;align-items:center;justify-content:center;min-width:7.5rem;min-height:2.3rem;border:2px dashed var(--line);background:var(--surface);vertical-align:middle;margin:0 .2rem;padding:0 .45rem;font:700 .64rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);cursor:pointer;line-height:1.2}
+.bslot.ready{border-color:var(--accent);color:var(--accent)}
+.bslot.over{background:var(--active)}
+.bslot .namechip{box-shadow:none;cursor:pointer;padding:.2rem .55rem;font-size:.9rem;text-transform:none;letter-spacing:0}
+.bslot.correct{border-style:solid;border-color:var(--vocab);background:var(--vocab-soft)}
+.bslot.wrong{border-style:solid;border-color:var(--accent);background:var(--accent-soft)}
+.bslot[aria-disabled="true"]{cursor:default}
+.blankfb{display:grid;gap:.45rem;margin:.6rem 0 0}
+.blankfb div{display:grid;grid-template-columns:2rem 1fr;gap:.6rem;align-items:start;border:2px solid var(--line);padding:.5rem .6rem;font-size:.92rem;background:var(--surface)}
+.blankfb .bnum{font-family:var(--font-mono);font-weight:700;font-size:.8rem;text-align:center;padding:.2rem 0;background:var(--fg);color:var(--surface)}
+.blankfb div.ok .bnum{background:var(--vocab)} .blankfb div.no .bnum{background:var(--accent);color:#111418}
+.blankfb .foc{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-left:.4rem}
+.resp{margin:0 0 .6rem}
+.resp textarea{width:100%;border:3px solid var(--line);background:var(--surface);color:var(--fg);font:1.02rem/1.6 var(--font-ui);padding:.7rem .8rem;min-height:9rem;resize:vertical}
+.resp textarea.q{min-height:4.5rem}
+.resp textarea.long{min-height:15rem}
+.resp textarea[readonly]{background:var(--bg)}
+.resp textarea:focus{box-shadow:3px 3px 0 var(--fg)}
+.counter{display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;margin:.4rem 0 .8rem}
+.checks{display:grid;gap:.4rem;margin:.8rem 0 .2rem}
+.chk{display:grid;grid-template-columns:1.7rem 1fr;gap:.6rem;align-items:start;border:2px solid var(--line);padding:.45rem .6rem;font-size:.92rem;background:var(--surface)}
+.chk .ic{font-family:var(--font-mono);font-weight:700;font-size:.95rem;text-align:center;line-height:1.3;color:var(--muted)}
+.chk.ok{background:var(--vocab-soft);border-color:var(--vocab)} .chk.ok .ic{color:var(--vocab)}
+.chk.no{border-style:dashed} .chk .tip{display:block;color:var(--muted);font-size:.85rem;margin-top:.15rem}
+.chk.bonus .ic{color:var(--violet)}
+.stems{display:grid;gap:.35rem;margin:0 0 .9rem}
+.stems button{border-left:4px solid var(--violet);border-top:0;border-right:0;border-bottom:0;padding:.3rem .6rem;background:var(--violet-soft);color:var(--fg);font:.92rem var(--font-ui);text-align:left;cursor:pointer}
+.stems button:hover{outline:2px solid var(--violet)}
+.fb{margin:.9rem 0 .2rem;padding:.75rem .9rem;border:2px solid var(--line);background:var(--bg);display:grid;gap:.5rem}
+.fb-head{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.fb p{margin:0}
+.item-foot{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.1rem;padding-top:.9rem;border-top:3px solid var(--line)}
+.tagrow{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem}
+.score-big{display:flex;align-items:baseline;gap:.6rem;font-family:var(--font-display);font-weight:800;font-size:4.2rem;line-height:1}
+.score-big .mono{font-size:1rem;color:var(--muted)}
+.band{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.3rem;margin:.4rem 0 1.1rem;color:var(--accent)}
+.rtable{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 1rem}
+.rtable th,.rtable td{border:2px solid var(--line);padding:.4rem .55rem;text-align:left;vertical-align:top}
+.rtable th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.toolrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.toolrow input[type=text]{border:2px solid var(--line);background:var(--surface);color:var(--fg);font:1rem var(--font-ui);padding:.5rem .6rem;min-width:14rem}
+.msg{font-size:.9rem;color:var(--muted)}
+.fallback{width:100%;border:2px solid var(--line);background:var(--surface);color:var(--fg);margin-top:.7rem;min-height:7rem;font-family:var(--font-mono);font-size:.8rem;padding:.5rem}
+.key table{width:100%;border-collapse:collapse;font-size:.9rem;margin:0 0 1rem}
+.key th,.key td{border:2px solid var(--line);padding:.35rem .5rem;text-align:left;vertical-align:top}
+.key th{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg)}
+.key blockquote{margin:.4rem 0 1rem;padding:.6rem .9rem;border-left:4px solid var(--vocab);background:var(--vocab-soft);font-family:var(--font-read);font-size:.98rem}
+.toast{position:fixed;left:50%;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--surface);padding:.6rem 1rem;border:3px solid var(--accent);font:600 .9rem var(--font-ui);z-index:60;opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw;text-align:center}
+.toast.show{opacity:1}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:1rem 0 2rem;line-height:1.6}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* listening */
+.turns{display:grid;gap:.55rem;font-family:var(--font-read);font-size:var(--read);line-height:1.6}
+.turn{display:grid;grid-template-columns:2.3rem 1fr;gap:.6rem;align-items:start}
+.turn .av{width:2.3rem;height:2.3rem;border:2px solid var(--line);display:grid;place-items:center;font:800 .9rem var(--font-display);background:var(--surface)}
+.turn .who{display:block;font:700 .64rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .1rem}
+.turn .s{display:inline}
+.mini{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;border:3px solid var(--line);background:var(--surface);padding:.6rem .8rem;margin:0 0 .9rem}
+.mini .playbtn{width:3rem;height:3rem;border:3px solid var(--line);background:var(--accent);color:#111418;font-size:1.1rem;display:grid;place-items:center;cursor:pointer;box-shadow:3px 3px 0 var(--fg);flex:none}
+.mini .playbtn[aria-pressed="true"]{background:var(--active)}
+.mini .playbtn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.mini .pt{font-weight:700;font-size:.92rem}
+.mini .pt .count{display:block;margin-top:.1rem}
+.mini.on .waves i{animation:wv .9s ease-in-out infinite alternate}
+.clip{font-family:var(--font-read);font-size:var(--read);border:2px dashed var(--line);background:var(--bg);padding:.6rem .9rem;margin:0 0 .9rem}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:0 0 .4rem;max-width:560px}
+@media (min-width:760px){.pics{grid-template-columns:repeat(4,1fr);max-width:none}}
+.pic{border:3px solid var(--line);background:var(--surface);padding:.45rem .45rem .35rem;cursor:pointer;display:grid;gap:.25rem;text-align:left;color:var(--fg);position:relative}
+.pic svg{width:100%;height:auto;display:block;background:var(--bg);border:2px solid var(--line)}
+.pic .pl{display:flex;justify-content:space-between;align-items:center;font:700 .72rem var(--font-mono);letter-spacing:.06em}
+.pic .pl .box{border:2px solid var(--line);width:1.7rem;height:1.7rem;display:grid;place-items:center;border-radius:50%}
+.pic:hover:not([disabled]){box-shadow:3px 3px 0 var(--fg)}
+.pic[aria-checked="true"]{background:var(--active)} .pic[aria-checked="true"] .box{background:var(--fg);color:var(--surface)}
+.pic.correct{background:var(--vocab-soft);border-color:var(--vocab)} .pic.correct .box{background:var(--vocab);color:var(--surface);border-color:var(--vocab)}
+.pic.wrong{background:var(--accent-soft);border-color:var(--accent)} .pic.wrong .box{background:var(--accent);border-color:var(--accent)}
+.pic.missed{border-style:dashed;border-color:var(--vocab)}
+.pic[disabled]{cursor:default}
+.drops{display:grid;gap:.55rem}
+.drop{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;border:2px solid var(--line);background:var(--surface);padding:.55rem .7rem;min-height:3.4rem;text-align:left;font:500 .96rem var(--font-ui);color:var(--fg);cursor:pointer}
+.drop .slot{min-width:10rem;min-height:2.3rem;border:2px dashed var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:.15rem .4rem;text-align:center}
+.drop.over{background:var(--active)}
+.drop.ready .slot{border-color:var(--accent);color:var(--accent)}
+.drop .slot .namechip{box-shadow:none;cursor:pointer;padding:.25rem .6rem;font-size:.85rem;text-transform:none;letter-spacing:0}
+.drop.correct{border-color:var(--vocab);border-width:3px;margin:-1px;background:var(--vocab-soft)}
+.drop.wrong{border-color:var(--accent);border-width:3px;margin:-1px;background:var(--accent-soft)}
+.drop .fix{display:block;font-family:var(--font-mono);font-size:.68rem;color:var(--vocab);font-weight:700;margin-top:.25rem;text-transform:none;letter-spacing:0}
+.drop .dn{font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--accent);margin-right:.5rem}
+@media (max-width:520px){.drop{grid-template-columns:1fr}.drop .slot{min-width:0}}
+.org{width:100%;border-collapse:collapse;font-family:var(--font-ui);font-size:.95rem;background:var(--surface);margin:0 0 .8rem}
+.org th,.org td{border:2px solid var(--line);padding:.45rem .6rem;text-align:left;vertical-align:middle}
+.org th{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;background:var(--bg);width:34%}
+.org td.num{font-family:var(--font-mono);font-weight:700}
+.org .bslot{min-width:9rem}
+.chart{width:100%;height:auto;display:block;margin:.4rem auto .6rem;max-width:560px}
+.chart text{font-family:var(--font-ui)}
+.chart .lbl{font-family:var(--font-mono);font-weight:700}
+.fig{width:100%;height:auto;display:block;margin:.3rem auto .6rem;max-width:560px}
+.fig text{font-family:var(--font-ui)}
+.fig .region{cursor:pointer}
+.fig .region:hover .shape{filter:brightness(1.08)}
+.fig .region.sel .shape{stroke:var(--fg);stroke-width:5}
+.fig .region.correct .shape{stroke:var(--vocab);stroke-width:5}
+.fig .region.wrong .shape{stroke:var(--accent);stroke-width:5;stroke-dasharray:8 6}
+.fig.locked .region{cursor:default}
+.figwrap{border:2px dashed var(--line);background:var(--bg);padding:.6rem;margin:0 0 .8rem}
+.vis{border:2px dashed var(--line);background:var(--bg);padding:.6rem .8rem;margin:0 0 .9rem}
+.vis h4{font:700 .72rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside class="rail" id="rail" aria-label="Navigation and supports">
+  <div class="brand">
+    <svg class="brandmark" viewBox="0 0 100 100" aria-hidden="true"><path d="M58 8 22 58h22l-8 34 42-54H56z" fill="#ff4d2e"/></svg>
+    <div><div class="brand-t">Storm Studio</div><div class="brand-s mono" id="brandSub">Listening sets</div></div>
+  </div>
+  <div class="prog" aria-live="polite">
+    <div class="prog-row"><span class="mono" data-t="rail.answered">Answered</span><b id="progText">0 / 0</b></div>
+    <div class="bar"><i id="progFill"></i></div>
+    <div class="prog-row"><span class="mono" id="scoreLbl" data-t="rail.score">Score</span><b id="scoreText">—</b></div>
+  </div>
+  <div class="seg" role="group" aria-label="Mode"><button type="button" id="modePractice" aria-pressed="true" data-t="mode.practice">Practice</button><button type="button" id="modeTest" aria-pressed="false" data-t="mode.test">Test</button></div>
+  <nav class="toc" id="toc" aria-label="Sections"></nav>
+  <div class="tools">
+    <button type="button" class="tool" id="audioBtn"><span class="k">AUDIO</span><span data-t="rail.audio">Read aloud</span></button>
+    <button type="button" class="tool" id="wbBtn" aria-pressed="false"><span class="k">WORDS</span><span data-t="rail.wb">Glossary</span></button>
+    <button type="button" class="tool" id="sizeBtn"><span class="k">A A</span><span data-t="rail.size">Text size</span></button>
+    <button type="button" class="tool" id="langBtn"><span class="k" id="langK">ES</span><span id="langLbl">Español</span></button>
+    <button type="button" class="tool" id="themeBtn" aria-pressed="false"><span class="k">DARK</span><span data-t="rail.theme">Dark mode</span></button>
+    <button type="button" class="tool danger" id="resetAll"><span class="k">RESET</span><span id="resetLbl" data-t="rail.reset">Reset this set</span></button>
+  </div>
+  <div class="rail-foot">EL Publishing · Many Voices · One Storm</div>
+</aside>
+<button type="button" class="rail-fab" id="railFab" aria-expanded="false" aria-controls="rail"><span id="fabPct">0 / 0</span> · Menu</button>
+
+<main class="main" id="main">
+  <div class="settabs" id="settabs" role="tablist" aria-label="Listening sets"></div>
+  <header class="hero" id="hero"></header>
+  <section class="card" id="s00" style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">00</div><h2 data-t="dir.title">Directions</h2></div></div>
+    <div class="steps" id="dirs"></div>
+  </section>
+  <div class="split" id="split">
+    <div class="passcol" id="passcol">
+      <section class="card" id="s01" style="--stripe:var(--vocab)">
+        <div class="card-head"><div><div class="mono meta">01 · <span id="stimLabel"></span></div><h2 id="stimTitle"></h2></div>
+          <button type="button" class="btn ghost readbtn" id="readBtn" aria-pressed="false">▶ <span class="lbl" data-t="btn.read">Read aloud</span></button></div>
+        <div class="passtools">
+          <button type="button" class="btn ghost" id="sizeBtn2"><span data-t="rail.size">Text size</span> A A</button>
+          <button type="button" class="btn ghost" id="wbBtn2" aria-pressed="false" data-t="rail.wb">Glossary</button>
+          <button type="button" class="btn ghost" id="transBtn" aria-pressed="false" data-t="btn.transcript">Show transcript</button>
+        </div>
+        <div class="wb" id="wordbank" hidden></div>
+        <div id="stimBody"></div>
+      </section>
+    </div>
+    <div class="itemcol" id="items"></div>
+  </div>
+  <section class="card results" id="sRes" style="--stripe:var(--violet)">
+    <div class="card-head"><div><div class="mono meta" id="resMeta"></div><h2 data-t="res.title">My results</h2></div></div>
+    <div id="resBody"></div>
+  </section>
+  <section class="card key" id="key" hidden style="--stripe:var(--fg)">
+    <div class="card-head"><div><div class="mono meta">Teacher</div><h2>Teacher key, scripts, and notes</h2></div></div>
+    <div id="keyBody"></div>
+  </section>
+  <footer>
+    Storm Studio · Listening Sets · seven interactive ELPA21-style listening tasks · EL Publishing · Richard A. Daniel, M.Ed.<br>
+    <span data-t="not.real">Original scripts, pictures, data, and practice items written for classroom use. All names, places, and numbers are invented.</span>
+  </footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+var KEY='storm-listening-v1';
+var L=['A','B','C','D','E','F'];
+
+/* =========================================================
+   SET 1 · LISTEN AND MATCH · SENTENCES (picture hot spot)
+   ========================================================= */
+var LMSENT={
+ id:'lmsent',grade:'Grades 9–12',title:'Listen and Match: Sentences',short:'Match: Sentences',
+ kind:{en:'Sentence hot spot zone',es:'Zona de punto caliente: oraciones'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Listen and match',lede:'Listen to a sentence, then choose the picture it describes. Four short items, one correct picture each.',
+        dirs:['Press Play on each item to hear the sentence. In Test mode you can play it twice.','Tap the one picture that matches the whole sentence, not just one word in it.','In Practice mode, check each item as you go. In Test mode, answer all four, then submit.'],chips:['4 items','Picture hot spot','1 play each in Test (×2)','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Escuchar y relacionar',lede:'Escucha una oración y elige el dibujo que describe. Cuatro preguntas cortas, un dibujo correcto en cada una.',
+        dirs:['Presiona Reproducir en cada pregunta para escuchar la oración. En modo Examen puedes escucharla dos veces.','Toca el único dibujo que corresponde a toda la oración, no solo a una palabra.','En modo Práctica, revisa cada pregunta al terminarla. En modo Examen, responde las cuatro y envía al final.'],chips:['4 preguntas','Punto caliente con dibujos','2 reproducciones en Examen','1 punto cada una']}},
+ stim:null,
+ items:[
+  {n:1,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Before class, the student plugs in her laptop to charge it.'}],pics:['laptop','book','backpack','clock'],ans:0,
+   why:'The sentence names a laptop being plugged in. The other pictures show a book, a backpack, and a clock, none of which can be charged.'},
+  {n:2,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Take an umbrella today, because it will rain during lunch.'}],pics:['sun','umbrella','tray','bus'],ans:1,
+   why:'Umbrella and rain point to the umbrella picture. The lunch tray matches only the word “lunch,” not the sentence.'},
+  {n:3,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'In biology class, we looked at onion cells through a microscope.'}],pics:['flask','calculator','microscope','chart'],ans:2,
+   why:'“Looked at cells through” tells you the tool is a microscope. The flask is also science equipment, but you do not look through it.'},
+  {n:4,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'After school, the players line up for the bus to the game.'}],pics:['basketball','clock','guitar','bus'],ans:3,
+   why:'The players are lining up for the bus, so the bus is the picture. The basketball matches only the word “game.”'}],
+ keynote:'1 point each. Each item plays an independent clip; the picture must match the whole sentence, and each set of four includes one picture that matches a single word in the sentence (a classic distractor). ELP Standard 1 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Have students name all four pictures before pressing Play. Knowing the choices turns listening into checking.</li><li>Each item’s distractor set includes a “one-word match” (lunch → tray, game → basketball). Point it out after the first miss.</li></ul>'
+};
+
+/* =========================================================
+   SET 2 · LISTEN AND MATCH · WORDS
+   ========================================================= */
+var LMWORD={
+ id:'lmword',grade:'Grades 9–12',title:'Listen and Match: Words',short:'Match: Words',
+ kind:{en:'Word hot spot zone',es:'Zona de punto caliente: palabras'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Listen and match',lede:'Listen to a single word, then choose the picture that shows it. Four items, one correct picture each.',
+        dirs:['Press Play on each item to hear the word. In Test mode you can play it twice.','Tap the one picture that shows the word you heard.','In Practice mode, check each item as you go. In Test mode, answer all four, then submit.'],chips:['4 items','Picture hot spot','School vocabulary','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Escuchar y relacionar',lede:'Escucha una sola palabra y elige el dibujo que la muestra. Cuatro preguntas, un dibujo correcto en cada una.',
+        dirs:['Presiona Reproducir en cada pregunta para escuchar la palabra. En modo Examen puedes escucharla dos veces.','Toca el único dibujo que muestra la palabra que escuchaste.','En modo Práctica, revisa cada pregunta al terminarla. En modo Examen, responde las cuatro y envía al final.'],chips:['4 preguntas','Punto caliente con dibujos','Vocabulario escolar','1 punto cada una']}},
+ stim:null,
+ items:[
+  {n:1,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Calculator.'}],pics:['calculator','clock','laptop','chart'],ans:0,why:'A calculator has number keys and a small screen. The clock, laptop, and chart share some features but are different objects.'},
+  {n:2,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Backpack.'}],pics:['tray','backpack','book','umbrella'],ans:1,why:'A backpack has straps and a zipper. The book goes inside it.'},
+  {n:3,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Guitar.'}],pics:['pencil','microscope','guitar','bus'],ans:2,why:'A guitar has a body, a neck, and strings.'},
+  {n:4,type:'pic',fmt:'fmt.pic',clip:[{who:'Narrator',text:'Map.'}],pics:['flask','chart','basketball','map'],ans:3,why:'A map shows roads and places. The chart has bars and numbers, which is a common mix-up.'}],
+ keynote:'1 point each. Single-word clips with four pictures; each set includes a visually similar distractor (clock/calculator, chart/map). ELP Standard 1 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Fast rounds work well as a warm-up: the whole set takes under two minutes.</li><li>Extend by having students say a sentence that uses the word and one of the distractor pictures.</li></ul>'
+};
+
+/* =========================================================
+   SET 3 · LISTEN FOR INFORMATION · drag the missing piece into the visual
+   ========================================================= */
+var INFO={
+ id:'info',grade:'Grades 9–12',title:'Listen for Information',short:'Listen for Info',
+ kind:{en:'Drag and drop match',es:'Arrastrar y soltar'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Listen for information',lede:'Each item has a chart, a table, or an organizer with one piece missing. Listen to the clip, find the missing information, and drag the correct answer into place.',
+        dirs:['Look at the visual first and find the blank. Then press Play and listen for that one piece of information.','Drag the correct tile into the blank, or tap the tile and then tap the blank. Only one tile is correct.','In Test mode you can play each clip twice.'],chips:['3 items','Chart · organizer · table','Drag and drop','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Escuchar para obtener información',lede:'Cada pregunta tiene una gráfica, una tabla o un organizador con una pieza que falta. Escucha el clip, encuentra la información que falta y arrástrala a su lugar.',
+        dirs:['Mira primero el visual y encuentra el espacio en blanco. Luego presiona Reproducir y escucha solo esa información.','Arrastra la ficha correcta al espacio, o tócala y luego toca el espacio. Solo una ficha es correcta.','En modo Examen puedes escuchar cada clip dos veces.'],chips:['3 preguntas','Gráfica · organizador · tabla','Arrastrar y soltar','1 punto cada una']}},
+ stim:null,
+ items:[
+  {n:1,type:'fill',fmt:'fmt.fill',vis:'chart1',clip:[{who:'Ms. Park',text:'Here are the results of our transportation survey. We asked forty students how they usually get to school. Sixteen students ride the bus, twelve come by car, eight walk, and four ride a bike.'}],
+   stem:'The bar for **Walk** is missing its number. Listen, then drag the correct number into the blank.',opts:['6','8','10','14'],ans:1,
+   why:'Ms. Park says “eight walk.” The chart already shows 16, 12, and 4 for the other groups, and 16 + 12 + 8 + 4 = 40, the number surveyed.'},
+  {n:2,type:'fill',fmt:'fmt.fill',vis:'org2',clip:[{who:'Announcer',text:'The science fair will be held on Thursday evening in the gym. Doors open at six o’clock, but students must have their projects set up by five fifteen. Judging begins at six thirty.'}],
+   stem:'One row of the organizer is blank. Listen, then drag the correct **place** into the blank.',opts:['library','cafeteria','gym','auditorium'],ans:2,
+   why:'The announcement says the fair “will be held on Thursday evening in the gym.” The other places are never mentioned.'},
+  {n:3,type:'fill',fmt:'fmt.fill',vis:'table3',clip:[{who:'Ravi',text:'For my project, I measured how far a toy car rolled after leaving a ramp set at three heights. At ten centimeters, the car rolled eighty centimeters. At twenty centimeters, it rolled one hundred fifty centimeters. At thirty centimeters, it rolled two hundred ten centimeters.'}],
+   stem:'The distance for the **20 cm** ramp is missing from the table. Listen, then drag the correct value into the blank.',opts:['120','180','210','150'],ans:3,
+   why:'Ravi says that at twenty centimeters the car rolled one hundred fifty centimeters. 210 is the value for the 30 cm ramp, and 120 and 180 are never said.'}],
+ keynote:'1 point each. Each item pairs a short clip with a visual that has exactly one gap; the distractor tiles include a number or place that appears elsewhere in the clip. ELP Standard 1 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>The strategy to teach: read the visual, name the gap in your head (“I need the number for Walk”), then listen only for that.</li><li>Item 3’s distractor 210 is a real value from the clip in the wrong row — a listening-for-detail error, not a hearing error.</li></ul>'
+};
+
+/* =========================================================
+   SET 4 · ACADEMIC DEBATE · four-day school week
+   ========================================================= */
+var DEBATE={
+ id:'debate',grade:'Grades 9–12',title:'Debate: The Four-Day Week',short:'Academic Debate',
+ kind:{en:'Academic debate',es:'Debate académico'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Academic debate',lede:'Two students debate whether the school should move to a four-day week. Each one makes a claim and gives two pieces of evidence; classmates ask questions. Then answer four questions about the arguments, the evidence, and the way the speakers talk.',
+        dirs:['Press Play and listen to the whole debate. In Practice mode you may read along; in Test mode the text stays hidden and you can play it twice.','As you listen, keep track of who said each piece of evidence. Question 2 asks you to sort it.','Each question tells you how to answer. When you must choose more than one answer, the question says how many.'],chips:['4 items','Single · multiple select · organizer','Claims and evidence','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Debate académico',lede:'Dos estudiantes debaten si la escuela debe cambiar a una semana de cuatro días. Cada uno hace una afirmación y da dos evidencias; los compañeros hacen preguntas. Luego responde cuatro preguntas sobre los argumentos, la evidencia y la forma de hablar.',
+        dirs:['Presiona Reproducir y escucha todo el debate. En modo Práctica puedes leer; en modo Examen el texto queda oculto y puedes escucharlo dos veces.','Mientras escuchas, anota quién dijo cada evidencia. La pregunta 2 te pide clasificarla.','Cada pregunta te dice cómo responder. Cuando debes elegir más de una respuesta, la pregunta dice cuántas.'],chips:['4 preguntas','Selección única · múltiple · organizador','Afirmaciones y evidencia','1 punto cada una']}},
+ stim:{type:'dialogue',title:'Should Our School Switch to a Four-Day Week?',label:{en:'The debate',es:'El debate'},maxPlays:2,
+  speakers:{'Mr. Chen':'moderator','Dana':'for','Omar':'against','Kim':'classmate','Luis':'classmate'},
+  turns:[
+   {who:'Mr. Chen',text:'Today’s debate question: Should our school move to a four-day school week, with longer days Monday through Thursday? Dana will argue for the change, and Omar will argue against it. Dana, you have the floor.'},
+   {who:'Dana',text:'Thank you. I believe our school should switch to a four-day week. My first piece of evidence comes from a district in Colorado that made this change. After the switch, student attendance went up by six percent, because families scheduled appointments on the free day instead of during school. My second piece of evidence is about teachers. In a survey of two hundred teachers in four-day districts, seventy percent said they had more time to plan lessons, and fewer of them left their jobs.'},
+   {who:'Mr. Chen',text:'Thank you, Dana. Omar?'},
+   {who:'Omar',text:'I disagree. A four-day week sounds nice, but it creates problems for the people with the fewest choices. First, a study of schools in Oregon found that reading and math scores dropped slightly after districts switched, especially for students who were already behind. Second, think about younger brothers and sisters. Who will watch them on that fifth day? Many parents work five days a week, and child care costs money that some families do not have.'},
+   {who:'Kim',text:'I have a question for Dana. If the days are longer, won’t students be too tired to learn in the last class?'},
+   {who:'Dana',text:'That’s a fair concern. Schools that switched usually added about forty-five minutes to each day, not hours. Most students said they adjusted within a few weeks.'},
+   {who:'Luis',text:'My question is for Omar. Couldn’t the school offer activities or tutoring on the fifth day?'},
+   {who:'Omar',text:'It could, but someone has to pay for that. If the school keeps the building open on Friday with staff, it loses most of the money it hoped to save.'},
+   {who:'Mr. Chen',text:'Thank you both. Let’s hear your closing sentences.'},
+   {who:'Dana',text:'A four-day week gives families and teachers something they never have enough of: time.'},
+   {who:'Omar',text:'A four-day week saves money for the district by moving the cost onto families.'}],
+  gloss:[['claim','the main point a speaker is trying to prove'],['evidence','facts, numbers, or examples used to support a claim'],['district','a group of schools run by the same local office'],['attendance','how many students come to school each day'],['rhetorical question','a question asked to make a point, not to get an answer']]},
+ items:[
+  {n:1,type:'sc',fmt:'fmt.sc',skill:'Main argument',stem:'What is Dana’s main argument?',
+   opts:['Longer school days help students learn more in each class.','A four-day week improves attendance and helps teachers.','Students in Colorado score higher in reading than students in Oregon.','Families should schedule fewer appointments during the week.'],ans:1,
+   why:'Dana’s two pieces of evidence are about attendance going up and teachers having more planning time. The other options twist details from the debate.'},
+  {n:2,type:'sort',fmt:'fmt.sort',skill:'Supporting details',stem:'Drag each piece of evidence to the speaker who used it. Each name can be used more than once.',
+   labels:['Dana','Omar'],rows:[{t:'Attendance rose six percent in a Colorado district.',ans:0},{t:'Reading and math scores dropped slightly in Oregon.',ans:1},{t:'Seventy percent of teachers surveyed had more planning time.',ans:0},{t:'Child care on the fifth day costs money some families do not have.',ans:1}],
+   why:'Dana cites the Colorado attendance increase and the teacher survey; Omar cites the Oregon test-score study and the child-care problem.'},
+  {n:3,type:'ms',need:2,fmt:'fmt.ms',skill:'Inference',stem:'Which **two** statements can be inferred from the debate? Choose **two** answers.',
+   opts:['Dana thinks tired students are the biggest problem with the plan.','Omar believes the plan would hurt the students who struggle the most.','Kim supports the four-day week.','Omar thinks keeping the building open on Fridays would cancel the savings.','Mr. Chen agrees with Dana.'],ans:[1,3],
+   why:'Omar says the plan hurts “people with the fewest choices” and students “already behind” (B), and that staffing the building on Friday “loses most of the money” (D). Dana calls tiredness a “fair concern” but not the biggest problem; Kim raises a worry, not support; the moderator never takes a side.'},
+  {n:4,type:'sc',fmt:'fmt.sc',skill:'Rhetorical device',stem:'Omar asks, “Who will watch them on that fifth day?” Why does he ask this question?',
+   opts:['He wants Dana to answer with a specific person’s name.','He is asking the moderator for more time.','He uses a question to make the audience picture a real problem.','He does not know who will watch younger children.'],ans:2,
+   why:'It is a rhetorical question: Omar does not wait for an answer. He asks it so listeners imagine families with no child care, which supports his claim.'}],
+ keynote:'1 point each. Skills: main argument (1), supporting details via organizer (2), inference (3), rhetorical device (4). ELP Standards 1, 6 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Before the first play, have students draw a two-column organizer (Dana / Omar) and write “claim” and “evidence 1, 2” in each column; item 2 then becomes a check of their notes.</li><li>Item 4 is the one most students miss: teach that a rhetorical question is a statement wearing a question mark.</li></ul>'
+};
+
+/* =========================================================
+   SET 5 · SHORT CONVERSATION · the research paper (14 turns)
+   ========================================================= */
+var CONVO={
+ id:'convo',grade:'Grades 9–12',title:'Conversation: The Research Paper',short:'Short Conversation',
+ kind:{en:'Short conversation',es:'Conversación corta'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Short conversation',lede:'Two students talk about a history research paper: how to narrow a topic, where to find sources, and when things are due. Listen to the conversation, then answer five questions.',
+        dirs:['Press Play and listen to the whole conversation. In Practice mode you may read along; in Test mode the text stays hidden and you can play it twice.','Listen for what each speaker wants, what they decide, and what they will do next.','Choose one answer for each question.'],chips:['5 items','14 turns','Single select','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Conversación corta',lede:'Dos estudiantes hablan sobre un trabajo de investigación de historia: cómo delimitar el tema, dónde encontrar fuentes y cuándo se entrega. Escucha la conversación y responde cinco preguntas.',
+        dirs:['Presiona Reproducir y escucha toda la conversación. En modo Práctica puedes leer; en modo Examen el texto queda oculto y puedes escucharla dos veces.','Escucha qué quiere cada persona, qué deciden y qué harán después.','Elige una respuesta en cada pregunta.'],chips:['5 preguntas','14 turnos','Selección única','1 punto cada una']}},
+ stim:{type:'dialogue',title:'Narrowing a Topic',label:{en:'The conversation',es:'La conversación'},maxPlays:2,
+  speakers:{'Jordan':'student','Priya':'student'},
+  turns:[
+   {who:'Jordan',text:'Hey Priya, did you pick a topic for the history research paper yet?'},
+   {who:'Priya',text:'Almost. I’m stuck between the Great Migration and the building of the interstate highways.'},
+   {who:'Jordan',text:'Both are huge. Ms. Ortiz said the topic has to be narrow enough to cover in five pages.'},
+   {who:'Priya',text:'That’s my problem. Every time I read about the Great Migration, I find another city I want to include.'},
+   {who:'Jordan',text:'So pick one city. My cousin did Chicago and only used sources about the 1920s.'},
+   {who:'Priya',text:'One city, one decade. That might actually work. How did your cousin find sources?'},
+   {who:'Jordan',text:'The library database. You log in with your student ID, and it has newspapers from back then.'},
+   {who:'Priya',text:'Old newspapers? Those count as primary sources, right?'},
+   {who:'Jordan',text:'Right, and Ms. Ortiz wants at least two primary sources. The rubric says it’s worth twenty points.'},
+   {who:'Priya',text:'I didn’t see that. I was only looking at the page limit.'},
+   {who:'Jordan',text:'Check the second page of the rubric. Also, the outline is due Friday, not the draft.'},
+   {who:'Priya',text:'Friday? I thought we had until next week.'},
+   {who:'Jordan',text:'Only for the draft. If you want, I’ll show you the database during study hall today.'},
+   {who:'Priya',text:'Please. I’ll bring my ID. And I’m going to stop reading about every city tonight.'}],
+  gloss:[['narrow (a topic)','make a topic smaller and more specific'],['primary source','something made at the time being studied, such as a letter, photo, or newspaper'],['database','an online collection of articles and records you can search'],['rubric','the list of what a teacher will grade and how many points each part is worth'],['outline','a plan of the main points before the full draft is written']]},
+ items:[
+  {n:1,type:'sc',fmt:'fmt.sc',skill:'Main idea',stem:'What are the speakers mainly talking about?',
+   opts:['Which history teacher gives the most homework.','How Priya can narrow her topic and find sources for her paper.','Why Jordan’s cousin chose to write about Chicago.','How to log in to the school computers.'],ans:1,
+   why:'The whole conversation moves from Priya’s too-big topic to a narrower one and then to the database and the due dates. The cousin and the login are details, not the main idea.'},
+  {n:2,type:'sc',fmt:'fmt.sc',skill:'Detail',stem:'According to Jordan, what does the library database contain?',
+   opts:['Newspapers from the time period','The second page of the rubric','Photos of Chicago in the 1920s','A list of approved topics'],ans:0,
+   why:'Jordan says the database “has newspapers from back then.” The rubric is a separate document, and photos and topic lists are never mentioned.'},
+  {n:3,type:'sc',fmt:'fmt.sc',skill:'Inference',stem:'What can be inferred about Priya?',
+   opts:['She has already finished her outline.','She prefers the interstate highways topic.','She had not read the whole rubric carefully.','She does not want Jordan’s help.'],ans:2,
+   why:'Priya says, “I didn’t see that. I was only looking at the page limit,” and she is surprised by the Friday due date. She has not finished the outline, chooses the Great Migration, and accepts Jordan’s help.'},
+  {n:4,type:'sc',fmt:'fmt.sc',skill:'Rhetorical device',stem:'Why does Priya say, “One city, one decade”?',
+   opts:['To repeat Jordan’s idea in a short form and show she is considering it.','To disagree with what Jordan’s cousin did.','To ask Jordan which decade she should choose.','To explain the rubric to Jordan.'],ans:0,
+   why:'She restates Jordan’s suggestion as a short phrase and then says, “That might actually work.” Repeating an idea in your own words is a way of testing it out loud.'},
+  {n:5,type:'sc',fmt:'fmt.sc',skill:'Prediction',stem:'What will Priya most likely do next?',
+   opts:['Switch to the interstate highways topic.','Ask Ms. Ortiz to move the Friday deadline.','Meet Jordan during study hall to use the database.','Finish writing the full draft tonight.'],ans:2,
+   why:'Jordan offers to show her the database during study hall, and Priya answers, “Please. I’ll bring my ID.”'}],
+ keynote:'1 point each. Skills: main idea (1), detail (2), inference (3), rhetorical device / speaker’s purpose (4), prediction (5). ELP Standards 1, 2 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Fourteen turns is near the top of the ELPA21 range; on the first play, have students write only the two names and one word per turn.</li><li>Item 4 targets how speakers echo each other — a feature of real conversation that newcomers often read as disagreement.</li></ul>'
+};
+
+/* =========================================================
+   SET 6 · ACADEMIC LECTURE OR DISCUSSION · urban heat islands (with chart)
+   ========================================================= */
+var HEAT_DATA=[{g:'Downtown street',v:36},{g:'Parking lot',v:38},{g:'City park',v:31},{g:'Suburb',v:33}];
+var LECTURE={
+ id:'lecture',grade:'Grades 9–12',title:'Discussion: Urban Heat Islands',short:'Lecture / Discussion',
+ kind:{en:'Academic lecture or discussion',es:'Clase o discusión académica'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Academic lecture or discussion',lede:'A science teacher leads a discussion about why cities are hotter than the land around them, using a chart of temperatures the class measured. A student asks questions along the way. Listen, use the chart, and answer five questions.',
+        dirs:['Look at the chart first. Then press Play and listen to the whole discussion. In Test mode the text stays hidden and you can play it twice.','Listen for causes, for the numbers on the chart, and for what the class will do next.','Each question tells you how to answer. One question asks you to tap a bar on the chart; another asks you to sort features into a comparison organizer.'],chips:['5 items','Hot spot · organizer · select two','Chart supported','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Clase o discusión académica',lede:'Una maestra de ciencias dirige una discusión sobre por qué las ciudades son más calientes que el terreno a su alrededor, con una gráfica de temperaturas que midió la clase. Una estudiante hace preguntas. Escucha, usa la gráfica y responde cinco preguntas.',
+        dirs:['Mira primero la gráfica. Luego presiona Reproducir y escucha toda la discusión. En modo Examen el texto queda oculto y puedes escucharla dos veces.','Escucha las causas, los números de la gráfica y lo que hará la clase después.','Cada pregunta te dice cómo responder. Una te pide tocar una barra de la gráfica; otra te pide clasificar características en un organizador.'],chips:['5 preguntas','Punto caliente · organizador · elige dos','Con gráfica','1 punto cada una']}},
+ stim:{type:'dialogue',title:'Why Is the City Hotter?',label:{en:'The discussion and the chart',es:'La discusión y la gráfica'},maxPlays:2,vis:'heat',
+  speakers:{'Ms. Delgado':'teacher','Maya':'student'},
+  turns:[
+   {who:'Ms. Delgado',text:'Today we’re looking at why cities are often hotter than the countryside around them. Scientists call this the urban heat island effect. Look at the chart on the screen. Our class measured afternoon temperatures at four places in our town on the same day in July.'},
+   {who:'Maya',text:'The parking lot was the hottest, thirty-eight degrees. The park was thirty-one. That’s a seven-degree difference in the same town.'},
+   {who:'Ms. Delgado',text:'Exactly. Three things cause it. First, dark surfaces like asphalt absorb sunlight instead of reflecting it, and they release that heat slowly all evening. Second, buildings block the wind, so hot air gets trapped between them. Third, cities have fewer trees, and trees cool the air when water evaporates from their leaves.'},
+   {who:'Maya',text:'So is it the trees that make the park cooler, or the grass?'},
+   {who:'Ms. Delgado',text:'Both help, but trees do most of the work, because they also make shade. A study in Los Angeles found that streets with many trees were up to four degrees cooler than streets without them.'},
+   {who:'Maya',text:'Then why don’t cities just plant more trees everywhere?'},
+   {who:'Ms. Delgado',text:'Many are trying. But a tree takes ten or fifteen years to grow large enough to matter, and roots can damage sidewalks and pipes. Some cities are also painting roofs white so they reflect sunlight. Next week we’ll design a cooling plan for the block around our school.'}],
+  gloss:[['urban heat island','a city area that is warmer than the land around it'],['absorb','take in (the opposite of reflect)'],['evaporate','change from liquid water into vapor in the air'],['asphalt','the dark material used to pave roads and parking lots'],['shade','an area blocked from direct sunlight']]},
+ items:[
+  {n:1,type:'sc',fmt:'fmt.sc',skill:'Main idea',stem:'What is the discussion mainly about?',
+   opts:['Why parks need more grass than trees.','Why cities are hotter than nearby areas and what causes it.','How Los Angeles decides where to plant trees.','How to read a bar chart of temperatures.'],ans:1,
+   why:'Ms. Delgado names the effect, shows the class data, and explains three causes. The chart and the Los Angeles study are support, not the main idea.'},
+  {n:2,type:'fig',fmt:'fmt.fig',skill:'Detail (chart)',stem:'Tap the bar on the chart that shows the place Maya calls the hottest.',ans:1,
+   why:'Maya says, “The parking lot was the hottest, thirty-eight degrees.” The parking-lot bar is the tallest, at 38 °C.'},
+  {n:3,type:'sort',fmt:'fmt.sort',skill:'Graphic organizer comparison',stem:'Drag each feature to the place it describes, according to the discussion. Each label can be used more than once.',
+   labels:['Downtown street','City park'],rows:[{t:'Dark surfaces that absorb sunlight',ans:0},{t:'Shade and water evaporating from leaves',ans:1},{t:'Buildings that trap hot air by blocking wind',ans:0},{t:'The coolest afternoon temperature on the chart',ans:1}],
+   why:'Asphalt and buildings are the downtown causes; shade, evaporation, and the lowest temperature (31 °C) belong to the park.'},
+  {n:4,type:'ms',need:2,fmt:'fmt.ms',skill:'Detail',stem:'Which **two** reasons does Ms. Delgado give for why cities do not simply plant trees everywhere? Choose **two** answers.',
+   opts:['Trees take many years to grow large enough to help.','Trees make the heat island effect worse.','Tree roots can damage sidewalks and pipes.','White roofs work better than trees.','Parks already have enough trees.'],ans:[0,2],
+   why:'She says a tree “takes ten or fifteen years to grow large enough to matter” and that “roots can damage sidewalks and pipes.” White roofs are mentioned as another approach, not as better.'},
+  {n:5,type:'sc',fmt:'fmt.sc',skill:'Prediction',stem:'What will the class most likely do next week?',
+   opts:['Measure temperatures in Los Angeles.','Paint the school roof white.','Design a plan to cool the block around the school.','Plant a tree in the city park.'],ans:2,
+   why:'The last sentence says, “Next week we’ll design a cooling plan for the block around our school.”'}],
+ keynote:'1 point each. Skills: main idea (1), detail from the visual via hot spot (2), graphic organizer comparison (3), detail with multiple select (4), prediction (5). ELP Standards 1, 8 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>The chart carries two numbers the speakers say aloud (38 and 31) and two they do not (36 and 33); item 2 checks that students connect speech to the visual.</li><li>“Three things cause it” is a signpost — teach students to hold up three fingers and fill them in.</li></ul>'
+};
+
+/* =========================================================
+   SET 7 · INTERACTIVE STUDENT PRESENTATION · aquaponics (with diagram)
+   ========================================================= */
+var PRESENT={
+ id:'present',grade:'Grades 9–12',title:'Presentation: Aquaponics',short:'Student Presentation',
+ kind:{en:'Interactive student presentation',es:'Presentación interactiva'},
+ t:{en:{eyebrow:'Grades 9–12 · Listening · Interactive student presentation',lede:'A student presents his science project — a system that grows fish and lettuce together — using a numbered diagram. Two classmates ask questions. Listen, then answer four questions, including labeling the diagram.',
+        dirs:['Look at the diagram and its numbers first. Then press Play and listen to the whole presentation. In Test mode the text stays hidden and you can play it twice.','Listen for what each numbered part does and for the evidence Tomas uses to answer the questions from the audience.','Each question tells you how to answer. One question asks you to drag labels onto the numbered parts of the diagram.'],chips:['4 items','Diagram labeling · select two','Evidence analysis','1 point each']},
+    es:{eyebrow:'Grados 9–12 · Comprensión auditiva · Presentación interactiva de estudiante',lede:'Un estudiante presenta su proyecto de ciencias — un sistema que cría peces y cultiva lechuga al mismo tiempo — con un diagrama numerado. Dos compañeros hacen preguntas. Escucha y responde cuatro preguntas, incluida la de etiquetar el diagrama.',
+        dirs:['Mira primero el diagrama y sus números. Luego presiona Reproducir y escucha toda la presentación. En modo Examen el texto queda oculto y puedes escucharla dos veces.','Escucha qué hace cada parte numerada y qué evidencia usa Tomás para responder al público.','Cada pregunta te dice cómo responder. Una te pide arrastrar etiquetas a las partes numeradas del diagrama.'],chips:['4 preguntas','Etiquetar diagrama · elige dos','Análisis de evidencia','1 punto cada una']}},
+ stim:{type:'dialogue',title:'Fish and Lettuce Together',label:{en:'The presentation and the diagram',es:'La presentación y el diagrama'},maxPlays:2,vis:'aqua',
+  speakers:{'Tomas':'presenter','Ava':'audience','Devon':'audience'},
+  turns:[
+   {who:'Tomas',text:'My project is an aquaponics system, which grows fish and plants together. Here’s the diagram. Number one is the fish tank. Fish waste makes the water rich in ammonia. Number two is the pump, which pushes that water up to number three, the grow bed, where lettuce grows in gravel. Bacteria in the gravel change the ammonia into nitrates, which the plants use as food. Then the clean water flows back down through number four, the return pipe, into the tank.'},
+   {who:'Ava',text:'How do you know the plants are actually cleaning the water?'},
+   {who:'Tomas',text:'Good question. I tested the water every week for six weeks. In the tank, ammonia stayed low, under one part per million, the whole time. In a second tank with fish but no plants, ammonia rose to four parts per million by week three, and I had to change the water.'},
+   {who:'Devon',text:'What was the hardest part?'},
+   {who:'Tomas',text:'Keeping the pump running. It clogged twice with gravel, so I added a mesh screen over the intake. After that, it ran for four weeks without a problem.'},
+   {who:'Ava',text:'Could a system like this feed a family?'},
+   {who:'Tomas',text:'Not mine yet. I grew eleven heads of lettuce and kept six fish. But a system ten times bigger could, and it uses about ninety percent less water than a garden in soil.'}],
+  gloss:[['aquaponics','growing fish and plants together in one water system'],['ammonia','a chemical in fish waste that is harmful in large amounts'],['nitrates','a form of nitrogen that plants can use as food'],['intake','the opening where water enters the pump'],['parts per million (ppm)','a way to measure a very small amount of something in water']]},
+ items:[
+  {n:1,type:'sc',fmt:'fmt.sc',skill:'Main idea / purpose',stem:'What is the main purpose of Tomas’s presentation?',
+   opts:['To explain how his aquaponics system works and what he learned from testing it.','To convince the class to keep fish as pets.','To describe the hardest part of any science project.','To compare lettuce grown in gravel with lettuce grown in soil.'],ans:0,
+   why:'Tomas walks through the diagram, then answers questions with data from his tests. He never argues for pets, and the soil comparison is one small detail at the end.'},
+  {n:2,type:'dnd',fmt:'fmt.dnd',skill:'Diagram labeling',stem:'Drag each label to the numbered part of the diagram it names.',
+   names:['fish tank','pump','grow bed','return pipe'],targets:[{t:'Part 1',ans:0},{t:'Part 2',ans:1},{t:'Part 3',ans:2},{t:'Part 4',ans:3}],
+   why:'Tomas names them in order: one is the fish tank, two is the pump, three is the grow bed, and four is the return pipe.'},
+  {n:3,type:'ms',need:2,fmt:'fmt.ms',skill:'Evidence analysis',stem:'Which **two** pieces of evidence does Tomas use to show that the plants clean the water? Choose **two** answers.',
+   opts:['Ammonia in the aquaponics tank stayed under one part per million.','The pump clogged twice with gravel.','Ammonia in the tank without plants rose to four parts per million.','He grew eleven heads of lettuce.','The system uses about ninety percent less water than a soil garden.'],ans:[0,2],
+   why:'To answer Ava’s question, Tomas compares the two tanks: low ammonia with plants, rising ammonia without them. The pump, the lettuce count, and the water savings answer other questions.'},
+  {n:4,type:'sc',fmt:'fmt.sc',skill:'Inference',stem:'What can be concluded about the mesh screen?',
+   opts:['It made the lettuce grow faster.','It solved the clogging problem.','It changed ammonia into nitrates.','It was part of the original design.'],ans:1,
+   why:'After Tomas added the screen, the pump “ran for four weeks without a problem.” He added it after two clogs, so it was not in the original design.'}],
+ keynote:'1 point each. Skills: main idea / speaker’s purpose (1), diagram labeling (2), evidence analysis (3), inference (4). ELP Standards 1, 8 (grades 9–12).',
+ keyextra:'<h3>Teaching notes</h3><ul><li>Audience questions are where the evidence lives; have students write each question in the margin and listen for the answer that follows.</li><li>Item 3 separates evidence that answers a specific question from true details that do not — the core of evidence analysis.</li></ul>'
+};
+
+var SETS=[LMSENT,LMWORD,INFO,DEBATE,CONVO,LECTURE,PRESENT];
+
+/* ---------- shared strings ---------- */
+var T={
+ en:{'dir.title':'Directions','sec.dir':'Directions','sec.results':'Results','res.title':'My results',
+  'rail.answered':'Answered','rail.score':'Score','rail.audio':'Play audio','rail.wb':'Glossary','rail.size':'Text size','rail.lang':'Español','rail.theme':'Dark mode','rail.reset':'Reset this set',
+  'mode.practice':'Practice','mode.test':'Test','reset.arm':'Sure? Tap again','reset.done':'This set was cleared.',
+  'btn.read':'Play','btn.stop':'Stop','btn.check':'Check my answer','btn.again':'Try again','btn.save':'Answer saved','btn.submit':'Submit all {n}','btn.next':'Next','btn.transcript':'Show transcript','btn.hide':'Hide transcript',
+  'fmt.sc':'Single select','fmt.ms':'Multiple select','fmt.sort':'Drag and drop organizer','fmt.dnd':'Drag and drop labels','fmt.fig':'Hot spot on the chart','fmt.pic':'Picture hot spot','fmt.fill':'Drag and drop match',
+  'item':'Item','sel.count':'{a} selected','sel.exact':'Choose exactly {n}.','dnd.bank':'Drag a label to a box, or tap it and then tap the box','dnd.slot':'Drop here','sort.bank':'Drag a label onto a statement, or tap it and then tap the statement','fill.bank':'Drag the correct tile into the blank, or tap it and then tap the blank','fill.slot':'Drop here','pic.hint':'Tap the one picture that matches what you heard.','fig.hint':'Tap a bar on the chart to select it. Tap again to unselect.',
+  'play.set':'Play the whole recording','play.clip':'Play the clip','plays.left':'Plays left: {n}','plays.none':'No plays left.','listen':'Listen, then answer.','transcript':'Transcript','speakers':'Speakers',
+  'fb.ok':'Correct','fb.no':'Not yet','fb.first':'First try counts for your score.','fb.again':'Practice again — your first try is already counted.',
+  'answered':'{a} of {n} answered','test.locked':'Test mode: answers are checked when you submit.',
+  'res.none':'Answer the questions to see your results here.','res.testwait':'Test mode: {a} of {n} answered. Submit when all are done.',
+  'res.item':'Item','res.result':'Result','res.name':'Your name','res.copy':'Copy my results','res.copied':'Copied.','res.copyfail':'Copy is blocked here — select the text below and copy it.',
+  'res.first':'First tries only.','res.all':'All seven sets','res.byskill':'By listening skill',
+  'band.a':'Ready for the real thing','band.b':'Strong — replay the ones you missed','band.c':'Getting there — listen for the exact words the questions point to','band.d':'Keep going — open the transcript in Practice mode and listen again',
+  'vis.heat':'Afternoon temperature at four places in our town, July 14, 3 p.m. (°C)','vis.aqua':'Diagram: the aquaponics system (parts numbered 1–4)','vis.chart1':'How 40 students get to school','vis.org2':'Science fair — details','vis.table3':'Distance a toy car rolled from a ramp',
+  'audio.none':'This device has no English voice. Try another browser or a Chromebook.',
+  'not.real':'Original scripts, pictures, data, and practice items written for classroom use. All names, places, and numbers are invented.'},
+ es:{'dir.title':'Instrucciones','sec.dir':'Instrucciones','sec.results':'Resultados','res.title':'Mis resultados',
+  'rail.answered':'Respondidas','rail.score':'Puntos','rail.audio':'Reproducir audio','rail.wb':'Glosario','rail.size':'Tamaño del texto','rail.lang':'English','rail.theme':'Modo oscuro','rail.reset':'Reiniciar este conjunto',
+  'mode.practice':'Práctica','mode.test':'Examen','reset.arm':'¿Seguro? Toca otra vez','reset.done':'Este conjunto se borró.',
+  'btn.read':'Reproducir','btn.stop':'Detener','btn.check':'Revisar mi respuesta','btn.again':'Intentar de nuevo','btn.save':'Respuesta guardada','btn.submit':'Enviar las {n}','btn.next':'Siguiente','btn.transcript':'Mostrar transcripción','btn.hide':'Ocultar transcripción',
+  'fmt.sc':'Selección única','fmt.ms':'Selección múltiple','fmt.sort':'Organizador de arrastrar y soltar','fmt.dnd':'Etiquetas de arrastrar y soltar','fmt.fig':'Punto caliente en la gráfica','fmt.pic':'Punto caliente con dibujos','fmt.fill':'Arrastrar y soltar',
+  'item':'Pregunta','sel.count':'{a} seleccionadas','sel.exact':'Elige exactamente {n}.','dnd.bank':'Arrastra una etiqueta a una casilla, o tócala y luego toca la casilla','dnd.slot':'Suelta aquí','sort.bank':'Arrastra una etiqueta a una afirmación, o tócala y luego toca la afirmación','fill.bank':'Arrastra la ficha correcta al espacio, o tócala y luego toca el espacio','fill.slot':'Suelta aquí','pic.hint':'Toca el único dibujo que corresponde a lo que escuchaste.','fig.hint':'Toca una barra de la gráfica para seleccionarla. Toca otra vez para quitarla.',
+  'play.set':'Reproducir toda la grabación','play.clip':'Reproducir el clip','plays.left':'Reproducciones restantes: {n}','plays.none':'No quedan reproducciones.','listen':'Escucha y luego responde.','transcript':'Transcripción','speakers':'Hablantes',
+  'fb.ok':'Correcto','fb.no':'Todavía no','fb.first':'El primer intento cuenta para tu puntuación.','fb.again':'Practica otra vez — tu primer intento ya está contado.',
+  'answered':'{a} de {n} respondidas','test.locked':'Modo examen: las respuestas se revisan cuando envías.',
+  'res.none':'Responde las preguntas para ver tus resultados aquí.','res.testwait':'Modo examen: {a} de {n} respondidas. Envía cuando termines.',
+  'res.item':'Pregunta','res.result':'Resultado','res.name':'Tu nombre','res.copy':'Copiar mis resultados','res.copied':'Copiado.','res.copyfail':'Copiar está bloqueado aquí — selecciona el texto abajo y cópialo.',
+  'res.first':'Solo cuentan los primeros intentos.','res.all':'Los siete conjuntos','res.byskill':'Por destreza auditiva',
+  'band.a':'Listo para el examen real','band.b':'Fuerte — vuelve a escuchar las que fallaste','band.c':'Vas avanzando — escucha las palabras exactas que señalan las preguntas','band.d':'Sigue — abre la transcripción en modo Práctica y escucha otra vez',
+  'vis.heat':'Temperatura de la tarde en cuatro lugares de nuestro pueblo, 14 de julio, 3 p.m. (°C)','vis.aqua':'Diagrama: el sistema de acuaponía (partes numeradas 1–4)','vis.chart1':'Cómo llegan a la escuela 40 estudiantes','vis.org2':'Feria de ciencias — detalles','vis.table3':'Distancia que rodó un carrito desde una rampa',
+  'audio.none':'Este dispositivo no tiene voz en inglés. Prueba otro navegador o un Chromebook.',
+  'not.real':'Guiones, dibujos, datos y preguntas de práctica originales escritos para el salón de clases. Todos los nombres, lugares y números son inventados.'}
+};
+
+/* ---------- state ---------- */
+function blank(){return {ans:{},checked:{},first:{},submitted:false,name:'',plays:{},transcript:false};}
+function load(){
+  var d={lang:'en',theme:null,size:0,wb:false,mode:'practice',cur:'lmsent',sets:{}};
+  try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object'){for(var k in s)d[k]=s[k];}}catch(e){}
+  if(d.lang!=='en'&&d.lang!=='es')d.lang='en';
+  SETS.forEach(function(st){if(!d.sets[st.id])d.sets[st.id]=blank();var b=blank();for(var k in b)if(d.sets[st.id][k]==null)d.sets[st.id][k]=b[k];});
+  if(!SETS.some(function(st){return st.id===d.cur;}))d.cur='lmsent';
+  return d;
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(STATE));}catch(e){}}
+var STATE=load();
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function md(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');}
+function pad(n){return (n<10?'0':'')+n;}
+function t(k,v){var s=(T[STATE.lang]&&T[STATE.lang][k])||T.en[k]||k;if(v){for(var x in v)s=s.replace('{'+x+'}',v[x]);}return s;}
+function tt(obj){return obj?(obj[STATE.lang]||obj.en||''):'';}
+var toastTimer;function toast(m){var el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove('show');},3200);}
+function SET(){return SETS.filter(function(s){return s.id===STATE.cur;})[0];}
+function SS(){return STATE.sets[STATE.cur];}
+function item(n){return SET().items[n-1];}
+function N(){return SET().items.length;}
+function isLocked(n){return STATE.mode==='test'?SS().submitted:!!SS().checked[n];}
+function playsLeft(ss,key,max){return Math.max(0,max-(ss.plays[key]||0));}
+
+/* ---------- answers ---------- */
+function answeredIn(ss,it){var a=ss.ans[it.n];
+  if(it.type==='sc'||it.type==='fig'||it.type==='pic'||it.type==='fill')return a!=null;
+  if(it.type==='ms')return Array.isArray(a)&&a.length===it.need;
+  if(it.type==='sort'){var o=a||{};return it.rows.every(function(_,i){return o[i]!=null;});}
+  if(it.type==='dnd'){var o2=a||{};return it.targets.every(function(_,i){return o2[i]!=null;});}
+  return false;}
+function gradeIn(ss,it){var a=ss.ans[it.n];
+  if(it.type==='sc'||it.type==='fig'||it.type==='pic'||it.type==='fill')return a===it.ans;
+  if(it.type==='ms'){if(!Array.isArray(a))return false;return a.slice().sort().join(',')===it.ans.slice().sort().join(',');}
+  if(it.type==='sort'){var o=a||{};return it.rows.every(function(r,i){return o[i]===r.ans;});}
+  if(it.type==='dnd'){var o2=a||{};return it.targets.every(function(tg,i){return o2[i]===tg.ans;});}
+  return false;}
+function answered(it){return answeredIn(SS(),it);}
+function grade(it){return gradeIn(SS(),it);}
+function countAnswered(){return SET().items.filter(answered).length;}
+function resultOf(st,ss,it){if(STATE.mode==='practice')return ss.first[it.n]!=null?ss.first[it.n]:null;return ss.submitted?gradeIn(ss,it):null;}
+function setSummary(st){var ss=STATE.sets[st.id];var s=0,n=0;st.items.forEach(function(it){var r=resultOf(st,ss,it);if(r!==null){n++;if(r)s++;}});return {s:s,n:n,total:st.items.length};}
+
+/* ---------- pictograms (120 × 90) ---------- */
+var ICON={
+ laptop:'<rect x="30" y="18" width="60" height="38" rx="3" fill="var(--cloth)" stroke="var(--fg)" stroke-width="3"/><rect x="36" y="24" width="48" height="26" fill="var(--sky)"/><path d="M20 58h80l6 10H14z" fill="var(--fg)"/><path d="M90 46 q18 0 18 14 v8" stroke="var(--fg)" stroke-width="3" fill="none"/><rect x="102" y="66" width="12" height="10" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/>',
+ book:'<path d="M20 22h38v52H20z" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><path d="M62 22h38v52H62z" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><line x1="60" y1="18" x2="60" y2="78" stroke="var(--fg)" stroke-width="4"/><path d="M28 34h22M28 44h22M28 54h22M70 34h22M70 44h22M70 54h22" stroke="var(--fg)" stroke-width="2"/>',
+ backpack:'<rect x="34" y="22" width="52" height="56" rx="12" fill="var(--accent)" stroke="var(--fg)" stroke-width="3"/><rect x="44" y="50" width="32" height="20" rx="4" fill="var(--sand)" stroke="var(--fg)" stroke-width="2.5"/><path d="M48 22 q12 -14 24 0" stroke="var(--fg)" stroke-width="4" fill="none"/><path d="M40 30 v30 M80 30 v30" stroke="var(--fg)" stroke-width="3"/>',
+ clock:'<circle cx="60" cy="46" r="32" fill="var(--surface)" stroke="var(--fg)" stroke-width="3"/><path d="M60 20v6M60 66v6M34 46h6M80 46h6" stroke="var(--fg)" stroke-width="3"/><path d="M60 46 V26 M60 46 L76 54" stroke="var(--fg)" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="46" r="3" fill="var(--accent)"/>',
+ sun:'<circle cx="60" cy="46" r="20" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><path d="M60 10v12M60 70v12M24 46h12M84 46h12M34 20l9 9M77 63l9 9M86 20l-9 9M43 63l-9 9" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/>',
+ umbrella:'<path d="M18 48 q42 -40 84 0z" fill="var(--violet)" stroke="var(--fg)" stroke-width="3"/><path d="M18 48 q10 -8 21 0 q10 -8 21 0 q10 -8 21 0 q10 -8 21 0" stroke="var(--fg)" stroke-width="2" fill="none"/><path d="M60 48 v26 q0 8 -8 8" stroke="var(--fg)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 60l-4 10M88 58l-4 10M74 66l-4 10" stroke="var(--vocab)" stroke-width="3" stroke-linecap="round"/>',
+ tray:'<rect x="14" y="30" width="92" height="46" rx="6" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><circle cx="46" cy="53" r="15" fill="var(--surface)" stroke="var(--fg)" stroke-width="2.5"/><circle cx="46" cy="53" r="7" fill="var(--accent)"/><rect x="72" y="38" width="20" height="30" rx="3" fill="var(--sky)" stroke="var(--fg)" stroke-width="2.5"/><path d="M68 44 l-14 0" stroke="var(--fg)" stroke-width="2"/>',
+ bus:'<rect x="14" y="22" width="92" height="46" rx="8" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><rect x="22" y="30" width="18" height="16" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/><rect x="46" y="30" width="18" height="16" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/><rect x="70" y="30" width="18" height="16" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/><circle cx="34" cy="70" r="8" fill="var(--fg)"/><circle cx="86" cy="70" r="8" fill="var(--fg)"/><rect x="94" y="52" width="8" height="6" fill="var(--accent)"/>',
+ flask:'<path d="M48 14h24v20l20 38q4 8 -4 8H32q-8 0 -4 -8l20 -38z" fill="var(--surface)" stroke="var(--fg)" stroke-width="3"/><path d="M38 60h44l8 14H30z" fill="var(--vocab)"/><path d="M44 14h32" stroke="var(--fg)" stroke-width="3"/>',
+ calculator:'<rect x="34" y="12" width="52" height="68" rx="5" fill="var(--cloth)" stroke="var(--fg)" stroke-width="3"/><rect x="40" y="18" width="40" height="14" fill="var(--sky)" stroke="var(--fg)" stroke-width="2"/><g fill="var(--fg)"><rect x="40" y="38" width="9" height="8"/><rect x="55" y="38" width="9" height="8"/><rect x="70" y="38" width="9" height="8"/><rect x="40" y="51" width="9" height="8"/><rect x="55" y="51" width="9" height="8"/><rect x="70" y="51" width="9" height="8"/><rect x="40" y="64" width="9" height="8"/><rect x="55" y="64" width="9" height="8"/></g><rect x="70" y="64" width="9" height="8" fill="var(--accent)"/>',
+ microscope:'<path d="M30 78h60" stroke="var(--fg)" stroke-width="5" stroke-linecap="round"/><path d="M48 78 v-12 h30" stroke="var(--fg)" stroke-width="5" fill="none"/><path d="M60 58 l20 -36" stroke="var(--fg)" stroke-width="8" stroke-linecap="round"/><rect x="72" y="8" width="16" height="18" rx="3" transform="rotate(28 80 17)" fill="var(--cloth)" stroke="var(--fg)" stroke-width="3"/><rect x="50" y="52" width="28" height="6" fill="var(--sand)" stroke="var(--fg)" stroke-width="2"/><circle cx="52" cy="66" r="5" fill="var(--accent)"/>',
+ chart:'<path d="M20 14v62h84" stroke="var(--fg)" stroke-width="3" fill="none"/><rect x="30" y="46" width="16" height="30" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/><rect x="54" y="26" width="16" height="50" fill="var(--vocab)" stroke="var(--fg)" stroke-width="2"/><rect x="78" y="36" width="16" height="40" fill="var(--violet)" stroke="var(--fg)" stroke-width="2"/>',
+ basketball:'<circle cx="60" cy="46" r="32" fill="var(--clay)" stroke="var(--fg)" stroke-width="3"/><path d="M28 46h64M60 14v64M38 22q22 24 0 48M82 22q-22 24 0 48" stroke="var(--fg)" stroke-width="2.5" fill="none"/>',
+ guitar:'<path d="M26 56 q0 -14 14 -14 q10 0 12 -8 q4 -8 14 -8 q16 0 16 16 q0 10 -8 14 q8 4 8 14 q0 16 -16 16 q-10 0 -14 -8 q-2 -8 -12 -8 q-14 0 -14 -14z" fill="var(--clay)" stroke="var(--fg)" stroke-width="3"/><circle cx="46" cy="56" r="7" fill="var(--fg)"/><path d="M70 34 L108 10" stroke="var(--fg)" stroke-width="7" stroke-linecap="round"/><path d="M44 56 L104 16" stroke="var(--sand)" stroke-width="1.5"/>',
+ pencil:'<path d="M22 70 L74 18 l16 16 L38 86 l-20 4z" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><path d="M22 70 l16 16" stroke="var(--fg)" stroke-width="3"/><path d="M18 90 l6 -14 8 8z" fill="var(--fg)"/><path d="M66 26 l16 16" stroke="var(--accent)" stroke-width="6"/>',
+ map:'<path d="M16 24 l30 -8 30 8 30 -8 v52 l-30 8 -30 -8 -30 8z" fill="var(--sand)" stroke="var(--fg)" stroke-width="3"/><path d="M46 16v52M76 24v52" stroke="var(--fg)" stroke-width="2"/><path d="M22 54 q20 -20 40 -8 q16 10 38 -14" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="62" cy="46" r="5" fill="var(--vocab)" stroke="var(--fg)" stroke-width="2"/>'
+};
+function iconSVG(id){return '<svg viewBox="0 0 120 90" aria-hidden="true">'+(ICON[id]||'')+'</svg>';}
+
+/* ---------- visuals ---------- */
+function bars(data,o){var W=560,H=300,pl=70,pr=20,pt=40,pb=64;var cw=W-pl-pr,ch=H-pt-pb;var max=o.max;var bw=cw/data.length*0.56;var h='<svg class="'+(o.cls||'chart')+(o.locked?' locked':'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(o.title)+'"><title>'+esc(o.title)+'</title>';
+  h+='<text x="'+pl+'" y="22" font-size="15" font-weight="700" fill="var(--fg)">'+esc(o.short||o.title)+'</text>';
+  for(var g=0;g<=max;g+=o.step){var y=pt+ch-g/max*ch;h+='<line x1="'+pl+'" y1="'+y+'" x2="'+(W-pr)+'" y2="'+y+'" stroke="var(--grid)"/><text x="'+(pl-8)+'" y="'+(y+4)+'" font-size="12" text-anchor="end" fill="var(--muted)">'+g+'</text>';}
+  h+='<line x1="'+pl+'" y1="'+pt+'" x2="'+pl+'" y2="'+(pt+ch)+'" stroke="var(--fg)" stroke-width="2"/><line x1="'+pl+'" y1="'+(pt+ch)+'" x2="'+(W-pr)+'" y2="'+(pt+ch)+'" stroke="var(--fg)" stroke-width="2"/>';
+  if(o.ylab)h+='<text transform="translate(16 '+(pt+ch/2)+') rotate(-90)" font-size="12" text-anchor="middle" fill="var(--muted)">'+esc(o.ylab)+'</text>';
+  var cols=['var(--accent)','var(--vocab)','var(--violet)','var(--sand)'];
+  data.forEach(function(d,i){var cx=pl+cw/data.length*(i+0.5);var x=cx-bw/2;var missing=d.v==null;var v=missing?(o.missingH||max*0.5):d.v;var y=pt+ch-v/max*ch;var cls='';
+    if(o.interactive){cls='region';if(o.locked){if(i===o.ans)cls+=' correct';else if(i===o.sel)cls+=' wrong';}else if(i===o.sel)cls+=' sel';}
+    h+='<g class="'+cls+'"'+(o.interactive?' data-act="fig" data-i="'+i+'" role="radio" aria-checked="'+(o.sel===i)+'" tabindex="'+(o.locked?'-1':'0')+'" aria-label="'+esc(d.g)+(missing?'':', '+d.v)+'"':'')+'>';
+    h+='<rect class="shape" x="'+x+'" y="'+y+'" width="'+bw+'" height="'+(pt+ch-y)+'" fill="'+(missing?'var(--surface)':cols[i%4])+'" stroke="var(--fg)" stroke-width="2.5"'+(missing?' stroke-dasharray="8 6"':'')+'/>';
+    h+='<text x="'+cx+'" y="'+(y-8)+'" font-size="15" font-weight="700" text-anchor="middle" fill="var(--fg)" class="lbl">'+(missing?'?':esc(String(d.v))+(o.unit||''))+'</text>';
+    var words=d.g.split(' ');words.forEach(function(w,k){h+='<text x="'+cx+'" y="'+(pt+ch+18+k*14)+'" font-size="12" text-anchor="middle" fill="var(--fg)">'+esc(w)+'</text>';});h+='</g>';});
+  return h+'</svg>';}
+function heatChart(o){o=o||{};return bars(HEAT_DATA,{title:t('vis.heat'),short:'Afternoon temperature (°C)',max:40,step:10,unit:'°',ylab:'°C',cls:o.interactive?'fig':'chart',interactive:o.interactive,sel:o.sel,locked:o.locked,ans:o.ans});}
+function aquaSVG(){var h='<svg class="fig" viewBox="0 0 560 300" role="img" aria-label="'+esc(t('vis.aqua'))+'"><title>'+esc(t('vis.aqua'))+'</title>';
+  h+='<rect x="40" y="170" width="200" height="110" rx="6" fill="var(--sky)" stroke="var(--fg)" stroke-width="3"/><path d="M40 190 q25 -10 50 0 t50 0 t50 0 t50 0" stroke="var(--vocab)" stroke-width="3" fill="none"/>';
+  [[90,225],[150,250],[200,215]].forEach(function(p){h+='<ellipse cx="'+p[0]+'" cy="'+p[1]+'" rx="16" ry="8" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/><path d="M'+(p[0]+14)+' '+p[1]+' l12 -8 v16z" fill="var(--accent)" stroke="var(--fg)" stroke-width="2"/><circle cx="'+(p[0]-8)+'" cy="'+(p[1]-2)+'" r="2" fill="var(--fg)"/>';});
+  h+='<rect x="262" y="226" width="44" height="40" rx="4" fill="var(--cloth)" stroke="var(--fg)" stroke-width="3"/><circle cx="284" cy="246" r="10" fill="none" stroke="var(--fg)" stroke-width="3"/><path d="M284 236 l5 10 h-10z" fill="var(--fg)"/><line x1="240" y1="246" x2="262" y2="246" stroke="var(--fg)" stroke-width="4"/>';
+  h+='<path d="M306 246 h30 v-176 h-60" stroke="var(--fg)" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M286 70 l-12 -8 v16z" fill="var(--fg)"/>';
+  h+='<rect x="60" y="40" width="220" height="60" rx="6" fill="var(--clay)" stroke="var(--fg)" stroke-width="3"/>';for(var i=0;i<22;i++)for(var j=0;j<3;j++)h+='<circle cx="'+(70+i*9.6)+'" cy="'+(56+j*16)+'" r="3" fill="var(--sand)"/>';
+  [80,120,160,200,240].forEach(function(x){h+='<path d="M'+x+' 42 q-14 -18 -4 -28 q8 10 4 28 q4 -20 16 -24 q0 14 -16 24 q-16 -8 -18 -22 q14 2 18 22" fill="var(--leaf,#4f9a5a)" stroke="var(--leaf2,#2f6e3a)" stroke-width="2"/>';});
+  h+='<path d="M60 90 h-30 v88" stroke="var(--vocab)" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M30 178 l-8 -12 h16z" fill="var(--vocab)"/>';
+  [[140,205,'1'],[284,205,'2'],[170,22,'3'],[14,130,'4']].forEach(function(p){h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="16" fill="var(--fg)" stroke="var(--surface)" stroke-width="3"/><text x="'+p[0]+'" y="'+(p[1]+6)+'" font-size="17" font-weight="800" text-anchor="middle" fill="var(--surface)">'+p[2]+'</text>';});
+  return h+'</svg>';}
+function visHTML(key,slot){
+  if(key==='heat')return '<div class="vis"><h4>'+esc(t('vis.heat'))+'</h4>'+heatChart({})+'</div>';
+  if(key==='aqua')return '<div class="vis"><h4>'+esc(t('vis.aqua'))+'</h4>'+aquaSVG()+'</div>';
+  if(key==='chart1')return '<div class="vis"><h4>'+esc(t('vis.chart1'))+'</h4>'+bars([{g:'Bus',v:16},{g:'Car',v:12},{g:'Walk',v:null},{g:'Bike',v:4}],{title:t('vis.chart1'),short:'How students get to school',max:20,step:4,missingH:9,ylab:'Students'})+'<table class="org"><tr><th>Walk</th><td>'+slot+'</td></tr></table></div>';
+  if(key==='org2')return '<div class="vis"><h4>'+esc(t('vis.org2'))+'</h4><table class="org"><tr><th>Event</th><td>Science fair</td></tr><tr><th>Day</th><td>Thursday</td></tr><tr><th>Place</th><td>'+slot+'</td></tr><tr><th>Doors open</th><td class="num">6:00 p.m.</td></tr><tr><th>Projects set up by</th><td class="num">5:15 p.m.</td></tr><tr><th>Judging begins</th><td class="num">6:30 p.m.</td></tr></table></div>';
+  if(key==='table3')return '<div class="vis"><h4>'+esc(t('vis.table3'))+'</h4><table class="org"><tr><th>Ramp height</th><th>Distance rolled</th></tr><tr><td class="num">10 cm</td><td class="num">80 cm</td></tr><tr><td class="num">20 cm</td><td>'+slot+'</td></tr><tr><td class="num">30 cm</td><td class="num">210 cm</td></tr></table></div>';
+  return '';}
+
+/* ---------- audio UI ---------- */
+function avatar(who){var st=SET();var names=Object.keys((st.stim&&st.stim.speakers)||{});var i=Math.max(0,names.indexOf(who));var cols=['var(--vocab-soft)','var(--accent-soft)','var(--violet-soft)','var(--active)','var(--sky)'];return '<span class="av" style="background:'+cols[i%5]+'" aria-hidden="true">'+esc(who.replace(/^(Mr|Ms|Mrs)\.\s*/,'')[0])+'</span>';}
+function turnsHTML(turns,prefix){return '<div class="turns">'+turns.map(function(tn,i){return '<div class="turn">'+avatar(tn.who)+'<div><span class="who">'+esc(tn.who)+'</span><span class="s" data-who="'+esc(tn.who)+'" data-k="'+prefix+i+'">'+esc(tn.text)+'</span></div></div>';}).join('')+'</div>';}
+function playerHTML(key,label,mini){var st=SET(),ss=SS();var test=STATE.mode==='test';var max=(st.stim&&st.stim.maxPlays)||2;var left=playsLeft(ss,key,max);var on=Speech.on&&Speech.key===key;var can=!test||left>0||on;
+  return '<div class="'+(mini?'mini':'player')+(on?' on':'')+'" data-player="'+key+'">'+(mini?'':'<div class="big">')+'<button type="button" class="playbtn" data-act="play" data-key="'+key+'" aria-pressed="'+on+'"'+(can?'':' disabled')+' aria-label="'+esc(label)+'">'+(on?'■':'▶')+'</button><div class="pt">'+esc(label)+'<span class="count">'+(test?(left>0?t('plays.left',{n:left}):t('plays.none')):t('listen'))+'</span></div><div class="waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>'+(mini?'':'</div>')+'</div>';}
+function renderStim(){
+  var st=SET();var stim=st.stim;var split=$('#split');var pc=$('#passcol');var test=STATE.mode==='test';
+  $('#transBtn').hidden=test;$('#transBtn').setAttribute('aria-pressed',String(!!SS().transcript));$('#transBtn').textContent=SS().transcript?t('btn.hide'):t('btn.transcript');
+  if(!stim){split.classList.add('single');pc.hidden=true;$('#wbBtn').hidden=true;return;}
+  split.classList.remove('single');pc.hidden=false;
+  $('#stimLabel').textContent=tt(stim.label);$('#stimTitle').textContent=stim.title;$('#readBtn').hidden=true;
+  var hasG=!!(stim.gloss&&stim.gloss.length);$('#wbBtn').hidden=!hasG;$('#wbBtn2').hidden=!hasG;
+  var wb=$('#wordbank');wb.hidden=!(STATE.wb&&hasG);if(hasG)wb.innerHTML=stim.gloss.map(function(g){return '<div><b>'+esc(g[0])+'</b><span>'+esc(g[1])+'</span></div>';}).join('');
+  ['#wbBtn','#wbBtn2'].forEach(function(s){$(s).setAttribute('aria-pressed',String(!!STATE.wb));});
+  var h=playerHTML('stim',t('play.set'),false);
+  if(stim.vis)h+=visHTML(stim.vis,'');
+  var names=Object.keys(stim.speakers);h+='<p class="count" style="margin:0 0 .6rem">'+t('speakers')+': '+names.map(function(nm){return esc(nm)+' ('+esc(stim.speakers[nm])+')';}).join(' · ')+'</p>';
+  h+='<div class="stim" id="transcript"'+((!test&&SS().transcript)?'':' hidden')+'><h4>'+t('transcript')+'</h4>'+turnsHTML(stim.turns,'s')+'</div>';
+  $('#stimBody').innerHTML=h;
+}
+
+/* ---------- items ---------- */
+function scHTML(it,locked){var a=SS().ans[it.n];
+  return '<div class="opts" role="radiogroup" aria-label="Answer choices">'+it.opts.map(function(o,j){var on=a===j,cls='opt radio',mk='';if(locked){if(j===it.ans){cls+=on?' correct':' missed';mk='✓';}else if(on){cls+=' wrong';mk='✗';}}
+    return '<button type="button" class="'+cls+'" role="radio" aria-checked="'+on+'" data-act="sc" data-j="'+j+'"'+(locked?' disabled':'')+'><span class="box">'+L[j]+'</span><span>'+esc(o)+'</span><span class="mk" aria-hidden="true">'+mk+'</span></button>';}).join('')+'</div>';}
+function msHTML(it,locked){var a=SS().ans[it.n]||[];var note=a.length!==it.need?t('sel.exact',{n:it.need}):'';
+  return '<div class="opts" role="group" aria-label="Answer choices">'+it.opts.map(function(o,j){var on=a.indexOf(j)>=0,cls='opt',mk='';if(locked){if(on&&it.ans.indexOf(j)>=0){cls+=' correct';mk='✓';}else if(on){cls+=' wrong';mk='✗';}else if(it.ans.indexOf(j)>=0){cls+=' missed';mk='✓';}}
+    return '<button type="button" class="'+cls+'" role="checkbox" aria-checked="'+on+'" data-act="ms" data-j="'+j+'"'+(locked?' disabled':'')+'><span class="box">'+L[j]+'</span><span>'+esc(o)+'</span><span class="mk" aria-hidden="true">'+mk+'</span></button>';}).join('')+'</div><div class="count" style="margin-top:.5rem">'+t('sel.count',{a:a.length})+(note?' · '+note:'')+'</div>';}
+function chip(label,idx,extra){return '<span class="namechip" draggable="true" tabindex="0" role="button" data-act="chip" data-name="'+idx+'"'+(extra||'')+'>'+esc(label)+'</span>';}
+function sortHTML(it,locked){var a=SS().ans[it.n]||{};
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('sort.bank')+'</span>'+it.labels.map(function(lb,i){return chip(lb,i);}).join('')+'</div>';
+  var drops='<div class="drops">'+it.rows.map(function(r,i){var li=a[i];var cls='drop';var fix='';if(locked){var ok=li===r.ans;cls+=ok?' correct':' wrong';if(!ok)fix='<span class="fix">→ '+esc(it.labels[r.ans])+'</span>';}
+    return '<div class="'+cls+'" role="button" tabindex="0" data-act="drop" data-i="'+i+'"><span>'+esc(r.t)+fix+'</span><span class="slot">'+(li!=null?chip(it.labels[li],li,' data-placed="'+i+'"'):t('dnd.slot'))+'</span></div>';}).join('')+'</div>';
+  return (locked?'':bank)+drops;}
+function dndHTML(it,locked){var a=SS().ans[it.n]||{};var placed={};Object.keys(a).forEach(function(k){if(a[k]!=null)placed[a[k]]=+k;});
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('dnd.bank')+'</span>'+it.names.map(function(nm,i){return placed[i]!=null?'':chip(nm,i);}).join('')+'</div>';
+  var drops='<div class="drops">'+it.targets.map(function(tg,i){var ni=a[i];var cls='drop';var fix='';if(locked){var ok=ni===tg.ans;cls+=ok?' correct':' wrong';if(!ok)fix='<span class="fix">→ '+esc(it.names[tg.ans])+'</span>';}
+    return '<div class="'+cls+'" role="button" tabindex="0" data-act="drop" data-i="'+i+'"><span><span class="dn">'+(i+1)+'</span>'+esc(tg.t)+fix+'</span><span class="slot">'+(ni!=null?chip(it.names[ni],ni,' data-placed="'+i+'"'):t('dnd.slot'))+'</span></div>';}).join('')+'</div>';
+  return (SET().stim&&SET().stim.vis==='aqua'?'<div class="figwrap">'+aquaSVG()+'</div>':'')+(locked?'':bank)+drops;}
+function figHTML(it,locked){var a=SS().ans[it.n];return '<p class="dir">'+t('fig.hint')+'</p><div class="figwrap">'+heatChart({interactive:true,sel:a,locked:locked,ans:it.ans})+'</div>'+(a!=null?'<div class="count">'+esc(HEAT_DATA[a].g+': '+HEAT_DATA[a].v+' °C')+'</div>':'');}
+function picHTML(it,locked){var a=SS().ans[it.n];
+  return '<p class="dir">'+t('pic.hint')+'</p><div class="pics" role="radiogroup">'+it.pics.map(function(p,j){var on=a===j,cls='pic',mk='';if(locked){if(j===it.ans){cls+=on?' correct':' missed';mk='✓';}else if(on){cls+=' wrong';mk='✗';}}
+    return '<button type="button" class="'+cls+'" role="radio" aria-checked="'+on+'" data-act="pic" data-j="'+j+'"'+(locked?' disabled':'')+' aria-label="Picture '+L[j]+'">'+iconSVG(p)+'<span class="pl"><span class="box">'+L[j]+'</span><span>'+mk+'</span></span></button>';}).join('')+'</div>';}
+function fillHTML(it,locked){var a=SS().ans[it.n];var cls='bslot';if(locked)cls+=(a===it.ans?' correct':' wrong');
+  var slot='<span class="'+cls+'" role="button" tabindex="'+(locked?'-1':'0')+'" data-act="drop" data-i="0"'+(locked?' aria-disabled="true"':'')+'>'+(a!=null?chip(it.opts[a],a,' data-placed="0"'):t('fill.slot'))+'</span>'+(locked&&a!==it.ans?'<span class="ddans">→ '+esc(it.opts[it.ans])+'</span>':'');
+  var bank='<div class="bank" data-act="bank"><span class="lbl">'+t('fill.bank')+'</span>'+it.opts.map(function(o,i){return a===i?'':chip(o,i);}).join('')+'</div>';
+  return visHTML(it.vis,slot)+(locked?'':bank);}
+function itemHTML(it){
+  var n=it.n,id='s'+pad(n+1);var locked=isLocked(n);var done=answered(it);var st=SET();
+  var stripe=['var(--accent)','var(--violet)','var(--vocab)','var(--fg)'][(n-1)%4];
+  var h='<section class="card item" id="'+id+'" data-n="'+n+'" style="--stripe:'+stripe+'"><div class="card-head"><div><div class="mono meta">'+pad(n+1)+' · '+t('item')+' '+n+'</div><h2>'+t('item')+' '+n+'</h2></div></div>'+
+   '<div class="tagrow"><span class="tag fmt">'+t(it.fmt)+'</span>'+(it.skill?'<span class="tag dok">'+esc(it.skill)+'</span>':'')+'</div>';
+  if(it.clip){h+=playerHTML('c'+n,t('play.clip'),true);if(STATE.mode==='practice')h+='<div style="margin:-.5rem 0 .9rem"><button type="button" class="btn ghost" data-act="trans" aria-pressed="'+!!SS().transcript+'">'+(SS().transcript?t('btn.hide'):t('btn.transcript'))+'</button></div>';
+    if(STATE.mode==='practice'&&SS().transcript)h+='<div class="clip">'+turnsHTML(it.clip,'c'+n+'-')+'</div>';else h+='<div hidden>'+turnsHTML(it.clip,'c'+n+'-')+'</div>';}
+  if(it.stem)h+='<p class="stem">'+md(it.stem)+'</p>';
+  var correct=locked&&grade(it);
+  h+=({sc:scHTML,ms:msHTML,sort:sortHTML,dnd:dndHTML,fig:figHTML,pic:picHTML,fill:fillHTML})[it.type](it,locked);
+  if(locked)h+='<div class="fb"><div class="fb-head"><span class="tag '+(correct?'ok':'no')+'">'+(correct?t('fb.ok'):t('fb.no'))+'</span></div><p>'+esc(it.why)+'</p></div>';
+  h+='<div class="item-foot">';var nextHref=n<N()?'#s'+pad(n+2):'#sRes';var nextLbl=(n<N()?t('btn.next'):t('sec.results'))+' →';
+  if(STATE.mode==='practice'){if(!locked)h+='<button type="button" class="btn primary" data-act="check"'+(done?'':' disabled')+'>'+t('btn.check')+'</button><span class="count">'+(SS().first[n]!=null?t('fb.again'):t('fb.first'))+'</span>';else h+='<button type="button" class="btn" data-act="again">'+t('btn.again')+'</button><a class="btn ghost" href="'+nextHref+'">'+nextLbl+'</a>';}
+  else h+='<span class="count">'+(SS().submitted?'':(done?'✓ '+t('btn.save')+' · ':'')+t('test.locked'))+'</span><a class="btn ghost" href="'+nextHref+'">'+nextLbl+'</a>';
+  return h+'</div></section>';
+}
+function renderItems(){$('#items').innerHTML=SET().items.map(itemHTML).join('');observe();}
+function rerenderItem(n){var old=$('#s'+pad(n+1));if(old){var tmp=document.createElement('div');tmp.innerHTML=itemHTML(item(n));old.replaceWith(tmp.firstElementChild);}observe();}
+
+/* ---------- frame ---------- */
+function renderTabs(){
+  $('#settabs').innerHTML=SETS.map(function(st){var sm=setSummary(st);var pr=sm.n?sm.s+' / '+sm.n:'—';return '<button type="button" class="settab" role="tab" data-set="'+st.id+'" aria-pressed="'+(st.id===STATE.cur)+'"><span class="g">'+esc(tt(st.kind))+'</span><span class="tt">'+esc(st.short)+'</span><span class="pr">'+st.items.length+' items · '+pr+'</span></button>';}).join('');
+}
+function renderHero(){
+  var st=SET();var tx=st.t[STATE.lang]||st.t.en;
+  $('#hero').innerHTML='<div class="eyebrow mono">'+esc(tx.eyebrow)+'</div><h1>'+esc(st.title)+'</h1><p class="lede">'+esc(tx.lede)+'</p><div class="chips">'+tx.chips.map(function(c){return '<span class="chip mono">'+esc(c)+'</span>';}).join('')+'</div>';
+  $('#dirs').innerHTML=tx.dirs.map(function(d,i){return '<div class="step"><span class="num">'+(i+1)+'</span><p>'+esc(d)+'</p></div>';}).join('');
+  $('#brandSub').textContent=st.grade+' · '+tt(st.kind);
+  $$('[data-t]').forEach(function(el){el.textContent=t(el.getAttribute('data-t'));});
+  $('#langLbl').textContent=t('rail.lang');$('#langK').textContent=STATE.lang==='en'?'ES':'EN';
+  $('#modePractice').setAttribute('aria-pressed',String(STATE.mode==='practice'));$('#modeTest').setAttribute('aria-pressed',String(STATE.mode==='test'));
+  $('#resMeta').textContent=pad(N()+2)+' · '+t('sec.results');
+}
+function tocHTML(){
+  var st=SET();var h='<a href="#s00" data-sec="s00"><span class="n">00</span><span>'+t('sec.dir')+'</span><span class="st"></span></a>';
+  if(st.stim)h+='<a href="#s01" data-sec="s01"><span class="n">01</span><span>'+esc(tt(st.stim.label))+'</span><span class="st"></span></a>';
+  st.items.forEach(function(it){var r=resultOf(st,SS(),it);var s=r===null?(answered(it)?'●':'—'):(r?'✓':'✗');var cls=r===null?'':(r?'ok':'no');
+    h+='<a href="#s'+pad(it.n+1)+'" data-sec="s'+pad(it.n+1)+'"><span class="n">'+pad(it.n+1)+'</span><span>'+t('item')+' '+it.n+' · '+esc(it.skill||t(it.fmt))+'</span><span class="st '+cls+'">'+s+'</span></a>';});
+  h+='<a href="#sRes" data-sec="sRes"><span class="n">'+pad(N()+2)+'</span><span>'+t('sec.results')+'</span><span class="st"></span></a>';
+  return h;
+}
+function updateProgress(){
+  var a=countAnswered();$('#progText').textContent=a+' / '+N();$('#progFill').style.width=Math.round(a/N()*100)+'%';var fp=$('#fabPct');if(fp)fp.textContent=a+' / '+N();
+  var sm=setSummary(SET());$('#scoreText').textContent=sm.n?sm.s+' / '+(STATE.mode==='practice'?sm.n:N()):'—';
+  $('#toc').innerHTML=tocHTML();markActive();renderTabs();
+}
+function renderResults(){
+  var st=SET(),ss=SS();var body=$('#resBody');var a=countAnswered();var h='';
+  if(STATE.mode==='test'&&!ss.submitted){h+='<p>'+t('res.testwait',{a:a,n:N()})+'</p><div class="toolrow"><button type="button" class="btn primary" id="submitAll"'+(a<N()?' disabled':'')+'>'+t('btn.submit',{n:N()})+'</button></div>';body.innerHTML=h;return;}
+  var rows=[],got=0,n=0,bySkill={};
+  st.items.forEach(function(it){var r=resultOf(st,ss,it);var sk=it.skill||t(it.fmt);if(!bySkill[sk])bySkill[sk]={c:0,n:0};if(r!==null){n++;bySkill[sk].n++;if(r){got++;bySkill[sk].c++;}}
+    rows.push('<tr><td>'+it.n+'</td><td>'+t(it.fmt)+'</td><td>'+esc(sk)+'</td><td>'+(r===null?'—':(r?'<span class="tag ok">'+t('fb.ok')+'</span>':'<span class="tag no">'+t('fb.no')+'</span>'))+'</td></tr>');});
+  if(!n)h+='<p>'+t('res.none')+'</p>';
+  else{var pct=got/n;var band=pct>=.9?'band.a':pct>=.66?'band.b':pct>=.5?'band.c':'band.d';
+    h+='<div class="score-big"><span>'+got+'</span><span class="mono">/ '+(STATE.mode==='practice'?n:N())+'</span></div><div class="band">'+t(band)+(STATE.mode==='practice'&&n<N()?' · '+t('answered',{a:n,n:N()}):'')+'</div>';
+    if(STATE.mode==='practice')h+='<p class="count">'+t('res.first')+'</p>';
+    h+='<table class="rtable"><thead><tr><th>'+t('res.item')+'</th><th>Format</th><th>Skill</th><th>'+t('res.result')+'</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>';
+    h+='<p class="mono" style="color:var(--muted);margin:0 0 .4rem">'+t('res.byskill')+'</p><table class="rtable"><tbody>'+Object.keys(bySkill).map(function(k){return '<tr><td>'+esc(k)+'</td><td>'+(bySkill[k].n?bySkill[k].c+' / '+bySkill[k].n:'—')+'</td></tr>';}).join('')+'</tbody></table>';}
+  h+='<p class="mono" style="color:var(--muted);margin:.6rem 0 .4rem">'+t('res.all')+'</p><table class="rtable"><tbody>'+SETS.map(function(s){var m=setSummary(s);return '<tr><td>'+esc(s.title)+'</td><td>'+(m.n?m.s+' / '+m.n+(m.n<m.total?' ('+m.n+' of '+m.total+' answered)':''):'—')+'</td></tr>';}).join('')+'</tbody></table>';
+  h+='<div class="toolrow"><input type="text" id="resName" placeholder="'+esc(t('res.name'))+'" value="'+esc(ss.name||'')+'" maxlength="60"><button type="button" class="btn primary" id="resCopy">'+t('res.copy')+'</button><span class="msg" id="resMsg"></span></div><textarea class="fallback" id="resFallback" hidden aria-label="Results as text"></textarea>';
+  body.innerHTML=h;
+}
+function keyHTML(){
+  var st=SET();var rows=st.items.map(function(it){var ans='';
+    if(it.type==='sc')ans=L[it.ans]+' — '+it.opts[it.ans];else if(it.type==='ms')ans=it.ans.map(function(j){return L[j];}).join(', ');else if(it.type==='sort')ans=it.rows.map(function(r,i){return (i+1)+'. '+it.labels[r.ans];}).join('<br>');
+    else if(it.type==='dnd')ans=it.targets.map(function(tg){return tg.t+' → '+it.names[tg.ans];}).join('<br>');else if(it.type==='fig')ans=HEAT_DATA[it.ans].g+' ('+HEAT_DATA[it.ans].v+' °C)';else if(it.type==='pic')ans=L[it.ans]+' — '+it.pics[it.ans];else if(it.type==='fill')ans=it.opts[it.ans];
+    var clip=it.clip?'<br><span class="count">Clip: “'+esc(it.clip.map(function(c){return c.text;}).join(' '))+'”</span>':'';
+    return '<tr><td>'+it.n+'</td><td>'+t(it.fmt)+(it.skill?'<br><span class="count">'+esc(it.skill)+'</span>':'')+'</td><td>'+((it.type==='sort'||it.type==='dnd')?ans:esc(ans))+'</td><td>'+esc(it.why)+clip+'</td></tr>';}).join('');
+  var h='<p class="msg" style="margin-top:0"><b>'+esc(st.title)+'</b> — visible only when the address ends in <code>#key</code>; switch sets and the key follows. Each item is 1 point, all-or-nothing. '+esc(st.keynote)+'</p><table><thead><tr><th>Item</th><th>Format · skill</th><th>Correct response</th><th>Rationale</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  if(st.stim)h+='<h3>Full script</h3><p class="count">'+t('speakers')+': '+Object.keys(st.stim.speakers).map(function(nm){return esc(nm)+' ('+esc(st.stim.speakers[nm])+')';}).join(' · ')+'</p>'+turnsHTML(st.stim.turns,'k');
+  h+=(st.keyextra||'');
+  if(st.stim&&st.stim.gloss)h+='<h3>Glossary</h3><ul>'+st.stim.gloss.map(function(w){return '<li><b>'+esc(w[0])+'</b> — '+esc(w[1])+'</li>';}).join('')+'</ul>';
+  return h;
+}
+function renderAll(){renderTabs();renderHero();renderStim();renderItems();renderResults();updateProgress();document.documentElement.setAttribute('data-size',String(STATE.size||0));maybeKey();}
+function switchSet(id){if(!SETS.some(function(s){return s.id===id;}))return;stopSpeech();STATE.cur=id;save();renderAll();window.scrollTo(0,0);}
+
+/* ---------- interactions ---------- */
+var armed=null;
+function setAnswer(n,v){SS().ans[n]=v;save();}
+function afterChange(n){rerenderItem(n);updateProgress();renderResults();}
+$('#settabs').addEventListener('click',function(e){var b=e.target.closest('[data-set]');if(b)switchSet(b.getAttribute('data-set'));});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-act="play"]');if(!b)return;var key=b.getAttribute('data-key');if(Speech.on&&Speech.key===key)stopSpeech();else playKey(key);});
+$('#transBtn').addEventListener('click',function(){SS().transcript=!SS().transcript;save();renderStim();renderItems();});
+$('#items').addEventListener('click',function(e){
+  var b=e.target.closest('[data-act]');if(!b||b.getAttribute('data-act')==='play')return;var sec=b.closest('.item');if(!sec)return;var n=+sec.getAttribute('data-n');var it=item(n);var act=b.getAttribute('data-act');
+  if(act==='trans'){SS().transcript=!SS().transcript;save();renderStim();renderItems();return;}
+  if(isLocked(n)&&act!=='again')return;
+  if(act==='sc'||act==='pic'){setAnswer(n,+b.getAttribute('data-j'));afterChange(n);}
+  else if(act==='ms'){var a=(SS().ans[n]||[]).slice();var j=+b.getAttribute('data-j');var k=a.indexOf(j);if(k>=0)a.splice(k,1);else a.push(j);setAnswer(n,a);afterChange(n);}
+  else if(act==='fig'){var i=+b.getAttribute('data-i');setAnswer(n,SS().ans[n]===i?null:i);afterChange(n);}
+  else if(act==='chip'){e.stopPropagation();var placedIn=b.getAttribute('data-placed');
+    if(placedIn!=null){if(it.type==='fill')setAnswer(n,null);else{var o=Object.assign({},SS().ans[n]||{});o[placedIn]=null;setAnswer(n,o);}armed=null;afterChange(n);return;}
+    var ni=+b.getAttribute('data-name');armed=(armed===ni)?null:ni;$$('.bank .namechip',sec).forEach(function(c){c.classList.toggle('armed',+c.getAttribute('data-name')===armed);});$$('.drop,.bslot',sec).forEach(function(d){d.classList.toggle('ready',armed!=null);});}
+  else if(act==='drop'){if(armed==null)return;place(n,armed,+b.getAttribute('data-i'));armed=null;}
+  else if(act==='check'){if(!answered(it))return;var ok=grade(it);if(SS().first[n]==null)SS().first[n]=ok;SS().checked[n]=true;save();afterChange(n);if(ok)toast('★ '+t('fb.ok'));}
+  else if(act==='again'){SS().checked[n]=false;SS().ans[n]=null;save();afterChange(n);var el=$('#s'+pad(n+1));if(el)el.scrollIntoView({block:'start'});}
+});
+$('#items').addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target.closest('.namechip,.drop,.bslot,.region');if(!el)return;e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}));});
+function place(n,idx,slot){var it=item(n);if(it.type==='fill'){setAnswer(n,idx);afterChange(n);return;}var o=Object.assign({},SS().ans[n]||{});if(it.type!=='sort')Object.keys(o).forEach(function(k){if(o[k]===idx)o[k]=null;});o[slot]=idx;setAnswer(n,o);afterChange(n);}
+var dragging=null;
+$('#items').addEventListener('dragstart',function(e){var c=e.target.closest('.namechip');if(!c)return;var sec=c.closest('.item');if(isLocked(+sec.getAttribute('data-n'))){e.preventDefault();return;}dragging={n:+sec.getAttribute('data-n'),idx:+c.getAttribute('data-name')};c.classList.add('ghost');try{e.dataTransfer.setData('text/plain',String(dragging.idx));e.dataTransfer.effectAllowed='copyMove';}catch(x){}});
+$('#items').addEventListener('dragend',function(e){var c=e.target.closest('.namechip');if(c)c.classList.remove('ghost');$$('.drop.over,.bslot.over').forEach(function(d){d.classList.remove('over');});});
+$('#items').addEventListener('dragover',function(e){var d=e.target.closest('.drop,.bslot,.bank');if(!d||!dragging)return;e.preventDefault();if(!d.classList.contains('bank'))d.classList.add('over');});
+$('#items').addEventListener('dragleave',function(e){var d=e.target.closest('.drop,.bslot');if(d)d.classList.remove('over');});
+$('#items').addEventListener('drop',function(e){var d=e.target.closest('.drop,.bslot,.bank');if(!d||!dragging)return;e.preventDefault();var sec=d.closest('.item');var n=+sec.getAttribute('data-n');if(n!==dragging.n){dragging=null;return;}
+  if(d.classList.contains('bank')){var it=item(n);if(it.type==='fill')setAnswer(n,null);else if(it.type!=='sort'){var o=Object.assign({},SS().ans[n]||{});Object.keys(o).forEach(function(k){if(o[k]===dragging.idx)o[k]=null;});setAnswer(n,o);}afterChange(n);}
+  else place(n,dragging.idx,+d.getAttribute('data-i'));dragging=null;});
+$('#resBody').addEventListener('click',function(e){
+  if(e.target.id==='submitAll'){if(countAnswered()<N())return;SS().submitted=true;save();stopSpeech();renderItems();renderResults();updateProgress();$('#sRes').scrollIntoView({block:'start'});}
+  if(e.target.id==='resCopy'){var st=SET(),sm=setSummary(st);var lines=[st.title+' — '+st.grade+' ('+(STATE.mode==='practice'?'practice, first tries':'test')+')','Name: '+(SS().name||'________'),'Score: '+sm.s+' / '+(STATE.mode==='practice'?sm.n:N())];
+    st.items.forEach(function(it){var r=resultOf(st,SS(),it);lines.push('Item '+it.n+' ('+(it.skill||t(it.fmt))+'): '+(r==null?'—':(r?'correct':'incorrect')));});
+    lines.push('Storm Studio · EL Publishing');copyText(lines.join('\n'),$('#resMsg'),$('#resFallback'),'res.copied','res.copyfail');}
+});
+$('#resBody').addEventListener('input',function(e){if(e.target.id==='resName'){SS().name=e.target.value;save();}});
+function copyText(txt,msgEl,fb,okKey,failKey){var done=function(){msgEl.textContent=t(okKey);fb.hidden=true;};var fail=function(){msgEl.textContent=t(failKey);fb.hidden=false;fb.value=txt;fb.focus();fb.select();};try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fail);else fail();}catch(e){fail();}}
+function toggleWb(){STATE.wb=!STATE.wb;save();renderStim();}
+function bumpSize(){STATE.size=((STATE.size||0)+1)%3;save();document.documentElement.setAttribute('data-size',String(STATE.size));}
+['#wbBtn','#wbBtn2'].forEach(function(s){$(s).addEventListener('click',toggleWb);});
+['#sizeBtn','#sizeBtn2'].forEach(function(s){$(s).addEventListener('click',bumpSize);});
+$('#railFab').addEventListener('click',function(){var r=$('#rail');var open=!r.classList.contains('open');r.classList.toggle('open',open);this.setAttribute('aria-expanded',String(open));this.innerHTML=open?'✕ Close':'<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';});
+$('#toc').addEventListener('click',function(e){if(e.target.closest('a')){$('#rail').classList.remove('open');var f=$('#railFab');f.setAttribute('aria-expanded','false');f.innerHTML='<span id="fabPct">'+countAnswered()+' / '+N()+'</span> · Menu';}});
+$('#langBtn').addEventListener('click',function(){STATE.lang=STATE.lang==='en'?'es':'en';save();renderAll();});
+function setMode(m){if(STATE.mode===m)return;STATE.mode=m;SETS.forEach(function(st){STATE.sets[st.id].submitted=false;STATE.sets[st.id].checked={};STATE.sets[st.id].plays={};});save();stopSpeech();renderAll();}
+$('#modePractice').addEventListener('click',function(){setMode('practice');});
+$('#modeTest').addEventListener('click',function(){setMode('test');});
+function applyTheme(){var th=STATE.theme||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',th);$('#themeBtn').setAttribute('aria-pressed',String(th==='dark'));}
+$('#themeBtn').addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme');STATE.theme=cur==='dark'?'light':'dark';save();applyTheme();});
+var resetArmed=false,resetTimer;
+$('#resetAll').addEventListener('click',function(){var lbl=$('#resetLbl');if(!resetArmed){resetArmed=true;lbl.textContent=t('reset.arm');clearTimeout(resetTimer);resetTimer=setTimeout(function(){resetArmed=false;lbl.textContent=t('rail.reset');},3500);return;}
+  resetArmed=false;clearTimeout(resetTimer);var keepT=SS().transcript;STATE.sets[STATE.cur]=blank();STATE.sets[STATE.cur].transcript=keepT;save();stopSpeech();renderAll();toast(t('reset.done'));$('#rail').classList.remove('open');});
+var io=null,CUR='s00';
+function observe(){if(!('IntersectionObserver' in window))return;if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){CUR=en.target.id;markActive();}});},{rootMargin:'-35% 0px -55% 0px',threshold:0});$$('.card[id]').forEach(function(c){if(c.id!=='key'&&!c.hidden)io.observe(c);});}
+function markActive(){$$('#toc a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-sec')===CUR);});}
+/* speech — one voice per speaker */
+var Speech={on:false,key:null};var VOICES=[];
+function loadVoices(){try{VOICES=speechSynthesis.getVoices()||[];}catch(e){VOICES=[];}}
+if('speechSynthesis' in window){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}}
+function enVoices(){if(!VOICES.length)loadVoices();var en=VOICES.filter(function(v){return /^en[-_]?/i.test(v.lang);});var loc=en.filter(function(v){return v.localService;});var us=loc.filter(function(v){return /en[-_]US/i.test(v.lang);});return (us.length?us.concat(loc.filter(function(v){return us.indexOf(v)<0;})):loc).concat(en.filter(function(v){return loc.indexOf(v)<0;}));}
+function voiceFor(who){var st=SET();var names=Object.keys((st.stim&&st.stim.speakers)||{});var i=Math.max(0,names.indexOf(who));var vs=enVoices();var v=vs.length?vs[i%vs.length]:null;var pitch=[1,0.88,1.12,0.95,1.06][i%5];return {voice:v,pitch:vs.length>1?1:pitch,rate:0.92};}
+function paintPlayers(){$$('[data-player]').forEach(function(p){var on=Speech.on&&Speech.key===p.getAttribute('data-player');p.classList.toggle('on',on);var b=$('.playbtn',p);if(b){b.textContent=on?'■':'▶';b.setAttribute('aria-pressed',String(on));if(on)b.disabled=false;}});}
+function stopSpeech(){try{speechSynthesis.cancel();}catch(e){}$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});var was=Speech.on,key=Speech.key;Speech.on=false;Speech.key=null;paintPlayers();if(was&&STATE.mode==='test')refreshPlayer(key);}
+function refreshPlayer(key){if(key==='stim'){renderStim();}else if(key&&key[0]==='c'){var n=+key.slice(1);var sec=$('#s'+pad(n+1));var p=sec&&$('[data-player]',sec);if(p){var tmp=document.createElement('div');tmp.innerHTML=playerHTML(key,t('play.clip'),true);p.replaceWith(tmp.firstElementChild);}}}
+function playKey(key){
+  if(!('speechSynthesis' in window)){toast(t('audio.none'));return;}
+  var st=SET(),ss=SS();var max=(st.stim&&st.stim.maxPlays)||2;
+  if(STATE.mode==='test'){if(playsLeft(ss,key,max)<=0){toast(t('plays.none'));return;}ss.plays[key]=(ss.plays[key]||0)+1;save();}
+  var els=key==='stim'?$$('#transcript .s'):$$('#s'+pad(+key.slice(1)+1)+' .s');
+  stopSpeech();if(!els.length)return;Speech.on=true;Speech.key=key;paintPlayers();if(STATE.mode==='test')refreshPlayer(key);paintPlayers();
+  var i=0;function next(){if(!Speech.on||Speech.key!==key)return;if(i>=els.length){stopSpeech();return;}var sp=els[i];var vf=voiceFor(sp.getAttribute('data-who')||'');var u=new SpeechSynthesisUtterance(sp.textContent);u.lang=(vf.voice&&vf.voice.lang)||'en-US';if(vf.voice)u.voice=vf.voice;u.rate=vf.rate;u.pitch=vf.pitch;
+    u.onstart=function(){$$('.s.speaking').forEach(function(p){p.classList.remove('speaking');});sp.classList.add('speaking');if(!sp.closest('[hidden]'))sp.scrollIntoView({block:'nearest'});};u.onend=function(){sp.classList.remove('speaking');i++;setTimeout(next,220);};u.onerror=u.onend;
+    try{speechSynthesis.speak(u);}catch(e){stopSpeech();toast(t('audio.none'));}}
+  setTimeout(next,80);
+}
+$('#readBtn').addEventListener('click',function(){if(Speech.on)stopSpeech();else playKey('stim');});
+$('#audioBtn').addEventListener('click',function(){var st=SET();if(Speech.on){stopSpeech();return;}if(st.stim){$('#s01').scrollIntoView({block:'start'});playKey('stim');}else{var first=st.items.filter(function(it){return !answered(it);})[0]||st.items[0];$('#s'+pad(first.n+1)).scrollIntoView({block:'start'});playKey('c'+first.n);}});
+document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpeech();});
+function maybeKey(){var show=/(^|[?&])key(=|&|$)/.test(location.search)||location.hash==='#key';var k=$('#key');k.hidden=!show;if(show){$('#keyBody').innerHTML=keyHTML();k.scrollIntoView({block:'start'});}}
+window.addEventListener('hashchange',function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;})){switchSet(h);return;}maybeKey();});
+(function(){var h=location.hash.replace('#','');if(SETS.some(function(s){return s.id===h;}))STATE.cur=h;})();
+applyTheme();renderAll();
+})();
+</script>
+<script src="home-button.js" defer></script>
+</body>
+</html>

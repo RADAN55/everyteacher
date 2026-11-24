@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Science Language Pack · lab report frames, claim-evidence-reasoning, science words, lab safety in two languages · EL Publishing</title>
+<meta name="description" content="For science teachers with English learners: a lab report builder that prints a frame in four lanes, claim-evidence-reasoning frames, twenty words with a different meaning outside science, sixteen Greek and Latin word parts with Spanish twins, twelve lab safety lines in English and Spanish with audio, and fair assessment that grades the science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+  .chk:last-child{border-bottom:0}
+  .chk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+  .chk small{display:block;color:var(--muted);font-size:13px}
+  .meter{font-weight:700;color:var(--navy);font-size:15px;margin-top:10px}
+  .lane{border-left:6px solid var(--rule);padding:8px 12px;background:var(--paper);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .lane b.t{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+  .lane.n{border-left-color:var(--lane-n)}.lane.n b.t{color:var(--lane-n)}
+  .lane.e{border-left-color:var(--lane-e)}.lane.e b.t{color:var(--lane-e)}
+  .lane.p{border-left-color:var(--lane-p)}.lane.p b.t{color:var(--lane-p)}
+  .lane.c{border-left-color:var(--lane-c)}.lane.c b.t{color:var(--lane-c)}
+  .out{display:none;margin-top:14px}
+  .sheet{border:1px solid var(--rule);background:var(--paper);padding:16px 18px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;margin:0 0 6px;color:var(--navy)}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;font-size:13px}
+  .sig div{border-top:1px solid #000;padding-top:4px}
+  mark.w{background:var(--wash-gold);color:var(--ink-gold);padding:0 3px;border-radius:3px;font-weight:700;cursor:help}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--paper);border:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--navy-bg);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .steps li b{color:var(--navy)}
+  .tblwrap{overflow-x:auto}
+  @media print{.out{display:block}.onlyscreen{display:none!important}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR SCIENCE TEACHERS · LAB REPORTS · CER · VOCABULARY · SAFETY</p>
+    <h1>The science <em>language pack.</em></h1>
+    <p class="tag">For the science teacher with English learners at the lab bench. A lab report frame for every lane, the reasoning sentence taught on purpose, the words that mislead, and the safety rules in two languages.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('lab')">Build a lab report frame</button><button class="btn ghost" type="button" onclick="setMode('cer')">Claim · evidence · reasoning</button><button class="btn ghost" type="button" onclick="setMode('safety')">Lab safety EN/ES</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="start" aria-pressed="true" onclick="setMode('start')">Start here</button><button type="button" data-m="lab" aria-pressed="false" onclick="setMode('lab')">Lab report builder</button><button type="button" data-m="cer" aria-pressed="false" onclick="setMode('cer')">Claim · evidence · reasoning</button><button type="button" data-m="words" aria-pressed="false" onclick="setMode('words')">Science words</button><button type="button" data-m="roots" aria-pressed="false" onclick="setMode('roots')">Roots &amp; cognates</button><button type="button" data-m="safety" aria-pressed="false" onclick="setMode('safety')">Lab safety EN/ES</button><button type="button" data-m="fair" aria-pressed="false" onclick="setMode('fair')">Fair assessment</button><span class="sp"></span><span class="priv">Free · no account · nothing you type leaves this browser</span></div></nav>
+<main>
+
+<section class="mode on" id="m-start">
+  <h2 class="sec">Science is the best class in the building for learning English</h2>
+  <p class="lead">There is something on the table to point at, something happens, and everyone wants to say what they saw. The language load is in three places: the vocabulary, the lab report, and the sentence that explains why. This pack takes each one in turn.</p>
+  <div class="grid3">
+    <div class="card"><span class="k">1</span><h4>The lab report</h4><p>Pick a lane, type the question, print a report frame with the sentences started. The student supplies the science.</p><div class="links"><a href="#lab" onclick="setMode('lab')">Build a lab report frame →</a></div></div>
+    <div class="card"><span class="k">2</span><h4>The explanation</h4><p>Claim, evidence, reasoning, with frames in four lanes. Reasoning is where the points are lost.</p><div class="links"><a href="#cer" onclick="setMode('cer')">Claim · evidence · reasoning →</a></div></div>
+    <div class="card"><span class="k">3</span><h4>The words</h4><p>Twenty words students think they know, sixteen word parts that unlock hundreds more, and the Spanish twins.</p><div class="links"><a href="#words" onclick="setMode('words')">Science words →</a></div></div>
+  </div>
+  <div class="okbox"><b>Do it, then name it.</b> Let students see the phenomenon and talk about it in any language before the vocabulary arrives. A word attached to something they just watched stays. A word copied from a slide before the lab does not.</div>
+  <div class="flag"><b>Safety comes first, in a language the student understands.</b> A newcomer does the lab only after the safety rules have been shown, said, and checked back. The safety tab has twelve lines in English and Spanish with audio.</div>
+  <div class="links"><a href="by-subject.html">By Subject &amp; Grade →</a><a href="el-lesson-planner.html">EL Lesson Planner →</a><a href="math-language.html">The Math Language Pack →</a></div>
+</section>
+
+<section class="mode" id="m-lab">
+  <h2 class="sec">Lab report builder</h2>
+  <p class="lead">Type what the lab is about, choose a lane, and print. The frame gives the structure and the first words of each sentence. Nothing you type leaves this browser.</p>
+  <div class="panel onlyscreen">
+    <label class="f" for="b-t">Lab title</label><input type="text" id="b-t" placeholder="Does temperature change how fast sugar dissolves?">
+    <div class="grid2">
+      <div><label class="f" for="b-iv">What we change (independent variable)</label><input type="text" id="b-iv" placeholder="water temperature"></div>
+      <div><label class="f" for="b-dv">What we measure (dependent variable)</label><input type="text" id="b-dv" placeholder="time to dissolve, in seconds"></div>
+    </div>
+    <label class="f" for="b-wb">Word bank (comma separated)</label><input type="text" id="b-wb" placeholder="dissolve, solute, solvent, temperature, rate">
+    <label class="f" for="b-l">Lane</label>
+    <select id="b-l"><option value="n">Newcomer</option><option value="e" selected>Emerging</option><option value="p">Progressing</option><option value="c">Challenge</option></select>
+    <div class="row"><button class="btn navy" type="button" id="b-make">Build the frame</button><button class="btn line" type="button" onclick="window.print()">Print</button></div>
+  </div>
+  <div class="out" id="b-out"></div>
+</section>
+
+<section class="mode" id="m-cer">
+  <h2 class="sec">Claim · evidence · reasoning</h2>
+  <p class="lead">Most science writing in grades 6 to 12 has this shape. English learners usually manage the claim and the evidence. The reasoning sentence, the one that says why the evidence supports the claim, is the hard one, so that is the one to model.</p>
+  <h3 class="sub">Claim: answer the question</h3>
+  <div class="lane n"><b class="t">Newcomer</b>___ is faster. / The ___ went up.</div><div class="lane e"><b class="t">Emerging</b>I think ___ because I saw ___.</div><div class="lane p"><b class="t">Progressing</b>When ___ increases, ___ increases / decreases.</div><div class="lane c"><b class="t">Challenge</b>___ causes ___, but only when ___.</div>
+  <h3 class="sub">Evidence: the data, with numbers and units</h3>
+  <div class="lane n"><b class="t">Newcomer</b>Points to the row in the table. Copies: "___ = ___ seconds."</div><div class="lane e"><b class="t">Emerging</b>In the table, ___ was ___ and ___ was ___.</div><div class="lane p"><b class="t">Progressing</b>The data show that at ___, the ___ was ___, compared with ___ at ___.</div><div class="lane c"><b class="t">Challenge</b>Across all trials, ___ ranged from ___ to ___. The one exception was ___.</div>
+  <h3 class="sub">Reasoning: why the evidence supports the claim</h3>
+  <div class="lane n"><b class="t">Newcomer</b>Matches a picture of the idea to the result, with a partner who shares the home language.</div><div class="lane e"><b class="t">Emerging</b>This happens because ___.</div><div class="lane p"><b class="t">Progressing</b>This evidence supports my claim because ___. The science idea is ___.</div><div class="lane c"><b class="t">Challenge</b>This is explained by ___. A limitation of the evidence is ___, so a better test would ___.</div>
+  <div class="tip"><b>Model the reasoning sentence on a different lab.</b> Write one full claim, evidence and reasoning on the board from last week's lab, underline the reasoning, and leave it up. Students need to see what "because" is supposed to connect.</div>
+  <div class="row"><button class="btn navy" type="button" onclick="window.print()">Print the frames</button><a class="btn line" href="sentence-frames.html">150 more frames →</a></div>
+</section>
+
+<section class="mode" id="m-words">
+  <h2 class="sec">Twenty words students think they know</h2>
+  <p class="lead">These are the dangerous ones. The student has an everyday meaning, uses it with confidence, and gets the science wrong. Teach both meanings side by side.</p>
+  <div class="tblwrap"><table><thead><tr><th style="width:16%">Word</th><th>Outside science class</th><th>In science class</th></tr></thead><tbody><tr><td><b>theory</b></td><td>A guess.</td><td>A well-tested explanation supported by a large body of evidence.</td></tr><tr><td><b>matter</b></td><td>A topic or a problem ("What's the matter?").</td><td>Anything that has mass and takes up space.</td></tr><tr><td><b>solution</b></td><td>The answer to a problem.</td><td>A mixture in which one substance is dissolved evenly in another.</td></tr><tr><td><b>cell</b></td><td>A phone, or a small room.</td><td>The basic unit of living things.</td></tr><tr><td><b>force</b></td><td>To make someone do something.</td><td>A push or a pull.</td></tr><tr><td><b>work</b></td><td>A job.</td><td>Force applied over a distance.</td></tr><tr><td><b>power</b></td><td>Control or strength.</td><td>The rate at which work is done.</td></tr><tr><td><b>mass</b></td><td>A large amount; a church service.</td><td>The amount of matter in an object.</td></tr><tr><td><b>model</b></td><td>A person who shows clothes.</td><td>A representation used to explain or predict.</td></tr><tr><td><b>culture</b></td><td>The customs of a people.</td><td>Cells or microorganisms grown in a lab.</td></tr><tr><td><b>conduct</b></td><td>Behavior.</td><td>To carry heat or electricity.</td></tr><tr><td><b>property</b></td><td>Land or things you own.</td><td>A characteristic of a substance.</td></tr><tr><td><b>table</b></td><td>Furniture.</td><td>Rows and columns of data; also the periodic table.</td></tr><tr><td><b>control</b></td><td>To be in charge.</td><td>The group or setup that is not changed, used for comparison.</td></tr><tr><td><b>variable</b></td><td>Changeable weather or moods.</td><td>A factor that can change in an experiment.</td></tr><tr><td><b>bond</b></td><td>A close relationship.</td><td>A force that holds atoms together.</td></tr><tr><td><b>plate</b></td><td>A dish.</td><td>A large section of Earth's crust.</td></tr><tr><td><b>fault</b></td><td>Blame.</td><td>A break in rock where movement happens.</td></tr><tr><td><b>organ</b></td><td>A musical instrument.</td><td>A body part with a specific job.</td></tr><tr><td><b>energy</b></td><td>Feeling lively.</td><td>The ability to cause change or do work.</td></tr></tbody></table></div>
+  <h3 class="sub">A routine for any new term</h3>
+  <ol class="steps">
+    <li><b>See it first.</b> The object, a picture, a ten-second demonstration.</li>
+    <li><b>Say it and split it.</b> "Photo-synthesis. Light, putting together."</li>
+    <li><b>Twin it.</b> Give the Spanish if it is close. Ask other students for the word in their language.</li>
+    <li><b>Example and non-example.</b> "This is a solution. This is not. Why?"</li>
+    <li><b>Use it today.</b> One sentence aloud to a partner, one in the notebook, with a labeled sketch.</li>
+  </ol>
+  <div class="links"><a href="picture-dictionary-3.html">Picture Dictionary: the lab →</a><a href="storm-lens/">Storm Lens: name the room →</a></div>
+</section>
+
+<section class="mode" id="m-roots">
+  <h2 class="sec">Roots and cognates</h2>
+  <p class="lead">Science vocabulary is built from Greek and Latin parts, and Spanish kept most of them. For a Spanish speaker, science may be the class with the most familiar words in it. Sixteen parts to teach on purpose.</p>
+  <div class="tblwrap"><table><thead><tr><th>Part</th><th>Means</th><th>In English</th><th>A Spanish twin</th></tr></thead><tbody><tr><td><b>bio-</b></td><td>life</td><td>biology, biome, antibiotic</td><td>biología</td></tr><tr><td><b>geo-</b></td><td>earth</td><td>geology, geothermal</td><td>geología</td></tr><tr><td><b>hydro-</b></td><td>water</td><td>hydrogen, hydroelectric, dehydrate</td><td>hidrógeno</td></tr><tr><td><b>therm-</b></td><td>heat</td><td>thermometer, exothermic, thermal</td><td>termómetro</td></tr><tr><td><b>photo-</b></td><td>light</td><td>photosynthesis, photon</td><td>fotosíntesis</td></tr><tr><td><b>micro-</b></td><td>small</td><td>microscope, microorganism</td><td>microscopio</td></tr><tr><td><b>macro-</b></td><td>large</td><td>macromolecule, macroscopic</td><td>macromolécula</td></tr><tr><td><b>-ology</b></td><td>study of</td><td>ecology, geology, biology</td><td>ecología</td></tr><tr><td><b>-meter</b></td><td>measure</td><td>thermometer, barometer</td><td>barómetro</td></tr><tr><td><b>chloro-</b></td><td>green</td><td>chlorophyll, chloroplast</td><td>clorofila</td></tr><tr><td><b>cyto-</b></td><td>cell</td><td>cytoplasm, cytology</td><td>citoplasma</td></tr><tr><td><b>endo- / exo-</b></td><td>inside / outside</td><td>endothermic, exoskeleton</td><td>endotérmico</td></tr><tr><td><b>hetero- / homo-</b></td><td>different / same</td><td>heterogeneous, homozygous</td><td>heterogéneo</td></tr><tr><td><b>-synthesis</b></td><td>putting together</td><td>photosynthesis, biosynthesis</td><td>síntesis</td></tr><tr><td><b>-lysis</b></td><td>breaking apart</td><td>hydrolysis, electrolysis</td><td>hidrólisis</td></tr><tr><td><b>kine-</b></td><td>movement</td><td>kinetic</td><td>cinético</td></tr></tbody></table></div>
+  <div class="card"><h4>More twins</h4><p>atom · átomo, molecule · molécula, energy · energía, gravity · gravedad, organism · organismo, nucleus · núcleo, oxygen · oxígeno, electricity · electricidad, experiment · experimento, hypothesis · hipótesis, volcano · volcán, planet · planeta, mineral · mineral, bacteria · bacteria, density · densidad, velocity · velocidad, ecosystem · ecosistema, evaporation · evaporación.</p><p><b>Watch for:</b> not every look-alike is a twin. Check a pair before you lean on it, and ask students who speak other languages for the word in theirs.</p></div>
+  <div class="links"><a href="cognate-hunt.html">Cognate Hunt: paste any reading →</a><a href="using-spanish-content-classroom.html">Using Spanish in the Content Classroom →</a></div>
+</section>
+
+<section class="mode" id="m-safety">
+  <h2 class="sec">Lab safety, in English and Spanish</h2>
+  <p class="lead">Twelve lines for the science teacher who speaks no Spanish. Tap ▶ to hear each one. Show the action while you say it, and have the student show it back before the lab starts.</p>
+  <div class="tblwrap"><table><thead><tr><th>English</th><th>Español</th></tr></thead><tbody><tr><td>Put on your goggles. <button class="say" data-say="Put on your goggles." data-lang="en-US">▶</button></td><td class="es">Pónganse las gafas de seguridad. <button class="say" data-say="Pónganse las gafas de seguridad." data-lang="es-US">▶</button></td></tr><tr><td>Tie back long hair. <button class="say" data-say="Tie back long hair." data-lang="en-US">▶</button></td><td class="es">Recójanse el cabello largo. <button class="say" data-say="Recójanse el cabello largo." data-lang="es-US">▶</button></td></tr><tr><td>Do not touch this. It is hot. <button class="say" data-say="Do not touch this. It is hot." data-lang="en-US">▶</button></td><td class="es">No toquen esto. Está caliente. <button class="say" data-say="No toquen esto. Está caliente." data-lang="es-US">▶</button></td></tr><tr><td>Do not taste or smell anything. <button class="say" data-say="Do not taste or smell anything." data-lang="en-US">▶</button></td><td class="es">No prueben ni huelan nada. <button class="say" data-say="No prueben ni huelan nada." data-lang="es-US">▶</button></td></tr><tr><td>Tell me right away if something spills or breaks. <button class="say" data-say="Tell me right away if something spills or breaks." data-lang="en-US">▶</button></td><td class="es">Avísenme de inmediato si algo se derrama o se rompe. <button class="say" data-say="Avísenme de inmediato si algo se derrama o se rompe." data-lang="es-US">▶</button></td></tr><tr><td>Wash your hands when you finish. <button class="say" data-say="Wash your hands when you finish." data-lang="en-US">▶</button></td><td class="es">Lávense las manos al terminar. <button class="say" data-say="Lávense las manos al terminar." data-lang="es-US">▶</button></td></tr><tr><td>Where is the eyewash station? Show me. <button class="say" data-say="Where is the eyewash station? Show me." data-lang="en-US">▶</button></td><td class="es">¿Dónde está la estación de lavado de ojos? Muéstrenme. <button class="say" data-say="¿Dónde está la estación de lavado de ojos? Muéstrenme." data-lang="es-US">▶</button></td></tr><tr><td>Stop. Everyone look at me. <button class="say" data-say="Stop. Everyone look at me." data-lang="en-US">▶</button></td><td class="es">Alto. Todos mírenme. <button class="say" data-say="Alto. Todos mírenme." data-lang="es-US">▶</button></td></tr><tr><td>Pour slowly. <button class="say" data-say="Pour slowly." data-lang="en-US">▶</button></td><td class="es">Viertan despacio. <button class="say" data-say="Viertan despacio." data-lang="es-US">▶</button></td></tr><tr><td>Only do the steps on the page. <button class="say" data-say="Only do the steps on the page." data-lang="en-US">▶</button></td><td class="es">Hagan solo los pasos que están en la hoja. <button class="say" data-say="Hagan solo los pasos que están en la hoja." data-lang="es-US">▶</button></td></tr><tr><td>Broken glass goes in this box, not the trash. <button class="say" data-say="Broken glass goes in this box, not the trash." data-lang="en-US">▶</button></td><td class="es">El vidrio roto va en esta caja, no en la basura. <button class="say" data-say="El vidrio roto va en esta caja, no en la basura." data-lang="es-US">▶</button></td></tr><tr><td>Are you okay? Show me where it hurts. <button class="say" data-say="Are you okay? Show me where it hurts." data-lang="en-US">▶</button></td><td class="es">¿Estás bien? Muéstrame dónde te duele. <button class="say" data-say="¿Estás bien? Muéstrame dónde te duele." data-lang="es-US">▶</button></td></tr></tbody></table></div>
+  <div class="note"><b>About the voices.</b> The audio is your device's built-in synthesized voice, not a recording. These lines support your safety contract; they do not replace it. For other languages, pair the student with a trusted bilingual adult for the safety briefing, and keep picture signs at every station.</div>
+  <div class="row"><button class="btn navy" type="button" onclick="window.print()">Print the two-language sheet</button><a class="btn line" href="spanish-for-teachers.html">Spanish for Teachers →</a></div>
+</section>
+
+<section class="mode" id="m-fair">
+  <h2 class="sec">Fair assessment in science</h2>
+  <p class="lead">Grade the science. Report the English to the EL teacher.</p>
+  <div class="grid2">
+    <div class="card"><h4>Ways to show the same understanding</h4><ul><li>A labeled diagram with arrows and short phrases</li><li>A data table and a graph with a one-sentence conclusion</li><li>Sorting or sequencing cards, then explaining the order aloud</li><li>An oral explanation at the lab bench, scored on your rubric</li><li>A report written with the frame for the student's lane</li></ul></div>
+    <div class="card"><h4>Keep the same</h4><ul><li>The standard and the science idea</li><li>The data the student has to use</li><li>The expectation of a claim supported by evidence</li><li>The key terms. Teach them; do not remove them.</li></ul></div>
+  </div>
+  <div class="tip"><b>Two scores on the lab report.</b> One for the science: is the claim right, is the evidence from the data, does the reasoning use the idea? One note on the language for the EL teacher. A correct explanation in rough English earns the science points.</div>
+  <div class="links"><a href="grade-it-fair.html">Grade It Fair: paste a rubric →</a><a href="accommodations-cards.html">What state tests allow →</a><a href="read-your-roster.html">Read Your Roster →</a></div>
+</section>
+
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);window.scrollTo(0,0);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const val=i=>esc((document.getElementById(i).value||"").trim()||"—");
+document.querySelectorAll("[data-count]").forEach(box=>{const out=document.getElementById(box.dataset.count);const upd=()=>{const all=box.querySelectorAll("input[type=checkbox]");const on=box.querySelectorAll("input[type=checkbox]:checked");out.textContent=on.length+" of "+all.length+" checked";};box.addEventListener("change",upd);upd();});
+
+
+const F={
+n:{q:"We want to know: ",h:"I think ______________________ .",m:"Draw and label what you used.",p:"Draw the steps. Number them 1, 2, 3.",d:"Fill in the table. Circle the biggest number.",c:"The ______________ was faster / slower / bigger / smaller.",r:"Tell a partner why, in any language. Then finish: It happened because ______________ ."},
+e:{q:"Our question: ",h:"I think that ______________ will ______________ because ______________ .",m:"We used ______________ , ______________ and ______________ .",p:"First, we ______________ . Next, we ______________ . Then, we ______________ . Last, we ______________ .",d:"Fill in the table. Then finish: When ______________ was ______________ , the ______________ was ______________ .",c:"My claim is ______________ . In the table, ______________ .",r:"This happened because ______________ ."},
+p:{q:"Research question: ",h:"If ______________ increases, then ______________ will ______________ , because ______________ .",m:"List the materials with amounts and units.",p:"Write the steps so another group could repeat them. Use: first, next, after that, finally.",d:"Record the data in a table with units. Describe the pattern: As ______________ increased, ______________ .",c:"The data show that ______________ . For example, at ______________ , ______________ was ______________ , compared with ______________ .",r:"This evidence supports the claim because ______________ . One source of error was ______________ ."},
+c:{q:"Research question: ",h:"State a hypothesis and the science idea it rests on.",m:"List materials. Identify the control and the constants.",p:"Write a procedure another group could follow exactly. Say what you kept the same and why.",d:"Record and graph the data. Describe the trend and any result that does not fit it.",c:"State a claim. Support it with at least two pieces of data, with units.",r:"Explain the result with the science idea. Name one limitation and a better design."}};
+document.getElementById("b-make").addEventListener("click",()=>{const L=document.getElementById("b-l").value,f=F[L];const name={n:"Newcomer",e:"Emerging",p:"Progressing",c:"Challenge"}[L];
+const wb=(document.getElementById("b-wb").value||"").split(",").map(s=>s.trim()).filter(Boolean);const o=document.getElementById("b-out");o.style.display="block";
+const sec=(h,t,lines)=>`<tr><td style="width:24%"><b>${h}</b></td><td>${t}<div style="height:${lines*26}px"></div></td></tr>`;
+o.innerHTML=`<div class="sheet"><h3>Lab report · ${val("b-t")}</h3><p style="margin:0 0 8px;font-size:14px">Name: ______________________ · Date: ____________ · Partner(s): ______________________</p>
+${wb.length?`<p style="font-size:14px;margin:0 0 8px"><b>Word bank:</b> ${wb.map(esc).join(" · ")}</p>`:""}
+<table><tbody>
+${sec("Question",f.q+"<b>"+val("b-t")+"</b>",0)}
+${sec("Variables","We change: <b>"+val("b-iv")+"</b><br>We measure: <b>"+val("b-dv")+"</b>",0)}
+${sec("Hypothesis",f.h,1)}
+${sec("Materials",f.m,2)}
+${sec("Procedure",f.p,4)}
+${sec("Data",f.d,5)}
+${sec("Claim and evidence",f.c,3)}
+${sec("Reasoning",f.r,3)}
+</tbody></table><p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">${name} lane · same lab, same data, same science for every student</p></div>`;o.scrollIntoView({behavior:"smooth"});});
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

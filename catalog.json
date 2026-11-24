@@ -57,10 +57,21 @@
  {
   "u": "series-elpt-practice.html",
   "t": "The ELPT Practice Center",
-  "o": "Practice for every domain of the spring English test: listening sets, speaking, reading, the full form, the question-types guide.",
-  "f": "Series · 4 domains · 7 tools",
+  "o": "Practice for every domain of the spring English test: interactive sets for reading, writing, listening and speaking, plus the full form and the question-types guide.",
+  "f": "Series · 4 domains · 11 tools",
   "g": "Students & families",
-  "k": "Every ELPT practice tool for students in one place, by domain: Listening Practice Sets 1 and 2, the Listening & Speaking Studio (hear it twice, record, compare), the ELPA21 Reading Studio under mock-test conditions, English On Your Own (a full form with every task type, speaking checked by the browser), the student Task Practice packet, and the ELPA Question Types guide.",
+  "k": "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets) and the ELPA21 Reading Studio under mock-test conditions. Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
+  "th": "",
+  "pin": "",
+  "new": ""
+ },
+ {
+  "u": "series-subject-packs.html",
+  "t": "Language Packs by Subject",
+  "o": "For the math or science teacher: the words that trip, the routines, the frames in four lanes, and the grid for every subject.",
+  "f": "Series · Math · science · 16-square grid",
+  "g": "Every classroom teacher",
+  "k": "Subject-specific language support for content teachers. The Math Language Pack: a word-problem unpacker, the six families of words that trip, Three Reads, frames for explaining, justifying, comparing and critiquing, and fair assessment. The Science Language Pack: a lab report builder in four lanes, claim-evidence-reasoning frames, twenty words with another meaning outside science, Greek and Latin word parts with Spanish twins, and lab safety in English and Spanish with audio. By Subject & Grade: the language demand, two moves and what to use for every subject and grade band.",
   "th": "",
   "pin": "",
   "new": ""
@@ -97,6 +108,17 @@
   "th": "",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "dual-identified.html",
+  "t": "The Dual-Identified Desk",
+  "o": "Language or disability? The fair evaluation, who sits in the meeting, both plans on one page, how accommodations stack.",
+  "f": "Desk · EL + IEP · 7 parts",
+  "g": "The EL teacher's desk",
+  "k": "For EL teachers, special education teachers and IEP teams working with an English learner who has, or may have, a disability: a side-by-side table that separates second-language acquisition from signs of a possible disability, a twelve-point pre-referral checklist, what a fair evaluation looks like (native language, interpreters, norms), who has to be in the IEP meeting and a ten-point meeting check, a builder that prints the LSP and the IEP side by side on one page, how accommodations stack on MAAP and the ELPT including domain exemptions and the alternate assessment, the exit rule for dual-identified students, and family scripts in English and Spanish with audio.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
  },
  {
   "u": "https://radan55.github.io/stormphonicslab/",
@@ -152,6 +174,50 @@
   "th": "thumbs/74-listening-practice.jpg",
   "pin": "2026-11-25",
   "new": "2026-11-04"
+ },
+ {
+  "u": "storm-reading-sets.html",
+  "t": "Storm Reading Sets",
+  "o": "Five ELPT-style reading sets on tabs: two stories, a data set, a science investigation and an argument essay.",
+  "f": "Interactive · 5 sets · 31 items · 9–12",
+  "g": "Students & families",
+  "k": "Five interactive ELPT-style reading sets for grades 9–12 on one page with tabs: Storm Salsa and The Last Round (literary), Screens and Sleep (data analysis), The Pot-in-Pot Cooler (science investigation) and Fix It Yourself (argument essay). Drag-and-drop, hot spots, drop-downs, select-all and sentence selection; Practice and Test modes; read-aloud, glossary, Spanish directions; results to copy to the teacher; teacher key at #key.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
+ },
+ {
+  "u": "storm-writing-sets.html",
+  "t": "Storm Writing Sets",
+  "o": "The five ELPA21 writing tasks: fix the paragraph, write questions, answer an email, tell the storyboard, build a claim.",
+  "f": "Interactive · 5 task types · 9–12",
+  "g": "Students & families",
+  "k": "The five ELPA21 writing task types for grades 9–12 as interactive tabs: Fix the Paragraph (discrete editing), Ask the Pilot (writing questions), Reply to Jalen (respond to a peer email), The Empty Lot (storyboard) and Required to Serve? (construct a claim). Live self-checks as students type, sentence stems, Spanish directions, copy-my-writing for turning in; rubrics and model responses at #key.",
+  "th": "",
+  "pin": "",
+  "new": "2026-11-23"
+ },
+ {
+  "u": "storm-listening-sets.html",
+  "t": "Storm Listening Sets",
+  "o": "Seven listening tasks with a voice for each speaker: match, listen for information, a debate, a conversation, a lecture, a presentation.",
+  "f": "Interactive · 7 task types · 29 items",
+  "g": "Students & families",
+  "k": "Seven ELPA21 listening task types for grades 9–12 as interactive tabs: Listen and Match sentences and words, Listen for Information, an academic debate, a short conversation, a lecture and discussion, and a student presentation. The browser speaks every stimulus with a different synthesized voice per speaker; transcripts are hidden in Test mode and each recording plays twice; teacher key with full scripts at #key.",
+  "th": "",
+  "pin": "",
+  "new": "2026-11-23"
+ },
+ {
+  "u": "storm-speaking-sets.html",
+  "t": "Storm Speaking Sets",
+  "o": "Record, play back and self-check the four ELPA21 speaking tasks: compare pictures, a book report, a chart and a claim, observe and report.",
+  "f": "Interactive · 4 task types · record and replay",
+  "g": "Students & families",
+  "k": "Four ELPA21 speaking task types for grades 9–12 as interactive tabs: Compare Pictures, Language Arts Presentation, Analyze a Visual and a Claim, and Observe and Report. Students record in the browser, play back and download; recordings stay on the device; a live transcript feeds a self-check where the browser supports it; rubrics on the ELPA21 point scales and model responses at #key.",
+  "th": "",
+  "pin": "",
+  "new": "2026-11-23"
  },
  {
   "u": "https://radan55.github.io/Stormattention/",
@@ -416,6 +482,39 @@
   "th": "thumbs/07-many-voices.jpg",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "math-language.html",
+  "t": "The Math Language Pack",
+  "o": "Paste a word problem and see the words that trip; then Three Reads, frames in four lanes and a six-minute vocabulary routine.",
+  "f": "Language pack · 57 words · 4 lanes",
+  "g": "Every classroom teacher",
+  "k": "For math teachers with English learners: a word-problem unpacker (paste any problem; it marks words that change the operation or mean something different outside math, with the Spanish), six families of words that trip (reversal words like less than, everyday words with a math meaning, small words that carry the operation, comparisons, sound-alikes, conditions and passives), math cognates, the Three Reads routine in four lanes, sentence frames for explaining steps, justifying, comparing and critiquing reasoning, a six-minute vocabulary routine, and fair assessment that keeps the math and removes the extra English.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
+ },
+ {
+  "u": "science-language.html",
+  "t": "The Science Language Pack",
+  "o": "A lab report frame for every lane, claim-evidence-reasoning, twenty words that mislead, and lab safety in two languages.",
+  "f": "Language pack · Lab frames · 4 lanes · EN/ES",
+  "g": "Every classroom teacher",
+  "k": "For science teachers with English learners: a lab report builder that prints a frame for the Newcomer, Emerging, Progressing or Challenge lane with a word bank, claim-evidence-reasoning (CER) frames in four lanes, twenty words with a different meaning outside science (theory, matter, solution, force, work), a routine for any new term, sixteen Greek and Latin word parts with Spanish cognates, twelve lab safety lines in English and Spanish with audio, and fair assessment that grades the science separately from the English.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
+ },
+ {
+  "u": "request-a-resource.html",
+  "t": "Request a Resource",
+  "o": "Need something for your English learners that is not here? Tap, type a sentence, send.",
+  "f": "Request form · 1 minute",
+  "g": "Every classroom teacher",
+  "k": "A one-minute request form: tap your role, grade band, subject and the kind of thing that would help, add a sentence about what you need for your English learners, and send it by email or copy the text. Requests shape what gets built next; what is built goes on the hub free for everyone. Suggest a resource, ask for a tool, contact.",
+  "th": "",
+  "pin": "",
+  "new": "2026-11-23"
  },
  {
   "u": "today-in-el.html",
@@ -858,6 +957,17 @@
   "new": ""
  },
  {
+  "u": "slife-kit.html",
+  "t": "The SLIFE Starter Kit",
+  "o": "For the newcomer who is also new to school: find the schooling gap in week one, then the first thirty days.",
+  "f": "Kit · 12-question interview · 30 days",
+  "g": "The EL teacher's desk",
+  "k": "For students with limited or interrupted formal education (SLIFE, SIFE): what the term means and does not mean, a twelve-question schooling interview in English and Spanish with audio, a home-language writing sample and a no-English numbers check, seven signs to look for, the first thirty days week by week, six teaching principles including oral before print and direct reading instruction for teenagers, how to build the schedule and talk about credits and attending until age 21, and a printable one-page note for content teachers.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
+ },
+ {
   "u": "ltel-clinic.html",
   "t": "The Long-Term EL Clinic",
   "o": "Six years an EL and stuck at Writing 2: a roster finder, a 30-minute diagnostic, twelve weeks on the academic register.",
@@ -1043,6 +1153,17 @@
   "th": "thumbs/09-command-center.jpg",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "exit-monitoring.html",
+  "t": "The Exit & Monitoring Kit",
+  "o": "The Mississippi exit rule, a four-year monitoring form that prints, and what to do when a former EL slips.",
+  "f": "Kit · 10 steps · 4-year form",
+  "g": "District & compliance",
+  "k": "For EL teachers, coordinators and principals in Mississippi: the exit rule (Level 4 or higher in each ELPT domain on the same administration), a ten-step exit checklist, what does not count as exit (waivers, grades, graduation), a builder that prints a four-year monitoring record with a row for every nine weeks, what to review at each check, a seven-step response when a monitored former English learner's grades drop including retesting and re-offering services, the family exit letter in English and Spanish, a heads-up note for next year's teachers, and a page explaining monitored status to classroom teachers. Reclassification, reclassified, RFEP, former EL.",
+  "th": "",
+  "pin": "2026-12-28",
+  "new": "2026-11-23"
  },
  {
   "u": "counselor-desk.html",

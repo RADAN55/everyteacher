@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Math Language Pack · word-problem language, Three Reads, frames in four lanes · EL Publishing</title>
+<meta name="description" content="For math teachers with English learners: a word-problem unpacker that marks the words that change the operation or mean something else outside math, the six families of words that trip, the Three Reads routine in four lanes, sentence frames for explaining, justifying, comparing and critiquing, a six-minute vocabulary routine, and fair assessment without lowering the math.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+  .chk:last-child{border-bottom:0}
+  .chk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+  .chk small{display:block;color:var(--muted);font-size:13px}
+  .meter{font-weight:700;color:var(--navy);font-size:15px;margin-top:10px}
+  .lane{border-left:6px solid var(--rule);padding:8px 12px;background:var(--paper);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .lane b.t{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+  .lane.n{border-left-color:var(--lane-n)}.lane.n b.t{color:var(--lane-n)}
+  .lane.e{border-left-color:var(--lane-e)}.lane.e b.t{color:var(--lane-e)}
+  .lane.p{border-left-color:var(--lane-p)}.lane.p b.t{color:var(--lane-p)}
+  .lane.c{border-left-color:var(--lane-c)}.lane.c b.t{color:var(--lane-c)}
+  .out{display:none;margin-top:14px}
+  .sheet{border:1px solid var(--rule);background:var(--paper);padding:16px 18px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;margin:0 0 6px;color:var(--navy)}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;font-size:13px}
+  .sig div{border-top:1px solid #000;padding-top:4px}
+  mark.w{background:var(--wash-gold);color:var(--ink-gold);padding:0 3px;border-radius:3px;font-weight:700;cursor:help}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--paper);border:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--navy-bg);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .steps li b{color:var(--navy)}
+  .tblwrap{overflow-x:auto}
+  @media print{.out{display:block}.onlyscreen{display:none!important}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · FOR MATH TEACHERS · WORD PROBLEMS · FRAMES · VOCABULARY</p>
+    <h1>The math <em>language pack.</em></h1>
+    <p class="tag">For the math teacher whose English learners can do the math and miss the word problem. Find the words that trip, read the problem three times, and give students the sentence so they can show the thinking.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('unpack')">Unpack a word problem</button><button class="btn ghost" type="button" onclick="setMode('reads')">Three Reads</button><button class="btn ghost" type="button" onclick="setMode('frames')">Frames by lane</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="start" aria-pressed="true" onclick="setMode('start')">Start here</button><button type="button" data-m="unpack" aria-pressed="false" onclick="setMode('unpack')">Word-problem unpacker</button><button type="button" data-m="words" aria-pressed="false" onclick="setMode('words')">Words that trip</button><button type="button" data-m="reads" aria-pressed="false" onclick="setMode('reads')">Three Reads</button><button type="button" data-m="frames" aria-pressed="false" onclick="setMode('frames')">Frames by lane</button><button type="button" data-m="vocab" aria-pressed="false" onclick="setMode('vocab')">Vocabulary in six minutes</button><button type="button" data-m="fair" aria-pressed="false" onclick="setMode('fair')">Fair assessment</button><span class="sp"></span><span class="priv">Free · no account · nothing you type leaves this browser</span></div></nav>
+<main>
+
+<section class="mode on" id="m-start">
+  <h2 class="sec">Math is not language-free</h2>
+  <p class="lead">A newcomer who can factor a quadratic can still miss a word problem about train tickets. The math is there. The English around it is the wall. This pack is for the math teacher who wants to take the wall down without lowering the math.</p>
+  <div class="grid3">
+    <div class="card"><span class="k">1</span><h4>Find the words that trip</h4><p>Paste any word problem. The unpacker marks the words that change the operation or mean something else outside math class.</p><div class="links"><a href="#unpack" onclick="setMode('unpack')">Open the unpacker →</a></div></div>
+    <div class="card"><span class="k">2</span><h4>Read it three times</h4><p>One routine, ten minutes, any problem: what is happening, what are the quantities, what is the question.</p><div class="links"><a href="#reads" onclick="setMode('reads')">Three Reads →</a></div></div>
+    <div class="card"><span class="k">3</span><h4>Give the sentence, keep the thinking</h4><p>Frames for explaining, justifying and critiquing, in four lanes. The student supplies the math.</p><div class="links"><a href="#frames" onclick="setMode('frames')">Frames by lane →</a></div></div>
+  </div>
+  <div class="okbox"><b>What to keep the same for everyone:</b> the standard, the numbers, the reasoning expected. <b>What to change:</b> how the problem is read, how the answer can be shown, and how much English the student has to produce to prove it.</div>
+  <div class="links"><a href="by-subject.html">By Subject &amp; Grade →</a><a href="el-lesson-planner.html">EL Lesson Planner →</a><a href="science-language.html">The Science Language Pack →</a></div>
+</section>
+
+<section class="mode" id="m-unpack">
+  <h2 class="sec">The word-problem unpacker</h2>
+  <p class="lead">Paste a word problem from your lesson. Marked words either carry the operation or have a different everyday meaning. Tap a marked word for the note and the Spanish. Nothing you paste leaves this browser.</p>
+  <div class="panel">
+    <label class="f" for="u-in">Your word problem</label>
+    <textarea id="u-in">A movie ticket costs $9. On Tuesday each ticket is $3 less than the regular price. If Ana buys 4 tickets on Tuesday and pays with two $20 bills, how much money does she have left?</textarea>
+    <div class="row"><button class="btn navy" type="button" id="u-go">Unpack it</button><button class="btn line onlyscreen" type="button" onclick="window.print()">Print the problem with notes</button></div>
+  </div>
+  <div class="out" id="u-out"></div>
+</section>
+
+<section class="mode" id="m-words">
+  <h2 class="sec">Words that trip</h2>
+  <p class="lead">Six families of language that cost English learners points on problems they can compute.</p>
+  <div class="tblwrap"><table><thead><tr><th style="width:22%">Family</th><th style="width:34%">Examples</th><th>Why it trips</th></tr></thead><tbody><tr><td><b>Reversal words</b></td><td>less than · fewer than · subtracted from · divided into</td><td>The order in the sentence is the opposite of the order in the expression. "6 less than a number" is n − 6.</td></tr><tr><td><b>Everyday words with a math meaning</b></td><td>table · mean · odd · even · volume · product · difference · power · root · round · term</td><td>The student knows the word and is sure of the wrong meaning. Name both meanings out loud.</td></tr><tr><td><b>Small words that carry the operation</b></td><td>of · per · each · by · at · for every</td><td>Newcomers skip function words. In math they are the instruction.</td></tr><tr><td><b>Comparisons</b></td><td>at least · at most · no more than · how many more · as many as · twice as many as</td><td>English comparison grammar is long and the meaning hangs on one word.</td></tr><tr><td><b>Sound-alikes</b></td><td>sum / some · whole / hole · eight / ate · plane / plain · four / for · two / to / too</td><td>A listening problem, so say the word and write it at the same time.</td></tr><tr><td><b>Conditions and passives</b></td><td>if … then · given that · is divided by · was increased by · when x is</td><td>The sentence structure hides who is doing what to which number.</td></tr></tbody></table></div>
+  <h3 class="sub">Words your Spanish speakers already own</h3>
+  <div class="card"><p>Much of school math vocabulary comes from Latin, so it has a near twin in Spanish. Say so. It is the fastest vocabulary lesson there is.</p><p>equation · ecuación, fraction · fracción, triangle · triángulo, angle · ángulo, parallel · paralelo, multiply · multiplicar, divide · dividir, graph · gráfica, variable · variable, exponent · exponente, polygon · polígono, negative · negativo, probability · probabilidad, coordinate · coordenada, linear · lineal, radius · radio, diameter · diámetro, percent · por ciento</p><p><b>Watch for:</b> "razón" is both ratio and reason; "billion" is 1,000,000,000 in U.S. English, while "billón" in Spanish is a million millions; many countries write 3.500,25 where the U.S. writes 3,500.25.</p></div>
+  <div class="links"><a href="cognate-hunt.html">Cognate Hunt: paste any reading →</a></div>
+</section>
+
+<section class="mode" id="m-reads">
+  <h2 class="sec">Three Reads</h2>
+  <p class="lead">A widely used routine for word problems. The class reads the same problem three times, each time for one purpose. Nobody computes until the third read is done.</p>
+  <ol class="steps">
+    <li><b>Read 1: What is this about?</b> Teacher reads aloud, problem hidden or question covered. Students tell a partner the situation in their own words, in any language. No numbers yet.</li>
+    <li><b>Read 2: What are the quantities?</b> Read together. Students list what can be counted or measured, with units: "price of one ticket, in dollars." Record the list on the board.</li>
+    <li><b>Read 3: What is the question?</b> Uncover the question. Students restate it starting with "We need to find…" and say which quantities will help.</li>
+    <li><b>Then solve.</b> Any method. Partners first, then alone.</li>
+  </ol>
+  <h3 class="sub">The same routine, four lanes</h3>
+  <div class="lane n"><b class="t">Newcomer</b>Draws or acts out the situation after Read 1. Labels the drawing with numbers after Read 2. A partner who shares the home language retells.</div><div class="lane e"><b class="t">Emerging</b>Uses the frame "This problem is about ___." Lists quantities from a word bank with units.</div><div class="lane p"><b class="t">Progressing</b>Restates the question in a full sentence and names the operation with a reason: "I will ___ because ___."</div><div class="lane c"><b class="t">Challenge</b>Writes a second question the same situation could answer, and trades it with a partner.</div>
+  <div class="tip"><b>Ten minutes, not thirty.</b> Use it on one problem a day, the one with the most language. The rest of the set goes faster because of it.</div>
+</section>
+
+<section class="mode" id="m-frames">
+  <h2 class="sec">Frames by lane</h2>
+  <p class="lead">Four things math class asks students to say. For each, a frame at each lane. Post the one your student needs; take it down when it is no longer needed.</p>
+  <h3 class="sub">Explain your steps</h3>
+  <div class="lane n"><b class="t">Newcomer</b>First ___. Then ___. The answer is ___.</div><div class="lane e"><b class="t">Emerging</b>First I ___. Next I ___. Then I ___, so the answer is ___.</div><div class="lane p"><b class="t">Progressing</b>To find ___, I started by ___ because ___. After that I ___, which gave me ___.</div><div class="lane c"><b class="t">Challenge</b>I chose to ___ rather than ___ because ___. Another way to solve it is ___.</div>
+  <h3 class="sub">Justify an answer</h3>
+  <div class="lane n"><b class="t">Newcomer</b>It is ___ because ___.</div><div class="lane e"><b class="t">Emerging</b>My answer is ___. I know because ___.</div><div class="lane p"><b class="t">Progressing</b>The answer ___ makes sense because ___. I checked it by ___.</div><div class="lane c"><b class="t">Challenge</b>This must be true for every ___ because ___. A case that tests it is ___.</div>
+  <h3 class="sub">Compare two methods or values</h3>
+  <div class="lane n"><b class="t">Newcomer</b>___ is more than ___. ___ is less than ___.</div><div class="lane e"><b class="t">Emerging</b>___ and ___ are the same because ___. They are different because ___.</div><div class="lane p"><b class="t">Progressing</b>Both methods ___, but ___ is faster when ___.</div><div class="lane c"><b class="t">Challenge</b>The methods are equivalent because ___. I would use ___ when ___.</div>
+  <h3 class="sub">Critique the reasoning of others</h3>
+  <div class="lane n"><b class="t">Newcomer</b>I agree. / I do not agree. Look: ___.</div><div class="lane e"><b class="t">Emerging</b>I agree with ___ because ___. / I think there is a mistake in step ___.</div><div class="lane p"><b class="t">Progressing</b>I see why you ___, but ___ because ___.</div><div class="lane c"><b class="t">Challenge</b>Your method works when ___, but not when ___. A counterexample is ___.</div>
+  <div class="row"><button class="btn navy" type="button" onclick="window.print()">Print the frames</button><a class="btn line" href="sentence-frames.html">150 more frames →</a></div>
+</section>
+
+<section class="mode" id="m-vocab">
+  <h2 class="sec">Vocabulary in six minutes</h2>
+  <p class="lead">Five words a week is enough. Pick the words the unit cannot be done without, and teach each one the same way every time.</p>
+  <ol class="steps">
+    <li><b>Say it, show it (1 min).</b> Say the word, write it, have the class say it twice. Point to a worked example, not a definition.</li>
+    <li><b>Student-friendly meaning (1 min).</b> One sentence in plain English. Add the Spanish twin if there is one.</li>
+    <li><b>Example and non-example (1 min).</b> "This is a factor of 12. This is not. Why?"</li>
+    <li><b>Draw or symbol (1 min).</b> Students sketch it or write it in symbols in a four-square: word, meaning, picture, example.</li>
+    <li><b>Use it (2 min).</b> One spoken sentence to a partner with a frame, then one written. The word goes on the wall with its picture.</li>
+  </ol>
+  <div class="okbox"><b>Then make them use it.</b> For the rest of the week, an answer that could have used the word and did not gets the reply: "Say that again with the word <i>quotient</i>."</div>
+  <div class="links"><a href="picture-dictionary-3.html">Picture Dictionary: shapes →</a><a href="https://radan55.github.io/elvocabularycurriculumengine/" target="_blank" rel="noopener">The Vocabulary Engine →</a></div>
+</section>
+
+<section class="mode" id="m-fair">
+  <h2 class="sec">Fair assessment in math</h2>
+  <p class="lead">A fair math test for an English learner measures the same math and removes English that is not part of the standard.</p>
+  <div class="grid2">
+    <div class="card"><h4>Change this</h4><ul><li>Shorten the sentences around the numbers. Keep the numbers and the question.</li><li>Replace rare everyday words (a "tollbooth," a "raffle") with common ones, or add a small picture.</li><li>Allow a word-to-word bilingual dictionary or glossary if the LSP lists it.</li><li>Read the directions aloud.</li><li>Accept an answer shown in a labeled diagram, a table, or steps with short phrases.</li></ul></div>
+    <div class="card"><h4>Do not change this</h4><ul><li>The standard being tested.</li><li>The difficulty of the numbers or the number of steps.</li><li>The math vocabulary the standard names. Teach it; do not delete it.</li><li>The expectation that the student shows reasoning.</li></ul></div>
+  </div>
+  <div class="tip"><b>Grade the math and the English separately.</b> If the explanation is mathematically right and grammatically rough, the math score is full. Note the language for the EL teacher.</div>
+  <div class="links"><a href="grade-it-fair.html">Grade It Fair: paste a quiz →</a><a href="accommodations-cards.html">What state tests allow →</a><a href="read-your-roster.html">Read Your Roster →</a></div>
+</section>
+
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);window.scrollTo(0,0);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const val=i=>esc((document.getElementById(i).value||"").trim()||"—");
+document.querySelectorAll("[data-count]").forEach(box=>{const out=document.getElementById(box.dataset.count);const upd=()=>{const all=box.querySelectorAll("input[type=checkbox]");const on=box.querySelectorAll("input[type=checkbox]:checked");out.textContent=on.length+" of "+all.length+" checked";};box.addEventListener("change",upd);upd();});
+
+const W={"less than": ["Reverses the order. \"5 less than x\" is x − 5, not 5 − x. Also a comparison: 3 is less than 5.", "menos que"], "fewer than": ["Comparison, or subtraction in reversed order, like \"less than.\"", "menos que"], "more than": ["Addition (\"4 more than x\" is x + 4) or a comparison (x > 4). The student has to decide which.", "más que"], "difference": ["Everyday: how things are not alike. Math: the answer to a subtraction.", "diferencia"], "product": ["Everyday: something you buy. Math: the answer to a multiplication.", "producto"], "sum": ["Sounds exactly like \"some.\" Math: the answer to an addition.", "suma"], "quotient": ["The answer to a division. No everyday meaning to lean on.", "cociente"], "of": ["With a fraction or percent, \"of\" means multiply: half of 12.", "de"], "per": ["For each one. Signals a rate or division: miles per hour.", "por"], "each": ["One of every item. Usually signals multiplication or division.", "cada"], "at least": ["That number or more: ≥. Students often read it as \"less.\"", "al menos / por lo menos"], "at most": ["That number or fewer: ≤.", "como máximo"], "no more than": ["≤. A negative phrase with a \"less than or equal\" meaning.", "no más de"], "no less than": ["≥.", "no menos de"], "altogether": ["Signals a total. Usually add.", "en total"], "in all": ["Signals a total.", "en total"], "left": ["What remains after subtracting. Also a direction.", "quedan / sobran"], "remaining": ["What is left. Subtraction.", "restante"], "twice": ["Two times. A word, not a number, so students skip it.", "el doble / dos veces"], "half": ["Divide by 2, or multiply by one half.", "la mitad"], "double": ["Multiply by 2.", "el doble"], "triple": ["Multiply by 3.", "el triple"], "squared": ["Multiplied by itself. Nothing to do with the shape on the page.", "al cuadrado"], "table": ["Everyday: furniture. Math: rows and columns of numbers.", "tabla"], "mean": ["Everyday: unkind, or \"to signify.\" Math: the average.", "media / promedio"], "odd": ["Everyday: strange. Math: not divisible by 2.", "impar"], "even": ["Everyday: flat, or \"even though.\" Math: divisible by 2.", "par"], "volume": ["Everyday: loudness. Math: the space inside a solid.", "volumen"], "rate": ["A comparison of two quantities with different units.", "tasa / razón"], "ratio": ["A comparison of two quantities. Spanish \"razón\" also means \"reason.\"", "razón"], "area": ["The space inside a flat shape, in square units.", "área"], "perimeter": ["The distance around a shape.", "perímetro"], "equation": ["A statement that two expressions are equal. It has an equals sign.", "ecuación"], "expression": ["Numbers and symbols with no equals sign. Everyday: a look on a face.", "expresión"], "evaluate": ["Find the value. Everyday: to judge.", "evaluar"], "solve": ["Find the value of the unknown.", "resolver"], "simplify": ["Write in a shorter, equal form. It does not mean \"make it easy.\"", "simplificar"], "estimate": ["Find a close answer, on purpose, without exact computing.", "estimar"], "round": ["Everyday: a shape. Math: replace with a nearby simpler number.", "redondear"], "factor": ["A number that divides another exactly, or to write as a multiplication.", "factor"], "power": ["Everyday: strength, electricity. Math: an exponent.", "potencia"], "root": ["Everyday: part of a plant. Math: square root, or a solution.", "raíz"], "term": ["Everyday: a school period. Math: one part of an expression.", "término"], "function": ["Everyday: a purpose or an event. Math: a rule that gives one output for each input.", "función"], "slope": ["Steepness: change in y over change in x.", "pendiente"], "intercept": ["Where a graph crosses an axis.", "intersección"], "increased by": ["Add.", "aumentado en"], "decreased by": ["Subtract.", "disminuido en"], "how many more": ["A comparison. Subtract, even though the word \"more\" is there.", "cuántos más"], "how much": ["Asks for an amount, often money or a measure.", "cuánto"], "total": ["The whole amount.", "total"], "if": ["Sets a condition. The numbers that follow are only true inside the condition.", "si"], "then": ["What follows from the condition.", "entonces"], "average": ["The mean, unless the problem says otherwise.", "promedio"], "discount": ["An amount taken off a price.", "descuento"], "tax": ["An amount added to a price.", "impuesto"], "tip": ["Everyday: advice, or the end of something. Here: money added to a bill.", "propina"]};
+function unpack(){const t=document.getElementById("u-in").value;const keys=Object.keys(W).sort((a,b)=>b.length-a.length);
+const re=new RegExp("\\b("+keys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")\\b","gi");
+const found=[];const h=esc(t).replace(re,m=>{const k=m.toLowerCase();if(!found.includes(k))found.push(k);return '<mark class="w" data-k="'+k+'" title="'+esc(W[k][0])+'">'+m+'</mark>';});
+const o=document.getElementById("u-out");o.style.display="block";
+o.innerHTML='<div class="sheet"><h3>The problem</h3><p style="font-size:17px;line-height:1.7">'+h.replace(/\n/g,"<br>")+'</p>'+(found.length?'<h3 style="margin-top:14px">'+found.length+' word'+(found.length>1?'s':'')+' to teach before the numbers</h3><table><thead><tr><th>Word</th><th>What it does here</th><th>Spanish</th></tr></thead><tbody>'+found.map(k=>'<tr id="r-'+k.replace(/ /g,"-")+'"><td><b>'+k+'</b></td><td>'+esc(W[k][0])+'</td><td>'+esc(W[k][1])+'</td></tr>').join("")+'</tbody></table>':'<p>No words from the list were found. Check for long sentences and rare everyday words instead.</p>')+'<p style="font-size:13px;color:var(--muted);margin:10px 0 0">The list has '+keys.length+' common math-problem words. It marks every match, so read each one in context: "left" may be a direction and "more than" may be a comparison.</p></div>';}
+document.getElementById("u-go").addEventListener("click",unpack);
+document.getElementById("u-out").addEventListener("click",e=>{const m=e.target.closest("mark.w");if(!m)return;const r=document.getElementById("r-"+m.dataset.k.replace(/ /g,"-"));if(r){r.scrollIntoView({behavior:"smooth",block:"center"});r.style.background="var(--wash-gold)";setTimeout(()=>r.style.background="",1400);}});
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

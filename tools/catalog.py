@@ -38,6 +38,8 @@ GROUPS = [
 
 # href, title, group, fmt, size, one-liner, core
 R = [
+ ("dual-identified.html", "The Dual-Identified Desk", "elteacher", "Desk", "EL + IEP · 7 parts",
+  "Language or disability? The fair evaluation, who sits in the meeting, both plans on one page, how accommodations stack.", True),
  ('https://radan55.github.io/stormphonicslab/', "Storm Phonics Lab", "elteacher", "Program", "187 + 120 lessons",
   "A plain guide, a coach who teaches the daily lesson, and a learn-to-read program for teens.", True),
  ('https://radan55.github.io/stormelresourcelist-/', "Bilingual Resources, K-12", "classroom", "Directory", "229 entries",
@@ -48,6 +50,14 @@ R = [
   "Seven more listening lessons: new words, scenes, talks, debates and lectures.", True),
  ("elpa21-listening/", "ELPA21 Listening Practice · Set 1", "students", "Interactive", "51 items",
   "Students hear a direction, conversation, debate, presentation or lesson, then tap the picture, card or answer that matches.", True),
+ ("storm-reading-sets.html", "Storm Reading Sets", "students", "Interactive", "5 sets · 31 items · 9–12",
+  "Five ELPT-style reading sets on tabs: two stories, a data set, a science investigation and an argument essay.", False),
+ ("storm-writing-sets.html", "Storm Writing Sets", "students", "Interactive", "5 task types · 9–12",
+  "The five ELPA21 writing tasks: fix the paragraph, write questions, answer an email, tell the storyboard, build a claim.", False),
+ ("storm-listening-sets.html", "Storm Listening Sets", "students", "Interactive", "7 task types · 29 items",
+  "Seven listening tasks with a voice for each speaker: match, listen for information, a debate, a conversation, a lecture, a presentation.", False),
+ ("storm-speaking-sets.html", "Storm Speaking Sets", "students", "Interactive", "4 task types · record and replay",
+  "Record, play back and self-check the four ELPA21 speaking tasks: compare pictures, a book report, a chart and a claim, observe and report.", False),
  ("https://radan55.github.io/Stormattention/", "Your Attention Is for Sale", "students", "Lesson", "90 min · EN/ES",
   "A read-aloud lesson where students feel the tricks apps use on them, then take their attention back.", True),
  ("newcomer-guide.html", "Your Guide to School in the U.S.", "students", "PDF guide", "5 languages",
@@ -97,6 +107,12 @@ R = [
  ("https://radan55.github.io/elstudentmagazine01/", "Many Voices", "students", "Magazine", "Issue 1",
   "A magazine written for multilingual high-school students.", False),
 
+ ("math-language.html", "The Math Language Pack", "classroom", "Language pack", "57 words · 4 lanes",
+  "Paste a word problem and see the words that trip; then Three Reads, frames in four lanes and a six-minute vocabulary routine.", False),
+ ("science-language.html", "The Science Language Pack", "classroom", "Language pack", "Lab frames · 4 lanes · EN/ES",
+  "A lab report frame for every lane, claim-evidence-reasoning, twenty words that mislead, and lab safety in two languages.", False),
+ ("request-a-resource.html", "Request a Resource", "classroom", "Request form", "1 minute",
+  "Need something for your English learners that is not here? Tap, type a sentence, send.", False),
  ("today-in-el.html", "Today in EL: the Daily Feed", "classroom", "Daily feed", "3 picks · 13 sources",
   "Updated every morning: three picks with a take and a move to try, plus thirty days of EL pedagogy and articles worth your time.", True),
  ("front-office-kit.html", "The Front Office Kit", "classroom", "Office kit", "14 languages · 20 phrases",
@@ -178,6 +194,8 @@ R = [
  ("https://radan55.github.io/everyteacherisalanguageteacher/", "Every Teacher Is a Language Teacher", "classroom", "PD module", "45–60 min",
   "Self-paced PD that fits a department meeting. Six sections, no facilitator.", False),
 
+ ("slife-kit.html", "The SLIFE Starter Kit", "elteacher", "Kit", "12-question interview · 30 days",
+  "For the newcomer who is also new to school: find the schooling gap in week one, then the first thirty days.", True),
  ("ltel-clinic.html", "The Long-Term EL Clinic", "elteacher", "Clinic", "12 weeks · tracker",
   "Six years an EL and stuck at Writing 2: a roster finder, a 30-minute diagnostic, twelve weeks on the academic register.", True),
  ("teaching-the-elpt.html", "Teaching the ELPT · Special Issue", "elteacher", "Magazine", "Winter 2026–27 · 24 pages",
@@ -213,6 +231,8 @@ R = [
  ("https://radan55.github.io/ms-el-command-center/", "MS EL Command Center", "elteacher", "Reference app", "Mississippi",
   "The reference desk: identification timelines, procedures, §15 accountability.", False),
 
+ ("exit-monitoring.html", "The Exit & Monitoring Kit", "district", "Kit", "10 steps · 4-year form",
+  "The Mississippi exit rule, a four-year monitoring form that prints, and what to do when a former EL slips.", True),
  ("counselor-desk.html", "The Counselor's EL Desk", "district", "Counselor desk", "5 decisions · worksheets",
   "Foreign transcripts, placement by level, diplomas and tests, and the seventeen-year-old Level 1 — with printable worksheets.", True),
  ("leaders.html", "For District Leaders", "district", "Start here", "3 questions",
@@ -246,8 +266,8 @@ R = [
 ]
 
 # release dates and pins — the only dated fields, and the only ones that expire
-NEW = {"el-lesson-planner.html": "2026-11-21", "el-magazine-2026-12.html": "2026-11-20", "today-in-el.html": "2026-11-19", "front-office-kit.html": "2026-11-18", "counselor-desk.html": "2026-11-18", "ltel-clinic.html": "2026-11-18", "family-conference-kit.html": "2026-11-18", "grade-it-fair.html": "2026-11-18", "straight-answers.html": "2026-11-18", "read-your-roster.html": "2026-11-17", 'https://radan55.github.io/stormphonicslab/': "2026-11-15", 'https://radan55.github.io/stormelresourcelist-/': "2026-11-15", 'https://radan55.github.io/Stormsentencelab/': "2026-11-15", "literacy-lab/": "2026-11-14", "adolescent-literacy-brochure.html": "2026-11-08", "monday-moves.html": "2026-11-08", "teaching-the-elpt.html": "2026-11-07", "elpa21-listening-2/": "2026-11-04", "elpa21-listening/": "2026-11-04", "el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
-PIN = {"el-lesson-planner.html": "2026-12-26", "el-magazine-2026-12.html": "2026-12-25", "today-in-el.html": "2026-12-24", "front-office-kit.html": "2026-12-23", "counselor-desk.html": "2026-12-23", "ltel-clinic.html": "2026-12-23", "family-conference-kit.html": "2026-12-23", "grade-it-fair.html": "2026-12-23", "straight-answers.html": "2026-12-23", "read-your-roster.html": "2026-12-20", 'https://radan55.github.io/stormphonicslab/': "2026-12-13", 'https://radan55.github.io/stormelresourcelist-/': "2026-12-06", 'https://radan55.github.io/Stormsentencelab/': "2026-12-06", "literacy-lab/": "2026-12-05", "adolescent-literacy-brochure.html": "2026-11-22", "monday-moves.html": "2026-11-29", "teaching-the-elpt.html": "2026-12-12", "elpa21-listening-2/": "2026-11-25", "elpa21-listening/": "2026-11-25", "el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
+NEW = {"storm-reading-sets.html": "2026-11-23", "storm-writing-sets.html": "2026-11-23", "storm-listening-sets.html": "2026-11-23", "storm-speaking-sets.html": "2026-11-23", "math-language.html": "2026-11-23", "science-language.html": "2026-11-23", "request-a-resource.html": "2026-11-23", "dual-identified.html": "2026-11-23", "slife-kit.html": "2026-11-23", "exit-monitoring.html": "2026-11-23", "el-lesson-planner.html": "2026-11-21", "el-magazine-2026-12.html": "2026-11-20", "today-in-el.html": "2026-11-19", "front-office-kit.html": "2026-11-18", "counselor-desk.html": "2026-11-18", "ltel-clinic.html": "2026-11-18", "family-conference-kit.html": "2026-11-18", "grade-it-fair.html": "2026-11-18", "straight-answers.html": "2026-11-18", "read-your-roster.html": "2026-11-17", 'https://radan55.github.io/stormphonicslab/': "2026-11-15", 'https://radan55.github.io/stormelresourcelist-/': "2026-11-15", 'https://radan55.github.io/Stormsentencelab/': "2026-11-15", "literacy-lab/": "2026-11-14", "adolescent-literacy-brochure.html": "2026-11-08", "monday-moves.html": "2026-11-08", "teaching-the-elpt.html": "2026-11-07", "elpa21-listening-2/": "2026-11-04", "elpa21-listening/": "2026-11-04", "el-magazine-2026-11.html": "2026-10-31", "https://radan55.github.io/Stormattention/": "2026-10-27", "spanish-course/": "2026-10-25", "spanish-for-teachers.html": "2026-10-25", "using-spanish-handouts.html": "2026-10-25", "using-spanish-content-classroom.html": "2026-10-25", "read-the-question-first.html": "2026-10-25", "elpa-question-types-guide.html": "2026-10-14", "write-about-it.html": "2026-10-14", "picture-dictionary-3.html": "2026-10-13", "book-study-50-strategies.html": "2026-10-13", "picture-dictionary-2.html": "2026-10-13", "picture-dictionary.html": "2026-10-13", "grammar-map.html": "2026-10-13", "writing-studio.html": "2026-10-12", "listening-speaking-studio.html": "2026-10-12", "grammar-calisthenics/": "2026-10-12", "six-pies-elpa21.html": "2026-10-11", "session.html": "2026-10-11", "pd-library.html": "2026-10-11", "podcast.html": "2026-10-11", "cognate-hunt.html": "2026-10-10", "by-subject.html": "2026-10-10", "sheltered.html": "2026-10-09", "el-evaluate.html": "2026-10-09"}
+PIN = {"dual-identified.html": "2026-12-28", "exit-monitoring.html": "2026-12-28", "slife-kit.html": "2026-12-28", "math-language.html": "2026-12-28", "science-language.html": "2026-12-28", "storm-reading-sets.html": "2026-12-28", "el-lesson-planner.html": "2026-12-26", "el-magazine-2026-12.html": "2026-12-25", "today-in-el.html": "2026-12-24", "front-office-kit.html": "2026-12-23", "counselor-desk.html": "2026-12-23", "ltel-clinic.html": "2026-12-23", "family-conference-kit.html": "2026-12-23", "grade-it-fair.html": "2026-12-23", "straight-answers.html": "2026-12-23", "read-your-roster.html": "2026-12-20", 'https://radan55.github.io/stormphonicslab/': "2026-12-13", 'https://radan55.github.io/stormelresourcelist-/': "2026-12-06", 'https://radan55.github.io/Stormsentencelab/': "2026-12-06", "literacy-lab/": "2026-12-05", "adolescent-literacy-brochure.html": "2026-11-22", "monday-moves.html": "2026-11-29", "teaching-the-elpt.html": "2026-12-12", "elpa21-listening-2/": "2026-11-25", "elpa21-listening/": "2026-11-25", "el-magazine-2026-11.html": "2026-12-05", "https://radan55.github.io/Stormattention/": "2026-11-17", "spanish-course/": "2026-11-29", "spanish-for-teachers.html": "2026-11-22", "using-spanish-handouts.html": "2026-11-15", "using-spanish-content-classroom.html": "2026-11-15", "read-the-question-first.html": "2026-11-08", "grammar-calisthenics/": "2026-11-02", "el-evaluate.html": "2026-11-20"}
 
 # ------------------------------------------------------------------ series
 # A series is one card on the home page that opens a landing page listing its
@@ -275,10 +295,14 @@ SERIES = [
   "Every piece of professional learning on the hub: the self-paced module, the taught session, the podcast, the book study, the literacy guide.",
   "Every piece of professional learning on the hub: Every Teacher Is a Language Teacher (self-paced, six sections, fits a department meeting), The Session with Elena (Emerging and Progressing, taught), the Every Teacher podcast, Fifty Strategies, One Semester (a PLC book study), Improving Adolescent Literacy in plain English, and the PD Library index of 54 more pieces by grade and level.",
   ["pd-library.html", "https://radan55.github.io/everyteacherisalanguageteacher/", "session.html", "podcast.html", "book-study-50-strategies.html", "adolescent-literacy-brochure.html"]),
- ("elpt-practice", "The ELPT Practice Center", "students", "Series", "4 domains · 7 tools",
-  "Practice for every domain of the spring English test: listening sets, speaking, reading, the full form, the question-types guide.",
-  "Every ELPT practice tool for students in one place, by domain: Listening Practice Sets 1 and 2, the Listening & Speaking Studio (hear it twice, record, compare), the ELPA21 Reading Studio under mock-test conditions, English On Your Own (a full form with every task type, speaking checked by the browser), the student Task Practice packet, and the ELPA Question Types guide.",
-  ["elpa21-listening/", "elpa21-listening-2/", "listening-speaking-studio.html", "https://radan55.github.io/elpa21-reading-studio/", "english-on-your-own.html", "elpa21-practice-student.pdf", "elpa-question-types-guide.html"]),
+ ("elpt-practice", "The ELPT Practice Center", "students", "Series", "4 domains · 11 tools",
+  "Practice for every domain of the spring English test: interactive sets for reading, writing, listening and speaking, plus the full form and the question-types guide.",
+  "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets) and the ELPA21 Reading Studio under mock-test conditions. Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
+  ["storm-reading-sets.html", "https://radan55.github.io/elpa21-reading-studio/", "storm-writing-sets.html", "storm-listening-sets.html", "elpa21-listening/", "elpa21-listening-2/", "storm-speaking-sets.html", "listening-speaking-studio.html", "english-on-your-own.html", "elpa21-practice-student.pdf", "elpa-question-types-guide.html"]),
+ ("subject-packs", "Language Packs by Subject", "classroom", "Series", "Math · science · 16-square grid",
+  "For the math or science teacher: the words that trip, the routines, the frames in four lanes, and the grid for every subject.",
+  "Subject-specific language support for content teachers. The Math Language Pack: a word-problem unpacker, the six families of words that trip, Three Reads, frames for explaining, justifying, comparing and critiquing, and fair assessment. The Science Language Pack: a lab report builder in four lanes, claim-evidence-reasoning frames, twenty words with another meaning outside science, Greek and Latin word parts with Spanish twins, and lab safety in English and Spanish with audio. By Subject & Grade: the language demand, two moves and what to use for every subject and grade band.",
+  ["math-language.html", "science-language.html", "by-subject.html"]),
  ("grammar", "Grammar & Writing", "students", "Series", "7 tools",
   "Run-ons, sentence features, the grammar map, calisthenics, grammar songs, and two writing coaches.",
   "The sentence and the paragraph, seven ways: Storm Sentence Lab (stop writing run-ons), Sentence Lab (sixteen grammar features in real school scenes), The Grammar Map (grammar you can see), Storm Grammar Calisthenics (a bilingual coach, fifteen minutes a day), Grammar Beats (grammar as radio songs), The Writing Studio (Mr. Castillo teaches the shape of a 4 or 5) and Write About It (Ms. Bell's six-step routine).",
@@ -299,22 +323,29 @@ CORE = [
  # 1 · the EL teacher's desk — "your first month, in order"
  "series-newcomer.html", "student-profile.html", "lsp-builder.html",
  "https://radan55.github.io/RichardDaniel/curriculum-36/", "https://radan55.github.io/stormphonicslab/",
- "series-elpt-teacher.html", "ltel-clinic.html",
+ "series-elpt-teacher.html", "ltel-clinic.html", "dual-identified.html", "slife-kit.html",
  # 2 · every classroom teacher
  "el-lesson-planner.html", "read-your-roster.html", "straight-answers.html", "monday-moves.html",
- "grade-it-fair.html", "literacy-lab/", "series-spanish.html", "sheltered.html", "today-in-el.html",
+ "grade-it-fair.html", "literacy-lab/", "series-subject-packs.html", "series-spanish.html", "sheltered.html", "today-in-el.html",
  # 3 · students & families
  "series-elpt-practice.html", "series-grammar.html", "series-vocab.html", "series-storm.html",
  "newcomer-guide.html", "first-100-words.html", "elpt-family-guide.html", "graduation-roadmap.html",
  # 4 · district & compliance
  "leaders.html", "el-audit.html", "el-compliance-calendar.html", "parent-letters.html",
- "title3-planner.html", "policy-brief.html", "counselor-desk.html",
+ "title3-planner.html", "policy-brief.html", "counselor-desk.html", "exit-monitoring.html",
 ]
 CORE_ORDER = {h: i for i, h in enumerate(CORE)}
 
 # Optional shelves inside a series page: series id -> [(heading, blurb, [hrefs])].
 # Members not named on a shelf fall into a final "More" shelf.
 SHELVES = {
+ "elpt-practice": [
+  ("Reading", "Read a passage, a table or an investigation, then answer the way the test asks.", ["storm-reading-sets.html", "https://radan55.github.io/elpa21-reading-studio/"]),
+  ("Writing", "The five writing tasks, with a self-check that updates as the student types.", ["storm-writing-sets.html"]),
+  ("Listening", "Hear it, then tap, drag or choose. Each recording plays twice in Test mode.", ["storm-listening-sets.html", "elpa21-listening/", "elpa21-listening-2/"]),
+  ("Speaking", "Record an answer, play it back, compare it with a model.", ["storm-speaking-sets.html", "listening-speaking-studio.html"]),
+  ("All four domains", "The full form, the printed packet and the guide to every question type.", ["english-on-your-own.html", "elpa21-practice-student.pdf", "elpa-question-types-guide.html"]),
+ ],
  "magazines": [
   ("Professional · the teacher magazine", "The monthly EL Publishing magazine for teachers, numbered from the first issue.",
    ["https://radan55.github.io/everyteachermagazineeditionone/", "https://radan55.github.io/elpa21speaking01/october/", "el-magazine-2026-11.html", "el-magazine-2026-12.html"]),

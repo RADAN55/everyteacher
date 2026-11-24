@@ -704,7 +704,8 @@ def insert_at(s, tag, payload, last):
 
 
 wired = 0
-NO_CHROME = {"commercial.html", "video-stage.html", "avatar-stage.html", "timer.html"}  # a full-screen stage; no bar, no theme toggle
+NO_CHROME = {"commercial.html", "video-stage.html", "avatar-stage.html", "timer.html",  # a full-screen stage; no bar, no theme toggle
+             "storm-reading-sets.html", "storm-writing-sets.html", "storm-listening-sets.html", "storm-speaking-sets.html"}  # Storm Studio engine: own rail, own dark mode; home-button.js links back
 for page in sorted(ROOT.glob("*.html")):
     if page.name in NO_CHROME:
         continue

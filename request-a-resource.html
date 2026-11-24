@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Resource · tell the hub what you need for your English learners · EL Publishing</title>
+<meta name="description" content="A one-minute form for teachers, counselors, office staff and families: say what you need for your English learners that the hub does not have yet. Tap your role, grade band and subject, add a sentence, and send it by email. Free, no account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+  .chk:last-child{border-bottom:0}
+  .chk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+  .chk small{display:block;color:var(--muted);font-size:13px}
+  .meter{font-weight:700;color:var(--navy);font-size:15px;margin-top:10px}
+  .lane{border-left:6px solid var(--rule);padding:8px 12px;background:var(--paper);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .lane b.t{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+  .lane.n{border-left-color:var(--lane-n)}.lane.n b.t{color:var(--lane-n)}
+  .lane.e{border-left-color:var(--lane-e)}.lane.e b.t{color:var(--lane-e)}
+  .lane.p{border-left-color:var(--lane-p)}.lane.p b.t{color:var(--lane-p)}
+  .lane.c{border-left-color:var(--lane-c)}.lane.c b.t{color:var(--lane-c)}
+  .out{display:none;margin-top:14px}
+  .sheet{border:1px solid var(--rule);background:var(--paper);padding:16px 18px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;margin:0 0 6px;color:var(--navy)}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;font-size:13px}
+  .sig div{border-top:1px solid #000;padding-top:4px}
+  mark.w{background:var(--wash-gold);color:var(--ink-gold);padding:0 3px;border-radius:3px;font-weight:700;cursor:help}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--paper);border:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--navy-bg);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .steps li b{color:var(--navy)}
+  .tblwrap{overflow-x:auto}
+  @media print{.out{display:block}.onlyscreen{display:none!important}}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font:inherit;font-size:14.5px;font-weight:600;border:1.5px solid var(--rule);background:var(--paper);color:var(--navy);padding:9px 14px;border-radius:999px;cursor:pointer;min-height:42px}
+  .chip[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · ASK FOR IT · ONE MINUTE · FREE</p>
+    <h1>Request a <em>resource.</em></h1>
+    <p class="tag">The hub is built from what teachers ask for. If you need something for your English learners and cannot find it here, say so. It takes a minute, and what gets built is free for everyone.</p>
+    <div class="cta"><button class="btn" type="button" onclick="setMode('ask')">Ask for a resource</button><button class="btn ghost" type="button" onclick="setMode('how')">How it works</button></div>
+  </div>
+</header>
+<nav class="bar"><div class="bar-in"><button type="button" data-m="ask" aria-pressed="true" onclick="setMode('ask')">Ask for a resource</button><button type="button" data-m="how" aria-pressed="false" onclick="setMode('how')">How it works</button><span class="sp"></span><span class="priv">Free · no account · sent from your own email</span></div></nav>
+<main>
+
+<section class="mode on" id="m-ask">
+  <h2 class="sec">What do you need that is not here?</h2>
+  <p class="lead">Everything on this hub started as something a teacher needed on a particular Monday. Tell me what you need. Tap the chips, add a sentence or two, and send. It takes about a minute.</p>
+  <form class="panel" id="rf" novalidate>
+    <label class="f">I am a…</label>
+    <div class="chips" data-chips="role"><button type="button" class="chip" aria-pressed="false">Classroom teacher</button><button type="button" class="chip" aria-pressed="false">EL teacher</button><button type="button" class="chip" aria-pressed="false">Counselor</button><button type="button" class="chip" aria-pressed="false">Administrator</button><button type="button" class="chip" aria-pressed="false">Office staff</button><button type="button" class="chip" aria-pressed="false">Paraprofessional</button><button type="button" class="chip" aria-pressed="false">Family member</button><button type="button" class="chip" aria-pressed="false">Other</button></div>
+    <label class="f">Grade band</label>
+    <div class="chips" data-chips="grade"><button type="button" class="chip" aria-pressed="false">K–2</button><button type="button" class="chip" aria-pressed="false">3–5</button><button type="button" class="chip" aria-pressed="false">6–8</button><button type="button" class="chip" aria-pressed="false">9–12</button><button type="button" class="chip" aria-pressed="false">All grades</button></div>
+    <label class="f">Subject or area</label>
+    <div class="chips" data-chips="subj"><button type="button" class="chip" aria-pressed="false">ELA</button><button type="button" class="chip" aria-pressed="false">Math</button><button type="button" class="chip" aria-pressed="false">Science</button><button type="button" class="chip" aria-pressed="false">Social studies</button><button type="button" class="chip" aria-pressed="false">CTE or electives</button><button type="button" class="chip" aria-pressed="false">EL class</button><button type="button" class="chip" aria-pressed="false">Testing</button><button type="button" class="chip" aria-pressed="false">Compliance</button><button type="button" class="chip" aria-pressed="false">Families</button><button type="button" class="chip" aria-pressed="false">Other</button></div>
+    <label class="f">What kind of thing would help?</label>
+    <div class="chips" data-chips="kind"><button type="button" class="chip" aria-pressed="false">Something to print</button><button type="button" class="chip" aria-pressed="false">A tool that builds it for me</button><button type="button" class="chip" aria-pressed="false">Student practice</button><button type="button" class="chip" aria-pressed="false">A short guide</button><button type="button" class="chip" aria-pressed="false">Something in another language</button><button type="button" class="chip" aria-pressed="false">Training for staff</button><button type="button" class="chip" aria-pressed="false">Not sure</button></div>
+    <label class="f" for="r-need">In a sentence or two, what do you need? <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)">(required)</span></label>
+    <textarea id="r-need" placeholder="Example: My seventh graders have to write a lab conclusion and three of them are at Level 1. I need a version they can actually do."></textarea>
+    <label class="f" for="r-lang">Languages your students speak (optional)</label>
+    <input type="text" id="r-lang" placeholder="Spanish, Vietnamese, Arabic…">
+    <div class="grid2">
+      <div><label class="f" for="r-name">Your name (optional)</label><input type="text" id="r-name"></div>
+      <div><label class="f" for="r-where">School or district (optional)</label><input type="text" id="r-where"></div>
+    </div>
+    <div class="flag" id="r-warn" style="display:none">Add a sentence about what you need, then send.</div>
+    <div class="row"><button class="btn navy" type="submit">Send by email</button><button class="btn line" type="button" id="r-copy">Copy the request text instead</button></div>
+    <p style="font-size:13px;color:var(--muted);margin:10px 0 0">"Send by email" opens your own email program with the request filled in, addressed to richard.spanishteacher@gmail.com. Nothing is sent until you press send there. Please leave out student names and any confidential details.</p>
+  </form>
+  <div class="okbox" id="r-done" style="display:none"><b>Thank you.</b> If your email program did not open, use "Copy the request text" and paste it into a message to richard.spanishteacher@gmail.com.</div>
+</section>
+
+<section class="mode" id="m-how">
+  <h2 class="sec">How it works</h2>
+  <ol class="steps">
+    <li><b>You ask.</b> One request at a time is easiest to build well. The more specific, the better: the grade, the task, the level of the students.</li>
+    <li><b>It goes on the list.</b> Requests are read by one person, a working EL teacher. Requests that many teachers share, and requests nobody else is serving, go first.</li>
+    <li><b>If it gets built, it is free and public.</b> It goes on the hub for everyone, with no account and no cost. Your name is not attached unless you ask for it to be.</li>
+    <li><b>You can check back.</b> New resources are listed on the What's New page as they are published.</li>
+  </ol>
+  <div class="tip"><b>No promises on dates.</b> This is one teacher's project, built outside the school day. Not every request can be built, and some take a while.</div>
+  <div class="card"><h4>Before you ask, it may already be here</h4><p>Try the search on the home page, or ask the Hub Guide in the corner of any page. A hundred-plus resources are easy to miss.</p><div class="links"><a href="all.html">Everything on the hub →</a><a href="whats-new.html">What's new →</a><a href="showcase.html">Showcase: share what you built →</a></div></div>
+</section>
+
+</main>
+<footer><div class="wrap"><b>Richard A. Daniel, M.Ed.</b>ENL/EL Specialist · Laurel High School · Laurel, Mississippi · <a href="index.html">All EL Publishing resources →</a></div></footer>
+<script>
+
+function speak(t,lang){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=lang||"en-US";u.rate=.92;const vs=speechSynthesis.getVoices();const v=vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en-US').toLowerCase())&&v.localService)||vs.find(v=>v.lang.replace('_','-').toLowerCase().startsWith((lang||'en').slice(0,2).toLowerCase()));if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speak(b.dataset.say,b.dataset.lang);});
+function setMode(m){document.querySelectorAll(".mode").forEach(s=>s.classList.toggle("on",s.id==="m-"+m));document.querySelectorAll(".bar button[data-m]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.m===m)));if(location.hash!=="#"+m)history.replaceState(null,"","#"+m);window.scrollTo(0,0);}
+(function(){const h=location.hash.slice(1);if(h&&document.getElementById("m-"+h))setMode(h);})();
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const val=i=>esc((document.getElementById(i).value||"").trim()||"—");
+document.querySelectorAll("[data-count]").forEach(box=>{const out=document.getElementById(box.dataset.count);const upd=()=>{const all=box.querySelectorAll("input[type=checkbox]");const on=box.querySelectorAll("input[type=checkbox]:checked");out.textContent=on.length+" of "+all.length+" checked";};box.addEventListener("change",upd);upd();});
+
+
+var FORM_URL="";  /* set to a form address to collect requests there instead of by email */
+document.querySelectorAll(".chips").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const multi=g.dataset.chips==="subj"||g.dataset.chips==="kind";if(!multi)g.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed",String(multi?b.getAttribute("aria-pressed")!=="true":true));}));
+function picked(n){return [].slice.call(document.querySelectorAll('[data-chips="'+n+'"] .chip[aria-pressed="true"]')).map(b=>b.textContent).join(", ")||"(not given)";}
+function gv(i){return (document.getElementById(i).value||"").trim();}
+function reqText(){return ["RESOURCE REQUEST — EL Publishing Hub","","Role: "+picked("role"),"Grade band: "+picked("grade"),"Subject or area: "+picked("subj"),"Kind of thing: "+picked("kind"),"Student languages: "+(gv("r-lang")||"(not given)"),"","WHAT I NEED:",gv("r-need"),"","Name: "+(gv("r-name")||"(not given)"),"School or district: "+(gv("r-where")||"(not given)")].join("\n");}
+function ok(){const w=document.getElementById("r-warn");if(!gv("r-need")){w.style.display="block";document.getElementById("r-need").focus();return false;}w.style.display="none";return true;}
+document.getElementById("rf").addEventListener("submit",function(e){e.preventDefault();if(!ok())return;document.getElementById("r-done").style.display="block";if(FORM_URL){window.open(FORM_URL,"_blank");return;}
+location.href="mailto:richard.spanishteacher@gmail.com?subject="+encodeURIComponent("Resource request: "+picked("subj")+" · "+picked("grade"))+"&body="+encodeURIComponent(reqText());});
+document.getElementById("r-copy").addEventListener("click",function(){if(!ok())return;var t=reqText(),b=this;var done=function(){b.textContent="Copied ✓";setTimeout(function(){b.textContent="Copy the request text instead"},1800)};
+function fb(s){var ta=document.createElement("textarea");ta.value=s;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(x){}document.body.removeChild(ta)}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fb(t);done()})}else{fb(t);done()}});
+
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>

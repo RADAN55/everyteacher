@@ -503,5 +503,55 @@
   "long": "Issue No. 1 of the EL Publishing teacher magazine (Fall 2026): Every Teacher Is a Language Teacher. The founding issue for content teachers who never planned to teach language, with a web edition and the free PDF.",
   "thumb": "thumbs/every-teacher-issue-01.jpg",
   "who": "Every classroom teacher"
+ },
+ "dual-identified.html": {
+  "long": "For EL teachers, special education teachers and IEP teams working with an English learner who has, or may have, a disability: a side-by-side table that separates second-language acquisition from signs of a possible disability, a twelve-point pre-referral checklist, what a fair evaluation looks like (native language, interpreters, norms), who has to be in the IEP meeting and a ten-point meeting check, a builder that prints the LSP and the IEP side by side on one page, how accommodations stack on MAAP and the ELPT including domain exemptions and the alternate assessment, the exit rule for dual-identified students, and family scripts in English and Spanish with audio.",
+  "thumb": "",
+  "who": "EL and special education teachers"
+ },
+ "slife-kit.html": {
+  "long": "For students with limited or interrupted formal education (SLIFE, SIFE): what the term means and does not mean, a twelve-question schooling interview in English and Spanish with audio, a home-language writing sample and a no-English numbers check, seven signs to look for, the first thirty days week by week, six teaching principles including oral before print and direct reading instruction for teenagers, how to build the schedule and talk about credits and attending until age 21, and a printable one-page note for content teachers.",
+  "thumb": "",
+  "who": "EL teachers and counselors"
+ },
+ "exit-monitoring.html": {
+  "long": "For EL teachers, coordinators and principals in Mississippi: the exit rule (Level 4 or higher in each ELPT domain on the same administration), a ten-step exit checklist, what does not count as exit (waivers, grades, graduation), a builder that prints a four-year monitoring record with a row for every nine weeks, what to review at each check, a seven-step response when a monitored former English learner's grades drop including retesting and re-offering services, the family exit letter in English and Spanish, a heads-up note for next year's teachers, and a page explaining monitored status to classroom teachers. Reclassification, reclassified, RFEP, former EL.",
+  "thumb": "",
+  "who": "EL coordinators"
+ },
+ "math-language.html": {
+  "long": "For math teachers with English learners: a word-problem unpacker (paste any problem; it marks words that change the operation or mean something different outside math, with the Spanish), six families of words that trip (reversal words like less than, everyday words with a math meaning, small words that carry the operation, comparisons, sound-alikes, conditions and passives), math cognates, the Three Reads routine in four lanes, sentence frames for explaining steps, justifying, comparing and critiquing reasoning, a six-minute vocabulary routine, and fair assessment that keeps the math and removes the extra English.",
+  "thumb": "",
+  "who": "Math teachers"
+ },
+ "science-language.html": {
+  "long": "For science teachers with English learners: a lab report builder that prints a frame for the Newcomer, Emerging, Progressing or Challenge lane with a word bank, claim-evidence-reasoning (CER) frames in four lanes, twenty words with a different meaning outside science (theory, matter, solution, force, work), a routine for any new term, sixteen Greek and Latin word parts with Spanish cognates, twelve lab safety lines in English and Spanish with audio, and fair assessment that grades the science separately from the English.",
+  "thumb": "",
+  "who": "Science teachers"
+ },
+ "request-a-resource.html": {
+  "long": "A one-minute request form: tap your role, grade band, subject and the kind of thing that would help, add a sentence about what you need for your English learners, and send it by email or copy the text. Requests shape what gets built next; what is built goes on the hub free for everyone. Suggest a resource, ask for a tool, contact.",
+  "thumb": "",
+  "who": "Anyone"
+ },
+ "storm-reading-sets.html": {
+  "long": "Five interactive ELPT-style reading sets for grades 9–12 on one page with tabs: Storm Salsa and The Last Round (literary), Screens and Sleep (data analysis), The Pot-in-Pot Cooler (science investigation) and Fix It Yourself (argument essay). Drag-and-drop, hot spots, drop-downs, select-all and sentence selection; Practice and Test modes; read-aloud, glossary, Spanish directions; results to copy to the teacher; teacher key at #key.",
+  "thumb": "",
+  "who": "Students, grades 9–12"
+ },
+ "storm-writing-sets.html": {
+  "long": "The five ELPA21 writing task types for grades 9–12 as interactive tabs: Fix the Paragraph (discrete editing), Ask the Pilot (writing questions), Reply to Jalen (respond to a peer email), The Empty Lot (storyboard) and Required to Serve? (construct a claim). Live self-checks as students type, sentence stems, Spanish directions, copy-my-writing for turning in; rubrics and model responses at #key.",
+  "thumb": "",
+  "who": "Students, grades 9–12"
+ },
+ "storm-listening-sets.html": {
+  "long": "Seven ELPA21 listening task types for grades 9–12 as interactive tabs: Listen and Match sentences and words, Listen for Information, an academic debate, a short conversation, a lecture and discussion, and a student presentation. The browser speaks every stimulus with a different synthesized voice per speaker; transcripts are hidden in Test mode and each recording plays twice; teacher key with full scripts at #key.",
+  "thumb": "",
+  "who": "Students, grades 9–12"
+ },
+ "storm-speaking-sets.html": {
+  "long": "Four ELPA21 speaking task types for grades 9–12 as interactive tabs: Compare Pictures, Language Arts Presentation, Analyze a Visual and a Claim, and Observe and Report. Students record in the browser, play back and download; recordings stay on the device; a live transcript feeds a self-check where the browser supports it; rubrics on the ELPA21 point scales and model responses at #key.",
+  "thumb": "",
+  "who": "Students, grades 9–12"
  }
 }
