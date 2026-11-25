@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<script>try{document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play It Forward · EL Games for Content Teachers · EL Publishing</title>
+<meta name="description" content="100 English-learner-friendly games for math, science, social studies, ELA and elective teachers, sorted by category, ELPA21 level and prep time. Free from EL Publishing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2761; --navy-2:#2B3680; --ink:#141a3f; --gold:#C9A227; --gold-soft:#f4ead0;
+  --ivory:#fbf8f1; --paper:#ffffff; --line:#e4dfd2; --muted:#5b6080;
+  --E:#2f7d5b; --P:#b0611c; --A:#1E2761;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--ivory);line-height:1.55;font-size:16px}
+a{color:var(--navy-2)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:99}
+
+/* Masthead */
+.mast{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.mast::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:2px solid rgba(201,162,39,.35);box-shadow:0 0 0 40px rgba(201,162,39,.06),0 0 0 90px rgba(201,162,39,.04)}
+.brandbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.15rem;letter-spacing:.01em}
+.brand em{color:var(--gold);font-style:italic}
+.brand svg{width:30px;height:30px}
+.tag{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.hero{padding:56px 0 64px;position:relative;z-index:1;max-width:760px}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:5px 10px;border-radius:3px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.1rem);line-height:1.02;margin:18px 0 14px;letter-spacing:-.01em}
+h1 span{color:var(--gold);font-style:italic;font-weight:700}
+.lede{font-size:1.15rem;color:#dfe2f3;max-width:640px;margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:30px}
+.stat b{display:block;font-family:Fraunces,Georgia,serif;font-size:2rem;color:var(--gold);line-height:1}
+.stat span{font-size:.85rem;color:#c8cce6}
+
+/* Nav */
+nav.jump{position:sticky;top:0;z-index:20;background:rgba(251,248,241,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.jump .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav.jump a{white-space:nowrap;text-decoration:none;color:var(--navy);font-weight:600;font-size:.9rem;padding:6px 12px;border-radius:99px}
+nav.jump a:hover,nav.jump a:focus{background:var(--gold-soft)}
+
+section{padding:52px 0}
+h2{font-family:Fraunces,Georgia,serif;font-size:clamp(1.7rem,3.4vw,2.3rem);margin:0 0 8px;color:var(--navy);line-height:1.1}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+.sub{color:var(--muted);max-width:700px;margin:0 0 26px}
+
+/* Principles */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.rule{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:6px;padding:18px 18px 16px}
+.rule h3{font-family:Fraunces,Georgia,serif;font-size:1.15rem;margin:0 0 6px;color:var(--navy)}
+.rule p{margin:0;font-size:.95rem;color:#363b5e}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
+.keybox{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.keybox h4{margin:0 0 10px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.keyrow{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-size:.93rem}
+
+/* Pills */
+.lv{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:22px;padding:0 6px;border-radius:4px;font-size:.72rem;font-weight:700;color:#fff;letter-spacing:.04em}
+.lv.E{background:var(--E)}.lv.P{background:var(--P)}.lv.A{background:var(--A)}
+.prep{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:#fff}
+.prep.None{border-color:#b9dcc9;color:#1f6b49;background:#eef8f2}
+
+/* Finder */
+.finder{background:var(--navy);color:#fff;padding:52px 0}
+.finder h2{color:#fff}.finder .sub{color:#c8cce6}
+.controls{display:grid;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:18px}
+.search{display:flex;gap:10px;flex-wrap:wrap}
+.search input{flex:1 1 260px;font:inherit;padding:12px 14px;border-radius:6px;border:1px solid transparent;background:#fff;color:var(--ink)}
+.search input:focus{outline:3px solid var(--gold);outline-offset:1px}
+.btn{font:inherit;font-weight:700;cursor:pointer;border-radius:6px;padding:11px 16px;border:2px solid var(--gold);background:var(--gold);color:var(--navy)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.group{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.group[hidden]{display:none}
+.group .lab{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);min-width:74px;font-weight:700}
+.chip{font:inherit;font-size:.88rem;font-weight:600;cursor:pointer;padding:7px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff}
+.chip[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
+.chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.count{font-size:.9rem;color:#c8cce6;margin:16px 0 0}
+
+/* Cards */
+.results{padding:36px 0 60px}
+.catblock{margin-bottom:38px}
+.cathead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--navy);padding-bottom:8px;margin-bottom:6px}
+.cathead h3{font-family:Fraunces,Georgia,serif;font-size:1.55rem;margin:0;color:var(--navy)}
+.cathead .n{font-size:.85rem;color:var(--muted)}
+.catblurb{color:var(--muted);margin:6px 0 16px;font-size:.95rem;max-width:760px}
+.subhead{font-family:Fraunces,Georgia,serif;font-size:1.15rem;color:var(--navy);margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+.subhead::before{content:"";width:18px;height:3px;background:var(--gold);display:inline-block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,transform .15s}
+.card:hover{box-shadow:0 6px 22px rgba(30,39,97,.10);transform:translateY(-1px)}
+.card.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 4px var(--gold)}100%{box-shadow:none}}
+.card h4{margin:0;font-family:Fraunces,Georgia,serif;font-size:1.14rem;color:var(--navy);line-height:1.2}
+.card h4 a{color:inherit;text-decoration:none}.card h4 a:hover{text-decoration:underline}
+.meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.card p{margin:0;font-size:.94rem}
+.win{background:var(--gold-soft);border-left:3px solid var(--gold);padding:7px 10px;border-radius:0 4px 4px 0;font-size:.9rem;color:#3d3315}
+.win b{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;display:block;color:#8a6d10}
+.copy{align-self:flex-start;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;background:none;border:1px solid var(--line);border-radius:4px;padding:4px 9px;color:var(--navy)}
+.copy:hover{background:var(--gold-soft)}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:28px;text-align:center;color:var(--muted)}
+
+/* Quick picks */
+.tablewrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.93rem}
+th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:var(--navy);color:#fff;font-weight:600;font-size:.85rem}
+thead th .lv{margin-right:6px}
+tbody th{color:var(--navy);font-family:Fraunces,Georgia,serif;font-size:1rem;white-space:nowrap}
+tbody tr:nth-child(even){background:#fcfaf5}
+
+/* Sources & footer */
+.sources{columns:2 320px;column-gap:28px;padding:0;margin:0;list-style:none}
+.sources li{break-inside:avoid;margin:0 0 10px;font-size:.92rem}
+footer{background:var(--ink);color:#c8cce6;padding:34px 0;font-size:.88rem}
+footer .brand{margin-bottom:8px}
+footer a{color:var(--gold)}
+.toTop{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--navy);color:#fff;border:2px solid var(--gold);border-radius:99px;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:none}
+
+@media (max-width:560px){.tag{display:none}.hero{padding:40px 0 46px}.group .lab{min-width:100%}}
+@media print{
+  nav.jump,.finder .controls,.toTop,.copy,.btn,.mast::after{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .mast,.finder{background:#fff!important;color:var(--ink)!important}
+  .mast *{color:var(--ink)!important}.finder h2,.finder .sub{color:var(--ink)!important}
+  .card{break-inside:avoid;box-shadow:none}
+  section,.finder{padding:18px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="theme.css">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/play-it-forward.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Play It Forward", "url": "https://radan55.github.io/everyteacher/play-it-forward.html", "description": "100 English-learner-friendly games for math, science, social studies, ELA and elective teachers, sorted by category, ELPA21 level and prep time. Free from EL Publishing.", "inLanguage": "en", "isAccessibleForFree": true, "author": {"@type": "Person", "name": "Richard A. Daniel", "jobTitle": "ENL/EL Specialist"}, "publisher": {"@type": "Organization", "name": "EL Publishing", "url": "https://radan55.github.io/everyteacher/"}, "audience": {"@type": "EducationalAudience", "educationalRole": "teacher"}, "about": "English learners, Mississippi K–12", "learningResourceType": "Game finder"}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/play-it-forward.html">
+<meta property="og:title" content="Play It Forward · EL Games for Content Teachers · EL Publishing">
+<meta property="og:description" content="100 English-learner-friendly games for math, science, social studies, ELA and elective teachers, sorted by category, ELPA21 level and prep time. Free from EL Publishing.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/play-it-forward.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<a class="skip" href="#finder">Skip to the game finder</a>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="brandbar">
+      <a class="brand" href="https://radan55.github.io/everyteacher/" aria-label="EL Publishing hub">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="#C9A227" stroke-width="1.5"/><text x="9" y="29" font-family="Fraunces,Georgia,serif" font-size="26" fill="#C9A227">&#8220;</text><text x="18" y="33" font-family="Fraunces,Georgia,serif" font-size="26" fill="#ffffff">&#8221;</text></svg>
+        EL <em>Publishing</em>
+      </a>
+      <span class="tag">Many Voices · One Storm</span>
+    </div>
+    <div class="hero">
+      <span class="kicker">For every content teacher</span>
+      <h1>Play It <span>Forward</span></h1>
+      <p class="lede">EL-friendly games for math, science, social studies, ELA and elective classes. Each game runs on your own unit's vocabulary. Swap in your terms, post the sentence frame, and play.</p>
+      <div class="stats">
+        <div class="stat"><b id="statGames">100</b><span>games</span></div>
+        <div class="stat"><b>6</b><span>categories</span></div>
+        <div class="stat"><b id="statNone">—</b><span>need no prep</span></div>
+        <div class="stat"><b>3</b><span>ELPA21 level tags</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Page sections">
+  <div class="wrap">
+    <a href="#why">What makes it work</a>
+    <a href="#finder">Game finder</a>
+    <a href="#quick">Quick picks</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main>
+<section id="why">
+  <div class="wrap">
+    <p class="eyebrow">Before you play</p>
+    <h2>What makes a game EL-friendly</h2>
+    <p class="sub">A game helps English learners when it makes them produce the language. Fun is the delivery system; the frame is the lesson.</p>
+    <div class="rules">
+      <div class="rule"><h3>They produce it</h3><p>The point is scored by saying, writing or explaining the term, not just recognizing it.</p></div>
+      <div class="rule"><h3>A frame is posted</h3><p>"I think ___ because ___." The frame is the scaffold; the game is the reason to use it.</p></div>
+      <div class="rule"><h3>It repeats</h3><p>Same structure, new content each week. Students learn the rules once and spend their energy on content.</p></div>
+      <div class="rule"><h3>Stakes stay low</h3><p>Team scoring, partner talk before sharing, and "phone a friend" options protect newcomers.</p></div>
+      <div class="rule"><h3>Home language is welcome</h3><p>Partners who share a language can plan in it, then report out in English.</p></div>
+      <div class="rule"><h3>There's a visual</h3><p>A picture, object, gesture or diagram sits beside every term.</p></div>
+    </div>
+    <div class="keys">
+      <div class="keybox">
+        <h4>Level key (ELPA21)</h4>
+        <div class="keyrow"><span class="lv E">E</span><span><b>Emerging, Levels 1–2.</b> Newcomers and early learners. Give them pictures, word banks, pointing or gesture answers, and a home-language partner.</span></div>
+        <div class="keyrow"><span class="lv P">P</span><span><b>Progressing, Levels 3–4.</b> Students who talk but miss academic language. Give them sentence frames, a word bank and time to rehearse.</span></div>
+        <div class="keyrow"><span class="lv A">A</span><span><b>All levels.</b> Built-in tiers: the same game with a different frame for each student.</span></div>
+      </div>
+      <div class="keybox">
+        <h4>Prep key</h4>
+        <div class="keyrow"><span class="prep None">None</span><span>Play it today, with nothing to make.</span></div>
+        <div class="keyrow"><span class="prep">Low</span><span>About 10 minutes: a list, a slide or a few strips.</span></div>
+        <div class="keyrow"><span class="prep">Med</span><span>Card sets or a template. Make them once and reuse them every unit.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finder" id="finder" aria-labelledby="finderTitle">
+  <div class="wrap">
+    <p class="eyebrow">The collection</p>
+    <h2 id="finderTitle">Game finder</h2>
+    <p class="sub">Filter by category, level and prep, or search for a game, a skill or a subject. Every card has a frame you can copy straight onto your board.</p>
+    <div class="controls" role="search">
+      <div class="search">
+        <label for="q" class="skip">Search games</label>
+        <input id="q" type="search" placeholder="Search: debate, cognate, timeline, fractions…" autocomplete="off">
+        <button class="btn" id="pick" type="button">Pick one for me</button>
+        <button class="btn ghost" id="reset" type="button">Reset</button>
+      </div>
+      <div class="group" id="fCat" aria-label="Category"><span class="lab">Category</span></div>
+      <div class="group" id="fSub" aria-label="Subject" hidden><span class="lab">Subject</span></div>
+      <div class="group" id="fLvl" aria-label="Level"><span class="lab">Level</span></div>
+      <div class="group" id="fPrep" aria-label="Prep"><span class="lab">Prep</span></div>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+</section>
+
+<div class="results"><div class="wrap" id="results"></div></div>
+
+<section id="quick" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Short on time</p>
+    <h2>Quick picks</h2>
+    <p class="sub">If you only try a few, start with the no-prep row. Click any game to jump to its card.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th scope="col">Situation</th><th scope="col"><span class="lv E">E</span>Emerging (1–2)</th><th scope="col"><span class="lv P">P</span>Progressing (3–4)</th><th scope="col"><span class="lv A">A</span>Mixed class</th></tr></thead>
+        <tbody id="quickBody"></tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:18px"><b>Rule of thumb for digital games:</b> for every 10 minutes of quiz game, spend 5 minutes on talk or writing that uses the same terms.</p>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <p class="eyebrow">Research &amp; further reading</p>
+    <h2>Sources</h2>
+    <p class="sub">Classic cooperative structures (Kagan and others) adapted with EL frames and level tags. Platform features change; check settings before class.</p>
+    <ul class="sources">
+      <li><a href="https://www.edutopia.org/article/games-teaching-english-learners/">Skill-Developing Games for ELLs</a> · Edutopia</li>
+      <li><a href="https://www.edutopia.org/article/17-fun-speaking-games-to-get-language-learners-talking/">17 Fun Speaking Games to Get Language Learners Talking</a> · Edutopia</li>
+      <li><a href="https://www.edutopia.org/discussion/12-fun-speaking-games-language-learners/">12 Fun Speaking Games for Language Learners</a> · Edutopia</li>
+      <li><a href="https://edutopia.org/video/60-second-strategy-double-circle">60-Second Strategy: Inside–Outside Circles</a> · Edutopia</li>
+      <li><a href="https://www.edutopia.org/article/which-one-doesnt-belong">Which One Doesn't Belong?</a> · Edutopia</li>
+      <li><a href="https://therouttymathteacher.com/?p=93">Always, Sometimes, or Never</a> · The Routty Math Teacher</li>
+      <li><a href="https://www.gallup.unm.edu/assets/pdf/big-list-of-discussion-strats-j-gonzalez.pdf">The Big List of Class Discussion Strategies</a> · Jennifer Gonzalez, Cult of Pedagogy</li>
+      <li><a href="https://www.edweek.org/tm/articles/2012/09/19/tln_ferlazzo_hull-sypnieski_ell.html">Games for English-Language Learners</a> · Larry Ferlazzo &amp; Katie Hull Sypnieski, Education Week</li>
+      <li><a href="https://www.edweek.org/teaching-learning/opinion-teacher-as-participant-and-other-methods-to-engage-english-learners/2026/11">'Teacher as Participant' and Other Methods to Engage English Learners</a> · Education Week, Nov. 2026</li>
+      <li><a href="https://americanenglish.state.gov/resources/gamified-learning-two-activities-foster-fun-and-excitement-any-classroom">Gamified Learning: Two Activities</a> · U.S. Department of State, American English</li>
+      <li><a href="https://colorincolorado.org/node/38895">Vocabulary Instruction for ELLs</a> · Colorín Colorado</li>
+      <li><a href="https://www.techlearning.com/how-to/what-is-quizlet-and-how-can-i-teach-with-it">What Is Quizlet and How Can I Teach With It?</a> · Tech &amp; Learning</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="https://radan55.github.io/everyteacher/">EL <em>Publishing</em></a>
+    <div>Play It Forward · A free resource for every teacher. Find more at the <a href="https://radan55.github.io/everyteacher/">EL Publishing hub</a>.</div>
+    <div style="margin-top:6px">Every teacher is a language teacher.</div>
+  </div>
+</footer>
+<button class="toTop" id="toTop" type="button" aria-label="Back to top">&#8593;</button>
+
+<script>
+// EL Games for Content Teachers: game data
+// c = category id, s = subject (category "subject" only), n = name, h = how it works,
+// w = EL win or sentence frame, l = levels (E Emerging, P Progressing, A All), p = prep (None/Low/Med)
+const CATEGORIES = [
+  { id: "vocab",   name: "Vocabulary",           blurb: "These games work best when students have to use the word in a sentence, not just match it. Pre-teach 5–8 key terms first." },
+  { id: "talk",    name: "Academic talk",        blurb: "Structured talk gives ELs the out-loud practice they need before they can write it. Post a frame for every round." },
+  { id: "read",    name: "Reading & listening",  blurb: "These turn a textbook passage into a puzzle. Students read the same text several times, and that repeated reading builds comprehension." },
+  { id: "write",   name: "Writing",              blurb: "Short, social writing gets more words on the page than a solo prompt does. Most of these run on mini whiteboards." },
+  { id: "subject", name: "By subject",           blurb: "These build on each discipline's own way of talking: math justifies, science explains cause, history weighs evidence." },
+  { id: "digital", name: "Digital platforms",    blurb: "Most digital quiz games only test recognition. Turn timers off, play in team mode, add images, and follow up with \"explain your answer to your partner.\"" }
+];
+
+const GAMES = [
+  // ---------- Vocabulary ----------
+  {c:"vocab",n:"Word on My Head",h:"One student holds a term card to their forehead. The team describes it in English without saying it.",w:"Forces circumlocution with content words",l:"P",p:"Low"},
+  {c:"vocab",n:"Taboo",h:"Describe the term without using the 3 \"forbidden\" words listed on the card.",w:"Pushes past the easy synonym",l:"P",p:"Med"},
+  {c:"vocab",n:"Pictionary / Draw It",h:"One student draws the term; the team guesses.",w:"Visual link to meaning; strong recall",l:"E P",p:"None"},
+  {c:"vocab",n:"Charades / Act It Out",h:"Act out a process or verb (erode, migrate, divide).",w:"Total Physical Response; no English needed to start",l:"E",p:"None"},
+  {c:"vocab",n:"Password",h:"A partner gives one-word clues until the other guesses the term.",w:"Builds word associations",l:"P",p:"None"},
+  {c:"vocab",n:"Vocabulary Bingo",h:"Teacher reads a definition or shows a picture; students mark the term.",w:"Listening to academic definitions",l:"E P",p:"Low"},
+  {c:"vocab",n:"Swat / Fly Swatter",h:"Terms are on the board. Read a definition; two students race to swat the right term.",w:"Fast listening; high energy",l:"E P",p:"None"},
+  {c:"vocab",n:"I Have… Who Has…?",h:"Each card reads \"I have [term]. Who has [definition]?\" The chain runs around the room.",w:"Every student reads aloud with a script",l:"E P",p:"Med"},
+  {c:"vocab",n:"Quiz-Quiz-Trade",h:"Each student holds a term card. Pair up, quiz each other, trade cards, find a new partner.",w:"Repeated oral practice with many partners",l:"A",p:"Med"},
+  {c:"vocab",n:"Vocabulary Jenga",h:"Number the blocks. Pull one, then define, use in a sentence or draw the term with that number.",w:"Low pressure; the game buys thinking time",l:"A",p:"Low"},
+  {c:"vocab",n:"Concentration / Memory",h:"Flip cards to match term + picture or term + definition.",w:"Visual matching for newcomers",l:"E",p:"Med"},
+  {c:"vocab",n:"Odd One Out",h:"Show 4 terms. Students pick the one that doesn't belong and justify it.",w:"\"___ doesn't belong because ___.\"",l:"A",p:"None"},
+  {c:"vocab",n:"Word Sort (open or closed)",h:"Groups sort term cards into categories they name or that you give.",w:"Shows how concepts relate",l:"A",p:"Med"},
+  {c:"vocab",n:"Frayer Model Race",h:"Teams complete a Frayer box (definition, traits, example, non-example) against the clock.",w:"Deep word knowledge",l:"P",p:"Low"},
+  {c:"vocab",n:"Hot Seat",h:"One student faces away from the board. The team gives clues for the term written behind them.",w:"Word on My Head for the whole class",l:"P",p:"None"},
+  {c:"vocab",n:"Cognate Hunt",h:"Partners find English–Spanish cognates in a text (photosynthesis / fotosíntesis). Watch for false cognates.",w:"Uses home-language strength",l:"A",p:"None"},
+  {c:"vocab",n:"Vocab Scattergories",h:"A letter plus a category (\"P — parts of a cell\"). Unique answers score.",w:"Retrieval under light time pressure",l:"P",p:"Low"},
+  {c:"vocab",n:"Four Corners Vocab",h:"Post 4 terms in the corners. Read a clue; students walk to the matching term.",w:"Movement; no speaking required at first",l:"E",p:"None"},
+  {c:"vocab",n:"Word Wall Tic-Tac-Toe",h:"A grid of terms. To claim a square, use that term correctly in a sentence.",w:"Production with choice",l:"P",p:"Low"},
+  {c:"vocab",n:"Mystery Word / 20 Questions",h:"Teacher holds a hidden term. The class asks yes/no questions to find it.",w:"Question formation with content attributes",l:"P",p:"None"},
+
+  // ---------- Academic talk ----------
+  {c:"talk",n:"Inside–Outside Circle",h:"Two circles face each other. Answer a prompt, then the outer circle rotates to a new partner.",w:"\"My answer is ___ because ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Find Someone Who",h:"Students mingle with a grid of content questions and find a classmate who can answer each one.",w:"\"Can you explain ___?\"",l:"A",p:"Low"},
+  {c:"talk",n:"Four Corners",h:"Corners are labeled Agree / Disagree / Strongly / Not sure. Students move, then defend their choice.",w:"\"I chose ___ because ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Two Truths and a Lie",h:"Students write 2 true facts and 1 false one about the content. Teammates find the lie.",w:"\"I think ___ is false because ___.\"",l:"P",p:"None"},
+  {c:"talk",n:"Numbered Heads Together",h:"Teams number off and discuss. The teacher calls a number; that student answers for the team.",w:"\"Our team thinks ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Think-Pair-Share (timed)",h:"Think for 30 seconds, tell a partner for 60, then share with the class.",w:"\"My partner said ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Speed Dating / Stand Up–Hand Up–Pair Up",h:"Fast partner swaps on review questions, 1 minute each.",w:"Rotate the frame each round",l:"A",p:"None"},
+  {c:"talk",n:"Would You Rather (content)",h:"\"Would you rather live in the Arctic or the desert?\" Students choose and justify with content facts.",w:"\"I would rather ___ because ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Philosophical Chairs",h:"Two sides of the room for a debatable claim. Students may switch sides when persuaded.",w:"\"I changed my mind because ___.\"",l:"P",p:"Low"},
+  {c:"talk",n:"Line-Ups / Value Lines",h:"Students line up by how strongly they hold an opinion, then fold the line to talk to someone opposite.",w:"\"I'm at ___ because ___.\"",l:"A",p:"None"},
+  {c:"talk",n:"Talking Chips",h:"Each student gets 3 chips and spends one each time they speak. Nobody talks again until all chips are spent.",w:"Equalizes airtime",l:"A",p:"Low"},
+  {c:"talk",n:"Just a Minute",h:"Speak for 30–45 seconds on a content topic without stopping.",w:"Fluency with known content",l:"P",p:"None"},
+  {c:"talk",n:"Mix-Freeze-Pair",h:"Music plays and students mingle; when it stops they pair with the nearest person and answer.",w:"Any frame",l:"A",p:"None"},
+  {c:"talk",n:"Fishbowl",h:"A small inner group discusses while the outer group tracks evidence, then they swap.",w:"\"I agree with ___ and want to add ___.\"",l:"P",p:"Low"},
+  {c:"talk",n:"Expert Interview",h:"One student is \"the expert\" (a scientist, a historical figure). Classmates interview them.",w:"Question words: who, what, why, how",l:"P",p:"Low"},
+  {c:"talk",n:"Barrier Game",h:"Partners sit back to back. One describes a diagram or map; the other draws it.",w:"Precise descriptive language",l:"A",p:"Low"},
+  {c:"talk",n:"Info Gap",h:"Each partner holds half the data and must ask questions to complete the chart.",w:"\"What is the ___ of ___?\"",l:"A",p:"Med"},
+  {c:"talk",n:"Gallery Walk with Talk",h:"Posters around the room. Pairs rotate, discuss each one and leave sticky-note comments.",w:"\"I notice ___. I wonder ___.\"",l:"A",p:"Med"},
+
+  // ---------- Reading & listening ----------
+  {c:"read",n:"Running Dictation",h:"The text is posted in the hall. A runner reads a line, returns, and dictates it to a scribe. Roles swap.",w:"All 4 domains in one game",l:"A",p:"Low"},
+  {c:"read",n:"Sentence Strip Sequencing",h:"Cut a process or event summary into strips. Teams put them in order.",w:"Signal words: first, then, as a result",l:"A",p:"Low"},
+  {c:"read",n:"Jigsaw",h:"Each group member reads one section, meets with the other \"experts\" on it, then teaches their home group.",w:"Shorter text load; a reason to speak",l:"P",p:"Low"},
+  {c:"read",n:"Text Scavenger Hunt",h:"Teams hunt the chapter for answers, text features or vocabulary in context.",w:"Navigating textbook features",l:"A",p:"Low"},
+  {c:"read",n:"Mystery Envelope",h:"Clues (quotes, images, data) in envelopes. Teams read them and infer the topic or answer.",w:"Inference with support",l:"P",p:"Med"},
+  {c:"read",n:"Listen and Draw",h:"Teacher reads a description (a cell, a landform, a battle map); students sketch it.",w:"Listening for detail",l:"E P",p:"None"},
+  {c:"read",n:"Stand Up / Sit Down True–False",h:"Read statements about the text. Students stand if true, sit if false.",w:"Low-risk comprehension check",l:"E",p:"None"},
+  {c:"read",n:"Read-Around Relay",h:"Teams answer text-dependent questions one at a time and run each answer to the teacher.",w:"Re-reading with a purpose",l:"A",p:"Low"},
+  {c:"read",n:"Highlighter Race",h:"The first team to highlight the evidence sentence for a claim scores.",w:"Close reading, finding evidence",l:"P",p:"None"},
+  {c:"read",n:"Text Feature Bingo",h:"Bingo squares are text features (caption, bold word, graph). Find each one in the chapter.",w:"Uses supports ELs often skip",l:"E P",p:"Low"},
+  {c:"read",n:"Headline Match",h:"Match summaries or headlines to paragraphs.",w:"Main idea",l:"P",p:"Low"},
+  {c:"read",n:"Cloze Race",h:"A passage with key terms blanked out. Teams fill it in from a word bank.",w:"Vocabulary in context",l:"E P",p:"Low"},
+
+  // ---------- Writing ----------
+  {c:"write",n:"Whiteboard Showdown",h:"Teacher asks a question. Everyone writes an answer, then all boards flip up at once.",w:"Everyone answers; no single student is spotlighted",l:"A",p:"None"},
+  {c:"write",n:"Sentence Scramble",h:"The words of a key sentence are cut apart. Teams rebuild it.",w:"Academic syntax",l:"E P",p:"Low"},
+  {c:"write",n:"Round Robin Write",h:"A paper passes around the group. Each student adds one sentence to the explanation.",w:"Builds on peers' language",l:"P",p:"None"},
+  {c:"write",n:"Chain Notes / Graffiti Wall",h:"Chart paper with a question at each station. Groups write answers and respond to earlier groups.",w:"Low-stakes written discussion",l:"A",p:"Low"},
+  {c:"write",n:"Sentence Builder Dice",h:"Dice faces show subjects, verbs and connectors. Roll and write a content sentence.",w:"Complex sentences with because / although",l:"P",p:"Med"},
+  {c:"write",n:"Exit Ticket Auction",h:"Teams bid points on whether a written sentence is correct, then fix it.",w:"Grammar in content writing",l:"P",p:"Low"},
+  {c:"write",n:"Fix-It Sentence Race",h:"Display a sentence with errors in both facts and grammar. The first team to fix both wins.",w:"Editing for accuracy",l:"P",p:"None"},
+  {c:"write",n:"Six-Word Summary",h:"Summarize the lesson in exactly 6 words, then share.",w:"Precise word choice",l:"A",p:"None"},
+  {c:"write",n:"Post from History",h:"Write a 280-character post in the voice of a historical figure or a cell organelle.",w:"Voice plus content, short length",l:"P",p:"None"},
+  {c:"write",n:"Paragraph Puzzle",h:"Each member writes one part (topic sentence, evidence, conclusion), then the group assembles them.",w:"Paragraph structure",l:"P",p:"Low"},
+  {c:"write",n:"Word Count Challenge",h:"Write a summary that must use 5 listed terms. Bonus points for linking words.",w:"Required academic vocabulary",l:"A",p:"None"},
+
+  // ---------- By subject: Math ----------
+  {c:"subject",s:"Math",n:"Which One Doesn't Belong?",h:"Show 4 numbers, graphs or shapes. Any answer counts if it is justified.",w:"\"___ doesn't belong because it's the only one that ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Math",n:"Always, Sometimes, Never",h:"Students judge a statement (\"A rectangle is a square\") and prove it with an example or counterexample.",w:"\"It is sometimes true because ___.\"",l:"P",p:"Low"},
+  {c:"subject",s:"Math",n:"Math Taboo",h:"Describe \"perpendicular\" without saying lines, 90 or right angle.",w:"Precise math description",l:"P",p:"Med"},
+  {c:"subject",s:"Math",n:"Word Problem Rewrite",h:"Teams strip a word problem to its math, then write a new one for another team.",w:"\"We need to find ___.\"",l:"P",p:"Low"},
+  {c:"subject",s:"Math",n:"Number Talks",h:"Show a problem, students solve it mentally, then share their strategies.",w:"\"First I ___, then I ___.\"",l:"A",p:"None"},
+  {c:"subject",s:"Math",n:"Error Analysis Detective",h:"A worked problem has a mistake. Teams find it and explain it.",w:"\"The mistake is in step ___.\"",l:"P",p:"Low"},
+  {c:"subject",s:"Math",n:"Math Pictionary",h:"Draw \"slope\" or \"vertex\"; the team names it.",w:"Visual math vocabulary",l:"E",p:"None"},
+  {c:"subject",s:"Math",n:"Estimation Challenge",h:"A daily estimate from a photo, with \"too low / too high\" reasoning.",w:"\"Too high would be ___.\"",l:"A",p:"Low"},
+  // Science
+  {c:"subject",s:"Science",n:"CER Card Sort",h:"Sort claim, evidence and reasoning cards into complete arguments.",w:"\"This evidence supports ___ because ___.\"",l:"P",p:"Med"},
+  {c:"subject",s:"Science",n:"Process Charades",h:"Act out a cycle (water, mitosis, rock cycle) in order.",w:"\"First ___, next ___.\"",l:"E",p:"None"},
+  {c:"subject",s:"Science",n:"Who Am I?",h:"An organism, element or organelle card goes on your back. Ask yes/no questions to find out what you are.",w:"\"Do I ___?\"",l:"P",p:"Low"},
+  {c:"subject",s:"Science",n:"Predict–Observe–Explain Bets",h:"Teams bet points on a demo's outcome, then explain the result.",w:"\"We predicted ___ because ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Science",n:"Lab Safety Spot-It",h:"Show a picture of a messy lab. Teams list and name the hazards.",w:"\"___ is unsafe because ___.\"",l:"E P",p:"Low"},
+  {c:"subject",s:"Science",n:"Food Web Toss",h:"A yarn ball passes between organism cards to build a web. Students say each relationship.",w:"\"The ___ eats the ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Science",n:"Element Bingo / Periodic Battleship",h:"Call symbols, properties or coordinates on a periodic table grid.",w:"Symbol and property vocabulary",l:"E P",p:"Low"},
+  // Social studies
+  {c:"subject",s:"Social studies",n:"Timeline Line-Up",h:"Each student holds an event card. The class lines up in order and explains the links.",w:"\"___ happened before ___, which led to ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Social studies",n:"Primary Source Detective",h:"Groups analyze a photo or document with an observe–infer–question chart.",w:"\"I see ___. This tells me ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Social studies",n:"Hot Seat: Historical Figure",h:"A student in role answers questions from the class.",w:"\"Why did you ___?\"",l:"P",p:"Low"},
+  {c:"subject",s:"Social studies",n:"Map Battleship",h:"Find locations using latitude and longitude or map grid coordinates.",w:"\"Is it at ___?\"",l:"E P",p:"Low"},
+  {c:"subject",s:"Social studies",n:"Cause and Effect Dominoes",h:"Match cause cards to effect cards in a chain.",w:"\"Because of ___, ___.\"",l:"P",p:"Med"},
+  {c:"subject",s:"Social studies",n:"Mock Trial / Debate Lite",h:"Roles plus evidence cards on a historical question.",w:"\"The evidence shows ___.\"",l:"P",p:"Med"},
+  {c:"subject",s:"Social studies",n:"Geography Guess Who",h:"Guess the country or region from its features.",w:"\"Is it in ___?\"",l:"A",p:"Low"},
+  // ELA
+  {c:"subject",s:"ELA",n:"Character Hot Seat",h:"A student answers in character about the choices they made in the text.",w:"\"I did ___ because ___.\"",l:"P",p:"None"},
+  {c:"subject",s:"ELA",n:"Literary Device Swat",h:"Read an example; students swat the device it shows on the board.",w:"Device vocabulary",l:"P",p:"Low"},
+  {c:"subject",s:"ELA",n:"Quote Match",h:"Match quotes to the character who said them or the theme they show.",w:"\"This quote shows ___.\"",l:"P",p:"Low"},
+  {c:"subject",s:"ELA",n:"Plot Mountain Sort",h:"Sequence event cards onto a plot diagram.",w:"\"The climax is ___ because ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"ELA",n:"Book Talk Speed Dating",h:"1-minute book pitches with a new partner each round.",w:"\"You should read it because ___.\"",l:"P",p:"None"},
+  // Electives & CTE
+  {c:"subject",s:"Electives & CTE",n:"Tool / Equipment ID Race",h:"Name each tool or piece of equipment from pictures and state its function.",w:"\"A ___ is used to ___.\"",l:"E P",p:"Low"},
+  {c:"subject",s:"Electives & CTE",n:"Steps Relay",h:"Sequence the steps of a recipe or procedure under time pressure.",w:"\"After you ___, you ___.\"",l:"A",p:"Low"},
+  {c:"subject",s:"Electives & CTE",n:"Simon Says (PE, health, art)",h:"Commands use target vocabulary (\"touch your hamstring\").",w:"Listening comprehension",l:"E",p:"None"},
+  {c:"subject",s:"Electives & CTE",n:"Customer Service Role-Play",h:"Pairs act out workplace scenario cards.",w:"\"How can I help you with ___?\"",l:"P",p:"Low"},
+
+  // ---------- Digital ----------
+  {c:"digital",n:"Quizlet (Flashcards, Match, Blast, Live)",h:"Term–definition practice. In Live, students play in teams and must collaborate.",w:"Audio read-aloud, images on cards, team play. Learn and Test modes need Quizlet Plus.",l:"E P",p:"Low",u:"https://quizlet.com"},
+  {c:"digital",n:"Gimkit",h:"Spiral review that runs live or student-paced.",w:"Student-paced homework mode removes speed pressure",l:"P",p:"Low",u:"https://www.gimkit.com"},
+  {c:"digital",n:"Blooket",h:"Engaging review with many game modes.",w:"Pick modes without a speed race",l:"A",p:"Low",u:"https://www.blooket.com"},
+  {c:"digital",n:"Kahoot!",h:"Whole-class review and quick checks.",w:"Team mode, longer timers, images",l:"A",p:"Low",u:"https://kahoot.com"},
+  {c:"digital",n:"Wordwall",h:"Teacher-made matching, sorting, labeled diagrams and wheels.",w:"Diagram-labeling templates; printable versions",l:"E P",p:"Low",u:"https://wordwall.net"},
+  {c:"digital",n:"Wayground (formerly Quizizz)",h:"Self-paced quizzes with memes and power-ups.",w:"Read-aloud and translate options; untimed mode",l:"A",p:"Low",u:"https://wayground.com"},
+  {c:"digital",n:"Pear Deck / Nearpod drawing slides",h:"Draw-your-answer and drag-and-drop checks.",w:"Drawing responses for newcomers",l:"E",p:"Med"},
+  {c:"digital",n:"Flip / voice recorders",h:"Recorded speaking practice.",w:"Students rehearse before posting",l:"P",p:"Low"}
+];
+
+const QUICK = [
+  ["No prep, today","Pictionary, Charades, Four Corners Vocab","Word on My Head, Two Truths and a Lie, Just a Minute","Inside–Outside Circle, Whiteboard Showdown, Which One Doesn't Belong?"],
+  ["Warm-up (5 min)","Stand Up / Sit Down True–False","Odd One Out, Always–Sometimes–Never","Think-Pair-Share, Six-Word Summary"],
+  ["New vocabulary","Concentration, Vocabulary Bingo, Listen and Draw","Taboo, Frayer Model Race","Quiz-Quiz-Trade, Cognate Hunt"],
+  ["Text-heavy lesson","Cloze Race, Text Feature Bingo","Jigsaw, Highlighter Race","Running Dictation, Sentence Strip Sequencing"],
+  ["Unit review","Swat, I Have… Who Has…?","Hot Seat, Fix-It Sentence Race","Vocabulary Jenga, Gallery Walk, a team-mode digital game"],
+  ["Argument & reasoning","Four Corners (point + one word)","Philosophical Chairs, CER Card Sort","Line-Ups, Fishbowl"]
+];
+
+(function(){
+  var state={cat:"all",sub:"all",lvl:"all",prep:"all",q:""};
+  var $=function(id){return document.getElementById(id)};
+  var slug=function(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  GAMES.forEach(function(g){g.id=slug(g.n)});
+  var subjects=[];GAMES.forEach(function(g){if(g.s&&subjects.indexOf(g.s)<0)subjects.push(g.s)});
+
+  $("statGames").textContent=GAMES.length;
+  $("statNone").textContent=GAMES.filter(function(g){return g.p==="None"}).length;
+
+  function chips(el,key,opts){
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=o[1];b.dataset.v=o[0];
+      b.setAttribute("aria-pressed",state[key]===o[0]?"true":"false");
+      b.addEventListener("click",function(){state[key]=o[0];if(key==="cat"&&o[0]!=="subject")state.sub="all";sync();render();});
+      el.appendChild(b);
+    });
+  }
+  chips($("fCat"),"cat",[["all","All"]].concat(CATEGORIES.map(function(c){return[c.id,c.name]})));
+  chips($("fSub"),"sub",[["all","All subjects"]].concat(subjects.map(function(s){return[s,s]})));
+  chips($("fLvl"),"lvl",[["all","Any level"],["E","Emerging"],["P","Progressing"],["A","All levels"]]);
+  chips($("fPrep"),"prep",[["all","Any prep"],["None","No prep"],["Low","Low"],["Med","Med"]]);
+
+  function sync(){
+    ["cat","sub","lvl","prep"].forEach(function(k){
+      var el=$({cat:"fCat",sub:"fSub",lvl:"fLvl",prep:"fPrep"}[k]);
+      el.querySelectorAll(".chip").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===state[k]?"true":"false")});
+    });
+    $("fSub").hidden=state.cat!=="subject";
+  }
+  function match(g){
+    if(state.cat!=="all"&&g.c!==state.cat)return false;
+    if(state.sub!=="all"&&g.s!==state.sub)return false;
+    if(state.lvl!=="all"){var ls=g.l.split(" ");if(ls.indexOf(state.lvl)<0&&!(state.lvl!=="A"&&ls.indexOf("A")>=0))return false;}
+    if(state.prep!=="all"&&g.p!==state.prep)return false;
+    if(state.q){var hay=(g.n+" "+g.h+" "+g.w+" "+(g.s||"")+" "+g.c).toLowerCase();
+      var ok=state.q.toLowerCase().split(/\s+/).every(function(t){return hay.indexOf(t)>=0});if(!ok)return false;}
+    return true;
+  }
+  function card(g){
+    var lv=g.l.split(" ").map(function(x){var t={E:"Emerging",P:"Progressing",A:"All levels"}[x];return'<span class="lv '+x+'" title="'+t+'">'+x+'</span>'}).join("");
+    var isFrame=/^["“]/.test(g.w)||g.w.indexOf("___")>=0;
+    var name=g.u?'<a href="'+g.u+'" target="_blank" rel="noopener">'+esc(g.n)+'</a>':esc(g.n);
+    return '<article class="card" id="g-'+g.id+'"><h4>'+name+'</h4>'+
+      '<div class="meta">'+lv+'<span class="prep '+g.p+'">'+(g.p==="None"?"No prep":g.p+" prep")+'</span>'+(g.s?'<span class="prep">'+esc(g.s)+'</span>':'')+'</div>'+
+      '<p>'+esc(g.h)+'</p><div class="win"><b>'+(isFrame?"Frame to post":"EL win")+'</b>'+esc(g.w)+'</div>'+
+      (isFrame?'<button class="copy" type="button" data-copy="'+esc(g.w.replace(/^"|"$/g,""))+'">Copy frame</button>':'')+'</article>';
+  }
+  function render(){
+    var out="",total=0;
+    CATEGORIES.forEach(function(c){
+      var list=GAMES.filter(function(g){return g.c===c.id&&match(g)});
+      if(!list.length)return;total+=list.length;
+      out+='<div class="catblock" id="cat-'+c.id+'"><div class="cathead"><h3>'+c.name+'</h3><span class="n">'+list.length+' game'+(list.length>1?"s":"")+'</span></div><p class="catblurb">'+esc(c.blurb)+'</p>';
+      if(c.id==="subject"){
+        subjects.forEach(function(s){var sl=list.filter(function(g){return g.s===s});if(!sl.length)return;
+          out+='<div class="subhead">'+s+'</div><div class="grid">'+sl.map(card).join("")+'</div>';});
+      }else out+='<div class="grid">'+list.map(card).join("")+'</div>';
+      out+='</div>';
+    });
+    $("results").innerHTML=out||'<div class="empty">No games match those filters. Try fewer filters, or <button class="copy" type="button" id="emptyReset">reset</button>.</div>';
+    $("count").textContent="Showing "+total+" of "+GAMES.length+" games";
+    var er=$("emptyReset");if(er)er.onclick=reset;
+  }
+  function reset(){state={cat:"all",sub:"all",lvl:"all",prep:"all",q:""};$("q").value="";sync();render();}
+  function go(id){var el=document.getElementById("g-"+id);if(!el){reset();el=document.getElementById("g-"+id);}
+    if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}}
+
+  var t;$("q").addEventListener("input",function(e){clearTimeout(t);t=setTimeout(function(){state.q=e.target.value.trim();render();},120)});
+  $("reset").addEventListener("click",reset);
+  $("pick").addEventListener("click",function(){var pool=GAMES.filter(match);if(!pool.length)pool=GAMES;go(pool[Math.floor(Math.random()*pool.length)].id);});
+  document.addEventListener("click",function(e){
+    var b=e.target.closest(".copy[data-copy]");if(!b)return;
+    var txt=b.getAttribute("data-copy");var done=function(){var o=b.textContent;b.textContent="Copied!";setTimeout(function(){b.textContent=o},1400)};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt);done()});}else{fallback(txt);done();}
+  });
+  function fallback(txt){var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta);}
+
+  // Quick picks
+  var byName={};GAMES.forEach(function(g){byName[g.n.toLowerCase()]=g.id});byName["always\u2013sometimes\u2013never"]=byName["always, sometimes, never"];
+  function linkify(cell){return cell.split(", ").map(function(n){
+    var key=n.toLowerCase().replace(/ \(.*\)$/,"");var id=byName[key];
+    if(!id){for(var k in byName){if(k.indexOf(key)===0||key.indexOf(k.split(" /")[0])===0){id=byName[k];break;}}}
+    return id?'<a href="#g-'+id+'" data-go="'+id+'">'+esc(n)+'</a>':esc(n);}).join(", ");}
+  $("quickBody").innerHTML=QUICK.map(function(r){return'<tr><th scope="row">'+esc(r[0])+'</th><td>'+linkify(r[1])+'</td><td>'+linkify(r[2])+'</td><td>'+linkify(r[3])+'</td></tr>'}).join("");
+  $("quickBody").addEventListener("click",function(e){var a=e.target.closest("a[data-go]");if(!a)return;e.preventDefault();go(a.dataset.go);});
+
+  var top=$("toTop");window.addEventListener("scroll",function(){top.style.display=window.scrollY>900?"block":"none"},{passive:true});
+  top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
+
+  if(location.hash.indexOf("#g-")===0){setTimeout(function(){go(location.hash.slice(3))},60);}
+  render();
+})();
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
