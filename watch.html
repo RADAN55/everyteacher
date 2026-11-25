@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch · one free tool for your English learners each week · EL Publishing</title>
+<meta name="description" content="A short video each week: one free tool from the hub, what it does, and one move to try tomorrow with your English learners. Music and on-screen text, no account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1E2761;--navy-bg:var(--navy);--navy-dk:#141A44;--navy-dk-bg:var(--navy-dk);--gold:#C9A227;--gold-lt:#EBD9A0;--paper:#fff;--mist:#F4F5FA;--ink:#1F2330;--muted:#5D6480;--rule:#DCDEE9;
+    --wash-green:#E3F4E8;--wash-red:#FDE8E8;--wash-gold:#F7F1DC;--wash-blue:#E8ECFA;--ink-green:#1B7A3C;--ink-red:#A32020;--ink-gold:#5A4714;--ink-blue:#2C3A8A;
+    --lane-n:#8B3A3A;--lane-e:#B07A1A;--lane-p:#1E6F8A;--lane-c:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mist);color:var(--ink);font-family:"Source Sans 3",-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+  a{color:var(--navy)}
+  header{background:var(--navy-bg);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(112deg,rgba(235,217,160,.09) 0 2px,transparent 2px 24px)}
+  .head-in{position:relative;max-width:1000px;margin:0 auto;padding:40px 22px 30px}
+  .brand{font-size:12px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin:0 0 14px}
+  .brand a{color:var(--gold);text-decoration:none}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(30px,5.5vw,48px);line-height:1.02;margin:0}
+  h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+  .tag{margin:14px 0 0;font-size:16px;color:#C9CEEA;max-width:66ch}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy-dk);font-weight:700;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:15px;border:0;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--gold-lt);border:1.5px solid rgba(235,217,160,.6)}
+  .btn.navy{background:var(--navy-bg);color:#fff}
+  .btn.line{background:var(--paper);color:var(--navy);border:1.5px solid var(--rule)}
+  .btn.sm{font-size:13px;padding:6px 12px}
+  .btn:disabled{opacity:.45;cursor:default}
+  .bar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .bar-in{max-width:1000px;margin:0 auto;padding:8px 22px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .bar button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 14px;border-radius:999px;cursor:pointer}
+  .bar button[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+  .bar .sp{flex:1}.bar .priv{font-size:12.5px;color:var(--muted)}
+  main{max-width:1000px;margin:0 auto;padding:22px 22px 44px}
+  .mode{display:none}.mode.on{display:block}
+  h2.sec{font-family:Fraunces,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:26px 0 8px;color:var(--navy)}
+  h2.sec:first-child{margin-top:0}
+  h3.sub{font-family:Fraunces,Georgia,serif;font-size:19px;margin:18px 0 6px;color:var(--navy)}
+  .lead{color:var(--muted);margin:0 0 16px;max-width:70ch}
+  .panel,.card{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .card{margin-top:14px}
+  .card h4{margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--navy)}
+  .card .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin-bottom:4px}
+  .card p{margin:6px 0;font-size:14.5px}
+  .card ul,.card ol{margin:6px 0;padding-left:20px;font-size:14.5px}
+  .card li{margin:3px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .es{color:var(--muted);font-style:italic}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .y{background:var(--wash-green);color:var(--ink-green)}.n{background:var(--wash-red);color:var(--ink-red)}.g{background:var(--wash-gold);color:var(--ink-gold)}.b{background:var(--wash-blue);color:var(--ink-blue)}
+  .flag{border-left:6px solid var(--ink-red);background:var(--wash-red);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .okbox{border-left:6px solid var(--ink-green);background:var(--wash-green);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .tip{border-left:6px solid var(--gold);background:var(--wash-gold);padding:10px 14px;font-size:14.5px;margin-top:12px}
+  .note{background:var(--paper);border:1px solid var(--rule);padding:14px 18px;font-size:14px;color:var(--muted);margin-top:18px}
+  .note b{color:var(--ink)}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--navy);padding:6px 12px;border-radius:999px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  label.f{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:10px 0 4px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:6px}
+  textarea{min-height:120px;resize:vertical}
+  table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--rule);margin-top:12px;font-size:14px}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--mist);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy)}
+  .say{display:inline-block;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--rule);background:var(--mist);color:var(--navy);padding:2px 9px;border-radius:999px;cursor:pointer;margin-left:6px;vertical-align:middle}
+  .say:hover{background:var(--gold);color:var(--navy-dk);border-color:var(--gold)}
+  footer{background:var(--navy-dk-bg);color:#AEB5DA;padding:26px 0;font-size:14px}
+  footer .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  footer b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600}
+  footer a{color:var(--gold)}
+  @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  @media print{header .cta,.bar,footer,.note,.links,.noprint,.mode:not(.on){display:none!important}body{background:#fff;color:#000}main{padding:0;max-width:none}.card,.panel,table{border:1px solid #888;break-inside:avoid}.say{display:none}}
+  .chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+  .chk:last-child{border-bottom:0}
+  .chk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+  .chk small{display:block;color:var(--muted);font-size:13px}
+  .meter{font-weight:700;color:var(--navy);font-size:15px;margin-top:10px}
+  .lane{border-left:6px solid var(--rule);padding:8px 12px;background:var(--paper);border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .lane b.t{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+  .lane.n{border-left-color:var(--lane-n)}.lane.n b.t{color:var(--lane-n)}
+  .lane.e{border-left-color:var(--lane-e)}.lane.e b.t{color:var(--lane-e)}
+  .lane.p{border-left-color:var(--lane-p)}.lane.p b.t{color:var(--lane-p)}
+  .lane.c{border-left-color:var(--lane-c)}.lane.c b.t{color:var(--lane-c)}
+  .out{display:none;margin-top:14px}
+  .sheet{border:1px solid var(--rule);background:var(--paper);padding:16px 18px}
+  .sheet h3{font-family:Fraunces,Georgia,serif;margin:0 0 6px;color:var(--navy)}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;font-size:13px}
+  .sig div{border-top:1px solid #000;padding-top:4px}
+  mark.w{background:var(--wash-gold);color:var(--ink-gold);padding:0 3px;border-radius:3px;font-weight:700;cursor:help}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+  .steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--paper);border:1px solid var(--rule);margin-top:8px;font-size:14.5px}
+  .steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--navy-bg);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+  .steps li b{color:var(--navy)}
+  .tblwrap{overflow-x:auto}
+  @media print{.out{display:block}.onlyscreen{display:none!important}}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font:inherit;font-size:14.5px;font-weight:600;border:1.5px solid var(--rule);background:var(--paper);color:var(--navy);padding:9px 14px;border-radius:999px;cursor:pointer;min-height:42px}
+  .chip[aria-pressed="true"]{background:var(--navy-bg);color:#fff;border-color:var(--navy)}
+
+  .feat{background:var(--paper);border:1px solid var(--rule);padding:16px 18px}
+  .feat video,.shelf video{display:block;width:100%;aspect-ratio:16/9;background:#0D1234;border-radius:6px}
+  .feat .k,.vid .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;display:block;margin:14px 0 4px}
+  .feat h2{font-family:Fraunces,Georgia,serif;font-size:clamp(22px,4vw,30px);letter-spacing:-.01em;margin:0 0 6px;color:var(--navy);line-height:1.1}
+  .feat p{margin:6px 0 12px;max-width:70ch}
+  .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:10px}
+  .vid{background:var(--paper);border:1px solid var(--rule);padding:12px 14px}
+  .vid h3{font-family:Fraunces,Georgia,serif;font-size:18px;margin:0 0 4px;color:var(--navy);line-height:1.15}
+  .vid p{margin:4px 0 10px;font-size:14px;color:var(--muted)}
+  .empty{color:var(--muted);font-size:14.5px}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<header>
+  <div class="head-in">
+    <p class="brand"><a href="index.html">EL PUBLISHING</a> · WATCH · ONE NEW VIDEO A WEEK · FREE</p>
+    <h1>One free tool, <em>two minutes.</em></h1>
+    <p class="tag">Each week, a short video shows one tool from the hub: the problem it solves, what it does, and one move to try tomorrow. On-screen text and music, so it works with the sound off in a staff meeting.</p>
+    <div class="cta"><a class="btn" href="#this-week">This week's video</a><a class="btn ghost" href="#all">Every video</a></div>
+  </div>
+</header>
+<main>
+  <h2 class="sec" id="this-week">This week</h2>
+  <div class="feat" id="feat"><p class="empty">Loading this week's video…</p></div>
+
+  <h2 class="sec" id="all">Every weekly video</h2>
+  <p class="lead">Newest first. Each one ends at the free tool it shows.</p>
+  <div class="shelf" id="shelf"></div>
+
+  <h2 class="sec">More to watch</h2>
+  <div class="shelf">
+    <div class="vid"><video controls preload="none" poster="video/hub-tour-poster.jpg" src="video/hub-tour.mp4"></video><span class="k">Tour</span><h3>The hub tour</h3><p>A quick look around the hub and what is on each shelf.</p><a class="btn sm navy" href="index.html">Open the hub</a></div>
+    <div class="vid"><video controls preload="none" poster="video/el-publishing-60-poster.jpg" src="video/el-publishing-60.mp4"></video><span class="k">60 seconds</span><h3>The 60-second spot</h3><p>Free resources for the teacher who got the student.</p><a class="btn sm navy" href="pd-library.html">The PD Library</a></div>
+  </div>
+
+  <div class="note"><b>Use these freely.</b> Play one at a faculty meeting, a PLC or a new-teacher session. Every video and every tool it shows is free, with no account.</div>
+</main>
+<script>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function card(v,big){
+  return '<video controls preload="'+(big?"metadata":"none")+'" poster="'+esc(v.poster)+'" src="'+esc(v.src)+'"></video>'+
+    '<span class="k">Week '+esc(v.week)+' · '+esc(v.series)+' · '+esc(v.length)+'</span>'+
+    (big?'<h2>'+esc(v.title)+'</h2>':'<h3>'+esc(v.title)+'</h3>')+
+    '<p>'+esc(v.blurb)+'</p>'+
+    '<a class="btn'+(big?'':' sm')+' navy" href="'+esc(v.href)+'">Open '+esc(v.tool)+'</a>';
+}
+fetch("video/weekly.json",{cache:"no-cache"}).then(r=>r.json()).then(list=>{
+  list.sort((a,b)=>b.week-a.week);
+  document.getElementById("feat").innerHTML=card(list[0],true);
+  const rest=list.slice(1);
+  document.getElementById("shelf").innerHTML=rest.length?rest.map(v=>'<div class="vid">'+card(v,false)+'</div>').join(""):'<p class="empty">This is the first one. A new video is added each week.</p>';
+}).catch(()=>{document.getElementById("feat").innerHTML='<p class="empty">The video list could not be loaded. Try again in a moment.</p>';});
+</script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
