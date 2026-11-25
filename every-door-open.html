@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<script>try{document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every Door Open · A Teacher's Field Guide · EL Publishing</title>
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/every-door-open.png">
+<meta name="description" content="Research-backed moves for multilingual learners in English, math, science and social studies. Five moves per subject, the studies behind them, and step-by-step plans.">
+<meta property="og:title" content="Every Door Open · A Teacher's Field Guide">
+<meta property="og:description" content="Five research-backed moves per subject for multilingual learners, with step-by-step plans for your next unit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1E2761;--navy2:#151C4A;--gold:#C9A227;--ivory:#FBF8F0;--ink:#1d2033;--muted:#5b6078;--line:#e6e1d2;
+--ela:#2E6F8E;--math:#B5562F;--sci:#3E7F50;--ss:#7A4F9A;--c:var(--navy)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--ivory);line-height:1.55;font-size:17px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--navy2);color:#fff;border-bottom:2px solid var(--gold)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:54px;overflow-x:auto;scrollbar-width:none}
+.bar .wrap::-webkit-scrollbar{display:none}
+.brand{font-family:Fraunces,serif;font-weight:800;white-space:nowrap;text-decoration:none}
+.brand i{color:var(--gold);font-style:normal}
+.bar nav{display:flex;gap:6px}
+.bar nav a{white-space:nowrap;text-decoration:none;font-size:14px;font-weight:600;padding:6px 11px;border-radius:999px;opacity:.85}
+.bar nav a:hover,.bar nav a.on{opacity:1;background:rgba(255,255,255,.12)}
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:64px 0 56px;overflow:hidden}
+.hero h1{font-size:clamp(52px,10vw,104px);font-weight:800;letter-spacing:-.01em;margin:14px 0 16px}
+.hero .sub{font-family:Fraunces,serif;font-style:italic;font-weight:500;color:var(--gold);font-size:clamp(20px,3vw,27px);max-width:680px;margin:0}
+.rule{width:76px;height:3px;background:var(--gold);margin:26px 0 34px}
+.doors{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,4vw,44px);max-width:720px}
+.door{display:block;text-decoration:none;text-align:center}
+.door .arch{position:relative;aspect-ratio:3/4.2;border-radius:999px 999px 4px 4px;border:3px solid var(--gold);background:var(--d);transition:transform .35s ease, box-shadow .35s}
+.door .arch:after{content:"";position:absolute;right:16%;top:54%;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.door .arch:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,rgba(255,255,255,.18),transparent 55%);opacity:0;transition:opacity .35s}
+.door:hover .arch{transform:perspective(500px) rotateY(-14deg);box-shadow:-10px 10px 30px rgba(0,0,0,.35)}
+.door:hover .arch:before{opacity:1}
+.door span{display:block;margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hero .lead{max-width:560px;margin:34px 0 28px;opacity:.9}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;font-size:15px;border:2px solid var(--gold);cursor:pointer;font-family:inherit}
+.btn.gold{background:var(--gold);color:var(--navy2)}
+.btn.ghost{background:transparent;color:#fff}
+.byline{margin-top:42px;display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;font-size:14px}
+.byline b{display:block;font-size:16px}
+.byline .elp{font-family:Fraunces,serif;font-weight:800;font-size:22px}
+.byline .elp i{color:var(--gold);font-style:normal}
+/* sections */
+section{padding:64px 0;scroll-margin-top:54px}
+.intro h2,.closing h2{font-size:clamp(34px,5vw,48px);color:var(--navy);margin:8px 0 18px}
+.intro p{max-width:720px}
+.callout{background:#fff;border-left:5px solid var(--gold);padding:20px 24px;border-radius:6px;margin:28px 0;box-shadow:0 1px 0 var(--line)}
+.callout h3{font-size:22px;color:var(--navy);margin-bottom:6px}
+.callout p{margin:0;color:var(--muted)}
+.core{display:grid;gap:10px;margin-top:22px;counter-reset:n}
+.core li{list-style:none;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;font-family:Fraunces,serif}
+.core b{color:var(--navy)}
+/* chapter */
+.chapter{border-top:6px solid var(--c)}
+.chapter:nth-of-type(even){background:#fff}
+.chap-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.chap-head .kicker{color:var(--c)}
+.chap-head h2{font-size:clamp(32px,5vw,50px);color:var(--navy);margin:8px 0 6px}
+.chap-head .grades{color:var(--muted);font-style:italic;font-family:Fraunces,serif}
+.mini-door{width:58px;aspect-ratio:3/4.2;border-radius:999px 999px 3px 3px;background:var(--c);border:3px solid var(--gold)}
+.big-idea{margin:26px 0 30px;background:var(--c);color:#fff;border-radius:12px;padding:24px 28px}
+.big-idea h3{font-size:clamp(22px,3vw,28px);margin-bottom:8px}
+.big-idea p{margin:0;opacity:.92}
+.tabs{display:inline-flex;background:rgba(30,39,97,.07);border-radius:999px;padding:4px;margin-bottom:22px}
+.tabs button{border:0;background:transparent;font:600 14px Inter,sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;color:var(--muted)}
+.tabs button[aria-selected=true]{background:var(--c);color:#fff}
+.panel[hidden]{display:none}
+.moves{display:grid;gap:12px}
+.move{display:flex;gap:16px;background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.chapter:nth-of-type(odd) .move,.chapter:nth-of-type(odd) .step{background:#fff}
+.move h4{margin:4px 0 4px;font-size:17px;color:var(--navy)}
+.move p{margin:0;color:var(--muted);font-size:15.5px}
+.label{margin:34px 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--c)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{border-top:4px solid var(--c);background:var(--ivory);padding:18px;border-radius:0 0 10px 10px}
+.chapter:nth-of-type(odd) .stat{background:#fff}
+.stat strong{display:block;font-family:Fraunces,serif;font-size:36px;color:var(--c);line-height:1}
+.stat small{display:block;font-weight:700;margin:6px 0 8px;color:var(--navy)}
+.stat p{margin:0;font-size:14.5px;color:var(--muted)}
+.stat em{display:block;margin-top:8px;font-size:13px;font-style:normal;font-weight:600;color:var(--ink)}
+.sources{margin-top:22px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.step{background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.step h4{display:flex;align-items:center;gap:12px;margin:0 0 10px;font-size:17px;color:var(--navy)}
+.step ol{margin:0;padding-left:20px;font-size:15.5px}
+.step li{margin:4px 0}
+.step li label{cursor:pointer}
+.step input{accent-color:var(--c);margin-right:6px}
+.levels{background:var(--navy);color:#fff;border-color:var(--navy)!important}
+.levels h4{color:var(--gold)!important}
+.levels p{margin:8px 0;font-size:15px}
+.levels b{color:var(--gold)}
+.start{margin-top:18px;display:flex;gap:14px;align-items:flex-start;border:2px dashed var(--c);border-radius:10px;padding:16px 20px}
+.start b{color:var(--c)}
+.start p{margin:0;font-size:15.5px}
+/* closing */
+.closing{background:var(--navy);color:#fff}
+.closing h2{color:#fff}
+.closing .sub{font-family:Fraunces,serif;font-style:italic;color:var(--gold);font-size:20px;margin:0 0 24px}
+.plan{display:grid;gap:10px;max-width:720px;padding:0;margin:0}
+.plan li{list-style:none;display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.07);border-radius:10px;padding:12px 16px}
+.plan .num{background:var(--gold);color:var(--navy2)}
+.support{margin:30px 0;border:2px solid var(--gold);border-radius:12px;padding:20px 24px;max-width:720px}
+.support h3{color:var(--gold);font-size:22px;margin-bottom:6px}
+.support p{margin:0;opacity:.9}
+.srcs dt{font-weight:700;color:var(--gold);margin-top:12px}
+.srcs dd{margin:2px 0 0;opacity:.85;font-size:15px}
+.note{font-size:14px;opacity:.75;margin-top:20px}
+footer{background:var(--navy2);color:rgba(255,255,255,.8);font-size:14px;padding:26px 0;text-align:center}
+footer .elp{font-family:Fraunces,serif;font-weight:800;color:#fff;font-size:18px}
+footer .elp i{color:var(--gold);font-style:normal}
+/* responsive */
+@media (max-width:760px){
+ body{font-size:16px}
+ .steps,.stats{grid-template-columns:1fr}
+ .mini-door{display:none}
+ .chap-head{grid-template-columns:1fr}
+ section{padding:48px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{
+ .bar,.btns,.tabs{display:none!important}
+ .panel[hidden]{display:block!important}
+ body{background:#fff;font-size:12pt}
+ .hero,.closing,.big-idea,.levels{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ section{break-before:page;padding:24px 0}
+ .step,.move,.stat{break-inside:avoid}
+}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+
+<header class="bar">
+ <div class="wrap">
+  <nav aria-label="Chapters">
+   <a href="#intro">Start here</a>
+   <a href="#english">English</a>
+   <a href="#math">Math</a>
+   <a href="#science">Science</a>
+   <a href="#social-studies">Social Studies</a>
+   <a href="#monday">Start Monday</a>
+  </nav>
+ </div>
+</header>
+
+<div class="hero" id="top">
+ <div class="wrap">
+  <div class="kicker">A Teacher's Field Guide · EL Publishing</div>
+  <h1>Every Door<br>Open</h1>
+  <p class="sub">Research-backed moves for multilingual learners in English, math, science and social studies</p>
+  <div class="rule"></div>
+  <div class="doors">
+   <a class="door" href="#english" style="--d:var(--ela)"><div class="arch"></div><span>English</span></a>
+   <a class="door" href="#math" style="--d:var(--math)"><div class="arch"></div><span>Math</span></a>
+   <a class="door" href="#science" style="--d:var(--sci)"><div class="arch"></div><span>Science</span></a>
+   <a class="door" href="#social-studies" style="--d:var(--ss)"><div class="arch"></div><span>Social Studies</span></a>
+  </div>
+  <p class="lead">Five moves per subject, the studies behind them, and step-by-step plans you can use in your next unit. Tap a door to begin.</p>
+  <div class="btns">
+   <a class="btn gold" href="every-door-open.pdf" download>⬇ Download the free PDF</a>
+   <button class="btn ghost" onclick="window.print()">🖨 Print this page</button>
+  </div>
+  <div class="byline">
+   <div><b>Richard A. Daniel, M.Ed.</b>EL Specialist · Laurel, Mississippi</div>
+   <div class="elp">EL <i>Publishing</i></div>
+  </div>
+ </div>
+</div>
+
+<section class="intro" id="intro">
+ <div class="wrap">
+  <div class="kicker">Introduction</div>
+  <h2>How to Use This Book</h2>
+  <p>Multilingual learners spend most of their day in English, math, science and social studies classes. This guide gathers what the research says works in each of those rooms and turns it into steps a teacher can use on Monday.</p>
+  <p>Each chapter has two parts. <b>The research</b> names five moves and the studies behind them. <b>Teacher steps</b> breaks each move into four actions, with supports for each language level.</p>
+  <div class="callout">
+   <h3>Students don't need to finish learning English first.</h3>
+   <p>The National Academies found that language and content grow together. Holding back grade-level content until English is "ready" slows both down.</p>
+  </div>
+  <div class="label" style="color:var(--navy)">The moves that show up in every chapter</div>
+  <ol class="core" id="core"></ol>
+ </div>
+</section>
+
+<main id="chapters"></main>
+
+<section class="closing" id="monday">
+ <div class="wrap">
+  <div class="kicker">Closing</div>
+  <h2>Start Monday</h2>
+  <p class="sub">A two-week plan and every source in this book</p>
+  <ol class="plan">
+   <li><span class="num">1</span>Choose one subject chapter and one move.</li>
+   <li><span class="num">2</span>Plan the four steps into your next lesson.</li>
+   <li><span class="num">3</span>Add the support for each language level in your room.</li>
+   <li><span class="num">4</span>Use the same move every day for two weeks.</li>
+   <li><span class="num">5</span>Check exit tickets, then add a second move.</li>
+  </ol>
+  <div class="support">
+   <h3>Want support with your classes?</h3>
+   <p>Ask your EL specialist to co-plan a unit, model a move in your room, or help set up leveled frames for your students.</p>
+  </div>
+  <div class="kicker" style="margin-top:34px">Sources</div>
+  <dl class="srcs">
+   <dt>English</dt><dd>Kim, Olson et al. (2011); Olson et al. (2012) Pathway Project; IES What Works Clearinghouse (2014), <i>Teaching Academic Content and Literacy to English Learners</i>.</dd>
+   <dt>Math</dt><dd>Zwiers et al. (2017), Stanford Understanding Language/SCALE Mathematical Language Routines; Moschkovich (2013, 2015); Education Week (2025) on NAEP 2024.</dd>
+   <dt>Science</dt><dd>Llosa, Lee et al. (2016), AERJ; Lee, Llosa et al. (2016), JRST; Okhee Lee, NYSED science and language briefs.</dd>
+   <dt>Social Studies</dt><dd>Vaughn et al. (2017), PACT; Meadows Center; CSEL WorldGen; Relyea et al. (2024); Yoder, Kibler &amp; van Hover (2016); Szpara &amp; Ahmad; William &amp; Mary; WIDA; Edutopia.</dd>
+   <dt>All subjects</dt><dd>National Academies of Sciences, Engineering, and Medicine (2018), <i>English Learners in STEM Subjects</i>.</dd>
+  </dl>
+  <p class="note">Teacher steps are the author's classroom adaptations of the research, not procedures taken from the studies.</p>
+  <div class="btns" style="margin-top:24px"><a class="btn gold" href="every-door-open.pdf" download>⬇ Download the free PDF</a></div>
+ </div>
+</section>
+
+<footer>
+ <div class="elp">EL <i>Publishing</i></div>
+ © 2026 Richard A. Daniel, M.Ed. · EL Publishing. Free to share with teachers for classroom and PD use.<br><a href="series-pd.html">More in the PD Library</a> · <a href="index.html">All EL Publishing resources →</a>
+</footer>
+
+<script>
+const CORE=[
+ ["Teach a few key words deeply.","Pick 4–6 words and teach them over several days with visuals and use."],
+ ["Make talk structured.","Partners, roles and sentence frames in every lesson."],
+ ["Show it, don't just say it.","Video, images, objects, drawings and models."],
+ ["Write a little every day.","Frames and models that fade as students grow."],
+ ["Never lower the content.","Grade-level ideas with more support, not less thinking."]
+];
+const START="Pick one move this week and use it every day. Add a second next week. Routines used daily for weeks are what the studies tested, so consistency beats doing all five at once.";
+const CH=[
+{id:"english",color:"var(--ela)",n:1,kicker:"Chapter 1 · English Language Arts",title:"English: Reading and Writing About Text",grades:"What the research says works in grades 6–12",
+ big:["Keep the hard text. Build the bridge to it.","Multilingual learners can analyze grade-level literature when teachers make expert reading and writing strategies visible and give daily practice talking and writing about text."],
+ moves:[["Build background before the text","Short visuals or video, a link to students' own lives and a preview of the few words the text depends on."],
+  ["Teach the strategies expert readers use","Model and name predicting, questioning, visualizing and summarizing with a think-aloud, then let students try them."],
+  ["Talk before you write","Structured partner talk with roles and sentence frames lets students rehearse ideas about the text out loud first."],
+  ["Write about text every week","Show a model essay, give a paragraph frame, and have students revise with feedback. Writing practice is regular and structured."],
+  ["Small groups for students who need more","Short, targeted small-group lessons on reading and language for students who are not yet keeping up."]],
+ stats:[["103","secondary English teachers","were randomly assigned in a trial of the Pathway Project. Its cognitive strategies approach improved ELs' text-based analytical writing.","Kim et al., 2011"],
+  ["Scaled up","a larger multisite trial","with National Writing Project partner districts tested the same approach with ELs in more places.","Olson et al."],
+  ["4 recs","from the federal What Works guide","Intensive vocabulary, talk in content, structured writing, small-group support.","IES, 2014"]],
+ sources:"Kim, Olson et al. (2011), Pathway Project; Olson et al. (2012), Pathway to Academic Success scale-up; IES What Works Clearinghouse practice guide, Teaching Academic Content and Literacy to English Learners (2014).",
+ steps:[["Build background",["Show a 2-minute clip or a set of images tied to the text.","Quick-write: \"Have you ever…?\" linked to the theme.","Preteach 4–6 key words with a picture and a simple definition.","Preview how the text is organized."]],
+  ["Model a reading strategy",["Pick one strategy for the week.","Think aloud on the first paragraph.","Partners try it on the next paragraph.","Post starters: \"I predict…\", \"I'm wondering…\"."]],
+  ["Talk first",["Ask one text-based question.","Think-Pair-Share with a sentence frame.","Students rehearse their answer out loud.","Then they write the answer they just said."]],
+  ["Write every week",["Show a model paragraph. Mark claim, evidence and commentary.","Give a paragraph frame to start.","Students draft, then revise one part.","Conference briefly with a few students each day."]],
+  ["Small groups",["Use exit tickets to find who needs more.","Meet 3–5 students for 15–20 minutes.","Reread, review key words, build sentences.","Repeat 3–4 times a week, then regroup."]]],
+ levels:["Picture glossary, home language allowed, fill-in frames.","Full sentence frames, partner rehearsal before writing.","Open frames, add a counterclaim, cite two quotes."],
+ adapted:"Steps adapted from the Pathway Project and the IES practice guide (2014)."},
+{id:"math",color:"var(--math)",n:2,kicker:"Chapter 2 · Mathematics",title:"Math: The Language of Reasoning",grades:"What the research says works in grades 6–12",
+ big:["Language is part of the math. Teach both at once.","Students learn math by reading, talking and writing about it. Keep tasks rigorous and add short routines that build the language of reasoning alongside the math."],
+ moves:[["Three Reads for word problems","Read once for the story, once for the quantities, once for the question, so language never blocks the math."],
+  ["Show it many ways","Drawings, tables, graphs, objects and gestures all count as math talk. Connect each one back to the symbols."],
+  ["Collect and display student language","Record the words students actually use, then connect them to the formal math terms on a class display."],
+  ["Stronger and Clearer Each Time","Students explain their thinking to several partners in turn and revise the explanation after each one."],
+  ["Critique, Correct, Clarify","Students study a flawed solution, find the error, fix it, and explain the fix in writing."]],
+ stats:[["77%","of 8th-grade ELs scored below basic","in math on NAEP 2024, while former ELs nearly matched native speakers.","Education Week, 2025"],
+  ["8 routines","Stanford's Mathematical Language Routines","build math and language together and are built into widely used curricula.","Zwiers et al., 2017"],
+  ["Not later","ELs do not need full English","before rigorous STEM. Language and content grow together, so access comes first.","NASEM, 2018"]],
+ sources:"Zwiers et al. (2017), Principles for the Design of Mathematics Curricula, Stanford Understanding Language/SCALE; National Academies (2018), English Learners in STEM Subjects; Moschkovich (2013, 2015); Education Week (2025) on NAEP 2024.",
+ steps:[["Three Reads",["Read 1 aloud: students retell the story with no numbers.","Read 2: list the quantities and their units.","Read 3: name the question being asked.","Now students choose a strategy and solve."]],
+  ["Show it many ways",["Offer objects, grid paper and drawing space.","Ask for two representations of each answer.","Ask: \"Where is the 3 in your drawing?\"","Post a chart linking pictures to symbols."]],
+  ["Collect and display",["Listen in on groups and write their exact words.","Add the formal term beside each phrase.","Point back to the display during the lesson.","Students use it when they write explanations."]],
+  ["Stronger and Clearer",["Students write a first-draft explanation.","Meet 2–3 partners; each asks one question.","Revise the explanation after each meeting.","Compare first and final drafts."]],
+  ["Critique, Correct, Clarify",["Show a solution with one common error.","Partners find the mistake.","Rewrite the solution correctly.","Explain: \"The mistake was… because…\"."]]],
+ levels:["Visuals, objects, home language talk, word bank.","Sentence frames for explaining, partner rehearsal.","Justify in full sentences, compare two methods."],
+ adapted:"Steps adapted from Stanford Understanding Language/SCALE Mathematical Language Routines (Zwiers et al., 2017) and the National Academies (2018)."},
+{id:"science",color:"var(--sci)",n:3,kicker:"Chapter 3 · Science",title:"Science: Doing Science Is Doing Language",grades:"What the research says works across the grades",
+ big:["Keep the investigation. Put language inside it.","Hands-on science gives multilingual learners a real reason to talk, read and write. Keep grade-level phenomena and build language support into the lab itself."],
+ moves:[["Start with a phenomenon","Show a puzzling event in a short video or demo. Students notice and wonder before any reading or vocabulary."],
+  ["Investigate in teams","Hands-on investigations with assigned roles, where talking with teammates is part of the task."],
+  ["Use home language and cognates","Give key terms in students' home languages and point out cognates like energy and energía."],
+  ["Model it with drawings","Students draw and label models of what is happening, then revise them as they gather evidence."],
+  ["Argue from evidence","Claim-evidence-reasoning frames help students turn data into a spoken and written argument."]],
+ stats:[["66 schools","in a randomized trial of P-SELL","a 5th-grade science curriculum built for ELLs. Its schools beat control schools on science tests.","Llosa et al., 2016"],
+  ["219","5th-grade teachers in the same trial","P-SELL improved their science knowledge, language strategies and home-language use.","Lee et al., 2016"],
+  ["Not later","ELs do not need full English","before rigorous STEM. Waiting for English cuts them off from grade-level science.","NASEM, 2018"]],
+ sources:"Llosa, Lee et al. (2016), American Educational Research Journal; Lee, Llosa et al. (2016), Journal of Research in Science Teaching; National Academies (2018), English Learners in STEM Subjects; Okhee Lee, NYSED science and language briefs.",
+ steps:[["Start with a phenomenon",["Show a 1-minute video or demo, first with no words.","Students sketch what they saw.","Fill a Notice/Wonder chart with frames.","Post the driving question for the unit."]],
+  ["Investigate in teams",["Form groups of 3–4 across language levels.","Roles: materials, recorder, timer, reporter.","Use a procedure with pictures for each step.","Stop to talk after each step."]],
+  ["Home language and cognates",["List cognates: cell/célula, energy/energía.","Let teams discuss in home language, report in English.","Keep a bilingual glossary for the unit.","Seat same-language partners together early on."]],
+  ["Model it",["Students draw a first model of the phenomenon.","Label it using the word bank.","Revise the model after collecting data.","Gallery walk to compare models."]],
+  ["Argue from evidence",["Post claim, evidence and reasoning frames.","Teams draft the argument out loud.","Each student writes it independently.","Peer-check with a short checklist."]]],
+ levels:["Pictures, demos, home language, labeled diagrams.","Frames for observations and claims, partner rehearsal.","Write full CER with two pieces of data."],
+ adapted:"Steps adapted from P-SELL (Llosa, Lee et al., 2016), Okhee Lee's science and language work, and the National Academies (2018)."},
+{id:"social-studies",color:"var(--ss)",n:4,kicker:"Chapter 4 · Social Studies",title:"Social Studies: History Everyone Can Reach",grades:"What the research says works in grades 6–12",
+ big:["Don't water it down. Scaffold it up.","Keep the grade-level history and thinking. Add visuals, vocabulary and frames, and have students Speak, Write, Interact, Read and Listen (SWIRL) about the content every day."],
+ moves:[["Hook the unit with a big question, video and visuals","Open with a short video, images and a graphic organizer that frame the unit before students read. PACT calls this the Comprehension Canopy."],
+  ["Teach a few essential words, all unit long","Pick the terms the unit depends on. Teach them with a visual, a student-friendly definition and examples, then use them every day."],
+  ["Read and talk in structured teams","Pair students across proficiency levels with clear roles. Teams read short texts, answer, and get quick feedback."],
+  ["See It, Name It, Prove It with primary sources","Students observe a photo, map or document, state its central idea, then cite evidence. Historical thinking made visible."],
+  ["Debate a compelling question, then write with frames","Connect history to students' lives through a debatable question. Frames and content words turn the talk into argument writing."]],
+ stats:[["1,629","8th graders in a randomized trial of PACT","about 27% ELs. ELs and non-ELs both gained in content knowledge and reading.","Vaughn et al., 2017"],
+  ["12 weeks","of daily vocabulary, video, pairing and organizers","in 7th grade led to significant gains, ELs included.","Meadows Center"],
+  ["2 studies","of debate-driven units with team roles","found better access to content for multilingual learners.","CSEL WorldGen"]],
+ sources:"Vaughn et al. (2017), PACT; Meadows Center for Preventing Educational Risk; CSEL WorldGen; Relyea et al. (2024); Yoder, Kibler & van Hover (2016); Szpara & Ahmad; William & Mary School of Education; WIDA; Edutopia.",
+ steps:[["Hook the unit",["Write one big question the whole unit will answer.","Show a short captioned video. Pause on key ideas.","Hand out a partly filled graphic organizer.","Return to the question and organizer each day."]],
+  ["Teach essential words",["Choose 4–6 words the unit cannot work without.","Show each with a picture, definition and example.","Students say it, write it, use it in a frame.","Use the words in every warm-up and exit ticket."]],
+  ["Read and talk in teams",["Pair a stronger reader with a developing one.","Roles: reader, summarizer, questioner, recorder.","Chunk a short text with stop-and-talk questions.","Close with a team quiz and quick feedback."]],
+  ["See It, Name It, Prove It",["Project one photo, map or short document.","See It: list details. \"I notice…\"","Name It: the central idea. \"This source shows…\"","Prove It: cite evidence. \"I know because…\""]],
+  ["Debate, then write",["Post a debatable question tied to students' lives.","Teams gather evidence for each side on a T-chart.","Debate with frames: \"I agree with ___ because ___.\"","Write a claim, evidence and reasoning paragraph."]]],
+ levels:["Visuals, word bank, home language allowed, fill-in frames.","Full sentence frames, partner rehearsal before sharing.","Open frames, add a counterclaim, cite two sources."],
+ adapted:"Steps adapted from PACT (Vaughn et al., 2017), Meadows Center, CSEL WorldGen, William & Mary, WIDA and Edutopia."}
+];
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+document.getElementById("core").innerHTML=CORE.map((m,i)=>`<li><span class="num">${i+1}</span><div><b>${m[0]}</b> ${m[1]}</div></li>`).join("");
+document.getElementById("chapters").innerHTML=CH.map(c=>`
+<section class="chapter" id="${c.id}" style="--c:${c.color}">
+ <div class="wrap">
+  <div class="chap-head"><div><div class="kicker">${c.kicker}</div><h2>${c.title}</h2><div class="grades">${c.grades}</div></div><div class="mini-door"></div></div>
+  <div class="big-idea"><h3>${c.big[0]}</h3><p>${c.big[1]}</p></div>
+  <div class="tabs" role="tablist">
+   <button role="tab" aria-selected="true" aria-controls="${c.id}-r" id="${c.id}-rt">The research</button>
+   <button role="tab" aria-selected="false" aria-controls="${c.id}-s" id="${c.id}-st">Teacher steps</button>
+  </div>
+  <div class="panel" id="${c.id}-r" role="tabpanel" aria-labelledby="${c.id}-rt">
+   <div class="label">Five research-backed moves</div>
+   <div class="moves">${c.moves.map((m,i)=>`<div class="move"><span class="num">${i+1}</span><div><h4>${m[0]}</h4><p>${m[1]}</p></div></div>`).join("")}</div>
+   <div class="label">The evidence</div>
+   <div class="stats">${c.stats.map(s=>`<div class="stat"><strong>${s[0]}</strong><small>${s[1]}</small><p>${s[2]}</p><em>${s[3]}</em></div>`).join("")}</div>
+   <p class="sources"><b>Sources:</b> ${esc(c.sources)}</p>
+  </div>
+  <div class="panel" id="${c.id}-s" role="tabpanel" aria-labelledby="${c.id}-st" hidden>
+   <div class="label">What to do, step by step, in your next unit</div>
+   <div class="steps">${c.steps.map((s,i)=>`<div class="step"><h4><span class="num">${i+1}</span>${s[0]}</h4><ol>${s[1].map((x,j)=>`<li><label><input type="checkbox" data-k="${c.id}-${i}-${j}">${esc(x)}</label></li>`).join("")}</ol></div>`).join("")}
+    <div class="step levels"><h4>Adjust the support by level</h4>
+     <p><b>Emerging (1–2):</b> ${c.levels[0]}</p><p><b>Progressing (3–4):</b> ${c.levels[1]}</p><p><b>Ready to exit:</b> ${c.levels[2]}</p></div>
+   </div>
+   <div class="start"><span class="num">★</span><p><b>Start small.</b> ${START}</p></div>
+   <p class="sources">${c.adapted} Compiled by Richard A. Daniel, M.Ed. Tick the boxes as you plan; they stay on this device.</p>
+  </div>
+ </div>
+</section>`).join("");
+
+// tabs
+document.querySelectorAll(".tabs").forEach(t=>{
+ const btns=[...t.querySelectorAll("button")];
+ btns.forEach(b=>b.addEventListener("click",()=>{
+  btns.forEach(x=>{const on=x===b;x.setAttribute("aria-selected",on);document.getElementById(x.getAttribute("aria-controls")).hidden=!on;});
+ }));
+});
+// checklist memory (best effort)
+let saved={};try{saved=JSON.parse(localStorage.getItem("edo-checks")||"{}")}catch(e){}
+document.querySelectorAll("input[data-k]").forEach(cb=>{
+ cb.checked=!!saved[cb.dataset.k];
+ cb.addEventListener("change",()=>{saved[cb.dataset.k]=cb.checked;try{localStorage.setItem("edo-checks",JSON.stringify(saved))}catch(e){}});
+});
+// active nav
+const links=[...document.querySelectorAll(".bar nav a")];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>io.observe(s));
+</script>
+<script src="guide.js" defer></script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
