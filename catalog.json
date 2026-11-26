@@ -49,7 +49,7 @@
   "o": "Every piece of professional learning on the hub: the self-paced module, the taught session, the podcast, the book study, the literacy guide.",
   "f": "Series · 60+ pieces",
   "g": "Every classroom teacher",
-  "k": "Every piece of professional learning on the hub: Every Teacher Is a Language Teacher (self-paced, six sections, fits a department meeting), The Session with Elena (Emerging and Progressing, taught), the Every Teacher podcast, Fifty Strategies, One Semester (a PLC book study), Improving Adolescent Literacy in plain English, five classroom posters from the best of Language Magazine (Nov 2026), and the PD Library index of 54 more pieces by grade and level.",
+  "k": "Every piece of professional learning on the hub: Every Teacher Is a Language Teacher (self-paced, six sections, fits a department meeting), The Session with Elena (Emerging and Progressing, taught), the Every Teacher podcast, Fifty Strategies, One Semester (a PLC book study), Improving Adolescent Literacy in plain English, five classroom posters from the best of Language Magazine (Nov 2026), the EL PD Bookshelf (142 outside books, courses, webinars and podcasts by grade, 103 free), and the PD Library index of 54 more pieces by grade and level.",
   "th": "",
   "pin": "",
   "new": ""
@@ -823,6 +823,17 @@
   "th": "thumbs/every-door-open.jpg",
   "pin": "2026-12-02",
   "new": "2026-11-25"
+ },
+ {
+  "u": "el-pd-bookshelf.html",
+  "t": "The EL PD Bookshelf: 142 Resources, K–12",
+  "o": "Books, courses, webinars and podcasts for teaching ELs, sorted by grade; 103 are free.",
+  "f": "Resource library · 142 resources · 103 free",
+  "g": "Every classroom teacher",
+  "k": "The EL PD Bookshelf: 142 professional development resources from outside the hub for teaching English learners, sorted for elementary (K–5), middle (6–8) and high school (9–12) teachers and district leaders; 103 are free. Every resource is a book on an animated shelf (a gold band marks the free ones). Filter by grade, Free only, type (books, courses, webinars and video, podcasts, toolkits, research briefs, classroom materials, policy and compliance) or search. Start-here picks include the Council of the Great City Schools foundational literacy framework for ELs, the Indiana science of reading companion guide, Illustrative Mathematics language routines, the federal Newcomer Toolkit, CAL webinars on reading screeners and EL civil rights, and books by DeCapua and Marshall, Huynh and Skelton, Staehr Fenner and Snyder, and Cárdenas-Hagan. Includes a Federal watch on rescinded and at-risk federal EL guidance after 2025–2026 and a four-tier district PD plan. Research current as of November 2026. Also at radan55.github.io/Stirmpdlibrary. Professional development, PD, book study, free courses, webinars, podcasts, newcomers, SLIFE, long-term ELs, science of reading, co-teaching, Title III.",
+  "th": "thumbs/el-pd-bookshelf.jpg",
+  "pin": "2026-12-03",
+  "new": "2026-11-26"
  },
  {
   "u": "play-it-forward.html",
