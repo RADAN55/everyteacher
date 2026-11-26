@@ -1,11 +1,11 @@
 {
-"updated": "2026-11-25T20:10+00:00",
+"updated": "2026-11-26T19:48+00:00",
 "keep_days": 30,
 "sources": [
 {
 "source": "Colorín Colorado",
 "ok": true,
-"items": 2
+"items": 3
 },
 {
 "source": "Larry Ferlazzo",
@@ -69,10 +69,64 @@
 }
 ],
 "counts": {
-"el": 74,
+"el": 80,
 "gen": 236
 },
 "items": [
+{
+"title": "This Week’s Free & Useful Artificial Intelligence Tools For The Classroom",
+"link": "https://larryferlazzo.edublogs.org/2026/11/26/this-weeks-free-useful-artificial-intelligence-tools-for-the-classroom-174/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-26",
+"summary": "At least, for now, I’m going to make this a weekly feature which will highlight additions to THE BEST NEW – & FREE – ARTIFICIAL INTELLIGENCE TOOLS THAT COULD BE USED IN THE CLASSROOM: Quizmeter is another AI-powered Wayground/Kahoot-like tool. I’m adding it to The Best Websites For Creating Online Learning Games. Expla",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Texas Sports Academy, Tied to AI-Driven Alpha School, is Texas’ Biggest Voucher Recipient So Far",
+"link": "https://www.the74million.org/article/texas-sports-academy-tied-to-ai-driven-alpha-school-is-texas-biggest-voucher-recipient-so-far/",
+"source": "The 74",
+"date": "2026-11-26",
+"summary": "The biggest recipient of Texas’ new school voucher program so far is a sports academy connected to Alpha School, the artificial intelligence-driven private school chain that the state’s education board rejected for a charter school last year. Texas Sports Academy, which calls itself an “elite sports academy built for s",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Sentences Of The Week",
+"link": "https://larryferlazzo.edublogs.org/2026/11/26/sentences-of-the-week-46/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-26",
+"summary": "I thought readers might, or might not, find this new regular post useful. Each week, I highlight several sentences, with links to their sources, that I find interesting/concerning/useful. And they may, or may not, be directly connected to education. I may also include my own comments or related links. This regular post",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Interesting Video: “In What Order Was the World Discovered?”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/26/interesting-video-in-what-order-was-the-world-discovered/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-26",
+"summary": "This was a pretty interesting video:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "A Proven Way to Keep Teachers in Needy Schools is Losing Ground",
+"link": "https://www.the74million.org/article/a-proven-way-to-keep-teachers-in-needy-schools-is-losing-ground/",
+"source": "The 74",
+"date": "2026-11-26",
+"summary": "States and school districts all across the country face the same problem: Teachers are far more likely to leave high-poverty schools, creating constant churn that hurts students from low-income families. This pattern shows up literally everywhere I can find data: Alaska, Florida, Missouri, New York City, Pennsylvania, ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "A Look Back: I Really Like This New (To Me) Strategy I’ve Been Trying This Year To Encourage Student Intrinsic Motivation",
+"link": "https://larryferlazzo.edublogs.org/2026/11/26/a-look-back-i-really-like-this-new-to-me-strategy-ive-been-trying-this-year-to-encourage-student-intrinsic-motivation-2/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-26",
+"summary": "For the next several months, each week I’ll be republishing posts from the past that I think readers might still find useful. This post first appeared in 2018. I’m always searching for, and trying, new classroom management and student motivation ideas – you never know which one will work with which student. I’ve got […",
+"bucket": "el",
+"ms": false
+},
 {
 "title": "Why Kindergarten Shouldn’t Feel Like Starting Over",
 "link": "https://www.edsurge.com/news/why-kindergarten-shouldnt-feel-like-starting-over",
@@ -128,6 +182,15 @@
 "ms": false
 },
 {
+"title": "Recount requested in Chicago school board race to represent downtown",
+"link": "https://www.chalkbeat.org/chicago/2026/11/25/thotakura-files-petition-for-recount-in-school-board-race/",
+"source": "Chalkbeat",
+"date": "2026-11-25",
+"summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Chicago school board member Anusha Thotakura is seeking a recount in her race to represent a downtown school board dist",
+"bucket": "el",
+"ms": false
+},
+{
 "title": "Parents fought off an AI high school in Lower Manhattan. Now their middle school is expanding instead.",
 "link": "https://www.chalkbeat.org/newyork/2026/11/25/lower-manhattan-community-school-high-school-expansion-proposal/",
 "source": "Chalkbeat",
@@ -161,6 +224,15 @@
 "date": "2026-11-25",
 "summary": "Did you know search engines like Google are changing the way you see news? Keep Chalkbeat’s valuable education coverage at the top of your feeds by clicking here and checking the box next to our name. Colten Roberto discovered a different way to learn when he stepped into a welding class at Byington-Solway Technology C",
 "bucket": "gen",
+"ms": false
+},
+{
+"title": "Getting to Know Your ELLs' Literacy Background",
+"link": "https://www.colorincolorado.org/slide/getting-know-your-ells-literacy-background",
+"source": "Colorín Colorado",
+"date": "2026-11-25",
+"summary": "Link See article Image",
+"bucket": "el",
 "ms": false
 },
 {
@@ -2842,24 +2914,6 @@
 "source": "The Conversation — Education",
 "date": "2026-10-27",
 "summary": "Certified librarians can help boost students’ reading and technological skills but aren’t required in Michigan public schools.",
-"bucket": "gen",
-"ms": false
-},
-{
-"title": "Spending in-person time with friends is the biggest predictor of whether college students flourish",
-"link": "https://theconversation.com/spending-in-person-time-with-friends-is-the-biggest-predictor-of-whether-college-students-flourish-293908",
-"source": "The Conversation — Education",
-"date": "2026-10-26",
-"summary": "Helping young people thrive involves supporting healthy relationships, as well as being engaged in work, school and family life.",
-"bucket": "gen",
-"ms": false
-},
-{
-"title": "An Audit Finds Serious Flaws in Research on AI in Education",
-"link": "https://ww2.kqed.org/mindshift/2026/10/26/an-audit-finds-serious-flaws-in-research-on-ai-in-education/",
-"source": "KQED MindShift",
-"date": "2026-10-26",
-"summary": "‘Anybody can sort of say that they have evidence for anything,’ a top scholar says.",
 "bucket": "gen",
 "ms": false
 }
