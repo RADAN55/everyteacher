@@ -169,7 +169,7 @@ R = [
   "The federal reading guide's five moves, on one folded sheet any teacher can use.", False),
  ("every-door-open.html", "Every Door Open: A Teacher's Field Guide", "classroom", "Field guide", "11 pages · web + PDF",
   "Five research-backed moves each for English, math, science and social studies, with step-by-step plans.", False),
- ("https://radan55.github.io/stormmanyvoices/", "Many Voices Academy: Tour the 3D Campus", "classroom", "3D campus", "24 rooms · 260+ resources",
+ ("https://radan55.github.io/stormmanyvoices/", "Many Voices Academy: Tour the 3D Campus", "classroom", "3D campus", "25 rooms · 290+ resources",
   "Spin a 3D school, walk into any room, and open every EL Publishing resource.", False),
  ("el-pd-bookshelf.html", "The EL PD Bookshelf: 142 Resources, K–12", "classroom", "Resource library", "142 resources · 103 free",
   "Books, courses, webinars and podcasts for teaching ELs, sorted by grade; 103 are free.", False),
