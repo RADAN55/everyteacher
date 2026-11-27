@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-26T19:48+00:00",
+"updated": "2026-11-27T19:39+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -69,10 +69,64 @@
 }
 ],
 "counts": {
-"el": 80,
-"gen": 236
+"el": 83,
+"gen": 239
 },
 "items": [
+{
+"title": "“Teachers Can Do Their Own Research. Here’s How”",
+"link": "https://larryferlazzo.edublogs.org/2026/11/27/teachers-can-do-their-own-research-heres-how/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-27",
+"summary": "Teachers Can Do Their Own Research. Here’s How is the headline of one of my recent Education Week columns. The one-way street between teachers and research often doesn’t leave much room for their input. Here are some excerpts:",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "“Geozy” Shows How The Borders Of Countries Have Changed Over 5,000 Years",
+"link": "https://larryferlazzo.edublogs.org/2026/11/27/geozy-shows-how-the-borders-of-countries-have-changed-over-5000-years/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-27",
+"summary": "Geozy is an intriguing tool – click on a country, press play, and it will show you how the borders in that areas have changed over thousands of years. It will also give you data about the present-day country. I’m adding it to The Best Websites For Learning & Teaching Geography.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "The Best Resources For Learning About The Principle Of Subsidiarity & What It Means For Schools",
+"link": "https://larryferlazzo.edublogs.org/2026/11/27/the-best-resources-for-learning-about-the-principle-of-subsidiarity-what-i-means-for-schools/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-27",
+"summary": "We talked a lot about the principle of subsidiarity when I was a community organizer, and I’ve periodically written posts here about applying it to schools. It basically means that the people who are most affected by problems often tend to have some of the best ideas on how to solve them. I asked […]",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Screen-free tweens try their hand at Dungeons & Dragons",
+"link": "https://www.npr.org/2026/11/27/nx-s1-6042445/screen-free-tweens-try-their-hand-at-dungeons-dragons",
+"source": "NPR Education",
+"date": "2026-11-27",
+"summary": "Some parents, fed up with screens, have found an analog oasis in the role-playing game invented in the 1970s.",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Opinion: Behind the Teacher Recruitment and Retention Problem Is a Crisis of Mattering",
+"link": "https://www.the74million.org/article/behind-the-teacher-recruitment-and-retention-problem-is-a-crisis-of-mattering/",
+"source": "The 74",
+"date": "2026-11-27",
+"summary": "Across the country, schools struggle to recruit and retain talented teachers. These challenges are often described as a staffing problem. But new Gallup research points to a deeper issue: Too many educators question whether they matter to the communities they serve. Mattering is the fundamental human need to feel value",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "New Mexico Education Advocates, Lawmakers Oppose Federal Education Tax Credit",
+"link": "https://www.the74million.org/article/new-mexico-education-advocates-lawmakers-oppose-federal-education-tax-credit/",
+"source": "The 74",
+"date": "2026-11-27",
+"summary": "New Mexico education advocates, teachers union representatives and a state lawmaker on Tuesday held a news conference to decry the state’s participation in a controversial federal education tax credit. The Federal Scholarship Tax Credit program, established in President Trump’s One Big Beautiful Bill Act enacted last y",
+"bucket": "gen",
+"ms": false
+},
 {
 "title": "This Week’s Free & Useful Artificial Intelligence Tools For The Classroom",
 "link": "https://larryferlazzo.edublogs.org/2026/11/26/this-weeks-free-useful-artificial-intelligence-tools-for-the-classroom-174/",
@@ -98,6 +152,15 @@
 "date": "2026-11-26",
 "summary": "I thought readers might, or might not, find this new regular post useful. Each week, I highlight several sentences, with links to their sources, that I find interesting/concerning/useful. And they may, or may not, be directly connected to education. I may also include my own comments or related links. This regular post",
 "bucket": "el",
+"ms": false
+},
+{
+"title": "John A. Peoples Jr., beloved former Jackson State president, dies at 100",
+"link": "https://mississippitoday.org/2026/11/26/john-a-peoples-jr-beloved-former-jackson-state-president-dies-at-100/?utm_medium=rss",
+"source": "Mississippi Today — Education",
+"date": "2026-11-26",
+"summary": "John A. Peoples Jr., who was the sixth president of Jackson State University, serving from 1967-1984, died Thursday. He had celebrated his 100th birthday in August.",
+"bucket": "gen",
 "ms": false
 },
 {
@@ -2906,15 +2969,6 @@
 "date": "2026-10-28",
 "summary": "Douglas Fisher and Nancy Frey create conditions where all students can progress from participation to ownership Walk into a busy classroom and you may see students participating in very different ways. One student eagerly contributes to a discussion. Another listens carefully but says little. A third speaks animatedly ",
 "bucket": "el",
-"ms": false
-},
-{
-"title": "School librarians are vanishing from Michigan schools just when they are needed most",
-"link": "https://theconversation.com/school-librarians-are-vanishing-from-michigan-schools-just-when-they-are-needed-most-291339",
-"source": "The Conversation — Education",
-"date": "2026-10-27",
-"summary": "Certified librarians can help boost students’ reading and technological skills but aren’t required in Michigan public schools.",
-"bucket": "gen",
 "ms": false
 }
 ]
