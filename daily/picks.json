@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-24T11:21:03Z",
+  "updated": "2026-11-27T11:20:10Z",
   "picks": [
     {
-      "title": "Valley English learners made academic gains this year. How a new law will help them continue succeeding",
-      "url": "https://www.kvpr.org/education/2026-11-23/valley-english-learners-made-academic-gains-this-year-how-a-new-law-will-help-them-continue-succeeding",
-      "source": "KVPR / Central Valley Journalism Collaborative",
-      "date": "2026-11-23",
-      "take": "Three Central Valley districts report about half of their ELs moving up a level on California's English proficiency test. Merced credits having classroom teachers give the test to their own students, so they see what it demands and plan practice for it. A new state law also drops teacher and parent sign-off as a reclassification hurdle.",
-      "try": "Ask your EL specialist what ELPT tasks look like, then build one speaking or writing prompt in that format into this week's lesson.",
+      "title": "More Than Half of Teachers Lack Training to Teach English Learners, Survey Finds",
+      "url": "https://www.edweek.org/teaching-learning/more-than-half-of-teachers-lack-training-to-teach-english-learners-survey-finds/2026/11",
+      "source": "Education Week",
+      "date": "2026-11-24",
+      "take": "An EdWeek Research Center survey of 930 teachers found 58 percent got little or no EL training in their teacher prep, and about 55 percent get little from district PD. Small districts under 2,500 students fare worst at 67 percent. That describes most of Mississippi, where the content teacher is usually the EL program.",
+      "try": "Pick one language move you already use, such as a sentence frame, and ask your EL specialist to watch one class period and tune it.",
       "lanes": [
         "Emerging",
         "Progressing",
@@ -15,28 +15,26 @@
       ]
     },
     {
-      "title": "Amid Immigration Crackdown, Let's Support School Family Liaisons",
-      "url": "https://www.the74million.org/article/amid-immigration-crackdown-lets-support-school-family-liaisons/",
-      "source": "The 74 (opinion)",
-      "date": "2026-11-23",
-      "take": "A Boston University researcher argues that family liaisons and front-office staff, not policy, are what make immigrant families trust a school: they explain EL services, find rides and food, and hear deportation fears. She found liaisons part-time, without devices or private space, paid far below teachers. Most Mississippi schools have no liaison, so that work lands on EL teachers.",
-      "try": "Find out who at your school a newcomer parent actually calls, and put that name and number on your syllabus in the home language.",
+      "title": "Getting to Know Your ELLs' Literacy Background",
+      "url": "https://www.colorincolorado.org/article/getting-know-your-ells-literacy-background",
+      "source": "Colorín Colorado",
+      "date": "2026-11-25",
+      "take": "Colorín Colorado's updated guide walks through finding out whether a student reads in the home language before planning literacy support: check the home-language survey, have the student read a short passage aloud, look at ELPT data, and ask the family. One example student's Spanish literacy went unnoticed for over a year.",
+      "try": "Hand a newcomer a short passage in the home language and listen for a minute; a fluent reader needs transfer work, not phonics from scratch.",
       "lanes": [
         "Newcomer",
-        "Admin"
+        "Emerging"
       ]
     },
     {
-      "title": "'Teacher as Participant' and Other Methods to Engage English Learners",
-      "url": "https://www.edweek.org/teaching-learning/opinion-teacher-as-participant-and-other-methods-to-engage-english-learners/2026/11",
-      "source": "Education Week (Larry Ferlazzo)",
+      "title": "After Layoffs and Cuts, Ed. Dept. Funds New English Learner Teacher Grants",
+      "url": "https://www.edweek.org/policy-politics/after-layoffs-and-cuts-ed-dept-funds-new-english-learner-teacher-grants/2026/11",
+      "source": "Education Week",
       "date": "2026-11-13",
-      "take": "Four veteran EL educators each name one strategy: mini-whiteboards for whole-class answers, sentence frames with the same idea repeated in talk and writing, screen-free card and bingo games for vocabulary, and previewing the five to ten words a unit really needs. The common thread is low-stakes, high-participation practice any content teacher can run without a separate EL curriculum.",
-      "try": "Model your own answer to a discussion prompt aloud, slip in one deliberate error, and let students catch it before they write theirs.",
+      "take": "The Education Department awarded about $50 million to 12 National Professional Development grantees after cutting 28 grants last year. Winners needed a state endorsement letter and mostly fund ESL endorsements for general-education teachers, as in Wyoming and South Dakota. No Mississippi project is named, so local training still depends on district and MDE money.",
+      "try": "Ask your principal whether the district has a path to an ESL endorsement for content teachers, and who pays for it.",
       "lanes": [
-        "Newcomer",
-        "Emerging",
-        "Progressing"
+        "Admin"
       ]
     }
   ]
