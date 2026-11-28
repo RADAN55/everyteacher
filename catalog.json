@@ -58,9 +58,9 @@
   "u": "series-elpt-practice.html",
   "t": "The ELPT Practice Center",
   "o": "Practice for every domain of the spring English test: interactive sets for reading, writing, listening and speaking, plus the full form and the question-types guide.",
-  "f": "Series · 4 domains · 11 tools",
+  "f": "Series · 4 domains · 12 tools",
   "g": "Students & families",
-  "k": "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets) and the ELPA21 Reading Studio under mock-test conditions. Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
+  "k": "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets) and the ELPA21 Reading Studio under mock-test conditions. Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. Before the window: Dress Rehearsal, the device check (headset, microphone, typing, scrolling, flag-and-review). All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
   "th": "",
   "pin": "",
   "new": ""
@@ -284,6 +284,17 @@
   "th": "thumbs/english-on-your-own.jpg",
   "pin": "",
   "new": ""
+ },
+ {
+  "u": "dress-rehearsal.html",
+  "t": "Dress Rehearsal: the ELPT Device Check",
+  "o": "Rehearse the headset, microphone, typing, scrolling and flag-and-review, so nothing on test day is new.",
+  "f": "Practice · 5 stations · 20 min · EN/ES",
+  "g": "Students & families",
+  "k": "A free 20-minute rehearsal of the ELPT test conditions, in five stations, with directions in English and Spanish. Headset: a tone in one ear to check left and right, and a school announcement that plays twice, like the test, to listen for a room number. Microphone: turn on the mic, watch the level bar, and talk for 30 seconds to no one, with a recording to play back that stays on the device. Typing: answer a prompt with no spell-check, with a live word count toward 50 words and checks for capitals, end marks, because and a second reason. Scroll: a passage that scrolls, tap-to-highlight sentences, and questions that only count when the proving sentence is highlighted. Review: five questions with a number bar, flags and a review screen that will not submit with a blank. Students earn a Dress Rehearsal pass card to show the teacher or screenshot. Nothing is uploaded; works on Chromebooks and phones. Test day practice, device check, test conditions, ELPA21, headset, microphone check, practice test.",
+  "th": "",
+  "pin": "2026-12-05",
+  "new": "2026-11-28"
  },
  {
   "u": "graduation-roadmap.html",

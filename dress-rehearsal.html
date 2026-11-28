@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>/* set the theme before first paint, so nothing flashes white */try{var _t=localStorage.getItem("elhub.theme");document.documentElement.setAttribute("data-theme",_t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dress Rehearsal: the ELPT Device Check · EL Publishing</title>
+<meta name="description" content="Twenty minutes, five stations: rehearse the headset, the microphone, typing with no spell-check, scrolling back through a passage, and flag-and-review before the ELPT. Free, no account, nothing uploaded.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE  calm, coach-like: a test-day walkthrough, not a test
+   IDEA   a backstage run-of-show card: five stations, each ticked off
+   PICTURE the station rail and a live meter in each station
+   COLOUR navy + gold on ivory paper; green only for a cleared station
+   LAYOUT one column, station rail on top, a pass card at the end */
+:root{--paper:#FFFFFF;--mist:#F5F2EA;--ink:#262B45;--muted:#5D6382;--rule:#E2DCCB;--navy:#1E2761;--navy-bg:#1E2761;--navy-dk:#141B45;--gold:#C9A227;--gold-ink:#7A5F0E;--ok:#1F7A4A;--ok-bg:#E4F3EA;--bad:#A3321F;--bad-bg:#FBE8E3;--wash-gold:#FBF3DC}
+html[data-theme="dark"]{--ok-bg:#12301F;--bad-bg:#2F1714;--wash-gold:#332B12}
+*{box-sizing:border-box}
+main *{min-width:0}
+body{margin:0;background:var(--mist);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--navy);line-height:1.12;margin:0}
+a{color:var(--navy)}
+header.top{background:var(--navy-bg);color:#D5D9EC;padding:34px max(5vw,18px) 26px}
+html[data-theme="dark"] header.top{background:#090E1E}
+.in{max-width:900px;margin:0 auto}
+.brand{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 10px}
+.brand a{color:inherit;text-decoration:none}
+header.top h1{color:#FAF7EF;font-size:clamp(32px,5vw,48px)}
+header.top h1 em{color:var(--gold);font-style:italic}
+.tag{max-width:640px;margin:12px 0 0;font-size:17.5px}
+.lang{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap;align-items:center}
+.lang span{font-size:14px;margin-right:4px}
+.chip{border:1.5px solid #6A73A8;background:transparent;color:#FAF7EF;font:600 14.5px inherit;font-family:inherit;padding:7px 14px;border-radius:20px;cursor:pointer;min-height:40px}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#141B45}
+main{max-width:900px;margin:0 auto;padding:22px max(4vw,16px) 60px}
+.rail{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:0 0 20px;position:sticky;top:var(--hubbar-h,0);z-index:5;background:var(--mist);padding:8px 0}
+.rail button{border:1.5px solid var(--rule);background:var(--paper);color:var(--navy);font:700 14px inherit;font-family:inherit;padding:8px 4px;border-radius:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:58px}
+.rail button .ic{width:26px;height:26px;border-radius:13px;background:var(--navy-bg);color:#FAF7EF;font-size:14px;line-height:26px;text-align:center}
+.rail button.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.rail button.done .ic{background:var(--ok);}
+.rail button .lb{font-size:12.5px;line-height:1.15;text-align:center}
+@media(max-width:560px){.rail button .lb{display:none}.rail button{min-height:46px}}
+.station{display:none;background:var(--paper);border:1px solid var(--rule);border-top:6px solid var(--gold);padding:22px clamp(16px,3vw,30px) 26px}
+.station.on{display:block}
+.kick{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold-ink);margin:0 0 4px}
+.station h2{font-size:clamp(26px,3.6vw,34px);margin-bottom:8px}
+.why{background:var(--wash-gold);border-left:4px solid var(--gold);padding:10px 14px;margin:12px 0 18px;font-size:16px}
+.step{margin:18px 0 0}
+.step h3{font-family:inherit;font-size:18px;color:var(--navy);margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--navy);background:var(--paper);color:var(--navy);font:700 16px inherit;font-family:inherit;padding:10px 18px;border-radius:8px;cursor:pointer;min-height:46px}
+.btn.pri{background:var(--navy-bg);color:#FAF7EF;border-color:var(--navy-bg)}
+html[data-theme="dark"] .btn.pri{border-color:var(--navy)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#141B45}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.sel{background:var(--navy-bg);color:#FAF7EF}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.fb{margin-top:10px;padding:10px 14px;border-radius:6px;font-size:16px;display:none}
+.fb.show{display:block}.fb.ok{background:var(--ok-bg);color:var(--ok)}.fb.no{background:var(--bad-bg);color:var(--bad)}
+.small{font-size:14.5px;color:var(--muted)}
+.meter{height:22px;background:var(--mist);border:1px solid var(--rule);border-radius:11px;overflow:hidden;margin-top:10px}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#E3C66A);transition:width .12s}
+.meter.talk i{background:linear-gradient(90deg,#2E8B57,#5CC28A)}
+.big{font-family:Fraunces,Georgia,serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
+textarea{width:100%;min-height:190px;font:17px/1.5 inherit;font-family:inherit;padding:12px;border:2px solid var(--navy);border-radius:6px;background:var(--paper);color:var(--ink)}
+input[type=text]{font:17px inherit;font-family:inherit;padding:10px 12px;border:2px solid var(--navy);border-radius:6px;background:var(--paper);color:var(--ink);min-height:46px;width:min(100%,360px)}
+.checks{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px}
+.checks li{display:flex;gap:10px;align-items:center;font-size:16px}
+.checks li b{width:24px;height:24px;border-radius:12px;border:2px solid var(--rule);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.checks li.ok b{background:var(--ok);border-color:var(--ok);color:#fff}
+.split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;margin-top:12px}
+@media(max-width:720px){.split{grid-template-columns:minmax(0,1fr)}}
+.passage{height:330px;overflow-y:auto;border:2px solid var(--rule);border-radius:6px;padding:14px 16px;background:var(--paper)}
+.passage p{margin:0 0 12px}
+.passage .s{cursor:pointer;border-radius:3px;padding:1px 0}
+.passage .s.hl{background:#F7E08A;color:#1D1A08}
+.qbox{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;background:var(--mist)}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink);font:16px inherit;font-family:inherit;padding:10px 12px;border-radius:6px;margin-top:8px;cursor:pointer;min-height:46px}
+.opt.sel{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy) inset}
+.nav5{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.nav5 button{width:48px;height:48px;border-radius:8px;border:2px solid var(--rule);background:var(--paper);color:var(--navy);font:700 17px inherit;font-family:inherit;cursor:pointer;position:relative}
+.nav5 button.ans{background:var(--navy-bg);color:#FAF7EF;border-color:var(--navy-bg)}
+.nav5 button.cur{box-shadow:0 0 0 3px var(--gold)}
+.nav5 button.flag::after{content:"";position:absolute;top:-6px;right:-6px;width:16px;height:16px;border-radius:8px;background:var(--gold);border:2px solid var(--paper)}
+.review{margin-top:12px;border:1px solid var(--rule);border-radius:6px;padding:12px 14px;background:var(--mist)}
+.pass{background:var(--navy-bg);color:#D5D9EC;border-radius:10px;padding:26px clamp(18px,3vw,32px);margin-top:20px;border:3px solid var(--gold)}
+html[data-theme="dark"] .pass{background:#090E1E}
+.pass h2{color:#FAF7EF;font-size:30px}
+.pass .who{font-family:Fraunces,Georgia,serif;font-size:26px;color:var(--gold);margin:6px 0 10px}
+.pass ul{margin:8px 0 0;padding-left:20px}
+.pass li{margin:3px 0}
+.pass .moves{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:14px}
+.pass .moves div{border:1px solid #3A4480;border-radius:6px;padding:8px 10px;font-size:15px}
+.pass .moves b{color:var(--gold);display:block;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.teacher{margin-top:34px;background:var(--paper);border:1px solid var(--rule);padding:22px clamp(16px,3vw,30px)}
+.teacher h2{font-size:28px;margin-bottom:6px}
+.teacher table{width:100%;border-collapse:collapse;margin-top:10px;font-size:15.5px}
+.teacher th,.teacher td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.teacher th{color:var(--navy)}
+.voice-note{font-size:13.5px;color:var(--muted);margin-top:8px}
+.sr{position:absolute;left:-9999px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.meter i{transition:none}}
+</style>
+<link rel="stylesheet" href="theme.css">
+<link rel="manifest" href="manifest.webmanifest">
+<!--B:og-->
+<link rel="canonical" href="https://radan55.github.io/everyteacher/dress-rehearsal.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EL Publishing">
+<meta property="og:url" content="https://radan55.github.io/everyteacher/dress-rehearsal.html">
+<meta property="og:title" content="Dress Rehearsal: the ELPT Device Check · EL Publishing">
+<meta property="og:description" content="Twenty minutes, five stations: rehearse the headset, the microphone, typing with no spell-check, scrolling back through a passage, and flag-and-review before the ELPT.">
+<meta property="og:image" content="https://radan55.github.io/everyteacher/share/dress-rehearsal.png">
+<meta name="twitter:card" content="summary_large_image">
+<!--/B:og-->
+</head>
+<body>
+<header class="top">
+<div class="in">
+<p class="brand"><a href="index.html">EL Publishing</a> · <span data-i="brandline">For students · Before the ELPT</span></p>
+<h1 data-i="h1html">Dress Rehearsal: <em>the device check.</em></h1>
+<p class="tag" data-i="tag">Five short stations. Practice the headset, the microphone, typing, scrolling and checking your answers, so nothing on test day is new. About 20 minutes. Nothing you say or type leaves this device.</p>
+<div class="lang" role="group" aria-label="Directions language"><span data-i="langlbl">Directions:</span><button class="chip on" data-lang="en" type="button">English</button><button class="chip" data-lang="es" type="button">Español</button></div>
+</div>
+</header>
+<main>
+<div class="row" style="margin:0 0 14px"><label for="nm" class="small" data-i="namelbl" style="font-weight:700;color:var(--navy)">Your first name (for your pass card)</label></div>
+<div class="row" style="margin:-8px 0 18px"><input type="text" id="nm" autocomplete="given-name" maxlength="40"></div>
+
+<nav class="rail" aria-label="Stations" id="rail"></nav>
+
+<!-- 1 HEADSET -->
+<section class="station" id="st-headset" aria-labelledby="h-headset">
+<p class="kick" data-i="k1">Station 1 · Listening</p>
+<h2 id="h-headset" data-i="t1">Check your headset</h2>
+<div class="why" data-i="w1">On the test, every listening item plays through your headset. Make sure you can hear both sides and set the volume now, not on test day.</div>
+<div class="step"><h3 data-i="s1a">1. Which ear?</h3>
+<p class="small" data-i="s1ad">Put your headset on. Tap Play. A tone plays in one ear. Tap the ear you heard it in.</p>
+<div class="row"><button class="btn pri" id="toneBtn" type="button" data-i="play">▶ Play the tone</button></div>
+<div class="row" id="earRow" hidden><button class="btn" data-ear="L" type="button" data-i="left">Left ear</button><button class="btn" data-ear="R" type="button" data-i="right">Right ear</button></div>
+<div class="fb" id="earFb"></div></div>
+<div class="step"><h3 data-i="s1b">2. Listen for the number</h3>
+<p class="small" data-i="s1bd">A short announcement plays. You can play it two times, like on the test. Tap the room number you hear.</p>
+<div class="row"><button class="btn pri" id="annBtn" type="button">▶ <span data-i="playann">Play the announcement</span> <span id="annLeft" class="small" style="color:inherit">(2)</span></button><button class="btn" id="voiceTest" type="button" data-i="testaudio">Test audio</button></div>
+<div class="row" id="annOpts"></div>
+<div class="fb" id="annFb"></div>
+<p class="voice-note" data-i="voicenote">The voice is your device's built-in synthesized voice. If you hear nothing, turn up the volume, then tap Test audio.</p></div>
+</section>
+
+<!-- 2 MIC -->
+<section class="station" id="st-mic" aria-labelledby="h-mic">
+<p class="kick" data-i="k2">Station 2 · Speaking</p>
+<h2 id="h-mic" data-i="t2">Talk into the microphone</h2>
+<div class="why" data-i="w2">On the test, nobody is in front of you. You talk to a microphone, and silence scores nothing. Practice talking the whole time.</div>
+<div class="step"><h3 data-i="s2a">1. Turn on the microphone</h3>
+<div class="row"><button class="btn pri" id="micOn" type="button" data-i="micon">🎙 Turn on the microphone</button></div>
+<p class="small" id="micMsg" data-i="micd">Your browser will ask. Choose Allow. Then say "testing, one, two, three" and watch the bar move.</p>
+<div class="meter" aria-hidden="true"><i id="lvl"></i></div></div>
+<div class="step"><h3 data-i="s2b">2. Answer the question for 30 seconds</h3>
+<p style="font-weight:700;color:var(--navy);margin:4px 0" id="prompt"></p>
+<p class="small" data-i="frame">Start with: "I think… because… For example…"</p>
+<div class="row"><button class="btn gold" id="recBtn" type="button" disabled data-i="rec">● Record</button><button class="btn" id="playRec" type="button" disabled data-i="listenback">▶ Listen back</button><button class="btn" id="newPrompt" type="button" data-i="newq">New question</button></div>
+<div class="meter talk" aria-hidden="true"><i id="talkBar"></i></div>
+<p class="small"><span id="talkSec">0</span> <span data-i="secof">of 30 seconds of talking</span></p>
+<div class="fb" id="micFb"></div>
+<p class="voice-note" data-i="micnote">Your recording stays on this device. It is gone when you close the page.</p></div>
+</section>
+
+<!-- 3 TYPING -->
+<section class="station" id="st-type" aria-labelledby="h-type">
+<p class="kick" data-i="k3">Station 3 · Writing</p>
+<h2 id="h-type" data-i="t3">Type without spell-check</h2>
+<div class="why" data-i="w3">The test has no spell-check and no red lines. A longer, organized answer scores higher than a short perfect one. Write more than you think.</div>
+<p style="font-weight:700;color:var(--navy)" data-i="typeq">Your school is choosing a new club. Which club should it be? Give two reasons.</p>
+<label for="ta" class="sr">Your answer</label>
+<textarea id="ta" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off"></textarea>
+<div class="meter" aria-hidden="true"><i id="wBar"></i></div>
+<p class="small"><span id="wc" class="big" style="font-size:28px">0</span> <span data-i="words">words · goal: 50</span></p>
+<ul class="checks" id="tchecks"></ul>
+<div class="fb" id="typeFb"></div>
+</section>
+
+<!-- 4 SCROLL -->
+<section class="station" id="st-scroll" aria-labelledby="h-scroll">
+<p class="kick" data-i="k4">Station 4 · Reading</p>
+<h2 id="h-scroll" data-i="t4">Scroll, highlight, go back</h2>
+<div class="why" data-i="w4">On the test the passage scrolls, and you can highlight. Read the question first, then go back to the text every time. The test is untimed.</div>
+<div class="split">
+<div><div class="passage" id="passage" tabindex="0" aria-label="Passage. Tap a sentence to highlight it."></div><p class="small" data-i="hltip">Tap a sentence to highlight it. Tap again to remove it.</p></div>
+<div class="qbox" id="scrollQ"></div>
+</div>
+</section>
+
+<!-- 5 REVIEW -->
+<section class="station" id="st-review" aria-labelledby="h-review">
+<p class="kick" data-i="k5">Station 5 · Every domain</p>
+<h2 id="h-review" data-i="t5">Flag it, then review it</h2>
+<div class="why" data-i="w5">Not sure? Choose your best answer, flag it, and come back. Never leave a blank: a guess can score, a skip cannot.</div>
+<p class="small" data-i="navtip">Use the numbers to move between questions. A gold dot means flagged.</p>
+<div class="nav5" id="nav5"></div>
+<div class="qbox" id="rq"></div>
+<div class="row"><button class="btn" id="prevQ" type="button" data-i="prev">← Back</button><button class="btn" id="flagQ" type="button" data-i="flag">⚑ Flag</button><button class="btn" id="nextQ" type="button" data-i="next">Next →</button><button class="btn pri" id="reviewBtn" type="button" data-i="review">Review my answers</button></div>
+<div class="review" id="reviewBox" hidden></div>
+</section>
+
+<div id="passWrap"></div>
+
+<section class="teacher" id="teacher">
+<p class="kick">For teachers</p>
+<h2>Run it in one class period</h2>
+<p>Use it in the weeks before the window, on the same devices and headsets students will test with. Students work alone, at their own pace; the stations can go in any order. Nothing is sent anywhere, so there is no class report: students show you their pass card, or take a screenshot of it.</p>
+<table>
+<tr><th>Station</th><th>What it rehearses</th><th>Watch for</th></tr>
+<tr><td>1 · Headset</td><td>Left and right channels, volume, a two-play limit</td><td>Headsets on backwards, volume at zero, students who replay without a purpose</td></tr>
+<tr><td>2 · Microphone</td><td>Allowing the mic, talking for 30 seconds to no one</td><td>Students who stop at 8 seconds; teach “Why? Like what?”</td></tr>
+<tr><td>3 · Typing</td><td>No spell-check, writing to length, capitals and end marks</td><td>Students who freeze on spelling; tell them spelling never stops the pen</td></tr>
+<tr><td>4 · Scroll</td><td>Scrolling a long passage, highlighting, going back for proof</td><td>Answers from memory; ask “Which sentence proves it?”</td></tr>
+<tr><td>5 · Review</td><td>Moving between items, flagging, reviewing, no blanks</td><td>Students who submit with blanks; the page will not let them</td></tr>
+</table>
+<p class="small" style="margin-top:12px"><b>Chromebooks:</b> if the microphone will not turn on, the device or district settings may block it for websites. Station 2 still works as a timed talk without the recording. <b>Phones:</b> tap Test audio once if the voice is silent. Pair it with <a href="elpt-workshop.html">Teaching the ELPT: the Workshop</a> and the <a href="series-elpt-practice.html">ELPT Practice Center</a>.</p>
+</section>
+</main>
+<footer style="background:#090E1E;color:#AEB5DA;padding:22px max(5vw,18px);font-size:14px"><div class="in"><b style="color:#fff;font-family:Fraunces,Georgia,serif;font-size:18px">EL Publishing</b> · Many Voices · One Storm · <a href="index.html" style="color:#E3C66A">Back to the hub</a></div></footer>
+
+<script>
+{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k){try{return JSON.parse(localStorage.getItem("dress."+k))}catch(e){return null}},set(k,v){try{localStorage.setItem("dress."+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- language ---------- */
+const ES={brandline:"Para estudiantes · Antes del ELPT",h1html:"Ensayo general: <em>prueba tu equipo.</em>",tag:"Cinco estaciones cortas. Practica los audífonos, el micrófono, escribir, desplazarte por el texto y revisar tus respuestas, para que nada sea nuevo el día del examen. Unos 20 minutos. Nada de lo que dices o escribes sale de este aparato.",langlbl:"Instrucciones:",namelbl:"Tu nombre (para tu tarjeta)",
+k1:"Estación 1 · Escuchar",t1:"Prueba tus audífonos",w1:"En el examen, cada pregunta de escuchar suena en tus audífonos. Asegúrate de oír los dos lados y ajusta el volumen ahora.",s1a:"1. ¿Qué oído?",s1ad:"Ponte los audífonos. Toca Reproducir. Suena un tono en un oído. Toca el oído donde lo oíste.",play:"▶ Reproducir el tono",left:"Oído izquierdo",right:"Oído derecho",s1b:"2. Escucha el número",s1bd:"Suena un anuncio corto. Puedes oírlo dos veces, como en el examen. Toca el número del salón que oyes.",playann:"Reproducir el anuncio",testaudio:"Probar audio",voicenote:"La voz es la voz sintetizada de tu aparato. Si no oyes nada, sube el volumen y toca Probar audio.",
+k2:"Estación 2 · Hablar",t2:"Habla al micrófono",w2:"En el examen nadie está frente a ti. Hablas a un micrófono, y el silencio no recibe puntos. Practica hablar todo el tiempo.",s2a:"1. Enciende el micrófono",micon:"🎙 Encender el micrófono",micd:"El navegador te preguntará. Elige Permitir. Di “testing, one, two, three” y mira la barra.",s2b:"2. Contesta la pregunta por 30 segundos",frame:"Empieza con: “I think… because… For example…”",rec:"● Grabar",listenback:"▶ Escuchar",newq:"Otra pregunta",secof:"de 30 segundos hablando",micnote:"Tu grabación se queda en este aparato. Se borra al cerrar la página.",
+k3:"Estación 3 · Escribir",t3:"Escribe sin corrector",w3:"El examen no tiene corrector ni líneas rojas. Una respuesta más larga y organizada recibe más puntos que una corta y perfecta. Escribe más de lo que crees.",typeq:"Your school is choosing a new club. Which club should it be? Give two reasons.",words:"palabras · meta: 50",
+k4:"Estación 4 · Leer",t4:"Desplázate, resalta, regresa",w4:"En el examen el texto se desplaza y puedes resaltar. Lee primero la pregunta y regresa al texto siempre. El examen no tiene límite de tiempo.",hltip:"Toca una oración para resaltarla. Tócala otra vez para quitarlo.",
+k5:"Estación 5 · Todo el examen",t5:"Márcala y luego revisa",w5:"¿No estás seguro? Elige tu mejor respuesta, márcala y regresa. Nunca dejes una en blanco: adivinar puede dar puntos, dejarla en blanco no.",navtip:"Usa los números para moverte entre preguntas. Un punto dorado significa marcada.",prev:"← Atrás",flag:"⚑ Marcar",next:"Siguiente →",review:"Revisar mis respuestas"};
+const EN={};$$("[data-i]").forEach(e=>{EN[e.dataset.i]=e.dataset.i==="h1html"?e.innerHTML:e.textContent});
+let LANG=store.get("lang")||"en";
+function setLang(l){LANG=l;store.set("lang",l);document.documentElement.lang=l==="es"?"es":"en";
+ $$("[data-i]").forEach(e=>{const k=e.dataset.i,v=(l==="es"?ES[k]:null)||EN[k];if(k==="h1html")e.innerHTML=v;else e.textContent=v});
+ $$(".chip").forEach(c=>c.classList.toggle("on",c.dataset.lang===l));buildRail();renderType();renderScrollQ();renderRQ();renderPass();}
+$$(".chip").forEach(c=>c.addEventListener("click",()=>setLang(c.dataset.lang)));
+const T=(en,es)=>LANG==="es"?es:en;
+
+/* ---------- stations + rail ---------- */
+const ST=[["headset","🎧",["Headset","Audífonos"]],["mic","🎙",["Microphone","Micrófono"]],["type","⌨",["Typing","Escribir"]],["scroll","↕",["Scroll","Desplazar"]],["review","⚑",["Review","Revisar"]]];
+let done=store.get("done")||{};
+let cur=(location.hash||"").slice(1);if(!ST.some(s=>s[0]===cur))cur="headset";
+function buildRail(){$("#rail").innerHTML=ST.map((s,i)=>`<button type="button" data-st="${s[0]}" class="${s[0]===cur?"on":""} ${done[s[0]]?"done":""}" aria-label="${i+1}. ${T(s[2][0],s[2][1])}${done[s[0]]?" ✓":""}"><span class="ic">${done[s[0]]?"✓":i+1}</span><span class="lb">${T(s[2][0],s[2][1])}</span></button>`).join("");
+ $$("#rail button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.st,true)));}
+function show(id,scroll){cur=id;$$(".station").forEach(s=>s.classList.toggle("on",s.id==="st-"+id));buildRail();try{history.replaceState(null,"","#"+id)}catch(e){}if(scroll)$("#rail").scrollIntoView({block:"start"});}
+function mark(id){if(done[id])return;done[id]=true;store.set("done",done);buildRail();renderPass();}
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(ST.some(s=>s[0]===h))show(h)});
+
+/* ---------- audio (phone-safe) ---------- */
+let AC=null;function ac(){if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C()}if(AC&&AC.state==="suspended")AC.resume();return AC}
+let voices=[];function loadV(){try{voices=speechSynthesis.getVoices()}catch(e){}}
+if("speechSynthesis"in window){loadV();speechSynthesis.onvoiceschanged=loadV}
+function say(text,rate){if(!("speechSynthesis"in window))return false;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=rate||0.92;
+ const v=voices.find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||voices.find(v=>/^en/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u);return true}catch(e){return false}}
+$("#voiceTest").addEventListener("click",()=>{ac();say(T("Audio test. If you can hear this, you are ready.","Audio test. If you can hear this, you are ready."))});
+
+/* station 1 */
+let ear=null,earOK=false,annOK=false;
+$("#toneBtn").addEventListener("click",()=>{const a=ac();if(!a){$("#earFb").className="fb show no";$("#earFb").textContent=T("This browser cannot play the tone. Ask your teacher to check the headset.","Este navegador no puede reproducir el tono.");return}
+ ear=Math.random()<.5?"L":"R";const o=a.createOscillator(),g=a.createGain(),p=a.createStereoPanner?a.createStereoPanner():null;o.frequency.value=660;g.gain.setValueAtTime(0,a.currentTime);g.gain.linearRampToValueAtTime(.25,a.currentTime+.05);g.gain.setValueAtTime(.25,a.currentTime+.9);g.gain.linearRampToValueAtTime(0,a.currentTime+1.1);
+ if(p){p.pan.value=ear==="L"?-1:1;o.connect(g).connect(p).connect(a.destination)}else{o.connect(g).connect(a.destination)}o.start();o.stop(a.currentTime+1.2);$("#earRow").hidden=false;$("#earFb").className="fb";});
+$$("#earRow button").forEach(b=>b.addEventListener("click",()=>{if(!ear)return;const ok=b.dataset.ear===ear;const fb=$("#earFb");fb.className="fb show "+(ok?"ok":"no");
+ fb.textContent=ok?T("Right. Your headset works on both sides once you get the other ear too. Tap Play again to check it.","Correcto. Toca Reproducir otra vez para probar el otro oído."):T("Not that ear. Check that the headset is not on backwards (L goes on your left ear), then play it again.","No fue ese oído. Revisa que los audífonos no estén al revés (L va en el oído izquierdo) y prueba otra vez.");
+ if(ok){earOK=true;const seen=store.get("ears")||{};seen[ear]=1;store.set("ears",seen);if(seen.L&&seen.R){fb.textContent=T("Both ears work. Headset check complete.","Los dos oídos funcionan. Listo.")}checkHeadset()}ear=null;}));
+const ANN=[{t:"Good morning, students. The science club will meet after school today in room 214. Bring your lab notebook.",n:"214",o:["204","214","240","412"]},{t:"Attention, ninth graders. Your photos for the yearbook will be taken in room 118 on Thursday morning.",n:"118",o:["108","118","180","811"]},{t:"Reminder: the soccer team will meet in room 306 at three fifteen to pick up uniforms.",n:"306",o:["306","316","360","603"]}];
+let ann=ANN[Math.floor(Math.random()*ANN.length)],plays=2;
+function annOpts(){$("#annOpts").innerHTML=ann.o.map(x=>`<button class="btn" type="button" data-n="${x}">${T("Room","Salón")} ${x}</button>`).join("");$$("#annOpts button").forEach(b=>b.addEventListener("click",()=>{const ok=b.dataset.n===ann.n;const fb=$("#annFb");fb.className="fb show "+(ok?"ok":"no");fb.textContent=ok?T("Yes, room "+ann.n+". You listened for one detail, the number.","Sí, el salón "+ann.n+"."):T("Not that one. Numbers sound alike: listen for each digit. Play it again if you have a play left.","No es ese. Los números se parecen: escucha cada dígito.");if(ok){annOK=true;checkHeadset()}}))}
+annOpts();
+$("#annBtn").addEventListener("click",()=>{if(plays<=0){$("#annFb").className="fb show no";$("#annFb").textContent=T("No plays left, just like the test. Choose your best answer. A guess can score.","No quedan reproducciones. Elige tu mejor respuesta.");return}ac();if(!say(ann.t)){$("#annFb").className="fb show no";$("#annFb").textContent=T("This browser has no voice. Ask your teacher to try another browser.","Este navegador no tiene voz.");return}plays--;$("#annLeft").textContent="("+plays+")";if(!plays)$("#annBtn").disabled=true});
+function checkHeadset(){const seen=store.get("ears")||{};if((earOK||seen.L||seen.R)&&annOK)mark("headset")}
+
+/* station 2 */
+const PROMPTS=[["Describe your favorite place at school. Why do you like it?","Describe tu lugar favorito de la escuela."],["Should students have homework on weekends? Give two reasons.","¿Deben tener tarea los fines de semana?"],["Tell about a time you learned something new. What happened first, next and last?","Cuenta una vez que aprendiste algo nuevo."],["Which is better, studying alone or with a friend? Why?","¿Qué es mejor, estudiar solo o con un amigo?"]];
+let pi=Math.floor(Math.random()*PROMPTS.length);function setPrompt(){$("#prompt").textContent=PROMPTS[pi][0]}setPrompt();
+$("#newPrompt").addEventListener("click",()=>{pi=(pi+1)%PROMPTS.length;setPrompt()});
+let lastVoice=0,stream=null,an=null,rec=null,chunks=[],talkMs=0,recording=false,lastT=0,blobURL=null,rafOn=false;
+$("#micOn").addEventListener("click",async()=>{const a=ac();try{stream=await navigator.mediaDevices.getUserMedia({audio:true});const src=a.createMediaStreamSource(stream);an=a.createAnalyser();an.fftSize=1024;src.connect(an);$("#recBtn").disabled=false;$("#micMsg").textContent=T("Microphone on. Say a few words and watch the bar.","Micrófono encendido. Di unas palabras y mira la barra.");if(!rafOn){rafOn=true;loop()}}
+ catch(e){$("#micMsg").textContent=T("The microphone is blocked on this device. You can still practice: tap Record and talk for 30 seconds while the timer runs.","El micrófono está bloqueado. Igual puedes practicar: toca Grabar y habla 30 segundos.");$("#recBtn").disabled=false;stream=null}});
+function level(){if(!an)return 0;const d=new Uint8Array(an.fftSize);an.getByteTimeDomainData(d);let s=0;for(const v of d){const x=(v-128)/128;s+=x*x}return Math.min(1,Math.sqrt(s/d.length)*4)}
+function loop(){const L=level();$("#lvl").style.width=(L*100)+"%";const now=performance.now();if(recording){const dt=now-lastT;if(L>.035)lastVoice=now;if(!an||now-lastVoice<700)talkMs+=dt;const sec=Math.min(30,Math.floor(talkMs/1000));$("#talkSec").textContent=sec;$("#talkBar").style.width=(Math.min(1,talkMs/30000)*100)+"%";if(talkMs>=30000)stopRec(true)}lastT=now;requestAnimationFrame(loop)}
+function startRec(){talkMs=0;chunks=[];recording=true;lastT=performance.now();$("#recBtn").textContent=T("■ Stop","■ Parar");$("#micFb").className="fb";
+ if(stream&&window.MediaRecorder){try{rec=new MediaRecorder(stream);rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};rec.onstop=()=>{if(blobURL)URL.revokeObjectURL(blobURL);blobURL=URL.createObjectURL(new Blob(chunks,{type:rec.mimeType||"audio/webm"}));$("#playRec").disabled=false};rec.start()}catch(e){rec=null}}
+ if(!rafOn){rafOn=true;loop()}}
+function stopRec(full){recording=false;$("#recBtn").textContent=T("● Record again","● Grabar otra vez");if(rec&&rec.state!=="inactive")rec.stop();const sec=Math.floor(talkMs/1000);const fb=$("#micFb");
+ if(full||sec>=30){fb.className="fb show ok";fb.textContent=T("Thirty seconds of talk. That is what the test needs: keep going until the recording stops.","¡Treinta segundos hablando! Eso necesita el examen.");mark("mic")}
+ else{fb.className="fb show no";fb.textContent=T("You talked for "+sec+" seconds. When you stop, ask yourself: Why? Like what? Then say more. Try again.","Hablaste "+sec+" segundos. Pregúntate: ¿Por qué? ¿Por ejemplo? Y di más.")}}
+$("#recBtn").addEventListener("click",()=>{ac();recording?stopRec(false):startRec()});
+$("#playRec").addEventListener("click",()=>{if(blobURL){const au=new Audio(blobURL);au.play().catch(()=>{})}});
+
+/* station 3 */
+const ta=$("#ta");ta.value=store.get("typed")||"";
+function sentences(t){return t.split(/(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean)}
+function renderType(){const t=ta.value.trim(),w=t?t.split(/\s+/).length:0;$("#wc").textContent=w;$("#wBar").style.width=Math.min(100,w/50*100)+"%";
+ const ss=sentences(t);const caps=ss.length>0&&ss.every(s=>/^[A-Z0-9"“]/.test(s));const ends=t.length>0&&/[.!?]["”]?$/.test(t);const because=/\bbecause\b/i.test(t);const two=/\b(also|second|another|first)\b/i.test(t);
+ const items=[[w>=50,T("50 words or more","50 palabras o más")],[caps,T("Every sentence starts with a capital letter","Cada oración empieza con mayúscula")],[ends,T("The last sentence ends with a period, ! or ?","La última oración termina con punto, ! o ?")],[because,T("You used because to give a reason","Usaste because para dar una razón")],[two,T("You signaled a second reason (first, also, another)","Marcaste una segunda razón (first, also, another)")]];
+ $("#tchecks").innerHTML=items.map(([ok,l])=>`<li class="${ok?"ok":""}"><b>${ok?"✓":""}</b>${esc(l)}</li>`).join("");
+ const fb=$("#typeFb");if(items.every(i=>i[0])){fb.className="fb show ok";fb.textContent=T("Done. On the test, use the time you have left to reread for capitals, end marks and verbs.","Listo. En el examen, usa el tiempo para releer.");mark("type")}else fb.className="fb";}
+ta.addEventListener("input",()=>{store.set("typed",ta.value);renderType()});
+
+/* station 4 */
+const P=[["The Roof Garden"],["Three years ago, the roof of Riverside High was empty gray gravel. Today it holds forty raised beds, two rain barrels and a small greenhouse."],["The idea came from the environmental science class. Students noticed that the cafeteria threw away fresh vegetables every week because they arrived bruised after a long truck ride. They wondered if the school could grow some of its own food instead."],["The first year was hard. The beds dried out in August, and only the peppers survived. The students asked a local farmer for advice. She told them that the roof was hotter than the ground, so the plants needed water early in the morning, not after school."],["The class built a schedule. Each morning before first period, two students water the beds and record the temperature. They also added the rain barrels, which catch water from the roof drains."],["The second year was very different. The garden produced more than three hundred pounds of tomatoes, peppers and lettuce. The cafeteria used the lettuce in salads for six weeks."],["Now other schools in the district want to start their own roof gardens. The Riverside students are writing a guide to help them. Their first piece of advice is simple: water early, and write everything down."]];
+const SQ=[{q:["Why did the plants dry out in the first year?","¿Por qué se secaron las plantas el primer año?"],o:["The students forgot to plant seeds.","The roof was hot and the plants were watered too late in the day.","The cafeteria used all the water.","The farmer told them to stop watering."],a:1,s:"advice"},
+{q:["How much food did the garden produce in the second year?","¿Cuánta comida produjo el jardín el segundo año?"],o:["Forty pounds","Six weeks of salads only","More than three hundred pounds","Two rain barrels"],a:2,s:"produced"}];
+let sqi=0,sqDone=store.get("sq")||{};
+$("#passage").innerHTML=P.map((p,i)=>i===0?`<h3 style="font-family:Fraunces,Georgia,serif;font-size:21px;margin:0 0 10px">${esc(p[0])}</h3>`:`<p>${sentences(p[0]).map(s=>`<span class="s" tabindex="0" role="button" aria-pressed="false">${esc(s)}</span>`).join(" ")}</p>`).join("");
+$$("#passage .s").forEach(s=>{const tog=()=>{s.classList.toggle("hl");s.setAttribute("aria-pressed",s.classList.contains("hl"))};s.addEventListener("click",tog);s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}})});
+function renderScrollQ(){const q=SQ[sqi];$("#scrollQ").innerHTML=`<p class="kick">${T("Question","Pregunta")} ${sqi+1} ${T("of","de")} ${SQ.length}</p><p style="font-weight:700;color:var(--navy);margin:0 0 4px">${esc(q.q[0])}</p>${LANG==="es"?`<p class="small" style="margin:0">${esc(q.q[1])}</p>`:""}`+
+ q.o.map((o,i)=>`<button class="opt" type="button" data-i="${i}">${"ABCD"[i]}. ${esc(o)}</button>`).join("")+`<div class="fb" id="sqFb"></div><div class="row" id="sqNext" hidden><button class="btn pri" type="button">${sqi<SQ.length-1?T("Next question","Siguiente pregunta"):T("Done","Listo")}</button></div>`;
+ $$("#scrollQ .opt").forEach(b=>b.addEventListener("click",()=>{$$("#scrollQ .opt").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");const ok=+b.dataset.i===q.a;const fb=$("#sqFb");
+  const hl=$$("#passage .s.hl").some(s=>s.textContent.toLowerCase().includes(q.s));
+  if(ok&&hl){fb.className="fb show ok";fb.textContent=T("Right, and you highlighted the sentence that proves it. That is going back to the text.","Correcto, y resaltaste la oración que lo prueba.");sqDone[sqi]=1;store.set("sq",sqDone);$("#sqNext").hidden=false}
+  else if(ok){fb.className="fb show no";fb.textContent=T("Right answer. Now prove it: scroll back and highlight the sentence that says so.","Respuesta correcta. Ahora pruébalo: regresa y resalta la oración.");}
+  else{fb.className="fb show no";fb.textContent=T("Not quite. Don't answer from memory: scroll back, find the sentence, then choose.","No exactamente. No contestes de memoria: regresa al texto.");}}));
+ const nx=$("#sqNext button");nx&&nx.addEventListener("click",()=>{if(sqi<SQ.length-1){sqi++;renderScrollQ()}else{mark("scroll");$("#sqFb").className="fb show ok";$("#sqFb").textContent=T("Station complete. Question first, then back to the text, every time.","¡Estación completa!")}});}
+$("#passage").addEventListener("click",()=>{const q=SQ[sqi];if($("#sqFb")&&$$("#scrollQ .opt.sel").length){const sel=+$("#scrollQ .opt.sel").dataset.i;if(sel===q.a&&$$("#passage .s.hl").some(s=>s.textContent.toLowerCase().includes(q.s))){$("#sqFb").className="fb show ok";$("#sqFb").textContent=T("Right, and you highlighted the sentence that proves it. That is going back to the text.","Correcto, y resaltaste la oración que lo prueba.");sqDone[sqi]=1;store.set("sq",sqDone);$("#sqNext").hidden=false}}});
+
+/* station 5 */
+const RQ=[{q:"What is the passage “The Roof Garden” mostly about?",o:["How students turned an empty roof into a working garden","Why peppers grow well in August","How to build a rain barrel","Why cafeterias throw away food"]},
+{q:"Who gave the students advice about watering?",o:["The cafeteria manager","A local farmer","Another school","The principal"]},
+{q:"What does the word “record” mean in “record the temperature”?",o:["Play music","Write down","Break","Repeat"]},
+{q:"Which word best describes the students?",o:["Careless","Bored","Determined","Angry"]},
+{q:"What is the students' first piece of advice for other schools?",o:["Plant only peppers","Water early, and write everything down","Use the cafeteria's vegetables","Build a greenhouse first"]}];
+let rqi=0,rAns=store.get("rans")||{},rFlag=store.get("rflag")||{};
+function renderRQ(){$("#nav5").innerHTML=RQ.map((_,i)=>`<button type="button" class="${rAns[i]!=null?"ans":""} ${rFlag[i]?"flag":""} ${i===rqi?"cur":""}" aria-label="${T("Question","Pregunta")} ${i+1}${rAns[i]!=null?T(", answered",", contestada"):T(", blank",", en blanco")}${rFlag[i]?T(", flagged",", marcada"):""}">${i+1}</button>`).join("");
+ $$("#nav5 button").forEach((b,i)=>b.addEventListener("click",()=>{rqi=i;renderRQ()}));
+ const q=RQ[rqi];$("#rq").innerHTML=`<p class="kick">${T("Question","Pregunta")} ${rqi+1} ${T("of","de")} 5 ${rFlag[rqi]?" · ⚑ "+T("Flagged","Marcada"):""}</p><p style="font-weight:700;color:var(--navy);margin:0">${esc(q.q)}</p>`+q.o.map((o,i)=>`<button class="opt ${rAns[rqi]===i?"sel":""}" type="button" data-i="${i}">${"ABCD"[i]}. ${esc(o)}</button>`).join("");
+ $$("#rq .opt").forEach(b=>b.addEventListener("click",()=>{rAns[rqi]=+b.dataset.i;store.set("rans",rAns);renderRQ()}));
+ $("#flagQ").textContent=rFlag[rqi]?T("⚑ Unflag","⚑ Quitar marca"):T("⚑ Flag","⚑ Marcar");$("#prevQ").disabled=rqi===0;$("#nextQ").disabled=rqi===4;}
+$("#prevQ").addEventListener("click",()=>{if(rqi>0){rqi--;renderRQ()}});
+$("#nextQ").addEventListener("click",()=>{if(rqi<4){rqi++;renderRQ()}});
+$("#flagQ").addEventListener("click",()=>{rFlag[rqi]=!rFlag[rqi];store.set("rflag",rFlag);renderRQ()});
+$("#reviewBtn").addEventListener("click",()=>{const blank=RQ.map((_,i)=>i).filter(i=>rAns[i]==null),fl=RQ.map((_,i)=>i).filter(i=>rFlag[i]);const box=$("#reviewBox");box.hidden=false;
+ if(blank.length){box.innerHTML=`<p style="margin:0;color:var(--bad);font-weight:700">${T("Wait: question "+blank.map(i=>i+1).join(", ")+(blank.length>1?" are":" is")+" blank.","Espera: la pregunta "+blank.map(i=>i+1).join(", ")+" está en blanco.")}</p><p style="margin:4px 0 0">${T("Never leave a blank. Go back and choose your best answer.","Nunca dejes una en blanco. Regresa y elige tu mejor respuesta.")}</p>`;return}
+ if(fl.length){box.innerHTML=`<p style="margin:0;font-weight:700;color:var(--navy)">${T("All answered. You flagged question "+fl.map(i=>i+1).join(", ")+".","Todas contestadas. Marcaste la pregunta "+fl.map(i=>i+1).join(", ")+".")}</p><p style="margin:4px 0 0">${T("Look at your flagged answers one more time, then unflag them when you are sure. On the test, you can submit with flags.","Revisa tus respuestas marcadas una vez más.")}</p><div class="row"><button class="btn gold" type="button" id="subAnyway">${T("Submit","Enviar")}</button></div>`;$("#subAnyway").addEventListener("click",finishReview);return}
+ finishReview();});
+function finishReview(){const key=[0,1,1,2,1];const right=key.filter((k,i)=>rAns[i]===k).length;$("#reviewBox").innerHTML=`<p style="margin:0;font-weight:700;color:var(--ok)">${T("Submitted: "+right+" of 5 correct, and no blanks.","Enviado: "+right+" de 5 correctas, sin espacios en blanco.")}</p><p style="margin:4px 0 0" class="small">${T("Answers: 1 A · 2 B · 3 B · 4 C · 5 B. The skill you practiced was moving, flagging and reviewing.","Respuestas: 1 A · 2 B · 3 B · 4 C · 5 B.")}</p>`;mark("review")}
+
+/* pass card */
+$("#nm").value=store.get("name")||"";$("#nm").addEventListener("input",()=>{store.set("name",$("#nm").value);renderPass()});
+function renderPass(){const n=Object.keys(done).filter(k=>done[k]).length;const w=$("#passWrap");if(!n){w.innerHTML="";return}
+ const name=$("#nm").value.trim();const d=new Date().toLocaleDateString(LANG==="es"?"es-US":"en-US",{month:"long",day:"numeric",year:"numeric"});
+ w.innerHTML=`<div class="pass" role="status"><p class="brand" style="margin:0">EL Publishing · ${n===5?T("Dress Rehearsal pass","Pase del ensayo general"):T("Dress Rehearsal · in progress","Ensayo general · en progreso")}</p>
+ <h2>${n===5?T("Ready for test day.","Listo para el examen."):T(n+" of 5 stations cleared","Estaciones completas: "+n+" de 5")}</h2>${name?`<p class="who">${esc(name)}</p>`:""}
+ <ul>${ST.map(s=>`<li>${done[s[0]]?"✓":"○"} ${T(s[2][0],s[2][1])}</li>`).join("")}</ul><p class="small" style="color:#AEB5DA;margin-top:8px">${esc(d)}${n===5?" · "+T("Show this to your teacher, or take a screenshot.","Muéstrale esto a tu maestro o toma una captura."):""}</p>
+ ${n===5?`<div class="moves"><div><b>${T("Reading","Leer")}</b>${T("Question first. Go back every time.","Primero la pregunta. Regresa siempre.")}</div><div><b>${T("Writing","Escribir")}</b>${T("Write more than you think.","Escribe más de lo que crees.")}</div><div><b>${T("Listening","Escuchar")}</b>${T("Replay with a purpose.","Repite con un propósito.")}</div><div><b>${T("Speaking","Hablar")}</b>${T("Talk until the recording stops.","Habla hasta que pare la grabación.")}</div></div>`:""}</div>`;}
+
+/* start */
+show(cur);setLang(LANG);checkHeadset();
+}
+</script>
+<script data-goatcounter="https://elpublishing.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="guide.js" defer></script>
+<script src="hub-chrome.js" defer></script>
+</body>
+</html>
