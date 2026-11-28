@@ -79,10 +79,10 @@
  {
   "u": "series-grammar.html",
   "t": "Grammar & Writing",
-  "o": "Run-ons, sentence features, the grammar map, calisthenics, grammar songs, and two writing coaches.",
-  "f": "Series · 7 tools",
+  "o": "Run-ons, sentence features, the grammar map, a verb tense timeline, calisthenics, grammar songs, and two writing coaches.",
+  "f": "Series · 8 tools",
   "g": "Students & families",
-  "k": "The sentence and the paragraph, seven ways: Storm Sentence Lab (stop writing run-ons), Sentence Lab (sixteen grammar features in real school scenes), The Grammar Map (grammar you can see), Storm Grammar Calisthenics (a bilingual coach, fifteen minutes a day), Grammar Beats (grammar as radio songs), The Writing Studio (Mr. Castillo teaches the shape of a 4 or 5) and Write About It (Ms. Bell's six-step routine).",
+  "k": "The sentence and the paragraph, eight ways: Storm Sentence Lab (stop writing run-ons), Sentence Lab (sixteen grammar features in real school scenes), The Grammar Map (grammar you can see), the Verb Tense Timeline (six tenses drawn on a timeline, as a printable anchor chart), Storm Grammar Calisthenics (a bilingual coach, fifteen minutes a day), Grammar Beats (grammar as radio songs), The Writing Studio (Mr. Castillo teaches the shape of a 4 or 5) and Write About It (Ms. Bell's six-step routine).",
   "th": "",
   "pin": "",
   "new": ""
@@ -394,6 +394,17 @@
   "th": "thumbs/grammar-map.jpg",
   "pin": "",
   "new": "2026-10-13"
+ },
+ {
+  "u": "verb-tense-timeline.html",
+  "t": "Verb Tense Timeline",
+  "o": "Six verb tenses drawn on a past–now–future timeline, with form, example and signal words.",
+  "f": "Anchor chart · 6 tenses · print + projector",
+  "g": "Students & families",
+  "k": "A free grammar anchor chart for English learners: six verb tenses (simple present, present progressive, simple past, past progressive, present perfect, future) each drawn on a past–now–future timeline. Dots mean again and again, a wave means in progress, an X means one finished moment, and an arrow from the past to now shows the present perfect. Each tense lists its Spanish name, its use, its form (am/is/are + verb-ing, have/has + past participle, will + verb), an example with the verb in bold, and signal words (every day, right now, yesterday, when, while, since, for, tomorrow). One-page black-and-white PDF for the wall and a color 16:9 version for the projector, with three classroom routines. Verb tenses, grammar poster, timeline, ESL grammar.",
+  "th": "thumbs/verb-tense-timeline.jpg",
+  "pin": "",
+  "new": "2026-11-28"
  },
  {
   "u": "writing-studio.html",
