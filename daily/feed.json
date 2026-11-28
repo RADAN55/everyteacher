@@ -1,5 +1,5 @@
 {
-"updated": "2026-11-27T19:39+00:00",
+"updated": "2026-11-28T18:27+00:00",
 "keep_days": 30,
 "sources": [
 {
@@ -15,17 +15,17 @@
 {
 "source": "Language Magazine",
 "ok": true,
-"items": 10
+"items": 8
 },
 {
 "source": "The Conversation — Education",
 "ok": true,
-"items": 15
+"items": 14
 },
 {
 "source": "Cult of Pedagogy",
 "ok": true,
-"items": 2
+"items": 1
 },
 {
 "source": "The Hechinger Report",
@@ -69,10 +69,55 @@
 }
 ],
 "counts": {
-"el": 83,
-"gen": 239
+"el": 84,
+"gen": 240
 },
 "items": [
+{
+"title": "“World AIDS Day” Is On December 1st – Here Are Teaching & Learning Resources",
+"link": "https://larryferlazzo.edublogs.org/2026/11/28/world-aids-day-is-on-december-1st-here-are-teaching-learning-resources-8/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-28",
+"summary": "The United Nations has declared December 1st to be World AIDS Day. You might be interested in The Best Web Resources For Learning About HIV & AIDS.",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "The Best Ideas For Using “Constraints” As An Instructional Strategy",
+"link": "https://larryferlazzo.edublogs.org/2026/11/28/the-best-ideas-for-using-constraints-as-an-instructional-strategy/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-28",
+"summary": "Giving students “constraints,” or limitations, in practice and in assignments can be an effective instructional strategy. I’ve published a few posts about, and others have, too. Here are some of them: Setting Up Constraints to Inspire Creative Thinking is from Edutopia. What Is The “Constraints-Led Approach,” The Hotte",
+"bucket": "el",
+"ms": false
+},
+{
+"title": "Michigan Advocates Form Coalition for Paid Leave, Childcare and Higher Wages",
+"link": "https://www.the74million.org/article/mi-advocates-launch-coalition-to-push-paid-leave-universal-childcare-and-more/",
+"source": "The 74",
+"date": "2026-11-28",
+"summary": "A new coalition of advocacy organizations, pushing for policies that enable a living wage, universal childcare and paid family and medical leave, launched this week as affordability takes center stage in political conversations around Michigan and nationwide. Jayme Vosovic, the community engagement director at the Mich",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Inside Fresno Unified’s Prop. 28-Funded Push for Sustainable Arts Education",
+"link": "https://www.the74million.org/article/inside-fresno-unifieds-prop-28-funded-push-for-sustainable-arts-education/",
+"source": "The 74",
+"date": "2026-11-28",
+"summary": "David Hunter, known for sporting colorful ties printed with art palettes and paintbrushes, is popular among his elementary students. Not only for his eccentric fashion sense, but also because, for many young children in Fresno Unified School District, he is their introduction to the arts. “Every kid knows who I am and ",
+"bucket": "gen",
+"ms": false
+},
+{
+"title": "Ed Tech Digest",
+"link": "https://larryferlazzo.edublogs.org/2026/11/28/ed-tech-digest-447/",
+"source": "Larry Ferlazzo",
+"date": "2026-11-28",
+"summary": "Ten years ago, in another somewhat futile attempt to reduce the backlog of resources I want to share, I began this occasional “Ed Tech Digest” post where I share three or four links I think are particularly useful and related to…ed tech, including some Web 2.0 apps. You might also be interested in checking out all my [",
+"bucket": "el",
+"ms": false
+},
 {
 "title": "“Teachers Can Do Their Own Research. Here’s How”",
 "link": "https://larryferlazzo.edublogs.org/2026/11/27/teachers-can-do-their-own-research-heres-how/",
@@ -2941,33 +2986,6 @@
 "source": "Language Magazine",
 "date": "2026-10-29",
 "summary": "Sara Davila directs students toward responsible and creative use of AI Students today encounter AI across nearly every aspect of their learning, from search engines and writing tools to content recommendations and automated feedback. Students may rely on AI regularly without fully understanding how it works, what it pr",
-"bucket": "el",
-"ms": false
-},
-{
-"title": "How Teachers Are Turning the Midterms Into a Nonpartisan Civics Lesson",
-"link": "https://www.edsurge.com/news/how-teachers-are-turning-the-midterms-into-a-nonpartisan-civics-lesson",
-"source": "EdSurge",
-"date": "2026-10-28",
-"summary": "A new survey finds young people doubt elected officials are listening, yet more plan to vote than in 2024.",
-"bucket": "gen",
-"ms": false
-},
-{
-"title": "French Philosophy",
-"link": "https://languagemagazine.com/2026/10/27/french-philosophy/?utm_source=rss&utm_medium=rss&utm_campaign=french-philosophy",
-"source": "Language Magazine",
-"date": "2026-10-28",
-"summary": "Safira Amazan asks why decisions are made in English but taken in French There is a curious asymmetry between English and French: in English, we make decisions; in French, we take them (prendre une décision). At first glance, this looks like a harmless idiomatic difference, the sort of thing language learners simply me",
-"bucket": "el",
-"ms": false
-},
-{
-"title": "Designing Engagement for Multilingual Learners",
-"link": "https://languagemagazine.com/2026/10/28/designing-engagement-for-multilingual-learners/?utm_source=rss&utm_medium=rss&utm_campaign=designing-engagement-for-multilingual-learners",
-"source": "Language Magazine",
-"date": "2026-10-28",
-"summary": "Douglas Fisher and Nancy Frey create conditions where all students can progress from participation to ownership Walk into a busy classroom and you may see students participating in very different ways. One student eagerly contributes to a discussion. Another listens carefully but says little. A third speaks animatedly ",
 "bucket": "el",
 "ms": false
 }
