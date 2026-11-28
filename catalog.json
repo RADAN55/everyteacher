@@ -13,10 +13,10 @@
  {
   "u": "series-elpt-teacher.html",
   "t": "Teaching the ELPT",
-  "o": "The spring test from the teacher's side: the special issue, the task practice with keys, the Six Pies set.",
-  "f": "Series · issue + task sets",
+  "o": "The spring test from the teacher's side: the workshop, the special issue, the task practice with keys, the Six Pies set.",
+  "f": "Series · workshop + issue + task sets",
   "g": "The EL teacher's desk",
-  "k": "The ELPT from the EL teacher's desk: the page-turning special issue with daily routines and sixteen test moves, the teacher edition of the ELPA21 task practice (read-aloud scripts, keys, look-fors, four lanes), and Six Southern Pies, one infographic that runs every task type across all four domains.",
+  "k": "The ELPT from the EL teacher's desk: the narrated workshop with five activities and a facilitator kit, the page-turning special issue with daily routines and sixteen test moves, the teacher edition of the ELPA21 task practice (read-aloud scripts, keys, look-fors, four lanes), and Six Southern Pies, one infographic that runs every task type across all four domains.",
   "th": "",
   "pin": "",
   "new": ""
@@ -1076,6 +1076,17 @@
   "th": "thumbs/teaching-the-elpt.jpg",
   "pin": "2026-12-12",
   "new": "2026-11-07"
+ },
+ {
+  "u": "elpt-workshop.html",
+  "t": "Teaching the ELPT: the Workshop",
+  "o": "The four domains, sixteen test moves and five activities, narrated, with a kit to run it with your staff.",
+  "f": "Workshop · 13-min video · 5 activities",
+  "g": "The EL teacher's desk",
+  "k": "A free narrated workshop video (12:54) on teaching all four domains of Mississippi's ELPT, the ELPA21: a daily routine for reading, writing, listening and speaking, six skills per domain taught in four lanes (Newcomer, Emerging, Progressing, Challenge), the sixteen test moves for February, the four shapes of a wrong answer, and the checklist before the testing window. Five activities to pause and try: true or false, which lane, order the routine, spot the trap, and a plan card exit ticket, all on a phone page with no account. A 26-page facilitator kit has every slide with speaker notes to run the 90-minute live version with a staff, PLC or new-teacher group. Video, PD, professional development, staff meeting, ELPA21 test prep, training.",
+  "th": "",
+  "pin": "2026-12-11",
+  "new": "2026-11-27"
  },
  {
   "u": "https://radan55.github.io/RichardDaniel/language-functions/",
