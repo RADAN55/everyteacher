@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-27T11:20:10Z",
+  "updated": "2026-11-28T11:20:17Z",
   "picks": [
     {
-      "title": "More Than Half of Teachers Lack Training to Teach English Learners, Survey Finds",
-      "url": "https://www.edweek.org/teaching-learning/more-than-half-of-teachers-lack-training-to-teach-english-learners-survey-finds/2026/11",
-      "source": "Education Week",
-      "date": "2026-11-24",
-      "take": "An EdWeek Research Center survey of 930 teachers found 58 percent got little or no EL training in their teacher prep, and about 55 percent get little from district PD. Small districts under 2,500 students fare worst at 67 percent. That describes most of Mississippi, where the content teacher is usually the EL program.",
-      "try": "Pick one language move you already use, such as a sentence frame, and ask your EL specialist to watch one class period and tune it.",
+      "title": "More Than $1 Million in Funding Awarded to Teams Building AI Tools for Multilingual Classrooms",
+      "url": "https://teachmag.com/funding-awarded-to-ai-tools-for-multilingual-classrooms",
+      "source": "TEACH Magazine",
+      "date": "2026-11-27",
+      "take": "Multilingual by Design gave $350,000 each to three teams building AI tools for teachers of multilingual students: live transcription of small-group math talk, a tool that chunks and glosses grade-level texts, and a math lesson planner keyed to proficiency levels. Pilots run this year in Wisconsin, Massachusetts and Colorado, so nothing ships to Mississippi yet.",
+      "try": "Do the Medley move by hand: cut tomorrow's reading into short chunks and add a one-line definition next to each hard word.",
       "lanes": [
         "Emerging",
         "Progressing",
@@ -15,25 +15,27 @@
       ]
     },
     {
-      "title": "Getting to Know Your ELLs' Literacy Background",
-      "url": "https://www.colorincolorado.org/article/getting-know-your-ells-literacy-background",
-      "source": "Colorín Colorado",
-      "date": "2026-11-25",
-      "take": "Colorín Colorado's updated guide walks through finding out whether a student reads in the home language before planning literacy support: check the home-language survey, have the student read a short passage aloud, look at ELPT data, and ask the family. One example student's Spanish literacy went unnoticed for over a year.",
-      "try": "Hand a newcomer a short passage in the home language and listen for a minute; a fluent reader needs transfer work, not phonics from scratch.",
+      "title": "More CCSD students reach English proficiency, but growth targets plateau",
+      "url": "https://www.live5news.com/2026/11/10/more-ccsd-students-reach-english-proficiency-growth-targets-plateau/",
+      "source": "Live 5 News (Charleston, SC)",
+      "date": "2026-11-09",
+      "take": "Charleston County reported more than 1,400 multilingual students reaching proficiency this year, yet only about 36 percent met their individual growth targets, flat for two years. The district credits a harder academic-language test and 1,700 newcomers, and plans to copy practices from schools that moved up. Mississippi's ELPT accountability points work the same way.",
+      "try": "Pull your ELs' last two ELPT scores and sort by growth, not level; the flat students are the ones to plan for first.",
       "lanes": [
-        "Newcomer",
-        "Emerging"
+        "Admin",
+        "Progressing"
       ]
     },
     {
-      "title": "After Layoffs and Cuts, Ed. Dept. Funds New English Learner Teacher Grants",
-      "url": "https://www.edweek.org/policy-politics/after-layoffs-and-cuts-ed-dept-funds-new-english-learner-teacher-grants/2026/11",
+      "title": "How Schools Can Better Support Older English Learners",
+      "url": "https://www.edweek.org/teaching-learning/how-schools-can-better-support-older-english-learners/2026/09",
       "source": "Education Week",
-      "date": "2026-11-13",
-      "take": "The Education Department awarded about $50 million to 12 National Professional Development grantees after cutting 28 grants last year. Winners needed a state endorsement letter and mostly fund ESL endorsements for general-education teachers, as in Wyoming and South Dakota. No Mississippi project is named, so local training still depends on district and MDE money.",
-      "try": "Ask your principal whether the district has a path to an ESL endorsement for content teachers, and who pays for it.",
+      "date": "2026-09-21",
+      "take": "EdWeek lays out four kinds of secondary ELs (newcomers, long-term, near-reclassification, and dually identified) and what each needs. An Oregon study found fewer than one in five ELs get extra instructional time, and two or more high school years of it raised diploma odds. Chelsea, Massachusetts coaches content teachers to teach language inside their classes.",
+      "try": "Check one EL's schedule: if the language-support period is costing them English or an elective, raise it with the counselor this week.",
       "lanes": [
+        "Newcomer",
+        "Challenge",
         "Admin"
       ]
     }
