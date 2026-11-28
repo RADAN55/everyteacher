@@ -58,9 +58,9 @@
   "u": "series-elpt-practice.html",
   "t": "The ELPT Practice Center",
   "o": "Practice for every domain of the spring English test: interactive sets for reading, writing, listening and speaking, plus the full form and the question-types guide.",
-  "f": "Series · 4 domains · 12 tools",
+  "f": "Series · 4 domains · 13 tools",
   "g": "Students & families",
-  "k": "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets) and the ELPA21 Reading Studio under mock-test conditions. Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. Before the window: Dress Rehearsal, the device check (headset, microphone, typing, scrolling, flag-and-review). All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
+  "k": "Every ELPT practice tool for students in one place, by domain. Reading: Storm Reading Sets (five interactive sets), the ELPA21 Reading Studio under mock-test conditions, and Read the Graph (a 20-minute graph-reading lesson on the world’s most spoken languages). Writing: Storm Writing Sets (the five ELPA21 writing tasks with live self-checks). Listening: Storm Listening Sets (seven task types, a voice per speaker) and Listening Practice Sets 1 and 2. Speaking: Storm Speaking Sets (record, replay, self-check) and the Listening & Speaking Studio. Before the window: Dress Rehearsal, the device check (headset, microphone, typing, scrolling, flag-and-review). All four domains: English On Your Own (a full form with every task type), the student Task Practice packet and the ELPA Question Types guide. Every Storm set has a teacher key at #key.",
   "th": "",
   "pin": "",
   "new": ""
@@ -294,6 +294,28 @@
   "k": "A free 20-minute rehearsal of the ELPT test conditions, in five stations, with directions in English and Spanish. Headset: a tone in one ear to check left and right, and a school announcement that plays twice, like the test, to listen for a room number. Microphone: turn on the mic, watch the level bar, and talk for 30 seconds to no one, with a recording to play back that stays on the device. Typing: answer a prompt with no spell-check, with a live word count toward 50 words and checks for capitals, end marks, because and a second reason. Scroll: a passage that scrolls, tap-to-highlight sentences, and questions that only count when the proving sentence is highlighted. Review: five questions with a number bar, flags and a review screen that will not submit with a blank. Students earn a Dress Rehearsal pass card to show the teacher or screenshot. Nothing is uploaded; works on Chromebooks and phones. Test day practice, device check, test conditions, ELPA21, headset, microphone check, practice test.",
   "th": "",
   "pin": "2026-12-05",
+  "new": "2026-11-28"
+ },
+ {
+  "u": "read-the-graph-languages.html",
+  "t": "Read the Graph: The World’s Most Spoken Languages",
+  "o": "Read a graph of first- and second-language speakers: most English speakers learned it as a second language.",
+  "f": "Lesson · 20 min · print + projector",
+  "g": "Students & families",
+  "k": "A free 20-minute lesson for English learners in grades 9–12 on reading a graph, the functional text and graphics skill the ELPT tests. The graph shows the world's ten most spoken languages (Ethnologue 2025) split into first-language and second-language speakers: English has about 1,500 million speakers and 1,100 million of them learned it as a second language. Student sheet with words to know in English and Spanish (including the billion / billón trap), five questions from DOK 1 to 3 with sentence starters and writing lines, a self-check, partner talk about home languages, a teacher key with four-lane differentiation, and a projector version. Bar graph, data, world languages, functional text.",
+  "th": "thumbs/read-the-graph-languages.jpg",
+  "pin": "",
+  "new": "2026-11-28"
+ },
+ {
+  "u": "el-home-languages.html",
+  "t": "3 in 4 English Learners Speak Spanish at Home",
+  "o": "The ten most common home languages of U.S. English learners, from federal data, with one move for the week.",
+  "f": "Graphic · NCES data · square PNG",
+  "g": "Every classroom teacher",
+  "k": "A free square graphic from NCES data (Condition of Education, fall 2021): 76.4% of the 5.3 million English learners in U.S. public schools speak Spanish at home, followed by Arabic 2.5%, English 2.2%, Chinese 1.8%, Vietnamese 1.4%, Portuguese 1.0%, Russian 0.7%, Haitian Creole 0.6%, Hmong 0.6% and Urdu 0.5%, with all other languages 12.3%. For staff email, slides or social media, with a caption, the numbers, the source, and one move for the week: learn welcome in every home language in your room. Home languages, EL demographics, statistics, data.",
+  "th": "thumbs/el-home-languages.jpg",
+  "pin": "",
   "new": "2026-11-28"
  },
  {

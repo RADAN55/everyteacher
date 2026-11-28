@@ -610,5 +610,15 @@
   "long": "A free grammar anchor chart for English learners: six verb tenses (simple present, present progressive, simple past, past progressive, present perfect, future) each drawn on a past–now–future timeline. Dots mean again and again, a wave means in progress, an X means one finished moment, and an arrow from the past to now shows the present perfect. Each tense lists its Spanish name, its use, its form (am/is/are + verb-ing, have/has + past participle, will + verb), an example with the verb in bold, and signal words (every day, right now, yesterday, when, while, since, for, tomorrow). One-page black-and-white PDF for the wall and a color 16:9 version for the projector, with three classroom routines. Verb tenses, grammar poster, timeline, ESL grammar.",
   "thumb": "thumbs/verb-tense-timeline.jpg",
   "who": "Students"
+ },
+ "read-the-graph-languages.html": {
+  "long": "A free 20-minute lesson for English learners in grades 9–12 on reading a graph, the functional text and graphics skill the ELPT tests. The graph shows the world's ten most spoken languages (Ethnologue 2025) split into first-language and second-language speakers: English has about 1,500 million speakers and 1,100 million of them learned it as a second language. Student sheet with words to know in English and Spanish (including the billion / billón trap), five questions from DOK 1 to 3 with sentence starters and writing lines, a self-check, partner talk about home languages, a teacher key with four-lane differentiation, and a projector version. Bar graph, data, world languages, functional text.",
+  "thumb": "thumbs/read-the-graph-languages.jpg",
+  "who": "Students"
+ },
+ "el-home-languages.html": {
+  "long": "A free square graphic from NCES data (Condition of Education, fall 2021): 76.4% of the 5.3 million English learners in U.S. public schools speak Spanish at home, followed by Arabic 2.5%, English 2.2%, Chinese 1.8%, Vietnamese 1.4%, Portuguese 1.0%, Russian 0.7%, Haitian Creole 0.6%, Hmong 0.6% and Urdu 0.5%, with all other languages 12.3%. For staff email, slides or social media, with a caption, the numbers, the source, and one move for the week: learn welcome in every home language in your room. Home languages, EL demographics, statistics, data.",
+  "thumb": "thumbs/el-home-languages.jpg",
+  "who": "Teachers"
  }
 }
